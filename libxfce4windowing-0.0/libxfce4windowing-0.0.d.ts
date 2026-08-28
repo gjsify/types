@@ -757,6 +757,8 @@ export namespace Libxfce4windowing {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             "notify::connector": (pspec: GObject.ParamSpec) => void;
             "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::edid": (pspec: GObject.ParamSpec) => void;
+            "notify::edid-len": (pspec: GObject.ParamSpec) => void;
             "notify::fractional-scale": (pspec: GObject.ParamSpec) => void;
             "notify::gdk-monitor": (pspec: GObject.ParamSpec) => void;
             "notify::height-mm": (pspec: GObject.ParamSpec) => void;
@@ -779,6 +781,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connector: string;
             description: string;
+            edid: null;
+            edid_len: bigint | number;
+            edidLen: bigint | number;
             fractional_scale: number;
             fractionalScale: number;
             gdk_monitor: Gdk.Monitor;
@@ -827,6 +832,29 @@ export namespace Libxfce4windowing {
          * @default null
          */
         get description(): string;
+
+        /**
+         * Raw EDID bytes.
+         * @since 4.20.7
+         * @read-only
+         */
+        get edid(): null;
+
+        /**
+         * Length of data in the `XfwMonitor`:edid property.
+         * @since 4.20.7
+         * @read-only
+         * @default 0
+         */
+        get edid_len(): number;
+
+        /**
+         * Length of data in the `XfwMonitor`:edid property.
+         * @since 4.20.7
+         * @read-only
+         * @default 0
+         */
+        get edidLen(): number;
 
         /**
          * UI fractional scaling factor.
@@ -1047,6 +1075,12 @@ export namespace Libxfce4windowing {
          * @returns A string owned by `monitor`.
          */
         get_description(): string;
+
+        /**
+         * Returns the monitor's raw EDID number, if available.
+         * @returns A byte array owned by `monitor`, or `null`.  The number of bytes is returned in `len`.
+         */
+        get_edid(): [number | null, number];
 
         /**
          * Returns the monitor's scaling factor.
@@ -1352,6 +1386,13 @@ export namespace Libxfce4windowing {
          * @returns an {@link Libxfce4windowing.Window}, or `null` if no window is active on `screen`.
          */
         get_active_window(): Window | null;
+
+        /**
+         * Attempts to find the {@link Libxfce4windowing.Monitor} corresponding to `monitor`.
+         * @param monitor a {@link Gdk.Monitor}.
+         * @returns An {@link Libxfce4windowing.Monitor}, or `null` if the corresponding {@link Libxfce4windowing.Monitor} could not be determined.
+         */
+        get_monitor_from_gdk_monitor(monitor: Gdk.Monitor): Monitor | null;
 
         /**
          * Retrieves the list of monitors currently attached and enabled on `screen`.
@@ -1976,6 +2017,7 @@ export namespace Libxfce4windowing {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             capabilities: WorkspaceCapabilities;
+            geometry: Gdk.Rectangle;
             group: WorkspaceGroup;
             id: string;
             layout_column: number;
@@ -2004,6 +2046,14 @@ export namespace Libxfce4windowing {
          */
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
+
+        /**
+         * The position and size of the workspace on the desktop, in screen
+         * coordinates.
+         * @since 4.20.6
+         * @read-only
+         */
+        get geometry(): Gdk.Rectangle;
 
         /**
          * The {@link Libxfce4windowing.WorkspaceGroup} that this workspace is a member of, if any.

@@ -1381,6 +1381,7 @@ export namespace GeocodeGlib {
 
         // Virtual methods
         /**
+         * synchronous query function to override network `GET` requests.
          * @param uri 
          * @param cancellable 
          * @virtual
@@ -1388,6 +1389,7 @@ export namespace GeocodeGlib {
         vfunc_query(uri: string, cancellable: Gio.Cancellable | null): string;
 
         /**
+         * asynchronous version of `query`.
          * @param uri 
          * @param cancellable 
          * @param callback 
@@ -1396,6 +1398,7 @@ export namespace GeocodeGlib {
         vfunc_query_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
+         * asynchronous finish function for `query_async`.
          * @param res 
          * @virtual
          */

@@ -31,14 +31,6 @@ export namespace Gdm {
     }
 
 
-    function chooser_interface_info(): Gio.DBusInterfaceInfo;
-
-    /**
-     * @param klass 
-     * @param property_id_begin 
-     */
-    function chooser_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-
     /**
      * Reads /usr/share/xsessions and other relevant places for possible sessions
      * to log into and returns the complete list.
@@ -58,722 +50,95 @@ export namespace Gdm {
      */
     function goto_login_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
+    /**
+     * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-Greeter.top_of_page">org.gnome.DisplayManager.Greeter</link> D-Bus interface.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+     */
     function greeter_interface_info(): Gio.DBusInterfaceInfo;
 
     /**
-     * @param klass 
-     * @param property_id_begin 
+     * Overrides all {@link GObject.Object} properties in the {@link Gdm.Greeter} interface for a concrete class.
+     * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a {@link GObject.Object} derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
+     * @returns The last property id.
      */
     function greeter_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
 
+    /**
+     * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-Manager.top_of_page">org.gnome.DisplayManager.Manager</link> D-Bus interface.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+     */
     function manager_interface_info(): Gio.DBusInterfaceInfo;
 
     /**
-     * @param klass 
-     * @param property_id_begin 
+     * Overrides all {@link GObject.Object} properties in the {@link Gdm.Manager} interface for a concrete class.
+     * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a {@link GObject.Object} derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
+     * @returns The last property id.
      */
     function manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
 
-    function remote_greeter_interface_info(): Gio.DBusInterfaceInfo;
-
     /**
-     * @param klass 
-     * @param property_id_begin 
+     * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier-ChoiceList.top_of_page">org.gnome.DisplayManager.UserVerifier.ChoiceList</link> D-Bus interface.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
      */
-    function remote_greeter_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-
     function user_verifier_choice_list_interface_info(): Gio.DBusInterfaceInfo;
 
     /**
-     * @param klass 
-     * @param property_id_begin 
+     * Overrides all {@link GObject.Object} properties in the {@link Gdm.UserVerifierChoiceList} interface for a concrete class.
+     * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a {@link GObject.Object} derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
+     * @returns The last property id.
      */
     function user_verifier_choice_list_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
 
+    /**
+     * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier-CustomJSON.top_of_page">org.gnome.DisplayManager.UserVerifier.CustomJSON</link> D-Bus interface.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+     */
+    function user_verifier_custom_json_interface_info(): Gio.DBusInterfaceInfo;
+
+    /**
+     * Overrides all {@link GObject.Object} properties in the {@link Gdm.UserVerifierCustomJSON} interface for a concrete class.
+     * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a {@link GObject.Object} derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
+     * @returns The last property id.
+     */
+    function user_verifier_custom_json_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+
+    /**
+     * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier.top_of_page">org.gnome.DisplayManager.UserVerifier</link> D-Bus interface.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+     */
     function user_verifier_interface_info(): Gio.DBusInterfaceInfo;
 
     /**
-     * @param klass 
-     * @param property_id_begin 
+     * Overrides all {@link GObject.Object} properties in the {@link Gdm.UserVerifier} interface for a concrete class.
+     * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a {@link GObject.Object} derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
+     * @returns The last property id.
      */
     function user_verifier_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
 
+    /**
+     * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-WorkerManager.top_of_page">org.gnome.DisplayManager.WorkerManager</link> D-Bus interface.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+     */
     function worker_manager_interface_info(): Gio.DBusInterfaceInfo;
 
     /**
-     * @param klass 
-     * @param property_id_begin 
+     * Overrides all {@link GObject.Object} properties in the {@link Gdm.WorkerManager} interface for a concrete class.
+     * The properties are overridden in the order they are defined.
+     * @param klass The class structure for a {@link GObject.Object} derived class.
+     * @param property_id_begin The property id to assign to the first overridden property.
+     * @returns The last property id.
      */
     function worker_manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-
-    namespace ChooserProxy {
-        // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
-            "notify::g-connection": (pspec: GObject.ParamSpec) => void;
-            "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
-            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
-            "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
-            "notify::g-interface-name": (pspec: GObject.ParamSpec) => void;
-            "notify::g-name": (pspec: GObject.ParamSpec) => void;
-            "notify::g-name-owner": (pspec: GObject.ParamSpec) => void;
-            "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Chooser.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class ChooserProxy extends Gio.DBusProxy implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable {
-        static $gtype: GObject.GType<ChooserProxy>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: ChooserProxy.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<ChooserProxy.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof ChooserProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChooserProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof ChooserProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChooserProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof ChooserProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChooserProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Static methods
-        /**
-         * @param connection 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
-         */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ChooserProxy> | null): void;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Gio.DBusProxy.new
-        static ["new"](...args: never[]): any;
-
-        /**
-         * @param bus_type 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
-         */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ChooserProxy> | null): void;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Gio.DBusProxy.new_for_bus
-        static new_for_bus(...args: never[]): any;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * @param res 
-         */
-        call_disconnect_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * @param res 
-         */
-        call_select_hostname_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         */
-        call_select_hostname_sync(arg_hostname: string, cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * @param invocation 
-         */
-        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
-
-        /**
-         * @param invocation 
-         */
-        complete_select_hostname(invocation: Gio.DBusMethodInvocation): void;
-
-        /**
-         * @param invocation 
-         * @virtual
-         */
-        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
-
-        /**
-         * @param invocation 
-         * @param arg_hostname 
-         * @virtual
-         */
-        vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * Finishes asynchronous initialization and returns the result.
-         * See `g_async_initable_init_async()`.
-         * @param res a {@link Gio.AsyncResult}.
-         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
-         */
-        init_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or `null` on error.
-         * @param res the {@link Gio.AsyncResult} from the callback
-         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
-         */
-        new_finish(res: Gio.AsyncResult): ChooserProxy;
-
-        /**
-         * @param args 
-         */
-        // Conflicted with Gio.DBusProxy.new_finish
-        new_finish(...args: never[]): any;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         * @virtual
-         */
-        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * Finishes asynchronous initialization and returns the result.
-         * See `g_async_initable_init_async()`.
-         * @param res a {@link Gio.AsyncResult}.
-         * @virtual
-         */
-        vfunc_init_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
-         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
-         */
-        get_object(): Gio.DBusObject | null;
-
-        /**
-         * Gets D-Bus introspection information for the D-Bus interface
-         * implemented by `interface_`.
-         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
-         */
-        get_info(): Gio.DBusInterfaceInfo;
-
-        /**
-         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         * 
-         * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A {@link Gio.DBusObject} or `null`.
-         */
-        set_object(object: Gio.DBusObject | null): void;
-
-        /**
-         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
-         * @virtual
-         */
-        vfunc_dup_object(): Gio.DBusObject | null;
-
-        /**
-         * Gets D-Bus introspection information for the D-Bus interface
-         * implemented by `interface_`.
-         * @virtual
-         */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
-
-        /**
-         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         * 
-         * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A {@link Gio.DBusObject} or `null`.
-         * @virtual
-         */
-        vfunc_set_object(object: Gio.DBusObject | null): void;
-
-        /**
-         * Initializes the object implementing the interface.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_initable_new()` should typically be used instead.
-         * 
-         * The object must be initialized before any real use after initial
-         * construction, either with this function or `g_async_initable_init_async()`.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not `null`,
-         * then initialization can be cancelled by triggering the cancellable object
-         * from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
-         * the object doesn't support cancellable initialization the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except `g_object_ref()` and
-         * `g_object_unref()` are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.Initable} can be
-         * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of `init()` can assume
-         * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all {@link Gio.Initable} implementations should be idempotent; that
-         * recommendation was relaxed in GLib 2.54.
-         * 
-         * If a class explicitly supports being initialized multiple times, it is
-         * recommended that the method is idempotent: multiple calls with the same
-         * arguments should return the same results. Only the first call initializes
-         * the object; further calls return the result of the first call.
-         * 
-         * One reason why a class might need to support idempotent initialization is if
-         * it is designed to be used via the singleton pattern, with a
-         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call `g_initable_init()`
-         * on the result of `g_object_new()`, regardless of whether it is in fact a new
-         * instance.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
-         */
-        init(cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * Initializes the object implementing the interface.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_initable_new()` should typically be used instead.
-         * 
-         * The object must be initialized before any real use after initial
-         * construction, either with this function or `g_async_initable_init_async()`.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not `null`,
-         * then initialization can be cancelled by triggering the cancellable object
-         * from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
-         * the object doesn't support cancellable initialization the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except `g_object_ref()` and
-         * `g_object_unref()` are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.Initable} can be
-         * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of `init()` can assume
-         * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all {@link Gio.Initable} implementations should be idempotent; that
-         * recommendation was relaxed in GLib 2.54.
-         * 
-         * If a class explicitly supports being initialized multiple times, it is
-         * recommended that the method is idempotent: multiple calls with the same
-         * arguments should return the same results. Only the first call initializes
-         * the object; further calls return the result of the first call.
-         * 
-         * One reason why a class might need to support idempotent initialization is if
-         * it is designed to be used via the singleton pattern, with a
-         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call `g_initable_init()`
-         * on the result of `g_object_new()`, regardless of whether it is in fact a new
-         * instance.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @virtual
-         */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
-    }
-
-
-    namespace ChooserSkeleton {
-        // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Chooser.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class ChooserSkeleton extends Gio.DBusInterfaceSkeleton implements Chooser, Gio.DBusInterface {
-        static $gtype: GObject.GType<ChooserSkeleton>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: ChooserSkeleton.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<ChooserSkeleton.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof ChooserSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChooserSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof ChooserSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChooserSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof ChooserSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChooserSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * @param res 
-         */
-        call_disconnect_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * @param res 
-         */
-        call_select_hostname_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         */
-        call_select_hostname_sync(arg_hostname: string, cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * @param invocation 
-         */
-        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
-
-        /**
-         * @param invocation 
-         */
-        complete_select_hostname(invocation: Gio.DBusMethodInvocation): void;
-
-        /**
-         * @param invocation 
-         * @virtual
-         */
-        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
-
-        /**
-         * @param invocation 
-         * @param arg_hostname 
-         * @virtual
-         */
-        vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
-
-        /**
-         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
-         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
-         */
-        get_object(): Gio.DBusObject | null;
-
-        /**
-         * Gets D-Bus introspection information for the D-Bus interface
-         * implemented by `interface_`.
-         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
-         */
-        get_info(): Gio.DBusInterfaceInfo;
-
-        /**
-         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         * 
-         * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A {@link Gio.DBusObject} or `null`.
-         */
-        set_object(object: Gio.DBusObject | null): void;
-
-        /**
-         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
-         * @virtual
-         */
-        vfunc_dup_object(): Gio.DBusObject | null;
-
-        /**
-         * Gets D-Bus introspection information for the D-Bus interface
-         * implemented by `interface_`.
-         * @virtual
-         */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
-
-        /**
-         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         * 
-         * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A {@link Gio.DBusObject} or `null`.
-         * @virtual
-         */
-        vfunc_set_object(object: Gio.DBusObject | null): void;
-    }
-
 
     namespace Client {
         // Signal signatures
@@ -823,44 +188,12 @@ export namespace Gdm {
 
         // Methods
         /**
-         * Gets a {@link Gdm.Chooser} object that can be used to
-         * verify a user's local account.
-         * @param cancellable a {@link Gio.Cancellable}
+         * Gets GDM's enabled pam extensions.  Currently, only
+         * `org.gnome.DisplayManager.UserVerifier.ChoiceList` and
+         * `org.gnome.DisplayManager.UserVerifier.CustomJSON` are supported.
+         * @returns a list of extensions
          */
-        get_chooser(cancellable: Gio.Cancellable | null): globalThis.Promise<Chooser>;
-
-        /**
-         * Gets a {@link Gdm.Chooser} object that can be used to
-         * verify a user's local account.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_chooser(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * Gets a {@link Gdm.Chooser} object that can be used to
-         * verify a user's local account.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_chooser(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Chooser> | void;
-
-        /**
-         * Finishes an operation started with
-         * `gdm_client_get_chooser()`.
-         * @param result The {@link Gio.AsyncResult} from the callback
-         * @returns a {@link Gdm.Chooser}
-         */
-        get_chooser_finish(result: Gio.AsyncResult): Chooser;
-
-        /**
-         * Gets a {@link Gdm.Chooser} object that can be used
-         * to do do various XDMCP chooser related tasks, such
-         * as selecting a host or disconnecting.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @returns {@link Gdm.Chooser} or `null` if caller is not a chooser
-         */
-        get_chooser_sync(cancellable: Gio.Cancellable | null): Chooser;
+        get_enabled_extensions(): string[];
 
         /**
          * Gets a {@link Gdm.Greeter} object that can be used to
@@ -904,46 +237,6 @@ export namespace Gdm {
         get_greeter_sync(cancellable: Gio.Cancellable | null): Greeter;
 
         /**
-         * Gets a {@link Gdm.RemoteGreeter} object that can be used to
-         * verify a user's local account.
-         * @param cancellable a {@link Gio.Cancellable}
-         */
-        get_remote_greeter(cancellable: Gio.Cancellable | null): globalThis.Promise<RemoteGreeter>;
-
-        /**
-         * Gets a {@link Gdm.RemoteGreeter} object that can be used to
-         * verify a user's local account.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_remote_greeter(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * Gets a {@link Gdm.RemoteGreeter} object that can be used to
-         * verify a user's local account.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_remote_greeter(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RemoteGreeter> | void;
-
-        /**
-         * Finishes an operation started with
-         * `gdm_client_get_remote_greeter()`.
-         * @param result The {@link Gio.AsyncResult} from the callback
-         * @returns a {@link Gdm.RemoteGreeter}
-         */
-        get_remote_greeter_finish(result: Gio.AsyncResult): RemoteGreeter;
-
-        /**
-         * Gets a {@link Gdm.RemoteGreeter} object that can be used
-         * to do do various remote login screen related tasks,
-         * such as disconnecting.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @returns {@link Gdm.RemoteGreeter} or `null` if caller is not remote
-         */
-        get_remote_greeter_sync(cancellable: Gio.Cancellable | null): RemoteGreeter;
-
-        /**
          * Gets a {@link Gdm.UserVerifier} object that can be used to
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
@@ -972,6 +265,13 @@ export namespace Gdm {
          * @returns {@link Gdm.UserVerifierChoiceList} or `null` if user verifier isn't yet fetched, or daemon doesn't support choice lists
          */
         get_user_verifier_choice_list(): UserVerifierChoiceList;
+
+        /**
+         * Gets a {@link Gdm.UserVerifierCustomJSON} object that can be used to
+         * verify a user's local account.
+         * @returns {@link Gdm.UserVerifierCustomJSON} or `null` if user verifier isn't yet fetched, or daemon doesn't support the custom JSON protocol
+         */
+        get_user_verifier_custom_json(): UserVerifierCustomJSON;
 
         /**
          * Finishes an operation started with
@@ -1035,7 +335,8 @@ export namespace Gdm {
 
         /**
          * Enables GDM's pam extensions.  Currently, only
-         * org.gnome.DisplayManager.UserVerifier.ChoiceList is supported.
+         * `org.gnome.DisplayManager.UserVerifier.ChoiceList` and
+         * `org.gnome.DisplayManager.UserVerifier.CustomJSON` are supported.
          * @param extensions a list of extensions
          */
         set_enabled_extensions(extensions: string[]): void;
@@ -1061,6 +362,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.GreeterProxy} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class GreeterProxy extends Gio.DBusProxy implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable {
@@ -1080,6 +382,23 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static new_finish(res: Gio.AsyncResult): GreeterProxy;
+
+        // Conflicted with Gio.AsyncInitable.new_finish
+        static new_finish(...args: never[]): any;
+
+        static new_for_bus_finish(res: Gio.AsyncResult): GreeterProxy;
+
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): GreeterProxy;
+
+        // Conflicted with Gio.DBusProxy.new_for_bus_sync
+        static new_for_bus_sync(...args: never[]): any;
+
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): GreeterProxy;
+
+        // Conflicted with Gio.DBusProxy.new_sync
+        static new_sync(...args: never[]): any;
+
         // Signals
         /** @signal */
         connect<K extends keyof GreeterProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GreeterProxy.SignalSignatures[K]>): number;
@@ -1095,14 +414,20 @@ export namespace Gdm {
 
         // Static methods
         /**
-         * @param connection 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-Greeter.top_of_page">org.gnome.DisplayManager.Greeter</link>. See `g_dbus_proxy_new()` for more details.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_proxy_new_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<GreeterProxy> | null): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<GreeterProxy> | null): void;
 
         /**
          * @param args 
@@ -1111,12 +436,18 @@ export namespace Gdm {
         static ["new"](...args: never[]): any;
 
         /**
-         * @param bus_type 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Like `gdm_greeter_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_proxy_new_for_bus_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique).
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<GreeterProxy> | null): void;
 
@@ -1127,238 +458,418 @@ export namespace Gdm {
         static new_for_bus(...args: never[]): any;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_begin_auto_login_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_begin_auto_login_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_begin_auto_login_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_begin_auto_login_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_begin_auto_login_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_begin_auto_login_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_begin_auto_login()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_begin_auto_login()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_auto_login_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_begin_auto_login()` for the asynchronous version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_get_timed_login_details_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string, number]>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_get_timed_login_details_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_get_timed_login_details_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string, number]> | void;
 
         /**
-         * @param out_enabled 
-         * @param out_username 
-         * @param out_delay 
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_get_timed_login_details()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_get_timed_login_details()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_timed_login_details_finish(out_enabled: boolean, out_username: string, out_delay: number, res: Gio.AsyncResult): boolean;
+        call_get_timed_login_details_finish(res: Gio.AsyncResult): [boolean, boolean, string, number];
 
         /**
-         * @param out_enabled 
-         * @param out_username 
-         * @param out_delay 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable: Gio.Cancellable | null): boolean;
+        call_get_timed_login_details_sync(cancellable: Gio.Cancellable | null): [boolean, boolean, string, number];
 
         /**
-         * @param arg_session 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_session_sync()` for the synchronous, blocking version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_select_session(arg_session: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_session_sync()` for the synchronous, blocking version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_session_sync()` for the synchronous, blocking version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_select_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_session_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_session 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_select_session()` for the asynchronous version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_select_user(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_select_user()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_user()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_user_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_select_user()` for the asynchronous version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_start_session_when_ready_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_start_session_when_ready_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_start_session_when_ready_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_start_session_when_ready()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_start_session_when_ready()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_stop_conflicting_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_stop_conflicting_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_stop_conflicting_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_stop_conflicting_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_stop_conflicting_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_stop_conflicting_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an operation started with `gdm_greeter_call_stop_conflicting_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_stop_conflicting_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_stop_conflicting_session_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_stop_conflicting_session_sync(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_begin_auto_login(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
-         * @param enabled 
-         * @param username 
-         * @param delay 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param enabled Parameter to return.
+         * @param username Parameter to return.
+         * @param delay Parameter to return.
          */
         complete_get_timed_login_details(invocation: Gio.DBusMethodInvocation, enabled: boolean, username: string, delay: number): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_select_session(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_select_user(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_start_session_when_ready(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param arg_language_name 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         */
+        complete_stop_conflicting_session(invocation: Gio.DBusMethodInvocation): void;
+
+        /**
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.DefaultLanguageNameChanged">"DefaultLanguageNameChanged"</link> D-Bus signal.
+         * @param arg_language_name Argument to pass with the signal.
          */
         emit_default_language_name_changed(arg_language_name: string): void;
 
         /**
-         * @param arg_session_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.DefaultSessionNameChanged">"DefaultSessionNameChanged"</link> D-Bus signal.
+         * @param arg_session_name Argument to pass with the signal.
          */
         emit_default_session_name_changed(arg_session_name: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.Reauthenticated">"Reauthenticated"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_reauthenticated(arg_service_name: string): void;
 
         /**
-         * @param arg_username 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.SelectedUserChanged">"SelectedUserChanged"</link> D-Bus signal.
+         * @param arg_username Argument to pass with the signal.
          */
         emit_selected_user_changed(arg_username: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.SessionOpened">"SessionOpened"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_session_id Argument to pass with the signal.
          */
-        emit_session_opened(arg_service_name: string): void;
+        emit_session_opened(arg_service_name: string, arg_session_id: string): void;
 
         /**
-         * @param arg_username 
-         * @param arg_delay 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.TimedLoginRequested">"TimedLoginRequested"</link> D-Bus signal.
+         * @param arg_username Argument to pass with the signal.
+         * @param arg_delay Argument to pass with the signal.
          */
         emit_timed_login_requested(arg_username: string, arg_delay: number): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.default_language_name_changed | Gdm.Greeter::default-language-name-changed} signal.
          * @param arg_language_name 
          * @virtual
          */
         vfunc_default_language_name_changed(arg_language_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.default_session_name_changed | Gdm.Greeter::default-session-name-changed} signal.
          * @param arg_session_name 
          * @virtual
          */
         vfunc_default_session_name_changed(arg_session_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_begin_auto_login | Gdm.Greeter::handle-begin-auto-login} signal.
          * @param invocation 
          * @param arg_username 
          * @virtual
@@ -1366,12 +877,14 @@ export namespace Gdm {
         vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_get_timed_login_details | Gdm.Greeter::handle-get-timed-login-details} signal.
          * @param invocation 
          * @virtual
          */
         vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_select_session | Gdm.Greeter::handle-select-session} signal.
          * @param invocation 
          * @param arg_session 
          * @virtual
@@ -1379,6 +892,7 @@ export namespace Gdm {
         vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_select_user | Gdm.Greeter::handle-select-user} signal.
          * @param invocation 
          * @param arg_username 
          * @virtual
@@ -1386,6 +900,7 @@ export namespace Gdm {
         vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_start_session_when_ready | Gdm.Greeter::handle-start-session-when-ready} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_should_start_session 
@@ -1394,24 +909,36 @@ export namespace Gdm {
         vfunc_handle_start_session_when_ready(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_should_start_session: boolean): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_stop_conflicting_session | Gdm.Greeter::handle-stop-conflicting-session} signal.
+         * @param invocation 
+         * @virtual
+         */
+        vfunc_handle_stop_conflicting_session(invocation: Gio.DBusMethodInvocation): boolean;
+
+        /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.reauthenticated | Gdm.Greeter::reauthenticated} signal.
          * @param arg_service_name 
          * @virtual
          */
         vfunc_reauthenticated(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.selected_user_changed | Gdm.Greeter::selected-user-changed} signal.
          * @param arg_username 
          * @virtual
          */
         vfunc_selected_user_changed(arg_username: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.session_opened | Gdm.Greeter::session-opened} signal.
          * @param arg_service_name 
+         * @param arg_session_id 
          * @virtual
          */
-        vfunc_session_opened(arg_service_name: string): void;
+        vfunc_session_opened(arg_service_name: string, arg_session_id: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.timed_login_requested | Gdm.Greeter::timed-login-requested} signal.
          * @param arg_username 
          * @param arg_delay 
          * @virtual
@@ -1629,9 +1156,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -1650,9 +1182,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -1764,6 +1301,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.GreeterSkeleton} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class GreeterSkeleton extends Gio.DBusInterfaceSkeleton implements Greeter, Gio.DBusInterface {
@@ -1783,6 +1321,8 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static ["new"](): GreeterSkeleton;
+
         // Signals
         /** @signal */
         connect<K extends keyof GreeterSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GreeterSkeleton.SignalSignatures[K]>): number;
@@ -1797,238 +1337,418 @@ export namespace Gdm {
         emit(signal: string, ...args: any[]): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_begin_auto_login_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_begin_auto_login_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_begin_auto_login_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_begin_auto_login_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_begin_auto_login_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_begin_auto_login_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_begin_auto_login()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_begin_auto_login()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_auto_login_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_begin_auto_login()` for the asynchronous version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_get_timed_login_details_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string, number]>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_get_timed_login_details_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_get_timed_login_details_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string, number]> | void;
 
         /**
-         * @param out_enabled 
-         * @param out_username 
-         * @param out_delay 
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_get_timed_login_details()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_get_timed_login_details()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_timed_login_details_finish(out_enabled: boolean, out_username: string, out_delay: number, res: Gio.AsyncResult): boolean;
+        call_get_timed_login_details_finish(res: Gio.AsyncResult): [boolean, boolean, string, number];
 
         /**
-         * @param out_enabled 
-         * @param out_username 
-         * @param out_delay 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable: Gio.Cancellable | null): boolean;
+        call_get_timed_login_details_sync(cancellable: Gio.Cancellable | null): [boolean, boolean, string, number];
 
         /**
-         * @param arg_session 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_session_sync()` for the synchronous, blocking version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_select_session(arg_session: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_session_sync()` for the synchronous, blocking version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_session_sync()` for the synchronous, blocking version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_select_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_session_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_session 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_select_session()` for the asynchronous version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_select_user(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_select_user()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_user()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_user_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_select_user()` for the asynchronous version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_start_session_when_ready_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_start_session_when_ready_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_start_session_when_ready_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_start_session_when_ready()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_start_session_when_ready()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_stop_conflicting_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_stop_conflicting_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_stop_conflicting_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_stop_conflicting_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_stop_conflicting_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_stop_conflicting_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an operation started with `gdm_greeter_call_stop_conflicting_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_stop_conflicting_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_stop_conflicting_session_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_stop_conflicting_session_sync(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_begin_auto_login(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
-         * @param enabled 
-         * @param username 
-         * @param delay 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param enabled Parameter to return.
+         * @param username Parameter to return.
+         * @param delay Parameter to return.
          */
         complete_get_timed_login_details(invocation: Gio.DBusMethodInvocation, enabled: boolean, username: string, delay: number): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_select_session(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_select_user(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_start_session_when_ready(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param arg_language_name 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         */
+        complete_stop_conflicting_session(invocation: Gio.DBusMethodInvocation): void;
+
+        /**
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.DefaultLanguageNameChanged">"DefaultLanguageNameChanged"</link> D-Bus signal.
+         * @param arg_language_name Argument to pass with the signal.
          */
         emit_default_language_name_changed(arg_language_name: string): void;
 
         /**
-         * @param arg_session_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.DefaultSessionNameChanged">"DefaultSessionNameChanged"</link> D-Bus signal.
+         * @param arg_session_name Argument to pass with the signal.
          */
         emit_default_session_name_changed(arg_session_name: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.Reauthenticated">"Reauthenticated"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_reauthenticated(arg_service_name: string): void;
 
         /**
-         * @param arg_username 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.SelectedUserChanged">"SelectedUserChanged"</link> D-Bus signal.
+         * @param arg_username Argument to pass with the signal.
          */
         emit_selected_user_changed(arg_username: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.SessionOpened">"SessionOpened"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_session_id Argument to pass with the signal.
          */
-        emit_session_opened(arg_service_name: string): void;
+        emit_session_opened(arg_service_name: string, arg_session_id: string): void;
 
         /**
-         * @param arg_username 
-         * @param arg_delay 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.TimedLoginRequested">"TimedLoginRequested"</link> D-Bus signal.
+         * @param arg_username Argument to pass with the signal.
+         * @param arg_delay Argument to pass with the signal.
          */
         emit_timed_login_requested(arg_username: string, arg_delay: number): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.default_language_name_changed | Gdm.Greeter::default-language-name-changed} signal.
          * @param arg_language_name 
          * @virtual
          */
         vfunc_default_language_name_changed(arg_language_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.default_session_name_changed | Gdm.Greeter::default-session-name-changed} signal.
          * @param arg_session_name 
          * @virtual
          */
         vfunc_default_session_name_changed(arg_session_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_begin_auto_login | Gdm.Greeter::handle-begin-auto-login} signal.
          * @param invocation 
          * @param arg_username 
          * @virtual
@@ -2036,12 +1756,14 @@ export namespace Gdm {
         vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_get_timed_login_details | Gdm.Greeter::handle-get-timed-login-details} signal.
          * @param invocation 
          * @virtual
          */
         vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_select_session | Gdm.Greeter::handle-select-session} signal.
          * @param invocation 
          * @param arg_session 
          * @virtual
@@ -2049,6 +1771,7 @@ export namespace Gdm {
         vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_select_user | Gdm.Greeter::handle-select-user} signal.
          * @param invocation 
          * @param arg_username 
          * @virtual
@@ -2056,6 +1779,7 @@ export namespace Gdm {
         vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_start_session_when_ready | Gdm.Greeter::handle-start-session-when-ready} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_should_start_session 
@@ -2064,24 +1788,36 @@ export namespace Gdm {
         vfunc_handle_start_session_when_ready(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_should_start_session: boolean): boolean;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_stop_conflicting_session | Gdm.Greeter::handle-stop-conflicting-session} signal.
+         * @param invocation 
+         * @virtual
+         */
+        vfunc_handle_stop_conflicting_session(invocation: Gio.DBusMethodInvocation): boolean;
+
+        /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.reauthenticated | Gdm.Greeter::reauthenticated} signal.
          * @param arg_service_name 
          * @virtual
          */
         vfunc_reauthenticated(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.selected_user_changed | Gdm.Greeter::selected-user-changed} signal.
          * @param arg_username 
          * @virtual
          */
         vfunc_selected_user_changed(arg_username: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.session_opened | Gdm.Greeter::session-opened} signal.
          * @param arg_service_name 
+         * @param arg_session_id 
          * @virtual
          */
-        vfunc_session_opened(arg_service_name: string): void;
+        vfunc_session_opened(arg_service_name: string, arg_session_id: string): void;
 
         /**
+         * Handler for the {@link Gdm.Greeter.SignalSignatures.timed_login_requested | Gdm.Greeter::timed-login-requested} signal.
          * @param arg_username 
          * @param arg_delay 
          * @virtual
@@ -2097,9 +1833,20 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -2118,9 +1865,21 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -2153,6 +1912,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.ManagerProxy} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class ManagerProxy extends Gio.DBusProxy implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable {
@@ -2172,6 +1932,23 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static new_finish(res: Gio.AsyncResult): ManagerProxy;
+
+        // Conflicted with Gio.AsyncInitable.new_finish
+        static new_finish(...args: never[]): any;
+
+        static new_for_bus_finish(res: Gio.AsyncResult): ManagerProxy;
+
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): ManagerProxy;
+
+        // Conflicted with Gio.DBusProxy.new_for_bus_sync
+        static new_for_bus_sync(...args: never[]): any;
+
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): ManagerProxy;
+
+        // Conflicted with Gio.DBusProxy.new_sync
+        static new_sync(...args: never[]): any;
+
         // Signals
         /** @signal */
         connect<K extends keyof ManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerProxy.SignalSignatures[K]>): number;
@@ -2187,14 +1964,20 @@ export namespace Gdm {
 
         // Static methods
         /**
-         * @param connection 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-Manager.top_of_page">org.gnome.DisplayManager.Manager</link>. See `g_dbus_proxy_new()` for more details.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_proxy_new_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ManagerProxy> | null): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ManagerProxy> | null): void;
 
         /**
          * @param args 
@@ -2203,12 +1986,18 @@ export namespace Gdm {
         static ["new"](...args: never[]): any;
 
         /**
-         * @param bus_type 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Like `gdm_manager_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_proxy_new_for_bus_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique).
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ManagerProxy> | null): void;
 
@@ -2219,173 +2008,247 @@ export namespace Gdm {
         static new_for_bus(...args: never[]): any;
 
         /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-DisplayManager-Manager.Version">"Version"</link>.
+         * 
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
           * @category Inherited from Gdm.Manager
          */
-        get version(): string;
-        set version(val: string);
+        get version(): string | null;
+        set version(val: string | null);
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_reauthentication_channel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_reauthentication_channel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_reauthentication_channel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_address 
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_open_reauthentication_channel()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_reauthentication_channel()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_reauthentication_channel_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_reauthentication_channel_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_username 
-         * @param out_address 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel()` for the asynchronous version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable: Gio.Cancellable | null): boolean;
+        call_open_reauthentication_channel_sync(arg_username: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_open_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_open_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_open_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_address 
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_open_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_session_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_session_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param out_address 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_open_session()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_session_sync(out_address: string, cancellable: Gio.Cancellable | null): boolean;
+        call_open_session_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_display_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_display_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_register_display(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_display_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_display_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        call_register_display(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_display_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_display_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_register_display(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_register_display()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_display()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_register_display_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_register_display()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_register_display_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+        call_register_display_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_register_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        call_register_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_register_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_register_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_register_session_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_register_session()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_register_session_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+        call_register_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
-         * @param address 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param address Parameter to return.
          */
         complete_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, address: string): void;
 
         /**
-         * @param invocation 
-         * @param address 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param address Parameter to return.
          */
         complete_open_session(invocation: Gio.DBusMethodInvocation, address: string): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_register_display(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_register_session(invocation: Gio.DBusMethodInvocation): void;
 
-        dup_version(): string;
-
-        get_version(): string;
-
         /**
-         * @param value 
-         */
-        set_version(value: string): void;
-
-        /**
-         * @virtual
-         */
-        vfunc_get_version(): string;
-
-        /**
+         * Handler for the {@link Gdm.Manager.SignalSignatures.handle_open_reauthentication_channel | Gdm.Manager::handle-open-reauthentication-channel} signal.
          * @param invocation 
          * @param arg_username 
          * @virtual
@@ -2393,24 +2256,25 @@ export namespace Gdm {
         vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.Manager.SignalSignatures.handle_open_session | Gdm.Manager::handle-open-session} signal.
          * @param invocation 
          * @virtual
          */
         vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.Manager.SignalSignatures.handle_register_display | Gdm.Manager::handle-register-display} signal.
          * @param invocation 
-         * @param arg_details 
          * @virtual
          */
-        vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.Manager.SignalSignatures.handle_register_session | Gdm.Manager::handle-register-session} signal.
          * @param invocation 
-         * @param arg_details 
          * @virtual
          */
-        vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2623,9 +2487,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -2644,9 +2513,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -2759,6 +2633,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.ManagerSkeleton} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
@@ -2778,6 +2653,8 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static ["new"](): ManagerSkeleton;
+
         // Signals
         /** @signal */
         connect<K extends keyof ManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ManagerSkeleton.SignalSignatures[K]>): number;
@@ -2792,173 +2669,247 @@ export namespace Gdm {
         emit(signal: string, ...args: any[]): void;
 
         /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-DisplayManager-Manager.Version">"Version"</link>.
+         * 
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
           * @category Inherited from Gdm.Manager
          */
-        get version(): string;
-        set version(val: string);
+        get version(): string | null;
+        set version(val: string | null);
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_reauthentication_channel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_reauthentication_channel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_reauthentication_channel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_address 
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_open_reauthentication_channel()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_reauthentication_channel()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_reauthentication_channel_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_reauthentication_channel_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_username 
-         * @param out_address 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel()` for the asynchronous version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable: Gio.Cancellable | null): boolean;
+        call_open_reauthentication_channel_sync(arg_username: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_open_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_open_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_open_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_address 
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_open_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_session_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_session_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param out_address 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_open_session()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_session_sync(out_address: string, cancellable: Gio.Cancellable | null): boolean;
+        call_open_session_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_display_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_display_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_register_display(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_display_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_display_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        call_register_display(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_display_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_display_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_register_display(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_register_display()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_display()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_register_display_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_register_display()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_register_display_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+        call_register_display_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_register_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        call_register_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_register_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_register_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_register_session_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_register_session()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_register_session_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+        call_register_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
-         * @param address 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param address Parameter to return.
          */
         complete_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, address: string): void;
 
         /**
-         * @param invocation 
-         * @param address 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param address Parameter to return.
          */
         complete_open_session(invocation: Gio.DBusMethodInvocation, address: string): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_register_display(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_register_session(invocation: Gio.DBusMethodInvocation): void;
 
-        dup_version(): string;
-
-        get_version(): string;
-
         /**
-         * @param value 
-         */
-        set_version(value: string): void;
-
-        /**
-         * @virtual
-         */
-        vfunc_get_version(): string;
-
-        /**
+         * Handler for the {@link Gdm.Manager.SignalSignatures.handle_open_reauthentication_channel | Gdm.Manager::handle-open-reauthentication-channel} signal.
          * @param invocation 
          * @param arg_username 
          * @virtual
@@ -2966,24 +2917,25 @@ export namespace Gdm {
         vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.Manager.SignalSignatures.handle_open_session | Gdm.Manager::handle-open-session} signal.
          * @param invocation 
          * @virtual
          */
         vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.Manager.SignalSignatures.handle_register_display | Gdm.Manager::handle-register-display} signal.
          * @param invocation 
-         * @param arg_details 
          * @virtual
          */
-        vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.Manager.SignalSignatures.handle_register_session | Gdm.Manager::handle-register-session} signal.
          * @param invocation 
-         * @param arg_details 
          * @virtual
          */
-        vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+        vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
@@ -2994,9 +2946,20 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -3015,592 +2978,21 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @virtual
-         */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
-
-        /**
-         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          * 
-         * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A {@link Gio.DBusObject} or `null`.
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_set_object(object: Gio.DBusObject | null): void;
-    }
-
-
-    namespace RemoteGreeterProxy {
-        // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
-            "notify::g-connection": (pspec: GObject.ParamSpec) => void;
-            "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
-            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
-            "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
-            "notify::g-interface-name": (pspec: GObject.ParamSpec) => void;
-            "notify::g-name": (pspec: GObject.ParamSpec) => void;
-            "notify::g-name-owner": (pspec: GObject.ParamSpec) => void;
-            "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, RemoteGreeter.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class RemoteGreeterProxy extends Gio.DBusProxy implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable {
-        static $gtype: GObject.GType<RemoteGreeterProxy>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: RemoteGreeterProxy.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<RemoteGreeterProxy.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof RemoteGreeterProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteGreeterProxy.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof RemoteGreeterProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteGreeterProxy.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof RemoteGreeterProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteGreeterProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Static methods
-        /**
-         * @param connection 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
-         */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null): void;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * @param args 
-         */
-    // Conflicted with Gio.DBusProxy.new
-        static ["new"](...args: never[]): any;
-
-        /**
-         * @param bus_type 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
-         */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null): void;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Gio.DBusProxy.new_for_bus
-        static new_for_bus(...args: never[]): any;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * @param res 
-         */
-        call_disconnect_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * @param invocation 
-         */
-        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
-
-        /**
-         * @param invocation 
          * @virtual
          */
-        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * Finishes asynchronous initialization and returns the result.
-         * See `g_async_initable_init_async()`.
-         * @param res a {@link Gio.AsyncResult}.
-         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
-         */
-        init_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or `null` on error.
-         * @param res the {@link Gio.AsyncResult} from the callback
-         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
-         */
-        new_finish(res: Gio.AsyncResult): RemoteGreeterProxy;
-
-        /**
-         * @param args 
-         */
-        // Conflicted with Gio.DBusProxy.new_finish
-        new_finish(...args: never[]): any;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         * @virtual
-         */
-        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * Finishes asynchronous initialization and returns the result.
-         * See `g_async_initable_init_async()`.
-         * @param res a {@link Gio.AsyncResult}.
-         * @virtual
-         */
-        vfunc_init_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
-         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
-         */
-        get_object(): Gio.DBusObject | null;
-
-        /**
-         * Gets D-Bus introspection information for the D-Bus interface
-         * implemented by `interface_`.
-         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
-         */
-        get_info(): Gio.DBusInterfaceInfo;
-
-        /**
-         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         * 
-         * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A {@link Gio.DBusObject} or `null`.
-         */
-        set_object(object: Gio.DBusObject | null): void;
-
-        /**
-         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
-         * @virtual
-         */
-        vfunc_dup_object(): Gio.DBusObject | null;
-
-        /**
-         * Gets D-Bus introspection information for the D-Bus interface
-         * implemented by `interface_`.
-         * @virtual
-         */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
-
-        /**
-         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         * 
-         * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A {@link Gio.DBusObject} or `null`.
-         * @virtual
-         */
-        vfunc_set_object(object: Gio.DBusObject | null): void;
-
-        /**
-         * Initializes the object implementing the interface.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_initable_new()` should typically be used instead.
-         * 
-         * The object must be initialized before any real use after initial
-         * construction, either with this function or `g_async_initable_init_async()`.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not `null`,
-         * then initialization can be cancelled by triggering the cancellable object
-         * from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
-         * the object doesn't support cancellable initialization the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except `g_object_ref()` and
-         * `g_object_unref()` are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.Initable} can be
-         * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of `init()` can assume
-         * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all {@link Gio.Initable} implementations should be idempotent; that
-         * recommendation was relaxed in GLib 2.54.
-         * 
-         * If a class explicitly supports being initialized multiple times, it is
-         * recommended that the method is idempotent: multiple calls with the same
-         * arguments should return the same results. Only the first call initializes
-         * the object; further calls return the result of the first call.
-         * 
-         * One reason why a class might need to support idempotent initialization is if
-         * it is designed to be used via the singleton pattern, with a
-         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call `g_initable_init()`
-         * on the result of `g_object_new()`, regardless of whether it is in fact a new
-         * instance.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
-         */
-        init(cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * Initializes the object implementing the interface.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_initable_new()` should typically be used instead.
-         * 
-         * The object must be initialized before any real use after initial
-         * construction, either with this function or `g_async_initable_init_async()`.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not `null`,
-         * then initialization can be cancelled by triggering the cancellable object
-         * from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
-         * the object doesn't support cancellable initialization the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except `g_object_ref()` and
-         * `g_object_unref()` are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.Initable} can be
-         * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of `init()` can assume
-         * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all {@link Gio.Initable} implementations should be idempotent; that
-         * recommendation was relaxed in GLib 2.54.
-         * 
-         * If a class explicitly supports being initialized multiple times, it is
-         * recommended that the method is idempotent: multiple calls with the same
-         * arguments should return the same results. Only the first call initializes
-         * the object; further calls return the result of the first call.
-         * 
-         * One reason why a class might need to support idempotent initialization is if
-         * it is designed to be used via the singleton pattern, with a
-         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call `g_initable_init()`
-         * on the result of `g_object_new()`, regardless of whether it is in fact a new
-         * instance.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @virtual
-         */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
-    }
-
-
-    namespace RemoteGreeterSkeleton {
-        // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
-            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, RemoteGreeter.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton implements RemoteGreeter, Gio.DBusInterface {
-        static $gtype: GObject.GType<RemoteGreeterSkeleton>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: RemoteGreeterSkeleton.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<RemoteGreeterSkeleton.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteGreeterSkeleton.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteGreeterSkeleton.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteGreeterSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * @param res 
-         */
-        call_disconnect_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * @param invocation 
-         */
-        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
-
-        /**
-         * @param invocation 
-         * @virtual
-         */
-        vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
-
-        /**
-         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
-         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
-         */
-        get_object(): Gio.DBusObject | null;
-
-        /**
-         * Gets D-Bus introspection information for the D-Bus interface
-         * implemented by `interface_`.
-         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
-         */
-        get_info(): Gio.DBusInterfaceInfo;
-
-        /**
-         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         * 
-         * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A {@link Gio.DBusObject} or `null`.
-         */
-        set_object(object: Gio.DBusObject | null): void;
-
-        /**
-         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
-         * @virtual
-         */
-        vfunc_dup_object(): Gio.DBusObject | null;
-
-        /**
-         * Gets D-Bus introspection information for the D-Bus interface
-         * implemented by `interface_`.
-         * @virtual
-         */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -3632,6 +3024,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.UserVerifierChoiceListProxy} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class UserVerifierChoiceListProxy extends Gio.DBusProxy implements UserVerifierChoiceList, Gio.AsyncInitable<UserVerifierChoiceListProxy>, Gio.DBusInterface, Gio.Initable {
@@ -3651,6 +3044,23 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static new_finish(res: Gio.AsyncResult): UserVerifierChoiceListProxy;
+
+        // Conflicted with Gio.AsyncInitable.new_finish
+        static new_finish(...args: never[]): any;
+
+        static new_for_bus_finish(res: Gio.AsyncResult): UserVerifierChoiceListProxy;
+
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): UserVerifierChoiceListProxy;
+
+        // Conflicted with Gio.DBusProxy.new_for_bus_sync
+        static new_for_bus_sync(...args: never[]): any;
+
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): UserVerifierChoiceListProxy;
+
+        // Conflicted with Gio.DBusProxy.new_sync
+        static new_sync(...args: never[]): any;
+
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierChoiceListProxy.SignalSignatures[K]>): number;
@@ -3666,14 +3076,20 @@ export namespace Gdm {
 
         // Static methods
         /**
-         * @param connection 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier-ChoiceList.top_of_page">org.gnome.DisplayManager.UserVerifier.ChoiceList</link>. See `g_dbus_proxy_new()` for more details.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_proxy_new_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null): void;
 
         /**
          * @param args 
@@ -3682,12 +3098,18 @@ export namespace Gdm {
         static ["new"](...args: never[]): any;
 
         /**
-         * @param bus_type 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Like `gdm_user_verifier_choice_list_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_proxy_new_for_bus_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique).
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null): void;
 
@@ -3698,53 +3120,79 @@ export namespace Gdm {
         static new_for_bus(...args: never[]): any;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_call_select_choice_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_call_select_choice_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_call_select_choice_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_choice_list_call_select_choice()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_choice_list_call_select_choice()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_choice_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_select_choice(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_list 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier-ChoiceList.ChoiceQuery">"ChoiceQuery"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_prompt_message Argument to pass with the signal.
+         * @param arg_list Argument to pass with the signal.
          */
         emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifierChoiceList.SignalSignatures.choice_query | Gdm.UserVerifierChoiceList::choice-query} signal.
          * @param arg_service_name 
          * @param arg_prompt_message 
          * @param arg_list 
@@ -3753,6 +3201,7 @@ export namespace Gdm {
         vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifierChoiceList.SignalSignatures.handle_select_choice | Gdm.UserVerifierChoiceList::handle-select-choice} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_choice 
@@ -3971,9 +3420,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -3992,9 +3446,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -4106,6 +3565,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.UserVerifierChoiceListSkeleton} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class UserVerifierChoiceListSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifierChoiceList, Gio.DBusInterface {
@@ -4125,6 +3585,8 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static ["new"](): UserVerifierChoiceListSkeleton;
+
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierChoiceListSkeleton.SignalSignatures[K]>): number;
@@ -4139,53 +3601,79 @@ export namespace Gdm {
         emit(signal: string, ...args: any[]): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_call_select_choice_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_call_select_choice_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_call_select_choice_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_choice_list_call_select_choice()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_choice_list_call_select_choice()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_choice_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_select_choice(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_list 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier-ChoiceList.ChoiceQuery">"ChoiceQuery"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_prompt_message Argument to pass with the signal.
+         * @param arg_list Argument to pass with the signal.
          */
         emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifierChoiceList.SignalSignatures.choice_query | Gdm.UserVerifierChoiceList::choice-query} signal.
          * @param arg_service_name 
          * @param arg_prompt_message 
          * @param arg_list 
@@ -4194,6 +3682,7 @@ export namespace Gdm {
         vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifierChoiceList.SignalSignatures.handle_select_choice | Gdm.UserVerifierChoiceList::handle-select-choice} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_choice 
@@ -4210,9 +3699,20 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -4231,9 +3731,924 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
+
+        /**
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
+         * 
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
+         */
+        vfunc_set_object(object: Gio.DBusObject | null): void;
+    }
+
+
+    namespace UserVerifierCustomJSONProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-connection": (pspec: GObject.ParamSpec) => void;
+            "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name-owner": (pspec: GObject.ParamSpec) => void;
+            "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, UserVerifierCustomJSON.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
+    }
+
+    /**
+     * The {@link Gdm.UserVerifierCustomJSONProxy} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
+     */
+    class UserVerifierCustomJSONProxy extends Gio.DBusProxy implements UserVerifierCustomJSON, Gio.AsyncInitable<UserVerifierCustomJSONProxy>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<UserVerifierCustomJSONProxy>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: UserVerifierCustomJSONProxy.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<UserVerifierCustomJSONProxy.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static new_finish(res: Gio.AsyncResult): UserVerifierCustomJSONProxy;
+
+        // Conflicted with Gio.AsyncInitable.new_finish
+        static new_finish(...args: never[]): any;
+
+        static new_for_bus_finish(res: Gio.AsyncResult): UserVerifierCustomJSONProxy;
+
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): UserVerifierCustomJSONProxy;
+
+        // Conflicted with Gio.DBusProxy.new_for_bus_sync
+        static new_for_bus_sync(...args: never[]): any;
+
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): UserVerifierCustomJSONProxy;
+
+        // Conflicted with Gio.DBusProxy.new_sync
+        static new_sync(...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof UserVerifierCustomJSONProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierCustomJSONProxy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof UserVerifierCustomJSONProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierCustomJSONProxy.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof UserVerifierCustomJSONProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierCustomJSONProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+        /**
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier-CustomJSON.top_of_page">org.gnome.DisplayManager.UserVerifier.CustomJSON</link>. See `g_dbus_proxy_new()` for more details.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_proxy_new_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierCustomJSONProxy> | null): void;
+
+        /**
+         * @param args 
+         */
+    // Conflicted with Gio.DBusProxy.new
+        static ["new"](...args: never[]): any;
+
+        /**
+         * Like `gdm_user_verifier_custom_json_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_proxy_new_for_bus_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique).
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierCustomJSONProxy> | null): void;
+
+        /**
+         * @param args 
+         */
+    // Conflicted with Gio.DBusProxy.new_for_bus
+        static new_for_bus(...args: never[]): any;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_reply_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_reply(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_reply_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_reply(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_reply_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_reply(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an operation started with `gdm_user_verifier_custom_json_call_reply()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_reply()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_reply_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_reply_sync(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_report_error_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_report_error(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_report_error_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_report_error(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_report_error_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_report_error(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an operation started with `gdm_user_verifier_custom_json_call_report_error()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_report_error()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_report_error_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_report_error_sync(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         */
+        complete_reply(invocation: Gio.DBusMethodInvocation): void;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         */
+        complete_report_error(invocation: Gio.DBusMethodInvocation): void;
+
+        /**
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier-CustomJSON.Request">"Request"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_protocol Argument to pass with the signal.
+         * @param arg_version Argument to pass with the signal.
+         * @param arg_request Argument to pass with the signal.
+         */
+        emit_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string): void;
+
+        /**
+         * Handler for the {@link Gdm.UserVerifierCustomJSON.SignalSignatures.handle_reply | Gdm.UserVerifierCustomJSON::handle-reply} signal.
+         * @param invocation 
+         * @param arg_service_name 
+         * @param arg_reply 
+         * @virtual
+         */
+        vfunc_handle_reply(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_reply: string): boolean;
+
+        /**
+         * Handler for the {@link Gdm.UserVerifierCustomJSON.SignalSignatures.handle_report_error | Gdm.UserVerifierCustomJSON::handle-report-error} signal.
+         * @param invocation 
+         * @param arg_service_name 
+         * @param arg_error 
+         * @virtual
+         */
+        vfunc_handle_report_error(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_error: string): boolean;
+
+        /**
+         * Handler for the {@link Gdm.UserVerifierCustomJSON.SignalSignatures.request | Gdm.UserVerifierCustomJSON::request} signal.
+         * @param arg_service_name 
+         * @param arg_protocol 
+         * @param arg_version 
+         * @param arg_request 
+         * @virtual
+         */
+        vfunc_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         */
+        new_finish(res: Gio.AsyncResult): UserVerifierCustomJSONProxy;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusProxy.new_finish
+        new_finish(...args: never[]): any;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
+         */
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         */
+        get_object(): Gio.DBusObject | null;
+
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
+         * 
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         */
+        set_object(object: Gio.DBusObject | null): void;
+
+        /**
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @virtual
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
+         * 
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
+         */
+        vfunc_set_object(object: Gio.DBusObject | null): void;
+
+        /**
+         * Initializes the object implementing the interface.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_initable_new()` should typically be used instead.
+         * 
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or `g_async_initable_init_async()`.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
+         * the object doesn't support cancellable initialization the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of `init()` can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         * 
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         * 
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         */
+        init(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Initializes the object implementing the interface.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_initable_new()` should typically be used instead.
+         * 
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or `g_async_initable_init_async()`.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
+         * the object doesn't support cancellable initialization the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of `init()` can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         * 
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         * 
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
+         */
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+    }
+
+
+    namespace UserVerifierCustomJSONSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, UserVerifierCustomJSON.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
+    }
+
+    /**
+     * The {@link Gdm.UserVerifierCustomJSONSkeleton} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
+     */
+    class UserVerifierCustomJSONSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifierCustomJSON, Gio.DBusInterface {
+        static $gtype: GObject.GType<UserVerifierCustomJSONSkeleton>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: UserVerifierCustomJSONSkeleton.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<UserVerifierCustomJSONSkeleton.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](): UserVerifierCustomJSONSkeleton;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof UserVerifierCustomJSONSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierCustomJSONSkeleton.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof UserVerifierCustomJSONSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierCustomJSONSkeleton.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof UserVerifierCustomJSONSkeleton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserVerifierCustomJSONSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_reply_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_reply(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_reply_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_reply(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_reply_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_reply(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an operation started with `gdm_user_verifier_custom_json_call_reply()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_reply()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_reply_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_reply_sync(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_report_error_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_report_error(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_report_error_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_report_error(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_report_error_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_report_error(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an operation started with `gdm_user_verifier_custom_json_call_report_error()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_report_error()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_report_error_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_report_error_sync(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         */
+        complete_reply(invocation: Gio.DBusMethodInvocation): void;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         */
+        complete_report_error(invocation: Gio.DBusMethodInvocation): void;
+
+        /**
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier-CustomJSON.Request">"Request"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_protocol Argument to pass with the signal.
+         * @param arg_version Argument to pass with the signal.
+         * @param arg_request Argument to pass with the signal.
+         */
+        emit_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string): void;
+
+        /**
+         * Handler for the {@link Gdm.UserVerifierCustomJSON.SignalSignatures.handle_reply | Gdm.UserVerifierCustomJSON::handle-reply} signal.
+         * @param invocation 
+         * @param arg_service_name 
+         * @param arg_reply 
+         * @virtual
+         */
+        vfunc_handle_reply(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_reply: string): boolean;
+
+        /**
+         * Handler for the {@link Gdm.UserVerifierCustomJSON.SignalSignatures.handle_report_error | Gdm.UserVerifierCustomJSON::handle-report-error} signal.
+         * @param invocation 
+         * @param arg_service_name 
+         * @param arg_error 
+         * @virtual
+         */
+        vfunc_handle_report_error(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_error: string): boolean;
+
+        /**
+         * Handler for the {@link Gdm.UserVerifierCustomJSON.SignalSignatures.request | Gdm.UserVerifierCustomJSON::request} signal.
+         * @param arg_service_name 
+         * @param arg_protocol 
+         * @param arg_version 
+         * @param arg_request 
+         * @virtual
+         */
+        vfunc_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string): void;
+
+        /**
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         */
+        get_object(): Gio.DBusObject | null;
+
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
+
+        /**
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
+         * 
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         */
+        set_object(object: Gio.DBusObject | null): void;
+
+        /**
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @virtual
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -4265,6 +4680,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.UserVerifierProxy} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class UserVerifierProxy extends Gio.DBusProxy implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable {
@@ -4284,6 +4700,23 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static new_finish(res: Gio.AsyncResult): UserVerifierProxy;
+
+        // Conflicted with Gio.AsyncInitable.new_finish
+        static new_finish(...args: never[]): any;
+
+        static new_for_bus_finish(res: Gio.AsyncResult): UserVerifierProxy;
+
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): UserVerifierProxy;
+
+        // Conflicted with Gio.DBusProxy.new_for_bus_sync
+        static new_for_bus_sync(...args: never[]): any;
+
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): UserVerifierProxy;
+
+        // Conflicted with Gio.DBusProxy.new_sync
+        static new_sync(...args: never[]): any;
+
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierProxy.SignalSignatures[K]>): number;
@@ -4299,14 +4732,20 @@ export namespace Gdm {
 
         // Static methods
         /**
-         * @param connection 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier.top_of_page">org.gnome.DisplayManager.UserVerifier</link>. See `g_dbus_proxy_new()` for more details.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_proxy_new_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierProxy> | null): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierProxy> | null): void;
 
         /**
          * @param args 
@@ -4315,12 +4754,18 @@ export namespace Gdm {
         static ["new"](...args: never[]): any;
 
         /**
-         * @param bus_type 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Like `gdm_user_verifier_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_proxy_new_for_bus_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique).
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierProxy> | null): void;
 
@@ -4331,259 +4776,395 @@ export namespace Gdm {
         static new_for_bus(...args: never[]): any;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_answer_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_answer_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_answer_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_answer_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_answer_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_answer_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_answer_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_answer_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_answer_query_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_answer_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_begin_verification()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_for_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_for_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_for_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_begin_verification_for_user()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification_for_user()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_begin_verification()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_cancel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_cancel_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_cancel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_cancel_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_cancel(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_cancel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_cancel_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_cancel(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_cancel()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_cancel()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_cancel()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_enable_extensions_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions_sync()` for the synchronous, blocking version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_enable_extensions_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions_sync()` for the synchronous, blocking version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_enable_extensions_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions_sync()` for the synchronous, blocking version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_enable_extensions()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_enable_extensions()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_enable_extensions_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions()` for the asynchronous version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_answer_query(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_begin_verification(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_begin_verification_for_user(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_cancel(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_enable_extensions(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ConversationStarted">"ConversationStarted"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_conversation_started(arg_service_name: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ConversationStopped">"ConversationStopped"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_conversation_stopped(arg_service_name: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Info">"Info"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_info Argument to pass with the signal.
          */
         emit_info(arg_service_name: string, arg_info: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.InfoQuery">"InfoQuery"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_query Argument to pass with the signal.
          */
         emit_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Problem">"Problem"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_problem Argument to pass with the signal.
          */
         emit_problem(arg_service_name: string, arg_problem: string): void;
 
         /**
-         * @param arg_pid_of_caller 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ReauthenticationStarted">"ReauthenticationStarted"</link> D-Bus signal.
+         * @param arg_pid_of_caller Argument to pass with the signal.
          */
         emit_reauthentication_started(arg_pid_of_caller: number): void;
 
+        /**
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Reset">"Reset"</link> D-Bus signal.
+         */
         emit_reset(): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.SecretInfoQuery">"SecretInfoQuery"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_query Argument to pass with the signal.
          */
         emit_secret_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_message 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ServiceUnavailable">"ServiceUnavailable"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_message Argument to pass with the signal.
          */
         emit_service_unavailable(arg_service_name: string, arg_message: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.VerificationComplete">"VerificationComplete"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_verification_complete(arg_service_name: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.VerificationFailed">"VerificationFailed"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_verification_failed(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.conversation_started | Gdm.UserVerifier::conversation-started} signal.
          * @param arg_service_name 
          * @virtual
          */
         vfunc_conversation_started(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.conversation_stopped | Gdm.UserVerifier::conversation-stopped} signal.
          * @param arg_service_name 
          * @virtual
          */
         vfunc_conversation_stopped(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_answer_query | Gdm.UserVerifier::handle-answer-query} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_answer 
@@ -4592,6 +5173,7 @@ export namespace Gdm {
         vfunc_handle_answer_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_answer: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_begin_verification | Gdm.UserVerifier::handle-begin-verification} signal.
          * @param invocation 
          * @param arg_service_name 
          * @virtual
@@ -4599,6 +5181,7 @@ export namespace Gdm {
         vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_begin_verification_for_user | Gdm.UserVerifier::handle-begin-verification-for-user} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_username 
@@ -4607,12 +5190,14 @@ export namespace Gdm {
         vfunc_handle_begin_verification_for_user(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_username: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_cancel | Gdm.UserVerifier::handle-cancel} signal.
          * @param invocation 
          * @virtual
          */
         vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_enable_extensions | Gdm.UserVerifier::handle-enable-extensions} signal.
          * @param invocation 
          * @param arg_extensions 
          * @virtual
@@ -4620,6 +5205,7 @@ export namespace Gdm {
         vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.info | Gdm.UserVerifier::info} signal.
          * @param arg_service_name 
          * @param arg_info 
          * @virtual
@@ -4627,6 +5213,7 @@ export namespace Gdm {
         vfunc_info(arg_service_name: string, arg_info: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.info_query | Gdm.UserVerifier::info-query} signal.
          * @param arg_service_name 
          * @param arg_query 
          * @virtual
@@ -4634,6 +5221,7 @@ export namespace Gdm {
         vfunc_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.problem | Gdm.UserVerifier::problem} signal.
          * @param arg_service_name 
          * @param arg_problem 
          * @virtual
@@ -4641,17 +5229,20 @@ export namespace Gdm {
         vfunc_problem(arg_service_name: string, arg_problem: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.reauthentication_started | Gdm.UserVerifier::reauthentication-started} signal.
          * @param arg_pid_of_caller 
          * @virtual
          */
         vfunc_reauthentication_started(arg_pid_of_caller: number): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.reset | Gdm.UserVerifier::reset} signal.
          * @virtual
          */
         vfunc_reset(): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.secret_info_query | Gdm.UserVerifier::secret-info-query} signal.
          * @param arg_service_name 
          * @param arg_query 
          * @virtual
@@ -4659,6 +5250,7 @@ export namespace Gdm {
         vfunc_secret_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.service_unavailable | Gdm.UserVerifier::service-unavailable} signal.
          * @param arg_service_name 
          * @param arg_message 
          * @virtual
@@ -4666,12 +5258,14 @@ export namespace Gdm {
         vfunc_service_unavailable(arg_service_name: string, arg_message: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.verification_complete | Gdm.UserVerifier::verification-complete} signal.
          * @param arg_service_name 
          * @virtual
          */
         vfunc_verification_complete(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.verification_failed | Gdm.UserVerifier::verification-failed} signal.
          * @param arg_service_name 
          * @virtual
          */
@@ -4888,9 +5482,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -4909,9 +5508,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -5023,6 +5627,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.UserVerifierSkeleton} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifier, Gio.DBusInterface {
@@ -5042,6 +5647,8 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static ["new"](): UserVerifierSkeleton;
+
         // Signals
         /** @signal */
         connect<K extends keyof UserVerifierSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserVerifierSkeleton.SignalSignatures[K]>): number;
@@ -5056,259 +5663,395 @@ export namespace Gdm {
         emit(signal: string, ...args: any[]): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_answer_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_answer_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_answer_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_answer_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_answer_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_answer_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_answer_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_answer_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_answer_query_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_answer_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_begin_verification()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_for_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_for_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_for_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_begin_verification_for_user()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification_for_user()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_begin_verification()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_cancel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_cancel_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_cancel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_cancel_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_cancel(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_cancel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_cancel_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_cancel(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_cancel()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_cancel()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_cancel()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_enable_extensions_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions_sync()` for the synchronous, blocking version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_enable_extensions_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions_sync()` for the synchronous, blocking version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_enable_extensions_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions_sync()` for the synchronous, blocking version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_enable_extensions()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_enable_extensions()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_enable_extensions_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions()` for the asynchronous version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_answer_query(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_begin_verification(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_begin_verification_for_user(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_cancel(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_enable_extensions(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ConversationStarted">"ConversationStarted"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_conversation_started(arg_service_name: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ConversationStopped">"ConversationStopped"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_conversation_stopped(arg_service_name: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Info">"Info"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_info Argument to pass with the signal.
          */
         emit_info(arg_service_name: string, arg_info: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.InfoQuery">"InfoQuery"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_query Argument to pass with the signal.
          */
         emit_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Problem">"Problem"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_problem Argument to pass with the signal.
          */
         emit_problem(arg_service_name: string, arg_problem: string): void;
 
         /**
-         * @param arg_pid_of_caller 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ReauthenticationStarted">"ReauthenticationStarted"</link> D-Bus signal.
+         * @param arg_pid_of_caller Argument to pass with the signal.
          */
         emit_reauthentication_started(arg_pid_of_caller: number): void;
 
+        /**
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Reset">"Reset"</link> D-Bus signal.
+         */
         emit_reset(): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.SecretInfoQuery">"SecretInfoQuery"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_query Argument to pass with the signal.
          */
         emit_secret_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_message 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ServiceUnavailable">"ServiceUnavailable"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_message Argument to pass with the signal.
          */
         emit_service_unavailable(arg_service_name: string, arg_message: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.VerificationComplete">"VerificationComplete"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_verification_complete(arg_service_name: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.VerificationFailed">"VerificationFailed"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_verification_failed(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.conversation_started | Gdm.UserVerifier::conversation-started} signal.
          * @param arg_service_name 
          * @virtual
          */
         vfunc_conversation_started(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.conversation_stopped | Gdm.UserVerifier::conversation-stopped} signal.
          * @param arg_service_name 
          * @virtual
          */
         vfunc_conversation_stopped(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_answer_query | Gdm.UserVerifier::handle-answer-query} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_answer 
@@ -5317,6 +6060,7 @@ export namespace Gdm {
         vfunc_handle_answer_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_answer: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_begin_verification | Gdm.UserVerifier::handle-begin-verification} signal.
          * @param invocation 
          * @param arg_service_name 
          * @virtual
@@ -5324,6 +6068,7 @@ export namespace Gdm {
         vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_begin_verification_for_user | Gdm.UserVerifier::handle-begin-verification-for-user} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_username 
@@ -5332,12 +6077,14 @@ export namespace Gdm {
         vfunc_handle_begin_verification_for_user(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_username: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_cancel | Gdm.UserVerifier::handle-cancel} signal.
          * @param invocation 
          * @virtual
          */
         vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_enable_extensions | Gdm.UserVerifier::handle-enable-extensions} signal.
          * @param invocation 
          * @param arg_extensions 
          * @virtual
@@ -5345,6 +6092,7 @@ export namespace Gdm {
         vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.info | Gdm.UserVerifier::info} signal.
          * @param arg_service_name 
          * @param arg_info 
          * @virtual
@@ -5352,6 +6100,7 @@ export namespace Gdm {
         vfunc_info(arg_service_name: string, arg_info: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.info_query | Gdm.UserVerifier::info-query} signal.
          * @param arg_service_name 
          * @param arg_query 
          * @virtual
@@ -5359,6 +6108,7 @@ export namespace Gdm {
         vfunc_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.problem | Gdm.UserVerifier::problem} signal.
          * @param arg_service_name 
          * @param arg_problem 
          * @virtual
@@ -5366,17 +6116,20 @@ export namespace Gdm {
         vfunc_problem(arg_service_name: string, arg_problem: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.reauthentication_started | Gdm.UserVerifier::reauthentication-started} signal.
          * @param arg_pid_of_caller 
          * @virtual
          */
         vfunc_reauthentication_started(arg_pid_of_caller: number): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.reset | Gdm.UserVerifier::reset} signal.
          * @virtual
          */
         vfunc_reset(): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.secret_info_query | Gdm.UserVerifier::secret-info-query} signal.
          * @param arg_service_name 
          * @param arg_query 
          * @virtual
@@ -5384,6 +6137,7 @@ export namespace Gdm {
         vfunc_secret_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.service_unavailable | Gdm.UserVerifier::service-unavailable} signal.
          * @param arg_service_name 
          * @param arg_message 
          * @virtual
@@ -5391,12 +6145,14 @@ export namespace Gdm {
         vfunc_service_unavailable(arg_service_name: string, arg_message: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.verification_complete | Gdm.UserVerifier::verification-complete} signal.
          * @param arg_service_name 
          * @virtual
          */
         vfunc_verification_complete(arg_service_name: string): void;
 
         /**
+         * Handler for the {@link Gdm.UserVerifier.SignalSignatures.verification_failed | Gdm.UserVerifier::verification-failed} signal.
          * @param arg_service_name 
          * @virtual
          */
@@ -5411,9 +6167,20 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -5432,9 +6199,21 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -5466,6 +6245,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.WorkerManagerProxy} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class WorkerManagerProxy extends Gio.DBusProxy implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable {
@@ -5485,6 +6265,23 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static new_finish(res: Gio.AsyncResult): WorkerManagerProxy;
+
+        // Conflicted with Gio.AsyncInitable.new_finish
+        static new_finish(...args: never[]): any;
+
+        static new_for_bus_finish(res: Gio.AsyncResult): WorkerManagerProxy;
+
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): WorkerManagerProxy;
+
+        // Conflicted with Gio.DBusProxy.new_for_bus_sync
+        static new_for_bus_sync(...args: never[]): any;
+
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): WorkerManagerProxy;
+
+        // Conflicted with Gio.DBusProxy.new_sync
+        static new_sync(...args: never[]): any;
+
         // Signals
         /** @signal */
         connect<K extends keyof WorkerManagerProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerManagerProxy.SignalSignatures[K]>): number;
@@ -5500,14 +6297,20 @@ export namespace Gdm {
 
         // Static methods
         /**
-         * @param connection 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-WorkerManager.top_of_page">org.gnome.DisplayManager.WorkerManager</link>. See `g_dbus_proxy_new()` for more details.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_proxy_new_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<WorkerManagerProxy> | null): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<WorkerManagerProxy> | null): void;
 
         /**
          * @param args 
@@ -5516,12 +6319,18 @@ export namespace Gdm {
         static ["new"](...args: never[]): any;
 
         /**
-         * @param bus_type 
-         * @param flags 
-         * @param name 
-         * @param object_path 
-         * @param cancellable 
-         * @param callback 
+         * Like `gdm_worker_manager_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
+         * 
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_proxy_new_for_bus_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique).
+         * @param object_path An object path.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<WorkerManagerProxy> | null): void;
 
@@ -5532,251 +6341,463 @@ export namespace Gdm {
         static new_for_bus(...args: never[]): any;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_choice_list_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_choice_list_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_choice_list_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_answer 
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_choice_list_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_choice_list_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_choice_list_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_choice_list_query_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param out_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
+        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_custom_json_request_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_custom_json_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_custom_json_request_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_custom_json_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_custom_json_request_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_custom_json_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
+
+        /**
+         * Finishes an operation started with `gdm_worker_manager_call_custom_json_request()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_custom_json_request()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_custom_json_request_finish(res: Gio.AsyncResult): [boolean, string];
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_custom_json_request_sync(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null): [boolean, string];
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_hello_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_hello_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_hello(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_hello_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_hello_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_hello(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_hello_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_hello_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_hello(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_hello()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_hello()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_hello_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_hello()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_info()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_info_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_answer 
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_info_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param out_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_info_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
+        call_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_info()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_problem_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_problem_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_problem_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_problem_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_problem_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_problem_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_problem()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_problem()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_problem_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_problem()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_secret_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_secret_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_secret_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_answer 
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_secret_info_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_secret_info_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_secret_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_secret_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param out_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
+        call_secret_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param invocation 
-         * @param answer 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param answer Parameter to return.
          */
         complete_choice_list_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param response Parameter to return.
+         */
+        complete_custom_json_request(invocation: Gio.DBusMethodInvocation, response: string): void;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_hello(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_info(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
-         * @param answer 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param answer Parameter to return.
          */
         complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_problem(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
-         * @param answer 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param answer Parameter to return.
          */
         complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_choice_list_query | Gdm.WorkerManager::handle-choice-list-query} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_prompt_message 
@@ -5786,12 +6807,25 @@ export namespace Gdm {
         vfunc_handle_choice_list_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_custom_json_request | Gdm.WorkerManager::handle-custom-json-request} signal.
+         * @param invocation 
+         * @param arg_service_name 
+         * @param arg_protocol 
+         * @param arg_version 
+         * @param arg_request 
+         * @virtual
+         */
+        vfunc_handle_custom_json_request(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string): boolean;
+
+        /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_hello | Gdm.WorkerManager::handle-hello} signal.
          * @param invocation 
          * @virtual
          */
         vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_info | Gdm.WorkerManager::handle-info} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_info 
@@ -5800,6 +6834,7 @@ export namespace Gdm {
         vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_info_query | Gdm.WorkerManager::handle-info-query} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_query 
@@ -5808,6 +6843,7 @@ export namespace Gdm {
         vfunc_handle_info_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_problem | Gdm.WorkerManager::handle-problem} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_problem 
@@ -5816,6 +6852,7 @@ export namespace Gdm {
         vfunc_handle_problem(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_problem: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_secret_info_query | Gdm.WorkerManager::handle-secret-info-query} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_query 
@@ -6034,9 +7071,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -6055,9 +7097,14 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -6169,6 +7216,7 @@ export namespace Gdm {
     }
 
     /**
+     * The {@link Gdm.WorkerManagerSkeleton} structure contains only private data and should only be accessed using the provided API.
      * @gir-type Class
      */
     class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton implements WorkerManager, Gio.DBusInterface {
@@ -6188,6 +7236,8 @@ export namespace Gdm {
 
         _init(...args: any[]): void;
 
+        static ["new"](): WorkerManagerSkeleton;
+
         // Signals
         /** @signal */
         connect<K extends keyof WorkerManagerSkeleton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerManagerSkeleton.SignalSignatures[K]>): number;
@@ -6202,251 +7252,463 @@ export namespace Gdm {
         emit(signal: string, ...args: any[]): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_choice_list_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_choice_list_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_choice_list_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_answer 
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_choice_list_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_choice_list_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_choice_list_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_choice_list_query_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param out_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
+        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_custom_json_request_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_custom_json_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_custom_json_request_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_custom_json_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_custom_json_request_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_custom_json_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
+
+        /**
+         * Finishes an operation started with `gdm_worker_manager_call_custom_json_request()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_custom_json_request()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_custom_json_request_finish(res: Gio.AsyncResult): [boolean, string];
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_custom_json_request_sync(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null): [boolean, string];
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_hello_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_hello_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_hello(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_hello_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_hello_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_hello(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_hello_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_hello_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_hello(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_hello()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_hello()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_hello_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_hello()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_info()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_info_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_answer 
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_info_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param out_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_info_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
+        call_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_info()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_problem_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_problem_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_problem_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_problem_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_problem_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_problem_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_problem()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_problem()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_problem_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_problem()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_secret_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_secret_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_secret_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_answer 
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_secret_info_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_secret_info_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_secret_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_secret_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param out_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
+        call_secret_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param invocation 
-         * @param answer 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param answer Parameter to return.
          */
         complete_choice_list_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param response Parameter to return.
+         */
+        complete_custom_json_request(invocation: Gio.DBusMethodInvocation, response: string): void;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_hello(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_info(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
-         * @param answer 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param answer Parameter to return.
          */
         complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_problem(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
-         * @param answer 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param answer Parameter to return.
          */
         complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_choice_list_query | Gdm.WorkerManager::handle-choice-list-query} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_prompt_message 
@@ -6456,12 +7718,25 @@ export namespace Gdm {
         vfunc_handle_choice_list_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_custom_json_request | Gdm.WorkerManager::handle-custom-json-request} signal.
+         * @param invocation 
+         * @param arg_service_name 
+         * @param arg_protocol 
+         * @param arg_version 
+         * @param arg_request 
+         * @virtual
+         */
+        vfunc_handle_custom_json_request(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string): boolean;
+
+        /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_hello | Gdm.WorkerManager::handle-hello} signal.
          * @param invocation 
          * @virtual
          */
         vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_info | Gdm.WorkerManager::handle-info} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_info 
@@ -6470,6 +7745,7 @@ export namespace Gdm {
         vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_info_query | Gdm.WorkerManager::handle-info-query} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_query 
@@ -6478,6 +7754,7 @@ export namespace Gdm {
         vfunc_handle_info_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_problem | Gdm.WorkerManager::handle-problem} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_problem 
@@ -6486,6 +7763,7 @@ export namespace Gdm {
         vfunc_handle_problem(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_problem: string): boolean;
 
         /**
+         * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_secret_info_query | Gdm.WorkerManager::handle-secret-info-query} signal.
          * @param invocation 
          * @param arg_service_name 
          * @param arg_query 
@@ -6502,9 +7780,20 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -6523,9 +7812,21 @@ export namespace Gdm {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -6535,37 +7836,6 @@ export namespace Gdm {
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
-    type ChooserIface = typeof Chooser;
-
-    /**
-     * @gir-type Alias
-     */
-    type ChooserProxyClass = typeof ChooserProxy;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class ChooserProxyPrivate {
-        static $gtype: GObject.GType<ChooserProxyPrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
-    type ChooserSkeletonClass = typeof ChooserSkeleton;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class ChooserSkeletonPrivate {
-        static $gtype: GObject.GType<ChooserSkeletonPrivate>;
     }
 
 
@@ -6639,37 +7909,6 @@ export namespace Gdm {
     /**
      * @gir-type Alias
      */
-    type RemoteGreeterIface = typeof RemoteGreeter;
-
-    /**
-     * @gir-type Alias
-     */
-    type RemoteGreeterProxyClass = typeof RemoteGreeterProxy;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class RemoteGreeterProxyPrivate {
-        static $gtype: GObject.GType<RemoteGreeterProxyPrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
-    type RemoteGreeterSkeletonClass = typeof RemoteGreeterSkeleton;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class RemoteGreeterSkeletonPrivate {
-        static $gtype: GObject.GType<RemoteGreeterSkeletonPrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
     type UserVerifierChoiceListIface = typeof UserVerifierChoiceList;
 
     /**
@@ -6695,6 +7934,37 @@ export namespace Gdm {
      */
     abstract class UserVerifierChoiceListSkeletonPrivate {
         static $gtype: GObject.GType<UserVerifierChoiceListSkeletonPrivate>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type UserVerifierCustomJSONIface = typeof UserVerifierCustomJSON;
+
+    /**
+     * @gir-type Alias
+     */
+    type UserVerifierCustomJSONProxyClass = typeof UserVerifierCustomJSONProxy;
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class UserVerifierCustomJSONProxyPrivate {
+        static $gtype: GObject.GType<UserVerifierCustomJSONProxyPrivate>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type UserVerifierCustomJSONSkeletonClass = typeof UserVerifierCustomJSONSkeleton;
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class UserVerifierCustomJSONSkeletonPrivate {
+        static $gtype: GObject.GType<UserVerifierCustomJSONSkeletonPrivate>;
     }
 
 
@@ -6760,123 +8030,6 @@ export namespace Gdm {
     }
 
 
-    namespace Chooser {
-        /**
-         * Interface for implementing Chooser.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-
-            // Virtual methods
-            /**
-             * @param invocation 
-             * @virtual
-             */
-            vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
-
-            /**
-             * @param invocation 
-             * @param arg_hostname 
-             * @virtual
-             */
-            vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
-        }
-
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    export interface ChooserNamespace {
-        $gtype: GObject.GType<Chooser>;
-        prototype: Chooser;
-        interface_info(): Gio.DBusInterfaceInfo;
-        /**
-        * @param klass 
-        * @param property_id_begin 
-        */
-        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-    }
-    /**
-     * @gir-type Interface
-     */
-    interface Chooser extends GObject.Object, Chooser.Interface {
-
-        // Methods
-        /**
-         * @param cancellable 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * @param res 
-         */
-        call_disconnect_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * @param res 
-         */
-        call_select_hostname_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         */
-        call_select_hostname_sync(arg_hostname: string, cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * @param invocation 
-         */
-        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
-
-        /**
-         * @param invocation 
-         */
-        complete_select_hostname(invocation: Gio.DBusMethodInvocation): void;
-    }
-
-
-    export const Chooser: ChooserNamespace & {
-        new (): Chooser; // This allows `obj instanceof Chooser`
-    };
-
     namespace Greeter {
         /**
          * Interface for implementing Greeter.
@@ -6886,18 +8039,21 @@ export namespace Gdm {
 
             // Virtual methods
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.default_language_name_changed | Gdm.Greeter::default-language-name-changed} signal.
              * @param arg_language_name 
              * @virtual
              */
             vfunc_default_language_name_changed(arg_language_name: string): void;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.default_session_name_changed | Gdm.Greeter::default-session-name-changed} signal.
              * @param arg_session_name 
              * @virtual
              */
             vfunc_default_session_name_changed(arg_session_name: string): void;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_begin_auto_login | Gdm.Greeter::handle-begin-auto-login} signal.
              * @param invocation 
              * @param arg_username 
              * @virtual
@@ -6905,12 +8061,14 @@ export namespace Gdm {
             vfunc_handle_begin_auto_login(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_get_timed_login_details | Gdm.Greeter::handle-get-timed-login-details} signal.
              * @param invocation 
              * @virtual
              */
             vfunc_handle_get_timed_login_details(invocation: Gio.DBusMethodInvocation): boolean;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_select_session | Gdm.Greeter::handle-select-session} signal.
              * @param invocation 
              * @param arg_session 
              * @virtual
@@ -6918,6 +8076,7 @@ export namespace Gdm {
             vfunc_handle_select_session(invocation: Gio.DBusMethodInvocation, arg_session: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_select_user | Gdm.Greeter::handle-select-user} signal.
              * @param invocation 
              * @param arg_username 
              * @virtual
@@ -6925,6 +8084,7 @@ export namespace Gdm {
             vfunc_handle_select_user(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_start_session_when_ready | Gdm.Greeter::handle-start-session-when-ready} signal.
              * @param invocation 
              * @param arg_service_name 
              * @param arg_should_start_session 
@@ -6933,24 +8093,36 @@ export namespace Gdm {
             vfunc_handle_start_session_when_ready(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_should_start_session: boolean): boolean;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.handle_stop_conflicting_session | Gdm.Greeter::handle-stop-conflicting-session} signal.
+             * @param invocation 
+             * @virtual
+             */
+            vfunc_handle_stop_conflicting_session(invocation: Gio.DBusMethodInvocation): boolean;
+
+            /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.reauthenticated | Gdm.Greeter::reauthenticated} signal.
              * @param arg_service_name 
              * @virtual
              */
             vfunc_reauthenticated(arg_service_name: string): void;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.selected_user_changed | Gdm.Greeter::selected-user-changed} signal.
              * @param arg_username 
              * @virtual
              */
             vfunc_selected_user_changed(arg_username: string): void;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.session_opened | Gdm.Greeter::session-opened} signal.
              * @param arg_service_name 
+             * @param arg_session_id 
              * @virtual
              */
-            vfunc_session_opened(arg_service_name: string): void;
+            vfunc_session_opened(arg_service_name: string, arg_session_id: string): void;
 
             /**
+             * Handler for the {@link Gdm.Greeter.SignalSignatures.timed_login_requested | Gdm.Greeter::timed-login-requested} signal.
              * @param arg_username 
              * @param arg_delay 
              * @virtual
@@ -6966,236 +8138,419 @@ export namespace Gdm {
     export interface GreeterNamespace {
         $gtype: GObject.GType<Greeter>;
         prototype: Greeter;
+        /**
+        * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-Greeter.top_of_page">org.gnome.DisplayManager.Greeter</link> D-Bus interface.
+        */
         interface_info(): Gio.DBusInterfaceInfo;
         /**
-        * @param klass 
-        * @param property_id_begin 
+        * Overrides all {@link GObject.Object} properties in the {@link Gdm.Greeter} interface for a concrete class.
+        * The properties are overridden in the order they are defined.
+        * @param klass The class structure for a {@link GObject.Object} derived class.
+        * @param property_id_begin The property id to assign to the first overridden property.
         */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-Greeter.top_of_page">org.gnome.DisplayManager.Greeter</link>.
      * @gir-type Interface
      */
     interface Greeter extends GObject.Object, Greeter.Interface {
 
         // Methods
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_begin_auto_login_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_begin_auto_login_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_begin_auto_login_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_begin_auto_login_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_begin_auto_login_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_begin_auto_login_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_begin_auto_login()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_begin_auto_login()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_auto_login_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_begin_auto_login()` for the asynchronous version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_get_timed_login_details_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string, number]>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_get_timed_login_details_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_get_timed_login_details_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string, number]> | void;
 
         /**
-         * @param out_enabled 
-         * @param out_username 
-         * @param out_delay 
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_get_timed_login_details()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_get_timed_login_details()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_timed_login_details_finish(out_enabled: boolean, out_username: string, out_delay: number, res: Gio.AsyncResult): boolean;
+        call_get_timed_login_details_finish(res: Gio.AsyncResult): [boolean, boolean, string, number];
 
         /**
-         * @param out_enabled 
-         * @param out_username 
-         * @param out_delay 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_get_timed_login_details()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable: Gio.Cancellable | null): boolean;
+        call_get_timed_login_details_sync(cancellable: Gio.Cancellable | null): [boolean, boolean, string, number];
 
         /**
-         * @param arg_session 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_session_sync()` for the synchronous, blocking version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_select_session(arg_session: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_session_sync()` for the synchronous, blocking version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_session_sync()` for the synchronous, blocking version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_select_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_session_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_session 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_select_session()` for the asynchronous version of this method.
+         * @param arg_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_select_user(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_select_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_select_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_select_user()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_user()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_user_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_select_user()` for the asynchronous version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_start_session_when_ready_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_start_session_when_ready_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_start_session_when_ready_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_greeter_call_start_session_when_ready()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_start_session_when_ready()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_start_session_when_ready()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_should_start_session Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_stop_conflicting_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_stop_conflicting_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_stop_conflicting_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_stop_conflicting_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_greeter_call_stop_conflicting_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_stop_conflicting_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an operation started with `gdm_greeter_call_stop_conflicting_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_stop_conflicting_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_stop_conflicting_session_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_greeter_call_stop_conflicting_session()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_stop_conflicting_session_sync(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_begin_auto_login(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
-         * @param enabled 
-         * @param username 
-         * @param delay 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param enabled Parameter to return.
+         * @param username Parameter to return.
+         * @param delay Parameter to return.
          */
         complete_get_timed_login_details(invocation: Gio.DBusMethodInvocation, enabled: boolean, username: string, delay: number): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_select_session(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_select_user(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_start_session_when_ready(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param arg_language_name 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         */
+        complete_stop_conflicting_session(invocation: Gio.DBusMethodInvocation): void;
+
+        /**
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.DefaultLanguageNameChanged">"DefaultLanguageNameChanged"</link> D-Bus signal.
+         * @param arg_language_name Argument to pass with the signal.
          */
         emit_default_language_name_changed(arg_language_name: string): void;
 
         /**
-         * @param arg_session_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.DefaultSessionNameChanged">"DefaultSessionNameChanged"</link> D-Bus signal.
+         * @param arg_session_name Argument to pass with the signal.
          */
         emit_default_session_name_changed(arg_session_name: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.Reauthenticated">"Reauthenticated"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_reauthenticated(arg_service_name: string): void;
 
         /**
-         * @param arg_username 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.SelectedUserChanged">"SelectedUserChanged"</link> D-Bus signal.
+         * @param arg_username Argument to pass with the signal.
          */
         emit_selected_user_changed(arg_username: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.SessionOpened">"SessionOpened"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_session_id Argument to pass with the signal.
          */
-        emit_session_opened(arg_service_name: string): void;
+        emit_session_opened(arg_service_name: string, arg_session_id: string): void;
 
         /**
-         * @param arg_username 
-         * @param arg_delay 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.TimedLoginRequested">"TimedLoginRequested"</link> D-Bus signal.
+         * @param arg_username Argument to pass with the signal.
+         * @param arg_delay Argument to pass with the signal.
          */
         emit_timed_login_requested(arg_username: string, arg_delay: number): void;
     }
@@ -7214,11 +8569,7 @@ export namespace Gdm {
 
             // Virtual methods
             /**
-             * @virtual
-             */
-            vfunc_get_version(): string;
-
-            /**
+             * Handler for the {@link Gdm.Manager.SignalSignatures.handle_open_reauthentication_channel | Gdm.Manager::handle-open-reauthentication-channel} signal.
              * @param invocation 
              * @param arg_username 
              * @virtual
@@ -7226,289 +8577,300 @@ export namespace Gdm {
             vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.Manager.SignalSignatures.handle_open_session | Gdm.Manager::handle-open-session} signal.
              * @param invocation 
              * @virtual
              */
             vfunc_handle_open_session(invocation: Gio.DBusMethodInvocation): boolean;
 
             /**
+             * Handler for the {@link Gdm.Manager.SignalSignatures.handle_register_display | Gdm.Manager::handle-register-display} signal.
              * @param invocation 
-             * @param arg_details 
              * @virtual
              */
-            vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+            vfunc_handle_register_display(invocation: Gio.DBusMethodInvocation): boolean;
 
             /**
+             * Handler for the {@link Gdm.Manager.SignalSignatures.handle_register_session | Gdm.Manager::handle-register-session} signal.
              * @param invocation 
-             * @param arg_details 
              * @virtual
              */
-            vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation, arg_details: GLib.Variant): boolean;
+            vfunc_handle_register_session(invocation: Gio.DBusMethodInvocation): boolean;
         }
 
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            version: string;
+            version: string | null;
         }
     }
 
     export interface ManagerNamespace {
         $gtype: GObject.GType<Manager>;
         prototype: Manager;
+        /**
+        * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-Manager.top_of_page">org.gnome.DisplayManager.Manager</link> D-Bus interface.
+        */
         interface_info(): Gio.DBusInterfaceInfo;
         /**
-        * @param klass 
-        * @param property_id_begin 
+        * Overrides all {@link GObject.Object} properties in the {@link Gdm.Manager} interface for a concrete class.
+        * The properties are overridden in the order they are defined.
+        * @param klass The class structure for a {@link GObject.Object} derived class.
+        * @param property_id_begin The property id to assign to the first overridden property.
         */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-Manager.top_of_page">org.gnome.DisplayManager.Manager</link>.
      * @gir-type Interface
      */
     interface Manager extends GObject.Object, Manager.Interface {
 
         // Properties
         /**
+         * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-DisplayManager-Manager.Version">"Version"</link>.
+         * 
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get version(): string;
-        set version(val: string);
+        get version(): string | null;
+        set version(val: string | null);
 
         // Methods
         /**
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_reauthentication_channel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_reauthentication_channel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_reauthentication_channel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel_sync()` for the synchronous, blocking version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_address 
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_open_reauthentication_channel()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_reauthentication_channel()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_reauthentication_channel_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_reauthentication_channel_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_username 
-         * @param out_address 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_open_reauthentication_channel()` for the asynchronous version of this method.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable: Gio.Cancellable | null): boolean;
+        call_open_reauthentication_channel_sync(arg_username: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_open_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_open_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_open_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_open_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_open_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_address 
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_open_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_session_finish(out_address: string, res: Gio.AsyncResult): boolean;
+        call_open_session_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param out_address 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_open_session()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_open_session_sync(out_address: string, cancellable: Gio.Cancellable | null): boolean;
+        call_open_session_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_display_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_display_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_register_display(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_display_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_display_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        call_register_display(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_display_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_display_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_register_display(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_register_display()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_display()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_register_display_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_register_display()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_register_display_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+        call_register_display_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_register_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        call_register_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_manager_call_register_session_finish()` to get the result of the operation.
+         * 
+         * See `gdm_manager_call_register_session_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_register_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_manager_call_register_session()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_session()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_register_session_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_details 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_manager_call_register_session()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_register_session_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+        call_register_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
-         * @param address 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param address Parameter to return.
          */
         complete_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, address: string): void;
 
         /**
-         * @param invocation 
-         * @param address 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param address Parameter to return.
          */
         complete_open_session(invocation: Gio.DBusMethodInvocation, address: string): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_register_display(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_register_session(invocation: Gio.DBusMethodInvocation): void;
-
-        dup_version(): string;
-
-        get_version(): string;
-
-        /**
-         * @param value 
-         */
-        set_version(value: string): void;
     }
 
 
     export const Manager: ManagerNamespace & {
         new (): Manager; // This allows `obj instanceof Manager`
-    };
-
-    namespace RemoteGreeter {
-        /**
-         * Interface for implementing RemoteGreeter.
-         * Contains only the virtual methods that need to be implemented.
-         */
-        interface Interface {
-
-            // Virtual methods
-            /**
-             * @param invocation 
-             * @virtual
-             */
-            vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
-        }
-
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    export interface RemoteGreeterNamespace {
-        $gtype: GObject.GType<RemoteGreeter>;
-        prototype: RemoteGreeter;
-        interface_info(): Gio.DBusInterfaceInfo;
-        /**
-        * @param klass 
-        * @param property_id_begin 
-        */
-        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
-    }
-    /**
-     * @gir-type Interface
-     */
-    interface RemoteGreeter extends GObject.Object, RemoteGreeter.Interface {
-
-        // Methods
-        /**
-         * @param cancellable 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
-
-        /**
-         * @param res 
-         */
-        call_disconnect_finish(res: Gio.AsyncResult): boolean;
-
-        /**
-         * @param cancellable 
-         */
-        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * @param invocation 
-         */
-        complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
-    }
-
-
-    export const RemoteGreeter: RemoteGreeterNamespace & {
-        new (): RemoteGreeter; // This allows `obj instanceof RemoteGreeter`
     };
 
     namespace UserVerifier {
@@ -7520,18 +8882,21 @@ export namespace Gdm {
 
             // Virtual methods
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.conversation_started | Gdm.UserVerifier::conversation-started} signal.
              * @param arg_service_name 
              * @virtual
              */
             vfunc_conversation_started(arg_service_name: string): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.conversation_stopped | Gdm.UserVerifier::conversation-stopped} signal.
              * @param arg_service_name 
              * @virtual
              */
             vfunc_conversation_stopped(arg_service_name: string): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_answer_query | Gdm.UserVerifier::handle-answer-query} signal.
              * @param invocation 
              * @param arg_service_name 
              * @param arg_answer 
@@ -7540,6 +8905,7 @@ export namespace Gdm {
             vfunc_handle_answer_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_answer: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_begin_verification | Gdm.UserVerifier::handle-begin-verification} signal.
              * @param invocation 
              * @param arg_service_name 
              * @virtual
@@ -7547,6 +8913,7 @@ export namespace Gdm {
             vfunc_handle_begin_verification(invocation: Gio.DBusMethodInvocation, arg_service_name: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_begin_verification_for_user | Gdm.UserVerifier::handle-begin-verification-for-user} signal.
              * @param invocation 
              * @param arg_service_name 
              * @param arg_username 
@@ -7555,12 +8922,14 @@ export namespace Gdm {
             vfunc_handle_begin_verification_for_user(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_username: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_cancel | Gdm.UserVerifier::handle-cancel} signal.
              * @param invocation 
              * @virtual
              */
             vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.handle_enable_extensions | Gdm.UserVerifier::handle-enable-extensions} signal.
              * @param invocation 
              * @param arg_extensions 
              * @virtual
@@ -7568,6 +8937,7 @@ export namespace Gdm {
             vfunc_handle_enable_extensions(invocation: Gio.DBusMethodInvocation, arg_extensions: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.info | Gdm.UserVerifier::info} signal.
              * @param arg_service_name 
              * @param arg_info 
              * @virtual
@@ -7575,6 +8945,7 @@ export namespace Gdm {
             vfunc_info(arg_service_name: string, arg_info: string): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.info_query | Gdm.UserVerifier::info-query} signal.
              * @param arg_service_name 
              * @param arg_query 
              * @virtual
@@ -7582,6 +8953,7 @@ export namespace Gdm {
             vfunc_info_query(arg_service_name: string, arg_query: string): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.problem | Gdm.UserVerifier::problem} signal.
              * @param arg_service_name 
              * @param arg_problem 
              * @virtual
@@ -7589,17 +8961,20 @@ export namespace Gdm {
             vfunc_problem(arg_service_name: string, arg_problem: string): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.reauthentication_started | Gdm.UserVerifier::reauthentication-started} signal.
              * @param arg_pid_of_caller 
              * @virtual
              */
             vfunc_reauthentication_started(arg_pid_of_caller: number): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.reset | Gdm.UserVerifier::reset} signal.
              * @virtual
              */
             vfunc_reset(): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.secret_info_query | Gdm.UserVerifier::secret-info-query} signal.
              * @param arg_service_name 
              * @param arg_query 
              * @virtual
@@ -7607,6 +8982,7 @@ export namespace Gdm {
             vfunc_secret_info_query(arg_service_name: string, arg_query: string): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.service_unavailable | Gdm.UserVerifier::service-unavailable} signal.
              * @param arg_service_name 
              * @param arg_message 
              * @virtual
@@ -7614,12 +8990,14 @@ export namespace Gdm {
             vfunc_service_unavailable(arg_service_name: string, arg_message: string): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.verification_complete | Gdm.UserVerifier::verification-complete} signal.
              * @param arg_service_name 
              * @virtual
              */
             vfunc_verification_complete(arg_service_name: string): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifier.SignalSignatures.verification_failed | Gdm.UserVerifier::verification-failed} signal.
              * @param arg_service_name 
              * @virtual
              */
@@ -7634,257 +9012,396 @@ export namespace Gdm {
     export interface UserVerifierNamespace {
         $gtype: GObject.GType<UserVerifier>;
         prototype: UserVerifier;
+        /**
+        * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier.top_of_page">org.gnome.DisplayManager.UserVerifier</link> D-Bus interface.
+        */
         interface_info(): Gio.DBusInterfaceInfo;
         /**
-        * @param klass 
-        * @param property_id_begin 
+        * Overrides all {@link GObject.Object} properties in the {@link Gdm.UserVerifier} interface for a concrete class.
+        * The properties are overridden in the order they are defined.
+        * @param klass The class structure for a {@link GObject.Object} derived class.
+        * @param property_id_begin The property id to assign to the first overridden property.
         */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier.top_of_page">org.gnome.DisplayManager.UserVerifier</link>.
      * @gir-type Interface
      */
     interface UserVerifier extends GObject.Object, UserVerifier.Interface {
 
         // Methods
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_answer_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_answer_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_answer_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_answer_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_answer_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_answer_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_answer_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_answer_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_answer_query_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_answer_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_answer Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_begin_verification()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_for_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_for_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_begin_verification_for_user_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_begin_verification_for_user()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification_for_user()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_username 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_begin_verification_for_user()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_username Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_begin_verification()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_cancel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_cancel_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_cancel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_cancel_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_cancel(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_cancel_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_cancel_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_cancel(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_cancel()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_cancel()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_cancel()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_enable_extensions_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions_sync()` for the synchronous, blocking version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_enable_extensions_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions_sync()` for the synchronous, blocking version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_call_enable_extensions_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions_sync()` for the synchronous, blocking version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_call_enable_extensions()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_enable_extensions()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_enable_extensions_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_extensions 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_call_enable_extensions()` for the asynchronous version of this method.
+         * @param arg_extensions Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_answer_query(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_begin_verification(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_begin_verification_for_user(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_cancel(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_enable_extensions(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ConversationStarted">"ConversationStarted"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_conversation_started(arg_service_name: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ConversationStopped">"ConversationStopped"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_conversation_stopped(arg_service_name: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Info">"Info"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_info Argument to pass with the signal.
          */
         emit_info(arg_service_name: string, arg_info: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.InfoQuery">"InfoQuery"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_query Argument to pass with the signal.
          */
         emit_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Problem">"Problem"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_problem Argument to pass with the signal.
          */
         emit_problem(arg_service_name: string, arg_problem: string): void;
 
         /**
-         * @param arg_pid_of_caller 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ReauthenticationStarted">"ReauthenticationStarted"</link> D-Bus signal.
+         * @param arg_pid_of_caller Argument to pass with the signal.
          */
         emit_reauthentication_started(arg_pid_of_caller: number): void;
 
+        /**
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Reset">"Reset"</link> D-Bus signal.
+         */
         emit_reset(): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.SecretInfoQuery">"SecretInfoQuery"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_query Argument to pass with the signal.
          */
         emit_secret_info_query(arg_service_name: string, arg_query: string): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_message 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ServiceUnavailable">"ServiceUnavailable"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_message Argument to pass with the signal.
          */
         emit_service_unavailable(arg_service_name: string, arg_message: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.VerificationComplete">"VerificationComplete"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_verification_complete(arg_service_name: string): void;
 
         /**
-         * @param arg_service_name 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.VerificationFailed">"VerificationFailed"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
          */
         emit_verification_failed(arg_service_name: string): void;
     }
@@ -7903,6 +9420,7 @@ export namespace Gdm {
 
             // Virtual methods
             /**
+             * Handler for the {@link Gdm.UserVerifierChoiceList.SignalSignatures.choice_query | Gdm.UserVerifierChoiceList::choice-query} signal.
              * @param arg_service_name 
              * @param arg_prompt_message 
              * @param arg_list 
@@ -7911,6 +9429,7 @@ export namespace Gdm {
             vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
 
             /**
+             * Handler for the {@link Gdm.UserVerifierChoiceList.SignalSignatures.handle_select_choice | Gdm.UserVerifierChoiceList::handle-select-choice} signal.
              * @param invocation 
              * @param arg_service_name 
              * @param arg_choice 
@@ -7927,63 +9446,94 @@ export namespace Gdm {
     export interface UserVerifierChoiceListNamespace {
         $gtype: GObject.GType<UserVerifierChoiceList>;
         prototype: UserVerifierChoiceList;
+        /**
+        * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier-ChoiceList.top_of_page">org.gnome.DisplayManager.UserVerifier.ChoiceList</link> D-Bus interface.
+        */
         interface_info(): Gio.DBusInterfaceInfo;
         /**
-        * @param klass 
-        * @param property_id_begin 
+        * Overrides all {@link GObject.Object} properties in the {@link Gdm.UserVerifierChoiceList} interface for a concrete class.
+        * The properties are overridden in the order they are defined.
+        * @param klass The class structure for a {@link GObject.Object} derived class.
+        * @param property_id_begin The property id to assign to the first overridden property.
         */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier-ChoiceList.top_of_page">org.gnome.DisplayManager.UserVerifier.ChoiceList</link>.
      * @gir-type Interface
      */
     interface UserVerifierChoiceList extends GObject.Object, UserVerifierChoiceList.Interface {
 
         // Methods
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_call_select_choice_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_call_select_choice_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_choice_list_call_select_choice_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_user_verifier_choice_list_call_select_choice()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_choice_list_call_select_choice()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_choice_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_choice 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_choice_list_call_select_choice()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_choice Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_select_choice(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_list 
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier-ChoiceList.ChoiceQuery">"ChoiceQuery"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_prompt_message Argument to pass with the signal.
+         * @param arg_list Argument to pass with the signal.
          */
         emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
     }
@@ -7991,6 +9541,213 @@ export namespace Gdm {
 
     export const UserVerifierChoiceList: UserVerifierChoiceListNamespace & {
         new (): UserVerifierChoiceList; // This allows `obj instanceof UserVerifierChoiceList`
+    };
+
+    namespace UserVerifierCustomJSON {
+        /**
+         * Interface for implementing UserVerifierCustomJSON.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+
+            // Virtual methods
+            /**
+             * Handler for the {@link Gdm.UserVerifierCustomJSON.SignalSignatures.handle_reply | Gdm.UserVerifierCustomJSON::handle-reply} signal.
+             * @param invocation 
+             * @param arg_service_name 
+             * @param arg_reply 
+             * @virtual
+             */
+            vfunc_handle_reply(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_reply: string): boolean;
+
+            /**
+             * Handler for the {@link Gdm.UserVerifierCustomJSON.SignalSignatures.handle_report_error | Gdm.UserVerifierCustomJSON::handle-report-error} signal.
+             * @param invocation 
+             * @param arg_service_name 
+             * @param arg_error 
+             * @virtual
+             */
+            vfunc_handle_report_error(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_error: string): boolean;
+
+            /**
+             * Handler for the {@link Gdm.UserVerifierCustomJSON.SignalSignatures.request | Gdm.UserVerifierCustomJSON::request} signal.
+             * @param arg_service_name 
+             * @param arg_protocol 
+             * @param arg_version 
+             * @param arg_request 
+             * @virtual
+             */
+            vfunc_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string): void;
+        }
+
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface UserVerifierCustomJSONNamespace {
+        $gtype: GObject.GType<UserVerifierCustomJSON>;
+        prototype: UserVerifierCustomJSON;
+        /**
+        * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier-CustomJSON.top_of_page">org.gnome.DisplayManager.UserVerifier.CustomJSON</link> D-Bus interface.
+        */
+        interface_info(): Gio.DBusInterfaceInfo;
+        /**
+        * Overrides all {@link GObject.Object} properties in the {@link Gdm.UserVerifierCustomJSON} interface for a concrete class.
+        * The properties are overridden in the order they are defined.
+        * @param klass The class structure for a {@link GObject.Object} derived class.
+        * @param property_id_begin The property id to assign to the first overridden property.
+        */
+        override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
+    }
+    /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-UserVerifier-CustomJSON.top_of_page">org.gnome.DisplayManager.UserVerifier.CustomJSON</link>.
+     * @gir-type Interface
+     */
+    interface UserVerifierCustomJSON extends GObject.Object, UserVerifierCustomJSON.Interface {
+
+        // Methods
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_reply_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_reply(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_reply_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_reply(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_reply_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_reply(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an operation started with `gdm_user_verifier_custom_json_call_reply()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_reply()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_reply_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_custom_json_call_reply()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_reply Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_reply_sync(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_report_error_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_report_error(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_report_error_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_report_error(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_user_verifier_custom_json_call_report_error_finish()` to get the result of the operation.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_report_error(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an operation started with `gdm_user_verifier_custom_json_call_report_error()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_report_error()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_report_error_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_user_verifier_custom_json_call_report_error()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_error Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_report_error_sync(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         */
+        complete_reply(invocation: Gio.DBusMethodInvocation): void;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         */
+        complete_report_error(invocation: Gio.DBusMethodInvocation): void;
+
+        /**
+         * Emits the <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier-CustomJSON.Request">"Request"</link> D-Bus signal.
+         * @param arg_service_name Argument to pass with the signal.
+         * @param arg_protocol Argument to pass with the signal.
+         * @param arg_version Argument to pass with the signal.
+         * @param arg_request Argument to pass with the signal.
+         */
+        emit_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string): void;
+    }
+
+
+    export const UserVerifierCustomJSON: UserVerifierCustomJSONNamespace & {
+        new (): UserVerifierCustomJSON; // This allows `obj instanceof UserVerifierCustomJSON`
     };
 
     namespace WorkerManager {
@@ -8002,6 +9759,7 @@ export namespace Gdm {
 
             // Virtual methods
             /**
+             * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_choice_list_query | Gdm.WorkerManager::handle-choice-list-query} signal.
              * @param invocation 
              * @param arg_service_name 
              * @param arg_prompt_message 
@@ -8011,12 +9769,25 @@ export namespace Gdm {
             vfunc_handle_choice_list_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant): boolean;
 
             /**
+             * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_custom_json_request | Gdm.WorkerManager::handle-custom-json-request} signal.
+             * @param invocation 
+             * @param arg_service_name 
+             * @param arg_protocol 
+             * @param arg_version 
+             * @param arg_request 
+             * @virtual
+             */
+            vfunc_handle_custom_json_request(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string): boolean;
+
+            /**
+             * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_hello | Gdm.WorkerManager::handle-hello} signal.
              * @param invocation 
              * @virtual
              */
             vfunc_handle_hello(invocation: Gio.DBusMethodInvocation): boolean;
 
             /**
+             * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_info | Gdm.WorkerManager::handle-info} signal.
              * @param invocation 
              * @param arg_service_name 
              * @param arg_info 
@@ -8025,6 +9796,7 @@ export namespace Gdm {
             vfunc_handle_info(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_info_query | Gdm.WorkerManager::handle-info-query} signal.
              * @param invocation 
              * @param arg_service_name 
              * @param arg_query 
@@ -8033,6 +9805,7 @@ export namespace Gdm {
             vfunc_handle_info_query(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_problem | Gdm.WorkerManager::handle-problem} signal.
              * @param invocation 
              * @param arg_service_name 
              * @param arg_problem 
@@ -8041,6 +9814,7 @@ export namespace Gdm {
             vfunc_handle_problem(invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_problem: string): boolean;
 
             /**
+             * Handler for the {@link Gdm.WorkerManager.SignalSignatures.handle_secret_info_query | Gdm.WorkerManager::handle-secret-info-query} signal.
              * @param invocation 
              * @param arg_service_name 
              * @param arg_query 
@@ -8057,261 +9831,478 @@ export namespace Gdm {
     export interface WorkerManagerNamespace {
         $gtype: GObject.GType<WorkerManager>;
         prototype: WorkerManager;
+        /**
+        * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-DisplayManager-WorkerManager.top_of_page">org.gnome.DisplayManager.WorkerManager</link> D-Bus interface.
+        */
         interface_info(): Gio.DBusInterfaceInfo;
         /**
-        * @param klass 
-        * @param property_id_begin 
+        * Overrides all {@link GObject.Object} properties in the {@link Gdm.WorkerManager} interface for a concrete class.
+        * The properties are overridden in the order they are defined.
+        * @param klass The class structure for a {@link GObject.Object} derived class.
+        * @param property_id_begin The property id to assign to the first overridden property.
         */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-gnome-DisplayManager-WorkerManager.top_of_page">org.gnome.DisplayManager.WorkerManager</link>.
      * @gir-type Interface
      */
     interface WorkerManager extends GObject.Object, WorkerManager.Interface {
 
         // Methods
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_choice_list_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_choice_list_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_choice_list_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_answer 
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_choice_list_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_choice_list_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_choice_list_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_choice_list_query_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_prompt_message 
-         * @param arg_query 
-         * @param out_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_choice_list_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_prompt_message Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
+        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_custom_json_request_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         */
+        call_custom_json_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_custom_json_request_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_custom_json_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_custom_json_request_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_custom_json_request(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
+
+        /**
+         * Finishes an operation started with `gdm_worker_manager_call_custom_json_request()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_custom_json_request()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_custom_json_request_finish(res: Gio.AsyncResult): [boolean, string];
+
+        /**
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_custom_json_request()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_protocol Argument to pass with the method invocation.
+         * @param arg_version Argument to pass with the method invocation.
+         * @param arg_request Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
+         */
+        call_custom_json_request_sync(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null): [boolean, string];
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_hello_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_hello_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_hello(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_hello_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_hello_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_hello(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_hello_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_hello_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_hello(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_hello()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_hello()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_hello_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_hello()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_info()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_info_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_answer 
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_info_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param out_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_info_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
+        call_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_info()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_info Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_problem_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_problem_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_problem_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_problem_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_problem_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_problem_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_problem()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_problem()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_problem_finish(res: Gio.AsyncResult): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_problem()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_problem Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_secret_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_secret_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gdm_worker_manager_call_secret_info_query_finish()` to get the result of the operation.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query_sync()` for the synchronous, blocking version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
-         * @param out_answer 
-         * @param res 
+         * Finishes an operation started with `gdm_worker_manager_call_secret_info_query()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_secret_info_query()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_secret_info_query_finish(out_answer: string, res: Gio.AsyncResult): boolean;
+        call_secret_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
         /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param out_answer 
-         * @param cancellable 
+         * Synchronously invokes the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+         * 
+         * See `gdm_worker_manager_call_secret_info_query()` for the asynchronous version of this method.
+         * @param arg_service_name Argument to pass with the method invocation.
+         * @param arg_query Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
+        call_secret_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * @param invocation 
-         * @param answer 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param answer Parameter to return.
          */
         complete_choice_list_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param response Parameter to return.
+         */
+        complete_custom_json_request(invocation: Gio.DBusMethodInvocation, response: string): void;
+
+        /**
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_hello(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_info(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
-         * @param answer 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param answer Parameter to return.
          */
         complete_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
 
         /**
-         * @param invocation 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_problem(invocation: Gio.DBusMethodInvocation): void;
 
         /**
-         * @param invocation 
-         * @param answer 
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
+         * 
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @param answer Parameter to return.
          */
         complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
     }

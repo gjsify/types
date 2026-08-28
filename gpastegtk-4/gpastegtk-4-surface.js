@@ -17,6 +17,7 @@ export const DECLS = {
     GPasteGtkPreferencesDialog: ['GPasteGtkPreferencesDialog', 'AdwPreferencesDialog', 'AdwDialog', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkShortcutManager'],
     GPasteGtkPreferencesGroup: ['GPasteGtkPreferencesGroup', 'AdwPreferencesGroup', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GPasteGtkPreferencesHistorySettingsPage: ['GPasteGtkPreferencesHistorySettingsPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GPasteGtkPreferencesImagesPage: ['GPasteGtkPreferencesImagesPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GPasteGtkPreferencesPage: ['GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GPasteGtkPreferencesShortcutsPage: ['GPasteGtkPreferencesShortcutsPage', 'GPasteGtkPreferencesPage', 'AdwPreferencesPage', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GPasteGtkPreferencesWidget: ['GPasteGtkPreferencesWidget', 'AdwBin', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],

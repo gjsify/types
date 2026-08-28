@@ -428,6 +428,10 @@ export namespace RB {
          */
         ALBUM_SORTNAME,
         /**
+         * Title of the recording, as used for sorting
+         */
+        TITLE_SORTNAME,
+        /**
          * The artist of the entire album
          */
         ALBUM_ARTIST,
@@ -523,6 +527,7 @@ export namespace RB {
         MUSICBRAINZ_ALBUMARTISTID,
         MUSICBRAINZ_SORTNAME,
         ALBUM_SORTNAME,
+        TITLE_SORTNAME,
         ALBUM_ARTIST,
         ALBUM_ARTIST_SORTNAME,
         COMPOSER,
@@ -822,6 +827,9 @@ export namespace RB {
         COMPOSER_SORTNAME,
         COMPOSER_SORTNAME_SORT_KEY,
         COMPOSER_SORTNAME_FOLDED,
+        TITLE_SORTNAME,
+        TITLE_SORTNAME_SORT_KEY,
+        TITLE_SORTNAME_FOLDED,
     }
 
 
@@ -4534,6 +4542,15 @@ export namespace RB {
              */
             "entry-deleted": (arg0: RhythmDBEntry) => void;
             /**
+             * Returns the name of an icon to be used in the 'playing' column for a given entry.
+             * If the standard processing for this column produces an icon name to use, it will
+             * be provided as the 'current' value, so the handler can choose whether or not to
+             * override it.
+             * @signal
+             * @run-last
+             */
+            "get-playing-icon": (arg0: RhythmDBEntry, arg1: string) => string;
+            /**
              * Emitted when the user first selects a row, or when no rows are selected
              * any more.
              * @signal
@@ -4809,6 +4826,13 @@ export namespace RB {
         vfunc_entry_deleted(entry: RhythmDBEntry): void;
 
         /**
+         * @param entry 
+         * @param name 
+         * @virtual
+         */
+        vfunc_get_playing_icon(entry: RhythmDBEntry, name: string): string;
+
+        /**
          * @param have_selection 
          * @virtual
          */
@@ -4868,6 +4892,11 @@ export namespace RB {
          * @returns TRUE if the entry is present in the view
          */
         get_entry_contained(entry: RhythmDBEntry): boolean;
+
+        /**
+         * @param entry 
+         */
+        get_entry_playing_icon(entry: RhythmDBEntry): string;
 
         /**
          * Determines whether a specified entry is present in the view
@@ -7388,23 +7417,13 @@ export namespace RB {
              * @run-last
              */
             "feed-update-status": (arg0: string, arg1: PodcastFeedUpdateStatus, arg2: string) => void;
-            /**
-             * @signal
-             * @run-last
-             */
-            "finish-download": (arg0: RhythmDBEntry, arg1: GLib.Error) => void;
-            /**
-             * @signal
-             * @run-last
-             */
-            "start-download": (arg0: RhythmDBEntry) => void;
-            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
             "notify::updating": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            db: RhythmDB;
+            shell: Shell;
             updating: boolean;
         }
     }
@@ -7416,8 +7435,10 @@ export namespace RB {
         static $gtype: GObject.GType<PodcastManager>;
 
         // Properties
-        get db(): RhythmDB;
-        set db(val: RhythmDB);
+        /**
+         * @construct-only
+         */
+        get shell(): Shell;
 
         /**
          * @read-only
@@ -7439,7 +7460,7 @@ export namespace RB {
 
         _init(...args: any[]): void;
 
-        static ["new"](db: RhythmDB): PodcastManager;
+        static ["new"](shell: Shell): PodcastManager;
 
         // Signals
         /** @signal */
@@ -7484,7 +7505,7 @@ export namespace RB {
         /**
          * @param feed 
          */
-        add_parsed_feed(feed: PodcastChannel): void;
+        add_parsed_feed(feed: PodcastChannel): PodcastFeedUpdateStatus;
 
         /**
          * @param search_type 
@@ -7603,9 +7624,22 @@ export namespace RB {
 
         // Virtual methods
         /**
+         * @param url 
+         * @virtual
+         */
+        vfunc_can_resolve(url: string): boolean;
+
+        /**
          * @virtual
          */
         vfunc_cancel(): void;
+
+        /**
+         * @param url 
+         * @param cancellable 
+         * @virtual
+         */
+        vfunc_resolve(url: string, cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param text 
@@ -7615,12 +7649,46 @@ export namespace RB {
         vfunc_start(text: string, max_results: number): void;
 
         // Methods
+        /**
+         * @param url 
+         */
+        can_resolve(url: string): boolean;
+
         cancel(): void;
 
         /**
          * @param successful 
          */
         finished(successful: boolean): void;
+
+        /**
+         * @param url 
+         */
+        resolve(url: string): globalThis.Promise<string>;
+
+        /**
+         * @param url 
+         * @param callback 
+         */
+        resolve(url: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param url 
+         * @param callback 
+         */
+        resolve(url: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
+
+        /**
+         * @param result 
+         * @param orig_url 
+         */
+        resolve_finish(result: Gio.AsyncResult, orig_url: string): string;
+
+        /**
+         * @param orig_uri 
+         * @param uri 
+         */
+        resolved(orig_uri: string, uri: string): void;
 
         /**
          * @param data 
@@ -9566,7 +9634,8 @@ export namespace RB {
             "notify::task-cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::task-detail": (pspec: GObject.ParamSpec) => void;
             "notify::task-label": (pspec: GObject.ParamSpec) => void;
-            "notify::task-notify": (pspec: GObject.ParamSpec) => void;
+            "notify::task-notification": (pspec: GObject.ParamSpec) => void;
+            "notify::task-notification-body": (pspec: GObject.ParamSpec) => void;
             "notify::task-outcome": (pspec: GObject.ParamSpec) => void;
             "notify::task-progress": (pspec: GObject.ParamSpec) => void;
         }
@@ -9790,18 +9859,32 @@ export namespace RB {
         set taskLabel(val: string);
 
         /**
-         * @default false
+         * @default null
           * @category Inherited from RB.TaskProgress
          */
-        get task_notify(): boolean;
-        set task_notify(val: boolean);
+        get task_notification(): string;
+        set task_notification(val: string);
 
         /**
-         * @default false
+         * @default null
           * @category Inherited from RB.TaskProgress
          */
-        get taskNotify(): boolean;
-        set taskNotify(val: boolean);
+        get taskNotification(): string;
+        set taskNotification(val: string);
+
+        /**
+         * @default null
+          * @category Inherited from RB.TaskProgress
+         */
+        get task_notification_body(): string;
+        set task_notification_body(val: string);
+
+        /**
+         * @default null
+          * @category Inherited from RB.TaskProgress
+         */
+        get taskNotificationBody(): string;
+        set taskNotificationBody(val: string);
 
         /**
          * @default RB.TaskOutcome.NONE
@@ -10436,7 +10519,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "entry-prop-changed": (arg0: RhythmDBEntry, arg1: number, arg2: null, arg3: null) => void;
+            "entry-prop-changed": (arg0: RhythmDBEntry, arg1: number, arg2: unknown, arg3: unknown) => void;
             /**
              * Emitted when an entry is removed from the model.  There is some
              * difference between this and the {@link Gtk.TreeModel} row-removed signal
@@ -12134,12 +12217,6 @@ export namespace RB {
              */
             "create-song-info": (arg0: SongInfo, arg1: boolean) => void;
             /**
-             * Emitted when a custom notification should be displayed to the user.
-             * @signal
-             * @run-last
-             */
-            "notify-custom": (arg0: number, arg1: string, arg2: string, arg3: string, arg4: boolean) => void;
-            /**
              * Emitted when a notification should be displayed showing the current
              * playing entry.
              * @signal
@@ -12173,6 +12250,7 @@ export namespace RB {
             "notify::no-update": (pspec: GObject.ParamSpec) => void;
             "notify::playlist-manager": (pspec: GObject.ParamSpec) => void;
             "notify::playlists-file": (pspec: GObject.ParamSpec) => void;
+            "notify::podcast-manager": (pspec: GObject.ParamSpec) => void;
             "notify::prefs": (pspec: GObject.ParamSpec) => void;
             "notify::removable-media-manager": (pspec: GObject.ParamSpec) => void;
             "notify::rhythmdb-file": (pspec: GObject.ParamSpec) => void;
@@ -12207,6 +12285,8 @@ export namespace RB {
             playlistManager: PlaylistManager;
             playlists_file: string;
             playlistsFile: string;
+            podcast_manager: PodcastManager;
+            podcastManager: PodcastManager;
             prefs: ShellPreferences;
             removable_media_manager: RemovableMediaManager;
             removableMediaManager: RemovableMediaManager;
@@ -12370,6 +12450,18 @@ export namespace RB {
          * @default playlists.xml
          */
         get playlistsFile(): string;
+
+        /**
+         * The {@link RB.PodcastManager} instance
+         * @read-only
+         */
+        get podcast_manager(): PodcastManager;
+
+        /**
+         * The {@link RB.PodcastManager} instance
+         * @read-only
+         */
+        get podcastManager(): PodcastManager;
 
         /**
          * The {@link RB.ShellPreferences} instance
@@ -12616,15 +12708,6 @@ export namespace RB {
          * @returns TRUE if the URI was added successfully
          */
         load_uri(uri: string, play: boolean): boolean;
-
-        /**
-         * @param timeout 
-         * @param primary 
-         * @param secondary 
-         * @param image_uri 
-         * @param requested 
-         */
-        notify_custom(timeout: number, primary: string, secondary: string, image_uri: string, requested: boolean): void;
 
         /**
          * Attempts to display the main window to the user.  See `gtk_window_present` for details.
@@ -15273,7 +15356,8 @@ export namespace RB {
             "notify::task-cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::task-detail": (pspec: GObject.ParamSpec) => void;
             "notify::task-label": (pspec: GObject.ParamSpec) => void;
-            "notify::task-notify": (pspec: GObject.ParamSpec) => void;
+            "notify::task-notification": (pspec: GObject.ParamSpec) => void;
+            "notify::task-notification-body": (pspec: GObject.ParamSpec) => void;
             "notify::task-outcome": (pspec: GObject.ParamSpec) => void;
             "notify::task-progress": (pspec: GObject.ParamSpec) => void;
         }
@@ -15367,18 +15451,32 @@ export namespace RB {
         set taskLabel(val: string);
 
         /**
-         * @default false
+         * @default null
           * @category Inherited from RB.TaskProgress
          */
-        get task_notify(): boolean;
-        set task_notify(val: boolean);
+        get task_notification(): string;
+        set task_notification(val: string);
 
         /**
-         * @default false
+         * @default null
           * @category Inherited from RB.TaskProgress
          */
-        get taskNotify(): boolean;
-        set taskNotify(val: boolean);
+        get taskNotification(): string;
+        set taskNotification(val: string);
+
+        /**
+         * @default null
+          * @category Inherited from RB.TaskProgress
+         */
+        get task_notification_body(): string;
+        set task_notification_body(val: string);
+
+        /**
+         * @default null
+          * @category Inherited from RB.TaskProgress
+         */
+        get taskNotificationBody(): string;
+        set taskNotificationBody(val: string);
 
         /**
          * @default RB.TaskOutcome.NONE
@@ -15516,7 +15614,8 @@ export namespace RB {
             "notify::task-cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::task-detail": (pspec: GObject.ParamSpec) => void;
             "notify::task-label": (pspec: GObject.ParamSpec) => void;
-            "notify::task-notify": (pspec: GObject.ParamSpec) => void;
+            "notify::task-notification": (pspec: GObject.ParamSpec) => void;
+            "notify::task-notification-body": (pspec: GObject.ParamSpec) => void;
             "notify::task-outcome": (pspec: GObject.ParamSpec) => void;
             "notify::task-progress": (pspec: GObject.ParamSpec) => void;
         }
@@ -15802,18 +15901,32 @@ export namespace RB {
         set taskLabel(val: string);
 
         /**
-         * @default false
+         * @default null
           * @category Inherited from RB.TaskProgress
          */
-        get task_notify(): boolean;
-        set task_notify(val: boolean);
+        get task_notification(): string;
+        set task_notification(val: string);
 
         /**
-         * @default false
+         * @default null
           * @category Inherited from RB.TaskProgress
          */
-        get taskNotify(): boolean;
-        set taskNotify(val: boolean);
+        get taskNotification(): string;
+        set taskNotification(val: string);
+
+        /**
+         * @default null
+          * @category Inherited from RB.TaskProgress
+         */
+        get task_notification_body(): string;
+        set task_notification_body(val: string);
+
+        /**
+         * @default null
+          * @category Inherited from RB.TaskProgress
+         */
+        get taskNotificationBody(): string;
+        set taskNotificationBody(val: string);
 
         /**
          * @default RB.TaskOutcome.NONE
@@ -16565,6 +16678,8 @@ export namespace RB {
         refcount: number;
 
         url: string;
+
+        resolved_url: string;
 
         title: string;
 
@@ -18077,8 +18192,10 @@ export namespace RB {
             taskDetail: string;
             task_label: string;
             taskLabel: string;
-            task_notify: boolean;
-            taskNotify: boolean;
+            task_notification: string;
+            taskNotification: string;
+            task_notification_body: string;
+            taskNotificationBody: string;
             task_outcome: TaskOutcome;
             taskOutcome: TaskOutcome;
             task_progress: number;
@@ -18133,16 +18250,28 @@ export namespace RB {
         set taskLabel(val: string);
 
         /**
-         * @default false
+         * @default null
          */
-        get task_notify(): boolean;
-        set task_notify(val: boolean);
+        get task_notification(): string;
+        set task_notification(val: string);
 
         /**
-         * @default false
+         * @default null
          */
-        get taskNotify(): boolean;
-        set taskNotify(val: boolean);
+        get taskNotification(): string;
+        set taskNotification(val: string);
+
+        /**
+         * @default null
+         */
+        get task_notification_body(): string;
+        set task_notification_body(val: string);
+
+        /**
+         * @default null
+         */
+        get taskNotificationBody(): string;
+        set taskNotificationBody(val: string);
 
         /**
          * @default RB.TaskOutcome.NONE

@@ -23,6 +23,7 @@ import type GioUnix from '@girs/giounix-2.0';
 import type Gegl from '@girs/gegl-0.4';
 import type Babl from '@girs/babl-0.1';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GLibUnix from '@girs/glibunix-2.0';
 import type GExiv2 from '@girs/gexiv2-0.10';
 
 export namespace Gimp {
@@ -7456,6 +7457,13 @@ export namespace ParamArray {
     /**
      * Forcefully causes the GIMP library to exit and close down its
      * connection to main gimp application. This function never returns.
+     * 
+     * It is highly unadvised to use this function since the plug-in will
+     * not properly return. If you need to return from a plug-in in error,
+     * gracefully return with {@link Procedure.new_return_values} setting
+     * {@link Gimp.PDBStatusType.EXECUTION_ERROR} as a status and with a well
+     * written {@link GLib.Error} message to display.
+     * @deprecated there are no alternatives. Quit your plug-ins cleanly             instead.
      */
     function quit(): void;
 
@@ -7507,6 +7515,18 @@ export namespace ParamArray {
      * @since 2.8
      */
     function rectangle_union(x1: number, y1: number, width1: number, height1: number, x2: number, y2: number, width2: number, height2: number): [number, number, number, number];
+
+    /**
+     * Returns whether the resource with the given `resource_type` were
+     * loaded.
+     * 
+     * In particular, it would return FALSE if GIMP was started with
+     * `--no-data` (or `--no-fonts` for fonts).
+     * @param resource_type The {@link GObject.GType} of the resource.
+     * @returns Whether resources of `resource_type` were loaded.
+     * @since 3.2.4
+     */
+    function resources_loaded(resource_type: GObject.GType): boolean;
 
     /**
      * Returns whether or not GimpDialog should automatically add a help
@@ -7629,9 +7649,9 @@ export namespace ParamArray {
 
     /**
      * Returns the default top directory for GIMP temporary files. If the
-     * environment variable GIMP3_TEMPDIR exists, that is used.  It
-     * should be an absolute pathname.  Otherwise, a subdirectory of the
-     * directory returned by `g_get_tmp_dir()` is used.
+     * environment variable `GIMP3_TEMPDIR` exists, that is used. It
+     * should be an absolute pathname. Otherwise, a subdirectory of the
+     * directory returned by {@link GLib.get_tmp_dir} is used.
      * 
      * In config files such as gimprc, the string ${gimp_temp_dir} expands
      * to this directory.
@@ -7641,8 +7661,10 @@ export namespace ParamArray {
      * 
      * The returned string is owned by GIMP and must not be modified or
      * freed. The returned string is in the encoding used for filenames by
-     * GLib, which isn't necessarily UTF-8. (On Windows it always is
-     * UTF-8.).
+     * GLib, which isn't necessarily UTF-8 (On Windows it always is UTF-8.).
+     * 
+     * The returned directory path might already exists, or it might not. It
+     * is your responsibility to make sure it does before using it.
      * @returns The default top directory for GIMP temporary files.
      * @since 2.10.10
      */

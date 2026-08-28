@@ -1900,7 +1900,7 @@ export namespace Grl {
         get_favourite(): boolean;
 
         /**
-         * @returns whether the flash was used. See http://library.gnome.org/devel/ontology/unstable/nmm-classes.html#nmm-Flash
+         * @returns whether the flash was used. See https://gnome.pages.gitlab.gnome.org/tracker/nmm-ontology.html#nmm:Flash
          */
         get_flash_used(): string;
 
@@ -2374,7 +2374,7 @@ export namespace Grl {
         /**
          * Set the flash_used of the media
          * See
-         * http://library.gnome.org/devel/ontology/unstable/nmm-classes.html#nmm-Flash
+         * https://gnome.pages.gitlab.gnome.org/tracker/nmm-ontology.html#nmm:Flash
          * @param flash_used whether the flash was used
          */
         set_flash_used(flash_used: string): void;
@@ -3744,12 +3744,14 @@ export namespace Grl {
 
         // Virtual methods
         /**
+         * browse through a list of media
          * @param bs 
          * @virtual
          */
         vfunc_browse(bs: SourceBrowseSpec): void;
 
         /**
+         * cancel the current operation
          * @param operation_id 
          * @virtual
          */
@@ -3780,6 +3782,8 @@ export namespace Grl {
         vfunc_may_resolve(media: Media, key_id: KeyID, missing_keys: KeyID[]): boolean;
 
         /**
+         * Creates a {@link Grl.Media} instance representing the media
+         * exposed by a certain URI.
          * @param mfus 
          * @virtual
          */
@@ -3802,24 +3806,28 @@ export namespace Grl {
         vfunc_notify_change_stop(): boolean;
 
         /**
+         * query for a specific media
          * @param qs 
          * @virtual
          */
         vfunc_query(qs: SourceQuerySpec): void;
 
         /**
+         * remove a media from a container
          * @param rs 
          * @virtual
          */
         vfunc_remove(rs: SourceRemoveSpec): void;
 
         /**
+         * resolve the metadata of a given transfer object
          * @param ms 
          * @virtual
          */
         vfunc_resolve(ms: SourceResolveSpec): void;
 
         /**
+         * search for media
          * @param ss 
          * @virtual
          */
@@ -3834,12 +3842,15 @@ export namespace Grl {
         vfunc_slow_keys(): KeyID[];
 
         /**
+         * store a media in a container
          * @param ss 
          * @virtual
          */
         vfunc_store(ss: SourceStoreSpec): void;
 
         /**
+         * update metadata values for a given object in a
+         * permanent fashion
          * @param sms 
          * @virtual
          */
@@ -3853,6 +3864,7 @@ export namespace Grl {
         vfunc_supported_keys(): KeyID[];
 
         /**
+         * the operations that can be called
          * @virtual
          */
         vfunc_supported_operations(): SupportedOps;

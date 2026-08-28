@@ -1886,6 +1886,19 @@ export namespace Xmlb {
         lookup_query(xpath: string): Query;
 
         /**
+         * Create an {@link Xmlb.Query} from the given `xpath` XPath string, or return it from the
+         * query cache in the {@link Xmlb.Silo}.
+         * 
+         * `xpath` must be valid: it is a programmer error if creating the query fails
+         * (i.e. if `xb_query_new()` returns an error).
+         * 
+         * This function is thread-safe.
+         * @param xpath an XPath query string
+         * @returns an {@link Xmlb.Query} representing `xpath`
+         */
+        lookup_query_full(xpath: string): Query;
+
+        /**
          * Searches the silo using an XPath query, returning up to `limit` results.
          * 
          * It is safe to call this function from a different thread to the one that

@@ -55,7 +55,6 @@ export interface ECertificateWidgetProps extends GtkScrolledWindowProps, GtkBuil
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type ECertificateWidgetConstructOnly = GtkScrolledWindowConstructOnly | GtkBuildableConstructOnly;
 
-/** Contains only private data that should be read and manipulated using the functions below. */
 export interface ERemindersWidgetProps extends GtkGridProps, GtkBuildableProps, GtkOrientableProps {
     watcher?: ECal.ReminderWatcher;
 }

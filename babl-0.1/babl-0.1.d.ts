@@ -105,8 +105,8 @@ export namespace Babl {
      * Returns the babl object representing the color format given by
      * `name` such as for example "RGB u8", "CMYK float" or "CIE Lab u16",
      * creates a format using the sRGB space, to also specify the color space
-     * and TRCs for a format, see babl_format_with_space.
-     * @param encoding 
+     * and TRCs for a format, see {@link Babl.format_with_space}.
+     * @param encoding format used to encode the colors.
      */
     function format(encoding: string): Object;
 
@@ -186,10 +186,12 @@ export namespace Babl {
      * has -space suffixed to it, unless the space requested is sRGB then
      * the unsuffixed version is used. If a format is passed in as space
      * the space of the format is used.
-     * @param encoding 
-     * @param space 
+     * 
+     * Passing `null` as `space` is equivalent to passing the `sRGB` space.
+     * @param encoding format used to encode the colors.
+     * @param space the working space.
      */
-    function format_with_space(encoding: string, space: Object): Object;
+    function format_with_space(encoding: string, space: Object | null): Object;
 
     /**
      * @param model 

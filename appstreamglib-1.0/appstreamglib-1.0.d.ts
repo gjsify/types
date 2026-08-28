@@ -86,11 +86,11 @@ export namespace AppStreamGlib {
          */
         CODEC,
         /**
-         * A input method add-on
+         * An input method add-on
          */
         INPUT_METHOD,
         /**
-         * A web appication
+         * A web application
          */
         WEB_APP,
         /**
@@ -567,11 +567,11 @@ export namespace AppStreamGlib {
          */
         CODEC,
         /**
-         * A input method add-on
+         * An input method add-on
          */
         INPUT_METHOD,
         /**
-         * A web appication
+         * A web application
          */
         WEB_APP,
         /**
@@ -855,7 +855,7 @@ export namespace AppStreamGlib {
          */
         MARK_TRANSLATABLE,
         /**
-         * The data is Base64 enoded
+         * The data is Base64 encoded
          */
         BASE64_ENCODED,
     }
@@ -1970,7 +1970,7 @@ export namespace AppStreamGlib {
     function node_insert_localized(parent: GLib.Node, name: string, localized: never, insert_flags: NodeInsertFlags): void;
 
     /**
-     * Converts a node and it's children to XML.
+     * Converts a node and its children to XML.
      * @param node a {@link AppStreamGlib.Node}.
      * @param flags the AsNodeToXmlFlags, e.g. {@link AppStreamGlib.NodeToXmlFlags.NONE}.
      * @returns a {@link GLib.String}
@@ -2238,10 +2238,10 @@ export namespace AppStreamGlib {
     function utils_spdx_license_detokenize(license_tokens: string): string;
 
     /**
-     * Tokenizes the SPDX license string (or any simarly formatted string)
-     * into parts. Any licence parts of the string e.g. "LGPL-2.0+" are prefexed
+     * Tokenizes the SPDX license string (or any similarly formatted string)
+     * into parts. Any licence parts of the string e.g. "LGPL-2.0+" are prefixed
      * with "@", the conjunctive replaced with "&" and the disjunctive replaced
-     * with "|". Brackets are added as indervidual tokens and other strings are
+     * with "|". Brackets are added as individual tokens and other strings are
      * appended into single tokens where possible.
      * @param license a license string, e.g. "LGPLv2+ and (QPL or GPLv2) and MIT"
      * @returns array of strings, or `null` for invalid
@@ -3223,13 +3223,13 @@ export namespace AppStreamGlib {
 
         // Methods
         /**
-         * Adds a addon to an application.
+         * Adds an addon to an application.
          * @param addon a {@link AppStreamGlib.App} instance.
          */
         add_addon(addon: App): void;
 
         /**
-         * Adds a agreement to an application.
+         * Adds an agreement to an application.
          * @param agreement a {@link AppStreamGlib.Agreement} instance.
          */
         add_agreement(agreement: Agreement): void;
@@ -3277,7 +3277,7 @@ export namespace AppStreamGlib {
         add_format(format: Format): void;
 
         /**
-         * Adds a icon to an application.
+         * Adds an icon to an application.
          * @param icon a {@link AppStreamGlib.Icon} instance.
          */
         add_icon(icon: Icon): void;
@@ -3423,7 +3423,7 @@ export namespace AppStreamGlib {
         get_addons(): App[];
 
         /**
-         * Gets a agreement the application has defined of a specific type.
+         * Gets an agreement the application has defined of a specific type.
          * @param kind an agreement kind, e.g. {@link AppStreamGlib.AgreementKind.EULA}
          * @returns a {@link AppStreamGlib.Agreement} or NULL for not found
          */
@@ -5857,7 +5857,7 @@ export namespace AppStreamGlib {
 
         /**
          * Adds metadata to the review object.
-         * It is left for the the plugin to use this method as required, but a
+         * It is left for the plugin to use this method as required, but a
          * typical use would be to store some secure authentication token.
          * @param key a string
          * @param value a string
@@ -5904,7 +5904,7 @@ export namespace AppStreamGlib {
 
         /**
          * Gets some metadata from a review object.
-         * It is left for the the plugin to use this method as required, but a
+         * It is left for the plugin to use this method as required, but a
          * typical use would be to retrieve some secure authentication token.
          * @param key a string
          * @returns A string value, or `null` for not found
@@ -5943,7 +5943,7 @@ export namespace AppStreamGlib {
         get_summary(): string;
 
         /**
-         * Gets the version string for the application being reviewed..
+         * Gets the version string for the application being reviewed.
          * @returns the version string, e.g. "0.1.2", or `null` for unset
          */
         get_version(): string;
@@ -5987,8 +5987,8 @@ export namespace AppStreamGlib {
         set_priority(priority: number): void;
 
         /**
-         * Sets the star rating of the review, where 100 is 5 stars..
-         * @param rating a integer as a percentage, or 0 for unset
+         * Sets the star rating of the review, where 100 is 5 stars.
+         * @param rating an integer as a percentage, or 0 for unset
          */
         set_rating(rating: number): void;
 
@@ -6784,7 +6784,7 @@ export namespace AppStreamGlib {
 
         // Methods
         /**
-         * Add a the suggest application ID.
+         * Add the suggest application ID.
          * @param id an application ID, e.g. `gimp.desktop`
          */
         add_id(id: string): void;

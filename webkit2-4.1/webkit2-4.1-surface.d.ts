@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for WebKit2-4.1.
  *
- * GENERATED — do not edit. Provenance: WebKit2-4.1 — library 2.52.1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: WebKit2-4.1 — library 2.53.91 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
  *
  * 2 concrete widgets, 2 declarations, 30 enum nick unions, 0 slot candidates.
  *
@@ -47,7 +47,7 @@ export type WebKitCookiePersistentStorageNick = 'text' | 'sqlite';
 export type WebKitCredentialPersistenceNick = 'none' | 'for-session' | 'permanent';
 export type WebKitFeatureStatusNick = 'embedder' | 'unstable' | 'internal' | 'developer' | 'testable' | 'preview' | 'stable' | 'mature';
 export type WebKitHardwareAccelerationPolicyNick = 'on-demand' | 'always' | 'never';
-export type WebKitInputPurposeNick = 'free-form' | 'digits' | 'number' | 'phone' | 'url' | 'email' | 'password';
+export type WebKitInputPurposeNick = 'free-form' | 'digits' | 'number' | 'phone' | 'url' | 'email' | 'password' | 'search';
 export type WebKitInsecureContentEventNick = 'run' | 'displayed';
 export type WebKitLoadEventNick = 'started' | 'redirected' | 'committed' | 'finished';
 export type WebKitMediaCaptureStateNick = 'none' | 'active' | 'muted';
@@ -120,6 +120,11 @@ export interface WebKitWebViewProps extends WebKitWebViewBaseProps, GtkBuildable
      * @since 2.30
      */
     'is-muted'?: boolean;
+    /**
+     * The magnification factor of the #WebKitWebView content.
+     * @since 2.54
+     */
+    magnification?: number;
     /**
      * Capture state of the microphone device.
      * @since 2.34

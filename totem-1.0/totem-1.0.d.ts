@@ -191,6 +191,8 @@ export namespace Totem {
      */
     function get_plugin_paths(): string[];
 
+    function get_resource(): Gio.Resource;
+
     /**
      * Put the given `icon_name` into `button`, and pack `button` into `header`
      * according to `pack_type`.
@@ -219,76 +221,6 @@ export namespace Totem {
      * @param parent the error dialogue's parent {@link Gtk.Window}
      */
     function interface_error_blocking(title: string, reason: string, parent: Gtk.Window): void;
-
-    /**
-     * Display a modal error dialogue like `totem_interface_error()`,
-     * but add a button which will open `uri` in a browser window.
-     * @param title the error title
-     * @param reason the error reason (secondary text)
-     * @param uri the URI to open
-     * @param label a label for the URI's button, or `null` to use `uri` as the label
-     * @param parent the error dialogue's parent {@link Gtk.Window}
-     */
-    function interface_error_with_link(title: string, reason: string, uri: string, label: string, parent: Gtk.Window): void;
-
-    /**
-     * @param name 
-     */
-    function interface_get_full_path(name: string): string;
-
-    /**
-     * Load a {@link Gtk.Builder} UI file with the given name and return the {@link Gtk.Builder} instance for it. If loading the file fails, an error dialogue is shown.
-     * @param name the {@link Gtk.Builder} UI file to load
-     * @param fatal `true` if errors loading the file should be fatal, `false` otherwise
-     * @param parent the parent window to use when displaying error dialogues, or `null`
-     * @param user_data the user data to pass to `gtk_builder_connect_signals()`, or `null`
-     * @returns the loaded {@link Gtk.Builder} object, or `null`
-     */
-    function interface_load(name: string, fatal: boolean, parent: Gtk.Window | null, user_data: null): Gtk.Builder;
-
-    /**
-     * Load the image called `name` in the directory given by `totem_interface_get_full_path()` into a {@link GdkPixbuf.Pixbuf}.
-     * @param name the image file name
-     * @returns the loaded pixbuf, or `null`
-     */
-    function interface_load_pixbuf(name: string): GdkPixbuf.Pixbuf;
-
-    /**
-     * Load a {@link Gtk.Builder} UI file from the given path and return the {@link Gtk.Builder} instance for it. If loading the file fails, an error dialogue is shown.
-     * @param filename the {@link Gtk.Builder} UI file path to load
-     * @param fatal `true` if errors loading the file should be fatal, `false` otherwise
-     * @param parent the parent window to use when displaying error dialogues, or `null`
-     * @param user_data the user data to pass to `gtk_builder_connect_signals()`, or `null`
-     * @returns the loaded {@link Gtk.Builder} object, or `null`
-     */
-    function interface_load_with_full_path(filename: string, fatal: boolean, parent: Gtk.Window | null, user_data: null): Gtk.Builder;
-
-    /**
-     * Finds the specified `file` by looking in the plugin paths
-     * listed by `totem_get_plugin_paths()` and then in the system
-     * Totem data directory.
-     * 
-     * This should be used by plugins to find plugin-specific
-     * resource files.
-     * @param plugin_name the plugin name
-     * @param file the file to find
-     * @returns a newly-allocated absolute path for the file, or `null`
-     */
-    function plugin_find_file(plugin_name: string, file: string): string;
-
-    /**
-     * Loads an interface file (GtkBuilder UI file) for a plugin, given its filename and
-     * assuming it's installed in the plugin's data directory.
-     * 
-     * This should be used instead of attempting to load interfaces manually in plugins.
-     * @param plugin_name the plugin name
-     * @param name interface filename
-     * @param fatal `true` if it's a fatal error if the interface can't be loaded
-     * @param parent the interface's parent {@link Gtk.Window}
-     * @param user_data a pointer to be passed to each signal handler in the interface when they're called
-     * @returns the {@link Gtk.Builder} instance for the interface
-     */
-    function plugin_load_interface(plugin_name: string, name: string, fatal: boolean, parent: Gtk.Window | null, user_data: null): Gtk.Builder;
 
     function remote_command_quark(): GLib.Quark;
 
@@ -392,90 +324,105 @@ export namespace Totem {
         /**
          * The content-type of the current stream.
          * @read-only
+         * @default null
          */
         get current_content_type(): string;
 
         /**
          * The content-type of the current stream.
          * @read-only
+         * @default null
          */
         get currentContentType(): string;
 
         /**
          * The display name of the current stream.
          * @read-only
+         * @default null
          */
         get current_display_name(): string;
 
         /**
          * The display name of the current stream.
          * @read-only
+         * @default null
          */
         get currentDisplayName(): string;
 
         /**
          * The MRL of the current stream.
          * @read-only
+         * @default null
          */
         get current_mrl(): string;
 
         /**
          * The MRL of the current stream.
          * @read-only
+         * @default null
          */
         get currentMrl(): string;
 
         /**
          * The player's position (time) in the current stream, in milliseconds.
          * @read-only
+         * @default 0
          */
         get current_time(): number;
 
         /**
          * The player's position (time) in the current stream, in milliseconds.
          * @read-only
+         * @default 0
          */
         get currentTime(): number;
 
         /**
          * If `true`, Totem is in fullscreen mode.
          * @read-only
+         * @default false
          */
         get fullscreen(): boolean;
 
         /**
          * The name of the current main page (usually "grilo", or "player").
          * @read-only
+         * @default null
          */
         get main_page(): string;
 
         /**
          * The name of the current main page (usually "grilo", or "player").
          * @read-only
+         * @default null
          */
         get mainPage(): string;
 
         /**
          * If `true`, Totem is playing an audio or video file.
          * @read-only
+         * @default false
          */
         get playing(): boolean;
 
         /**
          * If `true`, the current stream is seekable.
          * @read-only
+         * @default false
          */
         get seekable(): boolean;
 
         /**
          * The length of the current stream, in milliseconds.
          * @read-only
+         * @default 0
          */
         get stream_length(): number;
 
         /**
          * The length of the current stream, in milliseconds.
          * @read-only
+         * @default 0
          */
         get streamLength(): number;
 
@@ -517,45 +464,6 @@ export namespace Totem {
          */
         static get_supported_uri_schemes(): string[];
 
-        // Virtual methods
-        /**
-         * @virtual
-         */
-        vfunc_file_closed(): void;
-
-        /**
-         * @param mrl 
-         * @virtual
-         */
-        vfunc_file_has_played(mrl: string): void;
-
-        /**
-         * @param mrl 
-         * @virtual
-         */
-        vfunc_file_opened(mrl: string): void;
-
-        /**
-         * @param mrl 
-         * @virtual
-         */
-        vfunc_get_text_subtitle(mrl: string): string;
-
-        /**
-         * @param mrl 
-         * @virtual
-         */
-        vfunc_get_user_agent(mrl: string): string;
-
-        /**
-         * @param artist 
-         * @param title 
-         * @param album 
-         * @param track_num 
-         * @virtual
-         */
-        vfunc_metadata_updated(artist: string, title: string, album: string, track_num: number): void;
-
         // Methods
         /**
          * Add `uri` to the playlist and play it immediately.
@@ -563,7 +471,7 @@ export namespace Totem {
          * @param display_name the display name of the URI
          * @param play whether to play the added item
          */
-        add_to_playlist(uri: string, display_name: string, play: boolean): void;
+        add_to_playlist(uri: string, display_name: string | null, play: boolean): void;
 
         /**
          * Adds a local media file to the main view.

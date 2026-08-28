@@ -11,57 +11,28 @@
 import '@girs/gjs';
 
 // Module dependencies
-import type Rest from '@girs/rest-0.7';
-import type Soup from '@girs/soup-2.4';
-import type Gio from '@girs/gio-2.0';
+import type Shumate from '@girs/shumate-1.0';
+import type Gtk from '@girs/gtk-4.0';
+import type Gsk from '@girs/gsk-4.0';
+import type Graphene from '@girs/graphene-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type GeocodeGlib from '@girs/geocodeglib-1.0';
-import type Json from '@girs/json-1.0';
-import type Champlain from '@girs/champlain-0.12';
-import type Clutter from '@girs/clutter-1.0';
+import type Gdk from '@girs/gdk-4.0';
 import type cairo from 'cairo';
-import type GL from '@girs/gl-1.0';
-import type CoglPango from '@girs/coglpango-1.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
-import type Cogl from '@girs/cogl-1.0';
-import type Atk from '@girs/atk-1.0';
+import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type Json from '@girs/json-1.0';
 
 export namespace GnomeMaps {
 
     /**
      * GnomeMaps-1.0
      */
-
-
-    /**
-     * @gir-type Enum
-     */
-    export namespace ContactStoreState {
-        export const $gtype: GObject.GType<ContactStoreState>;
-    }
-
-    /**
-     * @gir-type Enum
-     */
-    enum ContactStoreState {
-        /**
-         * Initial state
-         */
-        INITIAL,
-        /**
-         * Loading
-         */
-        LOADING,
-        /**
-         * Loaded
-         */
-        LOADED,
-    }
 
 
     function osm_finalize(): void;
@@ -75,75 +46,19 @@ export namespace GnomeMaps {
      */
     function osm_parse(content: string, length: number): OSMObject;
 
-    /**
-     * @gir-type Callback
-     */
-    interface ContactGeocodeCallback {
-        (contact: Contact): void;
-    }
-
-    /**
-     * @gir-type Callback
-     */
-    interface ContactStoreLookupCallback {
-        (contact: Contact): void;
-    }
-
-    namespace Contact {
+    namespace DownloadStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            "notify::bounding-box": (pspec: GObject.ParamSpec) => void;
-            "notify::icon": (pspec: GObject.ParamSpec) => void;
-            "notify::id": (pspec: GObject.ParamSpec) => void;
-            "notify::name": (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            bounding_box: Champlain.BoundingBox;
-            boundingBox: Champlain.BoundingBox;
-            icon: Gio.Icon;
-            id: string;
-            name: string;
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
      * @gir-type Class
      */
-    class Contact extends GObject.Object {
-        static $gtype: GObject.GType<Contact>;
-
-        // Properties
-        /**
-         * The bounding box for the contact.
-         * @read-only
-         */
-        get bounding_box(): Champlain.BoundingBox;
-
-        /**
-         * The bounding box for the contact.
-         * @read-only
-         */
-        get boundingBox(): Champlain.BoundingBox;
-
-        /**
-         * The icon of the contact.
-         */
-        get icon(): Gio.Icon;
-        set icon(val: Gio.Icon);
-
-        /**
-         * The unique id of the contact.
-         */
-        get id(): string;
-        set id(val: string);
-
-        /**
-         * The name of the contact.
-         */
-        get name(): string;
-        set name(val: string);
+    class DownloadStore extends GObject.Object {
+        static $gtype: GObject.GType<DownloadStore>;
 
         /**
          * Compile-time signal type information.
@@ -152,226 +67,238 @@ export namespace GnomeMaps {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: Contact.SignalSignatures;
+        $signals: DownloadStore.SignalSignatures;
 
         // Constructors
-        constructor(properties?: Partial<Contact.ConstructorProps>, ...args: any[]);
+        constructor(properties?: Partial<DownloadStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ["new"](): Contact;
+        static ["new"](): DownloadStore;
 
         // Signals
         /** @signal */
-        connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>): number;
+        connect<K extends keyof DownloadStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadStore.SignalSignatures[K]>): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof Contact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>): number;
+        connect_after<K extends keyof DownloadStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadStore.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof Contact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Contact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit<K extends keyof DownloadStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
         /**
-         * @param place 
+         * @param tileset 
+         * @param tile_ids 
          */
-        add_place(place: GeocodeGlib.Place): void;
+        compute_size_async(tileset: string, tile_ids: string[]): globalThis.Promise<number>;
 
         /**
-         * @param callback A {@link GnomeMaps.ContactGeocodeCallback} function
+         * @param tileset 
+         * @param tile_ids 
+         * @param callback 
          */
-        geocode(callback: ContactGeocodeCallback): void;
+        compute_size_async(tileset: string, tile_ids: string[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @returns a list of {@link GeocodeGlib.Place}
+         * @param tileset 
+         * @param tile_ids 
+         * @param callback 
          */
-        get_places(): GeocodeGlib.Place[];
-    }
-
-
-    namespace ContactStore {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            "notify::state": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            state: ContactStoreState;
-        }
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class ContactStore extends GObject.Object {
-        static $gtype: GObject.GType<ContactStore>;
-
-        // Properties
-        /**
-         * The type of the contact.
-         * @read-only
-         */
-        get state(): ContactStoreState;
+        compute_size_async(tileset: string, tile_ids: string[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
+         * @param result 
          */
-        $signals: ContactStore.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<ContactStore.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ["new"](): ContactStore;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof ContactStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactStore.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof ContactStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactStore.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof ContactStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-        /**
-         * @returns a list of {@link GnomeMaps.Contact},
-         */
-        get_contacts(): Contact[];
+        compute_size_finish(result: Gio.AsyncResult): number;
 
         /**
-         * Load contacts from available backends.
+         * Asynchronously executes a SQL statement.
+         * @param sql SQL statement to execute
          */
-        load(): void;
+        exec_async(sql: string): globalThis.Promise<boolean>;
 
         /**
+         * Asynchronously executes a SQL statement.
+         * @param sql SQL statement to execute
+         * @param callback a {@link Gio.AsyncReadyCallback}
+         */
+        exec_async(sql: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously executes a SQL statement.
+         * @param sql SQL statement to execute
+         * @param callback a {@link Gio.AsyncReadyCallback}
+         */
+        exec_async(sql: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes an `exec_async()` operation.
+         * @param result 
+         * @returns `true` if the operation succeeded, `false` otherwise
+         */
+        exec_finish(result: Gio.AsyncResult): boolean;
+
+        /**
+         * @param tileset 
+         * @param tile_ids 
+         * @param mtime 
+         */
+        filter_by_mtime_async(tileset: string, tile_ids: string[], mtime: bigint | number): globalThis.Promise<string[]>;
+
+        /**
+         * @param tileset 
+         * @param tile_ids 
+         * @param mtime 
+         * @param callback 
+         */
+        filter_by_mtime_async(tileset: string, tile_ids: string[], mtime: bigint | number, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param tileset 
+         * @param tile_ids 
+         * @param mtime 
+         * @param callback 
+         */
+        filter_by_mtime_async(tileset: string, tile_ids: string[], mtime: bigint | number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
+
+        /**
+         * @param result 
+         */
+        filter_by_mtime_finish(result: Gio.AsyncResult): string[];
+
+        /**
+         * @param tileset 
          * @param id 
-         * @param callback A {@link GnomeMaps.ContactStoreLookupCallback} function
          */
-        lookup(id: string, callback: ContactStoreLookupCallback): void;
-    }
-
-
-    namespace FileTileSource {
-        // Signal signatures
-        interface SignalSignatures extends Champlain.TileSource.SignalSignatures {
-            "notify::max-zoom": (pspec: GObject.ParamSpec) => void;
-            "notify::min-zoom": (pspec: GObject.ParamSpec) => void;
-            "notify::path": (pspec: GObject.ParamSpec) => void;
-            "notify::world": (pspec: GObject.ParamSpec) => void;
-            "notify::cache": (pspec: GObject.ParamSpec) => void;
-            "notify::id": (pspec: GObject.ParamSpec) => void;
-            "notify::license": (pspec: GObject.ParamSpec) => void;
-            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
-            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
-            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
-            "notify::name": (pspec: GObject.ParamSpec) => void;
-            "notify::projection": (pspec: GObject.ParamSpec) => void;
-            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
-            "notify::next-source": (pspec: GObject.ParamSpec) => void;
-            "notify::renderer": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends Champlain.TileSource.ConstructorProps {
-            max_zoom: number;
-            maxZoom: number;
-            min_zoom: number;
-            minZoom: number;
-            path: string;
-            world: Champlain.BoundingBox;
-        }
-    }
-
-    /**
-     * The {@link GnomeMaps.FileTileSource} structure contains only private data
-     * and should be accessed using the provided API
-     * @gir-type Class
-     */
-    class FileTileSource extends Champlain.TileSource {
-        static $gtype: GObject.GType<FileTileSource>;
-
-        // Properties
-        /**
-         * The maximum zoom level of the tile source.
-         * @read-only
-         */
-        get max_zoom(): number;
+        get_async(tileset: string, id: string): globalThis.Promise<GLib.Bytes | null>;
 
         /**
-         * The maximum zoom level of the tile source.
-         * @read-only
+         * @param tileset 
+         * @param id 
+         * @param callback 
          */
-        get maxZoom(): number;
+        get_async(tileset: string, id: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * The minimum zoom level of the tile source.
-         * @read-only
+         * @param tileset 
+         * @param id 
+         * @param callback 
          */
-        get min_zoom(): number;
+        get_async(tileset: string, id: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Bytes | null> | void;
 
         /**
-         * The minimum zoom level of the tile source.
-         * @read-only
+         * Finishes a `get_async()` operation.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns the data, or `null` if the data was not found or an error occurred
          */
-        get minZoom(): number;
+        get_finish(result: Gio.AsyncResult): GLib.Bytes | null;
 
         /**
-         * The path to the tile source.
+         * @param tileset 
+         * @param ids 
+         * @param data 
+         * @param precompressed 
+         * @param mtime 
          */
-        get path(): string;
-        set path(val: string);
+        insert_async(tileset: string, ids: string[], data: GLib.Bytes | Uint8Array, precompressed: boolean, mtime: bigint | number): globalThis.Promise<boolean>;
 
         /**
-         * Set a bounding box to limit the world to. No tiles will be loaded
-         * outside of this bounding box. It will not be possible to scroll outside
-         * of this bounding box.
-         * @read-only
+         * @param tileset 
+         * @param ids 
+         * @param data 
+         * @param precompressed 
+         * @param mtime 
+         * @param callback 
          */
-        get world(): Champlain.BoundingBox;
+        insert_async(tileset: string, ids: string[], data: GLib.Bytes | Uint8Array, precompressed: boolean, mtime: bigint | number, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
+         * @param tileset 
+         * @param ids 
+         * @param data 
+         * @param precompressed 
+         * @param mtime 
+         * @param callback 
          */
-        $signals: FileTileSource.SignalSignatures;
+        insert_async(tileset: string, ids: string[], data: GLib.Bytes | Uint8Array, precompressed: boolean, mtime: bigint | number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
-        // Constructors
-        constructor(properties?: Partial<FileTileSource.ConstructorProps>, ...args: any[]);
+        /**
+         * @param result 
+         */
+        insert_finish(result: Gio.AsyncResult): boolean;
 
-        _init(...args: any[]): void;
+        /**
+         * @param tileset 
+         */
+        list_tiles_async(tileset: string): globalThis.Promise<string[]>;
 
-        // Signals
-        /** @signal */
-        connect<K extends keyof FileTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
+        /**
+         * @param tileset 
+         * @param callback 
+         */
+        list_tiles_async(tileset: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
-        /** @signal */
-        connect_after<K extends keyof FileTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /**
+         * @param tileset 
+         * @param callback 
+         */
+        list_tiles_async(tileset: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
-        /** @signal */
-        emit<K extends keyof FileTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
+        /**
+         * @param result 
+         */
+        list_tiles_finish(result: Gio.AsyncResult): string[];
 
-        // Methods
-        prepare(): boolean;
+        list_tilesets_async(): globalThis.Promise<string[]>;
+
+        /**
+         * @param callback 
+         */
+        list_tilesets_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param callback 
+         */
+        list_tilesets_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
+
+        /**
+         * @param result 
+         */
+        list_tilesets_finish(result: Gio.AsyncResult): string[];
+
+        /**
+         * @param path 
+         */
+        open(path: string): boolean;
+
+        /**
+         * @param tileset 
+         * @param ids 
+         */
+        remove_async(tileset: string, ids: string[]): globalThis.Promise<boolean>;
+
+        /**
+         * @param tileset 
+         * @param ids 
+         * @param callback 
+         */
+        remove_async(tileset: string, ids: string[], callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param tileset 
+         * @param ids 
+         * @param callback 
+         */
+        remove_async(tileset: string, ids: string[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * @param result 
+         */
+        remove_finish(result: Gio.AsyncResult): boolean;
     }
 
 
@@ -399,13 +326,20 @@ export namespace GnomeMaps {
         // Properties
         /**
          * The comment of the changes.
+         * @default null
          */
         get comment(): string;
         set comment(val: string);
 
+        /**
+         * @default null
+         */
         get created_by(): string;
         set created_by(val: string);
 
+        /**
+         * @default null
+         */
         get createdBy(): string;
         set createdBy(val: string);
 
@@ -469,12 +403,14 @@ export namespace GnomeMaps {
         // Properties
         /**
          * The latitude of the node.
+         * @default 0
          */
         get latitude(): number;
         set latitude(val: number);
 
         /**
          * The longitude of the node.
+         * @default 0
          */
         get longitude(): number;
         set longitude(val: number);
@@ -510,53 +446,6 @@ export namespace GnomeMaps {
     }
 
 
-    namespace OSMOAuthProxyCall {
-        // Signal signatures
-        interface SignalSignatures extends Rest.OAuthProxyCall.SignalSignatures {
-            "notify::proxy": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends Rest.OAuthProxyCall.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
-        static $gtype: GObject.GType<OSMOAuthProxyCall>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: OSMOAuthProxyCall.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<OSMOAuthProxyCall.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ["new"](proxy: Rest.OAuthProxy, content: string): OSMOAuthProxyCall;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof OSMOAuthProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMOAuthProxyCall.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof OSMOAuthProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OSMOAuthProxyCall.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof OSMOAuthProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OSMOAuthProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-    }
-
-
     namespace OSMObject {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -582,18 +471,21 @@ export namespace GnomeMaps {
         // Properties
         /**
          * The OSM changeset for the current upload of the object.
+         * @default 0
          */
         get changeset(): number;
         set changeset(val: bigint | number);
 
         /**
          * The OSM id of the object.
+         * @default 0
          */
         get id(): number;
         set id(val: bigint | number);
 
         /**
          * The latest OSM version of the object.
+         * @default 0
          */
         get version(): number;
         set version(val: number);
@@ -635,6 +527,11 @@ export namespace GnomeMaps {
          * @param key 
          */
         get_tag(key: string): string;
+
+        /**
+         * @returns a hash table with key/values
+         */
+        get_tags(): { [key: string]: string };
 
         serialize(): string;
 
@@ -758,44 +655,219 @@ export namespace GnomeMaps {
     }
 
 
-    /**
-     * @gir-type Alias
-     */
-    type ContactClass = typeof Contact;
+    namespace Shield {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
 
     /**
-     * @gir-type Struct
+     * @gir-type Class
      */
-    abstract class ContactPrivate {
-        static $gtype: GObject.GType<ContactPrivate>;
+    class Shield extends GObject.Object {
+        static $gtype: GObject.GType<Shield>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Shield.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<Shield.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](node: Json.Node): Shield;
+
+        static new_with_banners(node: Json.Node, banners: Json.Array): Shield;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof Shield.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shield.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof Shield.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shield.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof Shield.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shield.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @param ref the highway reference
+         * @param name the highway name
+         * @param color the route color
+         * @param scale the scale factor
+         * @returns a {@link Shumate.VectorSprite}
+         */
+        draw(ref: string, name: string, color: string, scale: number): Shumate.VectorSprite;
+
+        /**
+         * @param prefix 
+         */
+        set_skip_prefix(prefix: string): void;
+    }
+
+
+    namespace SpriteSource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::color-scheme": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            color_scheme: string;
+            colorScheme: string;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class SpriteSource extends GObject.Object {
+        static $gtype: GObject.GType<SpriteSource>;
+
+        // Properties
+        /**
+         * @construct-only
+         * @default null
+         */
+        get color_scheme(): string;
+
+        /**
+         * @construct-only
+         * @default null
+         */
+        get colorScheme(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: SpriteSource.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<SpriteSource.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](color_scheme: string): SpriteSource;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof SpriteSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpriteSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof SpriteSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpriteSource.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof SpriteSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpriteSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @param network_name network name
+         * @returns a {@link MapsShield}
+         */
+        get_shield_for_network(network_name: string): Shield;
+
+        /**
+         * Loads shield definitions from a JSON string.
+         * @param json a JSON string
+         */
+        load_shield_defs(json: string): void;
+
+        /**
+         * Sets the sprite sheet's fallback function.
+         * @param sprite_sheet a {@link Shumate.VectorSpriteSheet}
+         */
+        set_fallback(sprite_sheet: Shumate.VectorSpriteSheet): void;
+    }
+
+
+    namespace SyncMapSource {
+        // Signal signatures
+        interface SignalSignatures extends Shumate.MapSource.SignalSignatures {
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Shumate.MapSource.ConstructorProps {}
+    }
+
+    /**
+     * Wrapper of ShumateMapSource that creates a GTask for fill_tile_async
+     * as a work-around for https://gitlab.gnome.org/GNOME/gjs/-/issues/72
+     * 
+     * The {@link GnomeMaps.SyncMapSource} structure contains only private data
+     * and should be accessed using the provided API
+     * @gir-type Class
+     */
+    abstract class SyncMapSource extends Shumate.MapSource {
+        static $gtype: GObject.GType<SyncMapSource>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: SyncMapSource.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<SyncMapSource.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof SyncMapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SyncMapSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof SyncMapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SyncMapSource.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof SyncMapSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SyncMapSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * @param tile 
+         * @param task 
+         * @virtual
+         */
+        vfunc_fill_tile(tile: Shumate.Tile, task: Gio.Task): void;
     }
 
 
     /**
      * @gir-type Alias
      */
-    type ContactStoreClass = typeof ContactStore;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class ContactStorePrivate {
-        static $gtype: GObject.GType<ContactStorePrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
-    type FileTileSourceClass = typeof FileTileSource;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class FileTileSourcePrivate {
-        static $gtype: GObject.GType<FileTileSourcePrivate>;
-    }
-
+    type DownloadStoreClass = typeof DownloadStore;
 
     /**
      * @gir-type Alias
@@ -820,19 +892,6 @@ export namespace GnomeMaps {
      */
     abstract class OSMNodePrivate {
         static $gtype: GObject.GType<OSMNodePrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
-    type OSMOAuthProxyCallClass = typeof OSMOAuthProxyCall;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class OSMOAuthProxyCallPrivate {
-        static $gtype: GObject.GType<OSMOAuthProxyCallPrivate>;
     }
 
 
@@ -876,18 +935,25 @@ export namespace GnomeMaps {
 
 
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    abstract class _ContactClass {
-        static $gtype: GObject.GType<_ContactClass>;
-    }
+    type ShieldClass = typeof Shield;
 
+    /**
+     * @gir-type Alias
+     */
+    type SpriteSourceClass = typeof SpriteSource;
+
+    /**
+     * @gir-type Alias
+     */
+    type SyncMapSourceClass = typeof SyncMapSource;
 
     /**
      * @gir-type Struct
      */
-    abstract class _ContactStoreClass {
-        static $gtype: GObject.GType<_ContactStoreClass>;
+    abstract class SyncMapSourcePrivate {
+        static $gtype: GObject.GType<SyncMapSourcePrivate>;
     }
 
 

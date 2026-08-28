@@ -54,6 +54,9 @@
       "@girs/gdkpixbuf-2.0": [
             "../gdkpixbuf-2.0/index.d.ts"
       ],
+      "@girs/glibunix-2.0": [
+            "../glibunix-2.0/index.d.ts"
+      ],
       "@girs/gexiv2-0.10": [
             "../gexiv2-0.10/index.d.ts"
       ],

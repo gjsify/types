@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./amtk-5.d.ts"]
+  "include": ["./amtk-5.d.ts","./amtk-5-surface.d.ts"]
 }
 
 

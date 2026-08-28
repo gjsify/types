@@ -382,6 +382,14 @@ export namespace EDataServerUI {
 
         // Methods
         /**
+         * Returns whether the `self` shows any certificate data. The data
+         * is read either by `e_certificate_widget_set_der()` or by
+         * `e_certificate_widget_set_pem()`.
+         * @returns whether shows any data
+         */
+        get_has_data(): boolean;
+
+        /**
          * Updates the content of the `self` with the certificate information
          * described by the `der_data` of the length `der_data_len` in the DER
          * format.
@@ -439,8 +447,6 @@ export namespace EDataServerUI {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.16
      */
@@ -877,8 +883,6 @@ export namespace EDataServerUI {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.28
      */
@@ -927,8 +931,6 @@ export namespace EDataServerUI {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.16
      */
@@ -1041,8 +1043,6 @@ export namespace EDataServerUI {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using
-     * the functions below.
      * @gir-type Class
      * @since 3.30
      */

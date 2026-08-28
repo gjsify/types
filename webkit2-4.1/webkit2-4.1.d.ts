@@ -608,7 +608,7 @@ export namespace WebKit2 {
      */
     enum HardwareAccelerationPolicy {
         /**
-         * Hardware acceleration is enabled/disabled as request by web contents.
+         * Hardware acceleration is enabled/disabled as request by web contents. Deprecated 2.54.
          */
         ON_DEMAND,
         /**
@@ -663,6 +663,10 @@ export namespace WebKit2 {
          * Editable element expects a password
          */
         PASSWORD,
+        /**
+         * Edited field contents will be used for searching data.
+         */
+        SEARCH,
     }
 
 
@@ -12551,6 +12555,7 @@ export namespace WebKit2 {
             "notify::is-muted": (pspec: GObject.ParamSpec) => void;
             "notify::is-playing-audio": (pspec: GObject.ParamSpec) => void;
             "notify::is-web-process-responsive": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification": (pspec: GObject.ParamSpec) => void;
             "notify::microphone-capture-state": (pspec: GObject.ParamSpec) => void;
             "notify::page-id": (pspec: GObject.ParamSpec) => void;
             "notify::related-view": (pspec: GObject.ParamSpec) => void;
@@ -12635,6 +12640,7 @@ export namespace WebKit2 {
             isPlayingAudio: boolean;
             is_web_process_responsive: boolean;
             isWebProcessResponsive: boolean;
+            magnification: number;
             microphone_capture_state: MediaCaptureState;
             microphoneCaptureState: MediaCaptureState;
             page_id: bigint | number;
@@ -13013,6 +13019,19 @@ export namespace WebKit2 {
          * @default true
          */
         get isWebProcessResponsive(): boolean;
+
+        /**
+         * The magnification factor of the {@link WebKit2.WebView} content.
+         * 
+         * The magnification factor represents the visual scaling of the page (similar
+         * to pinch-to-zoom). This is independent of the layout zoom level. Setting
+         * the magnification factor scales the rendered page visually without affecting
+         * page layout or text wrapping.
+         * @since 2.54
+         * @default 1
+         */
+        get magnification(): number;
+        set magnification(val: number);
 
         /**
          * Capture state of the microphone device. Whenever the user grants a media-request sent by the web
@@ -14020,6 +14039,16 @@ export namespace WebKit2 {
         get_is_web_process_responsive(): boolean;
 
         /**
+         * Get the magnification factor of `web_view`.
+         * 
+         * The magnification factor represents the visual scaling of the page (similar
+         * to pinch-to-zoom). This is independent of the layout zoom level (which is
+         * obtained with `webkit_web_view_get_zoom_level()`).
+         * @returns the current magnification factor of `web_view`
+         */
+        get_magnification(): number;
+
+        /**
          * Return the main resource of `web_view`.
          * @returns the main {@link WebKit2.WebResource} of the view    or `null` if nothing has been loaded.
          */
@@ -14932,6 +14961,18 @@ export namespace WebKit2 {
         set_is_muted(muted: boolean): void;
 
         /**
+         * Set the magnification factor of `web_view`.
+         * 
+         * The magnification factor represents the visual scaling of the page (similar
+         * to pinch-to-zoom). This is independent of the layout zoom level (which is
+         * set with `webkit_web_view_set_zoom_level()`). Setting the magnification factor
+         * scales the rendered page visually around the center of the view without
+         * affecting page layout or text wrapping.
+         * @param magnification the magnification factor
+         */
+        set_magnification(magnification: number): void;
+
+        /**
          * Set the microphone capture state of a {@link WebKit2.WebView}.
          * 
          * If {@link WebKit2.Settings.enable_mediastream} is `false`, this method will have no visible effect. Once the
@@ -15678,6 +15719,18 @@ export namespace WebKit2 {
         get_dom_cache_directory(): string | null;
 
         /**
+         * Get the {@link WebKit2.FaviconDatabase} of `manager`.
+         * @returns a {@link WebKit2.FaviconDatabase}, or `null` if website icons are disabled
+         */
+        get_favicon_database(): FaviconDatabase | null;
+
+        /**
+         * Get whether website icons are enabled.
+         * @returns `true` if website icons are enabled, or `false` otherwise.
+         */
+        get_favicons_enabled(): boolean;
+
+        /**
          * Get the {@link WebKit2.WebsiteDataManager.hsts_cache_directory} property.
          * @returns the directory where the HSTS cache is stored or `null` if `manager` is ephemeral.
          */
@@ -15836,6 +15889,16 @@ export namespace WebKit2 {
         remove_finish(result: Gio.AsyncResult): boolean;
 
         /**
+         * Set whether website icons are enabled. Website icons are disabled by default.
+         * When website icons are disabled, the {@link WebKit2.FaviconDatabase} of `manager` is closed and
+         * its reference removed, so `webkit_website_data_manager_get_favicon_database()` will
+         * return `null`. If website icons are enabled again, a new {@link WebKit2.FaviconDatabase} will
+         * be created.
+         * @param enabled value to set
+         */
+        set_favicons_enabled(enabled: boolean): void;
+
+        /**
          * Enable or disable Intelligent Tracking Prevention (ITP).
          * 
          * When ITP is enabled resource load statistics
@@ -15883,11 +15946,14 @@ export namespace WebKit2 {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             "notify::autoplay": (pspec: GObject.ParamSpec) => void;
+            "notify::custom-user-agent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             autoplay: AutoplayPolicy;
+            custom_user_agent: string | null;
+            customUserAgent: string | null;
         }
     }
 
@@ -15895,7 +15961,7 @@ export namespace WebKit2 {
      * View specific website policies.
      * 
      * WebKitWebsitePolicies allows you to configure per-page policies,
-     * currently only autoplay policies are supported.
+     * currently only autoplay and custom user agent policies are supported.
      * @gir-type Class
      * @since 2.30
      */
@@ -15910,6 +15976,24 @@ export namespace WebKit2 {
          * @default WebKit2.AutoplayPolicy.ALLOW_WITHOUT_SOUND
          */
         get autoplay(): AutoplayPolicy;
+
+        /**
+         * The custom user agent string to send for navigations governed by these
+         * {@link WebKit2.WebsitePolicies}, or `null` to use the default user agent.
+         * @since 2.54
+         * @construct-only
+         * @default null
+         */
+        get custom_user_agent(): string | null;
+
+        /**
+         * The custom user agent string to send for navigations governed by these
+         * {@link WebKit2.WebsitePolicies}, or `null` to use the default user agent.
+         * @since 2.54
+         * @construct-only
+         * @default null
+         */
+        get customUserAgent(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -15946,6 +16030,12 @@ export namespace WebKit2 {
          * @returns {@link WebKit2.AutoplayPolicy}
          */
         get_autoplay_policy(): AutoplayPolicy;
+
+        /**
+         * Get the {@link WebKit2.WebsitePolicies.custom_user_agent} property.
+         * @returns the custom user agent string, or `null` if the default    user agent is used
+         */
+        get_custom_user_agent(): string | null;
     }
 
 
@@ -16795,6 +16885,13 @@ export namespace WebKit2 {
         static $gtype: GObject.GType<FeatureList>;
 
         // Methods
+        /**
+         * Finds a feature given its identifier.
+         * @param identifier a {@link WebKit2.Feature} identifier
+         * @returns The feature with the given     `identifier`, or `NULL` if it cannot be found.
+         */
+        find(identifier: string): Feature | null;
+
         /**
          * Gets a feature given its index.
          * @param index index of the feature
@@ -18314,8 +18411,9 @@ export namespace WebKit2 {
         /**
          * Gets the size of the data of types `types` in a {@link WebKit2.WebsiteData}.
          * 
-         * Note that currently the data size is only known for {@link WebKit2.WebsiteDataTypes.DISK_CACHE} data type
-         * so for all other types 0 will be returned.
+         * Note that currently the data size is only known for the {@link WebKit2.WebsiteDataTypes.DISK_CACHE},
+         * {@link WebKit2.WebsiteDataTypes.LOCAL_STORAGE}, {@link WebKit2.WebsiteDataTypes.INDEXEDDB_DATABASES} and
+         * {@link WebKit2.WebsiteDataTypes.DOM_CACHE} data types, so for all other types 0 will be returned.
          * @param types a bitmask  of {@link WebKit2.WebsiteDataTypes}
          * @returns the size of `website_data` for the given `types`.
          */

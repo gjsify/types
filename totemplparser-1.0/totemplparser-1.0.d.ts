@@ -487,6 +487,8 @@ export namespace TotemPlParser {
 
         // Virtual methods
         /**
+         * the generic signal handler for the {@link TotemPlParser.Parser.SignalSignatures.entry_parsed | TotemPlParser.Parser::entry-parsed} signal,
+         * which can be overridden by inheriting classes
          * @param uri 
          * @param metadata 
          * @virtual
@@ -494,12 +496,16 @@ export namespace TotemPlParser {
         vfunc_entry_parsed(uri: string, metadata: never): void;
 
         /**
+         * the generic signal handler for the {@link TotemPlParser.Parser.SignalSignatures.playlist_ended | TotemPlParser.Parser::playlist-ended} signal,
+         * which can be overridden by inheriting classes
          * @param uri 
          * @virtual
          */
         vfunc_playlist_ended(uri: string): void;
 
         /**
+         * the generic signal handler for the {@link TotemPlParser.Parser.SignalSignatures.playlist_started | TotemPlParser.Parser::playlist-started} signal,
+         * which can be overridden by inheriting classes
          * @param uri 
          * @param metadata 
          * @virtual

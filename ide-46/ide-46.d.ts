@@ -35,6 +35,7 @@ import type Panel from '@girs/panel-1';
 import type Adw from '@girs/adw-1';
 import type GtkSource from '@girs/gtksource-5';
 import type Dex from '@girs/dex-1';
+import type GioUnix from '@girs/giounix-2.0';
 
 export namespace Ide {
 
@@ -2949,11 +2950,9 @@ export namespace Ide {
             "notify::system-font-name": (pspec: GObject.ParamSpec) => void;
             "notify::style-manager": (pspec: GObject.ParamSpec) => void;
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
-            "notify::autosave-interval": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
             "notify::register-session": (pspec: GObject.ParamSpec) => void;
             "notify::screensaver-active": (pspec: GObject.ParamSpec) => void;
-            "notify::support-save": (pspec: GObject.ParamSpec) => void;
             "notify::action-group": (pspec: GObject.ParamSpec) => void;
             "notify::application-id": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -15765,7 +15764,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -17105,7 +17104,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -18056,7 +18055,7 @@ export namespace Ide {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -19559,7 +19558,7 @@ export namespace Ide {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -19575,14 +19574,14 @@ export namespace Ide {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -19622,7 +19621,7 @@ export namespace Ide {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -19639,14 +19638,14 @@ export namespace Ide {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -20499,7 +20498,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -21253,7 +21252,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -25206,7 +25205,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -26415,7 +26414,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -27539,7 +27538,7 @@ export namespace Ide {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -27555,14 +27554,14 @@ export namespace Ide {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -27602,7 +27601,7 @@ export namespace Ide {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -27619,14 +27618,14 @@ export namespace Ide {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -32520,7 +32519,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -33310,7 +33309,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -36353,7 +36352,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -37046,9 +37045,11 @@ export namespace Ide {
             "notify::visible": (pspec: GObject.ParamSpec) => void;
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -37127,6 +37128,24 @@ export namespace Ide {
         set accessibleRole(val: Gtk.AccessibleRole);
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -37165,6 +37184,22 @@ export namespace Ide {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Gtk.Widget | null;
+        set input_interceptor(val: Gtk.Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Gtk.Widget | null;
+        set inputInterceptor(val: Gtk.Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -37549,7 +37584,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -37597,7 +37632,7 @@ export namespace Ide {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -37645,6 +37680,13 @@ export namespace Ide {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -37664,6 +37706,13 @@ export namespace Ide {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Gtk.Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -37772,6 +37821,21 @@ export namespace Ide {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Gtk.Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -37856,6 +37920,13 @@ export namespace Ide {
          * @virtual
          */
         vfunc_do_insert_text(text: string, length: number, position: number): number;
+
+        /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
 
         /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
@@ -38573,7 +38644,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -44466,7 +44537,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -46946,7 +47017,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -47586,7 +47657,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -48555,7 +48626,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -48901,7 +48972,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -49164,7 +49235,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -49742,7 +49813,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -49990,7 +50061,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -50377,7 +50448,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -50642,7 +50713,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -51010,7 +51081,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -51487,7 +51558,7 @@ export namespace Ide {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual

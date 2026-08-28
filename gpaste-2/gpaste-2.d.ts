@@ -171,6 +171,10 @@ export namespace GPaste {
 
     const HISTORY_NAME_SETTING: string;
 
+    const IMAGES_PREVIEW_SETTING: string;
+
+    const IMAGES_PREVIEW_SIZE_SETTING: string;
+
     const IMAGES_SUPPORT_SETTING: string;
 
     const LAUNCH_UI_SETTING: string;
@@ -1824,9 +1828,14 @@ export namespace GPaste {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -1845,9 +1854,14 @@ export namespace GPaste {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -2026,13 +2040,13 @@ export namespace GPaste {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, KeybindingProvider.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
      * @gir-type Class
      */
-    class GnomeShellClient extends Gio.DBusProxy implements Gio.AsyncInitable<GnomeShellClient>, Gio.DBusInterface, Gio.Initable {
+    class GnomeShellClient extends Gio.DBusProxy implements KeybindingProvider, Gio.AsyncInitable<GnomeShellClient>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<GnomeShellClient>;
 
         /**
@@ -2184,6 +2198,36 @@ export namespace GPaste {
          * @returns whether the ungrab was succesful or not
          */
         ungrab_accelerator_sync(action: number): boolean;
+
+        /**
+         * Emit the "keybinding-activated" signal on `self`.
+         * @param id the id of the activated shortcut (its dconf key)
+         */
+        emit_keybinding_activated(id: string): void;
+
+        /**
+         * Replace all currently registered shortcuts with `accels`.
+         * @param accels a `null`-terminated (by id) array of {@link GPaste.KeybindingAccelerator}
+         */
+        grab_all(accels: KeybindingAccelerator[]): void;
+
+        /**
+         * Release all currently registered shortcuts.
+         */
+        ungrab_all(): void;
+
+        /**
+         * Replace all currently registered shortcuts with `accels`.
+         * @param accels a `null`-terminated (by id) array of {@link GPaste.KeybindingAccelerator}
+         * @virtual
+         */
+        vfunc_grab_all(accels: KeybindingAccelerator[]): void;
+
+        /**
+         * Release all currently registered shortcuts.
+         * @virtual
+         */
+        vfunc_ungrab_all(): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2396,9 +2440,14 @@ export namespace GPaste {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -2417,9 +2466,14 @@ export namespace GPaste {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -2808,9 +2862,14 @@ export namespace GPaste {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -2829,9 +2888,14 @@ export namespace GPaste {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -3049,6 +3113,18 @@ export namespace GPaste {
         get_history_name(): string;
 
         /**
+         * Get the "images-preview" setting
+         * @returns the value of the "images-preview" setting
+         */
+        get_images_preview(): boolean;
+
+        /**
+         * Get the "images-preview-size" setting
+         * @returns the value of the "images-preview-size" setting
+         */
+        get_images_preview_size(): number;
+
+        /**
          * Get the "images-support" setting
          * @returns the value of the "images-support" setting
          */
@@ -3200,6 +3276,16 @@ export namespace GPaste {
         reset_history_name(): void;
 
         /**
+         * Reset the "images-preview" setting
+         */
+        reset_images_preview(): void;
+
+        /**
+         * Reset the "images-preview-size" setting
+         */
+        reset_images_preview_size(): void;
+
+        /**
          * Reset the "images-support" setting
          */
         reset_images_support(): void;
@@ -3339,6 +3425,18 @@ export namespace GPaste {
          * @param value the new history name
          */
         set_history_name(value: string): void;
+
+        /**
+         * Change the "images-preview" setting
+         * @param value whether to enable or not image previews
+         */
+        set_images_preview(value: boolean): void;
+
+        /**
+         * Change the "images-preview-size" setting
+         * @param value the size of image previews in pixels
+         */
+        set_images_preview_size(value: bigint | number): void;
 
         /**
          * Change the "images-support" setting
@@ -3499,6 +3597,36 @@ export namespace GPaste {
     type GnomeShellClientClass = typeof GnomeShellClient;
 
     /**
+     * Represents a global shortcut to be registered with a {@link GPaste.KeybindingProvider}.
+     * Terminate an array of these with an entry whose `id` is `null`.
+     * @gir-type Struct
+     */
+    class KeybindingAccelerator {
+        static $gtype: GObject.GType<KeybindingAccelerator>;
+
+        // Fields
+        id: string;
+
+        accelerator: string;
+
+        description: string;
+
+        // Constructors
+
+        constructor(properties?: Partial<{
+            id: string;
+            accelerator: string;
+            description: string;
+        }>);
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type KeybindingProviderInterface = typeof KeybindingProvider;
+
+    /**
      * @gir-type Alias
      */
     type ScreensaverClientClass = typeof ScreensaverClient;
@@ -3507,6 +3635,66 @@ export namespace GPaste {
      * @gir-type Alias
      */
     type SettingsClass = typeof Settings;
+
+    namespace KeybindingProvider {
+        /**
+         * Interface for implementing KeybindingProvider.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+
+            // Virtual methods
+            /**
+             * Replace all currently registered shortcuts with `accels`.
+             * @param accels a `null`-terminated (by id) array of {@link GPaste.KeybindingAccelerator}
+             * @virtual
+             */
+            vfunc_grab_all(accels: KeybindingAccelerator[]): void;
+
+            /**
+             * Release all currently registered shortcuts.
+             * @virtual
+             */
+            vfunc_ungrab_all(): void;
+        }
+
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface KeybindingProviderNamespace {
+        $gtype: GObject.GType<KeybindingProvider>;
+        prototype: KeybindingProvider;
+    }
+    /**
+     * @gir-type Interface
+     */
+    interface KeybindingProvider extends GObject.Object, KeybindingProvider.Interface {
+
+        // Methods
+        /**
+         * Emit the "keybinding-activated" signal on `self`.
+         * @param id the id of the activated shortcut (its dconf key)
+         */
+        emit_keybinding_activated(id: string): void;
+
+        /**
+         * Replace all currently registered shortcuts with `accels`.
+         * @param accels a `null`-terminated (by id) array of {@link GPaste.KeybindingAccelerator}
+         */
+        grab_all(accels: KeybindingAccelerator[]): void;
+
+        /**
+         * Release all currently registered shortcuts.
+         */
+        ungrab_all(): void;
+    }
+
+
+    export const KeybindingProvider: KeybindingProviderNamespace & {
+        new (): KeybindingProvider; // This allows `obj instanceof KeybindingProvider`
+    };
 
     /**
      * Name of the imported GIR library

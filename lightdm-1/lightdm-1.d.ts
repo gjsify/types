@@ -103,7 +103,7 @@ export namespace LightDM {
          */
         QUESTION,
         /**
-         * prompt is for secret information.  The entered information should be obscured so it can't be publically visible.
+         * prompt is for secret information.  The entered information should be obscured so it can't be publicly visible.
          */
         SECRET,
     }
@@ -218,7 +218,7 @@ export namespace LightDM {
     function get_os_version(): string | null;
 
     /**
-     * Get a word descibing the OS version, suitable for checking which version of the OS this greeter is running on.
+     * Get a word describing the OS version, suitable for checking which version of the OS this greeter is running on.
      * e.g. "16.04"
      * @returns a string (VERSION_ID variable from /etc/os-release) or `null` if not set.
      */

@@ -180,6 +180,7 @@ export namespace Devhelp {
             "notify::is-muted": (pspec: GObject.ParamSpec) => void;
             "notify::is-playing-audio": (pspec: GObject.ParamSpec) => void;
             "notify::is-web-process-responsive": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification": (pspec: GObject.ParamSpec) => void;
             "notify::microphone-capture-state": (pspec: GObject.ParamSpec) => void;
             "notify::page-id": (pspec: GObject.ParamSpec) => void;
             "notify::related-view": (pspec: GObject.ParamSpec) => void;
@@ -2893,6 +2894,7 @@ export namespace Devhelp {
             "notify::is-muted": (pspec: GObject.ParamSpec) => void;
             "notify::is-playing-audio": (pspec: GObject.ParamSpec) => void;
             "notify::is-web-process-responsive": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification": (pspec: GObject.ParamSpec) => void;
             "notify::microphone-capture-state": (pspec: GObject.ParamSpec) => void;
             "notify::page-id": (pspec: GObject.ParamSpec) => void;
             "notify::related-view": (pspec: GObject.ParamSpec) => void;

@@ -39,6 +39,7 @@ export namespace GstInsertBin {
              * 
              * Same as `gst_insert_bin_append()`
              * @signal
+             * @since 1.2
              * @action
              * @run-last
              */
@@ -50,6 +51,7 @@ export namespace GstInsertBin {
              * 
              * Same as `gst_insert_bin_insert_after()`
              * @signal
+             * @since 1.2
              * @action
              * @run-last
              */
@@ -60,6 +62,7 @@ export namespace GstInsertBin {
              * 
              * Same as `gst_insert_bin_insert_before()`
              * @signal
+             * @since 1.2
              * @action
              * @run-last
              */
@@ -70,6 +73,7 @@ export namespace GstInsertBin {
              * 
              * Same as `gst_insert_bin_prepend()`
              * @signal
+             * @since 1.2
              * @action
              * @run-last
              */
@@ -79,6 +83,7 @@ export namespace GstInsertBin {
              * 
              * Same as `gst_insert_bin_remove()`
              * @signal
+             * @since 1.2
              * @action
              * @run-last
              */
@@ -105,6 +110,30 @@ export namespace GstInsertBin {
      * this callback will be called from, it could be called before the action
      * returns or it could be called later from another thread. The signature of
      * this callback GstInsertBinCallback().
+     * 
+     * Apart from the library API, since 1.24 insertbin can also be found in the
+     * registry:
+     * 
+     * ``` C
+     *   GstElement *pipeline, *insertbin, *videoflip;
+     * 
+     *   gst_init (NULL, NULL);
+     *   pipeline =
+     *       gst_parse_launch ("videotestsrc ! insertbin name=i ! autovideosink",
+     *       NULL);
+     * 
+     *   ...
+     * 
+     *   insertbin = gst_bin_get_by_name (GST_BIN (pipeline), "i");
+     *   videoflip = gst_element_factory_make ("videoflip", NULL);
+     * 
+     *   ...
+     * 
+     *   g_object_set (videoflip, "method", 1, NULL);
+     *   g_signal_emit_by_name (insertbin, "append", videoflip, NULL, NULL);
+     * 
+     *   ...
+     * ```
      * @gir-type Class
      * @since 1.2
      */

@@ -117,6 +117,28 @@ export namespace GstNet {
     function ptp_init(clock_id: bigint | number, interfaces: string[] | null): boolean;
 
     /**
+     * Initialize the GStreamer PTP subsystem and create a PTP ordinary clock in
+     * slave-only mode according to the `config`.
+     * 
+     * `config` is a {@link Gst.Structure} with the following optional fields:
+     * * `guint64` `clock-id`: The clock ID to use for the local clock. If the
+     *     clock-id is not provided or `GST_PTP_CLOCK_ID_NONE` is provided, a clock
+     *     id is automatically generated from the MAC address of the first network
+     *     interface.
+     * * {@link GObject.Strv} `interfaces`: The interface names to listen on for PTP packets. If
+     *     none are provided then all compatible interfaces will be used.
+     * * `guint` `ttl`: The TTL to use for multicast packets sent out by GStreamer.
+     *     This defaults to 1, i.e. packets will not leave the local network.
+     * 
+     * This function is automatically called by `gst_ptp_clock_new()` with default
+     * parameters if it wasn't called before.
+     * @param config Configuration for initializing the GStreamer PTP subsystem
+     * @returns `true` if the GStreamer PTP clock subsystem could be initialized.
+     * @since 1.24
+     */
+    function ptp_init_full(config: Gst.Structure): boolean;
+
+    /**
      * Check if the GStreamer PTP clock subsystem is initialized.
      * @returns `true` if the GStreamer PTP clock subsystem is initialized.
      * @since 1.6
@@ -325,6 +347,14 @@ export namespace GstNet {
         /** @signal */
         emit<K extends keyof NetClientClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetClientClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+        /**
+         * Clears any cached {@link GstNet.NetClientClock} clocks.
+         * All references should be released beforehand.
+         * Mainly used for testing.
+         */
+        static deinit(): void;
     }
 
 
@@ -725,7 +755,7 @@ export namespace GstNet {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, domain: number): PtpClock;
+        static ["new"](name: string | null, domain: number): PtpClock;
 
         // Signals
         /** @signal */

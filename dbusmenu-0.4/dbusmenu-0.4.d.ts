@@ -510,27 +510,37 @@ export namespace Dbusmenu {
         // Properties
         /**
          * @construct-only
+         * @default null
          */
         get dbus_name(): string;
 
         /**
          * @construct-only
+         * @default null
          */
         get dbusName(): string;
 
         /**
          * @construct-only
+         * @default null
          */
         get dbus_object(): string;
 
         /**
          * @construct-only
+         * @default null
          */
         get dbusObject(): string;
 
+        /**
+         * @default false
+         */
         get group_events(): boolean;
         set group_events(val: boolean);
 
+        /**
+         * @default false
+         */
         get groupEvents(): boolean;
         set groupEvents(val: boolean);
 
@@ -743,6 +753,7 @@ export namespace Dbusmenu {
         // Properties
         /**
          * @construct-only
+         * @default -1
          */
         get id(): number;
 
@@ -779,12 +790,14 @@ export namespace Dbusmenu {
 
         // Virtual methods
         /**
+         * Slot for {@link Dbusmenu.Menuitem.SignalSignatures.child_added | Dbusmenu.Menuitem::child-added}.
          * @param position 
          * @virtual
          */
         vfunc_child_added(position: number): void;
 
         /**
+         * Slot for {@link Dbusmenu.Menuitem.SignalSignatures.child_moved | Dbusmenu.Menuitem::child-moved}.
          * @param newpos 
          * @param oldpos 
          * @virtual
@@ -792,6 +805,7 @@ export namespace Dbusmenu {
         vfunc_child_moved(newpos: number, oldpos: number): void;
 
         /**
+         * Slot for {@link Dbusmenu.Menuitem.SignalSignatures.child_removed | Dbusmenu.Menuitem::child-removed}.
          * @virtual
          */
         vfunc_child_removed(): void;
@@ -816,6 +830,7 @@ export namespace Dbusmenu {
         vfunc_handle_event(name: string, variant: GLib.Variant, timestamp: number): void;
 
         /**
+         * Slot for {@link Dbusmenu.Menuitem.SignalSignatures.show_to_user | Dbusmenu.Menuitem::show-to-user}.
          * @param timestamp 
          * @param cb_data 
          * @virtual
@@ -1284,11 +1299,13 @@ export namespace Dbusmenu {
         // Properties
         /**
          * @construct-only
+         * @default /com/canonical/dbusmenu
          */
         get dbus_object(): string;
 
         /**
          * @construct-only
+         * @default /com/canonical/dbusmenu
          */
         get dbusObject(): string;
 
@@ -1300,6 +1317,7 @@ export namespace Dbusmenu {
 
         /**
          * @read-only
+         * @default 3
          */
         get version(): number;
 

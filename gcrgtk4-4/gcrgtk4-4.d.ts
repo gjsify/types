@@ -473,7 +473,7 @@ export namespace GcrGtk4 {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual

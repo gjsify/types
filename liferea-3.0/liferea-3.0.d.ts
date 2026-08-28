@@ -17,15 +17,16 @@ import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type Gtk from '@girs/gtk-3.0';
-import type xlib from '@girs/xlib-2.0';
-import type Gdk from '@girs/gdk-3.0';
+import type Gtk from '@girs/gtk-4.0';
+import type Gsk from '@girs/gsk-4.0';
+import type Graphene from '@girs/graphene-1.0';
+import type Gdk from '@girs/gdk-4.0';
 import type cairo from 'cairo';
+import type PangoCairo from '@girs/pangocairo-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type Atk from '@girs/atk-1.0';
 
 export namespace Liferea {
 
@@ -47,15 +48,6 @@ export namespace Liferea {
     /**
      * @gir-type Enum
      */
-    enum itemViewMode {
-        SINGLE_ITEM,
-        NODE_INFO,
-    }
-
-
-    /**
-     * @gir-type Enum
-     */
     enum lifereaIcon {
         CON_UNREAD,
         CON_FLAG,
@@ -65,6 +57,19 @@ export namespace Liferea {
         CON_VFOLDER,
         CON_NEWSBIN,
         AX_ICONS,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    enum nodeSourceState {
+        NONE,
+        IN_PROGRESS,
+        ACTIVE,
+        AUTH_FAILED,
+        AUTH_CHALLENGE,
+        MIGRATE,
     }
 
 
@@ -95,6 +100,8 @@ export namespace Liferea {
     enum request_state {
         PENDING,
         PROCESSING,
+        FILTERING,
+        FAILED,
         FINISHED,
     }
 
@@ -142,13 +149,6 @@ export namespace Liferea {
      */
     function auth_info_store(subscription: null): void;
 
-    function download_show(): void;
-
-    /**
-     * @param url 
-     */
-    function download_url(url: string): void;
-
     /**
      * Get URL from enclosure string
      * @param str enclosure string to parse
@@ -157,14 +157,11 @@ export namespace Liferea {
     function enclosure_get_url(str: string): string;
 
     /**
-     * Serialize enclosure infos to string.
-     * @param url the enclosure URL
-     * @param mime the MIME type (optional, can be NULL)
-     * @param size the enclosure size (optional, can be 0, and also -1)
-     * @param downloaded downloading state (TRUE=downloaded)
-     * @returns new string (to be free'd using g_free)
+     * Serializes the enclosure to JSON using a JsonBuilder.
+     * @param enclosure the enclosure
+     * @param b the JSON builder
      */
-    function enclosure_values_to_string(url: string, mime: string, size: bigint | number, downloaded: boolean): string;
+    function enclosure_to_json(enclosure: enclosurePtr, b: Json.Builder): void;
 
     /**
      * Takes a file name relative to "pixmaps" directory and tries to load the
@@ -197,41 +194,6 @@ export namespace Liferea {
      * @returns TRUE on success
      */
     function node_provider_request_add(provider: nodeProviderPtr): boolean;
-
-    /**
-     * Registers a new node source type. Needs to be called before feed list import!
-     * To be used only via NodeSourceTypeActivatable
-     * @param iface the type interface to register
-     */
-    function node_source_type_register(iface: typeof NodeSourceProvider): void;
-
-    /**
-     * @param action 
-     * @param parameter 
-     * @param user_data 
-     */
-    function on_action_launch_item_in_browser(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: null): void;
-
-    /**
-     * @param action 
-     * @param parameter 
-     * @param user_data 
-     */
-    function on_action_launch_item_in_external_browser(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: null): void;
-
-    /**
-     * @param action 
-     * @param parameter 
-     * @param user_data 
-     */
-    function on_action_launch_item_in_tab(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: null): void;
-
-    /**
-     * @param action 
-     * @param parameter 
-     * @param user_data 
-     */
-    function on_remove_items_activate(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: null): void;
 
     /**
      * @returns the name of the currently configured social bookmarking site.
@@ -292,7 +254,7 @@ export namespace Liferea {
     /**
      * @param state 
      */
-    function update_state_get_lastmodified(state: updateStatePtr): number;
+    function update_state_get_lastmodified(state: updateStatePtr): string;
 
     /**
      * @param state 
@@ -316,7 +278,7 @@ export namespace Liferea {
      * @param state 
      * @param lastmodified 
      */
-    function update_state_set_lastmodified(state: updateStatePtr, lastmodified: bigint | number): void;
+    function update_state_set_lastmodified(state: updateStatePtr, lastmodified: string): void;
 
     /**
      * @gir-type Callback
@@ -342,8 +304,8 @@ export namespace Liferea {
     /**
      * @gir-type Callback
      */
-    interface update_result_cb {
-        (result: UpdateResult, flags: updateFlags): void;
+    interface update_flow_cb {
+        (job: UpdateJob): boolean;
     }
 
     /**
@@ -367,21 +329,19 @@ export namespace Liferea {
     /**
      * @gir-type Flags
      */
-    enum nodeSourceState {
-        NONE,
-        IN_PROGRESS,
-        ACTIVE,
-        NO_AUTH,
-        MIGRATE,
+    enum nodeSourceUpdate {
+        NODE_SOURCE_UPDATE_ONLY_LIST,
     }
 
 
     /**
      * @gir-type Flags
      */
-    enum nodeSourceUpdate {
-        LIST,
-        LOGIN,
+    enum nodeSyncState {
+        IN_SYNC,
+        DIRTY_FEED,
+        DIRTY_ITEMS,
+        INITIAL_IMPORT,
     }
 
 
@@ -399,7 +359,6 @@ export namespace Liferea {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
-            "notify::app-menu": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
             "notify::register-session": (pspec: GObject.ParamSpec) => void;
             "notify::screensaver-active": (pspec: GObject.ParamSpec) => void;
@@ -452,7 +411,10 @@ export namespace Liferea {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-        static rebuild_css(): void;
+        /**
+         * Get the LifereaApplication instance
+         */
+        static get_instance(): Application;
 
         /**
          * Shutdown GApplication
@@ -526,6 +488,33 @@ export namespace Liferea {
          * @internal
          */
         $signals: Browser.SignalSignatures;
+
+        // Fields
+        renderWidget: Gtk.Widget;
+
+        container: Gtk.Widget;
+
+        toolbar: Gtk.Widget;
+
+        forward: Gtk.Widget;
+
+        back: Gtk.Widget;
+
+        urlentry: Gtk.Widget;
+
+        overlay: Gtk.Widget;
+
+        urlHoverLabel: Gtk.Widget;
+
+        urlHoverTimeout: number;
+
+        forceInternalBrowsing: boolean;
+
+        name: string;
+
+        url: string;
+
+        content: string;
 
         // Constructors
         constructor(properties?: Partial<Browser.ConstructorProps>, ...args: any[]);
@@ -614,6 +603,13 @@ export namespace Liferea {
         set_zoom(zoom: number): void;
 
         /**
+         * Associates the tab with an name to be used with
+         * browser_tabs_get/raise_tab()
+         * @param name the name
+         */
+        tabs_set_tab_name(name: string): void;
+
+        /**
          * @param title 
          */
         title_changed(title: string): void;
@@ -622,17 +618,10 @@ export namespace Liferea {
 
     namespace BrowserTabs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            "notify::head-lines": (pspec: GObject.ParamSpec) => void;
-            "notify::notebook": (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            head_lines: Gtk.Widget;
-            headLines: Gtk.Widget;
-            notebook: Gtk.Notebook;
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -640,22 +629,6 @@ export namespace Liferea {
      */
     class BrowserTabs extends GObject.Object {
         static $gtype: GObject.GType<BrowserTabs>;
-
-        // Properties
-        /**
-         * @read-only
-         */
-        get head_lines(): Gtk.Widget;
-
-        /**
-         * @read-only
-         */
-        get headLines(): Gtk.Widget;
-
-        /**
-         * @read-only
-         */
-        get notebook(): Gtk.Notebook;
 
         /**
          * Compile-time signal type information.
@@ -688,10 +661,12 @@ export namespace Liferea {
 
         // Static methods
         /**
-         * Requests the tab to change zoom level.
-         * @param zoom 1 for zoom in, -1 for zoom out, 0 for reset
+         * If you have set a "name" on a htmlview with `g_object_set_data()`
+         * you can raise the tab for it using this function. It also returns
+         * the browser widget.
+         * @param name the name
          */
-        static do_zoom(zoom: number): void;
+        static focus_tab(name: string): Browser | null;
 
         /**
          * Used to determine which HTML view (a tab or the headlines view)
@@ -701,9 +676,62 @@ export namespace Liferea {
         static get_active_htmlview(): Browser | null;
 
         /**
+         * If you have set a "name" on a htmlview with `g_object_set_data()`
+         * you can search for it using this function.
+         * @param name the name
+         */
+        static get_tab(name: string): Browser | null;
+
+        /**
          * makes the headline tab visible
          */
         static show_headlines(): void;
+    }
+
+
+    namespace ContentView {
+        // Signal signatures
+        interface SignalSignatures extends Browser.SignalSignatures {
+            "notify::hidden-urlbar": (pspec: GObject.ParamSpec) => void;
+            "notify::renderwidget": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Browser.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class ContentView extends Browser {
+        static $gtype: GObject.GType<ContentView>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ContentView.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<ContentView.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof ContentView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof ContentView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentView.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof ContentView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
 
@@ -722,6 +750,30 @@ export namespace Liferea {
              * @run-last
              */
             "new-items": (arg0: null) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "node-added": (arg0: string) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "node-moved": (arg0: string) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "node-removed": (arg0: string) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "node-selected": (arg0: string) => void;
             /**
              * @signal
              * @action
@@ -772,7 +824,7 @@ export namespace Liferea {
          * Adds a folder to the feed list without any user interaction.
          * @param title the title of the new folder.
          */
-        static add_folder(title: string): void;
+        static add_folder(title: string): Node;
 
         /**
          * Adds a new subscription to the feed list. Does not check for duplicates.
@@ -815,14 +867,19 @@ export namespace Liferea {
          */
         static get_unread_item_count(): number;
 
-        static is_writable(): boolean;
-
         /**
          * Triggers a recursive mark-all-read on the given node
          * and updates the feed list afterwards.
          * @param node the node to start with
          */
         static mark_all_read(node: Node): void;
+
+        /**
+         * Marks `node` and its parents dirty so unread/item counters are
+         * recomputed lazily in a coalesced flush.
+         * @param node the node whose counters need to be refreshed
+         */
+        static mark_node_recount(node: Node): void;
 
         /**
          * To be called when node subscription update gained new items.
@@ -868,6 +925,17 @@ export namespace Liferea {
         static node_removed(node: Node): void;
 
         /**
+         * To be called when a feed is moved in the feed list. Will trigger
+         * relocation of the node in the feedlist. If "interactive" is TRUE
+         * will also sync to remote if needed.
+         * @param node the moved node
+         * @param newParent the new parent node
+         * @param insertPos insert position in new parent children list
+         * @param interactive TRUE if move was caused by user in UI
+         */
+        static node_was_moved(node: Node, newParent: Node, insertPos: number, interactive: boolean): void;
+
+        /**
          * To be called when a feed is updated and has
          * new or dropped items forcing a node unread count
          * update for all affected nodes in the feed list.
@@ -887,6 +955,18 @@ export namespace Liferea {
          * TODO: use signal instead
          */
         static reset_new_item_count(): void;
+
+        /**
+         * `param` node: the node to select
+         * @param node 
+         */
+        static set_selected(node: Node): void;
+
+        /**
+         * Serialize feedlist to JSON with infos on feed updates and node
+         * source sync states. Primarily used by update monitor.
+         */
+        static to_json(): string;
     }
 
 
@@ -917,10 +997,6 @@ export namespace Liferea {
         id: number;
 
         readStatus: boolean;
-
-        popupStatus: boolean;
-
-        updateStatus: boolean;
 
         flagStatus: boolean;
 
@@ -990,6 +1066,12 @@ export namespace Liferea {
         static load(id: bigint | number): Item | null;
 
         // Methods
+        /**
+         * Adds the given enclosure to the item. Takes ownership of the enclosure.
+         * @param enclosure the enclosure to add
+         */
+        add_enclosure(enclosure: enclosurePtr): void;
+
         /**
          * Method to create a copy of an item. The copy will be
          * linked to the original item to allow state update
@@ -1090,7 +1172,43 @@ export namespace Liferea {
              * @action
              * @run-last
              */
-            "item-updated": (arg0: string) => void;
+            "all-items-removed": () => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "item-added": (arg0: number) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "item-batch-end": (arg0: null) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "item-batch-start": () => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "item-removed": (arg0: number) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "item-selected": (arg0: number) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "item-updated": (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -1167,10 +1285,21 @@ export namespace Liferea {
 
     namespace ItemListView {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "selection-changed": (arg0: number) => void;
+            "notify::wide-view": (pspec: GObject.ParamSpec) => void;
+        }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            wide_view: boolean;
+            wideView: boolean;
+        }
     }
 
     /**
@@ -1178,6 +1307,19 @@ export namespace Liferea {
      */
     class ItemListView extends GObject.Object {
         static $gtype: GObject.GType<ItemListView>;
+
+        // Properties
+        /**
+         * @default false
+         */
+        get wide_view(): boolean;
+        set wide_view(val: boolean);
+
+        /**
+         * @default false
+         */
+        get wideView(): boolean;
+        set wideView(val: boolean);
 
         /**
          * Compile-time signal type information.
@@ -1215,11 +1357,6 @@ export namespace Liferea {
         contains_id(id: bigint | number): boolean;
 
         /**
-         * @param enabled 
-         */
-        enable_favicon_column(enabled: boolean): void;
-
-        /**
          * Returns the GtkWidget used by the ItemListView instance.
          * @returns a GtkWidget
          */
@@ -1243,154 +1380,6 @@ export namespace Liferea {
          * @param sortReversed TRUE for ascending order
          */
         set_sort_column(sortType: nodeViewSortType, sortReversed: boolean): void;
-    }
-
-
-    namespace ItemView {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            "notify::html-view": (pspec: GObject.ParamSpec) => void;
-            "notify::item-list-view": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            html_view: Browser;
-            htmlView: Browser;
-            item_list_view: ItemListView;
-            itemListView: ItemListView;
-        }
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class ItemView extends GObject.Object {
-        static $gtype: GObject.GType<ItemView>;
-
-        // Properties
-        /**
-         * @read-only
-         */
-        get html_view(): Browser;
-
-        /**
-         * @read-only
-         */
-        get htmlView(): Browser;
-
-        /**
-         * @read-only
-         */
-        get item_list_view(): ItemListView;
-
-        /**
-         * @read-only
-         */
-        get itemListView(): ItemListView;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: ItemView.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<ItemView.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof ItemView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ItemView.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof ItemView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ItemView.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof ItemView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ItemView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Static methods
-        /**
-         * Requests the item view to change zoom level.
-         * @param zoom 1 for zoom in, -1 for zoom out, 0 for reset
-         */
-        static do_zoom(zoom: number): void;
-
-        /**
-         * Returns the effective layout mode. Never returns NODE_VIEW_MODE_AUTO.
-         */
-        static get_effective_layout(): number;
-
-        /**
-         * Returns the viewing mode property of the currently displayed item set.
-         */
-        static get_layout(): number;
-
-        /**
-         * Launch the given URL in the currently active HTML view.
-         * @param url the link to load
-         * @param internal TRUE if internal browsing is to be enforced
-         */
-        static launch_URL(url: string, internal: boolean): void;
-
-        /**
-         * Moves the cursor in the item list step times.
-         * Negative value means moving backwards.
-         * @param step moving steps
-         */
-        static move_cursor(step: number): void;
-
-        /**
-         * Moves the cursor in the item list to the first element.
-         */
-        static move_cursor_to_first(): void;
-
-        /**
-         * Paging/skimming the item view. If possible scrolls
-         * down otherwise it triggers Next-Unread.
-         */
-        static scroll(): void;
-
-        /**
-         * Selects the nth enclosure in the enclosure list view currently presented.
-         * @param position the position to select
-         */
-        static select_enclosure(position: number): void;
-
-        /**
-         * Switches the layout for the given viewing mode.
-         * @param newMode new view mode (NODE_VIEW_MODE_*)
-         */
-        static set_layout(newMode: nodeViewType): void;
-
-        /**
-         * Set/unset the display mode of the item view.
-         * @param mode item view mode constant
-         */
-        static set_mode(mode: itemViewMode): void;
-
-        /**
-         * Invokes a change of the href attribute in WebView's <link> tag
-         */
-        static style_update(): void;
-
-        /**
-         * Requests updating the rendering of a all displayed items.
-         */
-        static update_all_items(): void;
-
-        // Methods
-        /**
-         * Selects and open the next enclosure in the list.
-         */
-        open_next_enclosure(): void;
     }
 
 
@@ -1524,6 +1513,8 @@ export namespace Liferea {
 
         sortReversed: boolean;
 
+        syncState: nodeSyncState;
+
         needsUpdate: boolean;
 
         needsRecount: boolean;
@@ -1569,10 +1560,11 @@ export namespace Liferea {
 
         // Methods
         /**
-         * Helper function to be used with `node_foreach_child()`
+         * Helper function to be used with `node_foreach_child_data()`
          * to mass-auto-update subscriptions.
+         * @param user_data update flags
          */
-        auto_update_subscription(): void;
+        auto_update_subscription(user_data: null): void;
 
         /**
          * Query whether a feed be added to the given node.
@@ -1654,25 +1646,6 @@ export namespace Liferea {
         remove(): void;
 
         /**
-         * Set a node's new parent and update UI. If a node already has a parent,
-         * it will be removed from its parent children list.
-         * @param new_parent nodes new parent
-         */
-        reparent(new_parent: Node): void;
-
-        /**
-         * Helper function to be used with `node_foreach_child()`
-         * to mass-auto-update subscriptions.
-         * @param now the current timestamp
-         */
-        reset_update_counter(now: bigint | number): void;
-
-        /**
-         * Saves the given node to cache.
-         */
-        save(): void;
-
-        /**
          * Exports all items in this node as a RSS2 feed.
          * @param filename the destination file name
          */
@@ -1701,7 +1674,9 @@ export namespace Liferea {
          * parent node of the currently selected feed or the
          * selected folder will be used.
          * 
-         * To be used before calling `feedlist_node_added()`
+         * To be used before calling `feedlist_node_added()`.
+         * 
+         * Do not use to move nodes, only for new nodes!
          * @param parent the parent node (optional can be NULL)
          * @param position insert position (optional can be 0)
          */
@@ -1750,7 +1725,7 @@ export namespace Liferea {
         update_favicon(): void;
 
         /**
-         * Helper function to be used with `node_foreach_child()`
+         * Helper function to be used with `node_foreach_child_data()`
          * to mass-update subscriptions.
          * @param user_data update flags
          */
@@ -1763,9 +1738,12 @@ export namespace Liferea {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             "notify::browser-tabs": (pspec: GObject.ParamSpec) => void;
             "notify::builder": (pspec: GObject.ParamSpec) => void;
-            "notify::feed-list": (pspec: GObject.ParamSpec) => void;
-            "notify::item-list": (pspec: GObject.ParamSpec) => void;
-            "notify::item-view": (pspec: GObject.ParamSpec) => void;
+            "notify::feedlist": (pspec: GObject.ParamSpec) => void;
+            "notify::htmlview": (pspec: GObject.ParamSpec) => void;
+            "notify::itemlist": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-disabled": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -1773,12 +1751,14 @@ export namespace Liferea {
             browser_tabs: BrowserTabs;
             browserTabs: BrowserTabs;
             builder: Gtk.Builder;
-            feed_list: FeedList;
-            feedList: FeedList;
-            item_list: ItemList;
-            itemList: ItemList;
-            item_view: ItemView;
-            itemView: ItemView;
+            feedlist: FeedList;
+            htmlview: Browser;
+            itemlist: ItemList;
+            layout_disabled: boolean;
+            layoutDisabled: boolean;
+            layout_mode: number;
+            layoutMode: number;
+            visibility: boolean;
         }
     }
 
@@ -1807,32 +1787,47 @@ export namespace Liferea {
         /**
          * @read-only
          */
-        get feed_list(): FeedList;
+        get feedlist(): FeedList;
 
         /**
          * @read-only
          */
-        get feedList(): FeedList;
+        get htmlview(): Browser;
 
         /**
          * @read-only
          */
-        get item_list(): ItemList;
+        get itemlist(): ItemList;
 
         /**
-         * @read-only
+         * @default false
          */
-        get itemList(): ItemList;
+        get layout_disabled(): boolean;
+        set layout_disabled(val: boolean);
 
         /**
-         * @read-only
+         * @default false
          */
-        get item_view(): ItemView;
+        get layoutDisabled(): boolean;
+        set layoutDisabled(val: boolean);
 
         /**
-         * @read-only
+         * @default 2
          */
-        get itemView(): ItemView;
+        get layout_mode(): number;
+        set layout_mode(val: number);
+
+        /**
+         * @default 2
+         */
+        get layoutMode(): number;
+        set layoutMode(val: number);
+
+        /**
+         * @default true
+         */
+        get visibility(): boolean;
+        set visibility(val: boolean);
 
         /**
          * Compile-time signal type information.
@@ -1863,6 +1858,24 @@ export namespace Liferea {
 
         // Static methods
         /**
+         * @param name 
+         * @param enable 
+         */
+        static action_enable(name: string, enable: boolean): void;
+
+        /**
+         * Copy a text to clipboard
+         * @param str the string to copy to the clipboard
+         */
+        static copy_to_clipboard(str: string): void;
+
+        /**
+         * Finds the next unread item.
+         * @param startId the item id to start at (or NULL for starting at the top)
+         */
+        static find_next_unread(startId: bigint | number): null;
+
+        /**
          * Returns the Liferea main window.
          */
         static get_window(): Gtk.Widget;
@@ -1875,30 +1888,9 @@ export namespace Liferea {
         static lookup(name: string): Gtk.Widget | null;
 
         /**
-         * Invokes a rebuild of the WebView CSS.
-         */
-        static rebuild_css(): void;
-
-        /**
-         * Save the position of the Liferea main window.
-         */
-        static save_position(): void;
-
-        /**
-         * Sets the toolbar to a particular style
-         * @param toolbar_style text string containing the type of style to use
-         */
-        static set_toolbar_style(toolbar_style: string): void;
-
-        /**
          * Show the main window.
          */
         static show_window(): void;
-
-        /**
-         * Toggles main window visibility.
-         */
-        static toggle_visibility(): void;
     }
 
 
@@ -1932,9 +1924,11 @@ export namespace Liferea {
 
         owner: null;
 
-        callback: update_result_cb;
+        callback: update_flow_cb;
 
         user_data: null;
+
+        destroy: GLib.DestroyNotify;
 
         flags: updateFlags;
 
@@ -1944,6 +1938,10 @@ export namespace Liferea {
         constructor(properties?: Partial<UpdateJob.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        static ["new"](owner: null, request: UpdateRequest, callback: update_flow_cb, flags: updateFlags): UpdateJob;
+
+        static new_flow(owner: null, callback: update_flow_cb, flags: updateFlags): UpdateJob;
 
         // Signals
         /** @signal */
@@ -1960,16 +1958,23 @@ export namespace Liferea {
 
         // Static methods
         /**
-         * Queues the given job. The job might be delayed if other requests are pending.
-         * @param job the job to queue
-         * @param flags request/result processing flags
+         * Called by job queue to processes the result of an update job.
+         * @param user_data user data passed to the result processing callback
          */
-        static queue_add(job: null, flags: updateFlags): void;
+        static process_result(user_data: null): void;
 
         // Methods
         /**
+         * To be called when an update job has failed. Triggers
+         * the job queue and specific result processing callback.
+         * Takes ownership of `error` string.
+         * @param error error message
+         */
+        failed(error: string): void;
+
+        /**
          * To be called when an update job has been executed. Triggers
-         * the job specific result processing callback.
+         * the job queue and specific result processing callback.
          */
         finished(): void;
 
@@ -1979,6 +1984,82 @@ export namespace Liferea {
          * @returns enum state
          */
         get_state(): number;
+    }
+
+
+    namespace UpdateJobQueue {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "update-running": () => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class UpdateJobQueue extends GObject.Object {
+        static $gtype: GObject.GType<UpdateJobQueue>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: UpdateJobQueue.SignalSignatures;
+
+        // Fields
+        jobs: null[];
+
+        currentJobCount: number;
+
+        maxCount: number;
+
+        // Constructors
+        constructor(properties?: Partial<UpdateJobQueue.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof UpdateJobQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateJobQueue.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof UpdateJobQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UpdateJobQueue.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof UpdateJobQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UpdateJobQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+        /**
+         * Queues the given job. The job might be delayed if other requests are pending.
+         * @param job the job to queue
+         * @param flags request/result processing flags
+         */
+        static add(job: null, flags: updateFlags): void;
+
+        /**
+         * Queues the given job for result processing. The job might be delayed if other requests are pending.
+         * @param job the job to finish
+         */
+        static finish(job: null): void;
+
+        /**
+         * @param b a JsonBuilder to append to
+         */
+        static to_json(b: null): void;
     }
 
 
@@ -2008,7 +2089,11 @@ export namespace Liferea {
         // Fields
         source: string;
 
+        method: string;
+
         postdata: string;
+
+        contentType: string;
 
         authValue: string;
 
@@ -2021,7 +2106,7 @@ export namespace Liferea {
 
         _init(...args: any[]): void;
 
-        static ["new"](source: string, state: updateStatePtr, options: updateOptionsPtr): UpdateRequest;
+        static ["new"](method: string, source: string, state: updateStatePtr, options: updateOptionsPtr): UpdateRequest;
 
         // Signals
         /** @signal */
@@ -2055,6 +2140,19 @@ export namespace Liferea {
          * @param authValue the authorization header value
          */
         set_auth_value(authValue: string): void;
+
+        /**
+         * Sets the method for an updateRequest to a new value.
+         * @param method the new method
+         */
+        set_method(method: string): void;
+
+        /**
+         * Sets the data and optional content type for a HTTP POST request.
+         * @param postdata the data to be sent in an HTTP POST request
+         * @param contentType the content type of the request (e.g. "application/json")
+         */
+        set_postdata(postdata: string, contentType: string): void;
 
         /**
          * Sets the source for an updateRequest. Only use this when the source
@@ -2100,6 +2198,8 @@ export namespace Liferea {
         contentType: string;
 
         filterErrors: string;
+
+        updateError: string;
 
         // Constructors
         constructor(properties?: Partial<UpdateResult.ConstructorProps>, ...args: any[]);
@@ -2149,6 +2249,11 @@ export namespace Liferea {
     /**
      * @gir-type Alias
      */
+    type ContentViewClass = typeof ContentView;
+
+    /**
+     * @gir-type Alias
+     */
     type DownloadActivatableInterface = typeof DownloadActivatable;
 
     /**
@@ -2182,11 +2287,6 @@ export namespace Liferea {
     /**
      * @gir-type Alias
      */
-    type ItemViewClass = typeof ItemView;
-
-    /**
-     * @gir-type Alias
-     */
     type NetworkMonitorClass = typeof NetworkMonitor;
 
     /**
@@ -2210,11 +2310,6 @@ export namespace Liferea {
     /**
      * @gir-type Alias
      */
-    type NodeSourceProviderInterface = typeof NodeSourceProvider;
-
-    /**
-     * @gir-type Alias
-     */
     type ShellActivatableInterface = typeof ShellActivatable;
 
     /**
@@ -2226,6 +2321,11 @@ export namespace Liferea {
      * @gir-type Alias
      */
     type UpdateJobClass = typeof UpdateJob;
+
+    /**
+     * @gir-type Alias
+     */
+    type UpdateJobQueueClass = typeof UpdateJobQueue;
 
     /**
      * @gir-type Alias
@@ -2250,6 +2350,10 @@ export namespace Liferea {
 
         size: number;
 
+        width: number;
+
+        height: number;
+
         downloaded: boolean;
 
         // Static methods
@@ -2266,13 +2370,11 @@ export namespace Liferea {
         static get_url(str: string): string;
 
         /**
-         * Serialize enclosure infos to string.
-         * @param url the enclosure URL
-         * @param mime the MIME type (optional, can be NULL)
-         * @param size the enclosure size (optional, can be 0, and also -1)
-         * @param downloaded downloading state (TRUE=downloaded)
+         * Serializes the enclosure to JSON using a JsonBuilder.
+         * @param enclosure the enclosure
+         * @param b the JSON builder
          */
-        static values_to_string(url: string, mime: string, size: bigint | number, downloaded: boolean): string;
+        static to_json(enclosure: enclosurePtr, b: Json.Builder): void;
     }
 
 
@@ -2367,19 +2469,9 @@ export namespace Liferea {
 
         actionQueue: GLib.Queue;
 
-        loginState: number;
+        loginState: nodeSourceState;
 
         authToken: string;
-
-        authFailures: number;
-
-        // Static methods
-        /**
-         * Registers a new node source type. Needs to be called before feed list import!
-         * To be used only via NodeSourceTypeActivatable
-         * @param iface the type interface to register
-         */
-        static type_register(iface: typeof NodeSourceProvider): void;
     }
 
 
@@ -2388,6 +2480,33 @@ export namespace Liferea {
      */
     abstract class nodeSourcePtr {
         static $gtype: GObject.GType<nodeSourcePtr>;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    class nodeSourceType {
+        static $gtype: GObject.GType<nodeSourceType>;
+
+        // Fields
+        id: string;
+
+        name: string;
+
+        addInfo: string;
+
+        url: string;
+
+        capabilities: number;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class nodeSourceTypePtr {
+        static $gtype: GObject.GType<nodeSourceTypePtr>;
     }
 
 
@@ -2511,7 +2630,7 @@ export namespace Liferea {
         static $gtype: GObject.GType<updateState>;
 
         // Fields
-        lastModified: number;
+        lastModified: string;
 
         lastPoll: number;
 
@@ -2560,7 +2679,7 @@ export namespace Liferea {
         /**
          * @param state 
          */
-        static get_lastmodified(state: updateStatePtr): number;
+        static get_lastmodified(state: updateStatePtr): string;
 
         /**
          * @param state 
@@ -2584,7 +2703,7 @@ export namespace Liferea {
          * @param state 
          * @param lastmodified 
          */
-        static set_lastmodified(state: updateStatePtr, lastmodified: bigint | number): void;
+        static set_lastmodified(state: updateStatePtr, lastmodified: string): void;
     }
 
 
@@ -2810,27 +2929,6 @@ export namespace Liferea {
 
     export const NodeSourceActivatable: NodeSourceActivatableNamespace & {
         new (): NodeSourceActivatable; // This allows `obj instanceof NodeSourceActivatable`
-    };
-
-    namespace NodeSourceProvider {
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    export interface NodeSourceProviderNamespace {
-        $gtype: GObject.GType<NodeSourceProvider>;
-        prototype: NodeSourceProvider;
-    }
-    /**
-     * @gir-type Interface
-     */
-    interface NodeSourceProvider extends GObject.Object {
-    }
-
-
-    export const NodeSourceProvider: NodeSourceProviderNamespace & {
-        new (): NodeSourceProvider; // This allows `obj instanceof NodeSourceProvider`
     };
 
     namespace ShellActivatable {

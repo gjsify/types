@@ -3,7 +3,7 @@
  *
  * GENERATED — do not edit. Provenance: Gitg-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
  *
- * 10 concrete widgets, 10 declarations, 10 enum nick unions, 1 slot candidates.
+ * 11 concrete widgets, 11 declarations, 10 enum nick unions, 1 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -28,7 +28,7 @@ import type GLib from '@girs/glib-2.0';
 import type Ggit from '@girs/ggit-1.0';
 import type Gio from '@girs/gio-2.0';
 import type Gitg from './gitg-1.0.js';
-import type { GtkActionableConstructOnly, GtkActionableProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkGridConstructOnly, GtkGridProps, GtkListBoxConstructOnly, GtkListBoxProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkToolShellConstructOnly, GtkToolShellProps, GtkToolbarConstructOnly, GtkToolbarProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/surface';
+import type { GtkActionableConstructOnly, GtkActionableProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkGridConstructOnly, GtkGridProps, GtkListBoxConstructOnly, GtkListBoxProps, GtkListBoxRowConstructOnly, GtkListBoxRowProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkToolShellConstructOnly, GtkToolShellProps, GtkToolbarConstructOnly, GtkToolbarProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/surface';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -106,6 +106,11 @@ export interface GitgDiffViewOptionsProps extends GtkToolbarProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GitgDiffViewOptionsConstructOnly = GtkToolbarConstructOnly;
+
+export interface GitgEntryHistoryProps extends GtkEntryProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GitgEntryHistoryConstructOnly = GtkEntryConstructOnly;
 
 export interface GitgProgressBinProps extends GtkBinProps {
     fraction?: number;
@@ -199,6 +204,13 @@ export interface Widgets {
         slotCandidates: {
         'view': 'set_view';
         };
+    };
+    GitgEntryHistory: {
+        class: Gitg.EntryHistory;
+        props: GitgEntryHistoryProps;
+        signals: Gitg.EntryHistory.SignalSignatures;
+        constructOnly: GitgEntryHistoryConstructOnly;
+        slotCandidates: {};
     };
     GitgProgressBin: {
         class: Gitg.ProgressBin;

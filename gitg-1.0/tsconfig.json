@@ -18,6 +18,18 @@
     // Show diagnostics
     "diagnostics": true,
     "paths": {
+      "@girs/gtksource-4": [
+            "../gtksource-4/index.d.ts"
+      ],
+      "@girs/gtk-3.0": [
+            "../gtk-3.0/index.d.ts"
+      ],
+      "@girs/xlib-2.0": [
+            "../xlib-2.0/index.d.ts"
+      ],
+      "@girs/gdk-3.0": [
+            "../gdk-3.0/index.d.ts"
+      ],
       "@girs/cairo-1.0": [
             "../cairo-1.0/index.d.ts"
       ],
@@ -42,26 +54,17 @@
       "@girs/gmodule-2.0": [
             "../gmodule-2.0/index.d.ts"
       ],
-      "@girs/gee-0.8": [
-            "../gee-0.8/index.d.ts"
-      ],
-      "@girs/gdk-3.0": [
-            "../gdk-3.0/index.d.ts"
-      ],
       "@girs/gdkpixbuf-2.0": [
             "../gdkpixbuf-2.0/index.d.ts"
       ],
-      "@girs/ggit-1.0": [
-            "../ggit-1.0/index.d.ts"
-      ],
-      "@girs/gtk-3.0": [
-            "../gtk-3.0/index.d.ts"
-      ],
-      "@girs/xlib-2.0": [
-            "../xlib-2.0/index.d.ts"
-      ],
       "@girs/atk-1.0": [
             "../atk-1.0/index.d.ts"
+      ],
+      "@girs/gee-0.8": [
+            "../gee-0.8/index.d.ts"
+      ],
+      "@girs/ggit-1.0": [
+            "../ggit-1.0/index.d.ts"
       ],
       "@girs/gjs": [
             "../gjs/index.d.ts"

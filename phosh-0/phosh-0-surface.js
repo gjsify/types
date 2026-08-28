@@ -12,7 +12,7 @@ export const OWN_PROPS = {
     PhoshLayerSurface: ['anchor', 'exclusive-zone', 'height', 'kbd-interactivity', 'layer', 'layer-shell', 'margin-bottom', 'margin-left', 'margin-right', 'margin-top', 'namespace', 'width', 'wl-output'],
     PhoshLockscreen: ['require-unlock'],
     PhoshQuickSetting: ['active', 'can-show-status', 'long-press-action-name', 'long-press-action-target', 'showing-status', 'status-icon', 'status-page'],
-    PhoshStatusIcon: ['extra-widget', 'icon-name', 'icon-size', 'info', 'pixel-size'],
+    PhoshStatusIcon: ['extra-widget', 'icon-name', 'icon-size', 'info', 'pixel-size', 'priority'],
     PhoshStatusPage: ['content', 'footer', 'header', 'title'],
 };
 

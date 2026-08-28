@@ -902,6 +902,12 @@ export namespace GtkVnc {
         get_pixbuf(): GdkPixbuf.Pixbuf;
 
         /**
+         * Determine if a visible pointer will be forced
+         * @returns TRUE if a visible pointer will be forced, FALSE otherwise
+         */
+        get_pointer_force_visible(): boolean;
+
+        /**
          * Determine if the mouse pointer will be grabbed
          * on first click
          * @returns TRUE if the pointer will be grabbed, FALSE otherwise
@@ -1136,6 +1142,15 @@ export namespace GtkVnc {
          * @param enable TRUE to permit lossy encodings, FALSE otherwise
          */
         set_lossy_encoding(enable: boolean): void;
+
+        /**
+         * If `enable` is TRUE, then when the remote cursor has
+         * no visible pixels, it will be replaced with a visible
+         * cursor. If `enable` is FALSE, the empty remote cursor
+         * will be honoured.
+         * @param enable TRUE to force a visible cursor, FALSE otherwise
+         */
+        set_pointer_force_visible(enable: boolean): void;
 
         /**
          * Set whether the widget will automatically grab the mouse

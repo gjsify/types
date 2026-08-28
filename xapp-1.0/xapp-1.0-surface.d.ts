@@ -26,7 +26,7 @@
 
 import type Gtk from '@girs/gtk-3.0';
 import type XApp from './xapp-1.0.js';
-import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkContainerConstructOnly, GtkContainerProps, GtkIconSizeNick, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/surface';
+import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkIconSizeNick, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/surface';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -68,7 +68,7 @@ export interface XAppIconChooserButtonProps extends GtkButtonProps, GtkActionabl
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type XAppIconChooserButtonConstructOnly = GtkButtonConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
 
-export interface XAppIconChooserDialogProps extends XAppGtkWindowProps, GtkBuildableProps {
+export interface XAppIconChooserDialogProps extends GtkDialogProps, GtkBuildableProps {
     /** Whether to allow paths to be searched and selected or only icon names. */
     'allow-paths'?: boolean;
     /** The icon to use by default. */
@@ -77,7 +77,7 @@ export interface XAppIconChooserDialogProps extends XAppGtkWindowProps, GtkBuild
     'icon-size'?: XAppIconSizeNick | XApp.IconSize;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type XAppIconChooserDialogConstructOnly = XAppGtkWindowConstructOnly | GtkBuildableConstructOnly;
+export type XAppIconChooserDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
 
 export interface XAppPreferencesWindowProps extends GtkWindowProps, GtkBuildableProps {
 }

@@ -28,6 +28,7 @@ import type GioUnix from '@girs/giounix-2.0';
 import type Gimp from '@girs/gimp-3.0';
 import type Gegl from '@girs/gegl-0.4';
 import type Babl from '@girs/babl-0.1';
+import type GLibUnix from '@girs/glibunix-2.0';
 import type GExiv2 from '@girs/gexiv2-0.10';
 
 export namespace GimpUi {

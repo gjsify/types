@@ -70,7 +70,7 @@ export namespace GnomeBluetooth {
          */
         PROXY,
         /**
-         * a {@link Gio.DBusProxy} object for DBus.Properties
+         * Used to be {@link Gio.DBusProxy} object for DBus.Properties, now always `null`
          */
         PROPERTIES,
         /**
@@ -230,6 +230,14 @@ export namespace GnomeBluetooth {
     const UUID_VDP_SOURCE: number;
 
     /**
+     * Returns the type of device corresponding to the given `appearance` value,
+     * as usually found in the GAP service.
+     * @param appearance a Bluetooth device appearance
+     * @returns a {@link GnomeBluetooth.Type}.
+     */
+    function appearance_to_type(appearance: number): Type;
+
+    /**
      * Returns the type of device corresponding to the given `class` value.
      * @param _class a Bluetooth device class
      * @returns a {@link GnomeBluetooth.Type}.
@@ -242,6 +250,15 @@ export namespace GnomeBluetooth {
      * @param alias Remote device's name
      */
     function send_to_address(address: string, alias: string): void;
+
+    /**
+     * Returns a human-readable string representation of `type` usable for display to users,
+     * when type filters are displayed. Do not free the return value.
+     * The returned string is already translated with `gettext()`.
+     * @param type a {@link GnomeBluetooth.Type}
+     * @returns a string.
+     */
+    function type_to_filter_string(type: number): string;
 
     /**
      * Returns a human-readable string representation of `type` usable for display to users. Do not free the return value.
@@ -350,6 +367,10 @@ export namespace GnomeBluetooth {
          * a toy or game
          */
         TOY,
+        /**
+         * audio speaker or speakers
+         */
+        SPEAKERS,
     }
 
 
@@ -462,71 +483,123 @@ export namespace GnomeBluetooth {
         static $gtype: GObject.GType<Chooser>;
 
         // Properties
+        /**
+         * @default null
+         */
         get device_selected(): string;
         set device_selected(val: string);
 
+        /**
+         * @default null
+         */
         get deviceSelected(): string;
         set deviceSelected(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set device_service_filter(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set deviceServiceFilter(val: string);
 
+        /**
+         * @default 1
+         */
         get device_type_filter(): number;
         set device_type_filter(val: number);
 
+        /**
+         * @default 1
+         */
         get deviceTypeFilter(): number;
         set deviceTypeFilter(val: number);
 
         /**
          * @construct-only
+         * @default true
          */
         get has_internal_device_filter(): boolean;
 
         /**
          * @construct-only
+         * @default true
          */
         get hasInternalDeviceFilter(): boolean;
 
+        /**
+         * @default false
+         */
         get show_connected(): boolean;
         set show_connected(val: boolean);
 
+        /**
+         * @default false
+         */
         get showConnected(): boolean;
         set showConnected(val: boolean);
 
+        /**
+         * @default true
+         */
         get show_device_category(): boolean;
         set show_device_category(val: boolean);
 
+        /**
+         * @default true
+         */
         get showDeviceCategory(): boolean;
         set showDeviceCategory(val: boolean);
 
+        /**
+         * @default true
+         */
         get show_device_type(): boolean;
         set show_device_type(val: boolean);
 
+        /**
+         * @default true
+         */
         get showDeviceType(): boolean;
         set showDeviceType(val: boolean);
 
+        /**
+         * @default true
+         */
         get show_device_type_column(): boolean;
         set show_device_type_column(val: boolean);
 
+        /**
+         * @default true
+         */
         get showDeviceTypeColumn(): boolean;
         set showDeviceTypeColumn(val: boolean);
 
+        /**
+         * @default false
+         */
         get show_pairing(): boolean;
         set show_pairing(val: boolean);
 
+        /**
+         * @default false
+         */
         get showPairing(): boolean;
         set showPairing(val: boolean);
 
+        /**
+         * @default false
+         */
         get show_searching(): boolean;
         set show_searching(val: boolean);
 
+        /**
+         * @default false
+         */
         get showSearching(): boolean;
         set showSearching(val: boolean);
 
@@ -752,6 +825,7 @@ export namespace GnomeBluetooth {
         // Properties
         /**
          * The Bluetooth address of the selected device or `null`.
+         * @default null
          */
         get device(): string;
         set device(val: string);
@@ -761,6 +835,7 @@ export namespace GnomeBluetooth {
          * 
          * See also: `bluetooth_chooser_button_available()`
          * @read-only
+         * @default true
          */
         get is_available(): boolean;
 
@@ -769,6 +844,7 @@ export namespace GnomeBluetooth {
          * 
          * See also: `bluetooth_chooser_button_available()`
          * @read-only
+         * @default true
          */
         get isAvailable(): boolean;
 
@@ -1220,8 +1296,6 @@ export namespace GnomeBluetooth {
     }
 
     /**
-     * The <structname>BluetoothChooserCombo</structname> struct contains
-     * only private fields and should not be directly accessed.
      * @gir-type Class
      */
     class ChooserCombo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
@@ -1236,6 +1310,7 @@ export namespace GnomeBluetooth {
 
         /**
          * The Bluetooth address of the selected device or `null`
+         * @default null
          */
         get device(): string;
         set device(val: string);
@@ -1268,13 +1343,6 @@ export namespace GnomeBluetooth {
         /** @signal */
         emit<K extends keyof ChooserCombo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChooserCombo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Virtual methods
-        /**
-         * @param chooser 
-         * @virtual
-         */
-        vfunc_chooser_created(chooser: Gtk.Widget): void;
 
         /**
          * The orientation of the orientable.
@@ -1343,35 +1411,41 @@ export namespace GnomeBluetooth {
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get default_adapter(): string;
 
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get defaultAdapter(): string;
 
         /**
-         * `true` if the default Bluetooth adapter is discoverable.
+         * `true` if the default Bluetooth adapter is discoverable during discovery.
+         * @default false
          */
         get default_adapter_discoverable(): boolean;
         set default_adapter_discoverable(val: boolean);
 
         /**
-         * `true` if the default Bluetooth adapter is discoverable.
+         * `true` if the default Bluetooth adapter is discoverable during discovery.
+         * @default false
          */
         get defaultAdapterDiscoverable(): boolean;
         set defaultAdapterDiscoverable(val: boolean);
 
         /**
          * `true` if the default Bluetooth adapter is discovering.
+         * @default false
          */
         get default_adapter_discovering(): boolean;
         set default_adapter_discovering(val: boolean);
 
         /**
          * `true` if the default Bluetooth adapter is discovering.
+         * @default false
          */
         get defaultAdapterDiscovering(): boolean;
         set defaultAdapterDiscovering(val: boolean);
@@ -1379,24 +1453,28 @@ export namespace GnomeBluetooth {
         /**
          * The name of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get default_adapter_name(): string;
 
         /**
          * The name of the default Bluetooth adapter or `null`.
          * @read-only
+         * @default null
          */
         get defaultAdapterName(): string;
 
         /**
          * `true` if the default Bluetooth adapter is powered.
          * @read-only
+         * @default false
          */
         get default_adapter_powered(): boolean;
 
         /**
          * `true` if the default Bluetooth adapter is powered.
          * @read-only
+         * @default false
          */
         get defaultAdapterPowered(): boolean;
 
@@ -1576,29 +1654,49 @@ export namespace GnomeBluetooth {
         // Properties
         /**
          * @write-only
+         * @default null
          */
         set device_service_filter(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set deviceServiceFilter(val: string);
 
+        /**
+         * @default 1
+         */
         get device_type_filter(): number;
         set device_type_filter(val: number);
 
+        /**
+         * @default 1
+         */
         get deviceTypeFilter(): number;
         set deviceTypeFilter(val: number);
 
+        /**
+         * @default true
+         */
         get show_device_category(): boolean;
         set show_device_category(val: boolean);
 
+        /**
+         * @default true
+         */
         get showDeviceCategory(): boolean;
         set showDeviceCategory(val: boolean);
 
+        /**
+         * @default true
+         */
         get show_device_type(): boolean;
         set show_device_type(val: boolean);
 
+        /**
+         * @default true
+         */
         get showDeviceType(): boolean;
         set showDeviceType(val: boolean);
 
@@ -1819,14 +1917,6 @@ export namespace GnomeBluetooth {
      * @gir-type Alias
      */
     type ChooserComboClass = typeof ChooserCombo;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class ChooserComboPrivate {
-        static $gtype: GObject.GType<ChooserComboPrivate>;
-    }
-
 
     /**
      * @gir-type Alias

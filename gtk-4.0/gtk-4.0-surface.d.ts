@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Gtk-4.0.
  *
- * GENERATED — do not edit. Provenance: Gtk-4.0 — library 4.23.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
+ * GENERATED — do not edit. Provenance: Gtk-4.0 — library 4.23.3 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
  *
- * 102 concrete widgets, 123 declarations, 105 enum nick unions, 60 slot candidates.
+ * 103 concrete widgets, 124 declarations, 104 enum nick unions, 60 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -68,7 +68,7 @@ export type GtkContentFitNick = 'fill' | 'contain' | 'cover' | 'scale-down';
 export type GtkCornerTypeNick = 'top-left' | 'bottom-left' | 'top-right' | 'bottom-right';
 export type GtkDeleteTypeNick = 'chars' | 'word-ends' | 'words' | 'display-lines' | 'display-line-ends' | 'paragraph-ends' | 'paragraphs' | 'whitespace';
 export type GtkDirectionTypeNick = 'tab-forward' | 'tab-backward' | 'up' | 'down' | 'left' | 'right';
-export type GtkEditablePropertiesNick = 'prop-text' | 'prop-cursor-position' | 'prop-selection-bound' | 'prop-editable' | 'prop-width-chars' | 'prop-max-width-chars' | 'prop-xalign' | 'prop-enable-undo' | 'num-properties';
+export type GtkEditablePropertiesNick = 'prop-text' | 'prop-cursor-position' | 'prop-selection-bound' | 'prop-editable' | 'prop-width-chars' | 'prop-max-width-chars' | 'prop-xalign' | 'prop-enable-undo' | 'prop-complete-text' | 'prop-input-interceptor' | 'num-properties';
 export type GtkEntryIconPositionNick = 'primary' | 'secondary';
 export type GtkEventSequenceStateNick = 'none' | 'claimed' | 'denied';
 export type GtkFileChooserActionNick = 'open' | 'save' | 'select-folder';
@@ -113,7 +113,6 @@ export type GtkPropagationLimitNick = 'none' | 'same-native';
 export type GtkPropagationPhaseNick = 'none' | 'capture' | 'bubble' | 'target';
 export type GtkReducedMotionNick = 'no-preference' | 'reduce';
 export type GtkResponseTypeNick = 'none' | 'reject' | 'accept' | 'delete-event' | 'ok' | 'cancel' | 'close' | 'yes' | 'no' | 'apply' | 'help';
-export type GtkRestoreReasonNick = 'pristine' | 'launch' | 'recover' | 'restore';
 export type GtkRevealerTransitionTypeNick = 'none' | 'crossfade' | 'slide-right' | 'slide-left' | 'slide-up' | 'slide-down' | 'swing-right' | 'swing-left' | 'swing-up' | 'swing-down' | 'fade-slide-right' | 'fade-slide-left' | 'fade-slide-up' | 'fade-slide-down';
 export type GtkScrollStepNick = 'steps' | 'pages' | 'ends' | 'horizontal-steps' | 'horizontal-pages' | 'horizontal-ends';
 export type GtkScrollTypeNick = 'none' | 'jump' | 'step-backward' | 'step-forward' | 'page-backward' | 'page-forward' | 'step-up' | 'step-down' | 'page-up' | 'page-down' | 'step-left' | 'step-right' | 'page-left' | 'page-right' | 'start' | 'end';
@@ -453,7 +452,7 @@ export interface GtkCheckButtonProps extends GtkWidgetProps, GtkAccessibleProps,
     child?: Gtk.Widget | null;
     /** The check button whose group this widget belongs to. */
     group?: Gtk.CheckButton;
-    /** If the check button is in an &#x201C;in between&#x201D; state. */
+    /** If the check button is in an “in between” state. */
     inconsistent?: boolean;
     /** Text of the label inside the check button, if it contains a label widget. */
     label?: string | null;
@@ -653,6 +652,11 @@ export interface GtkEditableProps extends GtkWidgetProps {
     editable?: boolean;
     /** If undo/redo should be enabled for the editable. */
     'enable-undo'?: boolean;
+    /**
+     * The widget used to intercept input for this editable
+     * @since 4.24
+     */
+    'input-interceptor'?: Gtk.Widget | null;
     /** The desired maximum width of the entry, in characters. */
     'max-width-chars'?: number;
     /** The contents of the entry. */
@@ -665,7 +669,7 @@ export interface GtkEditableProps extends GtkWidgetProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkEditableConstructOnly = GtkWidgetConstructOnly;
 
-/** Allows users to edit the displayed text by switching to an &#x201C;edit mode&#x201D;. */
+/** Allows users to edit the displayed text by switching to an “edit mode”. */
 export interface GtkEditableLabelProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkEditableProps {
     /** This property is %TRUE while the widget is in edit mode. */
     editing?: boolean;
@@ -701,7 +705,7 @@ export interface GtkEntryProps extends GtkWidgetProps, GtkAccessibleProps, GtkBu
     'input-hints'?: number;
     /** The purpose of this text field. */
     'input-purpose'?: GtkInputPurposeNick | Gtk.InputPurpose;
-    /** The character to use when masking entry contents (&#x201C;password mode&#x201D;). */
+    /** The character to use when masking entry contents (“password mode”). */
     'invisible-char'?: number;
     /** Whether the invisible char has been set for the `GtkEntry`. */
     'invisible-char-set'?: boolean;
@@ -759,7 +763,7 @@ export interface GtkEntryProps extends GtkWidgetProps, GtkAccessibleProps, GtkBu
     tabs?: Pango.TabArray | null;
     /** When %TRUE, pasted multi-line text is truncated to the first line. */
     'truncate-multiline'?: boolean;
-    /** Whether the entry should show the &#x201C;invisible char&#x201D; instead of the actual text (&#x201C;password mode&#x201D;). */
+    /** Whether the entry should show the “invisible char” instead of the actual text (“password mode”). */
     visibility?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -799,7 +803,7 @@ export interface GtkFileChooserProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkFileChooserConstructOnly = never;
 
-/** `GtkFileChooserDialog` is a dialog suitable for use with &#x201C;File Open&#x201D; or &#x201C;File Save&#x201D; commands. */
+/** `GtkFileChooserDialog` is a dialog suitable for use with “File Open” or “File Save” commands. */
 export interface GtkFileChooserDialogProps extends GtkDialogProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkFileChooserProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -1434,7 +1438,7 @@ export interface GtkOrientableProps {
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkOrientableConstructOnly = never;
 
-/** Places &#x201C;overlay&#x201D; widgets on top of a single main child. */
+/** Places “overlay” widgets on top of a single main child. */
 export interface GtkOverlayProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
     /** The main child widget. */
     child?: Gtk.Widget | null;
@@ -1442,7 +1446,7 @@ export interface GtkOverlayProps extends GtkWidgetProps, GtkAccessibleProps, Gtk
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkOverlayConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
-/** Presents a page setup dialog for platforms which don&#x2019;t provide a native page setup dialog, like Unix. */
+/** Presents a page setup dialog for platforms which don’t provide a native page setup dialog, like Unix. */
 export interface GtkPageSetupUnixDialogProps extends GtkDialogProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -1583,7 +1587,7 @@ export interface GtkPopoverMenuBarProps extends GtkWidgetProps, GtkAccessiblePro
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkPopoverMenuBarConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
-/** A print dialog for platforms which don&#x2019;t provide a native print dialog, like Unix. */
+/** A print dialog for platforms which don’t provide a native print dialog, like Unix. */
 export interface GtkPrintUnixDialogProps extends GtkDialogProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
     /** The current page in the document. */
     'current-page'?: number;
@@ -1734,9 +1738,9 @@ export interface GtkScrolledWindowProps extends GtkWidgetProps, GtkAccessiblePro
     'min-content-width'?: number;
     /** Whether overlay scrolling is enabled or not. */
     'overlay-scrolling'?: boolean;
-    /** Whether the natural height of the child should be calculated and propagated through the scrolled window&#x2019;s requested natural height. */
+    /** Whether the natural height of the child should be calculated and propagated through the scrolled window’s requested natural height. */
     'propagate-natural-height'?: boolean;
-    /** Whether the natural width of the child should be calculated and propagated through the scrolled window&#x2019;s requested natural width. */
+    /** Whether the natural width of the child should be calculated and propagated through the scrolled window’s requested natural width. */
     'propagate-natural-width'?: boolean;
     /** The `GtkAdjustment` for the vertical position. */
     vadjustment?: Gtk.Adjustment;
@@ -1957,6 +1961,27 @@ export interface GtkStatusbarProps extends GtkWidgetProps, GtkAccessibleProps, G
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkStatusbarConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
+/** A widget that renders SVG, with animations and event handling. */
+export interface GtkSvgWidgetProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
+    /**
+     * Resource to load SVG data from.
+     * @since 4.24
+     */
+    resource?: string;
+    /**
+     * The current state of the renderer.
+     * @since 4.24
+     */
+    state?: number;
+    /**
+     * A CSS stylesheet to apply to the SVG.
+     * @since 4.24
+     */
+    stylesheet?: GLib.Bytes | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkSvgWidgetConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
+
 /** Shows a "light switch" that has two states: on or off. */
 export interface GtkSwitchProps extends GtkWidgetProps, GtkAccessibleProps, GtkActionableProps, GtkBuildableProps, GtkConstraintTargetProps {
     /** Whether the `GtkSwitch` widget is in its on or off state. */
@@ -1985,7 +2010,7 @@ export interface GtkTextProps extends GtkWidgetProps, GtkAccessibleProps, GtkAcc
     'input-hints'?: number;
     /** The purpose of this text field. */
     'input-purpose'?: GtkInputPurposeNick | Gtk.InputPurpose;
-    /** The character to used when masking contents (in &#x201C;password mode&#x201D;). */
+    /** The character to used when masking contents (in “password mode”). */
     'invisible-char'?: number;
     /** Whether the invisible char has been set. */
     'invisible-char-set'?: boolean;
@@ -2001,7 +2026,7 @@ export interface GtkTextProps extends GtkWidgetProps, GtkAccessibleProps, GtkAcc
     tabs?: Pango.TabArray | null;
     /** When true, pasted multi-line text is truncated to the first line. */
     'truncate-multiline'?: boolean;
-    /** If false, the text is masked with the &#x201C;invisible char&#x201D;. */
+    /** If false, the text is masked with the “invisible char”. */
     visibility?: boolean;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -2055,7 +2080,7 @@ export interface GtkTextViewProps extends GtkWidgetProps, GtkAccessibleProps, Gt
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkTextViewConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkAccessibleTextConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkScrollableConstructOnly;
 
-/** Shows a button which remains &#x201C;pressed-in&#x201D; when clicked. */
+/** Shows a button which remains “pressed-in” when clicked. */
 export interface GtkToggleButtonProps extends GtkButtonProps, GtkAccessibleProps, GtkActionableProps, GtkBuildableProps, GtkConstraintTargetProps {
     /** If the toggle button should be pressed in. */
     active?: boolean;
@@ -3038,6 +3063,13 @@ export interface Widgets {
         props: GtkStatusbarProps;
         signals: Gtk.Statusbar.SignalSignatures;
         constructOnly: GtkStatusbarConstructOnly;
+        slotCandidates: {};
+    };
+    GtkSvgWidget: {
+        class: Gtk.SvgWidget;
+        props: GtkSvgWidgetProps;
+        signals: Gtk.SvgWidget.SignalSignatures;
+        constructOnly: GtkSvgWidgetConstructOnly;
         slotCandidates: {};
     };
     GtkSwitch: {

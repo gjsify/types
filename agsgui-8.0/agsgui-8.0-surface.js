@@ -43,14 +43,14 @@ export const OWN_SIGNALS = {
 
 export const DECLS = {
     AgsCartesian: ['AgsCartesian', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
-    AgsDial: ['AgsDial', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    AgsDial: ['AgsDial', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleRange', 'GtkBuildable', 'GtkConstraintTarget'],
     AgsExpander: ['AgsExpander', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
     AgsExpanderSet: ['AgsExpanderSet', 'GtkGrid', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
     AgsFileDialog: ['AgsFileDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
     AgsFileEntry: ['AgsFileEntry', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
     AgsFileWidget: ['AgsFileWidget', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
     AgsIconLink: ['AgsIconLink', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
-    AgsIndicator: ['AgsIndicator', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
+    AgsIndicator: ['AgsIndicator', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleRange', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
     AgsInputDialog: ['AgsInputDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
     AgsLed: ['AgsLed', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     AgsLedArray: ['AgsLedArray', 'GtkBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],

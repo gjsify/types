@@ -1518,6 +1518,8 @@ export namespace AtrilView {
              * @run-last
              */
             "sync-source": (arg0: null) => void;
+            "notify::can-zoom-in": (pspec: GObject.ParamSpec) => void;
+            "notify::can-zoom-out": (pspec: GObject.ParamSpec) => void;
             "notify::is-loading": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -1569,6 +1571,10 @@ export namespace AtrilView {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
+            can_zoom_in: boolean;
+            canZoomIn: boolean;
+            can_zoom_out: boolean;
+            canZoomOut: boolean;
             is_loading: boolean;
             isLoading: boolean;
         }
@@ -1581,6 +1587,30 @@ export namespace AtrilView {
         static $gtype: GObject.GType<View>;
 
         // Properties
+        /**
+         * @read-only
+         * @default true
+         */
+        get can_zoom_in(): boolean;
+
+        /**
+         * @read-only
+         * @default true
+         */
+        get canZoomIn(): boolean;
+
+        /**
+         * @read-only
+         * @default true
+         */
+        get can_zoom_out(): boolean;
+
+        /**
+         * @read-only
+         * @default true
+         */
+        get canZoomOut(): boolean;
+
         /**
          * @read-only
          * @default false
@@ -1632,10 +1662,6 @@ export namespace AtrilView {
          */
         begin_add_annotation(annot_type: AtrilDocument.AnnotationType): void;
 
-        can_zoom_in(): boolean;
-
-        can_zoom_out(): boolean;
-
         cancel_add_annotation(): void;
 
         copy(): void;
@@ -1663,6 +1689,12 @@ export namespace AtrilView {
          * @param value 
          */
         find_set_highlight_search(value: boolean): void;
+
+        /**
+         * @param page 
+         * @param result 
+         */
+        find_set_result(page: number, result: number): void;
 
         /**
          * @param annot_mapping 

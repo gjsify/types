@@ -49,6 +49,10 @@ export namespace GstBase {
          * selected by the `start-time` property.
          */
         SET,
+        /**
+         * Start at the current running time when reaching {@link Gst.State.PLAYING}.
+         */
+        NOW,
     }
 
 
@@ -881,6 +885,14 @@ export namespace GstBase {
          * The caller needs to explicitly set or unset flags that should be set or
          * unset.
          * 
+         * Likewise, no assumptions should be made about timestamps and offset of the
+         * returned buffer. The caller should use `gst_adapter_prev_pts()`,
+         * `gst_adapter_prev_dts()`, and `gst_adapter_prev_offset()` to obtain the relevant
+         * information.
+         * 
+         * The returned buffer might not be writable, use `gst_buffer_make_writable()`
+         * if you need to change e.g. flags or timestamps.
+         * 
          * Since 1.6 this will also copy over all GstMeta of the input buffers except
          * for meta with the {@link Gst.MetaFlags.POOLED} flag or with the "memory" tag.
          * 
@@ -1174,19 +1186,29 @@ export namespace GstBase {
         vfunc_aggregate(timeout: boolean): Gst.FlowReturn;
 
         /**
-         * Optional.
-         *                  Called when a buffer is received on a sink pad, the task of
-         *                  clipping it and translating it to the current segment falls
-         *                  on the subclass. The function should use the segment of data
-         *                  and the negotiated media type on the pad to perform
-         *                  clipping of input buffer. This function takes ownership of
-         *                  buf and should output a buffer or return NULL in
-         *                  if the buffer should be dropped.
-         * @param aggregator_pad 
-         * @param buf 
+         * Called when a buffer is received on a sink pad, the task of
+         * clipping it and translating it to the current segment falls
+         * on the subclass. The function should use the segment of data
+         * and the negotiated media type on the pad to perform
+         * clipping of input buffer. This function takes ownership of
+         * buf and should output a buffer or return NULL in
+         * if the buffer should be dropped.
+         * @param aggregator_pad a {@link GstBase.AggregatorPad}
+         * @param buf a {@link Gst.Buffer}
          * @virtual
          */
-        vfunc_clip(aggregator_pad: AggregatorPad, buf: Gst.Buffer): Gst.Buffer;
+        vfunc_clip(aggregator_pad: AggregatorPad, buf: Gst.Buffer): Gst.Buffer | null;
+
+        /**
+         * Called when a new pad needs to be created. Allows subclass that
+         * don't have a single sink pad template to provide a pad based
+         * on the provided information.
+         * @param templ the pad template to use
+         * @param req_name requested pad name
+         * @param caps caps for the pad
+         * @virtual
+         */
+        vfunc_create_new_pad(templ: Gst.PadTemplate, req_name: string | null, caps: Gst.Caps | null): AggregatorPad;
 
         /**
          * Optional.
@@ -1218,11 +1240,10 @@ export namespace GstBase {
         vfunc_finish_buffer_list(bufferlist: Gst.BufferList): Gst.FlowReturn;
 
         /**
-         * Optional.
-         *                   Fixate and return the src pad caps provided.  The function takes
-         *                   ownership of `caps` and returns a fixated version of
-         *                   `caps`. `caps` is not guaranteed to be writable.
-         * @param caps 
+         * Fixate and return the src pad caps provided. The function takes
+         * ownership of `caps` and returns a fixated version of
+         * `caps`. `caps` is not guaranteed to be writable.
+         * @param caps a {@link Gst.Caps} to fixate
          * @virtual
          */
         vfunc_fixate_src_caps(caps: Gst.Caps): Gst.Caps;
@@ -1268,7 +1289,7 @@ export namespace GstBase {
          * to produce the next output buffer. This should only be called from
          * a {@link GstBase.Aggregator.SignalSignatures.samples_selected | GstBase.Aggregator::samples-selected} handler, and can be used to precisely
          * control aggregating parameters for a given set of input samples.
-         * @param aggregator_pad 
+         * @param aggregator_pad a {@link GstBase.AggregatorPad}
          * @virtual
          */
         vfunc_peek_next_sample(aggregator_pad: AggregatorPad): Gst.Sample | null;
@@ -1284,21 +1305,19 @@ export namespace GstBase {
         vfunc_propose_allocation(pad: AggregatorPad, decide_query: Gst.Query, query: Gst.Query): boolean;
 
         /**
-         * Optional.
-         *                  Called when an event is received on a sink pad, the subclass
-         *                  should always chain up.
-         * @param aggregator_pad 
-         * @param event 
+         * Called when an event is received on a sink pad, the subclass
+         * should always chain up.
+         * @param aggregator_pad a {@link GstBase.AggregatorPad}
+         * @param event a {@link Gst.Event}
          * @virtual
          */
         vfunc_sink_event(aggregator_pad: AggregatorPad, event: Gst.Event): boolean;
 
         /**
-         * Optional.
-         *                        Called when an event is received on a sink pad before queueing up
-         *                        serialized events. The subclass should always chain up (Since: 1.18).
-         * @param aggregator_pad 
-         * @param event 
+         * Called when an event is received on a sink pad before queueing up
+         * serialized events. The subclass should always chain up (Since: 1.18).
+         * @param aggregator_pad a {@link GstBase.AggregatorPad}
+         * @param event a {@link Gst.Event}
          * @virtual
          */
         vfunc_sink_event_pre_queue(aggregator_pad: AggregatorPad, event: Gst.Event): Gst.FlowReturn;
@@ -1334,10 +1353,9 @@ export namespace GstBase {
         vfunc_src_activate(mode: Gst.PadMode, active: boolean): boolean;
 
         /**
-         * Optional.
-         *                  Called when an event is received on the src pad, the subclass
-         *                  should always chain up.
-         * @param event 
+         * Called when an event is received on the src pad, the subclass
+         * should always chain up.
+         * @param event a {@link Gst.Event}
          * @virtual
          */
         vfunc_src_event(event: Gst.Event): boolean;
@@ -1369,7 +1387,7 @@ export namespace GstBase {
         vfunc_stop(): boolean;
 
         /**
-         * @param caps 
+         * @param caps the new source pad {@link Gst.Caps}
          * @virtual
          */
         vfunc_update_src_caps(caps: Gst.Caps): [Gst.FlowReturn, Gst.Caps | null];
@@ -1477,7 +1495,7 @@ export namespace GstBase {
         /**
          * Subclasses should call this at construction time in order for `self` to
          * aggregate on a timeout even when no live source is connected.
-         * @param force_live 
+         * @param force_live The new value
          */
         set_force_live(force_live: boolean): void;
 
@@ -1525,7 +1543,7 @@ export namespace GstBase {
          * 
          * Subclasses MUST call this before `gst_aggregator_selected_samples()`,
          * if it is used at all.
-         * @param segment 
+         * @param segment The new {@link Gst.Segment}
          */
         update_segment(segment: Gst.Segment): void;
     }
@@ -1539,6 +1557,9 @@ export namespace GstBase {
              * @run-first
              */
             "buffer-consumed": (arg0: Gst.Buffer) => void;
+            "notify::current-level-buffers": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-bytes": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-time": (pspec: GObject.ParamSpec) => void;
             "notify::emit-signals": (pspec: GObject.ParamSpec) => void;
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::direction": (pspec: GObject.ParamSpec) => void;
@@ -1550,6 +1571,12 @@ export namespace GstBase {
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Pad.ConstructorProps {
+            current_level_buffers: bigint | number;
+            currentLevelBuffers: bigint | number;
+            current_level_bytes: bigint | number;
+            currentLevelBytes: bigint | number;
+            current_level_time: bigint | number;
+            currentLevelTime: bigint | number;
             emit_signals: boolean;
             emitSignals: boolean;
         }
@@ -1566,6 +1593,54 @@ export namespace GstBase {
         static $gtype: GObject.GType<AggregatorPad>;
 
         // Properties
+        /**
+         * The number of currently queued buffers inside this pad
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get current_level_buffers(): number;
+
+        /**
+         * The number of currently queued buffers inside this pad
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get currentLevelBuffers(): number;
+
+        /**
+         * The number of currently queued bytes inside this pad
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get current_level_bytes(): number;
+
+        /**
+         * The number of currently queued bytes inside this pad
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get currentLevelBytes(): number;
+
+        /**
+         * The amount of currently queued time inside this pad
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get current_level_time(): number;
+
+        /**
+         * The amount of currently queued time inside this pad
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get currentLevelTime(): number;
+
         /**
          * Enables the emission of signals such as {@link GstBase.AggregatorPad.SignalSignatures.buffer_consumed | GstBase.AggregatorPad::buffer-consumed}
          * @since 1.16
@@ -1672,6 +1747,7 @@ export namespace GstBase {
     namespace BaseParse {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
+            "notify::disable-clip": (pspec: GObject.ParamSpec) => void;
             "notify::disable-passthrough": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
@@ -1679,6 +1755,8 @@ export namespace GstBase {
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Element.ConstructorProps {
+            disable_clip: boolean;
+            disableClip: boolean;
             disable_passthrough: boolean;
             disablePassthrough: boolean;
         }
@@ -1826,6 +1904,22 @@ export namespace GstBase {
         static $gtype: GObject.GType<BaseParse>;
 
         // Properties
+        /**
+         * Disable dropping buffers that are out of segment
+         * @since 1.28
+         * @default true
+         */
+        get disable_clip(): boolean;
+        set disable_clip(val: boolean);
+
+        /**
+         * Disable dropping buffers that are out of segment
+         * @since 1.28
+         * @default true
+         */
+        get disableClip(): boolean;
+        set disableClip(val: boolean);
+
         /**
          * If set to `true`, baseparse will unconditionally force parsing of the
          * incoming data. This can be required in the rare cases where the incoming
@@ -2088,6 +2182,9 @@ export namespace GstBase {
          * is used to estimate the total duration of the stream and to estimate
          * a seek position, if there's no index and the format is syncable
          * (see `gst_base_parse_set_syncable()`).
+         * 
+         * This value is reset during PAUSED->READY state changes. Subclasses must
+         * call this function from {@link GstBase.BaseParseClass.SignalSignatures.start | GstBase.BaseParseClass::start} if they want to set a static value.
          * @param bitrate average bitrate in bits/second
          */
         set_average_bitrate(bitrate: number): void;
@@ -2098,6 +2195,9 @@ export namespace GstBase {
          * duration.  Alternatively, if `interval` is non-zero (default), then stream
          * duration is determined based on estimated bitrate, and updated every `interval`
          * frames.
+         * 
+         * This value is reset during PAUSED->READY state changes. Subclasses must
+         * call this function from {@link GstBase.BaseParseClass.SignalSignatures.start | GstBase.BaseParseClass::start} if they want to set a static value.
          * @param fmt {@link Gst.Format}.
          * @param duration duration value.
          * @param interval how often to update the duration estimate based on bitrate, or 0.
@@ -2110,6 +2210,9 @@ export namespace GstBase {
          * location, a corresponding decoder might need an initial `lead_in` and a
          * following `lead_out` number of frames to ensure the desired segment is
          * entirely filled upon decoding.
+         * 
+         * This value is reset during PAUSED->READY state changes. Subclasses must
+         * call this function from {@link GstBase.BaseParseClass.SignalSignatures.start | GstBase.BaseParseClass::start} if they want to set a static value.
          * @param fps_num frames per second (numerator).
          * @param fps_den frames per second (denominator).
          * @param lead_in frames needed before a segment for subsequent decode
@@ -2121,6 +2224,9 @@ export namespace GstBase {
          * Set if frames carry timing information which the subclass can (generally)
          * parse and provide.  In particular, intrinsic (rather than estimated) time
          * can be obtained following a seek.
+         * 
+         * This value is reset during PAUSED->READY state changes. Subclasses must
+         * call this function from {@link GstBase.BaseParseClass.SignalSignatures.start | GstBase.BaseParseClass::start} if they want to set a static value.
          * @param has_timing whether frames carry timing information
          */
         set_has_timing_info(has_timing: boolean): void;
@@ -2130,6 +2236,9 @@ export namespace GstBase {
          * versa.  While this is generally correct for audio data, it may not
          * be otherwise. Sub-classes implementing such formats should disable
          * timestamp inferring.
+         * 
+         * This value is retained over PAUSED->READY state changes. Subclasses
+         * can call this function from their instance init function.
          * @param infer_ts `true` if parser should infer DTS/PTS from each other
          */
         set_infer_ts(infer_ts: boolean): void;
@@ -2142,6 +2251,9 @@ export namespace GstBase {
          * If the provided values changed from previously provided ones, this will
          * also post a LATENCY message on the bus so the pipeline can reconfigure its
          * global latency.
+         * 
+         * This value is retained over PAUSED->READY state changes. Subclasses
+         * can call this function from their instance init function.
          * @param min_latency minimum parse latency
          * @param max_latency maximum parse latency
          */
@@ -2150,6 +2262,9 @@ export namespace GstBase {
         /**
          * Subclass can use this function to tell the base class that it needs to
          * be given buffers of at least `min_size` bytes.
+         * 
+         * This value is reset during PAUSED->READY state changes. Subclasses must
+         * call this function from {@link GstBase.BaseParseClass.SignalSignatures.start | GstBase.BaseParseClass::start} if they want to set a static value.
          * @param min_size Minimum size in bytes of the data that this base class should       give to subclass.
          */
         set_min_frame_size(min_size: number): void;
@@ -2162,6 +2277,9 @@ export namespace GstBase {
          * will be invoked, but {@link GstBase.BaseParseClass.SignalSignatures.pre_push_frame | GstBase.BaseParseClass::pre_push_frame} will still be
          * invoked, so subclass can perform as much or as little is appropriate for
          * passthrough semantics in {@link GstBase.BaseParseClass.SignalSignatures.pre_push_frame | GstBase.BaseParseClass::pre_push_frame}.
+         * 
+         * This value is reset during PAUSED->READY state changes. Subclasses must
+         * call this function from {@link GstBase.BaseParseClass.SignalSignatures.start | GstBase.BaseParseClass::start} if they want to set a static value.
          * @param passthrough `true` if parser should run in passthrough mode
          */
         set_passthrough(passthrough: boolean): void;
@@ -2171,6 +2289,9 @@ export namespace GstBase {
          * interpolation (previous timestamp + duration), which is incorrect for
          * data streams with reordering, where PTS can go backward. Sub-classes
          * implementing such formats should disable PTS interpolation.
+         * 
+         * This value is retained over PAUSED->READY state changes. Subclasses
+         * can call this function from their instance init function.
          * @param pts_interpolate `true` if parser should interpolate PTS timestamps
          */
         set_pts_interpolation(pts_interpolate: boolean): void;
@@ -2179,6 +2300,9 @@ export namespace GstBase {
          * Set if frame starts can be identified. This is set by default and
          * determines whether seeking based on bitrate averages
          * is possible for a format/stream.
+         * 
+         * This value is reset during PAUSED->READY state changes. Subclasses must
+         * call this function from {@link GstBase.BaseParseClass.SignalSignatures.start | GstBase.BaseParseClass::start} if they want to set a static value.
          * @param syncable set if frame starts can be identified
          */
         set_syncable(syncable: boolean): void;
@@ -5847,7 +5971,7 @@ export namespace GstBase {
          * Free-function: g_free
          * @returns the current data. `g_free()` after usage.
          */
-        free_and_get_data(): number;
+        free_and_get_data(): Uint8Array;
 
         /**
          * Returns the remaining size of data that can still be written. If

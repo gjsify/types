@@ -651,16 +651,19 @@ export namespace Xkl {
         // Properties
         /**
          * @read-only
+         * @default null
          */
         get backendName(): string;
 
         /**
          * @read-only
+         * @default 0
          */
         get default_group(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get defaultGroup(): number;
 
@@ -671,46 +674,55 @@ export namespace Xkl {
 
         /**
          * @read-only
+         * @default 0
          */
         get features(): EngineFeatures;
 
         /**
          * @read-only
+         * @default false
          */
         get indicators_handling(): boolean;
 
         /**
          * @read-only
+         * @default false
          */
         get indicatorsHandling(): boolean;
 
         /**
          * @read-only
+         * @default 0
          */
         get max_num_groups(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get maxNumGroups(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get num_groups(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get numGroups(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get secondary_groups_mask(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get secondaryGroupsMask(): number;
 
@@ -750,7 +762,7 @@ export namespace Xkl {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static INT__LONG_LONG(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
+        static INT__LONG_LONG(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
         /**
          * @param closure 
@@ -760,7 +772,7 @@ export namespace Xkl {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static VOID__ENUM_INT_BOOLEAN(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
+        static VOID__ENUM_INT_BOOLEAN(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
         /**
          * Get the instance of the XklEngine. Within a process, there is always once instance.

@@ -1,12 +1,12 @@
 // The widget vocabulary of Shumate-1.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.6.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+// GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
 // name here is real needs values, not declarations.
 
-export const SURFACE_PROVENANCE = 'Shumate-1.0 — library 1.6.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object';
+export const SURFACE_PROVENANCE = 'Shumate-1.0 — library 1.7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object';
 
 export const OWN_PROPS = {
     ShumateCompass: ['viewport'],

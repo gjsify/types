@@ -273,9 +273,11 @@ export namespace Peas {
          * Enable a loader, enables a loader for plugins.
          * 
          * The C plugin loader is always enabled. The other plugin
-         * loaders are: gjs, lua5.1, python and python3.
+         * loaders are: "gjs", "lua5.1", and "python".
          * 
-         * For instance, the following code will enable Python 2 plugins
+         * Note that the "python" loader is Python 3 only.
+         * 
+         * For instance, the following code will enable Python 3 plugins
          * to be loaded:
          * 
          * ```c
@@ -303,6 +305,9 @@ export namespace Peas {
         /**
          * Gets the {@link PluginInfo} corresponding with `plugin_name`,
          * or `null` if `plugin_name` was not found.
+         * 
+         * `plugin_name` should be the value from the "Module=" line of your
+         * `*.plugin` manifest.
          * @param plugin_name A plugin name.
          * @returns the {@link Peas.PluginInfo} corresponding with   a given plugin module name.
          */
@@ -1085,7 +1090,7 @@ export namespace Peas {
      * Authors=Steve Frécinaux &lt;code@istique.net&gt;
      * Copyright=Copyright © 2009-10 Steve Frécinaux
      * Website=https://wiki.gnome.org/Projects/Libpeas
-     * Help=http://library.gnome.org/devel/libpeas/stable/
+     * Help=https://gitlab.gnome.org/GNOME/libpeas
      * Hidden=false
      * ```
      * @gir-type Class

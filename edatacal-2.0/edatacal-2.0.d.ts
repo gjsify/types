@@ -141,8 +141,6 @@ export namespace EDataCal {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      */
     class CalBackend extends EBackend.Backend implements ECal.TimezoneCache {
@@ -1597,8 +1595,6 @@ export namespace EDataCal {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      */
     abstract class CalBackendFactory extends EBackend.BackendFactory {
@@ -1740,8 +1736,6 @@ export namespace EDataCal {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      */
     class CalBackendSync extends CalBackend implements ECal.TimezoneCache {
@@ -2114,8 +2108,6 @@ export namespace EDataCal {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using
-     * the functions below.
      * @gir-type Class
      * @since 3.26
      */
@@ -2636,8 +2628,6 @@ export namespace EDataCal {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using
-     * the functions below.
      * @gir-type Class
      * @since 3.26
      */
@@ -4136,8 +4126,6 @@ export namespace EDataCal {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 2.32
      */

@@ -8504,7 +8504,7 @@ export namespace Gst {
          * @param factory_name the name of the {@link Gst.ElementFactory}
          * @returns a {@link Gst.Iterator} of {@link Gst.Element}     for all elements in the bin with the given element factory name
          */
-        iterate_all_by_element_factory_name(factory_name: string): Iterator | null;
+        iterate_all_by_element_factory_name(factory_name: string): Iterator;
 
         /**
          * Looks for all elements inside the bin that implements the given
@@ -8514,27 +8514,27 @@ export namespace Gst {
          * @param iface the {@link GObject.GType} of an interface
          * @returns a {@link Gst.Iterator} of {@link Gst.Element}     for all elements in the bin implementing the given interface
          */
-        iterate_all_by_interface(iface: GObject.GType): Iterator | null;
+        iterate_all_by_interface(iface: GObject.GType): Iterator;
 
         /**
          * Gets an iterator for the elements in this bin.
          * @returns a {@link Gst.Iterator} of {@link Gst.Element}
          */
-        iterate_elements(): Iterator | null;
+        iterate_elements(): Iterator;
 
         /**
          * Gets an iterator for the elements in this bin.
          * This iterator recurses into GstBin children.
          * @returns a {@link Gst.Iterator} of {@link Gst.Element}
          */
-        iterate_recurse(): Iterator | null;
+        iterate_recurse(): Iterator;
 
         /**
          * Gets an iterator for all elements in the bin that have the
          * #GST_ELEMENT_FLAG_SINK flag set.
          * @returns a {@link Gst.Iterator} of {@link Gst.Element}
          */
-        iterate_sinks(): Iterator | null;
+        iterate_sinks(): Iterator;
 
         /**
          * Gets an iterator for the elements in this bin in topologically
@@ -8545,14 +8545,14 @@ export namespace Gst {
          * of the bin elements and for clock selection.
          * @returns a {@link Gst.Iterator} of {@link Gst.Element}
          */
-        iterate_sorted(): Iterator | null;
+        iterate_sorted(): Iterator;
 
         /**
          * Gets an iterator for all elements in the bin that have the
          * #GST_ELEMENT_FLAG_SOURCE flag set.
          * @returns a {@link Gst.Iterator} of {@link Gst.Element}
          */
-        iterate_sources(): Iterator | null;
+        iterate_sources(): Iterator;
 
         /**
          * Queries `bin` for the current latency and reconfigures this latency on all the
@@ -10824,6 +10824,9 @@ export namespace Gst {
         /**
          * Gets a list of devices from all of the relevant monitors. This may actually
          * probe the hardware if the monitor is not currently started.
+         * 
+         * Since 1.28.3, this function will block until the monitor has finished
+         * starting if `gst_device_monitor_start()` has been called.
          * @returns a {@link GLib.List} of   {@link Gst.Device}
          */
         get_devices(): Device[] | null;

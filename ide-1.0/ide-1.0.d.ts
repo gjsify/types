@@ -17,7 +17,7 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Peas from '@girs/peas-1.0';
-import type GIRepository from '@girs/girepository-2.0';
+import type GIRepository from '@girs/girepository-3.0';
 import type Json from '@girs/json-1.0';
 import type GtkSource from '@girs/gtksource-3.0';
 import type Gtk from '@girs/gtk-3.0';

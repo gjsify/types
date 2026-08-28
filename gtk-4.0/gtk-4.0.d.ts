@@ -244,7 +244,7 @@ export interface Builder {
         /**
          * Indicates the availability of interactive
          *    popup element, such as menu or popover, that can be triggered by an
-         *    element. Contrary to &#x201C;aria-haspopup&#x201D;, it doesn't indicate the type of the
+         *    element. Contrary to “aria-haspopup”, it doesn't indicate the type of the
          *    element, as such it cannot be used to indicate the availability of more
          *    complex elements such as dialog. Value type: boolean
          */
@@ -942,28 +942,28 @@ export interface Builder {
      */
     enum AccessibleState {
         /**
-         * A &#x201C;busy&#x201D; state. This state has boolean values
+         * A “busy” state. This state has boolean values
          */
         BUSY,
         /**
-         * A &#x201C;checked&#x201D; state; indicates the current
+         * A “checked” state; indicates the current
          *   state of a {@link CheckButton}. Value type: {@link AccessibleTristate}
          */
         CHECKED,
         /**
-         * A &#x201C;disabled&#x201D; state; corresponds to the
+         * A “disabled” state; corresponds to the
          *   {@link Widget.sensitive} property. It indicates a UI element
          *   that is perceivable, but not editable or operable. Value type: boolean
          */
         DISABLED,
         /**
-         * An &#x201C;expanded&#x201D; state; corresponds to the
+         * An “expanded” state; corresponds to the
          *   {@link Expander.expanded} property. Value type: boolean
          *   or undefined
          */
         EXPANDED,
         /**
-         * A &#x201C;hidden&#x201D; state; corresponds to the
+         * A “hidden” state; corresponds to the
          *   {@link Widget.visible} property. You can use this state
          *   explicitly on UI elements that should not be exposed to an assistive
          *   technology. Value type: boolean
@@ -971,18 +971,18 @@ export interface Builder {
          */
         HIDDEN,
         /**
-         * An &#x201C;invalid&#x201D; state; set when a widget
+         * An “invalid” state; set when a widget
          *   is showing an error. Value type: {@link AccessibleInvalidState}
          */
         INVALID,
         /**
-         * A &#x201C;pressed&#x201D; state; indicates the current
+         * A “pressed” state; indicates the current
          *   state of a {@link ToggleButton}. Value type: {@link AccessibleTristate}
          *   enumeration
          */
         PRESSED,
         /**
-         * A &#x201C;selected&#x201D; state; set when a widget
+         * A “selected” state; set when a widget
          *   is selected. Value type: boolean or undefined
          */
         SELECTED,
@@ -1108,7 +1108,7 @@ export interface Builder {
     /**
      * Controls how a widget deals with extra space in a single dimension.
      * 
-     * Alignment only matters if the widget receives a &#x201C;too large&#x201D; allocation,
+     * Alignment only matters if the widget receives a “too large” allocation,
      * for example if you packed the widget with the {@link Gtk.Widget.hexpand}
      * property inside a {@link Box}, then the widget might get extra space.
      * If you have for example a 16x16 icon inside a 32x32 space, the icon
@@ -1143,7 +1143,7 @@ export interface Builder {
          */
         CENTER,
         /**
-         * a different name for `GTK_ALIGN_BASELINE`.
+         * stretch to fill all space, but align the baseline.
          */
         BASELINE_FILL,
         /**
@@ -1151,7 +1151,7 @@ export interface Builder {
          */
         BASELINE,
         /**
-         * stretch to fill all space, but align the baseline.
+         * align the baseline.
          */
         BASELINE_CENTER,
     }
@@ -1208,7 +1208,7 @@ export interface Builder {
      * {@link Gtk.AssistantPageType.CONFIRM}, {@link Gtk.AssistantPageType.SUMMARY} or
      * {@link Gtk.AssistantPageType.PROGRESS} to be correct.
      * 
-     * The Cancel button will only be shown if the page isn&#x2019;t &#x201C;committed&#x201D;.
+     * The Cancel button will only be shown if the page isn’t “committed”.
      * See `gtk_assistant_commit()` for details.
      * @gir-type Enum
      * @deprecated since 4.10: {@link Gtk.Assistant} will be removed in GTK 5
@@ -1349,14 +1349,14 @@ export interface Builder {
 
         // Static fields
         /**
-         * A type-func attribute didn&#x2019;t name
+         * A type-func attribute didn’t name
          *  a function that returns a {@link GObject.GType}.
          */
         static INVALID_TYPE_FUNCTION: number;
 
         /**
          * The input contained a tag that {@link Gtk.Builder}
-         *  can&#x2019;t handle.
+         *  can’t handle.
          */
         static UNHANDLED_TAG: number;
 
@@ -1368,13 +1368,13 @@ export interface Builder {
 
         /**
          * {@link Gtk.Builder} found an attribute that
-         *  it doesn&#x2019;t understand.
+         *  it doesn’t understand.
          */
         static INVALID_ATTRIBUTE: number;
 
         /**
          * {@link Gtk.Builder} found a tag that
-         *  it doesn&#x2019;t understand.
+         *  it doesn’t understand.
          */
         static INVALID_TAG: number;
 
@@ -1385,7 +1385,7 @@ export interface Builder {
         static MISSING_PROPERTY_VALUE: number;
 
         /**
-         * {@link Gtk.Builder} couldn&#x2019;t parse
+         * {@link Gtk.Builder} couldn’t parse
          *  some attribute value.
          */
         static INVALID_VALUE: number;
@@ -1408,7 +1408,7 @@ export interface Builder {
         static OBJECT_TYPE_REFUSED: number;
 
         /**
-         * The wrong type was specified in a composite class&#x2019;s template XML
+         * The wrong type was specified in a composite class’s template XML
          */
         static TEMPLATE_MISMATCH: number;
 
@@ -1530,8 +1530,8 @@ export interface Builder {
     enum CellRendererMode {
         /**
          * The cell is just for display
-         *  and cannot be interacted with.  Note that this doesn&#x2019;t mean that eg. the
-         *  row being drawn can&#x2019;t be selected -- just that a particular element of
+         *  and cannot be interacted with.  Note that this doesn’t mean that eg. the
+         *  row being drawn can’t be selected -- just that a particular element of
          *  it cannot be individually modified.
          */
         INERT,
@@ -1924,7 +1924,7 @@ export interface Builder {
         CHARS,
         /**
          * Delete only the portion of the word to the
-         *   left/right of cursor if we&#x2019;re in the middle of a word.
+         *   left/right of cursor if we’re in the middle of a word.
          */
         WORD_ENDS,
         /**
@@ -2084,6 +2084,14 @@ export interface Builder {
          * the property id for {@link Gtk.Editable.enable_undo}
          */
         PROP_ENABLE_UNDO,
+        /**
+         * the property id for {@link Gtk.Editable.complete_text}
+         */
+        PROP_COMPLETE_TEXT,
+        /**
+         * the property id for {@link Gtk.Editable.input_interceptor}
+         */
+        PROP_INPUT_INTERCEPTOR,
         /**
          * the number of properties
          */
@@ -2562,10 +2570,10 @@ export interface Builder {
      * The difference between {@link Gtk.InputPurpose.DIGITS} and
      * {@link Gtk.InputPurpose.NUMBER} is that the former accepts only digits
      * while the latter also some punctuation (like commas or points, plus,
-     * minus) and &#x201C;e&#x201D; or &#x201C;E&#x201D; as in 3.14E+000.
+     * minus) and “e” or “E” as in 3.14E+000.
      * 
      * This enumeration may be extended in the future; input methods should
-     * interpret unknown values as &#x201C;free form&#x201D;.
+     * interpret unknown values as “free form”.
      * @gir-type Enum
      */
     enum InputPurpose {
@@ -3896,40 +3904,6 @@ export interface Builder {
     /**
      * @gir-type Enum
      */
-    export namespace RestoreReason {
-        export const $gtype: GObject.GType<RestoreReason>;
-    }
-
-    /**
-     * Enumerates possible reasons for an application to restore saved state.
-     * 
-     * See `Gtk.Application::restore-state`.
-     * @gir-type Enum
-     * @since 4.24
-     */
-    enum RestoreReason {
-        /**
-         * Don't restore anything
-         */
-        PRISTINE,
-        /**
-         * This is normal launch. Restore as little as is reasonable
-         */
-        LAUNCH,
-        /**
-         * The application has crashed before. Try to restore the previous state
-         */
-        RECOVER,
-        /**
-         * This is a session restore. Restore the previous state as far as possible
-         */
-        RESTORE,
-    }
-
-
-    /**
-     * @gir-type Enum
-     */
     export namespace RevealerTransitionType {
         export const $gtype: GObject.GType<RevealerTransitionType>;
     }
@@ -4168,9 +4142,9 @@ export interface Builder {
         /**
          * Exactly one element is selected.
          *   In some circumstances, such as initially or during a search
-         *   operation, it&#x2019;s possible for no element to be selected with
+         *   operation, it’s possible for no element to be selected with
          *   {@link Gtk.SelectionMode.BROWSE}. What is really enforced is that the user
-         *   can&#x2019;t deselect a currently selected element except by selecting
+         *   can’t deselect a currently selected element except by selecting
          *   another element.
          */
         BROWSE,
@@ -4357,7 +4331,7 @@ export interface Builder {
          */
         WIDTH_FOR_HEIGHT,
         /**
-         * Don&#x2019;t trade height-for-width or width-for-height
+         * Don’t trade height-for-width or width-for-height
          */
         CONSTANT_SIZE,
     }
@@ -4762,6 +4736,13 @@ export interface Builder {
          * @param error an error in the {@link Gtk.SvgError} domain
          */
         static get_end(error: GLib.Error): SvgLocation | null;
+
+        /**
+         * Returns a string describing the input source that
+         * the parsing error occurred in.
+         * @param error an error in the {@link Gtk.SvgError} domain
+         */
+        static get_input(error: GLib.Error): string | null;
 
         /**
          * Returns context information about the start position
@@ -5599,181 +5580,181 @@ export interface Builder {
     const PAPER_NAME_LETTER: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store whether to collate the
+     * The key used by the “Print to file” printer to store whether to collate the
      * printed pages.
      */
     const PRINT_SETTINGS_COLLATE: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the default source.
+     * The key used by the “Print to file” printer to store the default source.
      */
     const PRINT_SETTINGS_DEFAULT_SOURCE: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the dither used.
+     * The key used by the “Print to file” printer to store the dither used.
      */
     const PRINT_SETTINGS_DITHER: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store whether to print the
+     * The key used by the “Print to file” printer to store whether to print the
      * output in duplex.
      */
     const PRINT_SETTINGS_DUPLEX: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the finishings.
+     * The key used by the “Print to file” printer to store the finishings.
      */
     const PRINT_SETTINGS_FINISHINGS: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the media type.
+     * The key used by the “Print to file” printer to store the media type.
      * 
      * The set of media types is defined in PWG 5101.1-2002 PWG.
      */
     const PRINT_SETTINGS_MEDIA_TYPE: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the number of pages per
+     * The key used by the “Print to file” printer to store the number of pages per
      * sheet.
      */
     const PRINT_SETTINGS_NUMBER_UP: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the number of pages per
+     * The key used by the “Print to file” printer to store the number of pages per
      * sheet in number-up mode.
      */
     const PRINT_SETTINGS_NUMBER_UP_LAYOUT: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the number of copies.
+     * The key used by the “Print to file” printer to store the number of copies.
      */
     const PRINT_SETTINGS_N_COPIES: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the orientation.
+     * The key used by the “Print to file” printer to store the orientation.
      */
     const PRINT_SETTINGS_ORIENTATION: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the file
+     * The key used by the “Print to file” printer to store the file
      * name of the output without the path to the directory and the
      * file extension.
      */
     const PRINT_SETTINGS_OUTPUT_BASENAME: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the output bin.
+     * The key used by the “Print to file” printer to store the output bin.
      */
     const PRINT_SETTINGS_OUTPUT_BIN: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the
+     * The key used by the “Print to file” printer to store the
      * directory to which the output should be written.
      */
     const PRINT_SETTINGS_OUTPUT_DIR: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the format
-     * of the output. The supported values are &#x201C;PS&#x201D; and &#x201C;PDF&#x201D;.
+     * The key used by the “Print to file” printer to store the format
+     * of the output. The supported values are “PS” and “PDF”.
      */
     const PRINT_SETTINGS_OUTPUT_FILE_FORMAT: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the URI
+     * The key used by the “Print to file” printer to store the URI
      * to which the output should be written. GTK itself supports
-     * only &#x201C;file://&#x201D; URIs.
+     * only “file://” URIs.
      */
     const PRINT_SETTINGS_OUTPUT_URI: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the array of page ranges
+     * The key used by the “Print to file” printer to store the array of page ranges
      * to print.
      */
     const PRINT_SETTINGS_PAGE_RANGES: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the set of pages to print.
+     * The key used by the “Print to file” printer to store the set of pages to print.
      */
     const PRINT_SETTINGS_PAGE_SET: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the page format.
+     * The key used by the “Print to file” printer to store the page format.
      */
     const PRINT_SETTINGS_PAPER_FORMAT: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the page height.
+     * The key used by the “Print to file” printer to store the page height.
      */
     const PRINT_SETTINGS_PAPER_HEIGHT: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the paper width.
+     * The key used by the “Print to file” printer to store the paper width.
      */
     const PRINT_SETTINGS_PAPER_WIDTH: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the printer name.
+     * The key used by the “Print to file” printer to store the printer name.
      */
     const PRINT_SETTINGS_PRINTER: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the resolution in lines
+     * The key used by the “Print to file” printer to store the resolution in lines
      * per inch.
      */
     const PRINT_SETTINGS_PRINTER_LPI: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store which pages to print.
+     * The key used by the “Print to file” printer to store which pages to print.
      */
     const PRINT_SETTINGS_PRINT_PAGES: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the printing quality.
+     * The key used by the “Print to file” printer to store the printing quality.
      */
     const PRINT_SETTINGS_QUALITY: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the resolution in DPI.
+     * The key used by the “Print to file” printer to store the resolution in DPI.
      */
     const PRINT_SETTINGS_RESOLUTION: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the horizontal
+     * The key used by the “Print to file” printer to store the horizontal
      * resolution in DPI.
      */
     const PRINT_SETTINGS_RESOLUTION_X: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the vertical resolution
+     * The key used by the “Print to file” printer to store the vertical resolution
      * in DPI.
      */
     const PRINT_SETTINGS_RESOLUTION_Y: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store whether to reverse the
+     * The key used by the “Print to file” printer to store whether to reverse the
      * order of the printed pages.
      */
     const PRINT_SETTINGS_REVERSE: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the scale.
+     * The key used by the “Print to file” printer to store the scale.
      */
     const PRINT_SETTINGS_SCALE: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store whether to print with
+     * The key used by the “Print to file” printer to store whether to print with
      * colors.
      */
     const PRINT_SETTINGS_USE_COLOR: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store 32-bit Windows extra
+     * The key used by the “Print to file” printer to store 32-bit Windows extra
      * driver.
      */
     const PRINT_SETTINGS_WIN32_DRIVER_EXTRA: string;
 
     /**
-     * The key used by the &#x201C;Print to file&#x201D; printer to store the 32-bit Windows
+     * The key used by the “Print to file” printer to store the 32-bit Windows
      * driver version.
      */
     const PRINT_SETTINGS_WIN32_DRIVER_VERSION: string;
@@ -5942,14 +5923,14 @@ export interface Builder {
     /**
      * Parses a string representing an accelerator.
      * 
-     * The format looks like &#x201C;`<Control>a`&#x201D; or &#x201C;`<Shift><Alt>F1`&#x201D;.
+     * The format looks like “`<Control>a`” or “`<Shift><Alt>F1`”.
      * 
      * The parser is fairly liberal and allows lower or upper case, and also
-     * abbreviations such as &#x201C;`<Ctl>`&#x201D; and &#x201C;`<Ctrl>`&#x201D;.
+     * abbreviations such as “`<Ctl>`” and “`<Ctrl>`”.
      * 
      * Key names are parsed using {@link Gdk.keyval_from_name}. For character keys
      * the name is not the symbol, but the lowercase name, e.g. one would use
-     * &#x201C;`<Ctrl>minus`&#x201D; instead of &#x201C;`<Ctrl>-`&#x201D;.
+     * “`<Ctrl>minus`” instead of “`<Ctrl>-`”.
      * 
      * Modifiers are enclosed in angular brackets `<>`, and match the
      * {@link Gdk.ModifierType} mask:
@@ -5994,7 +5975,7 @@ export interface Builder {
      * a valid keyboard accelerator.
      * 
      * For example, the `GDK_KEY_a` keyval plus `GDK_CONTROL_MASK` mask is valid,
-     * and matches the &#x201C;Ctrl+a&#x201D; accelerator. But, you can't, for instance, use
+     * and matches the “Ctrl+a” accelerator. But, you can't, for instance, use
      * the `GDK_KEY_Control_L` keyval as an accelerator.
      * @param keyval a GDK keyval
      * @param modifiers modifier mask
@@ -6087,9 +6068,9 @@ export interface Builder {
      * (same major version.)
      * 
      * This function is primarily for GTK modules; the module
-     * can call this function to check that it wasn&#x2019;t loaded
+     * can call this function to check that it wasn’t loaded
      * into an incompatible version of GTK. However, such a
-     * check isn&#x2019;t completely reliable, since the module may be
+     * check isn’t completely reliable, since the module may be
      * linked against an old version of GTK and calling the
      * old version of `gtk_check_version()`, but still get loaded
      * into an application using a newer version of GTK.
@@ -6148,7 +6129,7 @@ export interface Builder {
      * Prevents {@link Gtk.init} and {@link Gtk.init_check} from calling `setlocale()`.
      * 
      * You would want to use this function if you wanted to set the locale for
-     * your program to something other than the user&#x2019;s locale, or if you wanted
+     * your program to something other than the user’s locale, or if you wanted
      * to set different values for different locale categories.
      * 
      * Most programs should not need to call this function.
@@ -6393,7 +6374,7 @@ export interface Builder {
      * 
      * This function does the same work as {@link Gtk.init} with only a
      * single change: It does not terminate the program if the windowing
-     * system can&#x2019;t be initialized. Instead it returns false on failure.
+     * system can’t be initialized. Instead it returns false on failure.
      * 
      * This way the application can fall back to some other means of
      * communication with the user - for example a curses or command line
@@ -6502,7 +6483,7 @@ export interface Builder {
     /**
      * Renders an arrow pointing to `angle`.
      * 
-     * Typical arrow rendering at 0, 1&#x2044;2 &#x3C0;;, &#x3C0;; and 3&#x2044;2 &#x3C0;:
+     * Typical arrow rendering at 0, 1⁄2 π;, π; and 3⁄2 π:
      * 
      * ![](arrows.png)
      * @param context a {@link Gtk.StyleContext}
@@ -6604,7 +6585,7 @@ export interface Builder {
     function render_frame(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number): void;
 
     /**
-     * Renders a handle (as in {@link Gtk.Paned} and {@link Gtk.Window}&#x2019;s resize grip),
+     * Renders a handle (as in {@link Gtk.Paned} and {@link Gtk.Window}’s resize grip),
      * in the rectangle determined by `x`, `y`, `width`, `height`.
      * 
      * Handles rendered for the paned and grip classes:
@@ -6789,6 +6770,15 @@ export interface Builder {
     function svg_error_get_end(error: GLib.Error): SvgLocation | null;
 
     /**
+     * Returns a string describing the input source that
+     * the parsing error occurred in.
+     * @param error an error in the {@link Gtk.SvgError} domain
+     * @returns the input source
+     * @since 4.24
+     */
+    function svg_error_get_input(error: GLib.Error): string | null;
+
+    /**
      * Returns context information about the start position
      * in the document where the parsing error occurred.
      * @param error an error in the {@link Gtk.SvgError} domain
@@ -6861,7 +6851,7 @@ export interface Builder {
     function test_register_all_types(): void;
 
     /**
-     * Enters the main loop and waits for `widget` to be &#x201C;drawn&#x201D;.
+     * Enters the main loop and waits for `widget` to be “drawn”.
      * 
      * In this context that means it waits for the frame clock of
      * `widget` to have run a full styling, layout and drawing cycle.
@@ -7494,6 +7484,11 @@ export interface Builder {
          * Information about session saving.
          */
         SESSION,
+        /**
+         * Print information from the GTK inspector 'general' page,
+         * in markdown format.
+         */
+        GENERAL_INFO,
     }
 
 
@@ -8177,6 +8172,7 @@ export interface Builder {
             "notify::accessible": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
             "notify::display": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -8185,6 +8181,7 @@ export interface Builder {
             accessible_role: AccessibleRole;
             accessibleRole: AccessibleRole;
             display: Gdk.Display;
+            realized: boolean;
         }
     }
 
@@ -8231,6 +8228,14 @@ export interface Builder {
          */
         get display(): Gdk.Display;
         set display(val: Gdk.Display);
+
+        /**
+         * Whether the {@link Gtk.ATContext} has been realized or not.
+         * @since 4.24
+         * @read-only
+         * @default false
+         */
+        get realized(): boolean;
 
         /**
          * Compile-time signal type information.
@@ -8951,9 +8956,9 @@ export interface Builder {
          *                                           _("translator-credits"));
          * ```
          * 
-         * It is a good idea to use the customary `msgid` &#x201C;translator-credits&#x201D;
+         * It is a good idea to use the customary `msgid` “translator-credits”
          * for this purpose, since translators will already know the purpose of
-         * that `msgid`, and since {@link Gtk.AboutDialog} will detect if &#x201C;translator-credits&#x201D;
+         * that `msgid`, and since {@link Gtk.AboutDialog} will detect if “translator-credits”
          * is untranslated and omit translator credits.
          * @param translator_credits the translator credits
          */
@@ -9440,21 +9445,21 @@ export interface Builder {
      * # GtkActionBar as GtkBuildable
      * 
      * The {@link Gtk.ActionBar} implementation of the {@link Gtk.Buildable} interface supports
-     * adding children at the start or end sides by specifying &#x201C;start&#x201D; or &#x201C;end&#x201D; as
-     * the &#x201C;type&#x201D; attribute of a `<child>` element, or setting the center widget
-     * by specifying &#x201C;center&#x201D; value.
+     * adding children at the start or end sides by specifying “start” or “end” as
+     * the “type” attribute of a `<child>` element, or setting the center widget
+     * by specifying “center” value.
      * 
      * # CSS nodes
      * 
      * ```
      * actionbar
-     * &#x2570;&#x2500;&#x2500; revealer
-     *     &#x2570;&#x2500;&#x2500; box
-     *         &#x251C;&#x2500;&#x2500; box.start
-     *         &#x2502;   &#x2570;&#x2500;&#x2500; [start children]
-     *         &#x251C;&#x2500;&#x2500; [center widget]
-     *         &#x2570;&#x2500;&#x2500; box.end
-     *             &#x2570;&#x2500;&#x2500; [end children]
+     * ╰── revealer
+     *     ╰── box
+     *         ├── box.start
+     *         │   ╰── [start children]
+     *         ├── [center widget]
+     *         ╰── box.end
+     *             ╰── [end children]
      * ```
      * 
      * A {@link Gtk.ActionBar}'s CSS node is called `actionbar`. It contains a `revealer`
@@ -9892,7 +9897,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -10211,7 +10216,7 @@ export interface Builder {
          * setters, multiple `Gtk.Adjustment::changed` signals will
          * be emitted. However, since the emission of the
          * `Gtk.Adjustment::changed` signal is tied to the emission
-         * of the ::notify signals of the changed properties, it&#x2019;s possible
+         * of the ::notify signals of the changed properties, it’s possible
          * to compress the `Gtk.Adjustment::changed` signals into one
          * by calling `g_object_freeze_notify()` and `g_object_thaw_notify()`
          * around the calls to the individual setters.
@@ -10594,7 +10599,7 @@ export interface Builder {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ShortcutTrigger.ConstructorProps {
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ShortcutTrigger.ConstructorProps, Gio.ListModel.ConstructorProps {
             first: ShortcutTrigger;
             second: ShortcutTrigger;
         }
@@ -10608,7 +10613,7 @@ export interface Builder {
      * This can be cascaded to combine more than two triggers.
      * @gir-type Class
      */
-    class AlternativeTrigger extends ShortcutTrigger {
+    class AlternativeTrigger<A extends GObject.Object = GObject.Object> extends ShortcutTrigger implements Gio.ListModel<A> {
         static $gtype: GObject.GType<AlternativeTrigger>;
 
         // Properties
@@ -10639,6 +10644,11 @@ export interface Builder {
         _init(...args: any[]): void;
 
         static ["new"](first: ShortcutTrigger, second: ShortcutTrigger): AlternativeTrigger;
+
+        static newv(triggers: ShortcutTrigger[]): AlternativeTrigger;
+
+        // Conflicted with GObject.Object.newv
+        static newv(...args: never[]): any;
 
         // Signals
         /** @signal */
@@ -10673,6 +10683,110 @@ export interface Builder {
          * @returns the second alternative trigger
          */
         get_second(): ShortcutTrigger;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @returns the {@link GObject.GType} of the items contained in `list`.
+         */
+        get_item_type(): GObject.GType;
+
+        /**
+         * Gets the number of items in `list`.
+         * 
+         * Depending on the model implementation, calling this function may be
+         * less efficient than iterating the list with increasing values for
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @returns the number of items in `list`.
+         */
+        get_n_items(): number;
+
+        /**
+         * Get the item at `position`.
+         * 
+         * If `position` is greater than the number of items in `list`, `null` is
+         * returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.
+         * 
+         * This function is meant to be used by language bindings in place
+         * of `g_list_model_get_item()`.
+         * 
+         * See also: `g_list_model_get_n_items()`
+         * @param position the position of the item to fetch
+         * @returns the object at `position`.
+         */
+        get_item(position: number): A | null;
+
+        /**
+         * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
+         * 
+         * This function should only be called by classes implementing
+         * {@link Gio.ListModel}. It has to be called after the internal representation
+         * of `list` has been updated, because handlers connected to this signal
+         * might query the new state of the list.
+         * 
+         * Implementations must only make changes to the model (as visible to
+         * its consumer) in places that will not cause problems for that
+         * consumer.  For models that are driven directly by a write API (such
+         * as {@link Gio.ListStore}), changes can be reported in response to uses of that
+         * API.  For models that represent remote data, changes should only be
+         * made from a fresh mainloop dispatch.  It is particularly not
+         * permitted to make changes in response to a call to the {@link Gio.ListModel}
+         * consumer API.
+         * 
+         * Stated another way: in general, it is assumed that code making a
+         * series of accesses to the model via the API, without returning to the
+         * mainloop, and without calling other code, will continue to view the
+         * same contents of the model.
+         * @param position the position at which `list` changed
+         * @param removed the number of items removed
+         * @param added the number of items added
+         */
+        items_changed(position: number, removed: number, added: number): void;
+
+        /**
+         * Get the item at `position`. If `position` is greater than the number of
+         * items in `list`, `null` is returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.  See `g_list_model_get_n_items()`.
+         * 
+         * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
+         * @param position the position of the item to fetch
+         * @virtual
+         */
+        vfunc_get_item(position: number): A | null;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @virtual
+         */
+        vfunc_get_item_type(): GObject.GType;
+
+        /**
+         * Gets the number of items in `list`.
+         * 
+         * Depending on the model implementation, calling this function may be
+         * less efficient than iterating the list with increasing values for
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @virtual
+         */
+        vfunc_get_n_items(): number;
     }
 
 
@@ -10920,7 +11034,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -11454,7 +11568,7 @@ export interface Builder {
      * 
      * ## CSS nodes
      * 
-     * {@link Gtk.AppChooserButton} has a single CSS node with the name &#x201C;appchooserbutton&#x201D;.
+     * {@link Gtk.AppChooserButton} has a single CSS node with the name “appchooserbutton”.
      * @gir-type Class
      * @deprecated since 4.10: The application selection widgets should be   implemented according to the design of each platform and/or   application requiring them.
      */
@@ -12004,7 +12118,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -12949,7 +13063,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -12972,59 +13086,6 @@ export interface Builder {
              */
             "query-end": () => void;
             /**
-             * Emitted when application global state is restored.
-             * 
-             * The handler for this signal should do the opposite of what the
-             * corresponding handler for `Gtk.Application::save-state`
-             * does.
-             * @signal
-             * @since 4.24
-             * @run-last
-             */
-            "restore-state": (arg0: RestoreReason, arg1: GLib.Variant) => boolean | void;
-            /**
-             * Emitted when an application's per-window state is restored.
-             * 
-             * In response to this signal, you should create a new application
-             * window, add it to `application`, apply the provided `state`, and present it.
-             * The application can use the `reason` to determine how much of the state
-             * should be restored.
-             * 
-             * You must be careful to be robust in the face of app upgrades and downgrades:
-             * the `state` might have been created by a previous or occasionally even a future
-             * version of your app. Do not assume that a given key exists in the state.
-             * Apps must try to restore state saved by a previous version, but are free to
-             * discard state if it was written by a future version.
-             * 
-             * GTK will remember which window the user was using most recently, and will
-             * emit this signal for that window first. Thus, if you decide that the provided
-             * `reason` means that only one window should be restored, you can reliably
-             * ignore emissions if a window already exists
-             * 
-             * Note that this signal is not emitted only during the app's initial launch.
-             * If all windows are closed but the app keeps running, the signal will be
-             * emitted the next time a new window is opened.
-             * @signal
-             * @since 4.24
-             * @run-first
-             */
-            "restore-window": (arg0: RestoreReason, arg1: GLib.Variant) => void;
-            /**
-             * Emitted when the application is saving global state.
-             * 
-             * The handler for this signal should persist any
-             * global state of `application` into `dict`.
-             * 
-             * See `Gtk.Application::restore-state` for how to
-             * restore global state, and `Gtk.ApplicationWindow::save-state`
-             * and `Gtk.Application::restore-window` for handling
-             * per-window state.
-             * @signal
-             * @since 4.24
-             * @run-last
-             */
-            "save-state": (arg0: GLib.VariantDict) => boolean | void;
-            /**
              * Emitted when a window is added to an application.
              * 
              * See {@link Gtk.Application.add_window}.
@@ -13042,11 +13103,9 @@ export interface Builder {
              */
             "window-removed": (arg0: Window) => void;
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
-            "notify::autosave-interval": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
             "notify::register-session": (pspec: GObject.ParamSpec) => void;
             "notify::screensaver-active": (pspec: GObject.ParamSpec) => void;
-            "notify::support-save": (pspec: GObject.ParamSpec) => void;
             "notify::action-group": (pspec: GObject.ParamSpec) => void;
             "notify::application-id": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -13062,15 +13121,11 @@ export interface Builder {
         interface ConstructorProps extends Gio.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
             active_window: Window | null;
             activeWindow: Window | null;
-            autosave_interval: number;
-            autosaveInterval: number;
             menubar: Gio.MenuModel | null;
             register_session: boolean;
             registerSession: boolean;
             screensaver_active: boolean;
             screensaverActive: boolean;
-            support_save: boolean;
-            supportSave: boolean;
         }
     }
 
@@ -13148,27 +13203,6 @@ export interface Builder {
      * default window icon. Use {@link Gtk.Window.set_default_icon_name} or
      * {@link Gtk.Window.icon_name} to override that behavior.
      * 
-     * ## State saving
-     * 
-     * {@link Gtk.Application} registers with a session manager if possible and
-     * offers various functionality related to the session life-cycle,
-     * such as state saving.
-     * 
-     * State-saving functionality can be enabled by setting the
-     * {@link Gtk.Application.support_save} property to true.
-     * 
-     * In order to save and restore per-window state, applications must
-     * connect to the `Gtk.Application::restore-window` signal and
-     * handle the `Gtk.ApplicationWindow::save-state` signal. There
-     * are also `Gtk.Application::restore-state` and
-     * `Gtk.Application::save-state` signals, which can be used
-     * for global state that is not connected to any window.
-     * 
-     * {@link Gtk.Application} automatically saves state before app shutdown, and by
-     * default periodically auto-saves app state (as configured by the
-     * {@link Gtk.Application.autosave_interval} property). Applications can
-     * also call {@link Gtk.Application.save} themselves at opportune times.
-     * 
      * # Inhibiting
      * 
      * An application can block various ways to end the session with
@@ -13205,24 +13239,6 @@ export interface Builder {
          * @read-only
          */
         get activeWindow(): Window | null;
-
-        /**
-         * The number of seconds between automatic state saves. Defaults to 15.
-         * A value of 0 will opt out of automatic state saving.
-         * @since 4.24
-         * @default 15
-         */
-        get autosave_interval(): number;
-        set autosave_interval(val: number);
-
-        /**
-         * The number of seconds between automatic state saves. Defaults to 15.
-         * A value of 0 will opt out of automatic state saving.
-         * @since 4.24
-         * @default 15
-         */
-        get autosaveInterval(): number;
-        set autosaveInterval(val: number);
 
         /**
          * The menu model to be used for the application's menu bar.
@@ -13275,24 +13291,6 @@ export interface Builder {
         get screensaverActive(): boolean;
 
         /**
-         * Set this property to true if the application supports
-         * state saving and restoring.
-         * @since 4.24
-         * @default false
-         */
-        get support_save(): boolean;
-        set support_save(val: boolean);
-
-        /**
-         * Set this property to true if the application supports
-         * state saving and restoring.
-         * @since 4.24
-         * @default false
-         */
-        get supportSave(): boolean;
-        set supportSave(val: boolean);
-
-        /**
          * Compile-time signal type information.
          *
          * This instance property is generated only for TypeScript type checking.
@@ -13322,29 +13320,6 @@ export interface Builder {
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-        /**
-         * Class closure for the `Gtk.Application::restore-state` signal.
-         * @param reason the reason for restoring state
-         * @param state a dictionary containing the application state to restore
-         * @virtual
-         */
-        vfunc_restore_state(reason: RestoreReason, state: GLib.Variant): boolean;
-
-        /**
-         * Class closure for the `Gtk.Application::restore-window` signal.
-         * @param reason the reason this window is restored
-         * @param state the state to restore, as saved by a   `Gtk.ApplicationWindow::save-state` handler
-         * @virtual
-         */
-        vfunc_restore_window(reason: RestoreReason, state: GLib.Variant | null): void;
-
-        /**
-         * Class closure for the `Gtk.Application::save-state` signal.
-         * @param state a dictionary where to store the application's state
-         * @virtual
-         */
-        vfunc_save_state(state: GLib.VariantDict): boolean;
-
         /**
          * Signal emitted when a {@link Gtk.Window} is added to
          *    application through `gtk_application_add_window()`.
@@ -13383,15 +13358,6 @@ export interface Builder {
         add_window(window: Window): void;
 
         /**
-         * Forget state that has been previously saved and prevent
-         * further automatic state saving.
-         * 
-         * In order to reenable state saving, call
-         * {@link Gtk.Application.save}.
-         */
-        forget(): void;
-
-        /**
          * Gets the accelerators that are currently associated with
          * the given action.
          * @param detailed_action_name a detailed action name, specifying an action   and target to obtain accelerators for
@@ -13423,11 +13389,11 @@ export interface Builder {
         get_actions_for_accel(accel: string): string[];
 
         /**
-         * Gets the &#x201C;active&#x201D; window for the application.
+         * Gets the “active” window for the application.
          * 
          * The active window is the one that was most recently focused
          * (within the application). This window may not have the focus
-         * at the moment if another application has it &#x2014; this is just
+         * at the moment if another application has it — this is just
          * the most recently-focused window within this application.
          * @returns the active window
          */
@@ -13530,17 +13496,6 @@ export interface Builder {
         remove_window(window: Window): void;
 
         /**
-         * Saves the state of application.
-         * 
-         * See {@link Gtk.Application.forget} for a way to forget the state.
-         * 
-         * If {@link Gtk.Application.register_session} is set, {@link Gtk.Application}
-         * calls this function automatically when the application is closed or
-         * the session ends.
-         */
-        save(): void;
-
-        /**
          * Sets zero or more keyboard accelerators that will trigger the
          * given action.
          * 
@@ -13570,7 +13525,7 @@ export interface Builder {
          * each window, or at the top of the screen. In some environments, if
          * both the application menu and the menubar are set, the application
          * menu will be presented as if it were the first item of the menubar.
-         * Other environments treat the two as completely separate &#x2014; for example,
+         * Other environments treat the two as completely separate — for example,
          * the application menu may be rendered by the desktop shell while the
          * menubar (if set) remains in each individual window.
          * 
@@ -14149,26 +14104,6 @@ export interface Builder {
     namespace ApplicationWindow {
         // Signal signatures
         interface SignalSignatures extends Window.SignalSignatures {
-            /**
-             * The handler for this signal should persist any
-             * application-specific state of `window` into `dict`.
-             * 
-             * Note that window management state such as maximized,
-             * fullscreen, or window size should not be saved as
-             * part of this, they are handled by GTK.
-             * 
-             * You must be careful to be robust in the face of app upgrades and downgrades:
-             * the `state` might have been created by a previous or occasionally even a future
-             * version of your app. Do not assume that a given key exists in the state.
-             * Apps must try to restore state saved by a previous version, but are free to
-             * discard state if it was written by a future version.
-             * 
-             * See `Gtk.Application::restore-window`.
-             * @signal
-             * @since 4.24
-             * @run-last
-             */
-            "save-state": (arg0: GLib.VariantDict) => boolean | void;
             "notify::show-menubar": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -14248,8 +14183,8 @@ export interface Builder {
      * This class implements the {@link Gio.ActionGroup} and {@link Gio.ActionMap}
      * interfaces, to let you add window-specific actions that will be exported
      * by the associated {@link Gtk.Application}, together with its application-wide
-     * actions. Window-specific actions are prefixed with the &#x201C;win.&#x201D;
-     * prefix and application-wide actions are prefixed with the &#x201C;app.&#x201D;
+     * actions. Window-specific actions are prefixed with the “win.”
+     * prefix and application-wide actions are prefixed with the “app.”
      * prefix. Actions must be addressed with the prefixed name when
      * referring to them from a menu model.
      * 
@@ -14268,7 +14203,7 @@ export interface Builder {
      * the {@link Gtk.ApplicationWindow} by setting the
      * {@link Gtk.ApplicationWindow.show_menubar} property to true. If the
      * desktop environment does not display the application menu, then it will
-     * automatically be included in the menubar or in the window&#x2019;s client-side
+     * automatically be included in the menubar or in the window’s client-side
      * decorations.
      * 
      * See {@link Gtk.PopoverMenu} for information about the XML language
@@ -14373,14 +14308,6 @@ export interface Builder {
         /** @signal */
         emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Virtual methods
-        /**
-         * Class closure for the `Gtk.ApplicationWindow::save-state` signal.
-         * @param dict a dictionary where to store the window's state
-         * @virtual
-         */
-        vfunc_save_state(dict: GLib.VariantDict): boolean;
 
         // Methods
         /**
@@ -15622,7 +15549,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -15776,7 +15703,7 @@ export interface Builder {
      * page in addition to state information like the *completed* and *committed*
      * page statuses.
      * 
-     * If you have a case that doesn&#x2019;t quite fit in {@link Gtk.Assistant}s way of
+     * If you have a case that doesn’t quite fit in {@link Gtk.Assistant}s way of
      * handling buttons, you can use the {@link Gtk.AssistantPageType.CUSTOM} page
      * type and handle buttons yourself.
      * 
@@ -15788,7 +15715,7 @@ export interface Builder {
      * 
      * The {@link Gtk.Assistant} implementation of the {@link Gtk.Buildable} interface
      * exposes the `action_area` as internal children with the name
-     * &#x201C;action_area&#x201D;.
+     * “action_area”.
      * 
      * To add pages to an assistant in {@link Gtk.Builder}, simply add it as a
      * child to the {@link Gtk.Assistant} object. If you need to set per-object
@@ -15990,7 +15917,7 @@ export interface Builder {
         remove_action_widget(child: Widget): void;
 
         /**
-         * Removes the `page_num`&#x2019;s page from `assistant`.
+         * Removes the `page_num`’s page from `assistant`.
          * @param page_num the index of a page in the `assistant`,   or -1 to remove the last page
          */
         remove_page(page_num: number): void;
@@ -16328,9 +16255,9 @@ export interface Builder {
      * It presents a {@link Gio.ListModel} and fills it asynchronously with the
      * {@link Gio.FileInfo}s returned from that function.
      * 
-     * The {@link Gio.FileInfo}s in the list have some attributes in the recent
-     * namespace added: `recent::private` (boolean) and `recent:applications`
-     * (stringv).
+     * The {@link Gio.FileInfo}s in the list have some attributes in the recent namespace
+     * added: `recent::private` (boolean) and `recent:applications` (stringv). They
+     * also have the {@link Gio.File} referred by the URI in `standard::file` attribute.
      * @gir-type Class
      */
     class BookmarkList<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
@@ -17308,7 +17235,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -17323,7 +17250,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -17535,7 +17462,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -17595,14 +17522,14 @@ export interface Builder {
      * ## GtkBuilder UI Definitions
      * 
      * {@link Gtk.Builder} parses textual descriptions of user interfaces which are
-     * specified in XML format. We refer to these descriptions as &#x201C;GtkBuilder
-     * UI definitions&#x201D; or just &#x201C;UI definitions&#x201D; if the context is clear.
+     * specified in XML format. We refer to these descriptions as “GtkBuilder
+     * UI definitions” or just “UI definitions” if the context is clear.
      * 
      * ### Structure of UI definitions
      * 
      * UI definition files are always encoded in UTF-8.
      * 
-     * The toplevel element is `<interface>`. It optionally takes a &#x201C;domain&#x201D;
+     * The toplevel element is `<interface>`. It optionally takes a “domain”
      * attribute, which will make the builder look for translated strings
      * using `dgettext()` in the domain specified. This can also be done by
      * calling {@link Gtk.Builder.set_translation_domain} on the builder.
@@ -17618,9 +17545,9 @@ export interface Builder {
      * ### Requirements
      * 
      * The target toolkit version(s) are described by `<requires>` elements,
-     * the &#x201C;lib&#x201D; attribute specifies the widget library in question (currently
-     * the only supported value is &#x201C;gtk&#x201D;) and the &#x201C;version&#x201D; attribute specifies
-     * the target version in the form &#x201C;`<major>`.`<minor>`&#x201D;. {@link Gtk.Builder} will
+     * the “lib” attribute specifies the widget library in question (currently
+     * the only supported value is “gtk”) and the “version” attribute specifies
+     * the target version in the form “`<major>`.`<minor>`”. {@link Gtk.Builder} will
      * error out if the version requirements are not met. For example:
      * 
      * ```xml
@@ -17640,7 +17567,7 @@ export interface Builder {
      * child objects.
      * 
      * Typically, the specific kind of object represented by an `<object>`
-     * element is specified by the &#x201C;class&#x201D; attribute. If the type has not
+     * element is specified by the “class” attribute. If the type has not
      * been loaded yet, GTK tries to find the `get_type()` function from the
      * class name by applying heuristics. This works in most cases, but if
      * necessary, it is possible to specify the name of the `get_type()`
@@ -17648,7 +17575,7 @@ export interface Builder {
      * is referencing internal types, you should make sure to call
      * `g_type_ensure()` for each object type before parsing the UI definition.
      * 
-     * Objects may be given a name with the &#x201C;id&#x201D; attribute, which allows the
+     * Objects may be given a name with the “id” attribute, which allows the
      * application to retrieve them from the builder with
      * {@link Gtk.Builder.get_object}. An id is also necessary to use the
      * object as property value in other parts of the UI definition. GTK
@@ -17658,7 +17585,7 @@ export interface Builder {
      * ### Properties
      * 
      * Setting properties of objects is pretty straightforward with the
-     * `<property>` element: the &#x201C;name&#x201D; attribute specifies the name of the
+     * `<property>` element: the “name” attribute specifies the name of the
      * property, and the content of the element specifies the value:
      * 
      * ```xml
@@ -17667,7 +17594,7 @@ export interface Builder {
      * </object>
      * ```
      * 
-     * If the &#x201C;translatable&#x201D; attribute is set to a true value, GTK uses
+     * If the “translatable” attribute is set to a true value, GTK uses
      * `gettext()` (or `dgettext()` if the builder has a translation domain set)
      * to find a translation for the value. This happens before the value
      * is parsed, so it can be used for properties of any type, but it is
@@ -17694,15 +17621,15 @@ export interface Builder {
      * - strings
      * - integers
      * - floating-point numbers
-     * - booleans (strings like &#x201C;TRUE&#x201D;, &#x201C;t&#x201D;, &#x201C;yes&#x201D;, &#x201C;y&#x201D;, &#x201C;1&#x201D; are interpreted
-     *   as true values, strings like &#x201C;FALSE&#x201D;, &#x201C;f&#x201D;, &#x201C;no&#x201D;, &#x201C;n&#x201D;, &#x201C;0&#x201D; are interpreted
+     * - booleans (strings like “TRUE”, “t”, “yes”, “y”, “1” are interpreted
+     *   as true values, strings like “FALSE”, “f”, “no”, “n”, “0” are interpreted
      *   as false values)
      * - string lists (separated by newlines)
      * - enumeration types (can be specified by their full C identifier their short
      *   name used when registering the enumeration type, or their integer value)
      * - flag types (can be specified by their C identifier or short name,
-     *   optionally combined with &#x201C;|&#x201D; for bitwise OR, or a single integer value
-     *   e.g., &#x201C;GTK_INPUT_HINT_EMOJI|GTK_INPUT_HINT_LOWERCASE&#x201D;, or &#x201C;emoji|lowercase&#x201D; or 520).
+     *   optionally combined with “|” for bitwise OR, or a single integer value
+     *   e.g., “GTK_INPUT_HINT_EMOJI|GTK_INPUT_HINT_LOWERCASE”, or “emoji|lowercase” or 520).
      * - colors (in the format understood by {@link Gdk.RGBA.parse})
      * - transforms (in the format understood by {@link Gsk.Transform.parse})
      * - Pango attribute lists (in the format understood by {@link Pango.AttrList.to_string})
@@ -17716,7 +17643,7 @@ export interface Builder {
      * objects declared in the local XML fragment and objects exposed via
      * {@link Gtk.Builder.expose_object}. In general, {@link Gtk.Builder} allows
      * forward references to objects declared in the local XML; an object
-     * doesn&#x2019;t have to be constructed before it can be referred to. The
+     * doesn’t have to be constructed before it can be referred to. The
      * exception to this rule is that an object has to be constructed before
      * it can be used as the value of a construct-only property.
      * 
@@ -17776,8 +17703,8 @@ export interface Builder {
      * respectively. Internally, {@link Gtk.Builder} implements this using
      * {@link GObject.Binding} objects.
      * 
-     * For instance, in the example below the &#x201C;label&#x201D; property of the
-     * `bottom_label` widget is bound to the &#x201C;label&#x201D; property of the
+     * For instance, in the example below the “label” property of the
+     * `bottom_label` widget is bound to the “label” property of the
      * `top_button` widget:
      * 
      * ```xml
@@ -17812,7 +17739,7 @@ export interface Builder {
      * Sometimes it is necessary to refer to widgets which have implicitly
      * been constructed by GTK as part of a composite widget, to set
      * properties on them or to add further children (e.g. the content area
-     * of a {@link Gtk.Dialog}). This can be achieved by setting the &#x201C;internal-child&#x201D;
+     * of a {@link Gtk.Dialog}). This can be achieved by setting the “internal-child”
      * property of the `<child>` element to a true value. Note that {@link Gtk.Builder}
      * still requires an `<object>` element for the internal child, even if it
      * has already been constructed.
@@ -17821,14 +17748,14 @@ export interface Builder {
      * 
      * A number of widgets have different places where a child can be added
      * (e.g. tabs vs. page content in notebooks). This can be reflected in
-     * a UI definition by specifying the &#x201C;type&#x201D; attribute on a `<child>`
-     * The possible values for the &#x201C;type&#x201D; attribute are described in the
+     * a UI definition by specifying the “type” attribute on a `<child>`
+     * The possible values for the “type” attribute are described in the
      * sections describing the widget-specific portions of UI definitions.
      * 
      * ### Signal handlers and function pointers
      * 
-     * Signal handlers are set up with the `<signal>` element. The &#x201C;name&#x201D;
-     * attribute specifies the name of the signal, and the &#x201C;handler&#x201D; attribute
+     * Signal handlers are set up with the `<signal>` element. The “name”
+     * attribute specifies the name of the signal, and the “handler” attribute
      * specifies the function to connect to the signal.
      * 
      * ```xml
@@ -17837,20 +17764,20 @@ export interface Builder {
      * </object>
      * ```
      * 
-     * The remaining attributes, &#x201C;after&#x201D;, &#x201C;swapped&#x201D; and &#x201C;object&#x201D;, have the
+     * The remaining attributes, “after”, “swapped” and “object”, have the
      * same meaning as the corresponding parameters of the
      * {@link GObject.signal_connect_object} or {@link GObject.signal_connect_data}
      * functions:
      * 
-     * - &#x201C;after&#x201D; matches the `G_CONNECT_AFTER` flag, and will ensure that the
+     * - “after” matches the `G_CONNECT_AFTER` flag, and will ensure that the
      *   handler is called after the default class closure for the signal
-     * - &#x201C;swapped&#x201D; matches the `G_CONNECT_SWAPPED` flag, and will swap the
+     * - “swapped” matches the `G_CONNECT_SWAPPED` flag, and will swap the
      *   instance and closure arguments when invoking the signal handler
-     * - &#x201C;object&#x201D; will bind the signal handler to the lifetime of the object
+     * - “object” will bind the signal handler to the lifetime of the object
      *   referenced by the attribute
      * 
      * By default "swapped" will be set to "yes" if not specified otherwise, in
-     * the case where "object" is set, for convenience. A &#x201C;last_modification_time&#x201D;
+     * the case where "object" is set, for convenience. A “last_modification_time”
      * attribute is also allowed, but it does not have a meaning to the builder.
      * 
      * When compiling applications for Windows, you must declare signal callbacks
@@ -18012,10 +17939,10 @@ export interface Builder {
          * {@link GLib.Error} from the `GTK_BUILDER_ERROR`, `G_MARKUP_ERROR` or `G_FILE_ERROR`
          * domains.
          * 
-         * It&#x2019;s not really reasonable to attempt to handle failures of this
+         * It’s not really reasonable to attempt to handle failures of this
          * call. You should not use this function with untrusted files (ie:
          * files that are not part of your application). Broken {@link Gtk.Builder}
-         * files can easily crash your program, and it&#x2019;s possible that memory
+         * files can easily crash your program, and it’s possible that memory
          * was leaked leading up to the reported failure. The only reasonable
          * thing to do when an error is detected is to call `g_error()`.
          * @param filename the name of the file to parse
@@ -18036,7 +17963,7 @@ export interface Builder {
          * {@link GLib.Error} from the `GTK_BUILDER_ERROR`, `G_MARKUP_ERROR` or `G_RESOURCE_ERROR`
          * domain.
          * 
-         * It&#x2019;s not really reasonable to attempt to handle failures of this
+         * It’s not really reasonable to attempt to handle failures of this
          * call.  The only reasonable thing to do when an error is detected is
          * to call `g_error()`.
          * @param resource_path the path of the resource file to parse
@@ -18057,7 +17984,7 @@ export interface Builder {
          * {@link GLib.Error} from the `GTK_BUILDER_ERROR`, `G_MARKUP_ERROR` or
          * `G_VARIANT_PARSE_ERROR` domain.
          * 
-         * It&#x2019;s not really reasonable to attempt to handle failures of this
+         * It’s not really reasonable to attempt to handle failures of this
          * call.  The only reasonable thing to do when an error is detected is
          * to call `g_error()`.
          * @param buffer the string to parse
@@ -18292,8 +18219,8 @@ export interface Builder {
      * own scopes for that purpose.
      * 
      * In the case that symbols are not explicitly added; GTK will uses
-     * {@link GModule.Module}&#x2019;s introspective features (by opening the module `null`) to
-     * look at the application&#x2019;s symbol table. From here it tries to match
+     * {@link GModule.Module}’s introspective features (by opening the module `null`) to
+     * look at the application’s symbol table. From here it tries to match
      * the signal function names given in the interface description with
      * symbols in the application.
      * 
@@ -18525,7 +18452,7 @@ export interface Builder {
              * to this signal, but use the `Gtk.Button::clicked` signal.
              * 
              * The default bindings for this signal are all forms of the
-             * <kbd>&#x2423;</kbd> and <kbd>Enter</kbd> keys.
+             * <kbd>␣</kbd> and <kbd>Enter</kbd> keys.
              * @signal
              * @action
              * @run-first
@@ -19183,7 +19110,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -19199,14 +19126,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -19246,7 +19173,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -19263,14 +19190,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -19370,7 +19297,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -19539,15 +19466,15 @@ export interface Builder {
      * 
      * ```
      * calendar.view
-     * &#x251C;&#x2500;&#x2500; header
-     * &#x2502;   &#x251C;&#x2500;&#x2500; button
-     * &#x2502;   &#x251C;&#x2500;&#x2500; stack.month
-     * &#x2502;   &#x251C;&#x2500;&#x2500; button
-     * &#x2502;   &#x251C;&#x2500;&#x2500; button
-     * &#x2502;   &#x251C;&#x2500;&#x2500; label.year
-     * &#x2502;   &#x2570;&#x2500;&#x2500; button
-     * &#x2570;&#x2500;&#x2500; grid
-     *     &#x2570;&#x2500;&#x2500; label[.day-name][.week-number][.day-number][.other-month][.today]
+     * ├── header
+     * │   ├── button
+     * │   ├── stack.month
+     * │   ├── button
+     * │   ├── button
+     * │   ├── label.year
+     * │   ╰── button
+     * ╰── grid
+     *     ╰── label[.day-name][.week-number][.day-number][.other-month][.today]
      * ```
      * 
      * {@link Gtk.Calendar} has a main node with name calendar. It contains a subnode
@@ -20153,7 +20080,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -20277,7 +20204,7 @@ export interface Builder {
      * ## Requesting area sizes
      * 
      * As outlined in
-     * [GtkWidget&#x2019;s geometry management section](https://docs.gtk.org/gtk4/class.Widget.html#height-for-width-geometry-management),
+     * [GtkWidget’s geometry management section](https://docs.gtk.org/gtk4/class.Widget.html#height-for-width-geometry-management),
      * GTK uses a height-for-width
      * geometry management system to compute the sizes of widgets and user
      * interfaces. {@link Gtk.CellArea} uses the same semantics to calculate the
@@ -20291,9 +20218,9 @@ export interface Builder {
      * width and wrap the areas around, requesting height for more cell
      * areas when allocated less width.
      * 
-     * It&#x2019;s also important for areas to maintain some cell
+     * It’s also important for areas to maintain some cell
      * alignments with areas rendered for adjacent rows (cells can
-     * appear &#x201C;columnized&#x201D; inside an area even when the size of
+     * appear “columnized” inside an area even when the size of
      * cells are different in each row). For this reason the {@link Gtk.CellArea}
      * uses a {@link Gtk.CellAreaContext} object to store the alignments
      * and sizes along the way (as well as the overall largest minimum
@@ -20306,7 +20233,7 @@ export interface Builder {
      * The owning cell-layouting widget can create as many contexts as
      * it wishes to calculate sizes of rows which should receive the
      * same size in at least one orientation (horizontally or vertically),
-     * However, it&#x2019;s important that the same {@link Gtk.CellAreaContext} which
+     * However, it’s important that the same {@link Gtk.CellAreaContext} which
      * was used to request the sizes for a given {@link Gtk.TreeModel} row be
      * used when rendering or processing events for that row.
      * 
@@ -20330,7 +20257,7 @@ export interface Builder {
      * gtk_cell_area_context_get_preferred_width (context, &minimum_width, &natural_width);
      * ```
      * 
-     * Note that in this example it&#x2019;s not important to observe the
+     * Note that in this example it’s not important to observe the
      * returned minimum and natural width of the area for each row
      * unless the cell-layouting object is actually interested in the
      * widths of individual rows. The overall width is however stored
@@ -20373,7 +20300,7 @@ export interface Builder {
      * Requesting the height for width (or width for height) of an area is
      * a similar task except in this case the {@link Gtk.CellAreaContext} does not
      * store the data (actually, it does not know how much space the layouting
-     * widget plans to allocate it for every row. It&#x2019;s up to the layouting
+     * widget plans to allocate it for every row. It’s up to the layouting
      * widget to render each row of data with the appropriate height and
      * width which was requested by the {@link Gtk.CellArea}).
      * 
@@ -20413,7 +20340,7 @@ export interface Builder {
      * In some cases the layouting widget is requested the height for an
      * arbitrary for_width, this is a special case for layouting widgets
      * who need to request size for tens of thousands  of rows. For this
-     * case it&#x2019;s only important that the layouting widget calculate
+     * case it’s only important that the layouting widget calculate
      * one reasonably sized chunk of rows and return that height
      * synchronously. The reasoning here is that any layouting widget is
      * at least capable of synchronously calculating enough height to fill
@@ -20481,7 +20408,7 @@ export interface Builder {
      * 
      * The {@link Gtk.CellArea} drives keyboard focus from cell to cell in a way
      * similar to {@link Gtk.Widget}. For layouting widgets that support giving
-     * focus to cells it&#x2019;s important to remember to pass `GTK_CELL_RENDERER_FOCUSED`
+     * focus to cells it’s important to remember to pass `GTK_CELL_RENDERER_FOCUSED`
      * to the area functions for the row that has focus and to tell the
      * area to paint the focus at render time.
      * 
@@ -20560,8 +20487,8 @@ export interface Builder {
      * The {@link Gtk.CellArea} introduces cell properties for {@link Gtk.CellRenderer}s.
      * This provides some general interfaces for defining the relationship
      * cell areas have with their cells. For instance in a {@link Gtk.CellAreaBox}
-     * a cell might &#x201C;expand&#x201D; and receive extra space when the area is allocated
-     * more than its full natural request, or a cell might be configured to &#x201C;align&#x201D;
+     * a cell might “expand” and receive extra space when the area is allocated
+     * more than its full natural request, or a cell might be configured to “align”
      * with adjacent rows which were requested and rendered with the same
      * {@link Gtk.CellAreaContext}.
      * 
@@ -20677,7 +20604,7 @@ export interface Builder {
          * can also activate a widget if it currently has the focus.
          * @param context the {@link Gtk.CellArea}Context in context with the current row data
          * @param widget the {@link Gtk.Widget} that `area` is rendering on
-         * @param cell_area the size and location of `area` relative to `widget`&#x2019;s allocation
+         * @param cell_area the size and location of `area` relative to `widget`’s allocation
          * @param flags the {@link Gtk.CellRenderer}State flags for `area` for this row of data.
          * @param edit_only if `true` then only cell renderers that are {@link Gtk.CellRendererMode.EDITABLE}             will be activated.
          * @virtual
@@ -20742,7 +20669,7 @@ export interface Builder {
         vfunc_event(context: CellAreaContext, widget: Widget, event: Gdk.Event, cell_area: Gdk.Rectangle, flags: CellRendererState): number;
 
         /**
-         * This should be called by the `area`&#x2019;s owning layout widget
+         * This should be called by the `area`’s owning layout widget
          * when focus is to be passed to `area`, or moved within `area`
          * for a given `direction` and row data.
          * 
@@ -20785,10 +20712,10 @@ export interface Builder {
         vfunc_get_cell_property(renderer: CellRenderer, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
 
         /**
-         * Retrieves a cell area&#x2019;s initial minimum and natural height.
+         * Retrieves a cell area’s initial minimum and natural height.
          * 
          * `area` will store some geometrical information in `context` along the way;
-         * when requesting sizes over an arbitrary number of rows, it&#x2019;s not important
+         * when requesting sizes over an arbitrary number of rows, it’s not important
          * to check the `minimum_height` and `natural_height` of this call but rather to
          * consult `gtk_cell_area_context_get_preferred_height()` after a series of
          * requests.
@@ -20799,11 +20726,11 @@ export interface Builder {
         vfunc_get_preferred_height(context: CellAreaContext, widget: Widget): [number, number];
 
         /**
-         * Retrieves a cell area&#x2019;s minimum and natural height if it would be given
+         * Retrieves a cell area’s minimum and natural height if it would be given
          * the specified `width`.
          * 
          * `area` stores some geometrical information in `context` along the way
-         * while calling `gtk_cell_area_get_preferred_width()`. It&#x2019;s important to
+         * while calling `gtk_cell_area_get_preferred_width()`. It’s important to
          * perform a series of `gtk_cell_area_get_preferred_width()` requests with
          * `context` first and then call `gtk_cell_area_get_preferred_height_for_width()`
          * on each cell area individually to get the height for width of each
@@ -20821,10 +20748,10 @@ export interface Builder {
         vfunc_get_preferred_height_for_width(context: CellAreaContext, widget: Widget, width: number): [number, number];
 
         /**
-         * Retrieves a cell area&#x2019;s initial minimum and natural width.
+         * Retrieves a cell area’s initial minimum and natural width.
          * 
          * `area` will store some geometrical information in `context` along the way;
-         * when requesting sizes over an arbitrary number of rows, it&#x2019;s not important
+         * when requesting sizes over an arbitrary number of rows, it’s not important
          * to check the `minimum_width` and `natural_width` of this call but rather to
          * consult `gtk_cell_area_context_get_preferred_width()` after a series of
          * requests.
@@ -20835,11 +20762,11 @@ export interface Builder {
         vfunc_get_preferred_width(context: CellAreaContext, widget: Widget): [number, number];
 
         /**
-         * Retrieves a cell area&#x2019;s minimum and natural width if it would be given
+         * Retrieves a cell area’s minimum and natural width if it would be given
          * the specified `height`.
          * 
          * `area` stores some geometrical information in `context` along the way
-         * while calling `gtk_cell_area_get_preferred_height()`. It&#x2019;s important to
+         * while calling `gtk_cell_area_get_preferred_height()`. It’s important to
          * perform a series of `gtk_cell_area_get_preferred_height()` requests with
          * `context` first and then call `gtk_cell_area_get_preferred_width_for_height()`
          * on each cell area individually to get the height for width of each
@@ -20890,12 +20817,12 @@ export interface Builder {
         vfunc_set_cell_property(renderer: CellRenderer, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
 
         /**
-         * Snapshots `area`&#x2019;s cells according to `area`&#x2019;s layout onto at
+         * Snapshots `area`’s cells according to `area`’s layout onto at
          * the given coordinates.
          * @param context the {@link Gtk.CellArea}Context for this row of data.
          * @param widget the {@link Gtk.Widget} that `area` is rendering to
          * @param snapshot the {@link Gtk.Snapshot} to draw to
-         * @param background_area the `widget` relative coordinates for `area`&#x2019;s background
+         * @param background_area the `widget` relative coordinates for `area`’s background
          * @param cell_area the `widget` relative coordinates for `area`
          * @param flags the {@link Gtk.CellRenderer}State for `area` in this row.
          * @param paint_focus whether `area` should paint focus on focused cells for focused rows or not.
@@ -20910,7 +20837,7 @@ export interface Builder {
          * can also activate a widget if it currently has the focus.
          * @param context the {@link Gtk.CellArea}Context in context with the current row data
          * @param widget the {@link Gtk.Widget} that `area` is rendering on
-         * @param cell_area the size and location of `area` relative to `widget`&#x2019;s allocation
+         * @param cell_area the size and location of `area` relative to `widget`’s allocation
          * @param flags the {@link Gtk.CellRenderer}State flags for `area` for this row of data.
          * @param edit_only if `true` then only cell renderers that are {@link Gtk.CellRendererMode.EDITABLE}             will be activated.
          * @returns Whether `area` was successfully activated.
@@ -20938,14 +20865,14 @@ export interface Builder {
         add(renderer: CellRenderer): void;
 
         /**
-         * Adds `sibling` to `renderer`&#x2019;s focusable area, focus will be drawn
+         * Adds `sibling` to `renderer`’s focusable area, focus will be drawn
          * around `renderer` and all of its siblings if `renderer` can
          * focus for a given row.
          * 
          * Events handled by focus siblings can also activate the given
          * focusable `renderer`.
          * @param renderer the {@link Gtk.CellRenderer} expected to have focus
-         * @param sibling the {@link Gtk.CellRenderer} to add to `renderer`&#x2019;s focus area
+         * @param sibling the {@link Gtk.CellRenderer} to add to `renderer`’s focus area
          */
         add_focus_sibling(renderer: CellRenderer, sibling: CellRenderer): void;
 
@@ -21042,7 +20969,7 @@ export interface Builder {
         event(context: CellAreaContext, widget: Widget, event: Gdk.Event, cell_area: Gdk.Rectangle, flags: CellRendererState): number;
 
         /**
-         * This should be called by the `area`&#x2019;s owning layout widget
+         * This should be called by the `area`’s owning layout widget
          * when focus is to be passed to `area`, or moved within `area`
          * for a given `direction` and row data.
          * 
@@ -21144,10 +21071,10 @@ export interface Builder {
         get_focus_siblings(renderer: CellRenderer): CellRenderer[];
 
         /**
-         * Retrieves a cell area&#x2019;s initial minimum and natural height.
+         * Retrieves a cell area’s initial minimum and natural height.
          * 
          * `area` will store some geometrical information in `context` along the way;
-         * when requesting sizes over an arbitrary number of rows, it&#x2019;s not important
+         * when requesting sizes over an arbitrary number of rows, it’s not important
          * to check the `minimum_height` and `natural_height` of this call but rather to
          * consult `gtk_cell_area_context_get_preferred_height()` after a series of
          * requests.
@@ -21157,11 +21084,11 @@ export interface Builder {
         get_preferred_height(context: CellAreaContext, widget: Widget): [number, number];
 
         /**
-         * Retrieves a cell area&#x2019;s minimum and natural height if it would be given
+         * Retrieves a cell area’s minimum and natural height if it would be given
          * the specified `width`.
          * 
          * `area` stores some geometrical information in `context` along the way
-         * while calling `gtk_cell_area_get_preferred_width()`. It&#x2019;s important to
+         * while calling `gtk_cell_area_get_preferred_width()`. It’s important to
          * perform a series of `gtk_cell_area_get_preferred_width()` requests with
          * `context` first and then call `gtk_cell_area_get_preferred_height_for_width()`
          * on each cell area individually to get the height for width of each
@@ -21178,10 +21105,10 @@ export interface Builder {
         get_preferred_height_for_width(context: CellAreaContext, widget: Widget, width: number): [number, number];
 
         /**
-         * Retrieves a cell area&#x2019;s initial minimum and natural width.
+         * Retrieves a cell area’s initial minimum and natural width.
          * 
          * `area` will store some geometrical information in `context` along the way;
-         * when requesting sizes over an arbitrary number of rows, it&#x2019;s not important
+         * when requesting sizes over an arbitrary number of rows, it’s not important
          * to check the `minimum_width` and `natural_width` of this call but rather to
          * consult `gtk_cell_area_context_get_preferred_width()` after a series of
          * requests.
@@ -21191,11 +21118,11 @@ export interface Builder {
         get_preferred_width(context: CellAreaContext, widget: Widget): [number, number];
 
         /**
-         * Retrieves a cell area&#x2019;s minimum and natural width if it would be given
+         * Retrieves a cell area’s minimum and natural width if it would be given
          * the specified `height`.
          * 
          * `area` stores some geometrical information in `context` along the way
-         * while calling `gtk_cell_area_get_preferred_height()`. It&#x2019;s important to
+         * while calling `gtk_cell_area_get_preferred_height()`. It’s important to
          * perform a series of `gtk_cell_area_get_preferred_height()` requests with
          * `context` first and then call `gtk_cell_area_get_preferred_width_for_height()`
          * on each cell area individually to get the height for width of each
@@ -21230,7 +21157,7 @@ export interface Builder {
          * to get the inner area where a given {@link Gtk.CellRenderer} will be
          * rendered. It removes any padding previously added by `gtk_cell_area_request_renderer()`.
          * @param widget the {@link Gtk.Widget} that `area` is rendering onto
-         * @param cell_area the `widget` relative coordinates where one of `area`&#x2019;s cells             is to be placed
+         * @param cell_area the `widget` relative coordinates where one of `area`’s cells             is to be placed
          */
         inner_cell_area(widget: Widget, cell_area: Gdk.Rectangle): Gdk.Rectangle;
 
@@ -21242,10 +21169,10 @@ export interface Builder {
         is_activatable(): boolean;
 
         /**
-         * Returns whether `sibling` is one of `renderer`&#x2019;s focus siblings
+         * Returns whether `sibling` is one of `renderer`’s focus siblings
          * (see `gtk_cell_area_add_focus_sibling()`).
          * @param renderer the {@link Gtk.CellRenderer} expected to have focus
-         * @param sibling the {@link Gtk.CellRenderer} to check against `renderer`&#x2019;s sibling list
+         * @param sibling the {@link Gtk.CellRenderer} to check against `renderer`’s sibling list
          * @returns `true` if `sibling` is a focus sibling of `renderer`
          */
         is_focus_sibling(renderer: CellRenderer, sibling: CellRenderer): boolean;
@@ -21257,16 +21184,16 @@ export interface Builder {
         remove(renderer: CellRenderer): void;
 
         /**
-         * Removes `sibling` from `renderer`&#x2019;s focus sibling list
+         * Removes `sibling` from `renderer`’s focus sibling list
          * (see `gtk_cell_area_add_focus_sibling()`).
          * @param renderer the {@link Gtk.CellRenderer} expected to have focus
-         * @param sibling the {@link Gtk.CellRenderer} to remove from `renderer`&#x2019;s focus area
+         * @param sibling the {@link Gtk.CellRenderer} to remove from `renderer`’s focus area
          */
         remove_focus_sibling(renderer: CellRenderer, sibling: CellRenderer): void;
 
         /**
          * This is a convenience function for {@link Gtk.CellArea} implementations
-         * to request size for cell renderers. It&#x2019;s important to use this
+         * to request size for cell renderers. It’s important to use this
          * function to request size and then use `gtk_cell_area_inner_cell_area()`
          * at render and event time since this function will add padding
          * around the cell for focus painting.
@@ -21289,12 +21216,12 @@ export interface Builder {
         set_focus_cell(renderer: CellRenderer | null): void;
 
         /**
-         * Snapshots `area`&#x2019;s cells according to `area`&#x2019;s layout onto at
+         * Snapshots `area`’s cells according to `area`’s layout onto at
          * the given coordinates.
          * @param context the {@link Gtk.CellArea}Context for this row of data.
          * @param widget the {@link Gtk.Widget} that `area` is rendering to
          * @param snapshot the {@link Gtk.Snapshot} to draw to
-         * @param background_area the `widget` relative coordinates for `area`&#x2019;s background
+         * @param background_area the `widget` relative coordinates for `area`’s background
          * @param cell_area the `widget` relative coordinates for `area`
          * @param flags the {@link Gtk.CellRenderer}State for `area` in this row.
          * @param paint_focus whether `area` should paint focus on focused cells for focused rows or not.
@@ -21405,7 +21332,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -21418,7 +21345,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -21489,7 +21416,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -21504,7 +21431,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -21581,7 +21508,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -21820,7 +21747,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -21833,7 +21760,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -21882,7 +21809,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -21897,7 +21824,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -21974,7 +21901,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -21992,7 +21919,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -22031,7 +21958,7 @@ export interface Builder {
      * {@link Gtk.TreeModel} rows that are requested and rendered in the same context.
      * 
      * {@link Gtk.CellLayout} widgets can create any number of contexts in which to
-     * request and render groups of data rows. However, it&#x2019;s important that the
+     * request and render groups of data rows. However, it’s important that the
      * same context which was used to request sizes for a given {@link Gtk.TreeModel}
      * row also be used for the same row when calling other {@link Gtk.CellArea} APIs
      * such as `gtk_cell_area_render()` and `gtk_cell_area_event()`.
@@ -22257,7 +22184,7 @@ export interface Builder {
          * fetch information about the area it is being used for.
          * 
          * For instance at {@link Gtk.CellAreaContext.allocate} time
-         * it&#x2019;s important to know details about any cell spacing
+         * it’s important to know details about any cell spacing
          * that the {@link Gtk.CellArea} is configured with in order to
          * compute a proper allocation.
          * @returns the {@link Gtk.CellArea} this context was created by.
@@ -22376,7 +22303,7 @@ export interface Builder {
              * up additional columns in a {@link Gtk.ComboBox}.
              * 
              * See `gtk_cell_editable_start_editing()` for information on the lifecycle of
-             * the `editable` and a way to do setup that doesn&#x2019;t depend on the `renderer`.
+             * the `editable` and a way to do setup that doesn’t depend on the `renderer`.
              * 
              * Note that GTK doesn't guarantee that cell renderers will
              * continue to use the same kind of widget for editing in future
@@ -22451,29 +22378,29 @@ export interface Builder {
      * 
      * The {@link Gtk.CellRenderer} is a base class of a set of objects used for
      * rendering a cell to a `cairo_t`.  These objects are used primarily by
-     * the {@link Gtk.TreeView} widget, though they aren&#x2019;t tied to them in any
+     * the {@link Gtk.TreeView} widget, though they aren’t tied to them in any
      * specific way.  It is worth noting that {@link Gtk.CellRenderer} is not a
      * {@link Gtk.Widget} and cannot be treated as such.
      * 
      * The primary use of a {@link Gtk.CellRenderer} is for drawing a certain graphical
      * elements on a `cairo_t`. Typically, one cell renderer is used to
-     * draw many cells on the screen.  To this extent, it isn&#x2019;t expected that a
+     * draw many cells on the screen.  To this extent, it isn’t expected that a
      * CellRenderer keep any permanent state around.  Instead, any state is set
      * just prior to use using {@link GObject.Object}s property system.  Then, the
      * cell is measured using `gtk_cell_renderer_get_preferred_size()`. Finally, the cell
      * is rendered in the correct location using `gtk_cell_renderer_snapshot()`.
      * 
      * There are a number of rules that must be followed when writing a new
-     * {@link Gtk.CellRenderer}.  First and foremost, it&#x2019;s important that a certain set
+     * {@link Gtk.CellRenderer}.  First and foremost, it’s important that a certain set
      * of properties will always yield a cell renderer of the same size,
      * barring a style change. The {@link Gtk.CellRenderer} also has a number of
      * generic properties that are expected to be honored by all children.
      * 
      * Beyond merely rendering a cell, cell renderers can optionally
      * provide active user interface elements. A cell renderer can be
-     * &#x201C;activatable&#x201D; like {@link Gtk.CellRenderer}Toggle,
+     * “activatable” like {@link Gtk.CellRenderer}Toggle,
      * which toggles when it gets activated by a mouse click, or it can be
-     * &#x201C;editable&#x201D; like {@link Gtk.CellRenderer}Text, which
+     * “editable” like {@link Gtk.CellRenderer}Text, which
      * allows the user to edit the text using a widget implementing the
      * {@link Gtk.CellEditable} interface, e.g. {@link Gtk.Entry}.
      * To make a cell renderer activatable or editable, you have to
@@ -22481,8 +22408,8 @@ export interface Builder {
      * {@link Gtk.CellRenderer}Class.start_editing virtual functions, respectively.
      * 
      * Many properties of {@link Gtk.CellRenderer} and its subclasses have a
-     * corresponding &#x201C;set&#x201D; property, e.g. &#x201C;cell-background-set&#x201D; corresponds
-     * to &#x201C;cell-background&#x201D;. These &#x201C;set&#x201D; properties reflect whether a property
+     * corresponding “set” property, e.g. “cell-background-set” corresponds
+     * to “cell-background”. These “set” properties reflect whether a property
      * has been set or not. You should not set them independently.
      * @gir-type Class
      * @deprecated since 4.10: List views use widgets for displaying their   contents
@@ -22678,14 +22605,14 @@ export interface Builder {
         vfunc_get_aligned_area(widget: Widget, flags: CellRendererState, cell_area: Gdk.Rectangle): Gdk.Rectangle;
 
         /**
-         * Retrieves a renderer&#x2019;s natural size when rendered to `widget`.
+         * Retrieves a renderer’s natural size when rendered to `widget`.
          * @param widget the {@link Gtk.Widget} this cell will be rendering to
          * @virtual
          */
         vfunc_get_preferred_height(widget: Widget): [number, number];
 
         /**
-         * Retrieves a cell renderers&#x2019;s minimum and natural height if it were rendered to
+         * Retrieves a cell renderers’s minimum and natural height if it were rendered to
          * `widget` with the specified `width`.
          * @param widget the {@link Gtk.Widget} this cell will be rendering to
          * @param width the size which is available for allocation
@@ -22694,14 +22621,14 @@ export interface Builder {
         vfunc_get_preferred_height_for_width(widget: Widget, width: number): [number, number];
 
         /**
-         * Retrieves a renderer&#x2019;s natural size when rendered to `widget`.
+         * Retrieves a renderer’s natural size when rendered to `widget`.
          * @param widget the {@link Gtk.Widget} this cell will be rendering to
          * @virtual
          */
         vfunc_get_preferred_width(widget: Widget): [number, number];
 
         /**
-         * Retrieves a cell renderers&#x2019;s minimum and natural width if it were rendered to
+         * Retrieves a cell renderers’s minimum and natural width if it were rendered to
          * `widget` with the specified `height`.
          * @param widget the {@link Gtk.Widget} this cell will be rendering to
          * @param height the size which is available for allocation
@@ -22798,13 +22725,13 @@ export interface Builder {
         get_padding(): [number, number];
 
         /**
-         * Retrieves a renderer&#x2019;s natural size when rendered to `widget`.
+         * Retrieves a renderer’s natural size when rendered to `widget`.
          * @param widget the {@link Gtk.Widget} this cell will be rendering to
          */
         get_preferred_height(widget: Widget): [number, number];
 
         /**
-         * Retrieves a cell renderers&#x2019;s minimum and natural height if it were rendered to
+         * Retrieves a cell renderers’s minimum and natural height if it were rendered to
          * `widget` with the specified `width`.
          * @param widget the {@link Gtk.Widget} this cell will be rendering to
          * @param width the size which is available for allocation
@@ -22813,19 +22740,19 @@ export interface Builder {
 
         /**
          * Retrieves the minimum and natural size of a cell taking
-         * into account the widget&#x2019;s preference for height-for-width management.
+         * into account the widget’s preference for height-for-width management.
          * @param widget the {@link Gtk.Widget} this cell will be rendering to
          */
         get_preferred_size(widget: Widget): [Requisition | null, Requisition | null];
 
         /**
-         * Retrieves a renderer&#x2019;s natural size when rendered to `widget`.
+         * Retrieves a renderer’s natural size when rendered to `widget`.
          * @param widget the {@link Gtk.Widget} this cell will be rendering to
          */
         get_preferred_width(widget: Widget): [number, number];
 
         /**
-         * Retrieves a cell renderers&#x2019;s minimum and natural width if it were rendered to
+         * Retrieves a cell renderers’s minimum and natural width if it were rendered to
          * `widget` with the specified `height`.
          * @param widget the {@link Gtk.Widget} this cell will be rendering to
          * @param height the size which is available for allocation
@@ -22840,7 +22767,7 @@ export interface Builder {
         get_request_mode(): SizeRequestMode;
 
         /**
-         * Returns the cell renderer&#x2019;s sensitivity.
+         * Returns the cell renderer’s sensitivity.
          * @returns `true` if the cell renderer is sensitive
          */
         get_sensitive(): boolean;
@@ -22856,7 +22783,7 @@ export interface Builder {
         get_state(widget: Widget | null, cell_state: CellRendererState): StateFlags;
 
         /**
-         * Returns the cell renderer&#x2019;s visibility.
+         * Returns the cell renderer’s visibility.
          * @returns `true` if the cell renderer is visible
          */
         get_visible(): boolean;
@@ -22868,7 +22795,7 @@ export interface Builder {
         is_activatable(): boolean;
 
         /**
-         * Sets the renderer&#x2019;s alignment within its available space.
+         * Sets the renderer’s alignment within its available space.
          * @param xalign the x alignment of the cell renderer
          * @param yalign the y alignment of the cell renderer
          */
@@ -22894,20 +22821,20 @@ export interface Builder {
         set_is_expander(is_expander: boolean): void;
 
         /**
-         * Sets the renderer&#x2019;s padding.
+         * Sets the renderer’s padding.
          * @param xpad the x padding of the cell renderer
          * @param ypad the y padding of the cell renderer
          */
         set_padding(xpad: number, ypad: number): void;
 
         /**
-         * Sets the cell renderer&#x2019;s sensitivity.
+         * Sets the cell renderer’s sensitivity.
          * @param sensitive the sensitivity of the cell
          */
         set_sensitive(sensitive: boolean): void;
 
         /**
-         * Sets the cell renderer&#x2019;s visibility.
+         * Sets the cell renderer’s visibility.
          * @param visible the visibility of the cell
          */
         set_visible(visible: boolean): void;
@@ -23677,7 +23604,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -24625,8 +24552,8 @@ export interface Builder {
 
         // Methods
         /**
-         * Sets the height of a renderer to explicitly be determined by the &#x201C;font&#x201D; and
-         * &#x201C;y_pad&#x201D; property set on it.  Further changes in these properties do not
+         * Sets the height of a renderer to explicitly be determined by the “font” and
+         * “y_pad” property set on it.  Further changes in these properties do not
          * affect the height, so they must be accompanied by a subsequent call to this
          * function.  Using this function is inflexible, and should really only be used
          * if calculating the size of a cell is too slow (ie, a massive number of cells
@@ -24764,8 +24691,8 @@ export interface Builder {
         get_active(): boolean;
 
         /**
-         * Returns whether we&#x2019;re rendering radio toggles rather than checkboxes.
-         * @returns `true` if we&#x2019;re rendering radio toggles rather than checkboxes
+         * Returns whether we’re rendering radio toggles rather than checkboxes.
+         * @returns `true` if we’re rendering radio toggles rather than checkboxes
          */
         get_radio(): boolean;
 
@@ -25063,7 +24990,7 @@ export interface Builder {
         /**
          * Sets the row of the model that is currently displayed
          * by the {@link Gtk.CellView}. If the path is unset, then the
-         * contents of the cellview &#x201C;stick&#x201D; at their last value;
+         * contents of the cellview “stick” at their last value;
          * this is not normally a desired result, but may be
          * a needed intermediate state if say, the model for
          * the {@link Gtk.CellView} becomes temporarily empty.
@@ -25084,7 +25011,7 @@ export interface Builder {
          * Sets whether `cell_view` should request space to fit the entire {@link Gtk.TreeModel}.
          * 
          * This is used by {@link Gtk.ComboBox} to ensure that the cell view displayed on
-         * the combo box&#x2019;s button always gets enough space and does not resize
+         * the combo box’s button always gets enough space and does not resize
          * when selection changes.
          * @param fit_model whether `cell_view` should request space for the whole model.
          */
@@ -25444,7 +25371,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -25457,7 +25384,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -25528,7 +25455,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -25543,7 +25470,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -25620,7 +25547,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -25638,7 +25565,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -25725,12 +25652,12 @@ export interface Builder {
      * # GtkCenterBox as GtkBuildable
      * 
      * The {@link Gtk.CenterBox} implementation of the {@link Gtk.Buildable} interface
-     * supports placing children in the 3 positions by specifying &#x201C;start&#x201D;, &#x201C;center&#x201D;
-     * or &#x201C;end&#x201D; as the &#x201C;type&#x201D; attribute of a `<child>` element.
+     * supports placing children in the 3 positions by specifying “start”, “center”
+     * or “end” as the “type” attribute of a `<child>` element.
      * 
      * # CSS nodes
      * 
-     * {@link Gtk.CenterBox} uses a single CSS node with the name &#x201C;box&#x201D;,
+     * {@link Gtk.CenterBox} uses a single CSS node with the name “box”,
      * 
      * The first child of the {@link Gtk.CenterBox} will be allocated depending on the
      * text direction, i.e. in left-to-right layouts it will be allocated on the
@@ -26310,7 +26237,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -26325,7 +26252,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -26518,7 +26445,7 @@ export interface Builder {
              * `Gtk.CheckButton::toggled` signal.
              * 
              * The default bindings for this signal are all forms of the
-             * <kbd>&#x2423;</kbd> and <kbd>Enter</kbd> keys.
+             * <kbd>␣</kbd> and <kbd>Enter</kbd> keys.
              * @signal
              * @since 4.2
              * @action
@@ -26641,14 +26568,14 @@ export interface Builder {
      * 
      * {@link Gtk.CheckButton} supports the following keyboard shortcuts:
      * 
-     * - <kbd>&#x2423;</kbd> or <kbd>Enter</kbd> activates the button.
+     * - <kbd>␣</kbd> or <kbd>Enter</kbd> activates the button.
      * 
      * # CSS nodes
      * 
      * ```
      * checkbutton[.text-button][.grouped]
-     * &#x251C;&#x2500;&#x2500; check
-     * &#x2570;&#x2500;&#x2500; [label]
+     * ├── check
+     * ╰── [label]
      * ```
      * 
      * A {@link Gtk.CheckButton} has a main node with name checkbutton. If the
@@ -26690,7 +26617,7 @@ export interface Builder {
         set group(val: CheckButton);
 
         /**
-         * If the check button is in an &#x201C;in between&#x201D; state.
+         * If the check button is in an “in between” state.
          * 
          * The inconsistent state only affects visual appearance,
          * not the semantics of the button.
@@ -27163,7 +27090,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -27179,14 +27106,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -27226,7 +27153,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -27243,14 +27170,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -27350,7 +27277,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -27486,8 +27413,8 @@ export interface Builder {
      * 
      * ```
      * colorbutton
-     * &#x2570;&#x2500;&#x2500; button.color
-     *     &#x2570;&#x2500;&#x2500; [content]
+     * ╰── button.color
+     *     ╰── [content]
      * ```
      * 
      * {@link Gtk.ColorButton} has a single CSS node with name colorbutton which
@@ -27973,7 +27900,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -28885,7 +28812,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -29244,8 +29171,8 @@ export interface Builder {
      * 
      * ```
      * colorbutton
-     * &#x2570;&#x2500;&#x2500; button.color
-     *     &#x2570;&#x2500;&#x2500; [content]
+     * ╰── button.color
+     *     ╰── [content]
      * ```
      * 
      * {@link Gtk.ColorDialogButton} has a single CSS node with name colorbutton which
@@ -29678,7 +29605,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -29812,15 +29739,15 @@ export interface Builder {
      * 
      * ```
      * columnview[.column-separators][.rich-list][.navigation-sidebar][.data-table]
-     * &#x251C;&#x2500;&#x2500; header
-     * &#x2502;   &#x251C;&#x2500;&#x2500; <column header>
-     * &#x250A;   &#x250A;
-     * &#x2502;   &#x2570;&#x2500;&#x2500; <column header>
-     * &#x2502;
-     * &#x251C;&#x2500;&#x2500; listview
-     * &#x2502;
-     * &#x250A;
-     * &#x2570;&#x2500;&#x2500; [rubberband]
+     * ├── header
+     * │   ├── <column header>
+     * ┊   ┊
+     * │   ╰── <column header>
+     * │
+     * ├── listview
+     * │
+     * ┊
+     * ╰── [rubberband]
      * ```
      * 
      * {@link Gtk.ColumnView} uses a single CSS node named columnview. It may carry the
@@ -30614,7 +30541,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -31141,7 +31068,7 @@ export interface Builder {
          * If `fixed_width` is -1, the fixed width of the column is unset.
          * 
          * Setting a fixed width overrides the automatically calculated
-         * width. Interactive resizing also sets the &#x201C;fixed-width&#x201D; property.
+         * width. Interactive resizing also sets the “fixed-width” property.
          * @param fixed_width the new fixed width, or -1
          */
         set_fixed_width(fixed_width: number): void;
@@ -31842,12 +31769,12 @@ export interface Builder {
      * 
      * ```
      * combobox
-     * &#x251C;&#x2500;&#x2500; box.linked
-     * &#x2502;   &#x2570;&#x2500;&#x2500; button.combo
-     * &#x2502;       &#x2570;&#x2500;&#x2500; box
-     * &#x2502;           &#x251C;&#x2500;&#x2500; cellview
-     * &#x2502;           &#x2570;&#x2500;&#x2500; arrow
-     * &#x2570;&#x2500;&#x2500; window.popup
+     * ├── box.linked
+     * │   ╰── button.combo
+     * │       ╰── box
+     * │           ├── cellview
+     * │           ╰── arrow
+     * ╰── window.popup
      * ```
      * 
      * A normal combobox contains a box with the .linked class, a button
@@ -31856,12 +31783,12 @@ export interface Builder {
      * 
      * ```
      * combobox
-     * &#x251C;&#x2500;&#x2500; box.linked
-     * &#x2502;   &#x251C;&#x2500;&#x2500; entry.combo
-     * &#x2502;   &#x2570;&#x2500;&#x2500; button.combo
-     * &#x2502;       &#x2570;&#x2500;&#x2500; box
-     * &#x2502;           &#x2570;&#x2500;&#x2500; arrow
-     * &#x2570;&#x2500;&#x2500; window.popup
+     * ├── box.linked
+     * │   ├── entry.combo
+     * │   ╰── button.combo
+     * │       ╰── box
+     * │           ╰── arrow
+     * ╰── window.popup
      * ```
      * 
      * A {@link Gtk.ComboBox} with an entry has a single CSS node with name combobox.
@@ -32082,7 +32009,7 @@ export interface Builder {
 
         /**
          * Signal which allows you to change how the text
-         *    displayed in a combo box&#x2019;s entry is displayed.
+         *    displayed in a combo box’s entry is displayed.
          * @param path 
          * @virtual
          */
@@ -32096,7 +32023,7 @@ export interface Builder {
          * an immediate child of the root of the tree, this function returns
          * `gtk_tree_path_get_indices (path)[0]`, where `path` is the
          * {@link Gtk.TreePath} of the active item.
-         * @returns An integer which is the index of the currently active item,   or -1 if there&#x2019;s no active item
+         * @returns An integer which is the index of the currently active item,   or -1 if there’s no active item
          */
         get_active(): number;
 
@@ -32282,7 +32209,7 @@ export interface Builder {
         set_model(model: TreeModel | null): void;
 
         /**
-         * Specifies whether the popup&#x2019;s width should be a fixed width.
+         * Specifies whether the popup’s width should be a fixed width.
          * 
          * If `fixed` is `true`, the popup's width is set to match the
          * allocated width of the combo box.
@@ -32654,7 +32581,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -32720,7 +32647,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -32791,7 +32718,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -32806,7 +32733,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -32883,7 +32810,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -32982,9 +32909,9 @@ export interface Builder {
      * 
      * The {@link Gtk.ComboBoxText} implementation of the {@link Gtk.Buildable} interface supports
      * adding items directly using the `<items>` element and specifying `<item>`
-     * elements for each item. Each `<item>` element can specify the &#x201C;id&#x201D;
+     * elements for each item. Each `<item>` element can specify the “id”
      * corresponding to the appended text and also supports the regular
-     * translation attributes &#x201C;translatable&#x201D;, &#x201C;context&#x201D; and &#x201C;comments&#x201D;.
+     * translation attributes “translatable”, “context” and “comments”.
      * 
      * Here is a UI definition fragment specifying {@link Gtk.ComboBoxText} items:
      * ```xml
@@ -33001,10 +32928,10 @@ export interface Builder {
      * 
      * ```
      * combobox
-     * &#x2570;&#x2500;&#x2500; box.linked
-     *     &#x251C;&#x2500;&#x2500; entry.combo
-     *     &#x251C;&#x2500;&#x2500; button.combo
-     *     &#x2570;&#x2500;&#x2500; window.popup
+     * ╰── box.linked
+     *     ├── entry.combo
+     *     ├── button.combo
+     *     ╰── window.popup
      * ```
      * 
      * {@link Gtk.ComboBoxText} has a single CSS node with name combobox. It adds
@@ -33212,7 +33139,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -33283,7 +33210,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -33298,7 +33225,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -33375,7 +33302,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -33461,7 +33388,7 @@ export interface Builder {
      * The typical equation for a constraint is:
      * 
      * ```
-     *   target.target_attr = source.source_attr &#xD7; multiplier + constant
+     *   target.target_attr = source.source_attr × multiplier + constant
      * ```
      * 
      * Each {@link Gtk.Constraint} is part of a system that will be solved by a
@@ -34385,7 +34312,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -34965,7 +34892,7 @@ export interface Builder {
              * @deprecated since 4.10: Use {@link Gtk.Window} instead
              * @run-last
              */
-            response: (arg0: ResponseType) => void;
+            response: (arg0: number) => void;
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -35047,7 +34974,7 @@ export interface Builder {
      * </picture>
      * 
      * Typical uses are to display a message, ask a question, or anything else
-     * that does not require extensive effort on the user&#x2019;s part.
+     * that does not require extensive effort on the user’s part.
      * 
      * The main area of a {@link Gtk.Dialog} is called the "content area", and is yours
      * to populate with widgets such a {@link Gtk.Label} or {@link Gtk.Entry}, to present
@@ -35079,13 +35006,13 @@ export interface Builder {
      * {@link Gtk.Dialog.new_with_buttons}. The latter is recommended; it allows
      * you to set the dialog title, some convenient flags, and add buttons.
      * 
-     * A &#x201C;modal&#x201D; dialog (that is, one which freezes the rest of the application
+     * A “modal” dialog (that is, one which freezes the rest of the application
      * from user input), can be created by calling {@link Gtk.Window.set_modal}
      * on the dialog. When using {@link Gtk.Dialog.new_with_buttons}, you can also
      * pass the {@link Gtk.DialogFlags.MODAL} flag to make a dialog modal.
      * 
      * For the simple dialog in the following example, a {@link Gtk.MessageDialog}
-     * would save some effort. But you&#x2019;d need to create the dialog contents manually
+     * would save some effort. But you’d need to create the dialog contents manually
      * if you had more than a simple message in the dialog.
      * 
      * An example for simple {@link Gtk.Dialog} usage:
@@ -35116,7 +35043,7 @@ export interface Builder {
      *                            G_CALLBACK (gtk_window_destroy),
      *                            dialog);
      * 
-     *  // Add the label, and show everything we&#x2019;ve added
+     *  // Add the label, and show everything we’ve added
      * 
      *  gtk_box_append (GTK_BOX (content_area), label);
      *  gtk_widget_show (dialog);
@@ -35126,19 +35053,19 @@ export interface Builder {
      * # GtkDialog as GtkBuildable
      * 
      * The {@link Gtk.Dialog} implementation of the {@link Gtk.Buildable} interface exposes the
-     * `content_area` as an internal child with the name &#x201C;content_area&#x201D;.
+     * `content_area` as an internal child with the name “content_area”.
      * 
      * {@link Gtk.Dialog} supports a custom `<action-widgets>` element, which can contain
-     * multiple `<action-widget>` elements. The &#x201C;response&#x201D; attribute specifies a
+     * multiple `<action-widget>` elements. The “response” attribute specifies a
      * numeric response, and the content of the element is the id of widget
      * (which should be a child of the dialogs `action_area`). To mark a response
-     * as default, set the &#x201C;default&#x201D; attribute of the `<action-widget>` element
+     * as default, set the “default” attribute of the `<action-widget>` element
      * to true.
      * 
-     * {@link Gtk.Dialog} supports adding action widgets by specifying &#x201C;action&#x201D; as
-     * the &#x201C;type&#x201D; attribute of a `<child>` element. The widget will be added
+     * {@link Gtk.Dialog} supports adding action widgets by specifying “action” as
+     * the “type” attribute of a `<child>` element. The widget will be added
      * either to the action area or the headerbar of the dialog, depending
-     * on the &#x201C;use-header-bar&#x201D; property. The response id has to be associated
+     * on the “use-header-bar” property. The response id has to be associated
      * with the action widget using the `<action-widgets>` element.
      * 
      * An example of a {@link Gtk.Dialog} UI definition fragment:
@@ -35262,7 +35189,7 @@ export interface Builder {
          * @param response_id response ID
          * @virtual
          */
-        vfunc_response(response_id: ResponseType): void;
+        vfunc_response(response_id: number): void;
 
         // Methods
         /**
@@ -35270,7 +35197,7 @@ export interface Builder {
          * 
          * GTK connects a signal handler that will emit the
          * `Gtk.Dialog::response` signal on the dialog when the widget
-         * is activated. The widget is appended to the end of the dialog&#x2019;s action
+         * is activated. The widget is appended to the end of the dialog’s action
          * area.
          * 
          * If you want to add a non-activatable widget, simply pack it into
@@ -35278,20 +35205,20 @@ export interface Builder {
          * @param child an activatable widget
          * @param response_id response ID for `child`
          */
-        add_action_widget(child: Widget, response_id: ResponseType): void;
+        add_action_widget(child: Widget, response_id: number): void;
 
         /**
          * Adds a button with the given text.
          * 
          * GTK arranges things so that clicking the button will emit the
          * `Gtk.Dialog::response` signal with the given `response_id`.
-         * The button is appended to the end of the dialog&#x2019;s action area.
-         * The button widget is returned, but usually you don&#x2019;t need it.
+         * The button is appended to the end of the dialog’s action area.
+         * The button widget is returned, but usually you don’t need it.
          * @param button_text text of button
          * @param response_id response ID for the button
          * @returns the {@link Gtk.Button} widget that was added
          */
-        add_button(button_text: string, response_id: ResponseType): Widget;
+        add_button(button_text: string, response_id: number): Widget;
 
         /**
          * Returns the content area of `dialog`.
@@ -35312,7 +35239,7 @@ export interface Builder {
          * Gets the response id of a widget in the action area
          * of a dialog.
          * @param widget a widget in the action area of `dialog`
-         * @returns the response id of `widget`, or {@link Gtk.ResponseType.NONE}  if `widget` doesn&#x2019;t have a response id set.
+         * @returns the response id of `widget`, or {@link Gtk.ResponseType.NONE}  if `widget` doesn’t have a response id set.
          */
         get_response_for_widget(widget: Widget): number;
 
@@ -35322,7 +35249,7 @@ export interface Builder {
          * @param response_id the response ID used by the `dialog` widget
          * @returns the `widget` button that uses the given   `response_id`
          */
-        get_widget_for_response(response_id: ResponseType): Widget | null;
+        get_widget_for_response(response_id: number): Widget | null;
 
         /**
          * Emits the ::response signal with the given response ID.
@@ -35330,25 +35257,25 @@ export interface Builder {
          * Used to indicate that the user has responded to the dialog in some way.
          * @param response_id response ID
          */
-        response(response_id: ResponseType): void;
+        response(response_id: number): void;
 
         /**
          * Sets the default widget for the dialog based on the response ID.
          * 
-         * Pressing &#x201C;Enter&#x201D; normally activates the default widget.
+         * Pressing “Enter” normally activates the default widget.
          * @param response_id a response ID
          */
-        set_default_response(response_id: ResponseType): void;
+        set_default_response(response_id: number): void;
 
         /**
          * A convenient way to sensitize/desensitize dialog buttons.
          * 
          * Calls `gtk_widget_set_sensitive (widget, `setting`)`
-         * for each widget in the dialog&#x2019;s action area with the given `response_id`.
+         * for each widget in the dialog’s action area with the given `response_id`.
          * @param response_id a response ID
          * @param setting `true` for sensitive
          */
-        set_response_sensitive(response_id: ResponseType, setting: boolean): void;
+        set_response_sensitive(response_id: number, setting: boolean): void;
 
         /**
          * Returns the renderer that is used for this {@link Gtk.Native}.
@@ -36279,7 +36206,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -36684,7 +36611,7 @@ export interface Builder {
      *   <img alt="An example GtkDrawingArea" src="https://docs.gtk.org/gtk4/drawingarea.png">
      * </picture>
      * 
-     * It&#x2019;s essentially a blank widget; you can draw on it. After
+     * It’s essentially a blank widget; you can draw on it. After
      * creating a drawing area, the application may want to connect to:
      * 
      * - The `Gtk.Widget::realize` signal to take any necessary actions
@@ -36741,9 +36668,9 @@ export interface Builder {
      * ```
      * 
      * The draw function is normally called when a drawing area first comes
-     * onscreen, or when it&#x2019;s covered by another window and then uncovered.
-     * You can also force a redraw by adding to the &#x201C;damage region&#x201D; of the
-     * drawing area&#x2019;s window using {@link Gtk.Widget.queue_draw}.
+     * onscreen, or when it’s covered by another window and then uncovered.
+     * You can also force a redraw by adding to the “damage region” of the
+     * drawing area’s window using {@link Gtk.Widget.queue_draw}.
      * This will cause the drawing area to call the draw function again.
      * 
      * The available routines for drawing are documented in the
@@ -36753,7 +36680,7 @@ export interface Builder {
      * 
      * To receive mouse events on a drawing area, you will need to use
      * event controllers. To receive keyboard events, you will need to set
-     * the &#x201C;can-focus&#x201D; property on the drawing area, and you should probably
+     * the “can-focus” property on the drawing area, and you should probably
      * draw some user-visible indication that the drawing area is focused.
      * 
      * If you need more complex control over your widget, you should consider
@@ -37228,7 +37155,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -38174,7 +38101,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -38771,9 +38698,11 @@ export interface Builder {
             "notify::visible": (pspec: GObject.ParamSpec) => void;
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -38788,7 +38717,7 @@ export interface Builder {
     }
 
     /**
-     * Allows users to edit the displayed text by switching to an &#x201C;edit mode&#x201D;.
+     * Allows users to edit the displayed text by switching to an “edit mode”.
      * 
      * <picture>
      *   <source srcset="https://docs.gtk.org/gtk4/editable-label-dark.png" media="(prefers-color-scheme: dark)">
@@ -38821,9 +38750,9 @@ export interface Builder {
      * 
      * ```
      * editablelabel[.editing]
-     * &#x2570;&#x2500;&#x2500; stack
-     *     &#x251C;&#x2500;&#x2500; label
-     *     &#x2570;&#x2500;&#x2500; text
+     * ╰── stack
+     *     ├── label
+     *     ╰── text
      * ```
      * 
      * {@link Gtk.EditableLabel} has a main node with the name editablelabel.
@@ -38876,18 +38805,18 @@ export interface Builder {
 
         // Methods
         /**
-         * Returns whether the label is currently in &#x201C;editing mode&#x201D;.
+         * Returns whether the label is currently in “editing mode”.
          * @returns `true` if `self` is currently in editing mode
          */
         get_editing(): boolean;
 
         /**
-         * Switches the label into &#x201C;editing mode&#x201D;.
+         * Switches the label into “editing mode”.
          */
         start_editing(): void;
 
         /**
-         * Switches the label out of &#x201C;editing mode&#x201D;.
+         * Switches the label out of “editing mode”.
          * 
          * If `commit` is `true`, the resulting text is kept as the
          * {@link Gtk.Editable.text} property value, otherwise the
@@ -38916,6 +38845,24 @@ export interface Builder {
          */
         get accessibleRole(): AccessibleRole;
         set accessibleRole(val: AccessibleRole);
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
 
         /**
          * The current position of the insertion cursor in chars.
@@ -38956,6 +38903,22 @@ export interface Builder {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Widget | null;
+        set input_interceptor(val: Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Widget | null;
+        set inputInterceptor(val: Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -39340,7 +39303,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -39388,7 +39351,7 @@ export interface Builder {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -39436,6 +39399,13 @@ export interface Builder {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -39455,6 +39425,13 @@ export interface Builder {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -39563,6 +39540,21 @@ export interface Builder {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -39647,6 +39639,13 @@ export interface Builder {
          * @virtual
          */
         vfunc_do_insert_text(text: string, length: number, position: number): number;
+
+        /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
 
         /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
@@ -39795,12 +39794,12 @@ export interface Builder {
      * 
      * ```
      * popover
-     * &#x251C;&#x2500;&#x2500; box.emoji-searchbar
-     * &#x2502;   &#x2570;&#x2500;&#x2500; entry.search
-     * &#x2570;&#x2500;&#x2500; box.emoji-toolbar
-     *     &#x251C;&#x2500;&#x2500; button.image-button.emoji-section
-     *     &#x251C;&#x2500;&#x2500; ...
-     *     &#x2570;&#x2500;&#x2500; button.image-button.emoji-section
+     * ├── box.emoji-searchbar
+     * │   ╰── entry.search
+     * ╰── box.emoji-toolbar
+     *     ├── button.image-button.emoji-section
+     *     ├── ...
+     *     ╰── button.image-button.emoji-section
      * ```
      * 
      * Every {@link Gtk.EmojiChooser} consists of a main node called popover.
@@ -39999,9 +39998,11 @@ export interface Builder {
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
             "notify::editing-canceled": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -40104,8 +40105,8 @@ export interface Builder {
      * will scroll so that the cursor position is visible.
      * 
      * When using an entry for passwords and other sensitive information, it
-     * can be put into &#x201C;password mode&#x201D; using {@link Gtk.Entry.set_visibility}.
-     * In this mode, entered text is displayed using a &#x201C;invisible&#x201D; character.
+     * can be put into “password mode” using {@link Gtk.Entry.set_visibility}.
+     * In this mode, entered text is displayed using a “invisible” character.
      * By default, GTK picks the best invisible character that is available
      * in the current font, but it can be changed with
      * {@link Gtk.Entry.set_invisible_char}.
@@ -40136,10 +40137,10 @@ export interface Builder {
      * 
      * ```
      * entry[.flat][.warning][.error]
-     * &#x251C;&#x2500;&#x2500; text[.readonly]
-     * &#x251C;&#x2500;&#x2500; image.left
-     * &#x251C;&#x2500;&#x2500; image.right
-     * &#x2570;&#x2500;&#x2500; [progress[.pulse]]
+     * ├── text[.readonly]
+     * ├── image.left
+     * ├── image.right
+     * ╰── [progress[.pulse]]
      * ```
      * 
      * {@link Gtk.Entry} has a main node with the name entry. Depending on the properties
@@ -40159,8 +40160,8 @@ export interface Builder {
      * 
      * The {@link Gtk.Entry} implementation of the {@link Gtk.Buildable} interface supports a
      * custom `<attributes>` element, which supports any number of `<attribute>`
-     * elements. The `<attribute>` element has attributes named &#x201C;name&#x201C;, &#x201C;value&#x201C;,
-     * &#x201C;start&#x201C; and &#x201C;end&#x201C; and allows you to specify {@link Pango.Attribute} values for
+     * elements. The `<attribute>` element has attributes named “name“, “value“,
+     * “start“ and “end“ and allows you to specify {@link Pango.Attribute} values for
      * this label.
      * 
      * An example of a UI definition fragment specifying Pango attributes:
@@ -40341,14 +40342,14 @@ export interface Builder {
         set inputPurpose(val: InputPurpose);
 
         /**
-         * The character to use when masking entry contents (&#x201C;password mode&#x201D;).
+         * The character to use when masking entry contents (“password mode”).
          * @default 42
          */
         get invisible_char(): number;
         set invisible_char(val: number);
 
         /**
-         * The character to use when masking entry contents (&#x201C;password mode&#x201D;).
+         * The character to use when masking entry contents (“password mode”).
          * @default 42
          */
         get invisibleChar(): number;
@@ -40875,8 +40876,8 @@ export interface Builder {
         set truncateMultiline(val: boolean);
 
         /**
-         * Whether the entry should show the &#x201C;invisible char&#x201D; instead of the
-         * actual text (&#x201C;password mode&#x201D;).
+         * Whether the entry should show the “invisible char” instead of the
+         * actual text (“password mode”).
          * @default true
          */
         get visibility(): boolean;
@@ -40985,7 +40986,7 @@ export interface Builder {
         get_icon_activatable(icon_pos: EntryIconPosition): boolean;
 
         /**
-         * Gets the area where entry&#x2019;s icon at `icon_pos` is drawn.
+         * Gets the area where entry’s icon at `icon_pos` is drawn.
          * 
          * This function is useful when drawing something to the
          * entry in a draw callback.
@@ -41001,8 +41002,8 @@ export interface Builder {
         /**
          * Finds the icon at the given position and return its index.
          * 
-         * The position&#x2019;s coordinates are relative to the `entry`&#x2019;s
-         * top left corner. If `x`, `y` doesn&#x2019;t lie inside an icon,
+         * The position’s coordinates are relative to the `entry`’s
+         * top left corner. If `x`, `y` doesn’t lie inside an icon,
          * -1 is returned. This function is intended for use in a
          * `Gtk.Widget::query-tooltip` signal handler.
          * @param x the x coordinate of the position to find, relative to `entry`
@@ -41088,7 +41089,7 @@ export interface Builder {
 
         /**
          * Retrieves the character displayed in place of the actual text
-         * in &#x201C;password mode&#x201D;.
+         * in “password mode”.
          * @returns the current invisible char, or 0, if the entry does not   show invisible text at all.
          */
         get_invisible_char(): string;
@@ -41127,7 +41128,7 @@ export interface Builder {
         get_placeholder_text(): string | null;
 
         /**
-         * Returns the current fraction of the task that&#x2019;s been completed.
+         * Returns the current fraction of the task that’s been completed.
          * 
          * See {@link Gtk.Entry.set_progress_fraction}.
          * @returns a fraction from 0.0 to 1.0
@@ -41178,11 +41179,11 @@ export interface Builder {
         grab_focus_without_selecting(): boolean;
 
         /**
-         * Indicates that some progress is made, but you don&#x2019;t
+         * Indicates that some progress is made, but you don’t
          * know how much.
          * 
-         * Causes the entry&#x2019;s progress indicator to enter &#x201C;activity
-         * mode&#x201D;, where a block bounces back and forth. Each call to
+         * Causes the entry’s progress indicator to enter “activity
+         * mode”, where a block bounces back and forth. Each call to
          * `gtk_entry_progress_pulse()` causes the block to move by a
          * little bit (the amount of movement per pulse is determined
          * by {@link Gtk.Entry.set_progress_pulse_step}).
@@ -41203,7 +41204,7 @@ export interface Builder {
          * 
          * This usually means that the dialog containing the entry will be closed,
          * since the default widget is usually one of the dialog buttons.
-         * @param setting `true` to activate window&#x2019;s default widget on Enter keypress
+         * @param setting `true` to activate window’s default widget on Enter keypress
          */
         set_activates_default(setting: boolean): void;
 
@@ -41283,7 +41284,7 @@ export interface Builder {
          * Sets the icon shown in the entry at the specified position
          * from the current icon theme.
          * 
-         * If the icon isn&#x2019;t known, a &#x201C;broken image&#x201D; icon will be
+         * If the icon isn’t known, a “broken image” icon will be
          * displayed instead.
          * 
          * If `icon` is `null`, no icon will be shown in the
@@ -41297,7 +41298,7 @@ export interface Builder {
          * Sets the icon shown in the entry at the specified position
          * from the current icon theme.
          * 
-         * If the icon name isn&#x2019;t known, a &#x201C;broken image&#x201D; icon will be
+         * If the icon name isn’t known, a “broken image” icon will be
          * displayed instead.
          * 
          * If `icon_name` is `null`, no icon will be shown in the
@@ -41377,10 +41378,10 @@ export interface Builder {
 
         /**
          * Sets the character to use in place of the actual text
-         * in &#x201C;password mode&#x201D;.
+         * in “password mode”.
          * 
          * See {@link Gtk.Entry.set_visibility} for how to enable
-         * &#x201C;password mode&#x201D;.
+         * “password mode”.
          * 
          * By default, GTK picks the best invisible char available in
          * the current font. If you set the invisible char to 0, then
@@ -41430,11 +41431,11 @@ export interface Builder {
         set_placeholder_text(text: string | null): void;
 
         /**
-         * Causes the entry&#x2019;s progress indicator to &#x201C;fill in&#x201D; the given
+         * Causes the entry’s progress indicator to “fill in” the given
          * fraction of the bar.
          * 
          * The fraction should be between 0.0 and 1.0, inclusive.
-         * @param fraction fraction of the task that&#x2019;s been completed
+         * @param fraction fraction of the task that’s been completed
          */
         set_progress_fraction(fraction: number): void;
 
@@ -41518,6 +41519,24 @@ export interface Builder {
         set editingCanceled(val: boolean);
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -41556,6 +41575,22 @@ export interface Builder {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Widget | null;
+        set input_interceptor(val: Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Widget | null;
+        set inputInterceptor(val: Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -41940,7 +41975,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -42041,7 +42076,7 @@ export interface Builder {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -42083,6 +42118,13 @@ export interface Builder {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -42102,6 +42144,13 @@ export interface Builder {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -42201,6 +42250,21 @@ export interface Builder {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -42285,6 +42349,13 @@ export interface Builder {
          * @virtual
          */
         vfunc_do_insert_text(text: string, length: number, position: number): number;
+
+        /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
 
         /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
@@ -42388,7 +42459,7 @@ export interface Builder {
      * {@link Gtk.EntryBuffer} may be derived from. Such a derived class might allow
      * text to be stored in an alternate location, such as non-pageable memory,
      * useful in the case of important passwords. Or a derived class could
-     * integrate with an application&#x2019;s concept of undo/redo.
+     * integrate with an application’s concept of undo/redo.
      * @gir-type Class
      */
     class EntryBuffer extends GObject.Object {
@@ -42710,7 +42781,7 @@ export interface Builder {
      * It implements the {@link Gtk.CellLayout} interface, to allow the user
      * to add extra cells to the {@link Gtk.TreeView} with completion matches.
      * 
-     * &#x201C;Completion functionality&#x201D; means that when the user modifies the text
+     * “Completion functionality” means that when the user modifies the text
      * in the entry, {@link Gtk.EntryCompletion} checks which rows in the model match
      * the current content of the entry, and displays a list of matches.
      * By default, the matching is done by comparing the entry text
@@ -42739,7 +42810,7 @@ export interface Builder {
      * will generally take the filter model as argument. As long as you are
      * only calling {@link Gtk.TreeModel.get}, this will make no difference to
      * you. If for some reason, you need the original model, use
-     * {@link Gtk.TreeModelFilter.get_model}. Don&#x2019;t forget to use
+     * {@link Gtk.TreeModelFilter.get_model}. Don’t forget to use
      * {@link Gtk.TreeModelFilter.convert_iter_to_child_iter} to obtain a
      * matching iter.
      * @gir-type Class
@@ -42953,7 +43024,7 @@ export interface Builder {
 
         /**
          * Get the original text entered by the user that triggered
-         * the completion or `null` if there&#x2019;s no completion ongoing.
+         * the completion or `null` if there’s no completion ongoing.
          * @returns the prefix for the current completion
          */
         get_completion_prefix(): string | null;
@@ -43196,7 +43267,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -43209,7 +43280,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -43280,7 +43351,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -43295,7 +43366,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -43372,7 +43443,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -43381,6 +43452,339 @@ export interface Builder {
          * @virtual
          */
         vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc | null): void;
+    }
+
+
+    namespace EnumList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::enum-type": (pspec: GObject.ParamSpec) => void;
+            "notify::item-type": (pspec: GObject.ParamSpec) => void;
+            "notify::n-items": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
+            enum_type: GObject.GTypeInput;
+            enumType: GObject.GTypeInput;
+            item_type: GObject.GTypeInput;
+            itemType: GObject.GTypeInput;
+            n_items: number;
+            nItems: number;
+        }
+    }
+
+    /**
+     * A {@link Gio.ListModel} representing values of a given enum.
+     * 
+     * {@link Gtk.EnumList} contains objects of type {@link Gtk.EnumListItem}.
+     * 
+     * A simple way to use a {@link Gtk.EnumList} is to populate a {@link Gtk.DropDown}
+     * widget using the short name (or "nick") of the values of an
+     * enumeration type:
+     * 
+     * ```c
+     * choices = gtk_drop_down_new (G_LIST_MODEL (gtk_enum_list_new (type)),
+     *                              gtk_property_expression_new (GTK_TYPE_ENUM_LIST_ITEM,
+     *                                                           NULL,
+     *                                                           "nick"));
+     * ```
+     * @gir-type Class
+     * @since 4.24
+     */
+    class EnumList<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<EnumList>;
+
+        // Properties
+        /**
+         * The type of the enum represented by the model.
+         * @since 4.24
+         * @construct-only
+         */
+        get enum_type(): GObject.GType;
+
+        /**
+         * The type of the enum represented by the model.
+         * @since 4.24
+         * @construct-only
+         */
+        get enumType(): GObject.GType;
+
+        /**
+         * The type of the items. See {@link Gio.ListModel.get_item_type}.
+         * @since 4.24
+         * @read-only
+         */
+        get item_type(): GObject.GType;
+
+        /**
+         * The type of the items. See {@link Gio.ListModel.get_item_type}.
+         * @since 4.24
+         * @read-only
+         */
+        get itemType(): GObject.GType;
+
+        /**
+         * The number of items. See {@link Gio.ListModel.get_n_items}.
+         * @since 4.24
+         * @read-only
+         * @default 0
+         */
+        get n_items(): number;
+
+        /**
+         * The number of items. See {@link Gio.ListModel.get_n_items}.
+         * @since 4.24
+         * @read-only
+         * @default 0
+         */
+        get nItems(): number;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: EnumList.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<EnumList.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](enum_type: GObject.GType): EnumList;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof EnumList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof EnumList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumList.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof EnumList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Finds the position of a given enum value in `self`.
+         * 
+         * If the value is not found, {@link Gtk.INVALID_LIST_POSITION} is returned.
+         * @param value an enum value
+         * @returns the position of the value
+         */
+        find(value: number): number;
+
+        /**
+         * Gets the type of the enum represented by `self`.
+         * @returns the enum type
+         */
+        get_enum_type(): GObject.GType;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @returns the {@link GObject.GType} of the items contained in `list`.
+         */
+        get_item_type(): GObject.GType;
+
+        /**
+         * Gets the number of items in `list`.
+         * 
+         * Depending on the model implementation, calling this function may be
+         * less efficient than iterating the list with increasing values for
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @returns the number of items in `list`.
+         */
+        get_n_items(): number;
+
+        /**
+         * Get the item at `position`.
+         * 
+         * If `position` is greater than the number of items in `list`, `null` is
+         * returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.
+         * 
+         * This function is meant to be used by language bindings in place
+         * of `g_list_model_get_item()`.
+         * 
+         * See also: `g_list_model_get_n_items()`
+         * @param position the position of the item to fetch
+         * @returns the object at `position`.
+         */
+        get_item(position: number): A | null;
+
+        /**
+         * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
+         * 
+         * This function should only be called by classes implementing
+         * {@link Gio.ListModel}. It has to be called after the internal representation
+         * of `list` has been updated, because handlers connected to this signal
+         * might query the new state of the list.
+         * 
+         * Implementations must only make changes to the model (as visible to
+         * its consumer) in places that will not cause problems for that
+         * consumer.  For models that are driven directly by a write API (such
+         * as {@link Gio.ListStore}), changes can be reported in response to uses of that
+         * API.  For models that represent remote data, changes should only be
+         * made from a fresh mainloop dispatch.  It is particularly not
+         * permitted to make changes in response to a call to the {@link Gio.ListModel}
+         * consumer API.
+         * 
+         * Stated another way: in general, it is assumed that code making a
+         * series of accesses to the model via the API, without returning to the
+         * mainloop, and without calling other code, will continue to view the
+         * same contents of the model.
+         * @param position the position at which `list` changed
+         * @param removed the number of items removed
+         * @param added the number of items added
+         */
+        items_changed(position: number, removed: number, added: number): void;
+
+        /**
+         * Get the item at `position`. If `position` is greater than the number of
+         * items in `list`, `null` is returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.  See `g_list_model_get_n_items()`.
+         * 
+         * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
+         * @param position the position of the item to fetch
+         * @virtual
+         */
+        vfunc_get_item(position: number): A | null;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @virtual
+         */
+        vfunc_get_item_type(): GObject.GType;
+
+        /**
+         * Gets the number of items in `list`.
+         * 
+         * Depending on the model implementation, calling this function may be
+         * less efficient than iterating the list with increasing values for
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @virtual
+         */
+        vfunc_get_n_items(): number;
+    }
+
+
+    namespace EnumListItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::nick": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            name: string;
+            nick: string;
+            value: number;
+        }
+    }
+
+    /**
+     * {@link Gtk.EnumListItem} is the type of items in a {@link Gtk.EnumList}.
+     * @gir-type Class
+     * @since 4.24
+     */
+    class EnumListItem extends GObject.Object {
+        static $gtype: GObject.GType<EnumListItem>;
+
+        // Properties
+        /**
+         * The enum value name.
+         * @since 4.24
+         * @read-only
+         * @default null
+         */
+        get name(): string;
+
+        /**
+         * The enum value nick.
+         * @since 4.24
+         * @read-only
+         * @default null
+         */
+        get nick(): string;
+
+        /**
+         * The enum value.
+         * @since 4.24
+         * @read-only
+         * @default 0
+         */
+        get value(): number;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: EnumListItem.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<EnumListItem.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof EnumListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumListItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof EnumListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnumListItem.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof EnumListItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnumListItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Gets the enum value name.
+         * @returns the enum value name
+         */
+        get_name(): string;
+
+        /**
+         * Gets the enum value nick.
+         * @returns the enum value nick
+         */
+        get_nick(): string;
+
+        /**
+         * Gets the enum value.
+         * @returns the enum value
+         */
+        get_value(): number;
     }
 
 
@@ -44448,7 +44852,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -44603,11 +45007,11 @@ export interface Builder {
      * 
      * ```
      * expander-widget
-     * &#x2570;&#x2500;&#x2500; box
-     *     &#x251C;&#x2500;&#x2500; title
-     *     &#x2502;   &#x251C;&#x2500;&#x2500; expander
-     *     &#x2502;   &#x2570;&#x2500;&#x2500; <label widget>
-     *     &#x2570;&#x2500;&#x2500; <child>
+     * ╰── box
+     *     ├── title
+     *     │   ├── expander
+     *     │   ╰── <label widget>
+     *     ╰── <child>
      * ```
      * 
      * {@link Gtk.Expander} has a main node `expander-widget`, and subnode `box` containing
@@ -44767,13 +45171,13 @@ export interface Builder {
         /**
          * Returns whether the expander will resize the toplevel widget
          * containing the expander upon resizing and collapsing.
-         * @returns the &#x201C;resize toplevel&#x201D; setting.
+         * @returns the “resize toplevel” setting.
          */
         get_resize_toplevel(): boolean;
 
         /**
-         * Returns whether the label&#x2019;s text is interpreted as Pango markup.
-         * @returns `true` if the label&#x2019;s text will be parsed for markup
+         * Returns whether the label’s text is interpreted as Pango markup.
+         * @returns `true` if the label’s text will be parsed for markup
          */
         get_use_markup(): boolean;
 
@@ -44824,7 +45228,7 @@ export interface Builder {
 
         /**
          * Sets whether the text of the label contains Pango markup.
-         * @param use_markup `true` if the label&#x2019;s text should be parsed for markup
+         * @param use_markup `true` if the label’s text should be parsed for markup
          */
         set_use_markup(use_markup: boolean): void;
 
@@ -45172,7 +45576,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -45191,8 +45595,8 @@ export interface Builder {
      * 
      * An important aspect of expressions is that the value can be obtained
      * from a source that is several steps away. For example, an expression
-     * may describe &#x2018;the value of property A of `object1`, which is itself the
-     * value of a property of `object2`&#x2019;. And `object1` may not even exist yet
+     * may describe ‘the value of property A of `object1`, which is itself the
+     * value of a property of `object2`’. And `object1` may not even exist yet
      * at the time that the expression is created. This is contrast to {@link GObject.Object}
      * property bindings, which can only create direct connections between
      * the properties of two objects that must both exist for the duration
@@ -45257,7 +45661,7 @@ export interface Builder {
      *                              "Expression",
      *                              "The expression used by the widget",
      *                              G_PARAM_READWRITE |
-     *                              G_PARAM_STATIC_STRINGS |
+     *                              G_PARAM_STATIC_NAME |
      *                              G_PARAM_EXPLICIT_NOTIFY);
      * ```
      * 
@@ -45559,7 +45963,7 @@ export interface Builder {
 
     /**
      * {@link Gtk.FileChooserDialog} is a dialog suitable for use with
-     * &#x201C;File Open&#x201D; or &#x201C;File Save&#x201D; commands.
+     * “File Open” or “File Save” commands.
      * 
      * ![An example GtkFileChooserDialog](filechooser.png)
      * 
@@ -45672,7 +46076,7 @@ export interface Builder {
      * - To select a file for opening, use {@link Gtk.FileChooserAction.OPEN}.
      * 
      * - To save a file for the first time, use {@link Gtk.FileChooserAction.SAVE},
-     *   and suggest a name such as &#x201C;Untitled&#x201D; with
+     *   and suggest a name such as “Untitled” with
      *   {@link Gtk.FileChooser.set_current_name}.
      * 
      * - To save a file under a different name, use {@link Gtk.FileChooserAction.SAVE},
@@ -45682,7 +46086,7 @@ export interface Builder {
      * 
      * In general, you should only cause the file chooser to show a specific
      * folder when it is appropriate to use {@link Gtk.FileChooser.set_file},
-     * i.e. when you are doing a &#x201C;Save As&#x201D; command and you already have a file
+     * i.e. when you are doing a “Save As” command and you already have a file
      * saved somewhere.
      * 
      * ## Response Codes
@@ -45706,11 +46110,11 @@ export interface Builder {
      *                                       NULL);
      * ```
      * 
-     * This will create buttons for &#x201C;Cancel&#x201D; and &#x201C;Open&#x201D; that use predefined
+     * This will create buttons for “Cancel” and “Open” that use predefined
      * response identifiers from {@link Gtk.ResponseType}.  For most dialog
      * boxes you can use your own custom response codes rather than the
      * ones in {@link Gtk.ResponseType}, but {@link Gtk.FileChooserDialog} assumes that
-     * its &#x201C;accept&#x201D;-type action, e.g. an &#x201C;Open&#x201D; or &#x201C;Save&#x201D; button,
+     * its “accept”-type action, e.g. an “Open” or “Save” button,
      * will have one of the following response codes:
      * 
      * - {@link Gtk.ResponseType.ACCEPT}
@@ -45719,7 +46123,7 @@ export interface Builder {
      * - {@link Gtk.ResponseType.APPLY}
      * 
      * This is because {@link Gtk.FileChooserDialog} must intercept responses and switch
-     * to folders if appropriate, rather than letting the dialog terminate &#x2014; the
+     * to folders if appropriate, rather than letting the dialog terminate — the
      * implementation uses these known response codes to know which responses can
      * be blocked if appropriate.
      * 
@@ -45920,7 +46324,7 @@ export interface Builder {
          * 
          * This is meant to be used in save dialogs, to get the currently typed
          * filename when the file itself does not exist yet.
-         * @returns The raw text from the file chooser&#x2019;s &#x201C;Name&#x201D; entry. Free with   `g_free()`. Note that this string is not a full pathname or URI; it is   whatever the contents of the entry are. Note also that this string is   in UTF-8 encoding, which is not necessarily the system&#x2019;s encoding for   filenames.
+         * @returns The raw text from the file chooser’s “Name” entry. Free with   `g_free()`. Note that this string is not a full pathname or URI; it is   whatever the contents of the entry are. Note also that this string is   in UTF-8 encoding, which is not necessarily the system’s encoding for   filenames.
          */
         get_current_name(): string | null;
 
@@ -46041,8 +46445,8 @@ export interface Builder {
          * 
          * Note that the name passed in here is a UTF-8 string rather
          * than a filename. This function is meant for such uses as a
-         * suggested name in a &#x201C;Save As...&#x201D; dialog.  You can pass
-         * &#x201C;Untitled.doc&#x201D; or a similarly suitable suggestion for the `name`.
+         * suggested name in a “Save As...” dialog.  You can pass
+         * “Untitled.doc” or a similarly suitable suggestion for the `name`.
          * 
          * If you want to preselect a particular existing file, you should
          * use {@link Gtk.FileChooser.set_file} instead.
@@ -46056,11 +46460,11 @@ export interface Builder {
         /**
          * Sets `file` as the current filename for the file chooser.
          * 
-         * This includes changing to the file&#x2019;s parent folder and actually selecting
+         * This includes changing to the file’s parent folder and actually selecting
          * the file in list. If the `chooser` is in {@link Gtk.FileChooserAction.SAVE} mode,
-         * the file&#x2019;s base name will also appear in the dialog&#x2019;s file name entry.
+         * the file’s base name will also appear in the dialog’s file name entry.
          * 
-         * If the file name isn&#x2019;t in the current folder of `chooser`, then the current
+         * If the file name isn’t in the current folder of `chooser`, then the current
          * folder of `chooser` will be changed to the folder containing `file`.
          * 
          * Note that the file must exist, or nothing will be done except
@@ -46068,8 +46472,8 @@ export interface Builder {
          * 
          * If you are implementing a save dialog, you should use this function if
          * you already have a file name to which the user may save; for example,
-         * when the user opens an existing file and then does &#x201C;Save As&#x2026;&#x201D;. If you
-         * don&#x2019;t have a file name already &#x2014; for example, if the user just created
+         * when the user opens an existing file and then does “Save As…”. If you
+         * don’t have a file name already — for example, if the user just created
          * a new file and is saving it for the first time, do not call this function.
          * 
          * Instead, use something similar to this:
@@ -46155,7 +46559,7 @@ export interface Builder {
 
     /**
      * {@link Gtk.FileChooserNative} is an abstraction of a dialog suitable
-     * for use with &#x201C;File Open&#x201D; or &#x201C;File Save as&#x201D; commands.
+     * for use with “File Open” or “File Save as” commands.
      * 
      * By default, this just uses a {@link Gtk.FileChooserDialog} to implement
      * the actual dialog. However, on some platforms, such as Windows and
@@ -46386,7 +46790,7 @@ export interface Builder {
          * 
          * If characters in `label` are preceded by an underscore, they are
          * underlined. If you need a literal underscore character in a label,
-         * use &#x201C;__&#x201D; (two underscores). The first underlined character represents
+         * use “__” (two underscores). The first underlined character represents
          * a keyboard accelerator called a mnemonic.
          * 
          * Pressing Alt and that key should activate the button.
@@ -46399,7 +46803,7 @@ export interface Builder {
          * 
          * If characters in `label` are preceded by an underscore, they are
          * underlined. If you need a literal underscore character in a label,
-         * use &#x201C;__&#x201D; (two underscores). The first underlined character represents
+         * use “__” (two underscores). The first underlined character represents
          * a keyboard accelerator called a mnemonic.
          * 
          * Pressing Alt and that key should activate the button.
@@ -46564,7 +46968,7 @@ export interface Builder {
          * 
          * This is meant to be used in save dialogs, to get the currently typed
          * filename when the file itself does not exist yet.
-         * @returns The raw text from the file chooser&#x2019;s &#x201C;Name&#x201D; entry. Free with   `g_free()`. Note that this string is not a full pathname or URI; it is   whatever the contents of the entry are. Note also that this string is   in UTF-8 encoding, which is not necessarily the system&#x2019;s encoding for   filenames.
+         * @returns The raw text from the file chooser’s “Name” entry. Free with   `g_free()`. Note that this string is not a full pathname or URI; it is   whatever the contents of the entry are. Note also that this string is   in UTF-8 encoding, which is not necessarily the system’s encoding for   filenames.
          */
         get_current_name(): string | null;
 
@@ -46685,8 +47089,8 @@ export interface Builder {
          * 
          * Note that the name passed in here is a UTF-8 string rather
          * than a filename. This function is meant for such uses as a
-         * suggested name in a &#x201C;Save As...&#x201D; dialog.  You can pass
-         * &#x201C;Untitled.doc&#x201D; or a similarly suitable suggestion for the `name`.
+         * suggested name in a “Save As...” dialog.  You can pass
+         * “Untitled.doc” or a similarly suitable suggestion for the `name`.
          * 
          * If you want to preselect a particular existing file, you should
          * use {@link Gtk.FileChooser.set_file} instead.
@@ -46700,11 +47104,11 @@ export interface Builder {
         /**
          * Sets `file` as the current filename for the file chooser.
          * 
-         * This includes changing to the file&#x2019;s parent folder and actually selecting
+         * This includes changing to the file’s parent folder and actually selecting
          * the file in list. If the `chooser` is in {@link Gtk.FileChooserAction.SAVE} mode,
-         * the file&#x2019;s base name will also appear in the dialog&#x2019;s file name entry.
+         * the file’s base name will also appear in the dialog’s file name entry.
          * 
-         * If the file name isn&#x2019;t in the current folder of `chooser`, then the current
+         * If the file name isn’t in the current folder of `chooser`, then the current
          * folder of `chooser` will be changed to the folder containing `file`.
          * 
          * Note that the file must exist, or nothing will be done except
@@ -46712,8 +47116,8 @@ export interface Builder {
          * 
          * If you are implementing a save dialog, you should use this function if
          * you already have a file name to which the user may save; for example,
-         * when the user opens an existing file and then does &#x201C;Save As&#x2026;&#x201D;. If you
-         * don&#x2019;t have a file name already &#x2014; for example, if the user just created
+         * when the user opens an existing file and then does “Save As…”. If you
+         * don’t have a file name already — for example, if the user just created
          * a new file and is saving it for the first time, do not call this function.
          * 
          * Instead, use something similar to this:
@@ -47543,7 +47947,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -47616,7 +48020,7 @@ export interface Builder {
          * 
          * This is meant to be used in save dialogs, to get the currently typed
          * filename when the file itself does not exist yet.
-         * @returns The raw text from the file chooser&#x2019;s &#x201C;Name&#x201D; entry. Free with   `g_free()`. Note that this string is not a full pathname or URI; it is   whatever the contents of the entry are. Note also that this string is   in UTF-8 encoding, which is not necessarily the system&#x2019;s encoding for   filenames.
+         * @returns The raw text from the file chooser’s “Name” entry. Free with   `g_free()`. Note that this string is not a full pathname or URI; it is   whatever the contents of the entry are. Note also that this string is   in UTF-8 encoding, which is not necessarily the system’s encoding for   filenames.
          */
         get_current_name(): string | null;
 
@@ -47737,8 +48141,8 @@ export interface Builder {
          * 
          * Note that the name passed in here is a UTF-8 string rather
          * than a filename. This function is meant for such uses as a
-         * suggested name in a &#x201C;Save As...&#x201D; dialog.  You can pass
-         * &#x201C;Untitled.doc&#x201D; or a similarly suitable suggestion for the `name`.
+         * suggested name in a “Save As...” dialog.  You can pass
+         * “Untitled.doc” or a similarly suitable suggestion for the `name`.
          * 
          * If you want to preselect a particular existing file, you should
          * use {@link Gtk.FileChooser.set_file} instead.
@@ -47752,11 +48156,11 @@ export interface Builder {
         /**
          * Sets `file` as the current filename for the file chooser.
          * 
-         * This includes changing to the file&#x2019;s parent folder and actually selecting
+         * This includes changing to the file’s parent folder and actually selecting
          * the file in list. If the `chooser` is in {@link Gtk.FileChooserAction.SAVE} mode,
-         * the file&#x2019;s base name will also appear in the dialog&#x2019;s file name entry.
+         * the file’s base name will also appear in the dialog’s file name entry.
          * 
-         * If the file name isn&#x2019;t in the current folder of `chooser`, then the current
+         * If the file name isn’t in the current folder of `chooser`, then the current
          * folder of `chooser` will be changed to the folder containing `file`.
          * 
          * Note that the file must exist, or nothing will be done except
@@ -47764,8 +48168,8 @@ export interface Builder {
          * 
          * If you are implementing a save dialog, you should use this function if
          * you already have a file name to which the user may save; for example,
-         * when the user opens an existing file and then does &#x201C;Save As&#x2026;&#x201D;. If you
-         * don&#x2019;t have a file name already &#x2014; for example, if the user just created
+         * when the user opens an existing file and then does “Save As…”. If you
+         * don’t have a file name already — for example, if the user just created
          * a new file and is saving it for the first time, do not call this function.
          * 
          * Instead, use something similar to this:
@@ -48924,7 +49328,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -49751,7 +50155,7 @@ export interface Builder {
      * thus may produce unwanted results if your app is run under right-to-left
      * languages such as Hebrew or Arabic. That is: normally GTK will order
      * containers appropriately for the text direction, e.g. to put labels to
-     * the right of the thing they label when using an RTL language, but it can&#x2019;t
+     * the right of the thing they label when using an RTL language, but it can’t
      * do that with {@link Gtk.Fixed}. So if you need to reorder widgets depending on
      * the text direction, you would need to manually detect it and adjust child
      * positions accordingly.
@@ -50187,7 +50591,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -50634,7 +51038,7 @@ export interface Builder {
              * the variant without the Shift modifier does not.
              * There are too many key combinations to list them all here.
              * 
-             * - <kbd>&#x2190;</kbd>, <kbd>&#x2192;</kbd>, <kbd>&#x2191;</kbd>, <kbd>&#x2193;</kbd>
+             * - <kbd>←</kbd>, <kbd>→</kbd>, <kbd>↑</kbd>, <kbd>↓</kbd>
              *   move by individual children
              * - <kbd>Home</kbd>, <kbd>End</kbd> move to the ends of the box
              * - <kbd>PgUp</kbd>, <kbd>PgDn</kbd> move vertically by pages
@@ -50800,12 +51204,12 @@ export interface Builder {
      * 
      * ```
      * flowbox
-     * &#x251C;&#x2500;&#x2500; flowboxchild
-     * &#x2502;   &#x2570;&#x2500;&#x2500; <child>
-     * &#x251C;&#x2500;&#x2500; flowboxchild
-     * &#x2502;   &#x2570;&#x2500;&#x2500; <child>
-     * &#x250A;
-     * &#x2570;&#x2500;&#x2500; [rubberband]
+     * ├── flowboxchild
+     * │   ╰── <child>
+     * ├── flowboxchild
+     * │   ╰── <child>
+     * ┊
+     * ╰── [rubberband]
      * ```
      * 
      * {@link Gtk.FlowBox} uses a single CSS node with name flowbox. {@link Gtk.FlowBoxChild}
@@ -51203,7 +51607,7 @@ export interface Builder {
 
         /**
          * Sets the maximum number of children to request and
-         * allocate space for in `box`&#x2019;s orientation.
+         * allocate space for in `box`’s orientation.
          * 
          * Setting the maximum number of children per line
          * limits the overall natural size request to be no more
@@ -51214,7 +51618,7 @@ export interface Builder {
 
         /**
          * Sets the minimum number of children to line up
-         * in `box`&#x2019;s orientation before flowing.
+         * in `box`’s orientation before flowing.
          * @param n_children the minimum number of children per line
          */
         set_min_children_per_line(n_children: number): void;
@@ -51622,7 +52026,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -51637,7 +52041,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -51773,7 +52177,7 @@ export interface Builder {
          * must only read the new data for the first of the two changed
          * children, otherwise the resorting of the children will be wrong.
          * 
-         * This generally means that if you don&#x2019;t fully control the data
+         * This generally means that if you don’t fully control the data
          * model, you have to duplicate the data that affects the sorting
          * and filtering functions into the widgets themselves.
          * 
@@ -52145,7 +52549,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -52256,8 +52660,8 @@ export interface Builder {
      * 
      * ```
      * fontbutton
-     * &#x2570;&#x2500;&#x2500; button.font
-     *     &#x2570;&#x2500;&#x2500; [content]
+     * ╰── button.font
+     *     ╰── [content]
      * ```
      * 
      * {@link Gtk.FontButton} has a single CSS node with name fontbutton which
@@ -52831,7 +53235,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -52844,8 +53248,8 @@ export interface Builder {
          * Note that this can be a different string than what you set with
          * {@link Gtk.FontChooser.set_font}, as the font chooser widget may
          * normalize font names and thus return a string with a different
-         * structure. For example, &#x201C;Helvetica Italic Bold 12&#x201D; could be
-         * normalized to &#x201C;Helvetica Bold Italic 12&#x201D;.
+         * structure. For example, “Helvetica Italic Bold 12” could be
+         * normalized to “Helvetica Bold Italic 12”.
          * 
          * Use {@link Pango.FontDescription.equal} if you want to compare two
          * font descriptions.
@@ -52859,8 +53263,8 @@ export interface Builder {
          * Note that this can be a different string than what you set with
          * {@link Gtk.FontChooser.set_font}, as the font chooser widget may
          * normalize font names and thus return a string with a different
-         * structure. For example, &#x201C;Helvetica Italic Bold 12&#x201D; could be
-         * normalized to &#x201C;Helvetica Bold Italic 12&#x201D;.
+         * structure. For example, “Helvetica Italic Bold 12” could be
+         * normalized to “Helvetica Bold Italic 12”.
          * 
          * Use {@link Pango.FontDescription.equal} if you want to compare two
          * font descriptions.
@@ -52943,7 +53347,7 @@ export interface Builder {
 
         /**
          * Sets the currently-selected font.
-         * @param fontname a font name like &#x201C;Helvetica 12&#x201D; or &#x201C;Times Bold 18&#x201D;
+         * @param fontname a font name like “Helvetica 12” or “Times Bold 18”
          */
         set_font(fontname: string): void;
 
@@ -53182,8 +53586,8 @@ export interface Builder {
      * # GtkFontChooserDialog as GtkBuildable
      * 
      * The {@link Gtk.FontChooserDialog} implementation of the {@link Gtk.Buildable}
-     * interface exposes the buttons with the names &#x201C;select_button&#x201D;
-     * and &#x201C;cancel_button&#x201D;.
+     * interface exposes the buttons with the names “select_button”
+     * and “cancel_button”.
      * 
      * ## CSS nodes
      * 
@@ -53333,8 +53737,8 @@ export interface Builder {
          * Note that this can be a different string than what you set with
          * {@link Gtk.FontChooser.set_font}, as the font chooser widget may
          * normalize font names and thus return a string with a different
-         * structure. For example, &#x201C;Helvetica Italic Bold 12&#x201D; could be
-         * normalized to &#x201C;Helvetica Bold Italic 12&#x201D;.
+         * structure. For example, “Helvetica Italic Bold 12” could be
+         * normalized to “Helvetica Bold Italic 12”.
          * 
          * Use {@link Pango.FontDescription.equal} if you want to compare two
          * font descriptions.
@@ -53348,8 +53752,8 @@ export interface Builder {
          * Note that this can be a different string than what you set with
          * {@link Gtk.FontChooser.set_font}, as the font chooser widget may
          * normalize font names and thus return a string with a different
-         * structure. For example, &#x201C;Helvetica Italic Bold 12&#x201D; could be
-         * normalized to &#x201C;Helvetica Bold Italic 12&#x201D;.
+         * structure. For example, “Helvetica Italic Bold 12” could be
+         * normalized to “Helvetica Bold Italic 12”.
          * 
          * Use {@link Pango.FontDescription.equal} if you want to compare two
          * font descriptions.
@@ -53432,7 +53836,7 @@ export interface Builder {
 
         /**
          * Sets the currently-selected font.
-         * @param fontname a font name like &#x201C;Helvetica 12&#x201D; or &#x201C;Times Bold 18&#x201D;
+         * @param fontname a font name like “Helvetica 12” or “Times Bold 18”
          */
         set_font(fontname: string): void;
 
@@ -54147,7 +54551,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -54160,8 +54564,8 @@ export interface Builder {
          * Note that this can be a different string than what you set with
          * {@link Gtk.FontChooser.set_font}, as the font chooser widget may
          * normalize font names and thus return a string with a different
-         * structure. For example, &#x201C;Helvetica Italic Bold 12&#x201D; could be
-         * normalized to &#x201C;Helvetica Bold Italic 12&#x201D;.
+         * structure. For example, “Helvetica Italic Bold 12” could be
+         * normalized to “Helvetica Bold Italic 12”.
          * 
          * Use {@link Pango.FontDescription.equal} if you want to compare two
          * font descriptions.
@@ -54175,8 +54579,8 @@ export interface Builder {
          * Note that this can be a different string than what you set with
          * {@link Gtk.FontChooser.set_font}, as the font chooser widget may
          * normalize font names and thus return a string with a different
-         * structure. For example, &#x201C;Helvetica Italic Bold 12&#x201D; could be
-         * normalized to &#x201C;Helvetica Bold Italic 12&#x201D;.
+         * structure. For example, “Helvetica Italic Bold 12” could be
+         * normalized to “Helvetica Bold Italic 12”.
          * 
          * Use {@link Pango.FontDescription.equal} if you want to compare two
          * font descriptions.
@@ -54259,7 +54663,7 @@ export interface Builder {
 
         /**
          * Sets the currently-selected font.
-         * @param fontname a font name like &#x201C;Helvetica 12&#x201D; or &#x201C;Times Bold 18&#x201D;
+         * @param fontname a font name like “Helvetica 12” or “Times Bold 18”
          */
         set_font(fontname: string): void;
 
@@ -54884,8 +55288,8 @@ export interface Builder {
      * 
      * ```
      * fontbutton
-     * &#x2570;&#x2500;&#x2500; button.font
-     *     &#x2570;&#x2500;&#x2500; [content]
+     * ╰── button.font
+     *     ╰── [content]
      * ```
      * 
      * {@link Gtk.FontDialogButton} has a single CSS node with name fontbutton which
@@ -55479,7 +55883,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -55578,13 +55982,13 @@ export interface Builder {
      * 
      * ```
      * frame
-     * &#x251C;&#x2500;&#x2500; <label widget>
-     * &#x2570;&#x2500;&#x2500; <child>
+     * ├── <label widget>
+     * ╰── <child>
      * ```
      * 
-     * {@link Gtk.Frame} has a main CSS node with name &#x201C;frame&#x201D;, which is used to draw the
+     * {@link Gtk.Frame} has a main CSS node with name “frame”, which is used to draw the
      * visible border. You can set the appearance of the border using CSS properties
-     * like &#x201C;border-style&#x201D; on this node.
+     * like “border-style” on this node.
      * 
      * # Accessibility
      * 
@@ -55687,7 +56091,7 @@ export interface Builder {
         get_label(): string | null;
 
         /**
-         * Retrieves the X alignment of the frame&#x2019;s label.
+         * Retrieves the X alignment of the frame’s label.
          * @returns the frames X alignment
          */
         get_label_align(): number;
@@ -55712,7 +56116,7 @@ export interface Builder {
         set_label(label: string | null): void;
 
         /**
-         * Sets the X alignment of the frame widget&#x2019;s label.
+         * Sets the X alignment of the frame widget’s label.
          * 
          * The default value for a newly created frame is 0.0.
          * @param xalign The position of the label along the top edge   of the widget. A value of 0.0 represents left alignment;   1.0 represents right alignment.
@@ -56066,7 +56470,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -56983,7 +57387,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -57357,9 +57761,9 @@ export interface Builder {
          * sequence is constrained to the next four:
          * 
          * * None
-         * * None &#x2192; Denied
-         * * None &#x2192; Claimed
-         * * None &#x2192; Claimed &#x2192; Denied
+         * * None → Denied
+         * * None → Claimed
+         * * None → Claimed → Denied
          * 
          * Note: Due to event handling ordering, it may be unsafe to set the
          * state on another gesture within a `Gtk.Gesture::begin` signal
@@ -57407,9 +57811,9 @@ export interface Builder {
          * sequence is constrained to the next four:
          * 
          * * None
-         * * None &#x2192; Denied
-         * * None &#x2192; Claimed
-         * * None &#x2192; Claimed &#x2192; Denied
+         * * None → Denied
+         * * None → Claimed
+         * * None → Claimed → Denied
          * 
          * Note: Due to event handling ordering, it may be unsafe to set the
          * state on another gesture within a `Gtk.Gesture::begin` signal
@@ -57687,7 +58091,7 @@ export interface Builder {
     /**
      * Recognizes long press gestures.
      * 
-     * This gesture is also known as &#x201C;Press and Hold&#x201D;.
+     * This gesture is also known as “Press and Hold”.
      * 
      * When the timeout is exceeded, the gesture is triggering the
      * `Gtk.GestureLongPress::pressed` signal.
@@ -58991,7 +59395,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -59259,7 +59663,7 @@ export interface Builder {
          * Adds a widget to the grid.
          * 
          * The position of `child` is determined by `column` and `row`.
-         * The number of &#x201C;cells&#x201D; that `child` will occupy is determined
+         * The number of “cells” that `child` will occupy is determined
          * by `width` and `height`.
          * @param child the widget to add
          * @param column the column number to attach the left side of `child` to
@@ -59794,7 +60198,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -59809,7 +60213,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -60304,12 +60708,12 @@ export interface Builder {
      * 
      * ```
      * gridview
-     * &#x251C;&#x2500;&#x2500; child[.activatable]
-     * &#x2502;
-     * &#x251C;&#x2500;&#x2500; child[.activatable]
-     * &#x2502;
-     * &#x250A;
-     * &#x2570;&#x2500;&#x2500; [rubberband]
+     * ├── child[.activatable]
+     * │
+     * ├── child[.activatable]
+     * │
+     * ┊
+     * ╰── [rubberband]
      * ```
      * 
      * {@link Gtk.GridView} uses a single CSS node with name `gridview`. Each child uses
@@ -60625,7 +61029,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
 
@@ -60790,9 +61194,9 @@ export interface Builder {
      * ## GtkHeaderBar as GtkBuildable
      * 
      * The {@link Gtk.HeaderBar} implementation of the {@link Gtk.Buildable} interface supports
-     * adding children at the start or end sides by specifying &#x201C;start&#x201D; or &#x201C;end&#x201D; as
-     * the &#x201C;type&#x201D; attribute of a `<child>` element, or setting the title widget by
-     * specifying &#x201C;title&#x201D; value.
+     * adding children at the start or end sides by specifying “start” or “end” as
+     * the “type” attribute of a `<child>` element, or setting the title widget by
+     * specifying “title” value.
      * 
      * By default the {@link Gtk.HeaderBar} uses a {@link Gtk.Label} displaying the title of the
      * window it is contained in as the title widget, equivalent to the following
@@ -60818,15 +61222,15 @@ export interface Builder {
      * 
      * ```
      * headerbar
-     * &#x2570;&#x2500;&#x2500; windowhandle
-     *     &#x2570;&#x2500;&#x2500; box
-     *         &#x251C;&#x2500;&#x2500; box.start
-     *         &#x2502;   &#x251C;&#x2500;&#x2500; windowcontrols.start
-     *         &#x2502;   &#x2570;&#x2500;&#x2500; [other children]
-     *         &#x251C;&#x2500;&#x2500; [Title Widget]
-     *         &#x2570;&#x2500;&#x2500; box.end
-     *             &#x251C;&#x2500;&#x2500; [other children]
-     *             &#x2570;&#x2500;&#x2500; windowcontrols.end
+     * ╰── windowhandle
+     *     ╰── box
+     *         ├── box.start
+     *         │   ├── windowcontrols.start
+     *         │   ╰── [other children]
+     *         ├── [Title Widget]
+     *         ╰── box.end
+     *             ├── [other children]
+     *             ╰── windowcontrols.end
      * ```
      * 
      * A {@link Gtk.HeaderBar}'s CSS node is called `headerbar`. It contains a `windowhandle`
@@ -61029,7 +61433,7 @@ export interface Builder {
          * from those on the right. Recognized button names are minimize,
          * maximize, close and icon (the window icon).
          * 
-         * For example, &#x201C;icon:minimize,maximize,close&#x201D; specifies an icon
+         * For example, “icon:minimize,maximize,close” specifies an icon
          * on the left, and minimize, maximize and close buttons on the right.
          * @param layout a decoration layout
          */
@@ -61050,7 +61454,7 @@ export interface Builder {
          * 
          * The title should help a user identify the current view.
          * To achieve the same style as the builtin title, use the
-         * &#x201C;title&#x201D; style class.
+         * “title” style class.
          * 
          * You should set the title widget to `NULL`, for the window
          * title label to be visible again.
@@ -61407,7 +61811,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -61515,7 +61919,7 @@ export interface Builder {
      * 
      *     Ctrl+Shift+u 2 0 A C
      * 
-     * results in the &#x20AC; sign.
+     * results in the € sign.
      * 
      * Additional input methods can be made available for use by GTK widgets as
      * loadable modules. An input method module is a small shared library which
@@ -61899,6 +62303,12 @@ export interface Builder {
         focus_out(): void;
 
         /**
+         * Retrieves the client widget for the input context.
+         * @returns The client widget
+         */
+        get_client_widget(): Widget | null;
+
+        /**
          * Retrieve the current preedit string for the input context,
          * and a list of attributes to apply to the string.
          * 
@@ -62031,7 +62441,7 @@ export interface Builder {
      * following files that is found: ~/.config/gtk-4.0/Compose, ~/.XCompose,
      * /usr/share/X11/locale/$locale/Compose (for locales that have a nontrivial
      * Compose file). A subset of the file syntax described in the Compose(5)
-     * manual page is supported. Additionally, `include "`L`"` loads GTK&#x2019;s built-in
+     * manual page is supported. Additionally, `include "`L`"` loads GTK’s built-in
      * table of compose sequences rather than the locale-specific one from X11.
      * 
      * If none of these files is found, {@link Gtk.IMContextSimple} uses a built-in table
@@ -62051,7 +62461,7 @@ export interface Builder {
      * 
      *     Ctrl-Shift-u 1 2 3 Enter
      * 
-     * yields U+0123 LATIN SMALL LETTER G WITH CEDILLA, i.e. &#x123;.
+     * yields U+0123 LATIN SMALL LETTER G WITH CEDILLA, i.e. ģ.
      * 
      * ## Dead keys
      * 
@@ -62059,7 +62469,7 @@ export interface Builder {
      * 
      *     dead_acute a
      * 
-     *  yields U+00E! LATIN SMALL LETTER_A WITH ACUTE, i.e. &#xE1;. Note that this
+     *  yields U+00E! LATIN SMALL LETTER_A WITH ACUTE, i.e. á. Note that this
      *  depends on the keyboard layout including dead keys.
      * @gir-type Class
      */
@@ -62627,7 +63037,7 @@ export interface Builder {
      * Loads themed icons.
      * 
      * The main reason for using a name rather than simply providing a filename
-     * is to allow different icons to be used depending on what &#x201C;icon theme&#x201D; is
+     * is to allow different icons to be used depending on what “icon theme” is
      * selected by the user. The operation of icon themes on Linux and Unix
      * follows the [Icon Theme Specification](http://www.freedesktop.org/Standards/icon-theme-spec)
      * There is a fallback icon theme, named `hicolor`, where applications
@@ -62637,7 +63047,7 @@ export interface Builder {
      * In many cases, named themes are used indirectly, via {@link Gtk.Image}
      * rather than directly, but looking up icons directly is also simple. The
      * {@link Gtk.IconTheme} object acts as a database of all the icons in the current
-     * theme. You can create new {@link Gtk.IconTheme} objects, but it&#x2019;s much more
+     * theme. You can create new {@link Gtk.IconTheme} objects, but it’s much more
      * efficient to use the standard icon theme of the {@link Gtk.Widget} so that the
      * icon information is shared with other people looking up icons.
      * 
@@ -62713,7 +63123,7 @@ export interface Builder {
          * one or more of the directories in the search path with the same
          * name as the icon theme containing an index.theme file. (Themes
          * from multiple of the path elements are combined to allow themes
-         * to be extended by adding icons in the user&#x2019;s home directory.)
+         * to be extended by adding icons in the user’s home directory.)
          */
         get search_path(): string[] | null;
         set search_path(val: string[] | null);
@@ -62725,7 +63135,7 @@ export interface Builder {
          * one or more of the directories in the search path with the same
          * name as the icon theme containing an index.theme file. (Themes
          * from multiple of the path elements are combined to allow themes
-         * to be extended by adding icons in the user&#x2019;s home directory.)
+         * to be extended by adding icons in the user’s home directory.)
          */
         get searchPath(): string[] | null;
         set searchPath(val: string[] | null);
@@ -62942,9 +63352,9 @@ export interface Builder {
          * of one or more of the directories in `path` with the same name
          * as the icon theme containing an index.theme file. (Themes from
          * multiple of the path elements are combined to allow themes to be
-         * extended by adding icons in the user&#x2019;s home directory.)
+         * extended by adding icons in the user’s home directory.)
          * 
-         * In addition if an icon found isn&#x2019;t found either in the current
+         * In addition if an icon found isn’t found either in the current
          * icon theme or the default icon theme, and an image file with
          * the right name is found directly in one of the elements of
          * `path`, then that image will be used for the icon name.
@@ -63194,13 +63604,13 @@ export interface Builder {
      * Note that if the tree model is backed by an actual tree store (as
      * opposed to a flat list where the mapping to icons is obvious),
      * {@link Gtk.IconView} will only display the first level of the tree and
-     * ignore the tree&#x2019;s branches.
+     * ignore the tree’s branches.
      * 
      * ## CSS nodes
      * 
      * ```
      * iconview.view
-     * &#x2570;&#x2500;&#x2500; [rubberband]
+     * ╰── [rubberband]
      * ```
      * 
      * {@link Gtk.IconView} has a single CSS node with name iconview and style class .view.
@@ -63553,7 +63963,7 @@ export interface Builder {
 
         /**
          * Fills in `path` and `cell` with the current cursor path and cell.
-         * If the cursor isn&#x2019;t currently set, then *`path` will be `null`.
+         * If the cursor isn’t currently set, then *`path` will be `null`.
          * If no cell currently has focus, then *`cell` will be `null`.
          * 
          * The returned {@link Gtk.TreePath} must be freed with `gtk_tree_path_free()`.
@@ -63631,7 +64041,7 @@ export interface Builder {
 
         /**
          * Returns the column with markup text for `icon_view`.
-         * @returns the markup column, or -1 if it&#x2019;s unset.
+         * @returns the markup column, or -1 if it’s unset.
          */
         get_markup_column(): number;
 
@@ -63652,7 +64062,7 @@ export interface Builder {
 
         /**
          * Returns the column with pixbufs for `icon_view`.
-         * @returns the pixbuf column, or -1 if it&#x2019;s unset.
+         * @returns the pixbuf column, or -1 if it’s unset.
          */
         get_pixbuf_column(): number;
 
@@ -63705,13 +64115,13 @@ export interface Builder {
 
         /**
          * Returns the column with text for `icon_view`.
-         * @returns the text column, or -1 if it&#x2019;s unset.
+         * @returns the text column, or -1 if it’s unset.
          */
         get_text_column(): number;
 
         /**
-         * Returns the column of `icon_view`&#x2019;s model which is being used for
-         * displaying tooltips on `icon_view`&#x2019;s rows.
+         * Returns the column of `icon_view`’s model which is being used for
+         * displaying tooltips on `icon_view`’s rows.
          * @returns the index of the tooltip column that is currently being used, or -1 if this is disabled.
          */
         get_tooltip_column(): number;
@@ -63823,7 +64233,7 @@ export interface Builder {
 
         /**
          * Sets the current keyboard focus to be at `path`, and selects it.  This is
-         * useful when you want to focus the user&#x2019;s attention on a particular item.
+         * useful when you want to focus the user’s attention on a particular item.
          * If `cell` is not `null`, then focus is given to the cell specified by
          * it. Additionally, if `start_editing` is `true`, then editing should be
          * started in the specified cell.
@@ -63859,7 +64269,7 @@ export interface Builder {
 
         /**
          * Sets the {@link Gtk.IconView}:item-padding property which specifies the padding
-         * around each of the icon view&#x2019;s items.
+         * around each of the icon view’s items.
          * @param item_padding the item padding
          */
         set_item_padding(item_padding: number): void;
@@ -63964,7 +64374,7 @@ export interface Builder {
         /**
          * If you only plan to have simple (text-only) tooltips on full items, you
          * can use this function to have {@link Gtk.IconView} handle these automatically
-         * for you. `column` should be set to the column in `icon_view`&#x2019;s model
+         * for you. `column` should be set to the column in `icon_view`’s model
          * containing the tooltip texts, or -1 to disable this feature.
          * 
          * When enabled, {@link Gtk.Widget.has_tooltip} will be set to `true` and
@@ -63972,7 +64382,7 @@ export interface Builder {
          * 
          * Note that the signal handler sets the text with `gtk_tooltip_set_markup()`,
          * so &, <, etc have to be escaped in the text.
-         * @param column an integer, which is a valid column number for `icon_view`&#x2019;s model
+         * @param column an integer, which is a valid column number for `icon_view`’s model
          */
         set_tooltip_column(column: number): void;
 
@@ -64396,7 +64806,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -64409,7 +64819,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -64480,7 +64890,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -64495,7 +64905,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -64572,7 +64982,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -64745,8 +65155,8 @@ export interface Builder {
      * GtkWidget *image = gtk_image_new_from_file ("myfile.png");
      * ```
      * 
-     * If the file isn&#x2019;t loaded successfully, the image will contain a
-     * &#x201C;broken image&#x201D; icon similar to that used in many web browsers.
+     * If the file isn’t loaded successfully, the image will contain a
+     * “broken image” icon similar to that used in many web browsers.
      * 
      * If you want to handle errors in loading the file yourself, for example
      * by displaying an error message, then load the image with an image
@@ -65410,7 +65820,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -65442,7 +65852,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            response: (arg0: ResponseType) => void;
+            response: (arg0: number) => void;
             "notify::message-type": (pspec: GObject.ParamSpec) => void;
             "notify::revealed": (pspec: GObject.ParamSpec) => void;
             "notify::show-close-button": (pspec: GObject.ParamSpec) => void;
@@ -65555,12 +65965,12 @@ export interface Builder {
      * # GtkInfoBar as GtkBuildable
      * 
      * {@link Gtk.InfoBar} supports a custom `<action-widgets>` element, which can contain
-     * multiple `<action-widget>` elements. The &#x201C;response&#x201D; attribute specifies a
+     * multiple `<action-widget>` elements. The “response” attribute specifies a
      * numeric response, and the content of the element is the id of widget
      * (which should be a child of the dialogs `action_area`).
      * 
-     * {@link Gtk.InfoBar} supports adding action widgets by specifying &#x201C;action&#x201D; as
-     * the &#x201C;type&#x201D; attribute of a `<child>` element. The widget will be added
+     * {@link Gtk.InfoBar} supports adding action widgets by specifying “action” as
+     * the “type” attribute of a `<child>` element. The widget will be added
      * either to the action area. The response id has to be associated
      * with the action widget using the `<action-widgets>` element.
      * 
@@ -65657,7 +66067,7 @@ export interface Builder {
          * @param child an activatable widget
          * @param response_id response ID for `child`
          */
-        add_action_widget(child: Widget, response_id: ResponseType): void;
+        add_action_widget(child: Widget, response_id: number): void;
 
         /**
          * Adds a button with the given text.
@@ -65670,7 +66080,7 @@ export interface Builder {
          * @param response_id response ID for the button
          * @returns the {@link Gtk.Button} widget that was added
          */
-        add_button(button_text: string, response_id: ResponseType): Button;
+        add_button(button_text: string, response_id: number): Button;
 
         /**
          * Adds a widget to the content area of the info bar.
@@ -65712,22 +66122,22 @@ export interface Builder {
         remove_child(widget: Widget): void;
 
         /**
-         * Emits the &#x201C;response&#x201D; signal with the given `response_id`.
+         * Emits the “response” signal with the given `response_id`.
          * @param response_id a response ID
          */
-        response(response_id: ResponseType): void;
+        response(response_id: number): void;
 
         /**
-         * Sets the last widget in the info bar&#x2019;s action area with
+         * Sets the last widget in the info bar’s action area with
          * the given response_id as the default widget for the dialog.
          * 
-         * Pressing &#x201C;Enter&#x201D; normally activates the default widget.
+         * Pressing “Enter” normally activates the default widget.
          * 
          * Note that this function currently requires `info_bar` to
          * be added to a widget hierarchy.
          * @param response_id a response ID
          */
-        set_default_response(response_id: ResponseType): void;
+        set_default_response(response_id: number): void;
 
         /**
          * Sets the message type of the message area.
@@ -65741,12 +66151,12 @@ export interface Builder {
          * Sets the sensitivity of action widgets for `response_id`.
          * 
          * Calls `gtk_widget_set_sensitive (widget, setting)` for each
-         * widget in the info bars&#x2019;s action area with the given `response_id`.
+         * widget in the info bars’s action area with the given `response_id`.
          * A convenient way to sensitize/desensitize buttons.
          * @param response_id a response ID
          * @param setting TRUE for sensitive
          */
-        set_response_sensitive(response_id: ResponseType, setting: boolean): void;
+        set_response_sensitive(response_id: number, setting: boolean): void;
 
         /**
          * Sets whether the {@link Gtk.InfoBar} is revealed.
@@ -66107,7 +66517,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -67099,7 +67509,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -67243,9 +67653,9 @@ export interface Builder {
              * the variant without the <kbd>Shift</kbd> modifier does not.
              * There are too many key combinations to list them all here.
              * 
-             * - <kbd>&#x2190;</kbd>, <kbd>&#x2192;</kbd>, <kbd>&#x2191;</kbd>, <kbd>&#x2193;</kbd>
+             * - <kbd>←</kbd>, <kbd>→</kbd>, <kbd>↑</kbd>, <kbd>↓</kbd>
              *   move by individual characters/lines
-             * - <kbd>Ctrl</kbd>+<kbd>&#x2190;</kbd>, etc. move by words/paragraphs
+             * - <kbd>Ctrl</kbd>+<kbd>←</kbd>, etc. move by words/paragraphs
              * - <kbd>Home</kbd> and <kbd>End</kbd> move to the ends of the buffer
              * @signal
              * @action
@@ -67393,10 +67803,10 @@ export interface Builder {
      * 
      * ```
      * label
-     * &#x251C;&#x2500;&#x2500; [selection]
-     * &#x251C;&#x2500;&#x2500; [link]
-     * &#x250A;
-     * &#x2570;&#x2500;&#x2500; [link]
+     * ├── [selection]
+     * ├── [link]
+     * ┊
+     * ╰── [link]
      * ```
      * 
      * {@link Gtk.Label} has a single CSS node with the name label. A wide variety
@@ -67414,8 +67824,8 @@ export interface Builder {
      * 
      * The GtkLabel implementation of the GtkBuildable interface supports a
      * custom `<attributes>` element, which supports any number of `<attribute>`
-     * elements. The `<attribute>` element has attributes named &#x201C;name&#x201C;, &#x201C;value&#x201C;,
-     * &#x201C;start&#x201C; and &#x201C;end&#x201C; and allows you to specify {@link Pango.Attribute}
+     * elements. The `<attribute>` element has attributes named “name“, “value“,
+     * “start“ and “end“ and allows you to specify {@link Pango.Attribute}
      * values for this label.
      * 
      * An example of a UI definition fragment specifying Pango attributes:
@@ -67441,7 +67851,7 @@ export interface Builder {
      * 
      * ## Mnemonics
      * 
-     * Labels may contain &#x201C;mnemonics&#x201D;. Mnemonics are underlined characters in the
+     * Labels may contain “mnemonics”. Mnemonics are underlined characters in the
      * label, used for keyboard navigation. Mnemonics are created by providing a
      * string with an underscore before the mnemonic character, such as `"_File"`,
      * to the functions {@link Gtk.Label.new_with_mnemonic} or
@@ -67449,10 +67859,10 @@ export interface Builder {
      * 
      * Mnemonics automatically activate any activatable widget the label is
      * inside, such as a {@link Gtk.Button}; if the label is not inside the
-     * mnemonic&#x2019;s target widget, you have to tell the label about the target
+     * mnemonic’s target widget, you have to tell the label about the target
      * using {@link Gtk.Label.set_mnemonic_widget}.
      * 
-     * Here&#x2019;s a simple example where the label is inside a button:
+     * Here’s a simple example where the label is inside a button:
      * 
      * ```c
      * // Pressing Alt+H will activate this button
@@ -67461,7 +67871,7 @@ export interface Builder {
      * gtk_button_set_child (GTK_BUTTON (button), label);
      * ```
      * 
-     * There&#x2019;s a convenience function to create buttons with a mnemonic label
+     * There’s a convenience function to create buttons with a mnemonic label
      * already inside:
      * 
      * ```c
@@ -67485,7 +67895,7 @@ export interface Builder {
      * To make it easy to format text in a label (changing colors, fonts, etc.),
      * label text can be provided in a simple markup format:
      * 
-     * Here&#x2019;s how to create a label with a small font:
+     * Here’s how to create a label with a small font:
      * ```c
      * GtkWidget *label = gtk_label_new (NULL);
      * gtk_label_set_markup (GTK_LABEL (label), "<small>Small text</small>");
@@ -67497,13 +67907,13 @@ export interface Builder {
      * The markup passed to {@link Gtk.Label.set_markup} must be valid XML; for example,
      * literal `<`, `>` and `&` characters must be escaped as `&lt;`, `&gt;`, and `&amp;`.
      * If you pass text obtained from the user, file, or a network to
-     * {@link Gtk.Label.set_markup}, you&#x2019;ll want to escape it with
+     * {@link Gtk.Label.set_markup}, you’ll want to escape it with
      * {@link GLib.markup_escape_text} or {@link GLib.markup_printf_escaped}.
      * 
      * Markup strings are just a convenient way to set the {@link Pango.AttrList}
      * on a label; {@link Gtk.Label.set_attributes} may be a simpler way to set
      * attributes in some cases. Be careful though; {@link Pango.AttrList} tends
-     * to cause internationalization problems, unless you&#x2019;re applying attributes
+     * to cause internationalization problems, unless you’re applying attributes
      * to the entire string (i.e. unless you set the range of each attribute
      * to [0, `G_MAXINT`)). The reason is that specifying the `start_index` and
      * `end_index` for a {@link Pango.Attribute} requires knowledge of the exact
@@ -67513,8 +67923,8 @@ export interface Builder {
      * 
      * Labels can be made selectable with {@link Gtk.Label.set_selectable}.
      * Selectable labels allow the user to copy the label contents to the
-     * clipboard. Only labels that contain useful-to-copy information &#x2014; such
-     * as error messages &#x2014; should be made selectable.
+     * clipboard. Only labels that contain useful-to-copy information — such
+     * as error messages — should be made selectable.
      * 
      * ## Text layout
      * 
@@ -67543,9 +67953,9 @@ export interface Builder {
      * 
      * GTK supports markup for clickable hyperlinks in addition to regular Pango
      * markup. The markup for links is borrowed from HTML, using the `<a>` tag
-     * with &#x201C;href&#x201C;, &#x201C;title&#x201C; and &#x201C;class&#x201C; attributes. GTK renders links similar to
+     * with “href“, “title“ and “class“ attributes. GTK renders links similar to
      * the way they appear in web browsers, with colored, underlined text. The
-     * &#x201C;title&#x201C; attribute is displayed as a tooltip on the link. The &#x201C;class&#x201C;
+     * “title“ attribute is displayed as a tooltip on the link. The “class“
      * attribute is used as style class on the CSS node for the link.
      * 
      * An example of inline links looks like this:
@@ -68029,7 +68439,7 @@ export interface Builder {
          * Retrieves the mnemonic target of this label.
          * 
          * See {@link Gtk.Label.set_mnemonic_widget}.
-         * @returns the target of the label&#x2019;s mnemonic,   or `NULL` if none has been set and the default algorithm will be used.
+         * @returns the target of the label’s mnemonic,   or `NULL` if none has been set and the default algorithm will be used.
          */
         get_mnemonic_widget(): Widget | null;
 
@@ -68064,7 +68474,7 @@ export interface Builder {
         /**
          * Gets the tab stops for the label.
          * 
-         * The returned array will be `NULL` if &#x201C;standard&#x201D; (8-space) tabs are used.
+         * The returned array will be `NULL` if “standard” (8-space) tabs are used.
          * @returns copy of default tab array,   or `NULL` if standard tabs are used
          */
         get_tabs(): Pango.TabArray | null;
@@ -68080,10 +68490,10 @@ export interface Builder {
         get_text(): string;
 
         /**
-         * Returns whether the label&#x2019;s text is interpreted as Pango markup.
+         * Returns whether the label’s text is interpreted as Pango markup.
          * 
          * See {@link Gtk.Label.set_use_markup}.
-         * @returns true if the label&#x2019;s text will be parsed for markup
+         * @returns true if the label’s text will be parsed for markup
          */
         get_use_markup(): boolean;
 
@@ -68205,7 +68615,7 @@ export interface Builder {
          * should be limited.
          * 
          * This has no effect if the label is not wrapping or ellipsized.
-         * Set this to -1 if you don&#x2019;t want to limit the number of lines.
+         * Set this to -1 if you don’t want to limit the number of lines.
          * @param lines the desired number of lines, or -1
          */
         set_lines(lines: number): void;
@@ -68242,7 +68652,7 @@ export interface Builder {
          * Sets the labels text, attributes and mnemonic from markup.
          * 
          * Parses `str` which is marked up with Pango markup (see {@link Pango.parse_markup}),
-         * setting the label&#x2019;s text and attribute list based on the parse results.
+         * setting the label’s text and attribute list based on the parse results.
          * If characters in `str` are preceded by an underscore, they are underlined
          * indicating that they represent a keyboard accelerator called a mnemonic.
          * 
@@ -68338,7 +68748,7 @@ export interface Builder {
          * Sets whether the text of the label contains markup.
          * 
          * See {@link Gtk.Label.set_markup}.
-         * @param setting true if the label&#x2019;s text should be parsed for markup.
+         * @param setting true if the label’s text should be parsed for markup.
          */
         set_use_markup(setting: boolean): void;
 
@@ -68357,14 +68767,14 @@ export interface Builder {
         /**
          * Toggles line wrapping within the label.
          * 
-         * True makes it break lines if text exceeds the widget&#x2019;s size.
+         * True makes it break lines if text exceeds the widget’s size.
          * false lets the text get cut off by the edge of the widget if
          * it exceeds the widget size.
          * 
          * Note that setting line wrapping to true does not make the label
-         * wrap at its parent widget&#x2019;s width, because GTK widgets conceptually
-         * can&#x2019;t make their requisition depend on the parent  widget&#x2019;s size.
-         * For a label that wraps at a specific position, set the label&#x2019;s width
+         * wrap at its parent widget’s width, because GTK widgets conceptually
+         * can’t make their requisition depend on the parent  widget’s size.
+         * For a label that wraps at a specific position, set the label’s width
          * using {@link Gtk.Widget.set_size_request}.
          * @param wrap whether to wrap lines
          */
@@ -68904,7 +69314,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -69934,7 +70344,7 @@ export interface Builder {
      * }
      * ```
      * 
-     * The default interval of values is between zero and one, but it&#x2019;s possible
+     * The default interval of values is between zero and one, but it’s possible
      * to modify the interval using {@link Gtk.LevelBar.set_min_value} and
      * {@link Gtk.LevelBar.set_max_value}. The value will be always drawn in
      * proportion to the admissible interval, i.e. a value of 15 with a specified
@@ -69944,7 +70354,7 @@ export interface Builder {
      * The number of blocks that will be rendered is equal to the number of units
      * specified by the admissible interval.
      * 
-     * For instance, to build a bar rendered with five blocks, it&#x2019;s sufficient to
+     * For instance, to build a bar rendered with five blocks, it’s sufficient to
      * set the minimum value to 0 and the maximum value to 5 after changing the
      * indicator mode to discrete.
      * 
@@ -69958,11 +70368,11 @@ export interface Builder {
      * 
      * ```
      * levelbar[.discrete]
-     * &#x2570;&#x2500;&#x2500; trough
-     *     &#x251C;&#x2500;&#x2500; block.filled.level-name
-     *     &#x250A;
-     *     &#x251C;&#x2500;&#x2500; block.empty
-     *     &#x250A;
+     * ╰── trough
+     *     ├── block.filled.level-name
+     *     ┊
+     *     ├── block.empty
+     *     ┊
      * ```
      * 
      * {@link Gtk.LevelBar} has a main CSS node with name levelbar and one of the style
@@ -70531,7 +70941,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -70546,7 +70956,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -70732,10 +71142,10 @@ export interface Builder {
         get_uri(): string;
 
         /**
-         * Retrieves the &#x201C;visited&#x201D; state of the {@link Gtk.LinkButton}.
+         * Retrieves the “visited” state of the {@link Gtk.LinkButton}.
          * 
          * The button becomes visited when it is clicked. If the URI
-         * is changed on the button, the &#x201C;visited&#x201D; state is unset again.
+         * is changed on the button, the “visited” state is unset again.
          * 
          * The state may also be changed using {@link Gtk.LinkButton.set_visited}.
          * @returns `true` if the link has been visited, `false` otherwise
@@ -70745,16 +71155,16 @@ export interface Builder {
         /**
          * Sets `uri` as the URI where the {@link Gtk.LinkButton} points.
          * 
-         * As a side-effect this unsets the &#x201C;visited&#x201D; state of the button.
+         * As a side-effect this unsets the “visited” state of the button.
          * @param uri a valid URI
          */
         set_uri(uri: string): void;
 
         /**
-         * Sets the &#x201C;visited&#x201D; state of the {@link Gtk.LinkButton}.
+         * Sets the “visited” state of the {@link Gtk.LinkButton}.
          * 
          * See {@link Gtk.LinkButton.get_visited} for more details.
-         * @param visited the new &#x201C;visited&#x201D; state
+         * @param visited the new “visited” state
          */
         set_visited(visited: boolean): void;
 
@@ -70810,7 +71220,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -70826,14 +71236,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -70873,7 +71283,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -70890,14 +71300,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -70976,7 +71386,7 @@ export interface Builder {
      * with the <kbd>Ctrl</kbd> modifier to prevent moving the selection,
      * and the <kbd>Shift</kbd> modifier to extend the current selection.
      * 
-     * - <kbd>&#x2190;</kbd>, <kbd>&#x2192;</kbd>, <kbd>&#x2191;</kbd>, <kbd>&#x2193;</kbd> move the focus
+     * - <kbd>←</kbd>, <kbd>→</kbd>, <kbd>↑</kbd>, <kbd>↓</kbd> move the focus
      *   on the next item in the designed direction.
      * - <kbd>Home</kbd> and <kbd>End</kbd> focus the first or last item.
      * - <kbd>PgUp</kbd> and <kbd>PgDn</kbd> move the focus one page up or down.
@@ -70984,7 +71394,7 @@ export interface Builder {
      * List item widgets support the following keyboard shortcuts:
      * 
      * - <kbd>Enter</kbd> activates the item.
-     * - <kbd>&#x2423;</kbd> selects the item, with the same <kbd>Ctrl</kbd> and
+     * - <kbd>␣</kbd> selects the item, with the same <kbd>Ctrl</kbd> and
      *   <kbd>Shift</kbd> modifiers combinations as the navigation keys.
      * 
      * # Actions
@@ -71434,7 +71844,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -71449,7 +71859,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
 
@@ -71549,7 +71959,7 @@ export interface Builder {
              * modifier does not. There are too many key combinations to list them all
              * here.
              * 
-             * - <kbd>&#x2190;</kbd>, <kbd>&#x2192;</kbd>, <kbd>&#x2191;</kbd>, <kbd>&#x2193;</kbd>
+             * - <kbd>←</kbd>, <kbd>→</kbd>, <kbd>↑</kbd>, <kbd>↓</kbd>
              *   move by individual children
              * - <kbd>Home</kbd>, <kbd>End</kbd> move to the ends of the box
              * - <kbd>PgUp</kbd>, <kbd>PgDn</kbd> move vertically by pages
@@ -71596,7 +72006,7 @@ export interface Builder {
             /**
              * Emitted when the cursor row is toggled.
              * 
-             * The default bindings for this signal is <kbd>Ctrl</kbd>+<kbd>&#x2423;</kbd>.
+             * The default bindings for this signal is <kbd>Ctrl</kbd>+<kbd>␣</kbd>.
              * @signal
              * @action
              * @run-last
@@ -71705,7 +72115,7 @@ export interface Builder {
      * # GtkListBox as GtkBuildable
      * 
      * The {@link Gtk.ListBox} implementation of the {@link Gtk.Buildable} interface supports
-     * setting a child as the placeholder by specifying &#x201C;placeholder&#x201D; as the &#x201C;type&#x201D;
+     * setting a child as the placeholder by specifying “placeholder” as the “type”
      * attribute of a `<child>` element. See {@link Gtk.ListBox.set_placeholder}
      * for info.
      * 
@@ -71722,7 +72132,7 @@ export interface Builder {
      * 
      * ```
      * list[.separators][.rich-list][.navigation-sidebar][.boxed-list]
-     * &#x2570;&#x2500;&#x2500; row[.activatable]
+     * ╰── row[.activatable]
      * ```
      * 
      * {@link Gtk.ListBox} uses a single CSS node named list. It may carry the .separators
@@ -72105,7 +72515,7 @@ export interface Builder {
          * header is needed, set the header to `null`.
          * 
          * Note that you may get many calls `update_header` to this for a particular
-         * row when e.g. changing things that don&#x2019;t affect the header. In this case
+         * row when e.g. changing things that don’t affect the header. In this case
          * it is important for performance to not blindly replace an existing header
          * with an identical one.
          * 
@@ -72511,7 +72921,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -72527,7 +72937,7 @@ export interface Builder {
              * This is a keybinding signal, which will cause this row to be activated.
              * 
              * If you want to be notified when the user activates a row (by key or not),
-             * use the `Gtk.ListBox::row-activated` signal on the row&#x2019;s parent
+             * use the `Gtk.ListBox::row-activated` signal on the row’s parent
              * {@link Gtk.ListBox}.
              * @signal
              * @action
@@ -72667,7 +73077,7 @@ export interface Builder {
          * for the first of the two changed rows, otherwise the resorting
          * of the rows will be wrong.
          * 
-         * This generally means that if you don&#x2019;t fully control the data
+         * This generally means that if you don’t fully control the data
          * model you have to duplicate the data that affects the listbox
          * row functions into the row widgets themselves. Another alternative
          * is to call {@link Gtk.ListBox.invalidate_sort} on any model change,
@@ -73045,7 +73455,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -73061,14 +73471,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -73108,7 +73518,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -73125,14 +73535,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -73232,7 +73642,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -73813,7 +74223,7 @@ export interface Builder {
      * interfaces.
      * 
      * The {@link Gtk.ListStore} can accept most {@link GObject.GType}s as a column type, though
-     * it can&#x2019;t accept all custom types.  Internally, it will keep a copy of
+     * it can’t accept all custom types.  Internally, it will keep a copy of
      * data passed in (such as a string or a boxed pointer).  Columns that
      * accept {@link GObject.Object}s are handled a little differently.  The
      * {@link Gtk.ListStore} will keep a reference to the object instead of copying the
@@ -73909,7 +74319,7 @@ export interface Builder {
      * 
      * The GtkListStore implementation of the {@link Gtk.Buildable} interface allows
      * to specify the model columns with a `<columns>` element that may contain
-     * multiple `<column>` elements, each specifying one model column. The &#x201C;type&#x201D;
+     * multiple `<column>` elements, each specifying one model column. The “type”
      * attribute specifies the data type for the column.
      * 
      * Additionally, it is possible to specify content for the list store
@@ -74080,7 +74490,7 @@ export interface Builder {
         /**
          * Reorders `store` to follow the order indicated by `new_order`. Note that
          * this function only works with unsorted stores.
-         * @param new_order an array of integers mapping the new   position of each child to its old position before the re-ordering,   i.e. `new_order``[newpos] = oldpos`. It must have   exactly as many items as the list store&#x2019;s length.
+         * @param new_order an array of integers mapping the new   position of each child to its old position before the re-ordering,   i.e. `new_order``[newpos] = oldpos`. It must have   exactly as many items as the list store’s length.
          */
         reorder(new_order: number[]): void;
 
@@ -74224,7 +74634,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -74249,7 +74659,7 @@ export interface Builder {
          * at the same depth as `dest_path`. i.e., can we drop the data in
          * `value` at that location. `dest_path` does not have to
          * exist; the return value will almost certainly be `false` if the
-         * parent of `dest_path` doesn&#x2019;t exist, though.
+         * parent of `dest_path` doesn’t exist, though.
          * @param dest_path destination row
          * @param value the data being dropped
          * @returns `true` if a drop is possible before `dest_path`
@@ -74274,7 +74684,7 @@ export interface Builder {
          * at the same depth as `dest_path`. i.e., can we drop the data in
          * `value` at that location. `dest_path` does not have to
          * exist; the return value will almost certainly be `false` if the
-         * parent of `dest_path` doesn&#x2019;t exist, though.
+         * parent of `dest_path` doesn’t exist, though.
          * @param dest_path destination row
          * @param value the data being dropped
          * @virtual
@@ -74303,7 +74713,7 @@ export interface Builder {
 
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-         * the source of a DND operation. If the source doesn&#x2019;t implement
+         * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
          * @returns `true` if the row can be dragged
@@ -74332,7 +74742,7 @@ export interface Builder {
 
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-         * the source of a DND operation. If the source doesn&#x2019;t implement
+         * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
          * @virtual
@@ -74420,8 +74830,8 @@ export interface Builder {
         /**
          * Generates a string representation of the iter.
          * 
-         * This string is a &#x201C;:&#x201D; separated list of numbers.
-         * For example, &#x201C;4:10:0:3&#x201D; would be an acceptable
+         * This string is a “:” separated list of numbers.
+         * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}
          * @returns a newly-allocated string
@@ -74496,7 +74906,7 @@ export interface Builder {
         /**
          * Sets `iter` to be the parent of `child`.
          * 
-         * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+         * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
@@ -74722,7 +75132,7 @@ export interface Builder {
         /**
          * Sets `iter` to be the parent of `child`.
          * 
-         * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+         * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
@@ -74854,7 +75264,7 @@ export interface Builder {
          * this function.
          * 
          * If `sort_func` is `null`, then there will be no default comparison function.
-         * This means that once the model  has been sorted, it can&#x2019;t go back to the
+         * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
@@ -74914,7 +75324,7 @@ export interface Builder {
          * this function.
          * 
          * If `sort_func` is `null`, then there will be no default comparison function.
-         * This means that once the model  has been sorted, it can&#x2019;t go back to the
+         * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
@@ -75120,12 +75530,12 @@ export interface Builder {
      * 
      * ```
      * listview[.separators][.rich-list][.navigation-sidebar][.data-table]
-     * &#x251C;&#x2500;&#x2500; row[.activatable]
-     * &#x2502;
-     * &#x251C;&#x2500;&#x2500; row[.activatable]
-     * &#x2502;
-     * &#x250A;
-     * &#x2570;&#x2500;&#x2500; [rubberband]
+     * ├── row[.activatable]
+     * │
+     * ├── row[.activatable]
+     * │
+     * ┊
+     * ╰── [rubberband]
      * ```
      * 
      * {@link Gtk.ListView} uses a single CSS node named `listview`. It may carry the
@@ -75445,7 +75855,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
 
@@ -75838,7 +76248,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -75854,14 +76264,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -75901,7 +76311,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -75918,14 +76328,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -76709,7 +77119,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -77992,7 +78402,7 @@ export interface Builder {
      * {@link Gtk.MenuButton.label} property). If neither is explicitly set,
      * a {@link Gtk.Image} is automatically created, using an arrow image oriented
      * according to {@link Gtk.MenuButton.direction} or the generic
-     * &#x201C;open-menu-symbolic&#x201D; icon if the direction is not set.
+     * “open-menu-symbolic” icon if the direction is not set.
      * 
      * The positioning of the popup is determined by the
      * {@link Gtk.MenuButton.direction} property of the menu button.
@@ -78004,7 +78414,7 @@ export interface Builder {
      * (depending on the text direction) of the menu aligned with the starting
      * edge of the button. If there is not enough space below the button, the
      * menu is popped up above the button instead. If the alignment would move
-     * part of the menu offscreen, it is &#x201C;pushed in&#x201D;.
+     * part of the menu offscreen, it is “pushed in”.
      * 
      * |           | start                | center                | end                |
      * | -         | ---                  | ---                   | ---                |
@@ -78017,9 +78427,9 @@ export interface Builder {
      * 
      * ```
      * menubutton
-     * &#x2570;&#x2500;&#x2500; button.toggle
-     *     &#x2570;&#x2500;&#x2500; <content>
-     *          &#x2570;&#x2500;&#x2500; [arrow]
+     * ╰── button.toggle
+     *     ╰── <content>
+     *          ╰── [arrow]
      * ```
      * 
      * {@link Gtk.MenuButton} has a single CSS node with name `menubutton`
@@ -78376,7 +78786,7 @@ export interface Builder {
          * GTK will its best to keep it inside the screen and fully visible.
          * 
          * If you pass {@link Gtk.ArrowType.NONE} for a `direction`, the popup will behave
-         * as if you passed {@link Gtk.ArrowType.DOWN} (although you won&#x2019;t see any arrows).
+         * as if you passed {@link Gtk.ArrowType.DOWN} (although you won’t see any arrows).
          * @param direction a {@link Gtk.ArrowType}
          */
         set_direction(direction: ArrowType): void;
@@ -78796,7 +79206,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -78904,7 +79314,7 @@ export interface Builder {
      *   <img alt="An example GtkMessageDialog" src="https://docs.gtk.org/gtk4/messagedialog.png">
      * </picture>
      * 
-     * It&#x2019;s simply a convenience widget; you could construct the equivalent of
+     * It’s simply a convenience widget; you could construct the equivalent of
      * {@link Gtk.MessageDialog} from {@link Gtk.Dialog} without too much effort, but
      * {@link Gtk.MessageDialog} saves typing.
      * 
@@ -78921,7 +79331,7 @@ export interface Builder {
      *                                  flags,
      *                                  GTK_MESSAGE_ERROR,
      *                                  GTK_BUTTONS_CLOSE,
-     *                                  "Error reading &#x201C;%s&#x201D;: %s",
+     *                                  "Error reading “%s”: %s",
      *                                  filename,
      *                                  g_strerror (errno));
      * // Destroy the dialog when the user responds to it
@@ -78941,7 +79351,7 @@ export interface Builder {
      *                                  flags,
      *                                  GTK_MESSAGE_ERROR,
      *                                  GTK_BUTTONS_CLOSE,
-     *                                  "Error reading &#x201C;%s&#x201D;: %s",
+     *                                  "Error reading “%s”: %s",
      *                                  filename,
      *                                  g_strerror (errno));
      * 
@@ -78955,7 +79365,7 @@ export interface Builder {
      * # GtkMessageDialog as GtkBuildable
      * 
      * The {@link Gtk.MessageDialog} implementation of the {@link Gtk.Buildable} interface exposes
-     * the message area as an internal child with the name &#x201C;message_area&#x201D;.
+     * the message area as an internal child with the name “message_area”.
      * @gir-type Class
      * @deprecated since 4.10: Use {@link Gtk.AlertDialog} instead
      */
@@ -79091,11 +79501,11 @@ export interface Builder {
         /**
          * Returns the message area of the dialog.
          * 
-         * This is the box where the dialog&#x2019;s primary and secondary labels
+         * This is the box where the dialog’s primary and secondary labels
          * are packed. You can add your own extra content to that box and it
          * will appear below those labels. See {@link Gtk.Dialog.get_content_area}
          * for the corresponding function in the parent {@link Gtk.Dialog}.
-         * @returns A {@link Gtk.Box} corresponding to the   &#x201C;message area&#x201D; in the `message_dialog`
+         * @returns A {@link Gtk.Box} corresponding to the   “message area” in the `message_dialog`
          */
         get_message_area(): Widget;
 
@@ -79663,7 +80073,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -80456,7 +80866,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -80555,7 +80965,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            response: (arg0: ResponseType) => void;
+            response: (arg0: number) => void;
             "notify::modal": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
             "notify::transient-for": (pspec: GObject.ParamSpec) => void;
@@ -80674,7 +81084,7 @@ export interface Builder {
          * @param response_id 
          * @virtual
          */
-        vfunc_response(response_id: ResponseType): void;
+        vfunc_response(response_id: number): void;
 
         /**
          * Shows the dialog on the display.
@@ -81366,8 +81776,8 @@ export interface Builder {
              * The default bindings for this signal are
              * <kbd>Ctrl</kbd>+<kbd>Tab</kbd>,
              * <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd>,
-             * <kbd>Ctrl</kbd>+<kbd>&#x2190;</kbd>, <kbd>Ctrl</kbd>+<kbd>&#x2192;</kbd>,
-             * <kbd>Ctrl</kbd>+<kbd>&#x2191;</kbd> and <kbd>Ctrl</kbd>+<kbd>&#x2193;</kbd>.
+             * <kbd>Ctrl</kbd>+<kbd>←</kbd>, <kbd>Ctrl</kbd>+<kbd>→</kbd>,
+             * <kbd>Ctrl</kbd>+<kbd>↑</kbd> and <kbd>Ctrl</kbd>+<kbd>↓</kbd>.
              * @signal
              * @action
              * @run-last
@@ -81400,8 +81810,8 @@ export interface Builder {
              * The default bindings for this signal are
              * <kbd>Alt</kbd>+<kbd>Home</kbd>, <kbd>Alt</kbd>+<kbd>End</kbd>,
              * <kbd>Alt</kbd>+<kbd>PgUp</kbd>, <kbd>Alt</kbd>+<kbd>PgDn</kbd>,
-             * <kbd>Alt</kbd>+<kbd>&#x2190;</kbd>, <kbd>Alt</kbd>+<kbd>&#x2192;</kbd>,
-             * <kbd>Alt</kbd>+<kbd>&#x2191;</kbd> and <kbd>Alt</kbd>+<kbd>&#x2193;</kbd>.
+             * <kbd>Alt</kbd>+<kbd>←</kbd>, <kbd>Alt</kbd>+<kbd>→</kbd>,
+             * <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd>.
              * @signal
              * @action
              * @run-last
@@ -81410,7 +81820,7 @@ export interface Builder {
             /**
              * Emitted when a page should be selected.
              * 
-             * The default binding for this signal is <kbd>&#x2423;</kbd>.
+             * The default binding for this signal is <kbd>␣</kbd>.
              * @signal
              * @action
              * @run-last
@@ -81505,14 +81915,14 @@ export interface Builder {
      * # GtkNotebook as GtkBuildable
      * 
      * The {@link Gtk.Notebook} implementation of the {@link Gtk.Buildable} interface
-     * supports placing children into tabs by specifying &#x201C;tab&#x201D; as the
-     * &#x201C;type&#x201D; attribute of a `<child>` element. Note that the content
+     * supports placing children into tabs by specifying “tab” as the
+     * “type” attribute of a `<child>` element. Note that the content
      * of the tab must be created before the tab can be filled.
      * A tab child can be specified without specifying a `<child>`
      * type attribute.
      * 
      * To add a child widget in the notebooks action area, specify
-     * "action-start" or &#x201C;action-end&#x201D; as the &#x201C;type&#x201D; attribute of the
+     * "action-start" or “action-end” as the “type” attribute of the
      * `<child>` element.
      * 
      * An example of a UI definition fragment with {@link Gtk.Notebook}:
@@ -81561,22 +81971,22 @@ export interface Builder {
      * 
      * ```
      * notebook
-     * &#x251C;&#x2500;&#x2500; header.top
-     * &#x2502;   &#x251C;&#x2500;&#x2500; [<action widget>]
-     * &#x2502;   &#x251C;&#x2500;&#x2500; tabs
-     * &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; [arrow]
-     * &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; tab
-     * &#x2502;   &#x2502;   &#x2502;   &#x2570;&#x2500;&#x2500; <tab label>
-     * &#x250A;   &#x250A;   &#x250A;
-     * &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; tab[.reorderable-page]
-     * &#x2502;   &#x2502;   &#x2502;   &#x2570;&#x2500;&#x2500; <tab label>
-     * &#x2502;   &#x2502;   &#x2570;&#x2500;&#x2500; [arrow]
-     * &#x2502;   &#x2570;&#x2500;&#x2500; [<action widget>]
-     * &#x2502;
-     * &#x2570;&#x2500;&#x2500; stack
-     *     &#x251C;&#x2500;&#x2500; <child>
-     *     &#x250A;
-     *     &#x2570;&#x2500;&#x2500; <child>
+     * ├── header.top
+     * │   ├── [<action widget>]
+     * │   ├── tabs
+     * │   │   ├── [arrow]
+     * │   │   ├── tab
+     * │   │   │   ╰── <tab label>
+     * ┊   ┊   ┊
+     * │   │   ├── tab[.reorderable-page]
+     * │   │   │   ╰── <tab label>
+     * │   │   ╰── [arrow]
+     * │   ╰── [<action widget>]
+     * │
+     * ╰── stack
+     *     ├── <child>
+     *     ┊
+     *     ╰── <child>
      * ```
      * 
      * {@link Gtk.Notebook} has a main CSS node with name `notebook`, a subnode
@@ -81735,7 +82145,7 @@ export interface Builder {
         /**
          * Appends a page to `notebook`.
          * @param child the {@link Gtk.Widget} to use as the contents of the page
-         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, &#x201C;page N&#x201D;
+         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, “page N”
          * @returns the index (starting from 0) of the appended   page in the notebook, or -1 if function fails
          */
         append_page(child: Widget, tab_label: Widget | null): number;
@@ -81744,7 +82154,7 @@ export interface Builder {
          * Appends a page to `notebook`, specifying the widget to use as the
          * label in the popup menu.
          * @param child the {@link Gtk.Widget} to use as the contents of the page
-         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, &#x201C;page N&#x201D;
+         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, “page N”
          * @param menu_label the widget to use as a label for the   page-switch menu, if that is enabled. If `null`, and `tab_label`   is a {@link Gtk.Label} or `null`, then the menu label will be a newly   created label with the same text as `tab_label`; if `tab_label`   is not a {@link Gtk.Label}, `menu_label` must be specified if the   page-switch menu is to be used.
          * @returns the index (starting from 0) of the appended   page in the notebook, or -1 if function fails
          */
@@ -81886,7 +82296,7 @@ export interface Builder {
         /**
          * Insert a page into `notebook` at the given position.
          * @param child the {@link Gtk.Widget} to use as the contents of the page
-         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, &#x201C;page N&#x201D;
+         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, “page N”
          * @param position the index (starting at 0) at which to insert the page,   or -1 to append the page after all other pages
          * @returns the index (starting from 0) of the inserted   page in the notebook, or -1 if function fails
          */
@@ -81896,7 +82306,7 @@ export interface Builder {
          * Insert a page into `notebook` at the given position, specifying
          * the widget to use as the label in the popup menu.
          * @param child the {@link Gtk.Widget} to use as the contents of the page
-         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, &#x201C;page N&#x201D;
+         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, “page N”
          * @param menu_label the widget to use as a label for the   page-switch menu, if that is enabled. If `null`, and `tab_label`   is a {@link Gtk.Label} or `null`, then the menu label will be a newly   created label with the same text as `tab_label`; if `tab_label`   is not a {@link Gtk.Label}, `menu_label` must be specified if the   page-switch menu is to be used.
          * @param position the index (starting at 0) at which to insert the page,   or -1 to append the page after all other pages.
          * @returns the index (starting from 0) of the inserted   page in the notebook
@@ -81934,7 +82344,7 @@ export interface Builder {
         /**
          * Prepends a page to `notebook`.
          * @param child the {@link Gtk.Widget} to use as the contents of the page
-         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, &#x201C;page N&#x201D;
+         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, “page N”
          * @returns the index (starting from 0) of the prepended   page in the notebook, or -1 if function fails
          */
         prepend_page(child: Widget, tab_label: Widget | null): number;
@@ -81943,7 +82353,7 @@ export interface Builder {
          * Prepends a page to `notebook`, specifying the widget to use as the
          * label in the popup menu.
          * @param child the {@link Gtk.Widget} to use as the contents of the page
-         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, &#x201C;page N&#x201D;
+         * @param tab_label the {@link Gtk.Widget} to be used as the label   for the page, or `null` to use the default label, “page N”
          * @param menu_label the widget to use as a label for the   page-switch menu, if that is enabled. If `null`, and `tab_label`   is a {@link Gtk.Label} or `null`, then the menu label will be a newly   created label with the same text as `tab_label`; if `tab_label`   is not a {@link Gtk.Label}, `menu_label` must be specified if the   page-switch menu is to be used.
          * @returns the index (starting from 0) of the prepended   page in the notebook, or -1 if function fails
          */
@@ -82096,7 +82506,7 @@ export interface Builder {
          * Changes the tab label for `child`.
          * 
          * If `null` is specified for `tab_label`, then the page will
-         * have the label &#x201C;page N&#x201D;.
+         * have the label “page N”.
          * @param child the page
          * @param tab_label the tab label widget to use, or `null`   for default tab label
          */
@@ -82462,7 +82872,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -82912,7 +83322,7 @@ export interface Builder {
     }
 
     /**
-     * Places &#x201C;overlay&#x201D; widgets on top of a single main child.
+     * Places “overlay” widgets on top of a single main child.
      * 
      * <picture>
      *   <source srcset="https://docs.gtk.org/gtk4/overlay-dark.png" media="(prefers-color-scheme: dark)">
@@ -82931,21 +83341,21 @@ export interface Builder {
      * More complicated placement of overlays is possible by connecting
      * to the `Gtk.Overlay::get-child-position` signal.
      * 
-     * An overlay&#x2019;s minimum and natural sizes are those of its main child.
+     * An overlay’s minimum and natural sizes are those of its main child.
      * The sizes of overlay children are not considered when measuring these
      * preferred sizes.
      * 
      * # GtkOverlay as GtkBuildable
      * 
      * The {@link Gtk.Overlay} implementation of the {@link Gtk.Buildable} interface
-     * supports placing a child as an overlay by specifying &#x201C;overlay&#x201D; as
-     * the &#x201C;type&#x201D; attribute of a `<child>` element.
+     * supports placing a child as an overlay by specifying “overlay” as
+     * the “type” attribute of a `<child>` element.
      * 
      * # CSS nodes
      * 
-     * {@link Gtk.Overlay} has a single CSS node with the name &#x201C;overlay&#x201D;. Overlay children
+     * {@link Gtk.Overlay} has a single CSS node with the name “overlay”. Overlay children
      * whose alignments cause them to be positioned at an edge get the style classes
-     * &#x201C;.left&#x201D;, &#x201C;.right&#x201D;, &#x201C;.top&#x201D;, and/or &#x201C;.bottom&#x201D; according to their position.
+     * “.left”, “.right”, “.top”, and/or “.bottom” according to their position.
      * @gir-type Class
      */
     class Overlay extends Widget implements Accessible, Buildable, ConstraintTarget {
@@ -83390,7 +83800,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -83603,15 +84013,15 @@ export interface Builder {
      * ```c
      * GtkPadActionEntry *pad_actions[] = {
      *   { GTK_PAD_ACTION_BUTTON, 1, -1, "Invert selection", "pad-actions.invert-selection" },
-     *   &#x2026;
+     *   …
      * };
      * 
-     * &#x2026;
+     * …
      * action_group = g_simple_action_group_new ();
      * action = g_simple_action_new ("pad-actions.invert-selection", NULL);
      * g_signal_connect (action, "activate", on_invert_selection_activated, NULL);
      * g_action_map_add_action (G_ACTION_MAP (action_group), action);
-     * &#x2026;
+     * …
      * pad_controller = gtk_pad_controller_new (action_group, NULL);
      * ```
      * 
@@ -83727,7 +84137,7 @@ export interface Builder {
      * 
      * ## Margins
      * 
-     * The margins specified in this object are the &#x201C;print margins&#x201D;, i.e. the
+     * The margins specified in this object are the “print margins”, i.e. the
      * parts of the page that the printer cannot print on. These are different
      * from the layout margins that a word processor uses; they are typically
      * used to determine the minimal size for the layout margins.
@@ -83903,7 +84313,7 @@ export interface Builder {
          * Reads the page setup from the group `group_name` in the key file
          * `key_file`.
          * @param key_file the {@link GLib.KeyFile} to retrieve the page_setup from
-         * @param group_name the name of the group in the key_file to read   to use the default name &#x201C;Page Setup&#x201D;
+         * @param group_name the name of the group in the key_file to read   to use the default name “Page Setup”
          * @returns `true` on success
          */
         load_key_file(key_file: GLib.KeyFile, group_name: string | null): boolean;
@@ -83974,7 +84384,7 @@ export interface Builder {
         /**
          * This function adds the page setup from `setup` to `key_file`.
          * @param key_file the {@link GLib.KeyFile} to save the page setup to
-         * @param group_name the group to add the settings to in `key_file`,   or `null` to use the default name &#x201C;Page Setup&#x201D;
+         * @param group_name the group to add the settings to in `key_file`,   or `null` to use the default name “Page Setup”
          */
         to_key_file(key_file: GLib.KeyFile, group_name: string | null): void;
     }
@@ -84052,7 +84462,7 @@ export interface Builder {
     }
 
     /**
-     * Presents a page setup dialog for platforms which don&#x2019;t provide
+     * Presents a page setup dialog for platforms which don’t provide
      * a native page setup dialog, like Unix.
      * 
      * <picture>
@@ -84194,10 +84604,10 @@ export interface Builder {
              * This is a [keybinding signal](https://docs.gtk.org/gtk4/class.SignalAction.html).
              * 
              * The default bindings for this signal are
-             * <kbd>Ctrl</kbd>+<kbd>&#x2190;</kbd>, <kbd>&#x2190;</kbd>,
-             * <kbd>Ctrl</kbd>+<kbd>&#x2192;</kbd>, <kbd>&#x2192;</kbd>,
-             * <kbd>Ctrl</kbd>+<kbd>&#x2191;</kbd>, <kbd>&#x2191;</kbd>,
-             * <kbd>Ctrl</kbd>+<kbd>&#x2193;</kbd>, <kbd>&#x2193;</kbd>,
+             * <kbd>Ctrl</kbd>+<kbd>←</kbd>, <kbd>←</kbd>,
+             * <kbd>Ctrl</kbd>+<kbd>→</kbd>, <kbd>→</kbd>,
+             * <kbd>Ctrl</kbd>+<kbd>↑</kbd>, <kbd>↑</kbd>,
+             * <kbd>Ctrl</kbd>+<kbd>↓</kbd>, <kbd>↓</kbd>,
              * <kbd>PgUp</kbd>, <kbd>PgDn</kbd>, <kbd>Home</kbd>, <kbd>End</kbd>.
              * @signal
              * @action
@@ -84341,9 +84751,9 @@ export interface Builder {
      * 
      * ```
      * paned
-     * &#x251C;&#x2500;&#x2500; <child>
-     * &#x251C;&#x2500;&#x2500; separator[.wide]
-     * &#x2570;&#x2500;&#x2500; <child>
+     * ├── <child>
+     * ├── separator[.wide]
+     * ╰── <child>
      * ```
      * 
      * {@link Gtk.Paned} has a main CSS node with name paned, and a subnode for
@@ -85039,7 +85449,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -85054,7 +85464,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -85112,9 +85522,11 @@ export interface Builder {
             "notify::visible": (pspec: GObject.ParamSpec) => void;
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -85158,9 +85570,9 @@ export interface Builder {
      * 
      * ```
      * entry.password
-     * &#x2570;&#x2500;&#x2500; text
-     *     &#x251C;&#x2500;&#x2500; image.caps-lock-indicator
-     *     &#x250A;
+     * ╰── text
+     *     ├── image.caps-lock-indicator
+     *     ┊
      * ```
      * 
      * {@link Gtk.PasswordEntry} has a single CSS node with name entry that carries
@@ -85315,6 +85727,24 @@ export interface Builder {
         set accessibleRole(val: AccessibleRole);
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -85353,6 +85783,22 @@ export interface Builder {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Widget | null;
+        set input_interceptor(val: Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Widget | null;
+        set inputInterceptor(val: Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -85737,7 +86183,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -85785,7 +86231,7 @@ export interface Builder {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -85833,6 +86279,13 @@ export interface Builder {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -85852,6 +86305,13 @@ export interface Builder {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -85960,6 +86420,21 @@ export interface Builder {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -86044,6 +86519,13 @@ export interface Builder {
          * @virtual
          */
         vfunc_do_insert_text(text: string, length: number, position: number): number;
+
+        /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
 
         /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
@@ -86234,14 +86716,14 @@ export interface Builder {
      * 
      * Many convenience functions are provided to make pictures simple to use.
      * For example, if you want to load an image from a file, and then display
-     * it, there&#x2019;s a convenience function to do this:
+     * it, there’s a convenience function to do this:
      * 
      * ```c
      * GtkWidget *widget = gtk_picture_new_for_filename ("myfile.png");
      * ```
      * 
-     * If the file isn&#x2019;t loaded successfully, the picture will contain a
-     * &#x201C;broken image&#x201D; icon similar to that used in many web browsers.
+     * If the file isn’t loaded successfully, the picture will contain a
+     * “broken image” icon similar to that used in many web browsers.
      * If you want to handle errors in loading the file yourself,
      * for example by displaying an error message, then load the image with
      * and image loading framework such as libglycin, then create the {@link Gtk.Picture}
@@ -86917,7 +87399,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -87080,9 +87562,9 @@ export interface Builder {
      * 
      * ```
      * popover.background[.menu]
-     * &#x251C;&#x2500;&#x2500; arrow
-     * &#x2570;&#x2500;&#x2500; contents
-     *     &#x2570;&#x2500;&#x2500; <child>
+     * ├── arrow
+     * ╰── contents
+     *     ╰── <child>
      * ```
      * 
      * {@link Gtk.Popover} has a main node with name `popover`, an arrow with name `arrow`,
@@ -87115,6 +87597,10 @@ export interface Builder {
         // Properties
         /**
          * Whether to dismiss the popover on outside clicks.
+         * 
+         * If false, the popover won't automatically grab the focus when shown.
+         * This is useful for usecases like entry completion, where the focus is
+         * expected to stay on the entry.
          * @default true
          */
         get autohide(): boolean;
@@ -87356,7 +87842,7 @@ export interface Builder {
         /**
          * Sets the default widget of a {@link Gtk.Popover}.
          * 
-         * The default widget is the widget that&#x2019;s activated when the user
+         * The default widget is the widget that’s activated when the user
          * presses Enter in a dialog (for example). This function sets or
          * unsets the default widget for a {@link Gtk.Popover}.
          * @param widget a child widget of `popover` to set as   the default, or `null` to unset the default widget for the popover
@@ -87746,7 +88232,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -88387,7 +88873,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -88817,10 +89303,10 @@ export interface Builder {
      * 
      * ```
      * menubar
-     * &#x251C;&#x2500;&#x2500; item[.active]
-     * &#x250A;   &#x2570;&#x2500;&#x2500; popover
-     * &#x2570;&#x2500;&#x2500; item
-     *     &#x2570;&#x2500;&#x2500; popover
+     * ├── item[.active]
+     * ┊   ╰── popover
+     * ╰── item
+     *     ╰── popover
      * ```
      * 
      * {@link Gtk.PopoverMenuBar} has a single CSS node with name menubar, below which
@@ -89256,7 +89742,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -89881,7 +90367,7 @@ export interface Builder {
      * 
      * Use {@link Gtk.PrintJob.get_surface} to obtain the cairo surface
      * onto which the pages must be drawn. Use {@link Gtk.PrintJob.send}
-     * to send the finished job to the printer. If you don&#x2019;t use cairo
+     * to send the finished job to the printer. If you don’t use cairo
      * {@link Gtk.PrintJob} also supports printing of manually generated PostScript,
      * via {@link Gtk.PrintJob.set_source_file}.
      * @gir-type Class
@@ -90168,7 +90654,7 @@ export interface Builder {
          * If track_status is `true`, the print job will try to continue report
          * on the status of the print job in the printer queues and printer.
          * 
-         * This can allow your application to show things like &#x201C;out of paper&#x201D;
+         * This can allow your application to show things like “out of paper”
          * issues, and when the print job actually reaches the printer.
          * 
          * This function is often implemented using some form of polling,
@@ -90434,7 +90920,7 @@ export interface Builder {
      * High-level, portable printing API.
      * 
      * It looks a bit different than other GTK dialogs such as the
-     * {@link Gtk.FileChooser}, since some platforms don&#x2019;t expose enough
+     * {@link Gtk.FileChooser}, since some platforms don’t expose enough
      * infrastructure to implement a good print dialog. On such
      * platforms, {@link Gtk.PrintOperation} uses the native print dialog.
      * On platforms which do not provide a native print dialog, GTK
@@ -90619,10 +91105,10 @@ export interface Builder {
          * Currently, PDF is the only supported format.
          * 
          * The intended use of this property is for implementing
-         * &#x201C;Export to PDF&#x201D; actions.
+         * “Export to PDF” actions.
          * 
-         * &#x201C;Print to PDF&#x201D; support is independent of this and is done
-         * by letting the user pick the &#x201C;Print to PDF&#x201D; item from the
+         * “Print to PDF” support is independent of this and is done
+         * by letting the user pick the “Print to PDF” item from the
          * list of printers in the print dialog.
          * @default null
          */
@@ -90635,10 +91121,10 @@ export interface Builder {
          * Currently, PDF is the only supported format.
          * 
          * The intended use of this property is for implementing
-         * &#x201C;Export to PDF&#x201D; actions.
+         * “Export to PDF” actions.
          * 
-         * &#x201C;Print to PDF&#x201D; support is independent of this and is done
-         * by letting the user pick the &#x201C;Print to PDF&#x201D; item from the
+         * “Print to PDF” support is independent of this and is done
+         * by letting the user pick the “Print to PDF” item from the
          * list of printers in the print dialog.
          * @default null
          */
@@ -90840,7 +91326,7 @@ export interface Builder {
          * If `true`, the print operation will try to continue report on
          * the status of the print job in the printer queues and printer.
          * 
-         * This can allow your application to show things like &#x201C;out of paper&#x201D;
+         * This can allow your application to show things like “out of paper”
          * issues, and when the print job actually reaches the printer.
          * However, this is often implemented using polling, and should
          * not be enabled unless needed.
@@ -90853,7 +91339,7 @@ export interface Builder {
          * If `true`, the print operation will try to continue report on
          * the status of the print job in the printer queues and printer.
          * 
-         * This can allow your application to show things like &#x201C;out of paper&#x201D;
+         * This can allow your application to show things like “out of paper”
          * issues, and when the print job actually reaches the printer.
          * However, this is often implemented using polling, and should
          * not be enabled unless needed.
@@ -90938,8 +91424,8 @@ export interface Builder {
         vfunc_begin_print(context: PrintContext): void;
 
         /**
-         * Signal emitted right before &#x201C;begin-print&#x201D; if
-         *    you added a custom widget in the &#x201C;create-custom-widget&#x201D; handler.
+         * Signal emitted right before “begin-print” if
+         *    you added a custom widget in the “create-custom-widget” handler.
          * @param widget 
          * @virtual
          */
@@ -90969,7 +91455,7 @@ export interface Builder {
         vfunc_end_print(context: PrintContext): void;
 
         /**
-         * Signal emitted after the &#x201C;begin-print&#x201D; signal, but
+         * Signal emitted after the “begin-print” signal, but
          *    before the actual rendering starts.
          * @param context 
          * @virtual
@@ -91251,11 +91737,11 @@ export interface Builder {
          * of showing the print dialog.
          * 
          * The intended use of this function is for implementing
-         * &#x201C;Export to PDF&#x201D; actions. Currently, PDF is the only supported
+         * “Export to PDF” actions. Currently, PDF is the only supported
          * format.
          * 
-         * &#x201C;Print to PDF&#x201D; support is independent of this and is done
-         * by letting the user pick the &#x201C;Print to PDF&#x201D; item from the list
+         * “Print to PDF” support is independent of this and is done
+         * by letting the user pick the “Print to PDF” item from the list
          * of printers in the print dialog.
          * @param filename the filename for the exported file
          */
@@ -91277,7 +91763,7 @@ export interface Builder {
          * The name is used to identify the job (e.g. in monitoring
          * applications like eggcups).
          * 
-         * If you don&#x2019;t set a job name, GTK picks a default one by
+         * If you don’t set a job name, GTK picks a default one by
          * numbering successive print jobs.
          * @param job_name a string that identifies the print job
          */
@@ -91325,7 +91811,7 @@ export interface Builder {
          * If track_status is `true`, the print operation will try to continue
          * report on the status of the print job in the printer queues and printer.
          * 
-         * This can allow your application to show things like &#x201C;out of paper&#x201D;
+         * This can allow your application to show things like “out of paper”
          * issues, and when the print job actually reaches the printer.
          * 
          * This function is often implemented using some form of polling,
@@ -91444,9 +91930,9 @@ export interface Builder {
     /**
      * Collects the settings of a print dialog in a system-independent way.
      * 
-     * The main use for this object is that once you&#x2019;ve printed you can get a
+     * The main use for this object is that once you’ve printed you can get a
      * settings object that represents the settings the user chose, and the next
-     * time you print you can pass that object in so that the user doesn&#x2019;t have
+     * time you print you can pass that object in so that the user doesn’t have
      * to re-set all his settings.
      * 
      * Its also possible to enumerate the settings so that you can easily save
@@ -91517,7 +92003,7 @@ export interface Builder {
          * Returns the boolean represented by the value
          * that is associated with `key`.
          * 
-         * The string &#x201C;true&#x201D; represents `true`, any other
+         * The string “true” represents `true`, any other
          * string `false`.
          * @param key a key
          * @returns `true`, if `key` maps to a true value.
@@ -91760,7 +92246,7 @@ export interface Builder {
          * If the file could not be loaded then error is set to either a
          * {@link GLib.FileError} or {@link GLib.KeyFileError}.
          * @param key_file the {@link GLib.KeyFile} to retrieve the settings from
-         * @param group_name the name of the group to use, or `null`   to use the default &#x201C;Print Settings&#x201D;
+         * @param group_name the name of the group to use, or `null`   to use the default “Print Settings”
          * @returns `true` on success
          */
         load_key_file(key_file: GLib.KeyFile, group_name: string | null): boolean;
@@ -91988,7 +92474,7 @@ export interface Builder {
         /**
          * This function adds the print settings from `settings` to `key_file`.
          * @param key_file the {@link GLib.KeyFile} to save the print settings to
-         * @param group_name the group to add the settings to in `key_file`, or   `null` to use the default &#x201C;Print Settings&#x201D;
+         * @param group_name the group to add the settings to in `key_file`, or   `null` to use the default “Print Settings”
          */
         to_key_file(key_file: GLib.KeyFile, group_name: string | null): void;
 
@@ -92099,7 +92585,7 @@ export interface Builder {
     }
 
     /**
-     * A print dialog for platforms which don&#x2019;t provide a native
+     * A print dialog for platforms which don’t provide a native
      * print dialog, like Unix.
      * 
      * <picture>
@@ -92118,14 +92604,14 @@ export interface Builder {
      * 
      * {@link Gtk.PrintUnixDialog} uses the following response values:
      * 
-     * - {@link Gtk.ResponseType.OK}: for the &#x201C;Print&#x201D; button
-     * - {@link Gtk.ResponseType.APPLY}: for the &#x201C;Preview&#x201D; button
-     * - {@link Gtk.ResponseType.CANCEL}: for the &#x201C;Cancel&#x201D; button
+     * - {@link Gtk.ResponseType.OK}: for the “Print” button
+     * - {@link Gtk.ResponseType.APPLY}: for the “Preview” button
+     * - {@link Gtk.ResponseType.CANCEL}: for the “Cancel” button
      * 
      * # GtkPrintUnixDialog as GtkBuildable
      * 
      * The {@link Gtk.PrintUnixDialog} implementation of the {@link Gtk.Buildable} interface
-     * exposes its `notebook` internal children with the name &#x201C;notebook&#x201D;.
+     * exposes its `notebook` internal children with the name “notebook”.
      * 
      * An example of a {@link Gtk.PrintUnixDialog} UI definition fragment:
      * 
@@ -92357,7 +92843,7 @@ export interface Builder {
          * current values in the print dialog.
          * 
          * Note that this creates a new object, and you need to unref
-         * it if don&#x2019;t want to keep it.
+         * it if don’t want to keep it.
          * @returns a new {@link Gtk.PrintSettings} object with the values from `dialog`
          */
         get_settings(): PrintSettings;
@@ -92400,7 +92886,7 @@ export interface Builder {
          * supports.
          * 
          * For instance, if you can handle scaling the output then you pass
-         * {@link Gtk.PrintCapabilities.SCALE}. If you don&#x2019;t pass that, then the dialog
+         * {@link Gtk.PrintCapabilities.SCALE}. If you don’t pass that, then the dialog
          * will only let you select the scale if the printing system automatically
          * handles scaling.
          * @param capabilities the printing capabilities of your application
@@ -92656,16 +93142,16 @@ export interface Builder {
         get_backend(): PrintBackend;
 
         /**
-         * Returns the printer&#x2019;s capabilities.
+         * Returns the printer’s capabilities.
          * 
-         * This is useful when you&#x2019;re using {@link Gtk.PrintUnixDialog}&#x2019;s
+         * This is useful when you’re using {@link Gtk.PrintUnixDialog}’s
          * manual-capabilities setting and need to know which settings
          * the printer can handle and which you must handle yourself.
          * 
-         * This will return 0 unless the printer&#x2019;s details are
+         * This will return 0 unless the printer’s details are
          * available, see {@link Gtk.Printer.has_details} and
          * {@link Gtk.Printer.request_details}.
-         * @returns the printer&#x2019;s capabilities
+         * @returns the printer’s capabilities
          */
         get_capabilities(): PrintCapabilities;
 
@@ -92687,7 +93173,7 @@ export interface Builder {
          * These are the margins that define the area at the borders
          * of the paper that the printer cannot print to.
          * 
-         * Note: This will not succeed unless the printer&#x2019;s details are
+         * Note: This will not succeed unless the printer’s details are
          * available, see {@link Gtk.Printer.has_details} and
          * {@link Gtk.Printer.request_details}.
          * @returns `true` iff the hard margins were retrieved
@@ -92700,7 +93186,7 @@ export interface Builder {
          * These are the margins that define the area at the borders
          * of the paper that the printer cannot print to.
          * 
-         * Note: This will not succeed unless the printer&#x2019;s details are
+         * Note: This will not succeed unless the printer’s details are
          * available, see {@link Gtk.Printer.has_details} and
          * {@link Gtk.Printer.request_details}.
          * @param paper_size a {@link Gtk.PaperSize}
@@ -92776,7 +93262,7 @@ export interface Builder {
         /**
          * Lists all the paper sizes `printer` supports.
          * 
-         * This will return and empty list unless the printer&#x2019;s details
+         * This will return and empty list unless the printer’s details
          * are available, see {@link Gtk.Printer.has_details} and
          * {@link Gtk.Printer.request_details}.
          * @returns a newly   allocated list of newly allocated {@link Gtk.PageSetup}s.
@@ -92888,9 +93374,9 @@ export interface Builder {
      * 
      * ```
      * progressbar[.osd]
-     * &#x251C;&#x2500;&#x2500; [text]
-     * &#x2570;&#x2500;&#x2500; trough[.empty][.full]
-     *     &#x2570;&#x2500;&#x2500; progress[.pulse]
+     * ├── [text]
+     * ╰── trough[.empty][.full]
+     *     ╰── progress[.pulse]
      * ```
      * 
      * {@link Gtk.ProgressBar} has a main CSS node with name progressbar and subnodes with
@@ -93033,7 +93519,7 @@ export interface Builder {
         get_ellipsize(): Pango.EllipsizeMode;
 
         /**
-         * Returns the current fraction of the task that&#x2019;s been completed.
+         * Returns the current fraction of the task that’s been completed.
          * @returns a fraction from 0.0 to 1.0
          */
         get_fraction(): number;
@@ -93070,9 +93556,9 @@ export interface Builder {
         get_text(): string | null;
 
         /**
-         * Indicates that some progress has been made, but you don&#x2019;t know how much.
+         * Indicates that some progress has been made, but you don’t know how much.
          * 
-         * Causes the progress bar to enter &#x201C;activity mode,&#x201D; where a block
+         * Causes the progress bar to enter “activity mode,” where a block
          * bounces back and forth. Each call to {@link Gtk.ProgressBar.pulse}
          * causes the block to move by a little bit (the amount of movement
          * per pulse is determined by {@link Gtk.ProgressBar.set_pulse_step}).
@@ -93089,11 +93575,11 @@ export interface Builder {
         set_ellipsize(mode: Pango.EllipsizeMode): void;
 
         /**
-         * Causes the progress bar to &#x201C;fill in&#x201D; the given fraction
+         * Causes the progress bar to “fill in” the given fraction
          * of the bar.
          * 
          * The fraction should be between 0.0 and 1.0, inclusive.
-         * @param fraction fraction of the task that&#x2019;s been completed
+         * @param fraction fraction of the task that’s been completed
          */
         set_fraction(fraction: number): void;
 
@@ -93502,7 +93988,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -93517,7 +94003,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -93682,7 +94168,7 @@ export interface Builder {
      * 
      * Apart from signals for monitoring the parameters of the adjustment,
      * {@link Gtk.Range} provides properties and methods for setting a
-     * &#x201C;fill level&#x201D; on range widgets. See {@link Gtk.Range.set_fill_level}.
+     * “fill level” on range widgets. See {@link Gtk.Range.set_fill_level}.
      * 
      * # Shortcuts and Gestures
      * 
@@ -93834,7 +94320,7 @@ export interface Builder {
 
         // Methods
         /**
-         * Get the adjustment which is the &#x201C;model&#x201D; object for {@link Gtk.Range}.
+         * Get the adjustment which is the “model” object for {@link Gtk.Range}.
          * @returns a {@link Gtk.Adjustment}
          */
         get_adjustment(): Adjustment;
@@ -93862,7 +94348,7 @@ export interface Builder {
         get_inverted(): boolean;
 
         /**
-         * This function returns the area that contains the range&#x2019;s trough,
+         * This function returns the area that contains the range’s trough,
          * in coordinates relative to `range`'s origin.
          * 
          * This function is useful mainly for {@link Gtk.Range} subclasses.
@@ -93902,7 +94388,7 @@ export interface Builder {
          * This function is useful mainly for {@link Gtk.Range} subclasses.
          * 
          * See {@link Gtk.Range.set_slider_size_fixed}.
-         * @returns whether the range&#x2019;s slider has a fixed size.
+         * @returns whether the range’s slider has a fixed size.
          */
         get_slider_size_fixed(): boolean;
 
@@ -93913,7 +94399,7 @@ export interface Builder {
         get_value(): number;
 
         /**
-         * Sets the adjustment to be used as the &#x201C;model&#x201D; object for the {@link Gtk.Range}
+         * Sets the adjustment to be used as the “model” object for the {@link Gtk.Range}
          * 
          * The adjustment indicates the current range value, the minimum and
          * maximum range values, the step/page increments used for keybindings
@@ -93929,18 +94415,18 @@ export interface Builder {
         /**
          * Set the new position of the fill level indicator.
          * 
-         * The &#x201C;fill level&#x201D; is probably best described by its most prominent
+         * The “fill level” is probably best described by its most prominent
          * use case, which is an indicator for the amount of pre-buffering in
          * a streaming media player. In that use case, the value of the range
          * would indicate the current play position, and the fill level would
          * be the position up to which the file/stream has been downloaded.
          * 
-         * This amount of prebuffering can be displayed on the range&#x2019;s trough
+         * This amount of prebuffering can be displayed on the range’s trough
          * and is themeable separately from the trough. To enable fill level
          * display, use {@link Gtk.Range.set_show_fill_level}. The range defaults
          * to not showing the fill level.
          * 
-         * Additionally, it&#x2019;s possible to restrict the range&#x2019;s slider position
+         * Additionally, it’s possible to restrict the range’s slider position
          * to values which are smaller than the fill level. This is controlled
          * by {@link Gtk.Range.set_restrict_to_fill_level} and is by default
          * enabled.
@@ -94020,8 +94506,8 @@ export interface Builder {
         set_show_fill_level(show_fill_level: boolean): void;
 
         /**
-         * Sets whether the range&#x2019;s slider has a fixed size, or a size that
-         * depends on its adjustment&#x2019;s page size.
+         * Sets whether the range’s slider has a fixed size, or a size that
+         * depends on its adjustment’s page size.
          * 
          * This function is useful mainly for {@link Gtk.Range} subclasses.
          * @param size_fixed `true` to make the slider size constant
@@ -94394,7 +94880,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -94409,7 +94895,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -94718,7 +95204,7 @@ export interface Builder {
      * {@link Gtk.Revealer.set_transition_type}.
      * 
      * These animations respect the {@link Gtk.Settings.gtk_enable_animations}
-     * setting.
+     * and {@link GTk.Settings.gtk_interface_reduced_motion} settings.
      * 
      * # CSS nodes
      * 
@@ -95239,7 +95725,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -95319,7 +95805,7 @@ export interface Builder {
      *   <img alt="An example GtkScale" src="https://docs.gtk.org/gtk4/scales.png">
      * </picture>
      * 
-     * To use it, you&#x2019;ll probably want to investigate the methods on its base
+     * To use it, you’ll probably want to investigate the methods on its base
      * class, {@link Gtk.Range}, in addition to the methods for {@link Gtk.Scale} itself.
      * To set the value of a scale, you would normally use {@link Gtk.Range.set_value}.
      * To detect changes to the value, you would normally use the
@@ -95333,11 +95819,11 @@ export interface Builder {
      * # GtkScale as GtkBuildable
      * 
      * {@link Gtk.Scale} supports a custom `<marks>` element, which can contain multiple
-     * `<mark\>` elements. The &#x201C;value&#x201D; and &#x201C;position&#x201D; attributes have the same
+     * `<mark\>` elements. The “value” and “position” attributes have the same
      * meaning as {@link Gtk.Scale.add_mark} parameters of the same name. If
      * the element is not empty, its content is taken as the markup to show at
-     * the mark. It can be translated with the usual &#x201D;translatable&#x201D; and
-     * &#x201C;context&#x201D; attributes.
+     * the mark. It can be translated with the usual ”translatable” and
+     * “context” attributes.
      * 
      * # Shortcuts and Gestures
      * 
@@ -95352,23 +95838,23 @@ export interface Builder {
      * 
      * ```
      * scale[.fine-tune][.marks-before][.marks-after]
-     * &#x251C;&#x2500;&#x2500; [value][.top][.right][.bottom][.left]
-     * &#x251C;&#x2500;&#x2500; marks.top
-     * &#x2502;   &#x251C;&#x2500;&#x2500; mark
-     * &#x2502;   &#x250A;    &#x251C;&#x2500;&#x2500; [label]
-     * &#x2502;   &#x250A;    &#x2570;&#x2500;&#x2500; indicator
-     * &#x250A;   &#x250A;
-     * &#x2502;   &#x2570;&#x2500;&#x2500; mark
-     * &#x251C;&#x2500;&#x2500; marks.bottom
-     * &#x2502;   &#x251C;&#x2500;&#x2500; mark
-     * &#x2502;   &#x250A;    &#x251C;&#x2500;&#x2500; indicator
-     * &#x2502;   &#x250A;    &#x2570;&#x2500;&#x2500; [label]
-     * &#x250A;   &#x250A;
-     * &#x2502;   &#x2570;&#x2500;&#x2500; mark
-     * &#x2570;&#x2500;&#x2500; trough
-     *     &#x251C;&#x2500;&#x2500; [fill]
-     *     &#x251C;&#x2500;&#x2500; [highlight]
-     *     &#x2570;&#x2500;&#x2500; slider
+     * ├── [value][.top][.right][.bottom][.left]
+     * ├── marks.top
+     * │   ├── mark
+     * │   ┊    ├── [label]
+     * │   ┊    ╰── indicator
+     * ┊   ┊
+     * │   ╰── mark
+     * ├── marks.bottom
+     * │   ├── mark
+     * │   ┊    ├── indicator
+     * │   ┊    ╰── [label]
+     * ┊   ┊
+     * │   ╰── mark
+     * ╰── trough
+     *     ├── [fill]
+     *     ├── [highlight]
+     *     ╰── slider
      * ```
      * 
      * {@link Gtk.Scale} has a main CSS node with name scale and a subnode for its contents,
@@ -95515,7 +96001,7 @@ export interface Builder {
          * If `markup` is not `null`, text is shown next to the tick mark.
          * 
          * To remove marks from a scale, use {@link Gtk.Scale.clear_marks}.
-         * @param value the value at which the mark is placed, must be between   the lower and upper limits of the scales&#x2019; adjustment
+         * @param value the value at which the mark is placed, must be between   the lower and upper limits of the scales’ adjustment
          * @param position where to draw the mark. For a horizontal scale, {@link Gtk.PositionType.TOP}   and {@link Gtk.PositionType.LEFT} are drawn above the scale, anything else below.   For a vertical scale, {@link Gtk.PositionType.LEFT} and {@link Gtk.PositionType.TOP} are drawn to   the left of the scale, anything else to the right.
          * @param markup Text to be shown at the mark, using Pango markup
          */
@@ -95651,7 +96137,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -95761,8 +96247,8 @@ export interface Builder {
      * 
      * ```
      * scalebutton.scale
-     * &#x2570;&#x2500;&#x2500; button.toggle
-     *     &#x2570;&#x2500;&#x2500; <icon>
+     * ╰── button.toggle
+     *     ╰── <icon>
      * ```
      * 
      * {@link Gtk.ScaleButton} has a single CSS node with name scalebutton and `.scale`
@@ -95878,7 +96364,7 @@ export interface Builder {
         get_active(): boolean;
 
         /**
-         * Gets the {@link Gtk.Adjustment} associated with the {@link Gtk.ScaleButton}&#x2019;s scale.
+         * Gets the {@link Gtk.Adjustment} associated with the {@link Gtk.ScaleButton}’s scale.
          * 
          * See {@link Gtk.Range.get_adjustment} for details.
          * @returns the adjustment associated with the scale
@@ -95917,7 +96403,7 @@ export interface Builder {
 
         /**
          * Sets the {@link Gtk.Adjustment} to be used as a model
-         * for the {@link Gtk.ScaleButton}&#x2019;s scale.
+         * for the {@link Gtk.ScaleButton}’s scale.
          * 
          * See {@link Gtk.Range.set_adjustment} for details.
          * @param adjustment a {@link Gtk.Adjustment}
@@ -96304,7 +96790,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -96319,7 +96805,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -96400,9 +96886,9 @@ export interface Builder {
      * 
      * ```
      * scrollbar
-     * &#x2570;&#x2500;&#x2500; range[.fine-tune]
-     *     &#x2570;&#x2500;&#x2500; trough
-     *         &#x2570;&#x2500;&#x2500; slider
+     * ╰── range[.fine-tune]
+     *     ╰── trough
+     *         ╰── slider
      * ```
      * 
      * {@link Gtk.Scrollbar} has a main CSS node with name scrollbar and a subnode for its
@@ -96830,7 +97316,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -96845,7 +97331,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -96902,7 +97388,7 @@ export interface Builder {
              * This is a [keybinding signal](https://docs.gtk.org/gtk4/class.SignalAction.html).
              * 
              * The horizontal or vertical adjustment is updated which triggers a
-             * signal that the scrolled window&#x2019;s child may listen to and scroll itself.
+             * signal that the scrolled window’s child may listen to and scroll itself.
              * @signal
              * @action
              * @run-last
@@ -97009,7 +97495,7 @@ export interface Builder {
      * of widget, the class {@link Gtk.Viewport} acts as an adaptor, giving
      * scrollability to other widgets. {@link Gtk.ScrolledWindow.set_child}
      * intelligently accounts for whether or not the added child is a {@link Gtk.Scrollable}.
-     * If it isn&#x2019;t, then it wraps the child in a {@link Gtk.Viewport}. Therefore, you can
+     * If it isn’t, then it wraps the child in a {@link Gtk.Viewport}. Therefore, you can
      * just add any child widget and not worry about the details.
      * 
      * If {@link Gtk.ScrolledWindow.set_child} has added a {@link Gtk.Viewport} for you,
@@ -97021,11 +97507,11 @@ export interface Builder {
      * scrollbars, is controlled by the {@link Gtk.ScrolledWindow.hadjustment}
      * and {@link Gtk.ScrolledWindow.vadjustment} that are associated with the
      * {@link Gtk.ScrolledWindow}. See the docs on {@link Gtk.Scrollbar} for the details,
-     * but note that the &#x201C;step_increment&#x201D; and &#x201C;page_increment&#x201D; fields are only
+     * but note that the “step_increment” and “page_increment” fields are only
      * effective if the policy causes scrollbars to be present.
      * 
-     * If a {@link Gtk.ScrolledWindow} doesn&#x2019;t behave quite as you would like, or
-     * doesn&#x2019;t have exactly the right layout, it&#x2019;s very possible to set up
+     * If a {@link Gtk.ScrolledWindow} doesn’t behave quite as you would like, or
+     * doesn’t have exactly the right layout, it’s very possible to set up
      * your own scrolling with {@link Gtk.Scrollbar} and for example a {@link Gtk.Grid}.
      * 
      * # Touch support
@@ -97234,7 +97720,7 @@ export interface Builder {
 
         /**
          * Whether the natural height of the child should be calculated and propagated
-         * through the scrolled window&#x2019;s requested natural height.
+         * through the scrolled window’s requested natural height.
          * 
          * This is useful in cases where an attempt should be made to allocate exactly
          * enough space for the natural size of the child.
@@ -97245,7 +97731,7 @@ export interface Builder {
 
         /**
          * Whether the natural height of the child should be calculated and propagated
-         * through the scrolled window&#x2019;s requested natural height.
+         * through the scrolled window’s requested natural height.
          * 
          * This is useful in cases where an attempt should be made to allocate exactly
          * enough space for the natural size of the child.
@@ -97256,7 +97742,7 @@ export interface Builder {
 
         /**
          * Whether the natural width of the child should be calculated and propagated
-         * through the scrolled window&#x2019;s requested natural width.
+         * through the scrolled window’s requested natural width.
          * 
          * This is useful in cases where an attempt should be made to allocate exactly
          * enough space for the natural size of the child.
@@ -97267,7 +97753,7 @@ export interface Builder {
 
         /**
          * Whether the natural width of the child should be calculated and propagated
-         * through the scrolled window&#x2019;s requested natural width.
+         * through the scrolled window’s requested natural width.
          * 
          * This is useful in cases where an attempt should be made to allocate exactly
          * enough space for the natural size of the child.
@@ -97357,10 +97843,10 @@ export interface Builder {
         get_child(): Widget | null;
 
         /**
-         * Returns the horizontal scrollbar&#x2019;s adjustment.
+         * Returns the horizontal scrollbar’s adjustment.
          * 
          * This is the adjustment used to connect the horizontal scrollbar
-         * to the child widget&#x2019;s horizontal scroll functionality.
+         * to the child widget’s horizontal scroll functionality.
          * @returns the horizontal {@link Gtk.Adjustment}
          */
         get_hadjustment(): Adjustment;
@@ -97429,23 +97915,23 @@ export interface Builder {
 
         /**
          * Reports whether the natural height of the child will be calculated
-         * and propagated through the scrolled window&#x2019;s requested natural height.
+         * and propagated through the scrolled window’s requested natural height.
          * @returns whether natural height propagation is enabled.
          */
         get_propagate_natural_height(): boolean;
 
         /**
          * Reports whether the natural width of the child will be calculated
-         * and propagated through the scrolled window&#x2019;s requested natural width.
+         * and propagated through the scrolled window’s requested natural width.
          * @returns whether natural width propagation is enabled.
          */
         get_propagate_natural_width(): boolean;
 
         /**
-         * Returns the vertical scrollbar&#x2019;s adjustment.
+         * Returns the vertical scrollbar’s adjustment.
          * 
          * This is the adjustment used to connect the vertical
-         * scrollbar to the child widget&#x2019;s vertical scroll functionality.
+         * scrollbar to the child widget’s vertical scroll functionality.
          * @returns the vertical {@link Gtk.Adjustment}
          */
         get_vadjustment(): Adjustment;
@@ -97564,7 +98050,7 @@ export interface Builder {
          * scrollbar is always present; if {@link Gtk.PolicyType.NEVER}, the scrollbar is
          * never present; if {@link Gtk.PolicyType.AUTOMATIC}, the scrollbar is present only
          * if needed (that is, if the slider part of the bar would be smaller
-         * than the trough &#x2014; the display is larger than the page size).
+         * than the trough — the display is larger than the page size).
          * @param hscrollbar_policy policy for horizontal bar
          * @param vscrollbar_policy policy for vertical bar
          */
@@ -97572,14 +98058,14 @@ export interface Builder {
 
         /**
          * Sets whether the natural height of the child should be calculated
-         * and propagated through the scrolled window&#x2019;s requested natural height.
+         * and propagated through the scrolled window’s requested natural height.
          * @param propagate whether to propagate natural height
          */
         set_propagate_natural_height(propagate: boolean): void;
 
         /**
          * Sets whether the natural width of the child should be calculated
-         * and propagated through the scrolled window&#x2019;s requested natural width.
+         * and propagated through the scrolled window’s requested natural width.
          * @param propagate whether to propagate natural width
          */
         set_propagate_natural_width(propagate: boolean): void;
@@ -97936,7 +98422,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -98012,7 +98498,7 @@ export interface Builder {
      * 
      * It can also contain additional widgets, such as drop-down menus,
      * or buttons.  The search bar would appear when a search is started
-     * through typing on the keyboard, or the application&#x2019;s search mode
+     * through typing on the keyboard, or the application’s search mode
      * is toggled on.
      * 
      * For keyboard presses to start a search, the search bar must be told
@@ -98042,10 +98528,10 @@ export interface Builder {
      * 
      * ```
      * searchbar
-     * &#x2570;&#x2500;&#x2500; revealer
-     *     &#x2570;&#x2500;&#x2500; box
-     *          &#x251C;&#x2500;&#x2500; [child]
-     *          &#x2570;&#x2500;&#x2500; [button.close]
+     * ╰── revealer
+     *     ╰── box
+     *          ├── [child]
+     *          ╰── [button.close]
      * ```
      * 
      * {@link Gtk.SearchBar} has a main CSS node with name searchbar. It has a child
@@ -98143,7 +98629,7 @@ export interface Builder {
          * this search bar.
          * 
          * The entry should be a descendant of the search bar. Calling this
-         * function manually is only required if the entry isn&#x2019;t the direct
+         * function manually is only required if the entry isn’t the direct
          * child of the search bar (as in our main example).
          * @param entry a {@link Gtk.Editable}
          */
@@ -98205,7 +98691,7 @@ export interface Builder {
         /**
          * Shows or hides the close button.
          * 
-         * Applications that already have a &#x201C;search&#x201D; toggle button should not
+         * Applications that already have a “search” toggle button should not
          * show a close button in their search bar, as it duplicates the role
          * of the toggle button.
          * @param visible whether the close button will be shown or not
@@ -98550,7 +99036,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -98672,9 +99158,11 @@ export interface Builder {
             "notify::visible": (pspec: GObject.ParamSpec) => void;
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -98710,9 +99198,9 @@ export interface Builder {
      *   <img alt="An example GtkSearchEntry" src="https://docs.gtk.org/gtk4/search-entry.png">
      * </picture>
      * 
-     * It will show an inactive symbolic &#x201C;find&#x201D; icon when the search
-     * entry is empty, and a symbolic &#x201C;clear&#x201D; icon when there is text.
-     * Clicking on the &#x201C;clear&#x201D; icon will empty the search entry.
+     * It will show an inactive symbolic “find” icon when the search
+     * entry is empty, and a symbolic “clear” icon when there is text.
+     * Clicking on the “clear” icon will empty the search entry.
      * 
      * To make filtering appear more reactive, it is a good idea to
      * not react to every change in the entry text immediately, but
@@ -98746,7 +99234,7 @@ export interface Builder {
      * 
      * ```
      * entry.search
-     * &#x2570;&#x2500;&#x2500; text
+     * ╰── text
      * ```
      * 
      * {@link Gtk.SearchEntry} has a single CSS node with name entry that carries
@@ -98992,6 +99480,24 @@ export interface Builder {
         set accessibleRole(val: AccessibleRole);
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -99030,6 +99536,22 @@ export interface Builder {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Widget | null;
+        set input_interceptor(val: Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Widget | null;
+        set inputInterceptor(val: Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -99414,7 +99936,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -99462,7 +99984,7 @@ export interface Builder {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -99510,6 +100032,13 @@ export interface Builder {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -99529,6 +100058,13 @@ export interface Builder {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -99637,6 +100173,21 @@ export interface Builder {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -99721,6 +100272,13 @@ export interface Builder {
          * @virtual
          */
         vfunc_do_insert_text(text: string, length: number, position: number): number;
+
+        /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
 
         /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
@@ -100443,7 +101001,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -100458,7 +101016,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -100498,6 +101056,7 @@ export interface Builder {
             "notify::gtk-interface-color-scheme": (pspec: GObject.ParamSpec) => void;
             "notify::gtk-interface-contrast": (pspec: GObject.ParamSpec) => void;
             "notify::gtk-interface-reduced-motion": (pspec: GObject.ParamSpec) => void;
+            "notify::gtk-keyboard-focus-visible-timeout": (pspec: GObject.ParamSpec) => void;
             "notify::gtk-keynav-use-caret": (pspec: GObject.ParamSpec) => void;
             "notify::gtk-label-select-on-focus": (pspec: GObject.ParamSpec) => void;
             "notify::gtk-long-press-time": (pspec: GObject.ParamSpec) => void;
@@ -100588,6 +101147,8 @@ export interface Builder {
             gtkInterfaceContrast: InterfaceContrast;
             gtk_interface_reduced_motion: ReducedMotion;
             gtkInterfaceReducedMotion: ReducedMotion;
+            gtk_keyboard_focus_visible_timeout: number;
+            gtkKeyboardFocusVisibleTimeout: number;
             gtk_keynav_use_caret: boolean;
             gtkKeynavUseCaret: boolean;
             gtk_label_select_on_focus: boolean;
@@ -101356,6 +101917,22 @@ export interface Builder {
         set gtkInterfaceReducedMotion(val: ReducedMotion);
 
         /**
+         * Time in seconds that the focus is visible when using keyboard navigation. A zero value means "forever", and a negative
+         * value means "toolkit default timeout".
+         * @default -1
+         */
+        get gtk_keyboard_focus_visible_timeout(): number;
+        set gtk_keyboard_focus_visible_timeout(val: number);
+
+        /**
+         * Time in seconds that the focus is visible when using keyboard navigation. A zero value means "forever", and a negative
+         * value means "toolkit default timeout".
+         * @default -1
+         */
+        get gtkKeyboardFocusVisibleTimeout(): number;
+        set gtkKeyboardFocusVisibleTimeout(val: number);
+
+        /**
          * Whether GTK should make sure that text can be navigated with
          * a caret, even if it is not editable.
          * 
@@ -101392,7 +101969,7 @@ export interface Builder {
         set gtkLabelSelectOnFocus(val: boolean);
 
         /**
-         * The time for a button or touch press to be considered a &#x201C;long press&#x201D;.
+         * The time for a button or touch press to be considered a “long press”.
          * 
          * See {@link Gtk.GestureLongPress}.
          * @default 500
@@ -101401,7 +101978,7 @@ export interface Builder {
         set gtk_long_press_time(val: number);
 
         /**
-         * The time for a button or touch press to be considered a &#x201C;long press&#x201D;.
+         * The time for a button or touch press to be considered a “long press”.
          * 
          * See {@link Gtk.GestureLongPress}.
          * @default 500
@@ -101431,11 +102008,11 @@ export interface Builder {
 
         /**
          * If the value of this setting is `true`, clicking the primary button in a
-         * {@link Gtk.Range} trough will move the slider, and hence set the range&#x2019;s value, to
+         * {@link Gtk.Range} trough will move the slider, and hence set the range’s value, to
          * the point that you clicked.
          * 
          * If it is `false`, a primary click will cause the slider/value to move
-         * by the range&#x2019;s page-size towards the point clicked.
+         * by the range’s page-size towards the point clicked.
          * 
          * Whichever action you choose for the primary button, the other action will
          * be available by holding Shift and primary-clicking, or clicking the middle
@@ -101447,11 +102024,11 @@ export interface Builder {
 
         /**
          * If the value of this setting is `true`, clicking the primary button in a
-         * {@link Gtk.Range} trough will move the slider, and hence set the range&#x2019;s value, to
+         * {@link Gtk.Range} trough will move the slider, and hence set the range’s value, to
          * the point that you clicked.
          * 
          * If it is `false`, a primary click will cause the slider/value to move
-         * by the range&#x2019;s page-size towards the point clicked.
+         * by the range’s page-size towards the point clicked.
          * 
          * Whichever action you choose for the primary button, the other action will
          * be available by holding Shift and primary-clicking, or clicking the middle
@@ -101467,7 +102044,7 @@ export interface Builder {
          * 
          * Available print backends depend on the GTK installation,
          * and may include "file", "cups", "lpr" or "papi".
-         * @default file
+         * @default cups,file
          */
         get gtk_print_backends(): string;
         set gtk_print_backends(val: string);
@@ -101478,7 +102055,7 @@ export interface Builder {
          * 
          * Available print backends depend on the GTK installation,
          * and may include "file", "cups", "lpr" or "papi".
-         * @default file
+         * @default cups,file
          */
         get gtkPrintBackends(): string;
         set gtkPrintBackends(val: string);
@@ -102563,7 +103140,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -103053,7 +103630,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -103115,6 +103692,26 @@ export interface Builder {
         /** @signal */
         emit<K extends keyof ShortcutTrigger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShortcutTrigger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+        /**
+         * Creates a shortcut trigger that will trigger for
+         * the usual key combinations that trigger a context
+         * menu, such as <kbd>Menu</kbd> or
+         * <kbd>Shift</kbd>+<kbd>F10</kbd>.
+         */
+        static create_for_menu(): ShortcutTrigger;
+
+        /**
+         * Creates a shortcut trigger that will trigger for
+         * any alias of the given key.
+         * 
+         * See {@link Gdk.keyval_get_aliases} for more information
+         * on aliases.
+         * @param keyval The keyval to trigger for
+         * @param modifiers the modifiers that need to be present
+         */
+        static create_with_aliases(keyval: number, modifiers: Gdk.ModifierType): ShortcutTrigger;
 
         // Methods
         /**
@@ -103422,7 +104019,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -103683,7 +104280,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -104328,7 +104925,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -104479,7 +105076,7 @@ export interface Builder {
      * </picture>
      * 
      * This example shows a {@link Gtk.ShortcutsWindow} that has been configured to show only
-     * the shortcuts relevant to the &#x201C;Stopwatch&#x201D; view.
+     * the shortcuts relevant to the “Stopwatch” view.
      * 
      * The .ui file for this example can be found [here](https://gitlab.gnome.org/GNOME/gtk/tree/main/demos/gtk-demo/shortcuts-clocks.ui).
      * 
@@ -104490,8 +105087,8 @@ export interface Builder {
      *   <img alt="An example with multiple sections" src="https://docs.gtk.org/gtk4/builder-shortcuts.png">
      * </picture>
      * 
-     * This example shows a {@link Gtk.ShortcutsWindow} with two sections, &#x201C;Editor Shortcuts&#x201D;
-     * and &#x201C;Terminal Shortcuts&#x201D;.
+     * This example shows a {@link Gtk.ShortcutsWindow} with two sections, “Editor Shortcuts”
+     * and “Terminal Shortcuts”.
      * 
      * The .ui file for this example can be found [here](https://gitlab.gnome.org/GNOME/gtk/tree/main/demos/gtk-demo/shortcuts-builder.ui).
      * 
@@ -105519,7 +106116,7 @@ export interface Builder {
      * Groups widgets together so they all request the same size.
      * 
      * This is typically useful when you want a column of widgets to have
-     * the same size, but you can&#x2019;t use a {@link Gtk.Grid} or {@link Gtk.Box}.
+     * the same size, but you can’t use a {@link Gtk.Grid} or {@link Gtk.Box}.
      * 
      * In detail, the size requested for each widget in a {@link Gtk.SizeGroup} is
      * the maximum of the sizes that would have been requested for each
@@ -105608,7 +106205,7 @@ export interface Builder {
      * element with `class="GtkSizeGroup"` somewhere in the UI definition. The
      * widgets that belong to the size group are specified by a `<widgets>` element
      * that may contain multiple `<widget>` elements, one for each member of the
-     * size group. The &#x201D;name&#x201D; attribute gives the id of the widget.
+     * size group. The ”name” attribute gives the id of the widget.
      * 
      * An example of a UI definition fragment with {@link Gtk.SizeGroup}:
      * ```xml
@@ -105800,7 +106397,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -106132,8 +106729,8 @@ export interface Builder {
      * It functions in a similar way to a cairo context, and maintains a stack
      * of render nodes and their associated transformations.
      * 
-     * The node at the top of the stack is the one that `gtk_snapshot_append_&#x2026;()`
-     * functions operate on. Use the `gtk_snapshot_push_&#x2026;()` functions and
+     * The node at the top of the stack is the one that `gtk_snapshot_append_…()`
+     * functions operate on. Use the `gtk_snapshot_push_…()` functions and
      * {@link Snapshot.pop} to change the current node.
      * 
      * The typical way to obtain a {@link Gtk.Snapshot} object is as an argument to
@@ -106459,7 +107056,7 @@ export interface Builder {
          * Calling this function requires 2 subsequent calls to `gtk_snapshot_pop()`.
          * @param op The Porter/Duff compositing operator to use
          */
-        push_composite(op: never): void;
+        push_composite(op: Gsk.PorterDuff): void;
 
         /**
          * Stores the current rendering state for later pasting via
@@ -106551,7 +107148,7 @@ export interface Builder {
          * Content is isolated until the next call to {@link Gtk.Snapshot.pop}.
          * @param features features that are isolated
          */
-        push_isolation(features: never): void;
+        push_isolation(features: Gsk.Isolation): void;
 
         /**
          * Until the first call to {@link Gtk.Snapshot.pop}, the
@@ -106732,6 +107329,16 @@ export interface Builder {
          * @param factor_z scaling factor on the Z axis
          */
         scale_3d(factor_x: number, factor_y: number, factor_z: number): void;
+
+        /**
+         * Sets the snapping mode to use when appending snappable content
+         * to the snapshot.
+         * 
+         * The snap mode is part of the current state, so {@link Snapshot.save}
+         * and {@link Snapshot.restore} can be used to remember a snap mode.
+         * @param snap the snapping mode to use
+         */
+        set_snap(snap: Gsk.RectSnap): void;
 
         /**
          * Returns the render node that was constructed
@@ -107272,8 +107879,8 @@ export interface Builder {
          * 
          * * It is reflexive, ie a = a
          * * It is antisymmetric, ie if a < b and b < a, then a = b
-         * * It is transitive, ie given any 3 items with a &#x2264; b and b &#x2264; c,
-         *   then a &#x2264; c
+         * * It is transitive, ie given any 3 items with a ≤ b and b ≤ c,
+         *   then a ≤ c
          * 
          * The sorter may signal it conforms to additional constraints
          * via the return value of {@link Gtk.Sorter.get_order}.
@@ -107320,8 +107927,8 @@ export interface Builder {
          * 
          * * It is reflexive, ie a = a
          * * It is antisymmetric, ie if a < b and b < a, then a = b
-         * * It is transitive, ie given any 3 items with a &#x2264; b and b &#x2264; c,
-         *   then a &#x2264; c
+         * * It is transitive, ie given any 3 items with a ≤ b and b ≤ c,
+         *   then a ≤ c
          * 
          * The sorter may signal it conforms to additional constraints
          * via the return value of {@link Gtk.Sorter.get_order}.
@@ -107473,9 +108080,11 @@ export interface Builder {
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
             "notify::editing-canceled": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -107598,20 +108207,20 @@ export interface Builder {
      * 
      * ```
      * spinbutton.horizontal
-     * &#x251C;&#x2500;&#x2500; text
-     * &#x2502;    &#x251C;&#x2500;&#x2500; undershoot.left
-     * &#x2502;    &#x2570;&#x2500;&#x2500; undershoot.right
-     * &#x251C;&#x2500;&#x2500; button.down
-     * &#x2570;&#x2500;&#x2500; button.up
+     * ├── text
+     * │    ├── undershoot.left
+     * │    ╰── undershoot.right
+     * ├── button.down
+     * ╰── button.up
      * ```
      * 
      * ```
      * spinbutton.vertical
-     * &#x251C;&#x2500;&#x2500; button.up
-     * &#x251C;&#x2500;&#x2500; text
-     * &#x2502;    &#x251C;&#x2500;&#x2500; undershoot.left
-     * &#x2502;    &#x2570;&#x2500;&#x2500; undershoot.right
-     * &#x2570;&#x2500;&#x2500; button.down
+     * ├── button.up
+     * ├── text
+     * │    ├── undershoot.left
+     * │    ╰── undershoot.right
+     * ╰── button.down
      * ```
      * 
      * {@link Gtk.SpinButton}s main CSS node has the name spinbutton. It creates subnodes
@@ -107766,7 +108375,7 @@ export interface Builder {
          * 
          * The adjustment, climb rate, and number of decimal places
          * are updated accordingly.
-         * @param adjustment a {@link Gtk.Adjustment} to replace the spin button&#x2019;s   existing adjustment, or `null` to leave its current adjustment unchanged
+         * @param adjustment a {@link Gtk.Adjustment} to replace the spin button’s   existing adjustment, or `null` to leave its current adjustment unchanged
          * @param climb_rate the new climb rate
          * @param digits the number of decimal places to display in the spin button
          */
@@ -107844,7 +108453,7 @@ export interface Builder {
         get_value_as_int(): number;
 
         /**
-         * Returns whether the spin button&#x2019;s value wraps around to the
+         * Returns whether the spin button’s value wraps around to the
          * opposite limit when the upper or lower limit of the range is
          * exceeded.
          * @returns `true` if the spin button wraps around
@@ -107856,7 +108465,7 @@ export interface Builder {
          * widget for the window containing the spin button.
          * 
          * See `Gtk.SpinButton::activate` for what counts as activation.
-         * @param activates_default `true` to activate window&#x2019;s default widget on activation
+         * @param activates_default `true` to activate window’s default widget on activation
          */
         set_activates_default(activates_default: boolean): void;
 
@@ -107877,7 +108486,7 @@ export interface Builder {
          * Set the precision to be displayed by `spin_button`.
          * 
          * Up to 20 digit precision is allowed.
-         * @param digits the number of digits after the decimal point to be   displayed for the spin button&#x2019;s value
+         * @param digits the number of digits after the decimal point to be   displayed for the spin button’s value
          */
         set_digits(digits: number): void;
 
@@ -107885,7 +108494,7 @@ export interface Builder {
          * Sets the step and page increments for spin_button.
          * 
          * This affects how quickly the value changes when
-         * the spin button&#x2019;s arrows are activated.
+         * the spin button’s arrows are activated.
          * @param step increment applied for a button 1 press.
          * @param page increment applied for a button 2 press.
          */
@@ -107940,7 +108549,7 @@ export interface Builder {
         set_wrap(wrap: boolean): void;
 
         /**
-         * Increment or decrement a spin button&#x2019;s value in a specified
+         * Increment or decrement a spin button’s value in a specified
          * direction by a specified amount.
          * @param direction a {@link Gtk.SpinType} indicating the direction to spin
          * @param increment step increment to apply in the specified direction
@@ -107989,6 +108598,24 @@ export interface Builder {
         set editingCanceled(val: boolean);
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -108027,6 +108654,22 @@ export interface Builder {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Widget | null;
+        set input_interceptor(val: Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Widget | null;
+        set inputInterceptor(val: Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -108429,7 +109072,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -108530,7 +109173,7 @@ export interface Builder {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -108578,6 +109221,13 @@ export interface Builder {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -108597,6 +109247,13 @@ export interface Builder {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -108705,6 +109362,21 @@ export interface Builder {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -108791,6 +109463,13 @@ export interface Builder {
         vfunc_do_insert_text(text: string, length: number, position: number): number;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -108856,7 +109535,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -109336,7 +110015,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -109430,8 +110109,9 @@ export interface Builder {
      * 
      * Transitions between pages can be animated as slides or fades. This
      * can be controlled with {@link Gtk.Stack.set_transition_type}.
+     * 
      * These animations respect the {@link Gtk.Settings.gtk_enable_animations}
-     * setting.
+     * and {@link Gtk.Settings.gtk_interface_reduced_motion} settings.
      * 
      * {@link Gtk.Stack} maintains a {@link Gtk.StackPage} object for each added
      * child, which holds additional per-child properties. You
@@ -109449,7 +110129,7 @@ export interface Builder {
      *     <child>
      *       <object class="GtkStackPage">
      *         <property name="name">page1</property>
-     *         <property name="title">In the beginning&#x2026;</property>
+     *         <property name="title">In the beginning…</property>
      *         <property name="child">
      *           <object class="GtkLabel">
      *             <property name="label">It was dark</property>
@@ -110152,7 +110832,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -110321,7 +111001,7 @@ export interface Builder {
         get_name(): string | null;
 
         /**
-         * Returns whether the page is marked as &#x201C;needs attention&#x201D;.
+         * Returns whether the page is marked as “needs attention”.
          * @returns The value of the {@link Gtk.StackPage.needs_attention}   property.
          */
         get_needs_attention(): boolean;
@@ -110360,7 +111040,7 @@ export interface Builder {
         set_name(setting: string): void;
 
         /**
-         * Sets whether the page is marked as &#x201C;needs attention&#x201D;.
+         * Sets whether the page is marked as “needs attention”.
          * @param setting the new value to set
          */
         set_needs_attention(setting: boolean): void;
@@ -111096,7 +111776,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -111590,7 +112270,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -111605,7 +112285,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -111685,9 +112365,9 @@ export interface Builder {
      * is complete in an FTP client, for example).
      * 
      * Status bars in GTK maintain a stack of messages. The message at
-     * the top of the each bar&#x2019;s stack is the one that will currently be displayed.
+     * the top of the each bar’s stack is the one that will currently be displayed.
      * 
-     * Any messages added to a statusbar&#x2019;s stack must specify a context id that
+     * Any messages added to a statusbar’s stack must specify a context id that
      * is used to uniquely identify the source of a message. This context id can
      * be generated by {@link Gtk.Statusbar.get_context_id}, given a message and
      * the statusbar that it will be added to. Note that messages are stored in a
@@ -111700,7 +112380,7 @@ export interface Builder {
      * 
      * Status bars are created using {@link Gtk.Statusbar.new}.
      * 
-     * Messages are added to the bar&#x2019;s stack with {@link Gtk.Statusbar.push}.
+     * Messages are added to the bar’s stack with {@link Gtk.Statusbar.push}.
      * 
      * The message at the top of the stack can be removed using
      * {@link Gtk.Statusbar.pop}. A message can be removed from anywhere in the
@@ -111757,7 +112437,7 @@ export interface Builder {
         get_context_id(context_description: string): number;
 
         /**
-         * Removes the first message in the {@link Gtk.Statusbar}&#x2019;s stack
+         * Removes the first message in the {@link Gtk.Statusbar}’s stack
          * with the given context id.
          * 
          * Note that this may not change the displayed message,
@@ -111768,15 +112448,15 @@ export interface Builder {
         pop(context_id: number): void;
 
         /**
-         * Pushes a new message onto a statusbar&#x2019;s stack.
-         * @param context_id the message&#x2019;s context id, as returned by    `gtk_statusbar_get_context_id()`
+         * Pushes a new message onto a statusbar’s stack.
+         * @param context_id the message’s context id, as returned by    `gtk_statusbar_get_context_id()`
          * @param text the message to add to the statusbar
          * @returns a message id that can be used with   {@link Gtk.Statusbar.remove}.
          */
         push(context_id: number, text: string): number;
 
         /**
-         * Forces the removal of a message from a statusbar&#x2019;s stack.
+         * Forces the removal of a message from a statusbar’s stack.
          * The exact `context_id` and `message_id` must be specified.
          * @param context_id a context identifier
          * @param message_id a message identifier, as returned by {@link Gtk.Statusbar.push}
@@ -112128,7 +112808,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -112334,8 +113014,8 @@ export interface Builder {
      * The {@link Gtk.StringList} implementation of the {@link Gtk.Buildable} interface
      * supports adding items directly using the `<items>` element and
      * specifying `<item>` elements for each item. Each `<item>` element
-     * supports the regular translation attributes &#x201C;translatable&#x201D;,
-     * &#x201C;context&#x201D; and &#x201C;comments&#x201D;.
+     * supports the regular translation attributes “translatable”,
+     * “context” and “comments”.
      * 
      * Here is a UI definition fragment specifying a {@link Gtk.StringList}
      * 
@@ -112688,7 +113368,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -112922,7 +113602,7 @@ export interface Builder {
      * providers can be either attached explicitly to the context through
      * {@link Gtk.StyleContext.add_provider}, or to the display through
      * {@link Gtk.StyleContext.add_provider_for_display}. The resulting
-     * style is a combination of all providers&#x2019; information in priority order.
+     * style is a combination of all providers’ information in priority order.
      * 
      * For GTK widgets, any {@link Gtk.StyleContext} returned by
      * {@link Gtk.Widget.get_style_context} will already have a {@link Gdk.Display}
@@ -112946,7 +113626,7 @@ export interface Builder {
      * a different way if needed so.
      * 
      * If you are using custom styling on an applications, you probably want then
-     * to make your style information prevail to the theme&#x2019;s, so you must use
+     * to make your style information prevail to the theme’s, so you must use
      * a {@link Gtk.StyleProvider} with the `GTK_STYLE_PROVIDER_PRIORITY_APPLICATION`
      * priority, keep in mind that the user settings in
      * `XDG_CONFIG_HOME/gtk-4.0/gtk.css` will
@@ -113030,14 +113710,14 @@ export interface Builder {
          * Adds a style class to `context`, so later uses of the
          * style context will make use of this new class for styling.
          * 
-         * In the CSS file format, a {@link Gtk.Entry} defining a &#x201C;search&#x201D;
+         * In the CSS file format, a {@link Gtk.Entry} defining a “search”
          * class, would be matched by:
          * 
          * ```css
          * entry.search { ... }
          * ```
          * 
-         * While any widget defining a &#x201C;search&#x201D; class would be
+         * While any widget defining a “search” class would be
          * matched by:
          * ```css
          * .search { ... }
@@ -113157,7 +113837,7 @@ export interface Builder {
         /**
          * Attaches `context` to the given display.
          * 
-         * The display is used to add style information from &#x201C;global&#x201D;
+         * The display is used to add style information from “global”
          * style providers, such as the display's {@link Gtk.Settings} instance.
          * 
          * If you are using a {@link Gtk.StyleContext} returned from
@@ -113231,6 +113911,7 @@ export interface Builder {
             "notify::playing": (pspec: GObject.ParamSpec) => void;
             "notify::resource": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::stylesheet": (pspec: GObject.ParamSpec) => void;
             "notify::weight": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -113241,6 +113922,7 @@ export interface Builder {
             playing: boolean;
             resource: string;
             state: number;
+            stylesheet: GLib.Bytes | Uint8Array | null;
             weight: number;
         }
     }
@@ -113284,25 +113966,23 @@ export interface Builder {
      * 
      * ## The supported subset of SVG
      * 
-     * The paintable supports much of SVG 2, with some exceptions.
+     * The paintable supports much of [SVG 2](https://svgwg.org/svg2-draft/),
+     * including [animations](https://svgwg.org/specs/animations/), with some
+     * exceptions.
      * 
-     * Among the graphical elements, `<textPath>` and `<foreignObject>`
-     * are not supported.
+     * Among the graphical elements, `<textPath>` and `<foreignObject>` are
+     * not supported.
      * 
-     * Among the structural elements, `<view>` is not supported.
+     * In the `<filter>` element, the following primitives are not supported:
+     * feConvolveMatrix, feDiffuseLighting, feMorphology, feSpecularLighting.
      * 
-     * In the `<filter>` element, the following primitives are not
-     * supported: feConvolveMatrix, feDiffuseLighting,
-     * feMorphology, feSpecularLighting and feTurbulence.
+     * Support for the `mask` attribute is limited to just a url referring to
+     * the `<mask>` element by ID.
      * 
-     * Support for the `mask` attribute is limited to just a url
-     * referring to the `<mask>` element by ID.
+     * In animation elements, the parsing of `begin` and `end` attributes is
+     * limited, and the `min` and `max` attributes are not supported.
      * 
-     * In animation elements, the parsing of `begin` and `end` attributes
-     * is limited, and the `min` and `max` attributes are not supported.
-     * 
-     * Lastly, there is no interactivity, so links can't be activated
-     * and pseudo-classes like :hover have no effect in CSS.
+     * The interactive aspects of SVG are supported by {@link Gtk.SvgWidget}.
      * 
      * 
      * ## SVG Extensions
@@ -113320,6 +114000,7 @@ export interface Builder {
      * defines the circle to be shown in states 0 and 1, and animates a segment
      * of the circle.
      * 
+     * 
      * <image src="https://docs.gtk.org/gtk4/svg-renderer1.svg">
      * 
      * Note that the generated animations are implemented using standard
@@ -113328,48 +114009,39 @@ export interface Builder {
      * is therefore going to interfere with generated animations.
      * 
      * To connect general SVG animations to the states of the paintable,
-     * use the custom `gpa:states(...)` condition in the `begin` and `end`
+     * use the custom `StateChange(...)` condition in the `begin` and `end`
      * attributes of SVG animation elements. For example,
      * 
      *     <animate href='path1'
      *              attributeName='fill'
-     *              begin='gpa:states(0).begin'
+     *              begin='StateChange(1 2 3, 0)'
      *              dur='300ms'
      *              fill='freeze'
      *              from='black'
      *              to='magenta'/>
      * 
      * will make the fill color of path1 transition from black to
-     * magenta when the renderer enters state 0.
+     * magenta when the renderer enters state 0 from states 1, 2, or 3.
      * 
      * <image src="https://docs.gtk.org/gtk4/svg-renderer2.svg">
      * 
-     * The `gpa:states(...)` condition triggers for upcoming state changes
+     * The `StateChange(...)` condition triggers for upcoming state changes
      * as well, to support fade-out transitions. For example,
      * 
      *     <animate href='path1'
      *              attributeName='opacity'
-     *              begin='gpa:states(0).end -300ms'
+     *              begin='StateChange(0, 1 2 3) -300ms'
      *              dur='300ms'
      *              fill='freeze'
      *              from='1'
      *              to='0'/>
      * 
-     * will start a fade-out of path1 300ms before state 0 ends.
+     * will start a fade-out of path1 300ms before a transition from state
+     * 0 to 1, 2 or 3.
      * 
-     * A variant of the `gpa:states(...)` condition allows specifying
-     * both before and after states:
-     * 
-     *     <animate href='path1'
-     *              attributeName='opacity'
-     *              begin='gpa:states(0, 1 2)'
-     *              dur='300ms'
-     *              fill='freeze'
-     *              from='1'
-     *              to='0'/>
-     * 
-     * will start the animation when the state changes from 0 to 1 or
-     * from 0 to 2, but not when it changes from 0 to 3.
+     * States can be specified numerically, or by name. It is also possible
+     * to say `not STATE` instead of explictly listing all states that are
+     * different from `STATE`.
      * 
      * In addition to the `gpa:fill` and `gpa:stroke` attributes, symbolic
      * colors can also be specified as a custom paint server reference,
@@ -113447,6 +114119,13 @@ export interface Builder {
         set state(val: number);
 
         /**
+         * A CSS stylesheet to apply to the SVG.
+         * @since 4.24
+         */
+        get stylesheet(): GLib.Bytes | null;
+        set stylesheet(val: GLib.Bytes | Uint8Array | null);
+
+        /**
          * If not set to -1, this value overrides the weight used
          * when rendering the paintable.
          * @since 4.22
@@ -113520,6 +114199,12 @@ export interface Builder {
         get_state_names(): [string[] | null, number];
 
         /**
+         * Gets the CSS user stylesheet.
+         * @returns a {@link GLib.Bytes} with the CSS data
+         */
+        get_stylesheet(): GLib.Bytes | null;
+
+        /**
          * Gets the value of the weight property.
          * @returns the weight
          */
@@ -113550,14 +114235,14 @@ export interface Builder {
         /**
          * Stop any playing animations and state transitions.
          * 
-         * Animations can be paused and started repeatedly.
+         * SvgAnimations can be paused and started repeatedly.
          */
         pause(): void;
 
         /**
          * Start playing animations and state transitions.
          * 
-         * Animations can be paused and started repeatedly.
+         * SvgAnimations can be paused and started repeatedly.
          */
         play(): void;
 
@@ -113605,6 +114290,13 @@ export interface Builder {
         set_overflow(overflow: Overflow): void;
 
         /**
+         * Sets a settings object holding settinsg used when
+         * rendering the SVG.
+         * @param settings the settings object
+         */
+        set_settings(settings: Settings | null): void;
+
+        /**
          * Sets the state of the paintable.
          * 
          * If the paintable is currently playing, the state change
@@ -113614,6 +114306,16 @@ export interface Builder {
          * @param state the state to set, as a value between 0 and 63
          */
         set_state(state: number): void;
+
+        /**
+         * Sets a CSS user stylesheet to use.
+         * 
+         * Note that styles are applied at load time,
+         * so this function must be called before
+         * loading SVG.
+         * @param bytes CSS data
+         */
+        set_stylesheet(bytes: GLib.Bytes | Uint8Array | null): void;
 
         /**
          * Sets the weight that is used when rendering.
@@ -113905,6 +114607,588 @@ export interface Builder {
     }
 
 
+    namespace SvgWidget {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {
+            /**
+             * Emitted when a link or other element is activated.
+             * 
+             * Activating elements can be achieved by clicking
+             * or by hitting <kbd>Enter</kbd> while the element
+             * has focus.
+             * @signal
+             * @since 4.24
+             * @run-last
+             */
+            activate: (arg0: string | null, arg1: string | null) => void;
+            /**
+             * Signals that an error occurred.
+             * 
+             * Errors can occur both during parsing and during rendering.
+             * 
+             * The expected error values are in the {@link Gtk.SvgError} enumeration,
+             * context information about the location of parsing errors can
+             * be obtained with the various `gtk_svg_error` functions.
+             * 
+             * Parsing errors are never fatal, so the parsing will resume after
+             * the error. Errors may however cause parts of the given data or
+             * even all of it to not be parsed at all. So it is a useful idea
+             * to check that the parsing succeeds by connecting to this signal.
+             * 
+             * ::: note
+             *     This signal is emitted in the middle of parsing or rendering,
+             *     and if you handle it, you must be careful. Logging the errors
+             *     you receive is fine, but modifying the widget hierarchy or
+             *     changing the paintable state definitively isn't.
+             * 
+             *     If in doubt, defer to an idle.
+             * @signal
+             * @since 4.24
+             * @run-last
+             */
+            error: (arg0: GLib.Error) => void;
+            "notify::resource": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::stylesheet": (pspec: GObject.ParamSpec) => void;
+            "notify::svg": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Widget.ConstructorProps, Accessible.ConstructorProps, Buildable.ConstructorProps, ConstraintTarget.ConstructorProps {
+            resource: string;
+            state: number;
+            stylesheet: GLib.Bytes | Uint8Array | null;
+            svg: Svg;
+        }
+    }
+
+    /**
+     * A widget that renders SVG, with animations and event handling.
+     * 
+     * {@link Gtk.SvgWidget} uses {@link Gtk.Svg} internally, and should read
+     * its documentation to learn about the supported SVG features and
+     * extensions.
+     * 
+     * On top of the {@link Gtk.Svg} rendering, {@link Gtk.SvgWidget} adds event handling.
+     * <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> keys can be used
+     * to move the focus and <kbd>Enter</kbd> and clicks will activate links
+     * by emitting the `Gtk.SvgWidget::activate` signal.
+     * 
+     * The `tabindex` and `autofocus` attributes can be used to influence
+     * what elements act as focus locations, and where focus goes initially.
+     * 
+     * The styling of the SVG content is following input-related pseudo
+     * classes such as `:focus`, `:active`, `:hover` or `:visited`.
+     * 
+     * If {@link Gtk.Widget.has_tooltip} is set, then the content
+     * of `<title>` elements will be shown as tooltips.
+     * 
+     * SVG animations and different `<view>`s can be triggered by input
+     * events as well. The following events are supported: focus, blur,
+     * mouseenter, mouseleave, click.
+     * See the [SVG animation](https://svgwg.org/specs/animations/)
+     * specification for details.
+     * @gir-type Class
+     * @since 4.24
+     */
+    class SvgWidget extends Widget implements Accessible, Buildable, ConstraintTarget {
+        static $gtype: GObject.GType<SvgWidget>;
+
+        // Properties
+        /**
+         * Resource to load SVG data from.
+         * 
+         * This property is meant for use in ui files.
+         * @since 4.24
+         * @default null
+         */
+        get resource(): string;
+        set resource(val: string);
+
+        /**
+         * The current state of the renderer.
+         * 
+         * This can be a number between 0 and 63.
+         * @since 4.24
+         * @default 0
+         */
+        get state(): number;
+        set state(val: number);
+
+        /**
+         * A CSS stylesheet to apply to the SVG.
+         * @since 4.24
+         */
+        get stylesheet(): GLib.Bytes | null;
+        set stylesheet(val: GLib.Bytes | Uint8Array | null);
+
+        /**
+         * The GtkSvg paintable used for rendering.
+         * 
+         * This property is mainly useful for making details of the
+         * SVG rendering machinery available in the GTK inspector.
+         * 
+         * You should not modify the returned object.
+         * @since 4.24
+         * @read-only
+         */
+        get svg(): Svg;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: SvgWidget.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<SvgWidget.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](): SvgWidget;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof SvgWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SvgWidget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof SvgWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SvgWidget.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof SvgWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SvgWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Gets the current state of the widget.
+         * @returns the state
+         */
+        get_state(): number;
+
+        /**
+         * Gets the CSS user stylesheet.
+         * @returns a {@link GLib.Bytes} with the CSS data
+         */
+        get_stylesheet(): GLib.Bytes | null;
+
+        /**
+         * Loads SVG content into an existing SVG widget.
+         * 
+         * To track errors while loading SVG content, connect
+         * to the `Gtk.SvgWidget::error` signal.
+         * 
+         * This clears any previously loaded content.
+         * @param bytes the data to data
+         */
+        load_from_bytes(bytes: GLib.Bytes | Uint8Array): void;
+
+        /**
+         * Sets the state of the widget.
+         * 
+         * The state change will apply transitions that are defined
+         * in the SVG. See {@link Gtk.Svg} for details about states
+         * and transitions.
+         * @param state the state to set, as a value between 0 and 63
+         */
+        set_state(state: number): void;
+
+        /**
+         * Sets a CSS user stylesheet to use.
+         * 
+         * Note that styles are applied at load time, so this
+         * function must be called before loading SVG.
+         * @param bytes CSS data
+         */
+        set_stylesheet(bytes: GLib.Bytes | Uint8Array | null): void;
+
+        /**
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
+         * 
+         * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
+          * @category Inherited from Gtk.Accessible
+         */
+        get accessible_role(): AccessibleRole;
+        set accessible_role(val: AccessibleRole);
+
+        /**
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
+         * 
+         * The accessible role cannot be changed once set.
+         * @default Gtk.AccessibleRole.NONE
+          * @category Inherited from Gtk.Accessible
+         */
+        get accessibleRole(): AccessibleRole;
+        set accessibleRole(val: AccessibleRole);
+
+        /**
+         * Requests the user's screen reader to announce the given message.
+         * 
+         * This kind of notification is useful for messages that
+         * either have only a visual representation or that are not
+         * exposed visually at all, e.g. a notification about a
+         * successful operation.
+         * 
+         * Also, by using this API, you can ensure that the message
+         * does not interrupts the user's current screen reader output.
+         * @param message the string to announce
+         * @param priority the priority of the announcement
+         */
+        announce(message: string, priority: AccessibleAnnouncementPriority): void;
+
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         * 
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         * 
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
+
+        /**
+         * Retrieves the accessible parent for an accessible object.
+         * 
+         * This function returns `NULL` for top level widgets.
+         * @returns the accessible parent
+         */
+        get_accessible_parent(): Accessible | null;
+
+        /**
+         * Retrieves the accessible role of an accessible object.
+         * @returns the accessible role
+         */
+        get_accessible_role(): AccessibleRole;
+
+        /**
+         * Retrieves the implementation for the given accessible object.
+         * @returns the accessible implementation object
+         */
+        get_at_context(): ATContext;
+
+        /**
+         * Queries the coordinates and dimensions of this accessible
+         * 
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations, e.g. to get the bounds from an ignored
+         * child widget.
+         * @returns true if the bounds are valid, and false otherwise
+         */
+        get_bounds(): [boolean, number, number, number, number];
+
+        /**
+         * Retrieves the first accessible child of an accessible object.
+         * @returns the first accessible child
+         */
+        get_first_accessible_child(): Accessible | null;
+
+        /**
+         * Retrieves the next accessible sibling of an accessible object
+         * @returns the next accessible sibling
+         */
+        get_next_accessible_sibling(): Accessible | null;
+
+        /**
+         * Queries a platform state, such as focus.
+         * 
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations, e.g. to get platform state from an ignored
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
+         * @param state platform state to query
+         * @returns the value of state for the accessible
+         */
+        get_platform_state(state: AccessiblePlatformState): boolean;
+
+        /**
+         * Resets the accessible property to its default value.
+         * @param property the accessible property
+         */
+        reset_property(property: AccessibleProperty): void;
+
+        /**
+         * Resets the accessible relation to its default value.
+         * @param relation the accessible relation
+         */
+        reset_relation(relation: AccessibleRelation): void;
+
+        /**
+         * Resets the accessible state to its default value.
+         * @param state the accessible state
+         */
+        reset_state(state: AccessibleState): void;
+
+        /**
+         * Sets the parent and sibling of an accessible object.
+         * 
+         * This function is meant to be used by accessible implementations that are
+         * not part of the widget hierarchy, and but act as a logical bridge between
+         * widgets. For instance, if a widget creates an object that holds metadata
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
+         * interface, you will use this function to ensure that the parent of each
+         * child widget is the metadata object, and the parent of each metadata
+         * object is the container widget.
+         * @param parent the parent accessible object
+         * @param next_sibling the sibling accessible object
+         */
+        set_accessible_parent(parent: Accessible | null, next_sibling: Accessible | null): void;
+
+        /**
+         * Updates the next accessible sibling.
+         * 
+         * That might be useful when a new child of a custom accessible
+         * is created, and it needs to be linked to a previous child.
+         * @param new_sibling the new next accessible sibling to set
+         */
+        update_next_accessible_sibling(new_sibling: Accessible | null): void;
+
+        /**
+         * Informs ATs that the platform state has changed.
+         * 
+         * This function should be used by {@link Gtk.Accessible} implementations that
+         * have a platform state but are not widgets. Widgets handle platform
+         * states automatically.
+         * @param state the platform state to update
+         */
+        update_platform_state(state: AccessiblePlatformState): void;
+
+        /**
+         * Updates an array of accessible properties.
+         * 
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
+         * property change must be communicated to assistive technologies.
+         * 
+         * This function is meant to be used by language bindings.
+         * @param properties an array of accessible properties
+         * @param values an array of `GValues`, one for each property
+         */
+        update_property(properties: AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
+        /**
+         * Updates an array of accessible relations.
+         * 
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
+         * relation change must be communicated to assistive technologies.
+         * 
+         * This function is meant to be used by language bindings.
+         * @param relations an array of accessible relations
+         * @param values an array of `GValues`, one for each relation
+         */
+        update_relation(relations: AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
+        /**
+         * Updates an array of accessible states.
+         * 
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
+         * state change must be communicated to assistive technologies.
+         * 
+         * This function is meant to be used by language bindings.
+         * @param states an array of accessible states
+         * @param values an array of `GValues`, one for each state
+         */
+        update_state(states: AccessibleState[], values: (GObject.Value | any)[]): void;
+
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         * 
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         * 
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+
+        /**
+         * Retrieves the accessible parent for an accessible object.
+         * 
+         * This function returns `NULL` for top level widgets.
+         * @virtual
+         */
+        vfunc_get_accessible_parent(): Accessible | null;
+
+        /**
+         * Retrieves the implementation for the given accessible object.
+         * @virtual
+         */
+        vfunc_get_at_context(): ATContext | null;
+
+        /**
+         * Queries the coordinates and dimensions of this accessible
+         * 
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations, e.g. to get the bounds from an ignored
+         * child widget.
+         * @virtual
+         */
+        vfunc_get_bounds(): [boolean, number, number, number, number];
+
+        /**
+         * Retrieves the first accessible child of an accessible object.
+         * @virtual
+         */
+        vfunc_get_first_accessible_child(): Accessible | null;
+
+        /**
+         * Retrieves the next accessible sibling of an accessible object
+         * @virtual
+         */
+        vfunc_get_next_accessible_sibling(): Accessible | null;
+
+        /**
+         * Queries a platform state, such as focus.
+         * 
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations, e.g. to get platform state from an ignored
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
+         * @param state platform state to query
+         * @virtual
+         */
+        vfunc_get_platform_state(state: AccessiblePlatformState): boolean;
+
+        /**
+         * Gets the ID of the `buildable` object.
+         * 
+         * {@link Gtk.Builder} sets the name based on the ID attribute
+         * of the `<object>` tag used to construct the `buildable`.
+         * @returns the ID of the buildable object
+         */
+        get_buildable_id(): string | null;
+
+        /**
+         * Adds a child to `buildable`. `type` is an optional string
+         * describing how the child should be added.
+         * @param builder a {@link Gtk.Builder}
+         * @param child child to add
+         * @param type kind of child or `null`
+         * @virtual
+         */
+        vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
+
+        /**
+         * Similar to `gtk_buildable_parser_finished()` but is
+         * called once for each custom tag handled by the `buildable`.
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
+         * @param tagname the name of the tag
+         * @param data user data created in custom_tag_start
+         * @virtual
+         */
+        vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
+
+        /**
+         * Called at the end of each custom element handled by
+         * the buildable.
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
+         * @param tagname name of tag
+         * @param data user data that will be passed in to parser functions
+         * @virtual
+         */
+        vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
+
+        /**
+         * Called for each unknown element under `<child>`.
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
+         * @param tagname name of tag
+         * @virtual
+         */
+        vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, BuildableParser, never];
+
+        /**
+         * The getter corresponding to `set_id`. Implement this
+         *   if you implement `set_id`.
+         * @virtual
+         */
+        vfunc_get_id(): string;
+
+        /**
+         * Retrieves the internal child called `childname` of the `buildable` object.
+         * @param builder a {@link Gtk.Builder}
+         * @param childname name of child
+         * @virtual
+         */
+        vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
+
+        /**
+         * Called when a builder finishes the parsing
+         *  of a UI definition. It is normally not necessary to implement this,
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
+         * @param builder 
+         * @virtual
+         */
+        vfunc_parser_finished(builder: Builder): void;
+
+        /**
+         * Sets a property of a buildable object.
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
+         *  interface is created.
+         * @param builder 
+         * @param name 
+         * @param value 
+         * @virtual
+         */
+        vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
+
+        /**
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
+         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   attribute to it.
+         * @param id 
+         * @virtual
+         */
+        vfunc_set_id(id: string): void;
+    }
+
+
     namespace Switch {
         // Signal signatures
         interface SignalSignatures extends Widget.SignalSignatures {
@@ -114015,9 +115299,9 @@ export interface Builder {
      * 
      * ```
      * switch
-     * &#x251C;&#x2500;&#x2500; image
-     * &#x251C;&#x2500;&#x2500; image
-     * &#x2570;&#x2500;&#x2500; slider
+     * ├── image
+     * ├── image
+     * ╰── slider
      * ```
      * 
      * {@link Gtk.Switch} has four css nodes, the main node with the name switch and
@@ -114084,7 +115368,7 @@ export interface Builder {
 
         // Methods
         /**
-         * Gets whether the {@link Gtk.Switch} is in its &#x201C;on&#x201D; or &#x201C;off&#x201D; state.
+         * Gets whether the {@link Gtk.Switch} is in its “on” or “off” state.
          * @returns `true` if the {@link Gtk.Switch} is active, and `false` otherwise
          */
         get_active(): boolean;
@@ -114411,7 +115695,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -114427,14 +115711,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -114474,7 +115758,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -114491,14 +115775,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -114598,7 +115882,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -114717,9 +116001,9 @@ export interface Builder {
              * selection, the variant without it does not.
              * There are too many key combinations to list them all here.
              * 
-             * - <kbd>&#x2190;</kbd>, <kbd>&#x2192;</kbd>, <kbd>&#x2191;</kbd>, <kbd>&#x2193;</kbd>
+             * - <kbd>←</kbd>, <kbd>→</kbd>, <kbd>↑</kbd>, <kbd>↓</kbd>
              *   move by individual characters/lines
-             * - <kbd>Ctrl</kbd>+<kbd>&#x2190;</kbd>, etc. move by words/paragraphs
+             * - <kbd>Ctrl</kbd>+<kbd>←</kbd>, etc. move by words/paragraphs
              * - <kbd>Home</kbd> and <kbd>End</kbd> move to the ends of the buffer
              * @signal
              * @action
@@ -114814,9 +116098,11 @@ export interface Builder {
             "notify::visible": (pspec: GObject.ParamSpec) => void;
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -114874,8 +116160,8 @@ export interface Builder {
      * so that the cursor position is visible.
      * 
      * When using an entry for passwords and other sensitive information,
-     * it can be put into &#x201C;password mode&#x201D; using {@link Gtk.Text.set_visibility}.
-     * In this mode, entered text is displayed using an &#x201C;invisible&#x201D; character.
+     * it can be put into “password mode” using {@link Gtk.Text.set_visibility}.
+     * In this mode, entered text is displayed using an “invisible” character.
      * By default, GTK picks the best invisible character that is available
      * in the current font, but it can be changed with
      * {@link Gtk.Text.set_invisible_char}.
@@ -114935,15 +116221,14 @@ export interface Builder {
      * 
      * ```
      * text[.read-only]
-     * &#x251C;&#x2500;&#x2500; placeholder
-     * &#x251C;&#x2500;&#x2500; undershoot.left
-     * &#x251C;&#x2500;&#x2500; undershoot.right
-     * &#x251C;&#x2500;&#x2500; [selection]
-     * &#x251C;&#x2500;&#x2500; [cursor-handle[.top]
-     * &#x251C;&#x2500;&#x2500; [cursor-handle.bottom]
-     * &#x251C;&#x2500;&#x2500; [block-cursor]
-     * &#x251C;&#x2500;&#x2500; [cursor-handle[.top/.bottom][.insertion-cursor]]
-     * &#x2570;&#x2500;&#x2500; [window.popup]
+     * ├── placeholder
+     * ├── undershoot.left
+     * ├── undershoot.right
+     * ├── [selection]
+     * ├── [block-cursor]
+     * ├── [cursor-handle[.top/.bottom][.insertion-cursor]]
+     * ├── [preedit[.whole][.selection][.prediction][.prefix/.suffix][.spelling-error][.compose-error]]
+     * ╰── [window.popup]
      * ```
      * 
      * {@link Gtk.Text} has a main node with the name `text`. Depending on the properties
@@ -114965,6 +116250,19 @@ export interface Builder {
      * class depending on where they are shown in relation to the selection. If
      * there is just a single handle for the text cursor, it gets the style class
      * `.insertion-cursor`.
+     * 
+     * If using an input method with a pre-edit buffer, this string will be styled
+     * with the `preedit` CSS node, the different style classes express the possible
+     * roles of a piece of text in the pre-edit buffer:
+     * 
+     * - `.whole` denotes the parts of the pre-edit buffer without a special role
+     * - `.selection`, `.prefix` and `.suffix` style classes will be used to
+     *   highlight the specific portions of the pre-edit buffer being edited and its
+     *   surroundings
+     * - `.prediction` will be used for parts of the pre-edit buffer not typed by the
+     *   user (e.g. autocompletion)
+     * - `.spelling-error` and `.compose-error` will be respectively used to indicate
+     *   errors in spelling or character composition (e.g. non-existent transliterations).
      * 
      * # Accessibility
      * 
@@ -115106,14 +116404,14 @@ export interface Builder {
         set inputPurpose(val: InputPurpose);
 
         /**
-         * The character to used when masking contents (in &#x201C;password mode&#x201D;).
+         * The character to used when masking contents (in “password mode”).
          * @default 42
          */
         get invisible_char(): number;
         set invisible_char(val: number);
 
         /**
-         * The character to used when masking contents (in &#x201C;password mode&#x201D;).
+         * The character to used when masking contents (in “password mode”).
          * @default 42
          */
         get invisibleChar(): number;
@@ -115230,7 +116528,7 @@ export interface Builder {
         set truncateMultiline(val: boolean);
 
         /**
-         * If false, the text is masked with the &#x201C;invisible char&#x201D;.
+         * If false, the text is masked with the “invisible char”.
          * @default true
          */
         get visibility(): boolean;
@@ -115427,7 +116725,7 @@ export interface Builder {
          * This usually means that the dialog containing `self` will
          * be closed, since the default widget is usually one of
          * the dialog buttons.
-         * @param activates true to activate window&#x2019;s default widget on   <kbd>Enter</kbd> keypress
+         * @param activates true to activate window’s default widget on   <kbd>Enter</kbd> keypress
          */
         set_activates_default(activates: boolean): void;
 
@@ -115476,7 +116774,7 @@ export interface Builder {
         set_input_purpose(purpose: InputPurpose): void;
 
         /**
-         * Sets the character to use when in &#x201C;password mode&#x201D;.
+         * Sets the character to use when in “password mode”.
          * 
          * By default, GTK picks the best invisible char available in the
          * current font. If you set the invisible char to 0, then the user
@@ -115579,6 +116877,24 @@ export interface Builder {
         set accessibleRole(val: AccessibleRole);
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -115617,6 +116933,22 @@ export interface Builder {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Widget | null;
+        set input_interceptor(val: Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Widget | null;
+        set inputInterceptor(val: Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -116145,7 +117477,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -116193,7 +117525,7 @@ export interface Builder {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -116241,6 +117573,13 @@ export interface Builder {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -116260,6 +117599,13 @@ export interface Builder {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -116368,6 +117714,21 @@ export interface Builder {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -116452,6 +117813,13 @@ export interface Builder {
          * @virtual
          */
         vfunc_do_insert_text(text: string, length: number, position: number): number;
+
+        /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
 
         /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
@@ -116869,7 +118237,7 @@ export interface Builder {
 
         // Virtual methods
         /**
-         * Emits the &#x201C;apply-tag&#x201D; signal on `buffer`.
+         * Emits the “apply-tag” signal on `buffer`.
          * 
          * The default handler for the signal applies
          * `tag` to the given range. `start` and `end` do
@@ -116891,11 +118259,11 @@ export interface Builder {
          * an undo stack. {@link Gtk.TextBuffer} maintains a count of calls to
          * `gtk_text_buffer_begin_user_action()` that have not been closed with
          * a call to `gtk_text_buffer_end_user_action()`, and emits the
-         * &#x201C;begin-user-action&#x201D; and &#x201C;end-user-action&#x201D; signals only for the
+         * “begin-user-action” and “end-user-action” signals only for the
          * outermost pair of calls. This allows you to build user actions
          * from other user actions.
          * 
-         * The &#x201C;interactive&#x201D; buffer mutation functions, such as
+         * The “interactive” buffer mutation functions, such as
          * {@link Gtk.TextBuffer.insert_interactive}, automatically call
          * begin/end user action around the buffer operations they perform,
          * so there's no need to add extra calls if you user action consists
@@ -116933,9 +118301,9 @@ export interface Builder {
          * 
          * The anchor will be counted as one character in character counts, and
          * when obtaining the buffer contents as a string, will be represented
-         * by the Unicode &#x201C;object replacement character&#x201D; 0xFFFC. Note that the
-         * &#x201C;slice&#x201D; variants for obtaining portions of the buffer as a string
-         * include this character for child anchors, but the &#x201C;text&#x201D; variants do
+         * by the Unicode “object replacement character” 0xFFFC. Note that the
+         * “slice” variants for obtaining portions of the buffer as a string
+         * include this character for child anchors, but the “text” variants do
          * not. E.g. see {@link Gtk.TextBuffer.get_slice} and
          * {@link Gtk.TextBuffer.get_text}.
          * 
@@ -116953,9 +118321,9 @@ export interface Builder {
          * 
          * The image will be counted as one character in character counts,
          * and when obtaining the buffer contents as a string, will be
-         * represented by the Unicode &#x201C;object replacement character&#x201D; 0xFFFC.
-         * Note that the &#x201C;slice&#x201D; variants for obtaining portions of the buffer
-         * as a string include this character for paintable, but the &#x201C;text&#x201D;
+         * represented by the Unicode “object replacement character” 0xFFFC.
+         * Note that the “slice” variants for obtaining portions of the buffer
+         * as a string include this character for paintable, but the “text”
          * variants do not. e.g. see {@link Gtk.TextBuffer.get_slice} and
          * {@link Gtk.TextBuffer.get_text}.
          * @param iter location to insert the paintable
@@ -117008,10 +118376,10 @@ export interface Builder {
         vfunc_redo(): void;
 
         /**
-         * Emits the &#x201C;remove-tag&#x201D; signal.
+         * Emits the “remove-tag” signal.
          * 
          * The default handler for the signal removes all occurrences
-         * of `tag` from the given range. `start` and `end` don&#x2019;t have
+         * of `tag` from the given range. `start` and `end` don’t have
          * to be in order.
          * @param tag a {@link Gtk.TextTag}
          * @param start one bound of range to be untagged
@@ -117070,7 +118438,7 @@ export interface Builder {
         add_selection_clipboard(clipboard: Gdk.Clipboard): void;
 
         /**
-         * Emits the &#x201C;apply-tag&#x201D; signal on `buffer`.
+         * Emits the “apply-tag” signal on `buffer`.
          * 
          * The default handler for the signal applies
          * `tag` to the given range. `start` and `end` do
@@ -117082,9 +118450,9 @@ export interface Builder {
         apply_tag(tag: TextTag, start: TextIter, end: TextIter): void;
 
         /**
-         * Emits the &#x201C;apply-tag&#x201D; signal on `buffer`.
+         * Emits the “apply-tag” signal on `buffer`.
          * 
-         * Calls {@link Gtk.TextTagTable.lookup} on the buffer&#x2019;s
+         * Calls {@link Gtk.TextTagTable.lookup} on the buffer’s
          * tag table to get a {@link Gtk.TextTag}, then calls
          * {@link Gtk.TextBuffer.apply_tag}.
          * @param name name of a named {@link Gtk.TextTag}
@@ -117137,11 +118505,11 @@ export interface Builder {
          * an undo stack. {@link Gtk.TextBuffer} maintains a count of calls to
          * `gtk_text_buffer_begin_user_action()` that have not been closed with
          * a call to `gtk_text_buffer_end_user_action()`, and emits the
-         * &#x201C;begin-user-action&#x201D; and &#x201C;end-user-action&#x201D; signals only for the
+         * “begin-user-action” and “end-user-action” signals only for the
          * outermost pair of calls. This allows you to build user actions
          * from other user actions.
          * 
-         * The &#x201C;interactive&#x201D; buffer mutation functions, such as
+         * The “interactive” buffer mutation functions, such as
          * {@link Gtk.TextBuffer.insert_interactive}, automatically call
          * begin/end user action around the buffer operations they perform,
          * so there's no need to add extra calls if you user action consists
@@ -117174,13 +118542,13 @@ export interface Builder {
          * 
          * If `mark_name` is `null`, the mark is anonymous; otherwise, the mark
          * can be retrieved by name using {@link Gtk.TextBuffer.get_mark}.
-         * If a mark has left gravity, and text is inserted at the mark&#x2019;s
+         * If a mark has left gravity, and text is inserted at the mark’s
          * current location, the mark will be moved to the left of the
          * newly-inserted text. If the mark has right gravity
          * (`left_gravity` = `false`), the mark will end up on the right of
          * newly-inserted text. The standard left-to-right cursor is a mark
          * with right gravity (when you type, the cursor stays on the right
-         * side of the text you&#x2019;re typing).
+         * side of the text you’re typing).
          * 
          * The caller of this function does not own a
          * reference to the returned {@link Gtk.TextMark}, so you can ignore the
@@ -117198,7 +118566,7 @@ export interface Builder {
 
         /**
          * Copies the currently-selected text to a clipboard,
-         * then deletes said text if it&#x2019;s editable.
+         * then deletes said text if it’s editable.
          * @param clipboard the {@link Gdk.Clipboard} object to cut to
          * @param default_editable default editability of the buffer
          */
@@ -117210,7 +118578,7 @@ export interface Builder {
          * The order of `start` and `end` is not actually relevant;
          * `gtk_text_buffer_delete()` will reorder them.
          * 
-         * This function actually emits the &#x201C;delete-range&#x201D; signal, and
+         * This function actually emits the “delete-range” signal, and
          * the default handler of that signal deletes the text. Because the
          * buffer is modified, all outstanding iterators become invalid after
          * calling this function; however, the `start` and `end` will be
@@ -117235,12 +118603,12 @@ export interface Builder {
         delete_interactive(start_iter: TextIter, end_iter: TextIter, default_editable: boolean): boolean;
 
         /**
-         * Deletes `mark`, so that it&#x2019;s no longer located anywhere in the
+         * Deletes `mark`, so that it’s no longer located anywhere in the
          * buffer.
          * 
          * Removes the reference the buffer holds to the mark, so if
-         * you haven&#x2019;t called `g_object_ref()` on the mark, it will be freed.
-         * Even if the mark isn&#x2019;t freed, most operations on `mark` become
+         * you haven’t called `g_object_ref()` on the mark, it will be freed.
+         * Even if the mark isn’t freed, most operations on `mark` become
          * invalid, until it gets added to a buffer again with
          * {@link Gtk.TextBuffer.add_mark}. Use {@link Gtk.TextMark.get_deleted}
          * to find out if a mark has been removed from its buffer.
@@ -117260,11 +118628,11 @@ export interface Builder {
         delete_mark_by_name(name: string): void;
 
         /**
-         * Deletes the range between the &#x201C;insert&#x201D; and &#x201C;selection_bound&#x201D; marks,
+         * Deletes the range between the “insert” and “selection_bound” marks,
          * that is, the currently-selected text.
          * 
          * If `interactive` is `true`, the editability of the selection will be
-         * considered (users can&#x2019;t delete uneditable text).
+         * considered (users can’t delete uneditable text).
          * @param interactive whether the deletion is caused by user interaction
          * @param default_editable whether the buffer is editable by default
          * @returns whether there was a non-empty selection to delete
@@ -117316,7 +118684,7 @@ export interface Builder {
         /**
          * Gets the number of characters in the buffer.
          * 
-         * Note that characters and bytes are not the same, you can&#x2019;t e.g.
+         * Note that characters and bytes are not the same, you can’t e.g.
          * expect the contents of the buffer in string form to be this
          * many bytes long.
          * 
@@ -117337,7 +118705,7 @@ export interface Builder {
         get_enable_undo(): boolean;
 
         /**
-         * Initializes `iter` with the &#x201C;end iterator,&#x201D; one past the last valid
+         * Initializes `iter` with the “end iterator,” one past the last valid
          * character in the text buffer.
          * 
          * If dereferenced with {@link Gtk.TextIter.get_char}, the end
@@ -117358,7 +118726,7 @@ export interface Builder {
          * Returns the mark that represents the cursor (insertion point).
          * 
          * Equivalent to calling {@link Gtk.TextBuffer.get_mark}
-         * to get the mark named &#x201C;insert&#x201D;, but very slightly more
+         * to get the mark named “insert”, but very slightly more
          * efficient, and involves less typing.
          * @returns insertion point mark
          */
@@ -117458,7 +118826,7 @@ export interface Builder {
          * to {@link Gtk.TextBuffer.set_modified} set the modification flag to
          * `false`.
          * 
-         * Used for example to enable a &#x201C;save&#x201D; function in a text editor.
+         * Used for example to enable a “save” function in a text editor.
          * @returns `true` if the buffer has been modified
          */
         get_modified(): boolean;
@@ -117467,15 +118835,15 @@ export interface Builder {
          * Returns the mark that represents the selection bound.
          * 
          * Equivalent to calling {@link Gtk.TextBuffer.get_mark}
-         * to get the mark named &#x201C;selection_bound&#x201D;, but very slightly
+         * to get the mark named “selection_bound”, but very slightly
          * more efficient, and involves less typing.
          * 
          * The currently-selected text in `buffer` is the region between the
-         * &#x201C;selection_bound&#x201D; and &#x201C;insert&#x201D; marks. If &#x201C;selection_bound&#x201D; and
-         * &#x201C;insert&#x201D; are in the same place, then there is no current selection.
+         * “selection_bound” and “insert” marks. If “selection_bound” and
+         * “insert” are in the same place, then there is no current selection.
          * {@link Gtk.TextBuffer.get_selection_bounds} is another convenient
          * function for handling the selection, if you just want to know whether
-         * there&#x2019;s a selection and what its bounds are.
+         * there’s a selection and what its bounds are.
          * @returns selection bound mark
          */
         get_selection_bound(): TextMark;
@@ -117529,7 +118897,7 @@ export interface Builder {
 
         /**
          * Get the {@link Gtk.TextTagTable} associated with this buffer.
-         * @returns the buffer&#x2019;s tag table
+         * @returns the buffer’s tag table
          */
         get_tag_table(): TextTagTable;
 
@@ -117553,7 +118921,7 @@ export interface Builder {
          * Inserts `len` bytes of `text` at position `iter`.
          * 
          * If `len` is -1, `text` must be nul-terminated and will be inserted in its
-         * entirety. Emits the &#x201C;insert-text&#x201D; signal; insertion actually occurs
+         * entirety. Emits the “insert-text” signal; insertion actually occurs
          * in the default handler for the signal. `iter` is invalidated when
          * insertion occurs (because the buffer contents change), but the
          * default signal handler revalidates it to point to the end of the
@@ -117579,9 +118947,9 @@ export interface Builder {
          * 
          * The anchor will be counted as one character in character counts, and
          * when obtaining the buffer contents as a string, will be represented
-         * by the Unicode &#x201C;object replacement character&#x201D; 0xFFFC. Note that the
-         * &#x201C;slice&#x201D; variants for obtaining portions of the buffer as a string
-         * include this character for child anchors, but the &#x201C;text&#x201D; variants do
+         * by the Unicode “object replacement character” 0xFFFC. Note that the
+         * “slice” variants for obtaining portions of the buffer as a string
+         * include this character for child anchors, but the “text” variants do
          * not. E.g. see {@link Gtk.TextBuffer.get_slice} and
          * {@link Gtk.TextBuffer.get_text}.
          * 
@@ -117646,9 +119014,9 @@ export interface Builder {
          * 
          * The image will be counted as one character in character counts,
          * and when obtaining the buffer contents as a string, will be
-         * represented by the Unicode &#x201C;object replacement character&#x201D; 0xFFFC.
-         * Note that the &#x201C;slice&#x201D; variants for obtaining portions of the buffer
-         * as a string include this character for paintable, but the &#x201C;text&#x201D;
+         * represented by the Unicode “object replacement character” 0xFFFC.
+         * Note that the “slice” variants for obtaining portions of the buffer
+         * as a string include this character for paintable, but the “text”
          * variants do not. e.g. see {@link Gtk.TextBuffer.get_slice} and
          * {@link Gtk.TextBuffer.get_text}.
          * @param iter location to insert the paintable
@@ -117660,7 +119028,7 @@ export interface Builder {
          * Copies text, tags, and paintables between `start` and `end`
          * and inserts the copy at `iter`.
          * 
-         * The order of `start` and `end` doesn&#x2019;t matter.
+         * The order of `start` and `end` doesn’t matter.
          * 
          * Used instead of simply getting/inserting text because it preserves
          * images and tags. If `start` and `end` are in a different buffer from
@@ -117679,7 +119047,7 @@ export interface Builder {
          * and inserts the copy at `iter`.
          * 
          * Same as {@link Gtk.TextBuffer.insert_range}, but does nothing
-         * if the insertion point isn&#x2019;t editable. The `default_editable`
+         * if the insertion point isn’t editable. The `default_editable`
          * parameter indicates whether the text is editable at `iter` if
          * no tags enclosing `iter` affect editability. Typically the result
          * of {@link Gtk.TextView.get_editable} is appropriate here.
@@ -117717,7 +119085,7 @@ export interface Builder {
          * at the cursor position, or the buffer selection will be replaced
          * if the selection is non-empty.
          * 
-         * Note: pasting is asynchronous, that is, we&#x2019;ll ask for the paste data
+         * Note: pasting is asynchronous, that is, we’ll ask for the paste data
          * and return, and at some point later after the main loop runs, the paste
          * data will be inserted.
          * @param clipboard the {@link Gdk.Clipboard} to paste from
@@ -117727,7 +119095,7 @@ export interface Builder {
         paste_clipboard(clipboard: Gdk.Clipboard, override_location: TextIter | null, default_editable: boolean): void;
 
         /**
-         * This function moves the &#x201C;insert&#x201D; and &#x201C;selection_bound&#x201D; marks
+         * This function moves the “insert” and “selection_bound” marks
          * simultaneously.
          * 
          * If you move them to the same place in two steps with
@@ -117749,7 +119117,7 @@ export interface Builder {
          * Removes all tags in the range between `start` and `end`.
          * 
          * Be careful with this function; it could remove tags added in code
-         * unrelated to the code you&#x2019;re currently writing. That is, using this
+         * unrelated to the code you’re currently writing. That is, using this
          * function is probably a bad idea if you have two or more unrelated
          * code sections that add tags.
          * @param start one bound of range to be untagged
@@ -117775,10 +119143,10 @@ export interface Builder {
         remove_selection_clipboard(clipboard: Gdk.Clipboard): void;
 
         /**
-         * Emits the &#x201C;remove-tag&#x201D; signal.
+         * Emits the “remove-tag” signal.
          * 
          * The default handler for the signal removes all occurrences
-         * of `tag` from the given range. `start` and `end` don&#x2019;t have
+         * of `tag` from the given range. `start` and `end` don’t have
          * to be in order.
          * @param tag a {@link Gtk.TextTag}
          * @param start one bound of range to be untagged
@@ -117787,9 +119155,9 @@ export interface Builder {
         remove_tag(tag: TextTag, start: TextIter, end: TextIter): void;
 
         /**
-         * Emits the &#x201C;remove-tag&#x201D; signal.
+         * Emits the “remove-tag” signal.
          * 
-         * Calls {@link Gtk.TextTagTable.lookup} on the buffer&#x2019;s
+         * Calls {@link Gtk.TextTagTable.lookup} on the buffer’s
          * tag table to get a {@link Gtk.TextTag}, then calls
          * {@link Gtk.TextBuffer.remove_tag}.
          * @param name name of a {@link Gtk.TextTag}
@@ -117799,7 +119167,7 @@ export interface Builder {
         remove_tag_by_name(name: string, start: TextIter, end: TextIter): void;
 
         /**
-         * This function moves the &#x201C;insert&#x201D; and &#x201C;selection_bound&#x201D; marks
+         * This function moves the “insert” and “selection_bound” marks
          * simultaneously.
          * 
          * If you move them in two steps with
@@ -117808,8 +119176,8 @@ export interface Builder {
          * inefficient since the temporarily-selected region will force stuff
          * to be recalculated. This function moves them as a unit, which can
          * be optimized.
-         * @param ins where to put the &#x201C;insert&#x201D; mark
-         * @param bound where to put the &#x201C;selection_bound&#x201D; mark
+         * @param ins where to put the “insert” mark
+         * @param bound where to put the “selection_bound” mark
          */
         select_range(ins: TextIter, bound: TextIter): void;
 
@@ -117882,7 +119250,7 @@ export interface Builder {
     }
 
     /**
-     * Marks a spot in a {@link Gtk.TextBuffer} where child widgets can be &#x201C;anchored&#x201D;.
+     * Marks a spot in a {@link Gtk.TextBuffer} where child widgets can be “anchored”.
      * 
      * The anchor can have multiple widgets anchored, to allow for multiple views.
      * @gir-type Class
@@ -117929,7 +119297,7 @@ export interface Builder {
          * Keep in mind that the child anchor will be unreferenced
          * when removed from the buffer, so you need to hold your own
          * reference (with `g_object_ref()`) if you plan to use this
-         * function &#x2014; otherwise all deleted child anchors will also
+         * function — otherwise all deleted child anchors will also
          * be finalized.
          * @returns `true` if the child anchor has been deleted from its buffer
          */
@@ -117975,11 +119343,11 @@ export interface Builder {
      * valid across buffer mutations, because their behavior is defined when
      * text is inserted or deleted. When text containing a mark is deleted,
      * the mark remains in the position originally occupied by the deleted
-     * text. When text is inserted at a mark, a mark with &#x201C;left gravity&#x201D; will
+     * text. When text is inserted at a mark, a mark with “left gravity” will
      * be moved to the beginning of the newly-inserted text, and a mark with
-     * &#x201C;right gravity&#x201D; will be moved to the end.
+     * “right gravity” will be moved to the end.
      * 
-     * Note that &#x201C;left&#x201D; and &#x201C;right&#x201D; here refer to logical direction (left
+     * Note that “left” and “right” here refer to logical direction (left
      * is the toward the start of the buffer); in some languages such as
      * Hebrew the logically-leftmost text is not actually on the left when
      * displayed.
@@ -118003,7 +119371,7 @@ export interface Builder {
         /**
          * Whether the mark has left gravity.
          * 
-         * When text is inserted at the mark&#x2019;s current location, if the mark
+         * When text is inserted at the mark’s current location, if the mark
          * has left gravity it will be moved to the left of the newly-inserted
          * text, otherwise to the right.
          * @construct-only
@@ -118014,7 +119382,7 @@ export interface Builder {
         /**
          * Whether the mark has left gravity.
          * 
-         * When text is inserted at the mark&#x2019;s current location, if the mark
+         * When text is inserted at the mark’s current location, if the mark
          * has left gravity it will be moved to the left of the newly-inserted
          * text, otherwise to the right.
          * @construct-only
@@ -118063,7 +119431,7 @@ export interface Builder {
          * Gets the buffer this mark is located inside.
          * 
          * Returns `null` if the mark is deleted.
-         * @returns the mark&#x2019;s {@link Gtk.TextBuffer}
+         * @returns the mark’s {@link Gtk.TextBuffer}
          */
         get_buffer(): TextBuffer | null;
 
@@ -118377,10 +119745,10 @@ export interface Builder {
      * {@link Gtk.TextBuffer} before using them with that buffer.
      * 
      * {@link Gtk.TextBuffer.create_tag} is the best way to create tags.
-     * See &#x201C;gtk4-demo&#x201D; for numerous examples.
+     * See “gtk4-demo” for numerous examples.
      * 
-     * For each property of {@link Gtk.TextTag}, there is a &#x201C;set&#x201D; property, e.g.
-     * &#x201C;font-set&#x201D; corresponds to &#x201C;font&#x201D;. These &#x201C;set&#x201D; properties reflect
+     * For each property of {@link Gtk.TextTag}, there is a “set” property, e.g.
+     * “font-set” corresponds to “font”. These “set” properties reflect
      * whether a property has been set or not.
      * 
      * They are maintained by GTK and you should not set them independently.
@@ -119557,7 +120925,7 @@ export interface Builder {
 
         /**
          * Get the tag priority.
-         * @returns The tag&#x2019;s priority.
+         * @returns The tag’s priority.
          */
         get_priority(): number;
 
@@ -119570,12 +120938,12 @@ export interface Builder {
          * the priorities of all the other tags in the table to maintain
          * a unique priority for each tag.
          * 
-         * Higher priority tags &#x201C;win&#x201D; if two tags both set the same text
+         * Higher priority tags “win” if two tags both set the same text
          * attribute. When adding a tag to a tag table, it will be assigned
          * the highest priority in the table by default; so normally the
          * precedence of a set of tags is the order in which they were added
          * to the table, or created with {@link Gtk.TextBuffer.create_tag},
-         * which adds the tag to the buffer&#x2019;s table automatically.
+         * which adds the tag to the buffer’s table automatically.
          * @param priority the new priority
          */
         set_priority(priority: number): void;
@@ -119623,7 +120991,7 @@ export interface Builder {
      * # GtkTextTagTables as GtkBuildable
      * 
      * The {@link Gtk.TextTagTable} implementation of the {@link Gtk.Buildable} interface
-     * supports adding tags by specifying &#x201C;tag&#x201D; as the &#x201C;type&#x201D; attribute
+     * supports adding tags by specifying “tag” as the “type” attribute
      * of a `<child>` element.
      * 
      * An example of a UI definition fragment specifying tags:
@@ -119685,7 +121053,7 @@ export interface Builder {
          * Calls `func` on each tag in `table`, with user data `data`.
          * 
          * Note that the table may not be modified while iterating
-         * over it (you can&#x2019;t add/remove tags).
+         * over it (you can’t add/remove tags).
          * @param func a function to call on each tag
          */
         foreach(func: TextTagTableForeach): void;
@@ -119707,8 +121075,8 @@ export interface Builder {
          * Remove a tag from the table.
          * 
          * If a {@link Gtk.TextBuffer} has `table` as its tag table, the tag is
-         * removed from the buffer. The table&#x2019;s reference to the tag is
-         * removed, so the tag will end up destroyed if you don&#x2019;t have
+         * removed from the buffer. The table’s reference to the tag is
+         * removed, so the tag will end up destroyed if you don’t have
          * a reference to it.
          * @param tag a {@link Gtk.TextTag}
          */
@@ -119805,7 +121173,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -119921,9 +121289,9 @@ export interface Builder {
              * selection, the variant without it does not.
              * There are too many key combinations to list them all here.
              * 
-             * - <kbd>&#x2190;</kbd>, <kbd>&#x2192;</kbd>, <kbd>&#x2191;</kbd>, <kbd>&#x2193;</kbd>
+             * - <kbd>←</kbd>, <kbd>→</kbd>, <kbd>↑</kbd>, <kbd>↓</kbd>
              *   move by individual characters/lines
-             * - <kbd>Ctrl</kbd>+<kbd>&#x2190;</kbd>, etc. move by words/paragraphs
+             * - <kbd>Ctrl</kbd>+<kbd>←</kbd>, etc. move by words/paragraphs
              * - <kbd>Home</kbd> and <kbd>End</kbd> move to the ends of the buffer
              * - <kbd>PgUp</kbd> and <kbd>PgDn</kbd> move vertically by pages
              * - <kbd>Ctrl</kbd>+<kbd>PgUp</kbd> and <kbd>Ctrl</kbd>+<kbd>PgDn</kbd>
@@ -120185,13 +121553,14 @@ export interface Builder {
      * 
      * ```
      * textview.view
-     * &#x251C;&#x2500;&#x2500; border.top
-     * &#x251C;&#x2500;&#x2500; border.left
-     * &#x251C;&#x2500;&#x2500; text
-     * &#x2502;   &#x2570;&#x2500;&#x2500; [selection]
-     * &#x251C;&#x2500;&#x2500; border.right
-     * &#x251C;&#x2500;&#x2500; border.bottom
-     * &#x2570;&#x2500;&#x2500; [window.popup]
+     * ├── border.top
+     * ├── border.left
+     * ├── text
+     * │   ├── [preedit[.whole][.selection][.prediction][.prefix/.suffix][.spelling-error][.compose-error]]
+     * │   ╰── [selection]
+     * ├── border.right
+     * ├── border.bottom
+     * ╰── [window.popup]
      * ```
      * 
      * {@link Gtk.TextView} has a main css node with name textview and style class .view,
@@ -120203,6 +121572,19 @@ export interface Builder {
      * 
      * If a context menu is opened, the window node will appear as a subnode
      * of the main node.
+     * 
+     * If using an input method with a pre-edit buffer, this string will be styled
+     * with a `preedit` subnode of the `text` node. the different style classes
+     * express the possible roles of a piece of text in the pre-edit buffer:
+     * 
+     * - `.whole` denotes the parts of the pre-edit buffer without a special role
+     * - `.selection`, `.prefix` and `.suffix` style classes will be used to
+     *   highlight the specific portions of the pre-edit buffer being edited and its
+     *   surroundings
+     * - `.prediction` will be used for parts of the pre-edit buffer not typed by the
+     *   user (e.g. autocompletion)
+     * - `.spelling-error` and `.compose-error` will be respectively used to indicate
+     *   errors in spelling or character composition (e.g. non-existent transliterations).
      * 
      * ## Accessibility
      * 
@@ -120689,7 +122071,7 @@ export interface Builder {
          * Display lines are created by line-wrapping a paragraph. If
          * wrapping is turned off, display lines and paragraphs will be the
          * same. Display lines are divided differently for each view, since
-         * they depend on the view&#x2019;s width; paragraphs are the same in all
+         * they depend on the view’s width; paragraphs are the same in all
          * views, since they depend on the contents of the {@link Gtk.TextBuffer}.
          * @param iter a {@link Gtk.TextIter}
          * @returns `true` if `iter` was moved and is not on the end iterator
@@ -120704,7 +122086,7 @@ export interface Builder {
          * Display lines are created by line-wrapping a paragraph. If
          * wrapping is turned off, display lines and paragraphs will be the
          * same. Display lines are divided differently for each view, since
-         * they depend on the view&#x2019;s width; paragraphs are the same in all
+         * they depend on the view’s width; paragraphs are the same in all
          * views, since they depend on the contents of the {@link Gtk.TextBuffer}.
          * @param iter a {@link Gtk.TextIter}
          * @returns `true` if `iter` was moved and is not on the end iterator
@@ -120727,7 +122109,7 @@ export interface Builder {
          * Display lines are created by line-wrapping a paragraph. If
          * wrapping is turned off, display lines and paragraphs will be the
          * same. Display lines are divided differently for each view, since
-         * they depend on the view&#x2019;s width; paragraphs are the same in all
+         * they depend on the view’s width; paragraphs are the same in all
          * views, since they depend on the contents of the {@link Gtk.TextBuffer}.
          * @param iter a {@link Gtk.TextIter}
          * @returns `true` if `iter` was moved and is not on the end iterator
@@ -120742,7 +122124,7 @@ export interface Builder {
          * Display lines are created by line-wrapping a paragraph. If
          * wrapping is turned off, display lines and paragraphs will be the
          * same. Display lines are divided differently for each view, since
-         * they depend on the view&#x2019;s width; paragraphs are the same in all
+         * they depend on the view’s width; paragraphs are the same in all
          * views, since they depend on the contents of the {@link Gtk.TextBuffer}.
          * @param iter a {@link Gtk.TextIter}
          * @returns `true` if `iter` was moved and is not on the end iterator
@@ -120767,7 +122149,7 @@ export interface Builder {
          * Returns the {@link Gtk.TextBuffer} being displayed by this text view.
          * 
          * The reference count on the buffer is not incremented; the caller
-         * of this function won&#x2019;t own a new reference.
+         * of this function won’t own a new reference.
          * @returns a {@link Gtk.TextBuffer}
          */
         get_buffer(): TextBuffer;
@@ -120788,7 +122170,7 @@ export interface Builder {
          * Note that if `iter` happens to be the actual cursor position, and
          * there is currently an IM preedit sequence being entered, the
          * returned locations will be adjusted to account for the preedit
-         * cursor&#x2019;s offset within the preedit sequence.
+         * cursor’s offset within the preedit sequence.
          * 
          * The rectangle position is in buffer coordinates; use
          * {@link Gtk.TextView.buffer_to_window_coords} to convert these
@@ -120833,7 +122215,7 @@ export interface Builder {
         /**
          * Gets the default indentation of paragraphs in `text_view`.
          * 
-         * Tags in the view&#x2019;s buffer may override the default.
+         * Tags in the view’s buffer may override the default.
          * The indentation may be negative.
          * @returns number of pixels of indentation
          */
@@ -120996,7 +122378,7 @@ export interface Builder {
          * Gets the default tabs for `text_view`.
          * 
          * Tags in the buffer may override the defaults. The returned array
-         * will be `null` if &#x201C;standard&#x201D; (8-space) tabs are used. Free the
+         * will be `null` if “standard” (8-space) tabs are used. Free the
          * return value with {@link Pango.TabArray.free}.
          * @returns copy of default tab array,   or `null` if standard tabs are used; must be freed with   {@link Pango.TabArray.free}.
          */
@@ -121077,7 +122459,7 @@ export interface Builder {
          * Moves a mark within the buffer so that it's
          * located within the currently-visible text area.
          * @param mark a {@link Gtk.TextMark}
-         * @returns `true` if the mark moved (wasn&#x2019;t already onscreen)
+         * @returns `true` if the mark moved (wasn’t already onscreen)
          */
         move_mark_onscreen(mark: TextMark): boolean;
 
@@ -121162,7 +122544,7 @@ export interface Builder {
          * 
          * Note that this function uses the currently-computed height of the
          * lines in the text buffer. Line heights are computed in an idle
-         * handler; so this function may not have the desired effect if it&#x2019;s
+         * handler; so this function may not have the desired effect if it’s
          * called before the height computations. To avoid oddness, consider
          * using {@link Gtk.TextView.scroll_to_mark} which saves a point to be
          * scrolled to after line validation.
@@ -121219,7 +122601,7 @@ export interface Builder {
          * The previous buffer displayed by the text view is unreferenced, and
          * a reference is added to `buffer`. If you owned a reference to `buffer`
          * before passing it to this function, you must remove that reference
-         * yourself; {@link Gtk.TextView} will not &#x201C;adopt&#x201D; it.
+         * yourself; {@link Gtk.TextView} will not “adopt” it.
          * @param buffer a {@link Gtk.TextBuffer}
          */
         set_buffer(buffer: TextBuffer | null): void;
@@ -121227,7 +122609,7 @@ export interface Builder {
         /**
          * Toggles whether the insertion point should be displayed.
          * 
-         * A buffer with no editable text probably shouldn&#x2019;t have a visible
+         * A buffer with no editable text probably shouldn’t have a visible
          * cursor, so you may want to turn the cursor off.
          * 
          * Note that this property may be overridden by the
@@ -121240,8 +122622,8 @@ export interface Builder {
          * Sets the default editability of the {@link Gtk.TextView}.
          * 
          * You can override this default setting with tags in the buffer,
-         * using the &#x201C;editable&#x201D; attribute of tags.
-         * @param setting whether it&#x2019;s editable
+         * using the “editable” attribute of tags.
+         * @param setting whether it’s editable
          */
         set_editable(setting: boolean): void;
 
@@ -121293,7 +122675,7 @@ export interface Builder {
         /**
          * Sets the default justification of text in `text_view`.
          * 
-         * Tags in the view&#x2019;s buffer may override the default.
+         * Tags in the view’s buffer may override the default.
          * @param justification justification
          */
         set_justification(justification: Justification): void;
@@ -121334,7 +122716,7 @@ export interface Builder {
          * Sets the default number of pixels of blank space
          * to put below paragraphs in `text_view`.
          * 
-         * May be overridden by tags applied to `text_view`&#x2019;s buffer.
+         * May be overridden by tags applied to `text_view`’s buffer.
          * @param pixels_below_lines pixels below paragraphs
          */
         set_pixels_below_lines(pixels_below_lines: number): void;
@@ -121343,7 +122725,7 @@ export interface Builder {
          * Sets the default number of pixels of blank space to leave between
          * display/wrapped lines within a paragraph.
          * 
-         * May be overridden by tags in `text_view`&#x2019;s buffer.
+         * May be overridden by tags in `text_view`’s buffer.
          * @param pixels_inside_wrap default number of pixels between wrapped lines
          */
         set_pixels_inside_wrap(pixels_inside_wrap: number): void;
@@ -121933,7 +123315,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -122082,7 +123464,7 @@ export interface Builder {
     }
 
     /**
-     * Shows a button which remains &#x201C;pressed-in&#x201D; when clicked.
+     * Shows a button which remains “pressed-in” when clicked.
      * 
      * <picture>
      *   <source srcset="https://docs.gtk.org/gtk4/toggle-button-dark.png" media="(prefers-color-scheme: dark)">
@@ -122094,7 +123476,7 @@ export interface Builder {
      * A toggle button is created by calling either {@link Gtk.ToggleButton.new} or
      * {@link Gtk.ToggleButton.new_with_label}. If using the former, it is advisable
      * to pack a widget, (such as a {@link Gtk.Label} and/or a {@link Gtk.Image}), into the toggle
-     * button&#x2019;s container. (See {@link Gtk.Button} for more information).
+     * button’s container. (See {@link Gtk.Button} for more information).
      * 
      * The state of a {@link Gtk.ToggleButton} can be set specifically using
      * {@link Gtk.ToggleButton.set_active}, and retrieved using
@@ -122139,7 +123521,7 @@ export interface Builder {
      *   window = gtk_window_new ();
      *   box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
      * 
-     *   text = "Hi, I&#x2019;m toggle button one";
+     *   text = "Hi, I’m toggle button one";
      *   toggle1 = gtk_toggle_button_new_with_label (text);
      * 
      *   g_signal_connect (toggle1, "toggled",
@@ -122147,7 +123529,7 @@ export interface Builder {
      *                     NULL);
      *   gtk_box_append (GTK_BOX (box), toggle1);
      * 
-     *   text = "Hi, I&#x2019;m toggle button two";
+     *   text = "Hi, I’m toggle button two";
      *   toggle2 = gtk_toggle_button_new_with_label (text);
      *   g_signal_connect (toggle2, "toggled",
      *                     G_CALLBACK (output_state),
@@ -122230,7 +123612,7 @@ export interface Builder {
         /**
          * Sets the status of the toggle button.
          * 
-         * Set to `true` if you want the {@link Gtk.ToggleButton} to be &#x201C;pressed in&#x201D;,
+         * Set to `true` if you want the {@link Gtk.ToggleButton} to be “pressed in”,
          * and `false` to raise it.
          * 
          * If the status of the button changes, this action causes the
@@ -122312,7 +123694,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -122328,14 +123710,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -122375,7 +123757,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -122392,14 +123774,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -122441,7 +123823,7 @@ export interface Builder {
      *   object. This is the object that we are about to display as a tooltip,
      *   and can be manipulated in your callback using functions like
      *   {@link Gtk.Tooltip.set_icon}. There are functions for setting
-     *   the tooltip&#x2019;s markup, setting an image from a named icon, or even
+     *   the tooltip’s markup, setting an image from a named icon, or even
      *   putting in a custom widget.
      * 
      * - Return `true` from your ::query-tooltip handler. This causes the tooltip
@@ -122650,7 +124032,7 @@ export interface Builder {
      * - Left and right arrow keys, when combined with <kbd>Shift</kbd> or
      *   <kbd>Ctrl</kbd>+<kbd>Shift</kbd>, will expand or collapse, depending on
      *   the locale's text direction.
-     * - <kbd>Ctrl</kbd>+<kbd>&#x2423;</kbd> toggles the expander state.
+     * - <kbd>Ctrl</kbd>+<kbd>␣</kbd> toggles the expander state.
      * 
      * The row can also expand on drag gestures.
      * 
@@ -122667,9 +124049,9 @@ export interface Builder {
      * 
      * ```
      * treeexpander
-     * &#x251C;&#x2500;&#x2500; [indent]*
-     * &#x251C;&#x2500;&#x2500; [expander]
-     * &#x2570;&#x2500;&#x2500; <child>
+     * ├── [indent]*
+     * ├── [expander]
+     * ╰── <child>
      * ```
      * 
      * {@link Gtk.TreeExpander} has zero or one CSS nodes with the name "expander" that
@@ -123213,7 +124595,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -123818,18 +125200,18 @@ export interface Builder {
      * A {@link Gtk.TreeModelFilter} is a tree model which wraps another tree model,
      * and can do the following things:
      * 
-     * - Filter specific rows, based on data from a &#x201C;visible column&#x201D;, a column
+     * - Filter specific rows, based on data from a “visible column”, a column
      *   storing booleans indicating whether the row should be filtered or not,
-     *   or based on the return value of a &#x201C;visible function&#x201D;, which gets a
+     *   or based on the return value of a “visible function”, which gets a
      *   model, iter and user_data and returns a boolean indicating whether the
      *   row should be filtered or not.
      * 
-     * - Modify the &#x201C;appearance&#x201D; of the model, using a modify function.
+     * - Modify the “appearance” of the model, using a modify function.
      *   This is extremely powerful and allows for just changing some
      *   values and also for creating a completely different model based
      *   on the given child model.
      * 
-     * - Set a different root node, also known as a &#x201C;virtual root&#x201D;. You can pass
+     * - Set a different root node, also known as a “virtual root”. You can pass
      *   in a {@link Gtk.TreePath} indicating the root node for the filter at construction
      *   time.
      * 
@@ -123860,8 +125242,8 @@ export interface Builder {
      * of its child nodes is a frequently occurring use case. Therefore,
      * {@link Gtk.TreeModelFilter} explicitly supports this. For example, when a node
      * does not have any children, you might not want the node to be visible.
-     * As soon as the first row is added to the node&#x2019;s child level (or the
-     * last row removed), the node&#x2019;s visibility should be updated.
+     * As soon as the first row is added to the node’s child level (or the
+     * last row removed), the node’s visibility should be updated.
      * 
      * This introduces a dependency from the node on its child nodes. In order
      * to accommodate this, {@link Gtk.TreeModelFilter} must make sure the necessary
@@ -123875,7 +125257,7 @@ export interface Builder {
      * 
      * Beware, however, that this explicit support is limited to these two
      * cases. For example, if you want a node to be visible only if two nodes
-     * in a child&#x2019;s child level (2 levels deeper) are visible, you are on your
+     * in a child’s child level (2 levels deeper) are visible, you are on your
      * own. In this case, either rely on {@link Gtk.TreeStore} to emit all signals
      * because it does not implement reference counting, or for models that
      * do implement reference counting, obtain references on these child levels
@@ -123958,9 +125340,9 @@ export interface Builder {
         // Methods
         /**
          * This function should almost never be called. It clears the `filter`
-         * of any cached iterators that haven&#x2019;t been reffed with
+         * of any cached iterators that haven’t been reffed with
          * `gtk_tree_model_ref_node()`. This might be useful if the child model
-         * being filtered is static (and doesn&#x2019;t change often) and there has been
+         * being filtered is static (and doesn’t change often) and there has been
          * a lot of unreffed access to nodes. As a side effect of this function,
          * all unreffed iters will be invalid.
          */
@@ -123978,7 +125360,7 @@ export interface Builder {
         /**
          * Converts `child_path` to a path relative to `filter`. That is, `child_path`
          * points to a path in the child model. The rerturned path will point to the
-         * same row in the filtered model. If `child_path` isn&#x2019;t a valid path on the
+         * same row in the filtered model. If `child_path` isn’t a valid path on the
          * child model or points to a row which is not visible in `filter`, then `null`
          * is returned.
          * @param child_path A {@link Gtk.TreePath} to convert.
@@ -124063,7 +125445,7 @@ export interface Builder {
          *               GtkTreeIter  *iter,
          *               gpointer      data)
          * {
-         *   // Visible if row is non-empty and first column is &#x201C;HI&#x201D;
+         *   // Visible if row is non-empty and first column is “HI”
          *   char *str;
          *   gboolean visible = FALSE;
          * 
@@ -124105,7 +125487,7 @@ export interface Builder {
 
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-         * the source of a DND operation. If the source doesn&#x2019;t implement
+         * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
          * @returns `true` if the row can be dragged
@@ -124134,7 +125516,7 @@ export interface Builder {
 
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-         * the source of a DND operation. If the source doesn&#x2019;t implement
+         * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
          * @virtual
@@ -124222,8 +125604,8 @@ export interface Builder {
         /**
          * Generates a string representation of the iter.
          * 
-         * This string is a &#x201C;:&#x201D; separated list of numbers.
-         * For example, &#x201C;4:10:0:3&#x201D; would be an acceptable
+         * This string is a “:” separated list of numbers.
+         * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}
          * @returns a newly-allocated string
@@ -124298,7 +125680,7 @@ export interface Builder {
         /**
          * Sets `iter` to be the parent of `child`.
          * 
-         * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+         * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
@@ -124524,7 +125906,7 @@ export interface Builder {
         /**
          * Sets `iter` to be the parent of `child`.
          * 
-         * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+         * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
@@ -124788,9 +126170,9 @@ export interface Builder {
         // Methods
         /**
          * This function should almost never be called.  It clears the `tree_model_sort`
-         * of any cached iterators that haven&#x2019;t been reffed with
+         * of any cached iterators that haven’t been reffed with
          * `gtk_tree_model_ref_node()`.  This might be useful if the child model being
-         * sorted is static (and doesn&#x2019;t change often) and there has been a lot of
+         * sorted is static (and doesn’t change often) and there has been a lot of
          * unreffed access to nodes.  As a side effect of this function, all unreffed
          * iters will be invalid.
          */
@@ -124808,7 +126190,7 @@ export interface Builder {
         /**
          * Converts `child_path` to a path relative to `tree_model_sort`.  That is,
          * `child_path` points to a path in the child model.  The returned path will
-         * point to the same row in the sorted model.  If `child_path` isn&#x2019;t a valid
+         * point to the same row in the sorted model.  If `child_path` isn’t a valid
          * path on the child model, then `null` is returned.
          * @param child_path A {@link Gtk.TreePath} to convert
          * @returns A newly allocated {@link Gtk.TreePath}
@@ -124849,10 +126231,10 @@ export interface Builder {
         iter_is_valid(iter: TreeIter): boolean;
 
         /**
-         * This resets the default sort function to be in the &#x201C;unsorted&#x201D; state.  That
+         * This resets the default sort function to be in the “unsorted” state.  That
          * is, it is in the same order as the child model. It will re-sort the model
          * to be in the same order as the child model only if the {@link Gtk.TreeModelSort}
-         * is in &#x201C;unsorted&#x201D; state.
+         * is in “unsorted” state.
          */
         reset_default_sort_func(): void;
 
@@ -124878,7 +126260,7 @@ export interface Builder {
 
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-         * the source of a DND operation. If the source doesn&#x2019;t implement
+         * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
          * @returns `true` if the row can be dragged
@@ -124907,7 +126289,7 @@ export interface Builder {
 
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-         * the source of a DND operation. If the source doesn&#x2019;t implement
+         * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
          * @virtual
@@ -124995,8 +126377,8 @@ export interface Builder {
         /**
          * Generates a string representation of the iter.
          * 
-         * This string is a &#x201C;:&#x201D; separated list of numbers.
-         * For example, &#x201C;4:10:0:3&#x201D; would be an acceptable
+         * This string is a “:” separated list of numbers.
+         * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}
          * @returns a newly-allocated string
@@ -125071,7 +126453,7 @@ export interface Builder {
         /**
          * Sets `iter` to be the parent of `child`.
          * 
-         * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+         * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
@@ -125297,7 +126679,7 @@ export interface Builder {
         /**
          * Sets `iter` to be the parent of `child`.
          * 
-         * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+         * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
@@ -125429,7 +126811,7 @@ export interface Builder {
          * this function.
          * 
          * If `sort_func` is `null`, then there will be no default comparison function.
-         * This means that once the model  has been sorted, it can&#x2019;t go back to the
+         * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
@@ -125489,7 +126871,7 @@ export interface Builder {
          * this function.
          * 
          * If `sort_func` is `null`, then there will be no default comparison function.
-         * This means that once the model  has been sorted, it can&#x2019;t go back to the
+         * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
@@ -125786,7 +127168,7 @@ export interface Builder {
      * 
      * The GtkTreeStore implementation of the {@link Gtk.Buildable} interface allows
      * to specify the model columns with a `<columns>` element that may contain
-     * multiple `<column>` elements, each specifying one model column. The &#x201C;type&#x201D;
+     * multiple `<column>` elements, each specifying one model column. The “type”
      * attribute specifies the data type for the column.
      * 
      * An example of a UI Definition fragment for a tree store:
@@ -125874,7 +127256,7 @@ export interface Builder {
         /**
          * Inserts a new row after `sibling`.
          * 
-         * If `sibling` is `null`, then the row will be prepended to `parent`&#x2019;s children.
+         * If `sibling` is `null`, then the row will be prepended to `parent`’s children.
          * 
          * If `parent` and `sibling` are `null`, then the row will be prepended to the
          * toplevel.
@@ -125893,7 +127275,7 @@ export interface Builder {
         /**
          * Inserts a new row before `sibling`.
          * 
-         * If `sibling` is `null`, then the row will be appended to `parent`&#x2019;s children.
+         * If `sibling` is `null`, then the row will be appended to `parent`’s children.
          * 
          * If `parent` and `sibling` are `null`, then the row will be appended to the
          * toplevel.
@@ -126141,7 +127523,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -126166,7 +127548,7 @@ export interface Builder {
          * at the same depth as `dest_path`. i.e., can we drop the data in
          * `value` at that location. `dest_path` does not have to
          * exist; the return value will almost certainly be `false` if the
-         * parent of `dest_path` doesn&#x2019;t exist, though.
+         * parent of `dest_path` doesn’t exist, though.
          * @param dest_path destination row
          * @param value the data being dropped
          * @returns `true` if a drop is possible before `dest_path`
@@ -126191,7 +127573,7 @@ export interface Builder {
          * at the same depth as `dest_path`. i.e., can we drop the data in
          * `value` at that location. `dest_path` does not have to
          * exist; the return value will almost certainly be `false` if the
-         * parent of `dest_path` doesn&#x2019;t exist, though.
+         * parent of `dest_path` doesn’t exist, though.
          * @param dest_path destination row
          * @param value the data being dropped
          * @virtual
@@ -126220,7 +127602,7 @@ export interface Builder {
 
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-         * the source of a DND operation. If the source doesn&#x2019;t implement
+         * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
          * @returns `true` if the row can be dragged
@@ -126249,7 +127631,7 @@ export interface Builder {
 
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-         * the source of a DND operation. If the source doesn&#x2019;t implement
+         * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
          * @virtual
@@ -126337,8 +127719,8 @@ export interface Builder {
         /**
          * Generates a string representation of the iter.
          * 
-         * This string is a &#x201C;:&#x201D; separated list of numbers.
-         * For example, &#x201C;4:10:0:3&#x201D; would be an acceptable
+         * This string is a “:” separated list of numbers.
+         * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}
          * @returns a newly-allocated string
@@ -126413,7 +127795,7 @@ export interface Builder {
         /**
          * Sets `iter` to be the parent of `child`.
          * 
-         * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+         * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
@@ -126639,7 +128021,7 @@ export interface Builder {
         /**
          * Sets `iter` to be the parent of `child`.
          * 
-         * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+         * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
@@ -126771,7 +128153,7 @@ export interface Builder {
          * this function.
          * 
          * If `sort_func` is `null`, then there will be no default comparison function.
-         * This means that once the model  has been sorted, it can&#x2019;t go back to the
+         * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
@@ -126831,7 +128213,7 @@ export interface Builder {
          * this function.
          * 
          * If `sort_func` is `null`, then there will be no default comparison function.
-         * This means that once the model  has been sorted, it can&#x2019;t go back to the
+         * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
@@ -127156,15 +128538,15 @@ export interface Builder {
      * 
      * ```
      * treeview.view
-     * &#x251C;&#x2500;&#x2500; header
-     * &#x2502;   &#x251C;&#x2500;&#x2500; button
-     * &#x2502;   &#x2502;   &#x2570;&#x2500;&#x2500; [sort-indicator]
-     * &#x250A;   &#x250A;
-     * &#x2502;   &#x2570;&#x2500;&#x2500; button
-     * &#x2502;       &#x2570;&#x2500;&#x2500; [sort-indicator]
-     * &#x2502;
-     * &#x251C;&#x2500;&#x2500; [rubberband]
-     * &#x2570;&#x2500;&#x2500; [dndtarget]
+     * ├── header
+     * │   ├── button
+     * │   │   ╰── [sort-indicator]
+     * ┊   ┊
+     * │   ╰── button
+     * │       ╰── [sort-indicator]
+     * │
+     * ├── [rubberband]
+     * ╰── [dndtarget]
      * ```
      * 
      * {@link Gtk.TreeView} has a main CSS node with name `treeview` and style class `.view`.
@@ -127541,8 +128923,8 @@ export interface Builder {
 
         // Methods
         /**
-         * Appends `column` to the list of columns. If `tree_view` has &#x201C;fixed_height&#x201D;
-         * mode enabled, then `column` must have its &#x201C;sizing&#x201D; property set to be
+         * Appends `column` to the list of columns. If `tree_view` has “fixed_height”
+         * mode enabled, then `column` must have its “sizing” property set to be
          * GTK_TREE_VIEW_COLUMN_FIXED.
          * @param column The {@link Gtk.TreeViewColumn} to add.
          * @returns The number of columns in `tree_view` after appending.
@@ -127710,7 +129092,7 @@ export interface Builder {
 
         /**
          * Fills in `path` and `focus_column` with the current path and focus column.  If
-         * the cursor isn&#x2019;t currently set, then *`path` will be `null`.  If no column
+         * the cursor isn’t currently set, then *`path` will be `null`.  If no column
          * currently has focus, then *`focus_column` will be `null`.
          * 
          * The returned {@link Gtk.TreePath} must be freed with `gtk_tree_path_free()` when
@@ -127882,8 +129264,8 @@ export interface Builder {
         get_show_expanders(): boolean;
 
         /**
-         * Returns the column of `tree_view`&#x2019;s model which is being used for
-         * displaying tooltips on `tree_view`&#x2019;s rows.
+         * Returns the column of `tree_view`’s model which is being used for
+         * displaying tooltips on `tree_view`’s rows.
          * @returns the index of the tooltip column that is currently being used, or -1 if this is disabled.
          */
         get_tooltip_column(): number;
@@ -127899,7 +129281,7 @@ export interface Builder {
          * tooltips the row returned will be the cursor row. When `true`, then any of
          * `model`, `path` and `iter` which have been provided will be set to point to
          * that row and the corresponding model. `x` and `y` will always be converted
-         * to be relative to `tree_view`&#x2019;s bin_window if `keyboard_tooltip` is `false`.
+         * to be relative to `tree_view`’s bin_window if `keyboard_tooltip` is `false`.
          * @param x the x coordinate (relative to widget coordinates)
          * @param y the y coordinate (relative to widget coordinates)
          * @param keyboard_tip whether this is a keyboard tooltip or not
@@ -127928,7 +129310,7 @@ export interface Builder {
         /**
          * This inserts the `column` into the `tree_view` at `position`.  If `position` is
          * -1, then the column is inserted at the end. If `tree_view` has
-         * &#x201C;fixed_height&#x201D; mode enabled, then `column` must have its &#x201C;sizing&#x201D; property
+         * “fixed_height” mode enabled, then `column` must have its “sizing” property
          * set to be GTK_TREE_VIEW_COLUMN_FIXED.
          * @param column The {@link Gtk.TreeViewColumn} to be inserted.
          * @param position The position to insert `column` in.
@@ -127941,8 +129323,8 @@ export interface Builder {
          * with the given cell renderer and a {@link Gtk.TreeCellDataFunc} to set cell renderer
          * attributes (normally using data from the model). See also
          * `gtk_tree_view_column_set_cell_data_func()`, `gtk_tree_view_column_pack_start()`.
-         * If `tree_view` has &#x201C;fixed_height&#x201D; mode enabled, then the new column will have its
-         * &#x201C;sizing&#x201D; property set to be GTK_TREE_VIEW_COLUMN_FIXED.
+         * If `tree_view` has “fixed_height” mode enabled, then the new column will have its
+         * “sizing” property set to be GTK_TREE_VIEW_COLUMN_FIXED.
          * @param position Position to insert, -1 for append
          * @param title column title
          * @param cell cell renderer for column
@@ -128049,7 +129431,7 @@ export interface Builder {
          * this function is called.  If it isn't, you probably want to be
          * using `gtk_tree_view_scroll_to_cell()`.
          * 
-         * If either `tree_x` or `tree_y` are -1, then that direction isn&#x2019;t scrolled.
+         * If either `tree_x` or `tree_y` are -1, then that direction isn’t scrolled.
          * @param tree_x X coordinate of new top-left pixel of visible area, or -1
          * @param tree_y Y coordinate of new top-left pixel of visible area, or -1
          */
@@ -128078,7 +129460,7 @@ export interface Builder {
 
         /**
          * Sets the current keyboard focus to be at `path`, and selects it.  This is
-         * useful when you want to focus the user&#x2019;s attention on a particular row.  If
+         * useful when you want to focus the user’s attention on a particular row.  If
          * `focus_column` is not `null`, then focus is given to the column specified by
          * it. Additionally, if `focus_column` is specified, and `start_editing` is
          * `true`, then editing should be started in the specified cell.
@@ -128102,7 +129484,7 @@ export interface Builder {
 
         /**
          * Sets the current keyboard focus to be at `path`, and selects it.  This is
-         * useful when you want to focus the user&#x2019;s attention on a particular row.  If
+         * useful when you want to focus the user’s attention on a particular row.  If
          * `focus_column` is not `null`, then focus is given to the column specified by
          * it. If `focus_column` and `focus_cell` are not `null`, and `focus_column`
          * contains 2 or more editable or activatable cells, then focus is given to
@@ -128135,7 +129517,7 @@ export interface Builder {
          * the tree interactively (this is sometimes called "typeahead find").
          * 
          * Note that even if this is `false`, the user can still initiate a search
-         * using the &#x201C;start-interactive-search&#x201D; key binding.
+         * using the “start-interactive-search” key binding.
          * @param enable_search `true`, if the user can search interactively
          */
         set_enable_search(enable_search: boolean): void;
@@ -128227,7 +129609,7 @@ export interface Builder {
          * {@link Gtk.TreeDragDestIface}.  Both {@link Gtk.TreeStore} and {@link Gtk.ListStore} support
          * these.  If `reorderable` is `true`, then the user can reorder the
          * model by dragging and dropping rows. The developer can listen to
-         * these changes by connecting to the model&#x2019;s `Gtk.TreeModel::row-inserted`
+         * these changes by connecting to the model’s `Gtk.TreeModel::row-inserted`
          * and `Gtk.TreeModel::row-deleted` signals. The reordering is implemented
          * by setting up the tree view as a drag source and destination.
          * Therefore, drag and drop can not be used in a reorderable view for any
@@ -128260,7 +129642,7 @@ export interface Builder {
          * Sets `column` as the column where the interactive search code should
          * search in for the current model.
          * 
-         * If the search column is set, users can use the &#x201C;start-interactive-search&#x201D;
+         * If the search column is set, users can use the “start-interactive-search”
          * key binding to bring up search popup. The enable-search property controls
          * whether simply typing text will also start an interactive search.
          * 
@@ -128322,7 +129704,7 @@ export interface Builder {
         /**
          * If you only plan to have simple (text-only) tooltips on full rows, you
          * can use this function to have {@link Gtk.TreeView} handle these automatically
-         * for you. `column` should be set to the column in `tree_view`&#x2019;s model
+         * for you. `column` should be set to the column in `tree_view`’s model
          * containing the tooltip texts, or -1 to disable this feature.
          * 
          * When enabled, {@link Gtk.Widget.has_tooltip} will be set to `true` and
@@ -128330,7 +129712,7 @@ export interface Builder {
          * 
          * Note that the signal handler sets the text with `gtk_tooltip_set_markup()`,
          * so &, <, etc have to be escaped in the text.
-         * @param column an integer, which is a valid column number for `tree_view`&#x2019;s model
+         * @param column an integer, which is a valid column number for `tree_view`’s model
          */
         set_tooltip_column(column: number): void;
 
@@ -128745,7 +130127,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -129115,7 +130497,7 @@ export interface Builder {
          * column of the model to get a value from, and the `attribute` is the
          * parameter on `cell_renderer` to be set from the value. So for example
          * if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from
          * column 2.
          * @param cell_renderer the {@link Gtk.CellRenderer} to set attributes on
          * @param attribute An attribute on the renderer
@@ -129153,7 +130535,7 @@ export interface Builder {
          * column on the `iter`, and use that value to set the attribute on the cell
          * renderer.  This is used primarily by the {@link Gtk.TreeView}.
          * @param tree_model The {@link Gtk.TreeModel} to get the cell renderers attributes from.
-         * @param iter The {@link Gtk.TreeIter} to get the cell renderer&#x2019;s attributes from.
+         * @param iter The {@link Gtk.TreeIter} to get the cell renderer’s attributes from.
          * @param is_expander `true`, if the row has children
          * @param is_expanded `true`, if the row has visible children
          */
@@ -129172,7 +130554,7 @@ export interface Builder {
         clear_attributes(cell_renderer: CellRenderer): void;
 
         /**
-         * Emits the &#x201C;clicked&#x201D; signal on the column.  This function will only work if
+         * Emits the “clicked” signal on the column.  This function will only work if
          * `tree_column` is clickable.
          */
         clicked(): void;
@@ -129253,7 +130635,7 @@ export interface Builder {
          * when this column is selected for sorting.
          * 
          * See {@link Gtk.TreeViewColumn.set_sort_column_id}.
-         * @returns the current `sort_column_id` for this column, or -1 if   this column can&#x2019;t be used for sorting
+         * @returns the current `sort_column_id` for this column, or -1 if   this column can’t be used for sorting
          */
         get_sort_column_id(): number;
 
@@ -129379,7 +130761,7 @@ export interface Builder {
          * option set, then the last column gets all extra space.  By default, every
          * column is created with this `false`.
          * 
-         * Along with &#x201C;fixed-width&#x201D;, the &#x201C;expand&#x201D; property changes when the column is
+         * Along with “fixed-width”, the “expand” property changes when the column is
          * resized by the user.
          * @param expand `true` if the column should expand to fill available space.
          */
@@ -129389,13 +130771,13 @@ export interface Builder {
          * If `fixed_width` is not -1, sets the fixed width of `tree_column`; otherwise
          * unsets it.  The effective value of `fixed_width` is clamped between the
          * minimum and maximum width of the column; however, the value stored in the
-         * &#x201C;fixed-width&#x201D; property is not clamped.  If the column sizing is
+         * “fixed-width” property is not clamped.  If the column sizing is
          * {@link Gtk.TreeViewColumnSizing.GROW_ONLY} or {@link Gtk.TreeViewColumnSizing.AUTOSIZE}, setting
          * a fixed width overrides the automatically calculated width.  Note that
          * `fixed_width` is only a hint to GTK; the width actually allocated to the
          * column may be greater or less than requested.
          * 
-         * Along with &#x201C;expand&#x201D;, the &#x201C;fixed-width&#x201D; property changes when the column is
+         * Along with “expand”, the “fixed-width” property changes when the column is
          * resized by the user.
          * @param fixed_width The new fixed width, in pixels, or -1.
          */
@@ -129404,7 +130786,7 @@ export interface Builder {
         /**
          * Sets the maximum width of the `tree_column`.  If `max_width` is -1, then the
          * maximum width is unset.  Note, the column can actually be wider than max
-         * width if it&#x2019;s the last column in a view.  In this case, the column expands to
+         * width if it’s the last column in a view.  In this case, the column expands to
          * fill any extra space.
          * @param max_width The maximum width of the column in pixels, or -1.
          */
@@ -129591,7 +130973,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -129628,7 +131010,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -129705,7 +131087,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -130478,7 +131860,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -130550,7 +131932,7 @@ export interface Builder {
      * {@link Gtk.Box}, and so on.
      * 
      * The {@link Gtk.Viewport} will start scrolling content only if allocated
-     * less than the child widget&#x2019;s minimum size in a given orientation.
+     * less than the child widget’s minimum size in a given orientation.
      * 
      * # CSS nodes
      * 
@@ -131049,7 +132431,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -131280,7 +132662,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -131356,7 +132738,7 @@ export interface Builder {
              */
             "move-focus": (arg0: DirectionType) => void;
             /**
-             * Emitted when the widget&#x2019;s tooltip is about to be shown.
+             * Emitted when the widget’s tooltip is about to be shown.
              * 
              * This happens when the {@link Gtk.Widget.has_tooltip} property
              * is true and the hover timeout has expired with the cursor hovering
@@ -131522,6 +132904,29 @@ export interface Builder {
      * 
      * It manages the widget lifecycle, layout, states and style.
      * 
+     * ### Minimum and natural size
+     * 
+     * In order to understand geometry management of widgets in GTK, it is
+     * helpful to understand the different terminology surrounding sizing of
+     * widgets.
+     * 
+     * The two primary terms are: *minimum size* and *natural size*.
+     * 
+     * As a general rule: the *minimum size* is the size required to display
+     * the minimum amount of content in a widget. A widget cannot be
+     * allocated less than the minimum size it requires.
+     * 
+     * The *natural size* is the amount of content that a widget prefers to
+     * display in normal conditions.
+     * 
+     * A widget may be allocated more than the natural size it prefers, or
+     * less, depending on the layout management of its parent container.
+     * What to do when the widget is allocated a different size than
+     * the one it prefers is entirely left to the widget implementation:
+     * some widgets decide to add extra room, other widgets may disclose
+     * additional content, other widgets may decide to hide content, or show
+     * a different layout entirely.
+     * 
      * ### Height-for-width Geometry Management
      * 
      * GTK uses a height-for-width (and width-for-height) geometry management
@@ -131572,7 +132977,7 @@ export interface Builder {
      * After the toplevel window has initially requested its size in both
      * dimensions it can go on to allocate itself a reasonable size (or a size
      * previously specified with {@link Gtk.Window.set_default_size}). During the
-     * recursive allocation process it&#x2019;s important to note that request cycles
+     * recursive allocation process it’s important to note that request cycles
      * will be recursively executed while widgets allocate their children.
      * Each widget, once allocated a size, will go on to first share the
      * space in one orientation among its children and then request each child's
@@ -131662,7 +133067,7 @@ export interface Builder {
      * means that widgets are positioned such that the typographical baseline of
      * widgets in the same row are aligned. This happens if a widget supports
      * baselines, has a vertical alignment using baselines, and is inside
-     * a widget that supports baselines and has a natural &#x201C;row&#x201D; that it aligns to
+     * a widget that supports baselines and has a natural “row” that it aligns to
      * the baseline, or a baseline assigned to it by the grandparent.
      * 
      * Baseline alignment support for a widget is also done by the
@@ -131748,8 +133153,8 @@ export interface Builder {
      * 
      * Unlike regular interface descriptions, {@link Gtk.WidgetClass.set_template}
      * will expect a `<template>` tag as a direct child of the toplevel
-     * `<interface>` tag. The `<template>` tag must specify the &#x201C;class&#x201D; attribute
-     * which must be the type name of the widget. Optionally, the &#x201C;parent&#x201D;
+     * `<interface>` tag. The `<template>` tag must specify the “class” attribute
+     * which must be the type name of the widget. Optionally, the “parent”
      * attribute may be specified to specify the direct parent type of the widget
      * type; this is ignored by {@link Gtk.Builder} but can be used by UI design tools to
      * introspect what kind of properties and internal children exist for a given
@@ -131767,7 +133172,7 @@ export interface Builder {
      * `<template>` tag.
      * 
      * Since, unlike the `<object>` tag, the `<template>` tag does not contain an
-     * &#x201C;id&#x201D; attribute, if you need to refer to the instance of the object itself that
+     * “id” attribute, if you need to refer to the instance of the object itself that
      * the template will create, simply refer to the template class name in an
      * applicable element content.
      * 
@@ -132521,8 +133926,8 @@ export interface Builder {
 
         /**
          * @param name ID of the child defined in the template XML
-         * @param internal_child whether the child should be accessible as an &#x201C;internal-child&#x201D;   when this class is used in GtkBuilder XML
-         * @param struct_offset The offset into the composite widget&#x2019;s instance   public or private structure where the automated child pointer should be set,   or 0 to not assign the pointer
+         * @param internal_child whether the child should be accessible as an “internal-child”   when this class is used in GtkBuilder XML
+         * @param struct_offset The offset into the composite widget’s instance   public or private structure where the automated child pointer should be set,   or 0 to not assign the pointer
          */
         static bind_template_child_full(name: string, internal_child: boolean, struct_offset: bigint | number): void;
 
@@ -132685,7 +134090,7 @@ export interface Builder {
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * {@link Gtk.Widget.child_focus} on the widget&#x2019;s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          * 
          * The default `Gtk.Widget::keynav-failed` handler returns
          * false for {@link Gtk.DirectionType.TAB-FORWARD} and
@@ -132707,7 +134112,7 @@ export interface Builder {
         vfunc_keynav_failed(direction: DirectionType): boolean;
 
         /**
-         * Causes a widget to be mapped if it isn&#x2019;t already.
+         * Causes a widget to be mapped if it isn’t already.
          * 
          * This function is only for use in widget implementations.
          * @virtual
@@ -132721,7 +134126,7 @@ export interface Builder {
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          * 
-         * See [GtkWidget&#x2019;s geometry management section](https://docs.gtk.org/gtk4/class.Widget.html#height-for-width-geometry-management) for
+         * See [GtkWidget’s geometry management section](https://docs.gtk.org/gtk4/class.Widget.html#height-for-width-geometry-management) for
          * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
@@ -132744,8 +134149,8 @@ export interface Builder {
         vfunc_move_focus(direction: DirectionType): void;
 
         /**
-         * Signal emitted when &#x201C;has-tooltip&#x201D; is `true` and the
-         *   hover timeout has expired with the cursor hovering &#x201C;above&#x201D;
+         * Signal emitted when “has-tooltip” is `true` and the
+         *   hover timeout has expired with the cursor hovering “above”
          *   widget; or emitted when widget got focus in keyboard mode.
          * @param x 
          * @param y 
@@ -132762,13 +134167,13 @@ export interface Builder {
          * and all its parent containers, then the widget will be realized
          * and mapped automatically.
          * 
-         * Realizing a widget requires all the widget&#x2019;s parent widgets to be
-         * realized; calling this function realizes the widget&#x2019;s parents
+         * Realizing a widget requires all the widget’s parent widgets to be
+         * realized; calling this function realizes the widget’s parents
          * in addition to `widget` itself. If a widget is not yet inside a
          * toplevel window when you realize it, bad things will happen.
          * 
          * This function is primarily used in widget implementations, and
-         * isn&#x2019;t very useful otherwise. Many times when you think you might
+         * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
          * `Gtk.Widget::realize`.
@@ -132797,7 +134202,7 @@ export interface Builder {
         /**
          * Flags a widget to be displayed.
          * 
-         * Any widget that isn&#x2019;t shown will not appear on the screen.
+         * Any widget that isn’t shown will not appear on the screen.
          * 
          * Remember that you have to show the containers containing a widget,
          * in addition to the widget itself, before it will appear onscreen.
@@ -132842,7 +134247,7 @@ export interface Builder {
         vfunc_system_setting_changed(settings: SystemSetting): void;
 
         /**
-         * Causes a widget to be unmapped if it&#x2019;s currently mapped.
+         * Causes a widget to be unmapped if it’s currently mapped.
          * 
          * This function is only for use in widget implementations.
          * @virtual
@@ -132936,7 +134341,7 @@ export interface Builder {
         /**
          * Adds a style class to the widget.
          * 
-         * After calling this function, the widget&#x2019;s style will match
+         * After calling this function, the widget’s style will match
          * for `css_class`, according to CSS matching rules.
          * 
          * Use {@link Gtk.Widget.remove_css_class} to remove the
@@ -132968,7 +134373,7 @@ export interface Builder {
          * frame or every few frames.
          * 
          * The tick callback does not automatically imply a relayout or repaint.
-         * If you want a repaint or relayout, and aren&#x2019;t changing widget properties
+         * If you want a repaint or relayout, and aren’t changing widget properties
          * that would trigger that (for example, changing the text of a label),
          * then you will have to call {@link Gtk.Widget.queue_resize} or
          * {@link Gtk.Widget.queue_draw} yourself.
@@ -132983,7 +134388,9 @@ export interface Builder {
          * don't have to worry about when a frame clock is assigned to a widget.
          * 
          * To remove a tick callback, pass the ID that is returned by this function
-         * to {@link Gtk.Widget.remove_tick_callback}.
+         * to {@link Gtk.Widget.remove_tick_callback}. Tick callbacks will be
+         * removed automatically when the widget is destroyed, so you do not have
+         * to remove it yourself.
          * @param callback function   to call for updating animations
          * @returns an ID for this callback
          */
@@ -132995,7 +134402,7 @@ export interface Builder {
          * 
          * In this function, the allocation and baseline may be adjusted.
          * The given allocation will be forced to be bigger than the
-         * widget's minimum size, as well as at least 0&#xD7;0 in size.
+         * widget's minimum size, as well as at least 0×0 in size.
          * 
          * This function is only used by widget implementations.
          * 
@@ -133024,10 +134431,10 @@ export interface Builder {
          * inside that widget, and false if moving in `direction` moved the focus
          * outside the widget. When returning true, widgets normally call
          * {@link Gtk.Widget.grab_focus} to place the focus accordingly;
-         * when returning false, they don&#x2019;t modify the current focus location.
+         * when returning false, they don’t modify the current focus location.
          * 
          * This function is used by custom widget implementations; if you're
-         * writing an app, you&#x2019;d use {@link Gtk.Widget.grab_focus} to move
+         * writing an app, you’d use {@link Gtk.Widget.grab_focus} to move
          * the focus to a particular widget.
          * @param direction direction of focus movement
          * @returns true if focus ended up inside `widget`
@@ -133073,7 +134480,7 @@ export interface Builder {
 
         /**
          * Translates the given `point` in `widget`'s coordinates to coordinates
-         * in `target`&#x2019;s coordinate system.
+         * in `target`’s coordinate system.
          * 
          * In order to perform this operation, both widgets must share a
          * a common ancestor. If that is not the case, `out_point` is set
@@ -133217,10 +134624,10 @@ export interface Builder {
         get_allocated_width(): number;
 
         /**
-         * Retrieves the widget&#x2019;s allocation.
+         * Retrieves the widget’s allocation.
          * 
-         * Note, when implementing a layout widget: a widget&#x2019;s allocation
-         * will be its &#x201C;adjusted&#x201D; allocation, that is, the widget&#x2019;s parent
+         * Note, when implementing a layout widget: a widget’s allocation
+         * will be its “adjusted” allocation, that is, the widget’s parent
          * typically calls {@link Gtk.Widget.size_allocate} with an allocation,
          * and that allocation is then adjusted (to handle margin
          * and alignment for example) before assignment to the widget.
@@ -133239,7 +134646,7 @@ export interface Builder {
          * Gets the first ancestor of the widget with type `widget_type`.
          * 
          * For example, `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)`
-         * gets the first {@link Gtk.Box} that&#x2019;s an ancestor of `widget`. No
+         * gets the first {@link Gtk.Box} that’s an ancestor of `widget`. No
          * reference will be added to the returned widget; it should
          * not be unreferenced.
          * 
@@ -133300,7 +134707,7 @@ export interface Builder {
         get_clipboard(): Gdk.Clipboard;
 
         /**
-         * Gets the current foreground color for the widget&#x2019;s style.
+         * Gets the current foreground color for the widget’s style.
          * 
          * This function should only be used in snapshot
          * implementations that need to do custom drawing
@@ -133350,7 +134757,7 @@ export interface Builder {
         get_display(): Gdk.Display;
 
         /**
-         * Returns the widget&#x2019;s first child.
+         * Returns the widget’s first child.
          * 
          * This function is primarily meant for widget implementations.
          * @returns the widget's first child
@@ -133399,7 +134806,7 @@ export interface Builder {
         /**
          * Obtains the frame clock for a widget.
          * 
-         * The frame clock is a global &#x201C;ticker&#x201D; that can be used to drive
+         * The frame clock is a global “ticker” that can be used to drive
          * animations and repaints. The most common reason to get the frame
          * clock is to call {@link Gdk.FrameClock.get_frame_time}, in order
          * to get a time to use for animating. For example you might record
@@ -133408,15 +134815,15 @@ export interface Builder {
          * by calling {@link Gdk.FrameClock.get_frame_time} again during each repaint.
          * 
          * {@link Gdk.FrameClock.request_phase} will result in a new frame on the
-         * clock, but won&#x2019;t necessarily repaint any widgets. To repaint a widget,
+         * clock, but won’t necessarily repaint any widgets. To repaint a widget,
          * you have to use {@link Gtk.Widget.queue_draw} which invalidates the
          * widget (thus scheduling it to receive a draw on the next frame).
          * {@link Gtk.Widget.queue_draw} will also end up requesting a frame
          * on the appropriate frame clock.
          * 
-         * A widget&#x2019;s frame clock will not change while the widget is mapped.
+         * A widget’s frame clock will not change while the widget is mapped.
          * Reparenting a widget (which implies a temporary unmap) can change
-         * the widget&#x2019;s frame clock.
+         * the widget’s frame clock.
          * 
          * Unrealized widgets do not have a frame clock.
          * @returns the frame clock
@@ -133469,7 +134876,7 @@ export interface Builder {
          * has the expand flag set. If any child of a widget wants to
          * expand, the parent may ask to expand also.
          * 
-         * This function only looks at the widget&#x2019;s own hexpand flag, rather
+         * This function only looks at the widget’s own hexpand flag, rather
          * than computing whether the entire widget tree rooted at this widget
          * wants to expand.
          * @returns whether hexpand flag is set
@@ -133484,14 +134891,14 @@ export interface Builder {
          * If `hexpand` is not set, then the expand value depends on
          * whether any children of the widget would like to expand.
          * 
-         * There are few reasons to use this function, but it&#x2019;s here
+         * There are few reasons to use this function, but it’s here
          * for completeness and consistency.
          * @returns whether hexpand has been explicitly set
          */
         get_hexpand_set(): boolean;
 
         /**
-         * Returns the widget&#x2019;s last child.
+         * Returns the widget’s last child.
          * 
          * This function is primarily meant for widget implementations.
          * @returns the widget's last child
@@ -133561,7 +134968,7 @@ export interface Builder {
         get_native(): Native | null;
 
         /**
-         * Returns the widget&#x2019;s next sibling.
+         * Returns the widget’s next sibling.
          * 
          * This function is primarily meant for widget implementations.
          * @returns the widget's next sibling
@@ -133577,7 +134984,7 @@ export interface Builder {
         get_opacity(): number;
 
         /**
-         * Returns the widget&#x2019;s overflow value.
+         * Returns the widget’s overflow value.
          * @returns The widget's overflow value
          */
         get_overflow(): Overflow;
@@ -133591,7 +134998,7 @@ export interface Builder {
          * Unlike the context returned by {@link Gtk.Widget.create_pango_context},
          * this context is owned by the widget (it can be used until the screen
          * for the widget changes or the widget is removed from its toplevel),
-         * and will be updated to match any changes to the widget&#x2019;s attributes.
+         * and will be updated to match any changes to the widget’s attributes.
          * This can be tracked by listening to changes of the
          * {@link Gtk.Widget.root} property on the widget.
          * @returns the {@link Pango.Context} for the widget
@@ -133606,7 +135013,7 @@ export interface Builder {
 
         /**
          * Retrieves the minimum and natural size of a widget, taking
-         * into account the widget&#x2019;s preference for height-for-width management.
+         * into account the widget’s preference for height-for-width management.
          * 
          * This is used to retrieve a suitable size by container widgets which do
          * not impose any restrictions on the child placement. It can be used
@@ -133623,7 +135030,7 @@ export interface Builder {
         get_preferred_size(): [Requisition | null, Requisition | null];
 
         /**
-         * Returns the widget&#x2019;s previous sibling.
+         * Returns the widget’s previous sibling.
          * 
          * This function is primarily meant for widget implementations.
          * @returns the widget's previous sibling
@@ -133700,13 +135107,13 @@ export interface Builder {
         get_scale_factor(): number;
 
         /**
-         * Returns the widget&#x2019;s sensitivity.
+         * Returns the widget’s sensitivity.
          * 
          * This function returns the value that has been set using
          * {@link Gtk.Widget.set_sensitive}).
          * 
          * The effective sensitivity of a widget is however determined
-         * by both its own and its parent widget&#x2019;s sensitivity.
+         * by both its own and its parent widget’s sensitivity.
          * See {@link Gtk.Widget.is_sensitive}.
          * @returns true if the widget is sensitive
          */
@@ -133841,7 +135248,7 @@ export interface Builder {
         /**
          * Determines whether the widget is visible.
          * 
-         * If you want to take into account whether the widget&#x2019;s
+         * If you want to take into account whether the widget’s
          * parent is also marked as visible, use
          * {@link Gtk.Widget.is_visible} instead.
          * 
@@ -133900,7 +135307,7 @@ export interface Builder {
          * 
          * To find out if the widget has the global input focus, use
          * {@link Gtk.Widget.has_focus}.
-         * @returns true if the widget should display a &#x201C;focus rectangle&#x201D;
+         * @returns true if the widget should display a “focus rectangle”
          */
         has_visible_focus(): boolean;
 
@@ -133935,7 +135342,7 @@ export interface Builder {
          *    defined by its parent classes have been created in their
          *    relative instance initializers
          *  - when calling `g_object_new()` on a widget with composite templates,
-         *    it&#x2019;s important to build the composite widgets before the construct
+         *    it’s important to build the composite widgets before the construct
          *    properties are set. Properties passed to `g_object_new()` should
          *    take precedence over properties set in the private template XML
          * 
@@ -133949,7 +135356,7 @@ export interface Builder {
          * 
          * Children of `widget` that implement {@link Gtk.Actionable} can
          * then be associated with actions in `group` by setting their
-         * &#x201C;action-name&#x201D; to `prefix`.`action-name`.
+         * “action-name” to `prefix`.`action-name`.
          * 
          * Note that inheritance is defined for individual actions. I.e.
          * even if you insert a group with prefix `prefix`, actions with
@@ -134038,7 +135445,7 @@ export interface Builder {
         is_focus(): boolean;
 
         /**
-         * Returns the widget&#x2019;s effective sensitivity.
+         * Returns the widget’s effective sensitivity.
          * 
          * This means it is sensitive itself and also its
          * parent widget is sensitive.
@@ -134071,7 +135478,7 @@ export interface Builder {
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * {@link Gtk.Widget.child_focus} on the widget&#x2019;s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          * 
          * The default `Gtk.Widget::keynav-failed` handler returns
          * false for {@link Gtk.DirectionType.TAB-FORWARD} and
@@ -134109,7 +135516,7 @@ export interface Builder {
         list_mnemonic_labels(): Widget[];
 
         /**
-         * Causes a widget to be mapped if it isn&#x2019;t already.
+         * Causes a widget to be mapped if it isn’t already.
          * 
          * This function is only for use in widget implementations.
          */
@@ -134122,7 +135529,7 @@ export interface Builder {
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          * 
-         * See [GtkWidget&#x2019;s geometry management section](https://docs.gtk.org/gtk4/class.Widget.html#height-for-width-geometry-management) for
+         * See [GtkWidget’s geometry management section](https://docs.gtk.org/gtk4/class.Widget.html#height-for-width-geometry-management) for
          * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
@@ -134214,7 +135621,7 @@ export interface Builder {
          * 
          * This should be called when a widget for some reason has a new
          * size request. For example, when you change the text in a
-         * {@link Gtk.Label}, the label queues a resize to ensure there&#x2019;s
+         * {@link Gtk.Label}, the label queues a resize to ensure there’s
          * enough space for the new text.
          * 
          * Note that you cannot call `gtk_widget_queue_resize()` on a widget
@@ -134233,13 +135640,13 @@ export interface Builder {
          * and all its parent containers, then the widget will be realized
          * and mapped automatically.
          * 
-         * Realizing a widget requires all the widget&#x2019;s parent widgets to be
-         * realized; calling this function realizes the widget&#x2019;s parents
+         * Realizing a widget requires all the widget’s parent widgets to be
+         * realized; calling this function realizes the widget’s parents
          * in addition to `widget` itself. If a widget is not yet inside a
          * toplevel window when you realize it, bad things will happen.
          * 
          * This function is primarily used in widget implementations, and
-         * isn&#x2019;t very useful otherwise. Many times when you think you might
+         * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
          * `Gtk.Widget::realize`.
@@ -134397,7 +135804,7 @@ export interface Builder {
          * with the mouse.
          * 
          * Making mouse clicks not grab focus is useful in places like
-         * toolbars where you don&#x2019;t want the keyboard focus removed from
+         * toolbars where you don’t want the keyboard focus removed from
          * the main area of the application.
          * @param focus_on_click whether the widget should grab focus when clicked   with the mouse
          */
@@ -134481,7 +135888,7 @@ export interface Builder {
          * This function forces the widget to expand or not to expand,
          * regardless of children. The override occurs because
          * {@link Gtk.Widget.set_hexpand} sets the hexpand-set property (see
-         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget&#x2019;s hexpand
+         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget’s hexpand
          * value to be used, rather than looking at children and widget state.
          * @param expand whether to expand
          */
@@ -134500,7 +135907,7 @@ export interface Builder {
          * set, then the expand value depends on whether any
          * children of the widget would like to expand.
          * 
-         * There are few reasons to use this function, but it&#x2019;s here
+         * There are few reasons to use this function, but it’s here
          * for completeness and consistency.
          * @param set value for hexpand-set property
          */
@@ -134571,10 +135978,10 @@ export interface Builder {
          * depends on the capabilities of the windowing system. On X11, this
          * has any effect only on X displays with a compositing manager, see
          * {@link Gdk.Display.is_composited}. On Windows and Wayland it will
-         * always work, although setting a window&#x2019;s opacity after the window
+         * always work, although setting a window’s opacity after the window
          * has been shown may cause some flicker.
          * 
-         * Note that the opacity is inherited through inclusion &#x2014; if you set
+         * Note that the opacity is inherited through inclusion — if you set
          * a toplevel to be partially translucent, all of its content will
          * appear translucent, since it is ultimatively rendered on that
          * toplevel. The opacity value itself is not inherited by child
@@ -134627,9 +136034,9 @@ export interface Builder {
          * Sets the sensitivity of the widget.
          * 
          * A widget is sensitive if the user can interact with it.
-         * Insensitive widgets are &#x201C;grayed out&#x201D; and the user can&#x2019;t
+         * Insensitive widgets are “grayed out” and the user can’t
          * interact with them. Insensitive widgets are known as
-         * &#x201C;inactive&#x201D;, &#x201C;disabled&#x201D;, or &#x201C;ghosted&#x201D; in some other toolkits.
+         * “inactive”, “disabled”, or “ghosted” in some other toolkits.
          * @param sensitive true to make the widget sensitive
          */
         set_sensitive(sensitive: boolean): void;
@@ -134637,7 +136044,7 @@ export interface Builder {
         /**
          * Sets the minimum size of the widget.
          * 
-         * That is, the widget&#x2019;s size request will be at least `width`
+         * That is, the widget’s size request will be at least `width`
          * by `height`. You can use this function to force a widget to
          * be larger than it normally would be.
          * 
@@ -134659,7 +136066,7 @@ export interface Builder {
          * space than it requested.
          * 
          * If the size request in a given direction is -1 (unset), then
-         * the &#x201C;natural&#x201D; size request of the widget will be used instead.
+         * the “natural” size request of the widget will be used instead.
          * 
          * The size request set here does not include any margin from the
          * properties
@@ -134744,7 +136151,7 @@ export interface Builder {
         /**
          * Sets the visibility state of `widget`.
          * 
-         * Note that setting this to true doesn&#x2019;t mean the widget is
+         * Note that setting this to true doesn’t mean the widget is
          * actually viewable, see {@link Gtk.Widget.get_visible}.
          * @param visible whether the widget should be shown or not
          */
@@ -134764,7 +136171,7 @@ export interface Builder {
         /**
          * Flags a widget to be displayed.
          * 
-         * Any widget that isn&#x2019;t shown will not appear on the screen.
+         * Any widget that isn’t shown will not appear on the screen.
          * 
          * Remember that you have to show the containers containing a widget,
          * in addition to the widget itself, before it will appear onscreen.
@@ -134806,8 +136213,8 @@ export interface Builder {
         snapshot_child(child: Widget, snapshot: Snapshot): void;
 
         /**
-         * Translates coordinates relative to `src_widget`&#x2019;s allocation
-         * to coordinates relative to `dest_widget`&#x2019;s allocations.
+         * Translates coordinates relative to `src_widget`’s allocation
+         * to coordinates relative to `dest_widget`’s allocations.
          * 
          * In order to perform this operation, both widget must share
          * a common ancestor. If that is not the case, `dest_x` and `dest_y`
@@ -134825,7 +136232,7 @@ export interface Builder {
         trigger_tooltip_query(): void;
 
         /**
-         * Causes a widget to be unmapped if it&#x2019;s currently mapped.
+         * Causes a widget to be unmapped if it’s currently mapped.
          * 
          * This function is only for use in widget implementations.
          */
@@ -135196,7 +136603,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -135530,7 +136937,7 @@ export interface Builder {
              * 
              * This is a [keybinding signal](https://docs.gtk.org/gtk4/class.SignalAction.html).
              * 
-             * The default binding for this signal is <kbd>&#x2423;</kbd>.
+             * The default binding for this signal is <kbd>␣</kbd>.
              * @signal
              * @action
              * @run-last
@@ -135559,6 +136966,15 @@ export interface Builder {
              * @run-last
              */
             "enable-debugging": (arg0: boolean) => boolean | void;
+            /**
+             * Emitted when the compositor has decided to eliminate a window.
+             * 
+             * `window` *has* to be in a hidden state after this signal was handled.
+             * @signal
+             * @since 4.24
+             * @run-last
+             */
+            "force-close": () => void;
             /**
              * Emitted when the set of accelerators or mnemonics that
              * are associated with the window changes.
@@ -135690,7 +137106,7 @@ export interface Builder {
      * # GtkWindow as GtkBuildable
      * 
      * The {@link Gtk.Window} implementation of the {@link Gtk.Buildable} interface supports
-     * setting a child as the titlebar by specifying &#x201C;titlebar&#x201D; as the &#x201C;type&#x201D;
+     * setting a child as the titlebar by specifying “titlebar” as the “type”
      * attribute of a `<child>` element.
      * 
      * # Shortcuts and Gestures
@@ -135719,8 +137135,8 @@ export interface Builder {
      * 
      * ```
      * window.background [.csd / .solid-csd / .ssd] [.maximized / .fullscreen / .tiled]
-     * &#x251C;&#x2500;&#x2500; <child>
-     * &#x2570;&#x2500;&#x2500; <titlebar child>.titlebar [.default-decoration]
+     * ├── <child>
+     * ╰── <titlebar child>.titlebar [.default-decoration]
      * ```
      * 
      * {@link Gtk.Window} has a main CSS node with name window and style class .background.
@@ -136202,6 +137618,12 @@ export interface Builder {
         vfunc_enable_debugging(toggle: boolean): boolean;
 
         /**
+         * Class handler for the `Gtk.Window::force-close` signal.
+         * @virtual
+         */
+        vfunc_force_close(): void;
+
+        /**
          * Signal gets emitted when the set of accelerators or
          *   mnemonics that are associated with window changes.
          * @virtual
@@ -136228,7 +137650,7 @@ export interface Builder {
         /**
          * Asks to place the window in the fullscreen state.
          * 
-         * Note that you shouldn&#x2019;t assume the window is definitely fullscreen
+         * Note that you shouldn’t assume the window is definitely fullscreen
          * afterward, because other entities (e.g. the user or window manager)
          * unfullscreen it again, and not all window managers honor requests
          * to fullscreen windows.
@@ -136279,7 +137701,7 @@ export interface Builder {
          * 
          * A value of 0 for the width or height indicates that a default
          * size has not been explicitly set for that dimension, so the
-         * &#x201C;natural&#x201D; size of the window will be used.
+         * “natural” size of the window will be used.
          * 
          * This function is the recommended way for [saving window state
          * across restarts of applications](https://developer.gnome.org/documentation/tutorials/save-state.html).
@@ -136316,8 +137738,8 @@ export interface Builder {
         get_focus(): Widget | null;
 
         /**
-         * Gets whether &#x201C;focus rectangles&#x201D; are supposed to be visible.
-         * @returns true if &#x201C;focus rectangles&#x201D; are supposed to be visible   in this window
+         * Gets whether “focus rectangles” are supposed to be visible.
+         * @returns true if “focus rectangles” are supposed to be visible   in this window
          */
         get_focus_visible(): boolean;
 
@@ -136403,7 +137825,7 @@ export interface Builder {
          * 
          * Note that since fullscreening is ultimately handled by the window
          * manager and happens asynchronously to an application request, you
-         * shouldn&#x2019;t assume the return value of this function changing
+         * shouldn’t assume the return value of this function changing
          * immediately (or at all), as an effect of calling
          * {@link Gtk.Window.fullscreen} or {@link Gtk.Window.unfullscreen}.
          * 
@@ -136418,7 +137840,7 @@ export interface Builder {
          * 
          * Note that since maximization is ultimately handled by the window
          * manager and happens asynchronously to an application request, you
-         * shouldn&#x2019;t assume the return value of this function changing
+         * shouldn’t assume the return value of this function changing
          * immediately (or at all), as an effect of calling
          * {@link Gtk.Window.maximize} or {@link Gtk.Window.unmaximize}.
          * 
@@ -136441,12 +137863,12 @@ export interface Builder {
         /**
          * Asks to maximize the window, so that it fills the screen.
          * 
-         * Note that you shouldn&#x2019;t assume the window is definitely maximized
+         * Note that you shouldn’t assume the window is definitely maximized
          * afterward, because other entities (e.g. the user or window manager)
          * could unmaximize it again, and not all window managers support
          * maximization.
          * 
-         * It&#x2019;s permitted to call this function before showing a window,
+         * It’s permitted to call this function before showing a window,
          * in which case the window will be maximized when it appears onscreen
          * initially.
          * 
@@ -136465,13 +137887,13 @@ export interface Builder {
         /**
          * Asks to minimize the window.
          * 
-         * Note that you shouldn&#x2019;t assume the window is definitely minimized
+         * Note that you shouldn’t assume the window is definitely minimized
          * afterward, because the windowing system might not support this
          * functionality; other entities (e.g. the user or the window manager)
          * could unminimize it again, or there may not be a window manager in
-         * which case minimization isn&#x2019;t possible, etc.
+         * which case minimization isn’t possible, etc.
          * 
-         * It&#x2019;s permitted to call this function before showing a window,
+         * It’s permitted to call this function before showing a window,
          * in which case the window will be minimized before it ever appears
          * onscreen.
          * 
@@ -136485,7 +137907,7 @@ export interface Builder {
          * 
          * This may mean raising the window in the stacking order,
          * unminimizing it, moving it to the current desktop and/or
-         * giving it the keyboard focus (possibly dependent on the user&#x2019;s
+         * giving it the keyboard focus (possibly dependent on the user’s
          * platform, window manager and preferences).
          * 
          * If `window` is hidden, this function also makes it visible.
@@ -136540,7 +137962,7 @@ export interface Builder {
          * window that is already visible, so you should call it before calling
          * {@link Gtk.Widget.show}.
          * 
-         * On Windows, this function always works, since there&#x2019;s no window manager
+         * On Windows, this function always works, since there’s no window manager
          * policy involved.
          * @param setting true to decorate the window
          */
@@ -136556,7 +137978,7 @@ export interface Builder {
          * to reflect the new size, unless the window is forced to a size,
          * like when it is maximized or fullscreened.
          * 
-         * If the window&#x2019;s minimum size request is larger than
+         * If the window’s minimum size request is larger than
          * the default, the default will be ignored.
          * 
          * Setting the default size to a value <= 0 will cause it to be
@@ -136569,7 +137991,7 @@ export interface Builder {
          * the window, this function only sets the initial size, just as
          * if the user had resized the window themselves. Users can still
          * shrink the window again as they normally would. Setting a default
-         * size of -1 means to use the &#x201C;natural&#x201D; default size (the size request
+         * size of -1 means to use the “natural” default size (the size request
          * of the window).
          * 
          * If you use this function to reestablish a previously saved window size,
@@ -136603,7 +138025,7 @@ export interface Builder {
          * have any effect when called on a window that is already visible,
          * so you should call it before calling {@link Gtk.Widget.show}.
          * 
-         * On Windows, this function always works, since there&#x2019;s no window
+         * On Windows, this function always works, since there’s no window
          * manager policy involved.
          * @param setting true to decorate the window as deletable
          */
@@ -136612,7 +138034,7 @@ export interface Builder {
         /**
          * Sets whether to destroy the window when the transient parent is destroyed.
          * 
-         * This is useful for dialogs that shouldn&#x2019;t persist beyond the lifetime
+         * This is useful for dialogs that shouldn’t persist beyond the lifetime
          * of the main window they are associated with, for example.
          * @param setting whether to destroy the window with its transient parent
          */
@@ -136640,7 +138062,7 @@ export interface Builder {
         set_focus(focus: Widget | null): void;
 
         /**
-         * Sets whether &#x201C;focus rectangles&#x201D; are supposed to be visible.
+         * Sets whether “focus rectangles” are supposed to be visible.
          * 
          * This property is maintained by GTK based on user input,
          * and should not be set by applications.
@@ -136735,7 +138157,7 @@ export interface Builder {
          * The title of a window will be displayed in its title bar; on the
          * X Window System, the title bar is rendered by the window manager
          * so exactly how the title appears to users may vary according to a
-         * user&#x2019;s exact configuration. The title should help a user distinguish
+         * user’s exact configuration. The title should help a user distinguish
          * this window from other windows they may have open. A good title might
          * include the application name and current document filename, for example.
          * 
@@ -136782,11 +138204,11 @@ export interface Builder {
          * Asks to remove the fullscreen state for the window, and return to
          * its previous state.
          * 
-         * Note that you shouldn&#x2019;t assume the window is definitely not
+         * Note that you shouldn’t assume the window is definitely not
          * fullscreen afterward, because other entities (e.g. the user or
          * window manager) could fullscreen it again, and not all window
          * managers honor requests to unfullscreen windows; normally the
-         * window will end up restored to its normal state. Just don&#x2019;t
+         * window will end up restored to its normal state. Just don’t
          * write code that crashes if not.
          * 
          * If a window is not explicitly fullscreened or unfullscreened before
@@ -136801,7 +138223,7 @@ export interface Builder {
         /**
          * Asks to unmaximize the window.
          * 
-         * Note that you shouldn&#x2019;t assume the window is definitely unmaximized
+         * Note that you shouldn’t assume the window is definitely unmaximized
          * afterward, because other entities (e.g. the user or window manager)
          * maximize it again, and not all window managers honor requests to
          * unmaximize.
@@ -136820,11 +138242,11 @@ export interface Builder {
         /**
          * Asks to unminimize the window.
          * 
-         * Note that you shouldn&#x2019;t assume the window is definitely unminimized
+         * Note that you shouldn’t assume the window is definitely unminimized
          * afterward, because the windowing system might not support this
          * functionality; other entities (e.g. the user or the window manager)
          * could minimize it again, or there may not be a window manager in
-         * which case minimization isn&#x2019;t possible, etc.
+         * which case minimization isn’t possible, etc.
          * 
          * You can track result of this operation via the
          * {@link Gdk.Toplevel.state} property.
@@ -137169,7 +138591,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -137326,10 +138748,10 @@ export interface Builder {
      * 
      * ```
      * windowcontrols
-     * &#x251C;&#x2500;&#x2500; [image.icon]
-     * &#x251C;&#x2500;&#x2500; [button.minimize]
-     * &#x251C;&#x2500;&#x2500; [button.maximize]
-     * &#x2570;&#x2500;&#x2500; [button.close]
+     * ├── [image.icon]
+     * ├── [button.minimize]
+     * ├── [button.maximize]
+     * ╰── [button.close]
      * ```
      * 
      * A {@link Gtk.WindowControls}' CSS node is called windowcontrols. It contains
@@ -137480,7 +138902,7 @@ export interface Builder {
          * from those on the right. Recognized button names are minimize,
          * maximize, close and icon (the window icon).
          * 
-         * For example, &#x201C;icon:minimize,maximize,close&#x201D; specifies a icon
+         * For example, “icon:minimize,maximize,close” specifies a icon
          * on the left, and minimize, maximize and close buttons on the right.
          * 
          * If {@link Gtk.WindowControls.side} value is {@link Gtk.PackType.START},
@@ -137847,7 +139269,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -138393,7 +139815,7 @@ export interface Builder {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -138519,7 +139941,7 @@ export interface Builder {
     /**
      * A set of unsigned integers.
      * 
-     * Another name for this data structure is &#x201C;bitmap&#x201D;.
+     * Another name for this data structure is “bitmap”.
      * 
      * The current implementation is based on [roaring bitmaps](https://roaringbitmap.org/).
      * 
@@ -139443,6 +140865,16 @@ export interface Builder {
     /**
      * @gir-type Alias
      */
+    type EnumListClass = typeof EnumList;
+
+    /**
+     * @gir-type Alias
+     */
+    type EnumListItemClass = typeof EnumListItem;
+
+    /**
+     * @gir-type Alias
+     */
     type EventControllerClass = typeof EventController;
 
     /**
@@ -140345,7 +141777,7 @@ export interface Builder {
         get_modified(): GLib.DateTime;
 
         /**
-         * Gets the value of the &#x201C;private&#x201D; flag.
+         * Gets the value of the “private” flag.
          * 
          * Resources in the recently used list that have this flag
          * set to `true` should only be displayed by the applications
@@ -140359,7 +141791,7 @@ export interface Builder {
          * name of the item in a menu or list.
          * 
          * For example, calling this function on an item that refers
-         * to &#x201C;file:///foo/bar.txt&#x201D; will yield &#x201C;bar.txt&#x201D;.
+         * to “file:///foo/bar.txt” will yield “bar.txt”.
          * @returns A newly-allocated string in UTF-8 encoding   free it with `g_free()`
          */
         get_short_name(): string;
@@ -140371,12 +141803,12 @@ export interface Builder {
         get_uri(): string;
 
         /**
-         * Gets a displayable version of the resource&#x2019;s URI.
+         * Gets a displayable version of the resource’s URI.
          * 
          * If the resource is local, it returns a local path; if the
          * resource is not local, it returns the UTF-8 encoded content
          * of {@link Gtk.RecentInfo.get_uri}.
-         * @returns a newly allocated UTF-8 string containing the   resource&#x2019;s URI or `null`. Use `g_free()` when done using it.
+         * @returns a newly allocated UTF-8 string containing the   resource’s URI or `null`. Use `g_free()` when done using it.
          */
         get_uri_display(): string | null;
 
@@ -140482,7 +141914,7 @@ export interface Builder {
     /**
      * Represents the desired size of a widget.
      * 
-     * See [GtkWidget&#x2019;s geometry management section](https://docs.gtk.org/gtk4/class.Widget.html#height-for-width-geometry-management)
+     * See [GtkWidget’s geometry management section](https://docs.gtk.org/gtk4/class.Widget.html#height-for-width-geometry-management)
      * for more information.
      * @gir-type Struct
      */
@@ -140741,6 +142173,11 @@ export interface Builder {
     /**
      * @gir-type Alias
      */
+    type SvgWidgetClass = typeof SvgWidget;
+
+    /**
+     * @gir-type Alias
+     */
     type SymbolicPaintableInterface = typeof SymbolicPaintable;
 
     /**
@@ -140805,7 +142242,7 @@ export interface Builder {
          * to the start or end of the buffer.
          * 
          * The return value indicates whether the iterator moved
-         * onto a dereferenceable position; if the iterator didn&#x2019;t move, or
+         * onto a dereferenceable position; if the iterator didn’t move, or
          * moved onto the end iterator, then `false` is returned. If `count` is 0,
          * the function does nothing and returns `false`.
          * @param count number of characters to move
@@ -140858,7 +142295,7 @@ export interface Builder {
          * the start or end of the buffer.
          * 
          * The return value indicates whether the iterator moved
-         * onto a dereferenceable position; if the iterator didn&#x2019;t move, or
+         * onto a dereferenceable position; if the iterator didn’t move, or
          * moved onto the end iterator, then `false` is returned. If `count` is 0,
          * the function does nothing and returns `false`. If `count` is negative,
          * moves forward by 0 - `count` lines.
@@ -140953,7 +142390,7 @@ export interface Builder {
          * the start or end of the buffer.
          * 
          * The return value indicates whether the iterator moved
-         * onto a dereferenceable position; if the iterator didn&#x2019;t move, or
+         * onto a dereferenceable position; if the iterator didn’t move, or
          * moved onto the end iterator, then `false` is returned. If `count` is 0,
          * the function does nothing and returns `false`. If `count` is negative,
          * moves forward by 0 - `count` lines.
@@ -141016,7 +142453,7 @@ export interface Builder {
 
         /**
          * A `qsort()`-style function that returns negative if `lhs` is less than
-         * `rhs`, positive if `lhs` is greater than `rhs`, and 0 if they&#x2019;re equal.
+         * `rhs`, positive if `lhs` is greater than `rhs`, and 0 if they’re equal.
          * 
          * Ordering is in character offset order, i.e. the first character
          * in the buffer is less than the second character in the buffer.
@@ -141041,12 +142478,12 @@ export interface Builder {
          * Returns whether the character at `iter` is within an editable region
          * of text.
          * 
-         * Non-editable text is &#x201C;locked&#x201D; and can&#x2019;t be changed by the
+         * Non-editable text is “locked” and can’t be changed by the
          * user via {@link Gtk.TextView}. If no tags applied to this text affect
          * editability, `default_setting` will be returned.
          * 
-         * You don&#x2019;t want to use this function to decide whether text can be
-         * inserted at `iter`, because for insertion you don&#x2019;t want to know
+         * You don’t want to use this function to decide whether text can be
+         * inserted at `iter`, because for insertion you don’t want to know
          * whether the char at `iter` is inside an editable range, you want to
          * know whether a new character inserted at `iter` would be inside an
          * editable range. Use {@link Gtk.TextIter.can_insert} to handle this
@@ -141112,7 +142549,7 @@ export interface Builder {
          * 
          * This function is very fast; you can expect it to perform
          * better than e.g. getting the character offset for each
-         * iterator and comparing the offsets yourself. Also, it&#x2019;s a
+         * iterator and comparing the offsets yourself. Also, it’s a
          * bit faster than {@link Gtk.TextIter.compare}.
          * @param rhs another {@link Gtk.TextIter}
          * @returns `true` if the iterators point to the same place in the buffer
@@ -141155,10 +142592,10 @@ export interface Builder {
          * example for European languages would be a carriage return/newline
          * sequence.
          * 
-         * For some Unicode characters, the equivalent of say the letter &#x201C;a&#x201D;
+         * For some Unicode characters, the equivalent of say the letter “a”
          * with an accent mark will be represented as two characters, first
          * the letter then a "combining mark" that causes the accent to be
-         * rendered; so the cursor can&#x2019;t go between those two characters.
+         * rendered; so the cursor can’t go between those two characters.
          * 
          * See also the {@link Pango.LogAttr} struct and the {@link Pango.break}
          * function.
@@ -141205,7 +142642,7 @@ export interface Builder {
          * the start or end of the buffer.
          * 
          * The return value indicates whether the iterator moved
-         * onto a dereferenceable position; if the iterator didn&#x2019;t move, or
+         * onto a dereferenceable position; if the iterator didn’t move, or
          * moved onto the end iterator, then `false` is returned. If `count` is 0,
          * the function does nothing and returns `false`. If `count` is negative,
          * moves backward by 0 - `count` lines.
@@ -141254,7 +142691,7 @@ export interface Builder {
         forward_sentence_ends(count: number): boolean;
 
         /**
-         * Moves `iter` forward to the &#x201C;end iterator&#x201D;, which points
+         * Moves `iter` forward to the “end iterator”, which points
          * one past the last valid character in the buffer.
          * 
          * {@link Gtk.TextIter.get_char} called on the end iterator
@@ -141328,7 +142765,7 @@ export interface Builder {
          * the start or end of the buffer.
          * 
          * The return value indicates whether the iterator moved
-         * onto a dereferenceable position; if the iterator didn&#x2019;t move, or
+         * onto a dereferenceable position; if the iterator didn’t move, or
          * moved onto the end iterator, then `false` is returned. If `count` is 0,
          * the function does nothing and returns `false`. If `count` is negative,
          * moves backward by 0 - `count` lines.
@@ -141402,7 +142839,7 @@ export interface Builder {
          * 
          * Equivalent to operator* on a C++ iterator. If the element at
          * this iterator is a non-character element, such as an image
-         * embedded in the buffer, the Unicode &#x201C;unknown&#x201D; character 0xFFFC
+         * embedded in the buffer, the Unicode “unknown” character 0xFFFC
          * is returned. If invoked on the end iterator, zero is returned;
          * zero is not a valid Unicode character.
          * 
@@ -141468,7 +142905,7 @@ export interface Builder {
         /**
          * Returns a list of all {@link Gtk.TextMark} at this location.
          * 
-         * Because marks are not iterable (they don&#x2019;t take up any "space"
+         * Because marks are not iterable (they don’t take up any "space"
          * in the buffer, they are just marks in between iterable locations),
          * multiple marks can exist in the same place.
          * 
@@ -141499,8 +142936,8 @@ export interface Builder {
         /**
          * Returns the text in the given range.
          * 
-         * A &#x201C;slice&#x201D; is an array of characters encoded in UTF-8 format,
-         * including the Unicode &#x201C;unknown&#x201D; character 0xFFFC for iterable
+         * A “slice” is an array of characters encoded in UTF-8 format,
+         * including the Unicode “unknown” character 0xFFFC for iterable
          * non-character elements in the buffer, such as images.
          * Because images are encoded in the slice, byte and
          * character offsets in the returned array will correspond to byte
@@ -141518,7 +142955,7 @@ export interface Builder {
          * 
          * The highest-priority tags are last.
          * 
-         * The {@link Gtk.TextTag}s in the list don&#x2019;t have a reference added,
+         * The {@link Gtk.TextTag}s in the list don’t have a reference added,
          * but you have to free the list itself.
          * @returns list of   {@link Gtk.TextTag}
          */
@@ -141554,7 +142991,7 @@ export interface Builder {
         /**
          * Returns the number of bytes from the start of the
          * line to the given `iter`, not counting bytes that
-         * are invisible due to tags with the &#x201C;invisible&#x201D; flag
+         * are invisible due to tags with the “invisible” flag
          * toggled on.
          * @returns byte index of `iter` with respect to the start of the line
          */
@@ -141563,7 +143000,7 @@ export interface Builder {
         /**
          * Returns the offset in characters from the start of the
          * line to the given `iter`, not counting characters that
-         * are invisible due to tags with the &#x201C;invisible&#x201D; flag
+         * are invisible due to tags with the “invisible” flag
          * toggled on.
          * @returns offset in visible characters from the start of the line
          */
@@ -141574,7 +143011,7 @@ export interface Builder {
          * 
          * Like {@link Gtk.TextIter.get_slice}, but invisible text
          * is not included. Invisible text is usually invisible because
-         * a {@link Gtk.TextTag} with the &#x201C;invisible&#x201D; attribute turned on has
+         * a {@link Gtk.TextTag} with the “invisible” attribute turned on has
          * been applied to it.
          * @param end iterator at end of range
          * @returns slice of text from the buffer
@@ -141586,7 +143023,7 @@ export interface Builder {
          * 
          * Like {@link Gtk.TextIter.get_text}, but invisible text
          * is not included. Invisible text is usually invisible because
-         * a {@link Gtk.TextTag} with the &#x201C;invisible&#x201D; attribute turned on has
+         * a {@link Gtk.TextTag} with the “invisible” attribute turned on has
          * been applied to it.
          * @param end iterator at end of range
          * @returns string containing visible text in the range
@@ -141671,7 +143108,7 @@ export interface Builder {
          * 
          * That is, ensures that `first` and `second` are in sequence.
          * Most text buffer functions that take a range call this
-         * automatically on your behalf, so there&#x2019;s no real reason to
+         * automatically on your behalf, so there’s no real reason to
          * call it yourself in those cases. There are some exceptions,
          * such as {@link Gtk.TextIter.in_range}, that expect a
          * pre-sorted range.
@@ -141691,9 +143128,9 @@ export interface Builder {
         /**
          * Same as {@link Gtk.TextIter.set_line_offset}, but works with a
          * byte index. The given byte index must be at
-         * the start of a character, it can&#x2019;t be in the middle of a UTF-8
+         * the start of a character, it can’t be in the middle of a UTF-8
          * encoded character.
-         * @param byte_on_line a byte index relative to the start of `iter`&#x2019;s current line
+         * @param byte_on_line a byte index relative to the start of `iter`’s current line
          */
         set_line_index(byte_on_line: number): void;
 
@@ -141704,7 +143141,7 @@ export interface Builder {
          * of characters in the line; if equal, `iter` moves to the start of the
          * next line. See {@link Gtk.TextIter.set_line_index} if you have a byte
          * index rather than a character offset.
-         * @param char_on_line a character offset relative to the start of `iter`&#x2019;s current line
+         * @param char_on_line a character offset relative to the start of `iter`’s current line
          */
         set_line_offset(char_on_line: number): void;
 
@@ -141739,8 +143176,8 @@ export interface Builder {
          * This is the case if {@link Gtk.TextIter.get_line_offset}
          * would return 0. However this function is potentially more
          * efficient than {@link Gtk.TextIter.get_line_offset}, because
-         * it doesn&#x2019;t have to compute the offset, it just has to see
-         * whether it&#x2019;s 0.
+         * it doesn’t have to compute the offset, it just has to see
+         * whether it’s 0.
          * @returns whether `iter` begins a line
          */
         starts_line(): boolean;
@@ -142048,8 +143485,8 @@ export interface Builder {
         /**
          * Generates a string representation of the path.
          * 
-         * This string is a &#x201C;:&#x201D; separated list of numbers.
-         * For example, &#x201C;4:10:0:3&#x201D; would be an acceptable
+         * This string is a “:” separated list of numbers.
+         * For example, “4:10:0:3” would be an acceptable
          * return value for this string. If the path has
          * depth 0, `null` is returned.
          * @returns A newly-allocated string
@@ -142108,7 +143545,7 @@ export interface Builder {
         copy(): TreeRowReference;
 
         /**
-         * Free&#x2019;s `reference`. `reference` may be `null`
+         * Free’s `reference`. `reference` may be `null`
          */
         free(): void;
 
@@ -142306,8 +143743,8 @@ export interface Builder {
      * 
      * Every accessible implementation has:
      * 
-     *  - a &#x201C;role&#x201D;, represented by a value of the {@link Gtk.AccessibleRole} enumeration
-     *  - &#x201C;attributes&#x201D;, represented by a set of {@link Gtk.AccessibleState},
+     *  - a “role”, represented by a value of the {@link Gtk.AccessibleRole} enumeration
+     *  - “attributes”, represented by a set of {@link Gtk.AccessibleState},
      *    {@link Gtk.AccessibleProperty} and {@link Gtk.AccessibleRelation} values
      * 
      * The role cannot be changed after instantiating a {@link Gtk.Accessible}
@@ -142333,6 +143770,7 @@ export interface Builder {
      * by calling {@link Gtk.Accessible.set_accessible_parent} and
      * updating the sibling by {@link Gtk.Accessible.update_next_accessible_sibling}.
      * @gir-type Interface
+     * @since 4.10
      */
     interface Accessible extends GObject.Object, Accessible.Interface {
 
@@ -142864,7 +144302,7 @@ export interface Builder {
              * Usually this function is used when the widget is located (or will be
              * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
              * 
-             * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+             * Names are of the form “win.save” or “app.quit” for actions on the
              * containing {@link ApplicationWindow} or its associated {@link Application},
              * respectively. This is the same form used for actions in the {@link Gio.Menu}
              * associated with the window.
@@ -142881,14 +144319,14 @@ export interface Builder {
              * The target value has two purposes. First, it is used as the parameter
              * to activation of the action associated with the {@link Gtk.Actionable} widget.
              * Second, it is used to determine if the widget should be rendered as
-             * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+             * “active” — the widget is active if the state is equal to the given target.
              * 
              * Consider the example of associating a set of buttons with a {@link Gio.Action}
-             * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+             * with string state in a typical “radio button” situation. Each button
              * will be associated with the same action, but with a different target
              * value for that action. Clicking on a particular button will activate
              * the action with the target of that button, which will typically cause
-             * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+             * the action’s state to change to that value. Since the action’s state
              * is now equal to the target value of the button, the button will now
              * be rendered as active (and the other buttons, with different targets,
              * rendered inactive).
@@ -142921,7 +144359,7 @@ export interface Builder {
      * 
      * The action will be looked up in action groups that are found among
      * the widgets ancestors. Most commonly, these will be the actions with
-     * the &#x201C;win.&#x201D; or &#x201C;app.&#x201D; prefix that are associated with the
+     * the “win.” or “app.” prefix that are associated with the
      * {@link Gtk.ApplicationWindow} or {@link Gtk.Application}, but other action groups that
      * are added with {@link Gtk.Widget.insert_action_group} will be consulted
      * as well.
@@ -142979,7 +144417,7 @@ export interface Builder {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -142995,14 +144433,14 @@ export interface Builder {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -143198,7 +144636,7 @@ export interface Builder {
             /**
              * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
              *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-             *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+             *   object has some notion of “ID” and it makes sense to map the XML id
              *   attribute to it.
              * @param id 
              * @virtual
@@ -143453,7 +144891,7 @@ export interface Builder {
              * The `column` is the column of the model to get a value from, and the
              * `attribute` is the property on `cell` to be set from that value. So for
              * example if column 2 of the model contains strings, you could have the
-             * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+             * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
              * In this context "attribute" and "property" are used interchangeably.
              * @param cell a {@link Gtk.CellRenderer}
              * @param attribute a property on the renderer
@@ -143530,7 +144968,7 @@ export interface Builder {
              * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
              * 
              * This function is used instead of the standard attributes mapping
-             * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+             * for setting the column value, and should set the value of `cell_layout`’s
              * cell renderer(s) as appropriate.
              * 
              * `func` may be `null` to remove a previously set function.
@@ -143671,7 +145109,7 @@ export interface Builder {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the property on `cell` to be set from that value. So for
          * example if column 2 of the model contains strings, you could have the
-         * &#x201C;text&#x201D; attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
          * In this context "attribute" and "property" are used interchangeably.
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute a property on the renderer
@@ -143742,7 +145180,7 @@ export interface Builder {
          * Sets the {@link Gtk.CellLayout}DataFunc to use for `cell_layout`.
          * 
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout`&#x2019;s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          * 
          * `func` may be `null` to remove a previously set function.
@@ -144015,6 +145453,13 @@ export interface Builder {
             vfunc_do_insert_text(text: string, length: number, position: number): number;
 
             /**
+             * Retrieves the contents of `editable`, including *pseudo-content*
+             * such as the preedit buffer.
+             * @virtual
+             */
+            vfunc_get_complete_text(): string;
+
+            /**
              * Gets the {@link Gtk.Editable} that `editable` is delegating its
              * implementation to.
              * 
@@ -144076,11 +145521,15 @@ export interface Builder {
 
         // Constructor properties interface
         interface ConstructorProps extends Widget.ConstructorProps {
+            complete_text: string;
+            completeText: string;
             cursor_position: number;
             cursorPosition: number;
             editable: boolean;
             enable_undo: boolean;
             enableUndo: boolean;
+            input_interceptor: Widget | null;
+            inputInterceptor: Widget | null;
             max_width_chars: number;
             maxWidthChars: number;
             selection_bound: number;
@@ -144199,7 +145648,7 @@ export interface Builder {
      * {
      *   ...
      *   g_object_class_install_properties (object_class, NUM_PROPERTIES, props);
-     *   gtk_editable_install_properties (object_clas, NUM_PROPERTIES);
+     *   gtk_editable_install_properties (object_class, NUM_PROPERTIES);
      *   ...
      * }
      * ```
@@ -144279,6 +145728,22 @@ export interface Builder {
 
         // Properties
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -144312,6 +145777,20 @@ export interface Builder {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+         */
+        get input_interceptor(): Widget | null;
+        set input_interceptor(val: Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+         */
+        get inputInterceptor(): Widget | null;
+        set inputInterceptor(val: Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -144412,7 +145891,7 @@ export interface Builder {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -144460,6 +145939,13 @@ export interface Builder {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -144479,6 +145965,13 @@ export interface Builder {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -144587,6 +146080,21 @@ export interface Builder {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -144666,7 +146174,7 @@ export interface Builder {
      * sources and in various flavours, so lets explain the terminology here:
      * 
      * - Bookmarks: are created by the user, by dragging folders from the
-     *   right pane to the left pane, or by using the &#x201C;Add&#x201D;. Bookmarks
+     *   right pane to the left pane, or by using the “Add”. Bookmarks
      *   can be renamed and deleted by the user.
      * 
      * - Shortcuts: can be provided by the application. For example, a Paint
@@ -144674,7 +146182,7 @@ export interface Builder {
      *   cannot be modified by the user.
      * 
      * - Volumes: are provided by the underlying filesystem abstraction. They are
-     *   the &#x201C;roots&#x201D; of the filesystem.
+     *   the “roots” of the filesystem.
      * 
      * # File Names and Encodings
      * 
@@ -144845,7 +146353,7 @@ export interface Builder {
          * 
          * This is meant to be used in save dialogs, to get the currently typed
          * filename when the file itself does not exist yet.
-         * @returns The raw text from the file chooser&#x2019;s &#x201C;Name&#x201D; entry. Free with   `g_free()`. Note that this string is not a full pathname or URI; it is   whatever the contents of the entry are. Note also that this string is   in UTF-8 encoding, which is not necessarily the system&#x2019;s encoding for   filenames.
+         * @returns The raw text from the file chooser’s “Name” entry. Free with   `g_free()`. Note that this string is not a full pathname or URI; it is   whatever the contents of the entry are. Note also that this string is   in UTF-8 encoding, which is not necessarily the system’s encoding for   filenames.
          */
         get_current_name(): string | null;
 
@@ -144966,8 +146474,8 @@ export interface Builder {
          * 
          * Note that the name passed in here is a UTF-8 string rather
          * than a filename. This function is meant for such uses as a
-         * suggested name in a &#x201C;Save As...&#x201D; dialog.  You can pass
-         * &#x201C;Untitled.doc&#x201D; or a similarly suitable suggestion for the `name`.
+         * suggested name in a “Save As...” dialog.  You can pass
+         * “Untitled.doc” or a similarly suitable suggestion for the `name`.
          * 
          * If you want to preselect a particular existing file, you should
          * use {@link Gtk.FileChooser.set_file} instead.
@@ -144981,11 +146489,11 @@ export interface Builder {
         /**
          * Sets `file` as the current filename for the file chooser.
          * 
-         * This includes changing to the file&#x2019;s parent folder and actually selecting
+         * This includes changing to the file’s parent folder and actually selecting
          * the file in list. If the `chooser` is in {@link Gtk.FileChooserAction.SAVE} mode,
-         * the file&#x2019;s base name will also appear in the dialog&#x2019;s file name entry.
+         * the file’s base name will also appear in the dialog’s file name entry.
          * 
-         * If the file name isn&#x2019;t in the current folder of `chooser`, then the current
+         * If the file name isn’t in the current folder of `chooser`, then the current
          * folder of `chooser` will be changed to the folder containing `file`.
          * 
          * Note that the file must exist, or nothing will be done except
@@ -144993,8 +146501,8 @@ export interface Builder {
          * 
          * If you are implementing a save dialog, you should use this function if
          * you already have a file name to which the user may save; for example,
-         * when the user opens an existing file and then does &#x201C;Save As&#x2026;&#x201D;. If you
-         * don&#x2019;t have a file name already &#x2014; for example, if the user just created
+         * when the user opens an existing file and then does “Save As…”. If you
+         * don’t have a file name already — for example, if the user just created
          * a new file and is saving it for the first time, do not call this function.
          * 
          * Instead, use something similar to this:
@@ -145171,7 +146679,7 @@ export interface Builder {
      * {@link Gtk.FontChooserWidget}, {@link Gtk.FontChooserDialog} and
      * {@link Gtk.FontButton}.
      * @gir-type Interface
-     * @deprecated since 4.10: Use {@link Gtk.FontDialog} and {@link Gtk.FontDialogButton} instead
+     * @deprecated since 4.10: Use {@link Gtk.FontDialog} and {@link Gtk.FontDialogButton}   instead
      */
     interface FontChooser extends GObject.Object, FontChooser.Interface {
 
@@ -145272,8 +146780,8 @@ export interface Builder {
          * Note that this can be a different string than what you set with
          * {@link Gtk.FontChooser.set_font}, as the font chooser widget may
          * normalize font names and thus return a string with a different
-         * structure. For example, &#x201C;Helvetica Italic Bold 12&#x201D; could be
-         * normalized to &#x201C;Helvetica Bold Italic 12&#x201D;.
+         * structure. For example, “Helvetica Italic Bold 12” could be
+         * normalized to “Helvetica Bold Italic 12”.
          * 
          * Use {@link Pango.FontDescription.equal} if you want to compare two
          * font descriptions.
@@ -145287,8 +146795,8 @@ export interface Builder {
          * Note that this can be a different string than what you set with
          * {@link Gtk.FontChooser.set_font}, as the font chooser widget may
          * normalize font names and thus return a string with a different
-         * structure. For example, &#x201C;Helvetica Italic Bold 12&#x201D; could be
-         * normalized to &#x201C;Helvetica Bold Italic 12&#x201D;.
+         * structure. For example, “Helvetica Italic Bold 12” could be
+         * normalized to “Helvetica Bold Italic 12”.
          * 
          * Use {@link Pango.FontDescription.equal} if you want to compare two
          * font descriptions.
@@ -145371,7 +146879,7 @@ export interface Builder {
 
         /**
          * Sets the currently-selected font.
-         * @param fontname a font name like &#x201C;Helvetica 12&#x201D; or &#x201C;Times Bold 18&#x201D;
+         * @param fontname a font name like “Helvetica 12” or “Times Bold 18”
          */
         set_font(fontname: string): void;
 
@@ -145534,7 +147042,7 @@ export interface Builder {
      * An interface for widgets that can be oriented horizontally or vertically.
      * 
      * {@link Gtk.Orientable} is more flexible in that it allows the orientation to be
-     * changed at runtime, allowing the widgets to &#x201C;flip&#x201D;.
+     * changed at runtime, allowing the widgets to “flip”.
      * 
      * ## CSS nodes
      * 
@@ -145562,7 +147070,7 @@ export interface Builder {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -145796,9 +147304,9 @@ export interface Builder {
      * 
      * All scrollable widgets should do the following.
      * 
-     * - When a parent widget sets the scrollable child widget&#x2019;s adjustments,
+     * - When a parent widget sets the scrollable child widget’s adjustments,
      *   the widget should connect to the `Gtk.Adjustment::value-changed`
-     *   signal. The child widget should then populate the adjustments&#x2019; properties
+     *   signal. The child widget should then populate the adjustments’ properties
      *   as soon as possible, which usually means queueing an allocation right away
      *   and populating the properties in the {@link Gtk.Widget.size_allocate}
      *   implementation.
@@ -145809,7 +147317,7 @@ export interface Builder {
      *   {@link Gtk.Widget.size_allocate} implementation.
      * 
      * - When the parent allocates space to the scrollable child widget,
-     *   the widget must ensure the adjustments&#x2019; property values are correct and up
+     *   the widget must ensure the adjustments’ property values are correct and up
      *   to date, for example using {@link Gtk.Adjustment.configure}.
      * 
      * - When any of the adjustments emits the `Gtk.Adjustment::value-changed`
@@ -146525,7 +148033,7 @@ export interface Builder {
              * at the same depth as `dest_path`. i.e., can we drop the data in
              * `value` at that location. `dest_path` does not have to
              * exist; the return value will almost certainly be `false` if the
-             * parent of `dest_path` doesn&#x2019;t exist, though.
+             * parent of `dest_path` doesn’t exist, though.
              * @param dest_path destination row
              * @param value the data being dropped
              * @virtual
@@ -146568,7 +148076,7 @@ export interface Builder {
          * at the same depth as `dest_path`. i.e., can we drop the data in
          * `value` at that location. `dest_path` does not have to
          * exist; the return value will almost certainly be `false` if the
-         * parent of `dest_path` doesn&#x2019;t exist, though.
+         * parent of `dest_path` doesn’t exist, though.
          * @param dest_path destination row
          * @param value the data being dropped
          * @returns `true` if a drop is possible before `dest_path`
@@ -146611,7 +148119,7 @@ export interface Builder {
 
             /**
              * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-             * the source of a DND operation. If the source doesn&#x2019;t implement
+             * the source of a DND operation. If the source doesn’t implement
              * this interface, the row is assumed draggable.
              * @param path row on which user is initiating a drag
              * @virtual
@@ -146658,7 +148166,7 @@ export interface Builder {
 
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
-         * the source of a DND operation. If the source doesn&#x2019;t implement
+         * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
          * @returns `true` if the row can be dragged
@@ -146790,7 +148298,7 @@ export interface Builder {
             /**
              * Sets `iter` to be the parent of `child`.
              * 
-             * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+             * If `child` is at the toplevel, and doesn’t have a parent, then
              * `iter` is set to an invalid iterator and `false` is returned.
              * `child` will remain a valid node after this function has been
              * called.
@@ -146929,7 +148437,7 @@ export interface Builder {
      * 
      * In order to make life simpler for programmers who do not need to
      * write their own specialized model, two generic models are provided
-     * &#x2014; the {@link Gtk.TreeStore} and the {@link Gtk.ListStore}. To use these, the
+     * — the {@link Gtk.TreeStore} and the {@link Gtk.ListStore}. To use these, the
      * developer simply pushes data into these models as necessary. These
      * models provide the data structure as well as all appropriate tree
      * interfaces. As a result, implementing drag and drop, sorting, and
@@ -146940,7 +148448,7 @@ export interface Builder {
      * query for the value of a model at a certain node and a certain
      * column on that node. There are two structures used to reference a
      * particular node in a model. They are the {@link Gtk.TreePath} and
-     * the {@link Gtk.TreeIter} (&#x201C;iter&#x201D; is short for iterator). Most of the
+     * the {@link Gtk.TreeIter} (“iter” is short for iterator). Most of the
      * interface consists of operations on a {@link Gtk.TreeIter}.
      * 
      * A path is essentially a potential node. It is a location on a model
@@ -146972,9 +148480,9 @@ export interface Builder {
      * 
      * The lifecycle of an iterator can be a little confusing at first.
      * Iterators are expected to always be valid for as long as the model
-     * is unchanged (and doesn&#x2019;t emit a signal). The model is considered
+     * is unchanged (and doesn’t emit a signal). The model is considered
      * to own all outstanding iterators and nothing needs to be done to
-     * free them from the user&#x2019;s point of view. Additionally, some models
+     * free them from the user’s point of view. Additionally, some models
      * guarantee that an iterator is valid for as long as the node it refers
      * to is valid (most notably the {@link Gtk.TreeStore} and {@link Gtk.ListStore}).
      * Although generally uninteresting, as one always has to allow for
@@ -147059,7 +148567,7 @@ export interface Builder {
      *    char *str_data;
      *    int    int_data;
      * 
-     *    // Make sure you terminate calls to `gtk_tree_model_get()` with a &#x201C;-1&#x201D; value
+     *    // Make sure you terminate calls to `gtk_tree_model_get()` with a “-1” value
      *    gtk_tree_model_get (list_store, &iter,
      *                        STRING_COLUMN, &str_data,
      *                        INT_COLUMN, &int_data,
@@ -147192,8 +148700,8 @@ export interface Builder {
         /**
          * Generates a string representation of the iter.
          * 
-         * This string is a &#x201C;:&#x201D; separated list of numbers.
-         * For example, &#x201C;4:10:0:3&#x201D; would be an acceptable
+         * This string is a “:” separated list of numbers.
+         * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}
          * @returns a newly-allocated string
@@ -147268,7 +148776,7 @@ export interface Builder {
         /**
          * Sets `iter` to be the parent of `child`.
          * 
-         * If `child` is at the toplevel, and doesn&#x2019;t have a parent, then
+         * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
@@ -147421,7 +148929,7 @@ export interface Builder {
              * this function.
              * 
              * If `sort_func` is `null`, then there will be no default comparison function.
-             * This means that once the model  has been sorted, it can&#x2019;t go back to the
+             * This means that once the model  has been sorted, it can’t go back to the
              * default state. In this case, when the current sort column id of `sortable`
              * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
              * @param sort_func The comparison function
@@ -147507,7 +149015,7 @@ export interface Builder {
          * this function.
          * 
          * If `sort_func` is `null`, then there will be no default comparison function.
-         * This means that once the model  has been sorted, it can&#x2019;t go back to the
+         * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function

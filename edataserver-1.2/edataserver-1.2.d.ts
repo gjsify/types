@@ -242,6 +242,49 @@ export namespace EDataServer {
 
 
     /**
+     * Error codes for {@link EDataServer.OAuth2Service} operations.
+     * @gir-type Struct
+     */
+    class OAuth2ServiceError extends GLib.Error {
+        static $gtype: GObject.GType<GLib.Error>;
+
+        // Static fields
+        /**
+         * a generic error
+         */
+        static FAILED: number;
+
+        /**
+         * the {@link EDataServer.Source} is not valid for the OAuth2 service
+         */
+        static INVALID_SOURCE: number;
+
+        /**
+         * the OAuth2 secret was not found in the keyring
+         */
+        static SECRET_NOT_FOUND: number;
+
+        /**
+         * the server returned a malformed or unexpected response
+         */
+        static INVALID_RESPONSE: number;
+
+        /**
+         * the access token expired and could not be refreshed
+         */
+        static TOKEN_EXPIRED: number;
+
+        /**
+         * the server rejected the token refresh request
+         */
+        static REFRESH_FAILED: number;
+
+        // Constructors
+        constructor(options: { message: string; code: number });
+    }
+
+
+    /**
      * A value used during querying authentication URI, to decide whether certain
      * resource can be used or not. The `E_OAUTH2_SERVICE_NAVIGATION_POLICY_ABORT`
      * can be used to abort the authentication query, like when user cancelled it.
@@ -1876,6 +1919,8 @@ export namespace EDataServer {
      */
     function mktime_utc(tm: null): number;
 
+    function oauth2_service_error_quark(): GLib.Quark;
+
     /**
      * Processes the `compile_value` and returns the result, which is stored
      * into the `out_glob_buff`. The `out_glob_buff` should be large enough to hold
@@ -3074,8 +3119,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.2
      */
@@ -3935,8 +3978,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.4
      */
@@ -4012,8 +4053,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.46
      */
@@ -4219,8 +4258,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.4
      */
@@ -4417,10 +4454,11 @@ export namespace EDataServer {
          * accessing them. The accounts entries can be inspected e.g. for the "username" and
          * "homeAccountId" fields. Then, one entry needs to be selected and passed as-is to
          * `e_ms_oapxbc_acquire_prt_sso_cookie_sync()`.
+         * @param redirect_uri 
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the accounts, or `null` on error
          */
-        get_accounts_sync(cancellable: Gio.Cancellable | null): Json.Object | null;
+        get_accounts_sync(redirect_uri: string, cancellable: Gio.Cancellable | null): Json.Object | null;
     }
 
 
@@ -4441,7 +4479,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using
      * the functions below. Implements {@link Gio.NetworkMonitorInterface}.
      * @gir-type Class
      * @since 3.22
@@ -6571,8 +6608,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.28
      */
@@ -6720,8 +6755,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.10
      */
@@ -6756,6 +6789,13 @@ export namespace EDataServer {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Clears the rejection flag set when the server responds with 401 Unauthorized.
+         * The time-based token expiry is preserved, so the existing token can be
+         * re-sent without a redundant token refresh from the credential provider.
+         */
+        clear_rejected(): void;
+
         /**
          * @returns Whether the set token is expired. It is considered expired even   if the `e_soup_auth_bearer_set_access_token()` was called set yet.
          */
@@ -6808,8 +6848,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.26
      */
@@ -7293,8 +7331,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -9240,8 +9276,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -9318,8 +9352,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -9506,8 +9538,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -9852,8 +9882,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -9935,8 +9963,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.24
      */
@@ -10033,8 +10059,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -10115,6 +10139,7 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceSelectable.SignalSignatures {
             "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::groups": (pspec: GObject.ParamSpec) => void;
             "notify::order": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
             "notify::backend-name": (pspec: GObject.ParamSpec) => void;
@@ -10126,8 +10151,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -10177,8 +10200,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -10318,8 +10339,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -10628,8 +10647,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.60
      */
@@ -10780,8 +10797,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.16
      */
@@ -11380,8 +11395,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -11480,8 +11493,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -12059,8 +12070,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -12156,8 +12165,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -12377,6 +12384,7 @@ export namespace EDataServer {
         interface SignalSignatures extends SourceExtension.SignalSignatures {
             "notify::bcc": (pspec: GObject.ParamSpec) => void;
             "notify::cc": (pspec: GObject.ParamSpec) => void;
+            "notify::composer-mode": (pspec: GObject.ParamSpec) => void;
             "notify::drafts-folder": (pspec: GObject.ParamSpec) => void;
             "notify::language": (pspec: GObject.ParamSpec) => void;
             "notify::reply-style": (pspec: GObject.ParamSpec) => void;
@@ -12391,6 +12399,8 @@ export namespace EDataServer {
         interface ConstructorProps extends SourceExtension.ConstructorProps {
             bcc: string[];
             cc: string[];
+            composer_mode: string | null;
+            composerMode: string | null;
             drafts_folder: string | null;
             draftsFolder: string | null;
             language: string | null;
@@ -12408,8 +12418,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -12428,6 +12436,24 @@ export namespace EDataServer {
          */
         get cc(): string[];
         set cc(val: string[]);
+
+        /**
+         * Preferred composer mode for this account, as a string nick.
+         * `null` for unset.
+         * @since 3.62
+         * @default null
+         */
+        get composer_mode(): string | null;
+        set composer_mode(val: string | null);
+
+        /**
+         * Preferred composer mode for this account, as a string nick.
+         * `null` for unset.
+         * @since 3.62
+         * @default null
+         */
+        get composerMode(): string | null;
+        set composerMode(val: string | null);
 
         /**
          * Preferred folder for draft messages
@@ -12569,6 +12595,15 @@ export namespace EDataServer {
         dup_cc(): string[];
 
         /**
+         * Thread-safe variation of `e_source_mail_composition_get_composer_mode()`.
+         * Use this function when accessing `extension` from multiple threads.
+         * 
+         * The returned string should be freed with `g_free()` when no longer needed.
+         * @returns a newly-allocated copy of {@link EDataServer.SourceMailComposition.composer_mode}
+         */
+        dup_composer_mode(): string | null;
+
+        /**
          * Thread-safe variation of `e_source_mail_composition_get_drafts_folder()`.
          * Use this function when accessing `extension` from multiple threads.
          * 
@@ -12614,6 +12649,13 @@ export namespace EDataServer {
          * @returns a `null`-terminated string array of Cc recipients
          */
         get_cc(): string[];
+
+        /**
+         * Returns a string identifying the preferred composer mode for this account,
+         * or `null` for unset.
+         * @returns the composer mode nick string, or `null`
+         */
+        get_composer_mode(): string | null;
 
         /**
          * Returns a string identifying the preferred folder for draft messages.
@@ -12682,6 +12724,13 @@ export namespace EDataServer {
          * @param cc a `null`-terminated string array of Cc    recipients
          */
         set_cc(cc: string[]): void;
+
+        /**
+         * Sets the preferred composer mode for this account.
+         * Use `null` to unset any previous value.
+         * @param composer_mode a composer mode nick string, or `null`
+         */
+        set_composer_mode(composer_mode: string | null): void;
 
         /**
          * Sets the preferred folder for draft messages by an identifier string.
@@ -12774,8 +12823,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -13061,8 +13108,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * function below.
      * @gir-type Class
      * @since 3.6
      */
@@ -13187,8 +13232,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * function below.
      * @gir-type Class
      * @since 3.6
      */
@@ -13371,8 +13414,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -13412,6 +13453,7 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceSelectable.SignalSignatures {
             "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::groups": (pspec: GObject.ParamSpec) => void;
             "notify::order": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
             "notify::backend-name": (pspec: GObject.ParamSpec) => void;
@@ -13423,8 +13465,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -13475,8 +13515,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -13589,8 +13627,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -14009,8 +14045,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.12
      */
@@ -14546,8 +14580,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -14748,8 +14780,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -15827,8 +15857,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      */
     class SourceRegistryWatcher extends GObject.Object {
@@ -15947,8 +15975,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -16034,8 +16060,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.8
      */
@@ -16124,8 +16148,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -16376,8 +16398,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -16482,6 +16502,7 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceBackend.SignalSignatures {
             "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::groups": (pspec: GObject.ParamSpec) => void;
             "notify::order": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
             "notify::backend-name": (pspec: GObject.ParamSpec) => void;
@@ -16491,14 +16512,13 @@ export namespace EDataServer {
         // Constructor properties interface
         interface ConstructorProps extends SourceBackend.ConstructorProps {
             color: string | null;
+            groups: string | null;
             order: number;
             selected: boolean;
         }
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -16512,6 +16532,14 @@ export namespace EDataServer {
          */
         get color(): string | null;
         set color(val: string | null);
+
+        /**
+         * Comma-separated list of group names to which the source belongs
+         * @since 3.62
+         * @default null
+         */
+        get groups(): string | null;
+        set groups(val: string | null);
 
         /**
          * Preferred sorting order
@@ -16565,12 +16593,28 @@ export namespace EDataServer {
         dup_color(): string | null;
 
         /**
+         * Thread-safe variation of `e_source_selectable_get_groups()`.
+         * Use this function when accessing `extension` from multiple threads.
+         * 
+         * The returned string should be freed with `g_free()` when no longer needed.
+         * @returns a newly-allocated copy of {@link EDataServer.SourceSelectable.groups},    or `null`, when none is set
+         */
+        dup_groups(): string | null;
+
+        /**
          * Returns the color specification for the {@link EDataServer.Source} to which `extension`
          * belongs.  A colored block is often displayed next to the data source's
          * display name in user interfaces.
          * @returns the color specification for the {@link EDataServer.Source},    or `null`, when none is set
          */
         get_color(): string | null;
+
+        /**
+         * Returns the group specification for the {@link EDataServer.Source} to which `extension`
+         * belongs. This is a comma-separated list of group names.
+         * @returns the group specification for the {@link EDataServer.Source},    or `null`, when none is set
+         */
+        get_groups(): string | null;
 
         /**
          * Returns the preferred sorting order for the {@link EDataServer.Source}
@@ -16600,6 +16644,15 @@ export namespace EDataServer {
         set_color(color: string | null): void;
 
         /**
+         * Sets the groups specification for the {@link EDataServer.Source} to which `extension` belongs.
+         * 
+         * The internal copy of `groups` is automatically stripped of leading and
+         * trailing whitespace. If the resulting string is empty, `null` is set instead.
+         * @param groups a comma-separated list of group names, or `null`
+         */
+        set_groups(groups: string | null): void;
+
+        /**
          * Sets the sorting order for the {@link EDataServer.Source} to which `extension` belongs.
          * @param order the sorting order
          */
@@ -16619,6 +16672,7 @@ export namespace EDataServer {
         // Signal signatures
         interface SignalSignatures extends SourceSelectable.SignalSignatures {
             "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::groups": (pspec: GObject.ParamSpec) => void;
             "notify::order": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
             "notify::backend-name": (pspec: GObject.ParamSpec) => void;
@@ -16630,8 +16684,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -16682,8 +16734,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.8
      */
@@ -16846,8 +16896,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.44
      */
@@ -16968,8 +17016,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -17472,8 +17518,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.26
      */
@@ -18248,8 +18292,6 @@ export namespace EDataServer {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.26
      */
@@ -18610,8 +18652,6 @@ export namespace EDataServer {
 
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Struct
      * @since 1.12
      */
@@ -19036,8 +19076,6 @@ export namespace EDataServer {
 
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Struct
      * @since 3.2
      */
@@ -20222,6 +20260,7 @@ export namespace EDataServer {
     export interface OAuth2ServiceNamespace {
         $gtype: GObject.GType<OAuth2Service>;
         prototype: OAuth2Service;
+        error_quark(): GLib.Quark;
         /**
         * Processes the `compile_value` and returns the result, which is stored
         * into the `out_glob_buff`. The `out_glob_buff` should be large enough to hold
@@ -20270,8 +20309,6 @@ export namespace EDataServer {
         util_take_to_form(form: { [key: string]: string }, name: string, value: string | null): void;
     }
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Interface
      * @since 3.28
      */

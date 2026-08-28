@@ -3797,8 +3797,6 @@ export namespace EBookContacts {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.8
      */

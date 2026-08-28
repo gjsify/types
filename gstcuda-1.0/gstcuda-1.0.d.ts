@@ -644,6 +644,13 @@ export namespace GstCuda {
 
         // Static methods
         /**
+         * Finds the DXGI adapter LUID corresponding to the given CUDA device.
+         * This is useful for matching CUDA devices with Direct3D adapters on Windows.
+         * @param cuda_device a CUDA device index
+         */
+        static find_dxgi_adapter_luid(cuda_device: CudaGst.device): number;
+
+        /**
          * Pops the current CUDA context from CPU thread
          * @param cuda_ctx 
          */

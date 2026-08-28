@@ -1437,6 +1437,9 @@ export namespace Anjuta {
         get pixbuf(): GdkPixbuf.Pixbuf;
         set pixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default null
+         */
         get text(): string;
         set text(val: string);
 
@@ -2421,11 +2424,13 @@ export namespace Anjuta {
         // Properties
         /**
          * @construct-only
+         * @default 25
          */
         get max_text_width(): number;
 
         /**
          * @construct-only
+         * @default 25
          */
         get maxTextWidth(): number;
 
@@ -2569,9 +2574,15 @@ export namespace Anjuta {
         static $gtype: GObject.GType<Completion>;
 
         // Properties
+        /**
+         * @default true
+         */
         get case_sensitive(): boolean;
         set case_sensitive(val: boolean);
 
+        /**
+         * @default true
+         */
         get caseSensitive(): boolean;
         set caseSensitive(val: boolean);
 
@@ -3740,9 +3751,15 @@ export namespace Anjuta {
         static $gtype: GObject.GType<FileDropEntry>;
 
         // Properties
+        /**
+         * @default null
+         */
         get relative_path(): string;
         set relative_path(val: string);
 
+        /**
+         * @default null
+         */
         get relativePath(): string;
         set relativePath(val: string);
 
@@ -3858,9 +3875,15 @@ export namespace Anjuta {
         get relativePath(): string;
         set relativePath(val: string);
 
+        /**
+         * @default false
+         */
         get show_add_button(): boolean;
         set show_add_button(val: boolean);
 
+        /**
+         * @default false
+         */
         get showAddButton(): boolean;
         set showAddButton(val: boolean);
 
@@ -4092,7 +4115,7 @@ export namespace Anjuta {
          * Gets the Process ID of the child being executed.
          * @returns Process ID of the child.
          */
-        get_child_pid(): number;
+        get_child_pid(): never;
 
         /**
          * Tells if the laucher is currently executing any command.
@@ -4469,9 +4492,15 @@ export namespace Anjuta {
         static $gtype: GObject.GType<PkgScanner>;
 
         // Properties
+        /**
+         * @default null
+         */
         get "package"(): string;
         set "package"(val: string);
 
+        /**
+         * @default null
+         */
         get version(): string;
         set version(val: string);
 
@@ -4712,31 +4741,37 @@ export namespace Anjuta {
         // Properties
         /**
          * @read-only
+         * @default null
          */
         get about(): string;
 
         /**
          * @read-only
+         * @default false
          */
         get can_load(): boolean;
 
         /**
          * @read-only
+         * @default false
          */
         get canLoad(): boolean;
 
         /**
          * @read-only
+         * @default true
          */
         get can_unload(): boolean;
 
         /**
          * @read-only
+         * @default true
          */
         get canUnload(): boolean;
 
         /**
          * @read-only
+         * @default false
          */
         get checked(): boolean;
 
@@ -4767,16 +4802,19 @@ export namespace Anjuta {
 
         /**
          * @read-only
+         * @default null
          */
         get icon_path(): string;
 
         /**
          * @read-only
+         * @default null
          */
         get iconPath(): string;
 
         /**
          * @read-only
+         * @default null
          */
         get id(): string;
 
@@ -4787,41 +4825,49 @@ export namespace Anjuta {
 
         /**
          * @read-only
+         * @default null
          */
         get language(): string;
 
         /**
          * @read-only
+         * @default null
          */
         get name(): string;
 
         /**
          * @read-only
+         * @default null
          */
         get path(): string;
 
         /**
          * @read-only
+         * @default false
          */
         get resident(): boolean;
 
         /**
          * @read-only
+         * @default 0
          */
         get resolve_pass(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get resolvePass(): number;
 
         /**
          * @read-only
+         * @default false
          */
         get user_activatable(): boolean;
 
         /**
          * @read-only
+         * @default false
          */
         get userActivatable(): boolean;
 
@@ -5359,9 +5405,15 @@ export namespace Anjuta {
         get pluginManager(): PluginManager;
         set pluginManager(val: PluginManager);
 
+        /**
+         * @default null
+         */
         get profile_name(): string;
         set profile_name(val: string);
 
+        /**
+         * @default null
+         */
         get profileName(): string;
         set profileName(val: string);
 
@@ -5668,9 +5720,15 @@ export namespace Anjuta {
         get name(): string;
         set name(val: string);
 
+        /**
+         * @default Anjuta.ProjectNodeState.OK
+         */
         get state(): ProjectNodeState;
         set state(val: ProjectNodeState);
 
+        /**
+         * @default Anjuta.ProjectNodeType.UNKNOWN
+         */
         get type(): ProjectNodeType;
         set type(val: ProjectNodeType);
 
@@ -6007,11 +6065,13 @@ export namespace Anjuta {
         // Properties
         /**
          * @construct-only
+         * @default null
          */
         get filepath(): string;
 
         /**
          * @construct-only
+         * @default Anjuta.SerializerMode.READ
          */
         get mode(): SerializerMode;
 
@@ -7499,27 +7559,37 @@ export namespace Anjuta {
         // Properties
         /**
          * @construct-only
+         * @default true
          */
         get conflicted_selectable(): boolean;
 
         /**
          * @construct-only
+         * @default true
          */
         get conflictedSelectable(): boolean;
 
+        /**
+         * @default true
+         */
         get show_status(): boolean;
         set show_status(val: boolean);
 
+        /**
+         * @default true
+         */
         get showStatus(): boolean;
         set showStatus(val: boolean);
 
         /**
          * @construct-only
+         * @default Anjuta.VcsStatus.MODIFIED | Anjuta.VcsStatus.ADDED | Anjuta.VcsStatus.DELETED | Anjuta.VcsStatus.CONFLICTED
          */
         get status_codes(): VcsStatus;
 
         /**
          * @construct-only
+         * @default Anjuta.VcsStatus.MODIFIED | Anjuta.VcsStatus.ADDED | Anjuta.VcsStatus.DELETED | Anjuta.VcsStatus.CONFLICTED
          */
         get statusCodes(): VcsStatus;
 
@@ -7898,7 +7968,7 @@ export namespace Anjuta {
     /**
      * @gir-type Struct
      */
-    class Encoding {
+    abstract class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
         // Static methods

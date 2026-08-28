@@ -206,32 +206,13 @@ export namespace SpiceClientGLib {
      */
     const GTK_MINOR_VERSION: number;
 
+    const WEBDAV_CLIPBOARD_FOLDER_PATH: string;
+
     /**
      * Gets a {@link GLib.Quark} representing the string "spice-client-error-quark"
      * @returns the {@link GLib.Quark} representing the string.
      */
     function client_error_quark(): GLib.Quark;
-
-    /**
-     * Tells the spice server to change the preferred image compression
-     * for the `channel`.
-     * @param channel a {@link SpiceClientGLib.DisplayChannel}
-     * @param compression a `SpiceImageCompression`
-     * @since 0.31
-     * @deprecated since 0.35: use `spice_display_channel_change_preferred_compression()` instead.
-     */
-    function display_change_preferred_compression(channel: Channel, compression: number): void;
-
-    /**
-     * Tells the spice server to change the preferred video codec type for
-     * streaming in `channel`. Application can set only one preferred video codec per
-     * display channel.
-     * @param channel a {@link SpiceClientGLib.DisplayChannel}
-     * @param codec_type a `SpiceVideoCodecType`
-     * @since 0.34
-     * @deprecated since 0.35: use `spice_display_channel_change_preferred_video_codec_type()` instead.
-     */
-    function display_change_preferred_video_codec_type(channel: Channel, codec_type: number): void;
 
     /**
      * Retrieves the GL scanout if available
@@ -241,16 +222,6 @@ export namespace SpiceClientGLib {
      * @deprecated since 0.35: use `spice_display_channel_get_gl_scanout()` instead.
      */
     function display_get_gl_scanout(channel: DisplayChannel): GlScanout;
-
-    /**
-     * Retrieve primary display surface `surface_id`.
-     * @param channel a {@link SpiceClientGLib.DisplayChannel}
-     * @param surface_id a surface id
-     * @param primary a {@link SpiceClientGLib.DisplayPrimary}
-     * @returns `true` if the primary surface was found and its details collected in `primary`.
-     * @deprecated since 0.35: use `spice_display_channel_get_primary()` instead.
-     */
-    function display_get_primary(channel: Channel, surface_id: number, primary: DisplayPrimary): boolean;
 
     /**
      * After a SpiceDisplayChannel::gl-draw is emitted, the client should
@@ -270,6 +241,31 @@ export namespace SpiceClientGLib {
      * @returns a {@link GLib.OptionGroup} for the commandline arguments specific to Spice.  You have to call `spice_set_session_option()` after to set the options on a {@link SpiceClientGLib.Session}.
      */
     function get_option_group(): GLib.OptionGroup;
+
+    function glib_get_debug(): boolean;
+
+    /**
+     * Gets the version string
+     * @returns Spice-GTK version as a const string.
+     * @since 0.43
+     */
+    function glib_get_version_string(): string;
+
+    /**
+     * Enable or disable Spice-GTK debugging messages.
+     * @param enabled `true` or `false`
+     * @since 0.43
+     */
+    function glib_set_debug(enabled: boolean): void;
+
+    /**
+     * Creates a string representation of `uuid`, of the form
+     * "06e023d5-86d8-420e-8103-383e4566087a"
+     * @param uuid UUID byte array
+     * @returns A string that should be freed with `g_free()`.
+     * @since 0.43
+     */
+    function glib_uuid_to_string(uuid: Uint8Array | string): string;
 
     /**
      * Press a mouse button.
@@ -301,7 +297,7 @@ export namespace SpiceClientGLib {
      * Press and release a key event atomically (in the same message).
      * @param channel a {@link SpiceClientGLib.InputsChannel}
      * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
-     * @since 0.13
+     * @since 0.14
      * @deprecated since 0.35
      */
     function inputs_key_press_and_release(channel: InputsChannel, scancode: number): void;
@@ -356,20 +352,18 @@ export namespace SpiceClientGLib {
      * Grab the guest clipboard, with #VD_AGENT_CLIPBOARD `types`.
      * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
-     * @param ntypes the number of `types`
      * @deprecated since 0.6: use `spice_main_channel_clipboard_selection_grab()` instead.
      */
-    function main_clipboard_grab(channel: MainChannel, types: number, ntypes: number): void;
+    function main_clipboard_grab(channel: MainChannel, types: number[]): void;
 
     /**
      * Send the clipboard data to the guest.
      * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param type a #VD_AGENT_CLIPBOARD type
      * @param data clipboard data
-     * @param size data length in bytes
      * @deprecated since 0.6: use `spice_main_channel_clipboard_selection_notify()` instead.
      */
-    function main_clipboard_notify(channel: MainChannel, type: number, data: number, size: bigint | number): void;
+    function main_clipboard_notify(channel: MainChannel, type: number, data: Uint8Array | string): void;
 
     /**
      * Release the clipboard (for example, when the client loses the
@@ -393,11 +387,10 @@ export namespace SpiceClientGLib {
      * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
      * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
-     * @param ntypes the number of `types`
      * @since 0.6
      * @deprecated since 0.35: use `spice_main_channel_clipboard_selection_grab()` instead.
      */
-    function main_clipboard_selection_grab(channel: MainChannel, selection: number, types: number, ntypes: number): void;
+    function main_clipboard_selection_grab(channel: MainChannel, selection: number, types: number[]): void;
 
     /**
      * Send the clipboard data to the guest.
@@ -405,11 +398,10 @@ export namespace SpiceClientGLib {
      * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
      * @param type a #VD_AGENT_CLIPBOARD type
      * @param data clipboard data
-     * @param size data length in bytes
      * @since 0.6
      * @deprecated since 0.35: use `spice_main_channel_clipboard_selection_notify()` instead.
      */
-    function main_clipboard_selection_notify(channel: MainChannel, selection: number, type: number, data: number, size: bigint | number): void;
+    function main_clipboard_selection_notify(channel: MainChannel, selection: number, type: number, data: Uint8Array | string): void;
 
     /**
      * Release the clipboard (for example, when the client loses the
@@ -640,12 +632,15 @@ export namespace SpiceClientGLib {
     /**
      * Gets the version string
      * @returns Spice-GTK version as a const string.
+     * @deprecated since 0.43: Use `spice_glib_get_version_string()` instead
      */
     function util_get_version_string(): string;
 
     /**
      * Enable or disable Spice-GTK debugging messages.
+     * Kept for ABI compatibility.
      * @param enabled `true` or `false`
+     * @deprecated since 0.43: Use `spice_glib_set_debug()` instead
      */
     function util_set_debug(enabled: boolean): void;
 
@@ -655,8 +650,9 @@ export namespace SpiceClientGLib {
      * @param uuid UUID byte array
      * @returns A string that should be freed with `g_free()`.
      * @since 0.22
+     * @deprecated since 0.43: Use `spice_glib_uuid_to_string()` instead
      */
-    function uuid_to_string(uuid: number): string;
+    function uuid_to_string(uuid: Uint8Array | string): string;
 
     /**
      * @gir-type Callback
@@ -899,21 +895,25 @@ export namespace SpiceClientGLib {
         // Properties
         /**
          * @construct-only
+         * @default -1
          */
         get channel_id(): number;
 
         /**
          * @construct-only
+         * @default -1
          */
         get channelId(): number;
 
         /**
          * @construct-only
+         * @default -1
          */
         get channel_type(): number;
 
         /**
          * @construct-only
+         * @default -1
          */
         get channelType(): number;
 
@@ -939,11 +939,13 @@ export namespace SpiceClientGLib {
 
         /**
          * @read-only
+         * @default 0
          */
         get total_read_bytes(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get totalReadBytes(): number;
 
@@ -991,6 +993,7 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
         /**
+         * Signal class handler for the {@link SpiceClientGLib.Channel.SignalSignatures.channel_event | SpiceClientGLib.Channel::channel_event} signal.
          * @param event 
          * @virtual
          */
@@ -1029,6 +1032,7 @@ export namespace SpiceClientGLib {
         vfunc_iterate_write(): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.Channel.SignalSignatures.open_fd | SpiceClientGLib.Channel::open_fd} signal.
          * @param with_tls 
          * @virtual
          */
@@ -1232,11 +1236,13 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
         /**
+         * Signal class handler for the {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_hide | SpiceClientGLib.CursorChannel::cursor-hide} signal.
          * @virtual
          */
         vfunc_cursor_hide(): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_move | SpiceClientGLib.CursorChannel::cursor-move} signal.
          * @param x 
          * @param y 
          * @virtual
@@ -1244,11 +1250,13 @@ export namespace SpiceClientGLib {
         vfunc_cursor_move(x: number, y: number): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_reset | SpiceClientGLib.CursorChannel::cursor-reset} signal.
          * @virtual
          */
         vfunc_cursor_reset(): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_set | SpiceClientGLib.CursorChannel::cursor-set} signal.
          * @param width 
          * @param height 
          * @param hot_x 
@@ -1307,7 +1315,9 @@ export namespace SpiceClientGLib {
             /**
              * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.gst_video_overlay | SpiceClientGLib.DisplayChannel::gst-video-overlay} signal is emitted when
              * pipeline is ready and can be passed to widget to register GStreamer
-             * overlay interface and other GStreamer callbacks.
+             * overlay interface and other GStreamer callbacks. If the pipeline
+             * pointer is NULL, the drawing area of the native renderer is set
+             * visible.
              * @signal
              * @since 0.36
              */
@@ -1335,7 +1345,7 @@ export namespace SpiceClientGLib {
             gl_scanout: GlScanout;
             glScanout: GlScanout;
             height: number;
-            monitors: never[];
+            monitors: DisplayMonitorConfig[];
             monitors_max: number;
             monitorsMax: number;
             width: number;
@@ -1366,6 +1376,7 @@ export namespace SpiceClientGLib {
 
         /**
          * @read-only
+         * @default 0
          */
         get height(): number;
 
@@ -1374,7 +1385,7 @@ export namespace SpiceClientGLib {
          * @since 0.13
          * @read-only
          */
-        get monitors(): null[];
+        get monitors(): DisplayMonitorConfig[];
 
         /**
          * The maximum number of monitors the server or guest supports.
@@ -1382,6 +1393,7 @@ export namespace SpiceClientGLib {
          * reboot or dynamically adjust this.
          * @since 0.13
          * @read-only
+         * @default 1
          */
         get monitors_max(): number;
 
@@ -1391,11 +1403,13 @@ export namespace SpiceClientGLib {
          * reboot or dynamically adjust this.
          * @since 0.13
          * @read-only
+         * @default 1
          */
         get monitorsMax(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get width(): number;
 
@@ -1422,38 +1436,72 @@ export namespace SpiceClientGLib {
         emit<K extends keyof DisplayChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        // Static methods
+        // Methods
         /**
          * Tells the spice server to change the preferred image compression
          * for the `channel`.
-         * @param channel a {@link SpiceClientGLib.DisplayChannel}
          * @param compression a `SpiceImageCompression`
          */
-        static change_preferred_compression(channel: Channel, compression: number): void;
+        display_change_preferred_compression(compression: number): void;
 
         /**
          * Tells the spice server to change the preferred video codec type for
          * streaming in `channel`. Application can set only one preferred video codec per
          * display channel.
-         * @param channel a {@link SpiceClientGLib.DisplayChannel}
          * @param codec_type a `SpiceVideoCodecType`
          */
-        static change_preferred_video_codec_type(channel: Channel, codec_type: number): void;
+        display_change_preferred_video_codec_type(codec_type: number): void;
+
+        /**
+         * Tells the spice server to change the preferred image compression
+         * for the `channel`.
+         * @param compression a `SpiceImageCompression`
+         */
+        display_channel_change_preferred_compression(compression: number): void;
+
+        /**
+         * Tells the spice server to change the preferred video codec type for
+         * streaming in `channel`. Application can set only one preferred video codec per
+         * display channel.
+         * @param codec_type a `SpiceVideoCodecType`
+         */
+        display_channel_change_preferred_video_codec_type(codec_type: number): void;
+
+        /**
+         * Tells the spice server the ordered preferred video codec types to
+         * use for streaming in `channel`.
+         * @param codecs an array of `ncodecs` `SpiceVideoCodecType` types
+         * @returns `true` if the preferred codec list was successfully changed, and `false` otherwise.
+         */
+        display_channel_change_preferred_video_codec_types(codecs: number[]): boolean;
 
         /**
          * Retrieve primary display surface `surface_id`.
-         * @param channel a {@link SpiceClientGLib.DisplayChannel}
          * @param surface_id a surface id
          * @param primary a {@link SpiceClientGLib.DisplayPrimary}
+         * @returns `true` if the primary surface was found and its details collected in `primary`.
          */
-        static get_primary(channel: Channel, surface_id: number, primary: DisplayPrimary): boolean;
+        display_channel_get_primary(surface_id: number, primary: DisplayPrimary): boolean;
 
-        // Methods
+        /**
+         * Retrieve primary display surface `surface_id`.
+         * @param surface_id a surface id
+         * @param primary a {@link SpiceClientGLib.DisplayPrimary}
+         * @returns `true` if the primary surface was found and its details collected in `primary`.
+         */
+        display_get_primary(surface_id: number, primary: DisplayPrimary): boolean;
+
         /**
          * Retrieves the GL scanout if available
          * @returns the current GL scanout, or `null` if none or not valid
          */
         get_gl_scanout(): GlScanout;
+
+        /**
+         * Retrieves the GL scanout with multi plane info if available
+         * @returns the current GL scanout, or `null` if none or not valid
+         */
+        get_gl_scanout2(): GlScanout2;
 
         /**
          * After a SpiceDisplayChannel::gl-draw is emitted, the client should
@@ -1520,31 +1568,37 @@ export namespace SpiceClientGLib {
 
         /**
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get progress(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get total_bytes(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get totalBytes(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get transferred_bytes(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get transferredBytes(): number;
 
@@ -1624,11 +1678,13 @@ export namespace SpiceClientGLib {
         // Properties
         /**
          * @read-only
+         * @default 0
          */
         get key_modifiers(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get keyModifiers(): number;
 
@@ -1729,7 +1785,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection instead.
              * @run-last
              */
-            "main-clipboard": (arg0: number, arg1: null, arg2: number) => void;
+            "main-clipboard": (arg0: number, arg1: Uint8Array) => void;
             /**
              * Inform when clipboard data is available from the guest, and for
              * which `types`.
@@ -1737,7 +1793,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-grab instead.
              * @run-last
              */
-            "main-clipboard-grab": (arg0: null, arg1: number) => boolean | void;
+            "main-clipboard-grab": (arg0: number[]) => boolean | void;
             /**
              * Inform when the clipboard is released from the guest, when no
              * clipboard data is available from the guest.
@@ -1759,7 +1815,7 @@ export namespace SpiceClientGLib {
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection": (arg0: number, arg1: number, arg2: null, arg3: number) => void;
+            "main-clipboard-selection": (arg0: number, arg1: number, arg2: Uint8Array) => void;
             /**
              * Inform when clipboard data is available from the guest, and for
              * which `types`.
@@ -1767,7 +1823,7 @@ export namespace SpiceClientGLib {
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection-grab": (arg0: number, arg1: null, arg2: number) => boolean | void;
+            "main-clipboard-selection-grab": (arg0: number, arg1: number[]) => boolean | void;
             /**
              * Inform when the clipboard is released from the guest, when no
              * clipboard data is available from the guest.
@@ -1860,45 +1916,58 @@ export namespace SpiceClientGLib {
         // Properties
         /**
          * @read-only
+         * @default 0
          */
         get agent_caps_0(): number;
 
         /**
          * @read-only
+         * @default 0
          */
         get agentCaps0(): number;
 
         /**
          * @read-only
+         * @default false
          */
         get agent_connected(): boolean;
 
         /**
          * @read-only
+         * @default false
          */
         get agentConnected(): boolean;
 
         /**
          * @deprecated since 0.37: Deprecated due lack of support in drivers, only Windows 7 and older. This option is currently ignored.
+         * @default 0
          */
         get color_depth(): number;
         set color_depth(val: number);
 
         /**
          * @deprecated since 0.37: Deprecated due lack of support in drivers, only Windows 7 and older. This option is currently ignored.
+         * @default 0
          */
         get colorDepth(): number;
         set colorDepth(val: number);
 
+        /**
+         * @default false
+         */
         get disable_animation(): boolean;
         set disable_animation(val: boolean);
 
+        /**
+         * @default false
+         */
         get disableAnimation(): boolean;
         set disableAnimation(val: boolean);
 
         /**
          * Disable automatic horizontal display position alignment.
          * @since 0.13
+         * @default false
          */
         get disable_display_align(): boolean;
         set disable_display_align(val: boolean);
@@ -1906,25 +1975,44 @@ export namespace SpiceClientGLib {
         /**
          * Disable automatic horizontal display position alignment.
          * @since 0.13
+         * @default false
          */
         get disableDisplayAlign(): boolean;
         set disableDisplayAlign(val: boolean);
 
+        /**
+         * @default true
+         */
         get disable_display_position(): boolean;
         set disable_display_position(val: boolean);
 
+        /**
+         * @default true
+         */
         get disableDisplayPosition(): boolean;
         set disableDisplayPosition(val: boolean);
 
+        /**
+         * @default false
+         */
         get disable_font_smooth(): boolean;
         set disable_font_smooth(val: boolean);
 
+        /**
+         * @default false
+         */
         get disableFontSmooth(): boolean;
         set disableFontSmooth(val: boolean);
 
+        /**
+         * @default false
+         */
         get disable_wallpaper(): boolean;
         set disable_wallpaper(val: boolean);
 
+        /**
+         * @default false
+         */
         get disableWallpaper(): boolean;
         set disableWallpaper(val: boolean);
 
@@ -1932,6 +2020,7 @@ export namespace SpiceClientGLib {
          * Maximum size of clipboard operations in bytes (default 100MB,
          * -1 for unlimited size);
          * @since 0.22
+         * @default 104857600
          */
         get max_clipboard(): number;
         set max_clipboard(val: number);
@@ -1940,6 +2029,7 @@ export namespace SpiceClientGLib {
          * Maximum size of clipboard operations in bytes (default 100MB,
          * -1 for unlimited size);
          * @since 0.22
+         * @default 104857600
          */
         get maxClipboard(): number;
         set maxClipboard(val: number);
@@ -1953,6 +2043,7 @@ export namespace SpiceClientGLib {
          * client sends relative mouse movements and the server sends
          * position and shape commands.
          * @read-only
+         * @default 0
          */
         get mouse_mode(): number;
 
@@ -1965,6 +2056,7 @@ export namespace SpiceClientGLib {
          * client sends relative mouse movements and the server sends
          * position and shape commands.
          * @read-only
+         * @default 0
          */
         get mouseMode(): number;
 
@@ -2003,18 +2095,16 @@ export namespace SpiceClientGLib {
          * Grab the guest clipboard, with #VD_AGENT_CLIPBOARD `types`.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
-         * @param ntypes the number of `types`
          */
-        clipboard_selection_grab(selection: number, types: number, ntypes: number): void;
+        clipboard_selection_grab(selection: number, types: number[]): void;
 
         /**
          * Send the clipboard data to the guest.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param type a #VD_AGENT_CLIPBOARD type
          * @param data clipboard data
-         * @param size data length in bytes
          */
-        clipboard_selection_notify(selection: number, type: number, data: number, size: bigint | number): void;
+        clipboard_selection_notify(selection: number, type: number, data: Uint8Array | string): void;
 
         /**
          * Release the clipboard (for example, when the client loses the
@@ -2179,6 +2269,20 @@ export namespace SpiceClientGLib {
          * @param update if `true`, update guest display state after 1sec.
          */
         update_display_enabled(id: number, enabled: boolean, update: boolean): void;
+
+        /**
+         * Update the display `id` physical size.
+         * 
+         * If `update` is `true`, the remote configuration will be updated too
+         * after 1 second without further changes. You can send when you want
+         * without delay the new configuration to the remote with
+         * `spice_main_send_monitor_config()`
+         * @param id display ID
+         * @param width_mm physical display width in millimeters
+         * @param height_mm physical display height in millimeters
+         * @param update if `true`, update guest resolution after 1sec.
+         */
+        update_display_mm(id: number, width_mm: number, height_mm: number, update: boolean): void;
     }
 
 
@@ -2239,15 +2343,27 @@ export namespace SpiceClientGLib {
         static $gtype: GObject.GType<PlaybackChannel>;
 
         // Properties
+        /**
+         * @default 200
+         */
         get min_latency(): number;
         set min_latency(val: number);
 
+        /**
+         * @default 200
+         */
         get minLatency(): number;
         set minLatency(val: number);
 
+        /**
+         * @default false
+         */
         get mute(): boolean;
         set mute(val: boolean);
 
+        /**
+         * @default 2
+         */
         get nchannels(): number;
         set nchannels(val: number);
 
@@ -2279,6 +2395,7 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
         /**
+         * Signal class handler for the {@link SpiceClientGLib.PlaybackChannel.SignalSignatures.playback_data | SpiceClientGLib.PlaybackChannel::playback-data} signal.
          * @param data 
          * @param size 
          * @virtual
@@ -2286,6 +2403,7 @@ export namespace SpiceClientGLib {
         vfunc_playback_data(data: null, size: number): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.PlaybackChannel.SignalSignatures.playback_start | SpiceClientGLib.PlaybackChannel::playback-start} signal.
          * @param format 
          * @param channels 
          * @param freq 
@@ -2294,6 +2412,7 @@ export namespace SpiceClientGLib {
         vfunc_playback_start(format: number, channels: number, freq: number): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.PlaybackChannel.SignalSignatures.playback_stop | SpiceClientGLib.PlaybackChannel::playback-stop} signal.
          * @virtual
          */
         vfunc_playback_stop(): void;
@@ -2354,21 +2473,25 @@ export namespace SpiceClientGLib {
         // Properties
         /**
          * @read-only
+         * @default null
          */
         get port_name(): string;
 
         /**
          * @read-only
+         * @default null
          */
         get portName(): string;
 
         /**
          * @read-only
+         * @default false
          */
         get port_opened(): boolean;
 
         /**
          * @read-only
+         * @default false
          */
         get portOpened(): boolean;
 
@@ -2484,6 +2607,7 @@ export namespace SpiceClientGLib {
 
         /**
          * @read-only
+         * @default false
          */
         get ready(): boolean;
 
@@ -2623,9 +2747,15 @@ export namespace SpiceClientGLib {
         static $gtype: GObject.GType<RecordChannel>;
 
         // Properties
+        /**
+         * @default false
+         */
         get mute(): boolean;
         set mute(val: boolean);
 
+        /**
+         * @default 2
+         */
         get nchannels(): number;
         set nchannels(val: number);
 
@@ -2657,6 +2787,7 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
         /**
+         * Unused (deprecated).
          * @param data 
          * @param size 
          * @virtual
@@ -2664,6 +2795,7 @@ export namespace SpiceClientGLib {
         vfunc_record_data(data: null, size: number): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.RecordChannel.SignalSignatures.record_start | SpiceClientGLib.RecordChannel::record-start} signal.
          * @param format 
          * @param channels 
          * @param freq 
@@ -2672,6 +2804,7 @@ export namespace SpiceClientGLib {
         vfunc_record_start(format: number, channels: number, freq: number): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.RecordChannel.SignalSignatures.record_stop | SpiceClientGLib.RecordChannel::record-stop} signal.
          * @virtual
          */
         vfunc_record_stop(): void;
@@ -2836,6 +2969,7 @@ export namespace SpiceClientGLib {
         /**
          * File holding the CA certificates for the host the client is
          * connecting to
+         * @default null
          */
         get ca_file(): string;
         set ca_file(val: string);
@@ -2843,6 +2977,7 @@ export namespace SpiceClientGLib {
         /**
          * File holding the CA certificates for the host the client is
          * connecting to
+         * @default null
          */
         get caFile(): string;
         set caFile(val: string);
@@ -2850,6 +2985,7 @@ export namespace SpiceClientGLib {
         /**
          * Images cache size. If 0, don't set.
          * @since 0.9
+         * @default 0
          */
         get cache_size(): number;
         set cache_size(val: number);
@@ -2857,22 +2993,38 @@ export namespace SpiceClientGLib {
         /**
          * Images cache size. If 0, don't set.
          * @since 0.9
+         * @default 0
          */
         get cacheSize(): number;
         set cacheSize(val: number);
 
+        /**
+         * @default null
+         */
         get cert_subject(): string;
         set cert_subject(val: string);
 
+        /**
+         * @default null
+         */
         get certSubject(): string;
         set certSubject(val: string);
 
+        /**
+         * @default null
+         */
         get ciphers(): string;
         set ciphers(val: string);
 
+        /**
+         * @default false
+         */
         get client_sockets(): boolean;
         set client_sockets(val: boolean);
 
+        /**
+         * @default false
+         */
         get clientSockets(): boolean;
         set clientSockets(val: boolean);
 
@@ -2880,6 +3032,7 @@ export namespace SpiceClientGLib {
          * Display color depth to set on new display channels. If 0, don't set.
          * @since 0.7
          * @deprecated since 0.37: Deprecated due lack of support in drivers, only Windows 7 and older. This option is currently ignored.
+         * @default 0
          */
         get color_depth(): number;
         set color_depth(val: number);
@@ -2888,6 +3041,7 @@ export namespace SpiceClientGLib {
          * Display color depth to set on new display channels. If 0, don't set.
          * @since 0.7
          * @deprecated since 0.37: Deprecated due lack of support in drivers, only Windows 7 and older. This option is currently ignored.
+         * @default 0
          */
         get colorDepth(): number;
         set colorDepth(val: number);
@@ -2916,6 +3070,7 @@ export namespace SpiceClientGLib {
          * If set to TRUE, the audio channels will be enabled for
          * playback and recording.
          * @since 0.8
+         * @default true
          */
         get enable_audio(): boolean;
         set enable_audio(val: boolean);
@@ -2924,6 +3079,7 @@ export namespace SpiceClientGLib {
          * If set to TRUE, the audio channels will be enabled for
          * playback and recording.
          * @since 0.8
+         * @default true
          */
         get enableAudio(): boolean;
         set enableAudio(val: boolean);
@@ -2932,6 +3088,7 @@ export namespace SpiceClientGLib {
          * If set to TRUE, the smartcard channel will be enabled and smartcard
          * events will be forwarded to the guest
          * @since 0.7
+         * @default false
          */
         get enable_smartcard(): boolean;
         set enable_smartcard(val: boolean);
@@ -2940,6 +3097,7 @@ export namespace SpiceClientGLib {
          * If set to TRUE, the smartcard channel will be enabled and smartcard
          * events will be forwarded to the guest
          * @since 0.7
+         * @default false
          */
         get enableSmartcard(): boolean;
         set enableSmartcard(val: boolean);
@@ -2948,6 +3106,7 @@ export namespace SpiceClientGLib {
          * If set to TRUE, the usbredir channel will be enabled and USB devices
          * can be redirected to the guest
          * @since 0.8
+         * @default true
          */
         get enable_usbredir(): boolean;
         set enable_usbredir(val: boolean);
@@ -2956,6 +3115,7 @@ export namespace SpiceClientGLib {
          * If set to TRUE, the usbredir channel will be enabled and USB devices
          * can be redirected to the guest
          * @since 0.8
+         * @default true
          */
         get enableUsbredir(): boolean;
         set enableUsbredir(val: boolean);
@@ -2965,6 +3125,7 @@ export namespace SpiceClientGLib {
          * default on EGL-enabled host, unless SPICE_DISABLE_GL_SCANOUT
          * environment variable is set.
          * @since 0.36
+         * @default true
          */
         get gl_scanout(): boolean;
         set gl_scanout(val: boolean);
@@ -2974,6 +3135,7 @@ export namespace SpiceClientGLib {
          * default on EGL-enabled host, unless SPICE_DISABLE_GL_SCANOUT
          * environment variable is set.
          * @since 0.36
+         * @default true
          */
         get glScanout(): boolean;
         set glScanout(val: boolean);
@@ -2981,6 +3143,7 @@ export namespace SpiceClientGLib {
         /**
          * Glz window size. If 0, don't set.
          * @since 0.9
+         * @default 0
          */
         get glz_window_size(): number;
         set glz_window_size(val: number);
@@ -2988,19 +3151,27 @@ export namespace SpiceClientGLib {
         /**
          * Glz window size. If 0, don't set.
          * @since 0.9
+         * @default 0
          */
         get glzWindowSize(): number;
         set glzWindowSize(val: number);
 
         /**
          * URL of the SPICE host to connect to
+         * @default localhost
          */
         get host(): string;
         set host(val: string);
 
+        /**
+         * @default false
+         */
         get inhibit_keyboard_grab(): boolean;
         set inhibit_keyboard_grab(val: boolean);
 
+        /**
+         * @default false
+         */
         get inhibitKeyboardGrab(): boolean;
         set inhibitKeyboardGrab(val: boolean);
 
@@ -3008,6 +3179,7 @@ export namespace SpiceClientGLib {
          * {@link SpiceClientGLib.SessionMigration} bit field indicating if a migration is in
          * progress
          * @read-only
+         * @default SpiceClientGLib.SessionMigration.NONE
          */
         get migration_state(): SessionMigration;
 
@@ -3015,6 +3187,7 @@ export namespace SpiceClientGLib {
          * {@link SpiceClientGLib.SessionMigration} bit field indicating if a migration is in
          * progress
          * @read-only
+         * @default SpiceClientGLib.SessionMigration.NONE
          */
         get migrationState(): SessionMigration;
 
@@ -3022,23 +3195,27 @@ export namespace SpiceClientGLib {
          * Spice server name.
          * @since 0.11
          * @read-only
+         * @default null
          */
         get name(): string;
 
         /**
          * TLS password to use
+         * @default null
          */
         get password(): string;
         set password(val: string);
 
         /**
          * Port to connect to for unencrypted sessions
+         * @default null
          */
         get port(): string;
         set port(val: string);
 
         /**
          * Version of the SPICE protocol to use
+         * @default 2
          */
         get protocol(): number;
         set protocol(val: number);
@@ -3047,6 +3224,7 @@ export namespace SpiceClientGLib {
          * URI to the proxy server to use when doing network connection.
          * of the form <![CDATA[ [protocol://]<host>[:port] ]]>
          * @since 0.17
+         * @default null
          */
         get proxy(): string;
         set proxy(val: string);
@@ -3057,6 +3235,7 @@ export namespace SpiceClientGLib {
         /**
          * Whether this connection is read-only mode.
          * @since 0.8
+         * @default false
          */
         get read_only(): boolean;
         set read_only(val: boolean);
@@ -3064,6 +3243,7 @@ export namespace SpiceClientGLib {
         /**
          * Whether this connection is read-only mode.
          * @since 0.8
+         * @default false
          */
         get readOnly(): boolean;
         set readOnly(val: boolean);
@@ -3085,6 +3265,7 @@ export namespace SpiceClientGLib {
         /**
          * Whether to share the directory read-only.
          * @since 0.28
+         * @default false
          */
         get share_dir_ro(): boolean;
         set share_dir_ro(val: boolean);
@@ -3092,6 +3273,7 @@ export namespace SpiceClientGLib {
         /**
          * Whether to share the directory read-only.
          * @since 0.28
+         * @default false
          */
         get shareDirRo(): boolean;
         set shareDirRo(val: boolean);
@@ -3099,6 +3281,7 @@ export namespace SpiceClientGLib {
         /**
          * Location of the shared directory
          * @since 0.24
+         * @default null
          */
         get shared_dir(): string;
         set shared_dir(val: string);
@@ -3106,6 +3289,7 @@ export namespace SpiceClientGLib {
         /**
          * Location of the shared directory
          * @since 0.24
+         * @default null
          */
         get sharedDir(): string;
         set sharedDir(val: string);
@@ -3136,6 +3320,7 @@ export namespace SpiceClientGLib {
          * Path to the NSS certificate database containing the certificates to
          * use to simulate a software smartcard
          * @since 0.7
+         * @default null
          */
         get smartcard_db(): string;
         set smartcard_db(val: string);
@@ -3144,18 +3329,21 @@ export namespace SpiceClientGLib {
          * Path to the NSS certificate database containing the certificates to
          * use to simulate a software smartcard
          * @since 0.7
+         * @default null
          */
         get smartcardDb(): string;
         set smartcardDb(val: string);
 
         /**
          * Port to connect to for TLS sessions
+         * @default null
          */
         get tls_port(): string;
         set tls_port(val: string);
 
         /**
          * Port to connect to for TLS sessions
+         * @default null
          */
         get tlsPort(): string;
         set tlsPort(val: string);
@@ -3163,6 +3351,7 @@ export namespace SpiceClientGLib {
         /**
          * Path of the Unix socket to connect to
          * @since 0.28
+         * @default null
          */
         get unix_path(): string;
         set unix_path(val: string);
@@ -3170,6 +3359,7 @@ export namespace SpiceClientGLib {
         /**
          * Path of the Unix socket to connect to
          * @since 0.28
+         * @default null
          */
         get unixPath(): string;
         set unixPath(val: string);
@@ -3177,12 +3367,14 @@ export namespace SpiceClientGLib {
         /**
          * URI of the SPICE host to connect to. The URI is of the form
          * spice://hostname?port=XXX or spice://hostname?tls_port=XXX
+         * @default null
          */
         get uri(): string;
         set uri(val: string);
 
         /**
          * Username to use
+         * @default null
          */
         get username(): string;
         set username(val: string);
@@ -3197,6 +3389,7 @@ export namespace SpiceClientGLib {
         /**
          * {@link SpiceClientGLib.SessionVerify} bit field indicating which parts of the peer
          * certificate should be checked
+         * @default SpiceClientGLib.SessionVerify.HOSTNAME
          */
         get verify(): SessionVerify;
         set verify(val: SessionVerify);
@@ -3232,12 +3425,14 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
         /**
+         * Signal class handler for the {@link SpiceClientGLib.Session.SignalSignatures.channel_destroy | SpiceClientGLib.Session::channel_destroy} signal.
          * @param channel 
          * @virtual
          */
         vfunc_channel_destroy(channel: Channel): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.Session.SignalSignatures.channel_new | SpiceClientGLib.Session::channel_new} signal.
          * @param channel 
          * @virtual
          */
@@ -3445,24 +3640,28 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
         /**
+         * Signal class handler for the {@link SpiceClientGLib.SmartcardManager.SignalSignatures.card_inserted | SpiceClientGLib.SmartcardManager::card_inserted} signal.
          * @param reader 
          * @virtual
          */
         vfunc_card_inserted(reader: SmartcardReader): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.SmartcardManager.SignalSignatures.card_removed | SpiceClientGLib.SmartcardManager::card_removed} signal.
          * @param reader 
          * @virtual
          */
         vfunc_card_removed(reader: SmartcardReader): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_added | SpiceClientGLib.SmartcardManager::reader_added} signal.
          * @param reader 
          * @virtual
          */
         vfunc_reader_added(reader: SmartcardReader): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_removed | SpiceClientGLib.SmartcardManager::reader_removed} signal.
          * @param reader 
          * @virtual
          */
@@ -3524,18 +3723,33 @@ export namespace SpiceClientGLib {
         static $gtype: GObject.GType<URI>;
 
         // Properties
+        /**
+         * @default null
+         */
         get hostname(): string;
         set hostname(val: string);
 
+        /**
+         * @default null
+         */
         get password(): string;
         set password(val: string);
 
+        /**
+         * @default 0
+         */
         get port(): number;
         set port(val: number);
 
+        /**
+         * @default null
+         */
         get scheme(): string;
         set scheme(val: string);
 
+        /**
+         * @default null
+         */
         get user(): string;
         set user(val: string);
 
@@ -3673,6 +3887,7 @@ export namespace SpiceClientGLib {
          * 
          * Note when `SpiceGtkSession`'s auto-usbredir property is TRUE, this
          * property is controlled by `SpiceGtkSession`.
+         * @default false
          */
         get auto_connect(): boolean;
         set auto_connect(val: boolean);
@@ -3682,6 +3897,7 @@ export namespace SpiceClientGLib {
          * 
          * Note when `SpiceGtkSession`'s auto-usbredir property is TRUE, this
          * property is controlled by `SpiceGtkSession`.
+         * @default false
          */
         get autoConnect(): boolean;
         set autoConnect(val: boolean);
@@ -3706,6 +3922,7 @@ export namespace SpiceClientGLib {
          * 
          * Filter strings in this format can be easily created with the RHEV-M
          * USB filter editor tool.
+         * @default 0x03,-1,-1,-1,0 | -1,-1,-1,-1,1
          */
         get auto_connect_filter(): string;
         set auto_connect_filter(val: string);
@@ -3730,6 +3947,7 @@ export namespace SpiceClientGLib {
          * 
          * Filter strings in this format can be easily created with the RHEV-M
          * USB filter editor tool.
+         * @default 0x03,-1,-1,-1,0 | -1,-1,-1,-1,1
          */
         get autoConnectFilter(): string;
         set autoConnectFilter(val: string);
@@ -3738,6 +3956,7 @@ export namespace SpiceClientGLib {
          * Get the number of available channels for redirecting USB devices.
          * @since 0.31
          * @read-only
+         * @default 0
          */
         get free_channels(): number;
 
@@ -3745,6 +3964,7 @@ export namespace SpiceClientGLib {
          * Get the number of available channels for redirecting USB devices.
          * @since 0.31
          * @read-only
+         * @default 0
          */
         get freeChannels(): number;
 
@@ -3754,6 +3974,7 @@ export namespace SpiceClientGLib {
          * 
          * See {@link SpiceClientGLib.UsbDeviceManager.auto_connect_filter} for the filter string
          * format.
+         * @default null
          */
         get redirect_on_connect(): string;
         set redirect_on_connect(val: string);
@@ -3764,6 +3985,7 @@ export namespace SpiceClientGLib {
          * 
          * See {@link SpiceClientGLib.UsbDeviceManager.auto_connect_filter} for the filter string
          * format.
+         * @default null
          */
         get redirectOnConnect(): string;
         set redirectOnConnect(val: string);
@@ -3815,6 +4037,7 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
         /**
+         * Signal class handler for the {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.auto_connect_failed | SpiceClientGLib.UsbDeviceManager::auto-connect-failed} signal.
          * @param device 
          * @param error 
          * @virtual
@@ -3822,12 +4045,14 @@ export namespace SpiceClientGLib {
         vfunc_auto_connect_failed(device: UsbDevice, error: GLib.Error): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_added | SpiceClientGLib.UsbDeviceManager::device-added} signal.
          * @param device 
          * @virtual
          */
         vfunc_device_added(device: UsbDevice): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_error | SpiceClientGLib.UsbDeviceManager::device_error} signal.
          * @param device 
          * @param error 
          * @virtual
@@ -3835,12 +4060,20 @@ export namespace SpiceClientGLib {
         vfunc_device_error(device: UsbDevice, error: GLib.Error): void;
 
         /**
+         * Signal class handler for the {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_removed | SpiceClientGLib.UsbDeviceManager::device-removed} signal.
          * @param device 
          * @virtual
          */
         vfunc_device_removed(device: UsbDevice): void;
 
         // Methods
+        /**
+         * Allocates a SpiceUsbDevice instance for the specified file descriptor.
+         * @param file_descriptor an open file descriptor for the USB device.
+         * @returns an allocated SpiceUsbDevice instance or `null` in case of failure.
+         */
+        allocate_device_for_file_descriptor(file_descriptor: number): UsbDevice | null;
+
         /**
          * Checks whether it is possible to redirect the `device`.
          * @param device a {@link SpiceClientGLib.UsbDevice} to disconnect
@@ -3883,6 +4116,14 @@ export namespace SpiceClientGLib {
          * @returns `true` if connection is successful
          */
         connect_device_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Creates a new shared CD device based on a disk image file
+         * or a physical CD device.
+         * @param filename image or device path
+         * @returns `true` if device created successfully
+         */
+        create_shared_cd_device(filename: string): boolean;
 
         /**
          * Disconnects the `device`.
@@ -3945,6 +4186,13 @@ export namespace SpiceClientGLib {
          * @returns `true` if `device` has an associated USB redirection channel
          */
         is_device_connected(device: UsbDevice): boolean;
+
+        /**
+         * Checks whether a device is shared CD.
+         * @param device a {@link SpiceClientGLib.UsbDevice} to query
+         * @returns `true` if the device is shared CD
+         */
+        is_device_shared_cd(device: UsbDevice): boolean;
 
         /**
          * Checks whether a device is being redirected
@@ -4341,6 +4589,34 @@ export namespace SpiceClientGLib {
 
 
     /**
+     * Holds the information necessary for using the GL display scanout.
+     * @gir-type Struct
+     */
+    class GlScanout2 {
+        static $gtype: GObject.GType<GlScanout2>;
+
+        // Fields
+        fd: number[];
+
+        width: number;
+
+        height: number;
+
+        offset: number[];
+
+        stride: number[];
+
+        num_planes: number;
+
+        format: number;
+
+        y0top: boolean;
+
+        modifier: number;
+    }
+
+
+    /**
      * @gir-type Alias
      */
     type InputsChannelClass = typeof InputsChannel;
@@ -4554,7 +4830,7 @@ export namespace SpiceClientGLib {
      * The {@link SpiceClientGLib.UsbDevice} struct is opaque and cannot be accessed directly.
      * @gir-type Struct
      */
-    class UsbDevice {
+    abstract class UsbDevice {
         static $gtype: GObject.GType<UsbDevice>;
 
         // Methods

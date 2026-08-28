@@ -59,6 +59,24 @@ export namespace AtrilDocument {
     /**
      * @gir-type Enum
      */
+    export namespace AnnotationTextMarkupType {
+        export const $gtype: GObject.GType<AnnotationTextMarkupType>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AnnotationTextMarkupType {
+        HIGHLIGHT,
+        STRIKE_OUT,
+        UNDERLINE,
+        SQUIGGLY,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationType {
         export const $gtype: GObject.GType<AnnotationType>;
     }
@@ -70,6 +88,7 @@ export namespace AtrilDocument {
         UNKNOWN,
         TEXT,
         ATTACHMENT,
+        TEXT_MARKUP,
     }
 
 
@@ -1048,6 +1067,164 @@ export namespace AtrilDocument {
          * @param is_open 
          */
         set_is_open(is_open: boolean): boolean;
+
+        /**
+         * @default true
+          * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
+        // This accessor conflicts with a field or function name in a parent class or interface.
+     has_popup: boolean | any;
+
+        /**
+         * @default true
+          * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
+        get hasPopup(): boolean;
+        set hasPopup(val: boolean);
+
+        /**
+         * @default null
+          * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
+        get label(): string;
+        set label(val: string);
+
+        /**
+         * @default 1
+          * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
+        get opacity(): number;
+        set opacity(val: number);
+
+        /**
+         * @default false
+          * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
+        get popup_is_open(): boolean;
+        set popup_is_open(val: boolean);
+
+        /**
+         * @default false
+          * @category Inherited from AtrilDocument.AnnotationMarkup
+         */
+        get popupIsOpen(): boolean;
+        set popupIsOpen(val: boolean);
+
+        /** @category Inherited from AtrilDocument.AnnotationMarkup */
+        get rectangle(): Rectangle;
+        set rectangle(val: Rectangle);
+
+        get_label(): string;
+
+        get_opacity(): number;
+
+        get_popup_is_open(): boolean;
+
+        /**
+         * @param ev_rect 
+         */
+        get_rectangle(ev_rect: Rectangle): void;
+
+        /**
+         * @param has_popup 
+         */
+        set_has_popup(has_popup: boolean): boolean;
+
+        /**
+         * @param label 
+         */
+        set_label(label: string): boolean;
+
+        /**
+         * @param opacity 
+         */
+        set_opacity(opacity: number): boolean;
+
+        /**
+         * @param is_open 
+         */
+        set_popup_is_open(is_open: boolean): boolean;
+
+        /**
+         * @param ev_rect 
+         */
+        set_rectangle(ev_rect: Rectangle): boolean;
+    }
+
+
+    namespace AnnotationTextMarkup {
+        // Signal signatures
+        interface SignalSignatures extends Annotation.SignalSignatures {
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::contents": (pspec: GObject.ParamSpec) => void;
+            "notify::modified": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::has-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::popup-is-open": (pspec: GObject.ParamSpec) => void;
+            "notify::rectangle": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
+            type: AnnotationTextMarkupType;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AnnotationTextMarkup extends Annotation implements AnnotationMarkup {
+        static $gtype: GObject.GType<AnnotationTextMarkup>;
+
+        // Properties
+        /**
+         * @default AtrilDocument.AnnotationTextMarkupType.HIGHLIGHT
+         */
+        get type(): AnnotationTextMarkupType;
+        set type(val: AnnotationTextMarkupType);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AnnotationTextMarkup.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AnnotationTextMarkup.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static highlight_new(page: Page): AnnotationTextMarkup;
+
+        static squiggly_new(page: Page): AnnotationTextMarkup;
+
+        static strike_out_new(page: Page): AnnotationTextMarkup;
+
+        static underline_new(page: Page): AnnotationTextMarkup;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationTextMarkup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        get_markup_type(): AnnotationTextMarkupType;
 
         /**
          * @default true
@@ -2629,6 +2806,11 @@ export namespace AtrilDocument {
      * @gir-type Alias
      */
     type AnnotationTextClass = typeof AnnotationText;
+
+    /**
+     * @gir-type Alias
+     */
+    type AnnotationTextMarkupClass = typeof AnnotationTextMarkup;
 
     /**
      * @gir-type Alias

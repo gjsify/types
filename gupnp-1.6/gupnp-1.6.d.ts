@@ -374,6 +374,7 @@ export namespace GUPnP {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::address": (pspec: GObject.ParamSpec) => void;
             "notify::address-family": (pspec: GObject.ParamSpec) => void;
+            "notify::allocate-tcp-socket": (pspec: GObject.ParamSpec) => void;
             "notify::boot-id": (pspec: GObject.ParamSpec) => void;
             "notify::config-id": (pspec: GObject.ParamSpec) => void;
             "notify::host-ip": (pspec: GObject.ParamSpec) => void;
@@ -384,6 +385,7 @@ export namespace GUPnP {
             "notify::port": (pspec: GObject.ParamSpec) => void;
             "notify::server-id": (pspec: GObject.ParamSpec) => void;
             "notify::socket-ttl": (pspec: GObject.ParamSpec) => void;
+            "notify::tcp-socket": (pspec: GObject.ParamSpec) => void;
             "notify::uda-version": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1822,7 +1824,7 @@ export namespace GUPnP {
      * {@link GUPnP.DeviceProxy} and {@link GUPnP.Device} to create resource proxy and resource
      * objects.
      * 
-     * Register UPnP type - {@link GLib.Type} pairs to have resource or resource proxy
+     * Register UPnP type - {@link GObject.Type} pairs to have resource or resource proxy
      * objects created with the specified {@link GObject.GType} whenever an object for a resource
      * of the specified UPnP type is requested. The {@link GObject.GType} needs
      * to be derived from the relevant resource or resource proxy type (e.g.
@@ -3095,6 +3097,83 @@ export namespace GUPnP {
     }
 
 
+    namespace ServiceProxyActionIter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * An opaque object representing an iterator over the out parameters of an action
+     * @gir-type Class
+     * @since 1.6.6
+     */
+    class ServiceProxyActionIter extends GObject.Object {
+        static $gtype: GObject.GType<ServiceProxyActionIter>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ServiceProxyActionIter.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<ServiceProxyActionIter.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof ServiceProxyActionIter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceProxyActionIter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof ServiceProxyActionIter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServiceProxyActionIter.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof ServiceProxyActionIter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServiceProxyActionIter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Get the name of the current out argument
+         * @returns Name of the current argument
+         */
+        get_name(): string;
+
+        /**
+         * Get the value of the current parameter.
+         * 
+         * If the service proxy had a successful introspection, the type according
+         * to the introspection data will be used, otherwise it will be string.
+         * @returns `true` if the value could be read successfully
+         */
+        get_value(): [boolean, unknown];
+
+        /**
+         * Get the value of the current parameter.
+         * 
+         * Converts the value to the given type, similar to the other
+         * finish_action functions.
+         * @param type The type to convert the value to
+         * @returns `true` if the value could be read successfully
+         */
+        get_value_as(type: GObject.GType): [boolean, unknown];
+
+        /**
+         * Move `self` to the next out value of the iterated action
+         * @returns `true` if the next value was available
+         */
+        next(): boolean;
+    }
+
+
     namespace XMLDoc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -3445,7 +3524,17 @@ export namespace GUPnP {
 
         static new_from_list(action: string, in_names: string[], in_values: (GObject.Value | any)[]): ServiceProxyAction;
 
+        static new_plain(action: string): ServiceProxyAction;
+
         // Methods
+        /**
+         * Append `name` to the list of arguments used by `action`
+         * @param name The name of the argument
+         * @param value The value of the argument
+         * @returns `action` for convenience.
+         */
+        add_argument(name: string, value: GObject.Value | any): ServiceProxyAction;
+
         /**
          * See `gupnp_service_proxy_action_get_result()`; this version takes a {@link GLib.HashTable} for
          * runtime generated parameter lists.
@@ -3555,6 +3644,12 @@ export namespace GUPnP {
         get_result_list(out_names: string[], out_types: GObject.GType[]): [boolean, unknown[]];
 
         /**
+         * Iterate over the out arguments of a finished action
+         * @returns A newly created GUPnPServiceProxyActionIterator, or `null` on error
+         */
+        iterate(): ServiceProxyActionIter | null;
+
+        /**
          * Increases reference count of `action`
          * @returns `action` with an increased reference count
          */
@@ -3577,6 +3672,11 @@ export namespace GUPnP {
         unref(): void;
     }
 
+
+    /**
+     * @gir-type Alias
+     */
+    type ServiceProxyActionIterClass = typeof ServiceProxyActionIter;
 
     /**
      * @gir-type Alias
@@ -3631,7 +3731,7 @@ export namespace GUPnP {
              * @param agent The User-Agent header of the peer or `null` if unknown. `returns` `true` if the peer is allowed, `false` otherwise
              * @virtual
              */
-            vfunc_is_allowed(device: null, service: null, path: string, address: string, agent: string | null): boolean;
+            vfunc_is_allowed(device: Device | null, service: Service | null, path: string, address: string, agent: string | null): boolean;
 
             /**
              * Check asynchronously whether an IP address is allowed to access
@@ -3654,7 +3754,7 @@ export namespace GUPnP {
              * @param callback Callback to call after the function is done.
              * @virtual
              */
-            vfunc_is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_is_allowed_async(device: Device | null, service: Service | null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Get the result of {@link GUPnP.Acl.is_allowed_async}.
@@ -3697,7 +3797,7 @@ export namespace GUPnP {
          * @param address IP address of the peer.
          * @param agent The User-Agent header of the peer or `null` if unknown. `returns` `true` if the peer is allowed, `false` otherwise
          */
-        is_allowed(device: null, service: null, path: string, address: string, agent: string | null): boolean;
+        is_allowed(device: Device | null, service: Service | null, path: string, address: string, agent: string | null): boolean;
 
         /**
          * Check asynchronously whether an IP address is allowed to access
@@ -3718,29 +3818,7 @@ export namespace GUPnP {
          * @param agent The User-Agent header of the peer or `null` if not unknown.
          * @param cancellable A cancellable which can be used to cancel the operation.
          */
-        is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * Check asynchronously whether an IP address is allowed to access
-         * this resource.
-         * 
-         * This function is optional. {@link GUPnP.Acl.can_sync} should return `true`
-         * if the implementing class supports it. If it is supported, GUPnP will
-         * prefer to use this function over {@link GUPnP.Acl.is_allowed}.
-         * 
-         * Implement this function if the process of verifying the access right
-         * is expected to take some time, for example when using D-Bus etc.
-         * 
-         * Use {@link GUPnP.Acl.is_allowed_finish} to retrieve the result.
-         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
-         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
-         * @param path The path being served.
-         * @param address IP address of the peer
-         * @param agent The User-Agent header of the peer or `null` if not unknown.
-         * @param cancellable A cancellable which can be used to cancel the operation.
-         * @param callback Callback to call after the function is done.
-         */
-        is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        is_allowed_async(device: Device | null, service: Service | null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Check asynchronously whether an IP address is allowed to access
@@ -3762,7 +3840,29 @@ export namespace GUPnP {
          * @param cancellable A cancellable which can be used to cancel the operation.
          * @param callback Callback to call after the function is done.
          */
-        is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        is_allowed_async(device: Device | null, service: Service | null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Check asynchronously whether an IP address is allowed to access
+         * this resource.
+         * 
+         * This function is optional. {@link GUPnP.Acl.can_sync} should return `true`
+         * if the implementing class supports it. If it is supported, GUPnP will
+         * prefer to use this function over {@link GUPnP.Acl.is_allowed}.
+         * 
+         * Implement this function if the process of verifying the access right
+         * is expected to take some time, for example when using D-Bus etc.
+         * 
+         * Use {@link GUPnP.Acl.is_allowed_finish} to retrieve the result.
+         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
+         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
+         * @param path The path being served.
+         * @param address IP address of the peer
+         * @param agent The User-Agent header of the peer or `null` if not unknown.
+         * @param cancellable A cancellable which can be used to cancel the operation.
+         * @param callback Callback to call after the function is done.
+         */
+        is_allowed_async(device: Device | null, service: Service | null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Get the result of {@link GUPnP.Acl.is_allowed_async}.

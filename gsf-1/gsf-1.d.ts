@@ -467,6 +467,11 @@ export namespace Gsf {
     const META_NAME_SPREADSHEET_COUNT: string;
 
     /**
+     * (String) Current status of the content. Can be related to signature or user set in the document.
+     */
+    const META_NAME_STATUS: string;
+
+    /**
      * (String) The topic of the content of the resource,
      * <emphasis>typically</emphasis> including keywords.
      */
@@ -503,21 +508,19 @@ export namespace Gsf {
     /**
      * Decodes a chunk of base64 encoded data from `data` back into `data`.
      * @param data data stream
-     * @param len max length of data to decode
      * @returns the number of bytes converted
      */
-    function base64_decode_simple(data: Uint8Array | string, len: bigint | number): number;
+    function base64_decode_simple(data: Uint8Array | string): number;
 
     /**
      * Decodes a chunk of base64 encoded data
      * @param _in input stream
-     * @param len max length of data to decode
      * @param out output stream
      * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes converted
      */
-    function base64_decode_step(_in: Uint8Array | string, len: bigint | number, out: Uint8Array | string, state: number, save: number): [number, number, number];
+    function base64_decode_step(_in: Uint8Array | string, out: Uint8Array | string, state: number, save: number): [number, number, number];
 
     /**
      * This funcion should be called to when finished encoding everything, to
@@ -534,27 +537,26 @@ export namespace Gsf {
     /**
      * Encodes data from `data` back into `data` using base64 encoding.
      * @param data data stream
-     * @param len max length of data to encode
-     * @returns the number of bytes encoded
+     * @returns the encoded string.
      */
-    function base64_encode_simple(data: Uint8Array | string, len: bigint | number): number;
+    function base64_encode_simple(data: Uint8Array | string): number;
 
     /**
      * Performs an 'encode step', only encodes blocks of 3 characters from `in` into
      * the output `out` at a time, saves left-over state in `state` and `save`
      * (initialise to 0 on first invocation).
      * @param _in input stream
-     * @param len max length of data to decode
      * @param break_lines Whether to use line breaks
      * @param out output stream
      * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes encoded
      */
-    function base64_encode_step(_in: Uint8Array | string, len: bigint | number, break_lines: boolean, out: Uint8Array | string, state: number, save: number): [number, number, number];
+    function base64_encode_step(_in: Uint8Array | string, break_lines: boolean, out: Uint8Array | string, state: number, save: number): [number, number, number];
 
     /**
-     * @param flag 
+     * @param flag The debug flag to check.
+     * @returns `true` if the debug flag `flag` is set in the GSF_DEBUG environment variable.
      */
     function debug_flag(flag: string): boolean;
 
@@ -579,7 +581,6 @@ export namespace Gsf {
 
     /**
      * A utility wrapper to make sure filenames are valid utf8.
-     * Caller must g_free the result.
      * @param filename file name suitable for open(2).
      * @param quoted if `true`, the resulting utf8 file name will be quoted    (unless it is invalid).
      * @returns `filename` using utf-8 encoding for display
@@ -592,10 +593,11 @@ export namespace Gsf {
     function init(): void;
 
     /**
-     * Initializes the GSF library and associates it with a type module `mod`.
+     * Initializes the GSF library and associates it with a type module `module`.
+     * If `module` is `null`, types are registered statically.
      * @param module {@link GObject.TypeModule}.
      */
-    function init_dynamic(module: GObject.TypeModule): void;
+    function init_dynamic(module: GObject.TypeModule | null): void;
 
     /**
      * Interpret binary data as a double in little endian order.
@@ -636,9 +638,8 @@ export namespace Gsf {
     /**
      * Dump `len` bytes from the memory location given by `ptr`.
      * @param ptr memory area to be dumped.
-     * @param len how many bytes will be dumped.
      */
-    function mem_dump(ptr: number, len: bigint | number): void;
+    function mem_dump(ptr: Uint8Array | string): void;
 
     /**
      * @param codepage 
@@ -751,13 +752,14 @@ export namespace Gsf {
     function open_pkg_parse_rel_by_id(xin: XMLIn, id: string, dtd: XMLInNode, ns: XMLInNS): GLib.Error;
 
     /**
-     * @param name 
-     * @param params 
+     * @param name The name of the property to find.
+     * @param params The {@link GObject.Parameter} array to search.
+     * @returns the {@link GObject.Parameter} with `name` in `params`, or `null`.
      */
-    function property_settings_find(name: string, params: GObject.Parameter[]): GObject.Parameter;
+    function property_settings_find(name: string, params: GObject.Parameter[]): GObject.Parameter | null;
 
     /**
-     * @param params 
+     * @param params The {@link GObject.Parameter} array to free.
      */
     function property_settings_free(params: GObject.Parameter[]): void;
 
@@ -770,9 +772,9 @@ export namespace Gsf {
     /**
      * De-intializes the GSF library from a type module.
      * Currently does nothing.
-     * @param module currently unused
+     * @param module {@link GObject.TypeModule}.
      */
-    function shutdown_dynamic(module: GObject.TypeModule): void;
+    function shutdown_dynamic(module: GObject.TypeModule | null): void;
 
     /**
      * This function returns the array of values inside {@link Gsf.DocPropVector}.
@@ -1088,7 +1090,7 @@ export namespace Gsf {
          * Read an OpenDocument metadata stream from `input` and store the properties
          * into `md`.  Overwrite any existing properties with the same id.
          * @param input {@link Gsf.Input}
-         * @returns a {@link GLib.Error} if there is a problem.
+         * @returns (out) (optional) (nullable): place to store a {@link GLib.Error} if anything goes wrong if there is a problem.
          */
         read_from_odf(input: Input): GLib.Error;
 
@@ -1183,8 +1185,7 @@ export namespace Gsf {
         /**
          * This function returns a string which represents all the GValues in `vector`.
          * The caller is responsible for freeing the result.
-         * 
-         * Returns (transfer full): a string of comma-separated values
+         * @returns a string of comma-separated values
          */
         as_string(): string;
     }
@@ -1353,10 +1354,9 @@ export namespace Gsf {
         /**
          * Retrieves the 16 byte indentifier (often a GUID in MS Windows apps)
          * stored within the directory associated with `ole` and stores it in `res`.
-         * @param res 16 byte identifier (often a GUID in MS Windows apps)
          * @returns TRUE on success
          */
-        get_class_id(res: number): boolean;
+        get_class_id(): [boolean, Uint8Array];
     }
 
 
@@ -1657,7 +1657,7 @@ export namespace Gsf {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             container: Infile;
             eof: boolean;
-            modtime: GLib.DateTime;
+            modtime: GLib.DateTime | null;
             name: string;
             position: bigint | number;
             remaining: bigint | number;
@@ -1692,7 +1692,7 @@ export namespace Gsf {
          * It is not supported by all derived classes.
          * @read-only
          */
-        get modtime(): GLib.DateTime;
+        get modtime(): GLib.DateTime | null;
 
         /**
          * @read-only
@@ -1763,7 +1763,7 @@ export namespace Gsf {
          * Duplicates `input` leaving the new one at the same offset.
          * @virtual
          */
-        vfunc_Dup(): Input | null;
+        vfunc_Dup(): Input;
 
         /**
          * UNIMPLEMENTED BY ANY BACKEND
@@ -1791,7 +1791,7 @@ export namespace Gsf {
          * current positions. So if you want to be sure to copy *everything*,
          * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
          * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
-         * @param output a non-null {@link Gsf.Output}
+         * @param output {@link Gsf.Output}
          * @returns `true` on success
          */
         copy(output: Output): boolean;
@@ -1806,7 +1806,7 @@ export namespace Gsf {
          * Duplicates `input` leaving the new one at the same offset.
          * @returns the duplicate
          */
-        dup(): Input | null;
+        dup(): Input;
 
         /**
          * A utility routine that attempts to find the VBA file withint a stream.
@@ -1817,7 +1817,7 @@ export namespace Gsf {
         /**
          * @returns A {@link GLib.DateTime} representing when the input was last modified, or `null` if not known.
          */
-        get_modtime(): GLib.DateTime;
+        get_modtime(): GLib.DateTime | null;
 
         /**
          * Read `num_bytes`.  Does not change the current position if there
@@ -3632,7 +3632,7 @@ export namespace Gsf {
 
         _init(...args: any[]): void;
 
-        static ["new"](sink: Output, dst: string, src: string): OutputIconv;
+        static ["new"](sink: Output, dst: string | null, src: string | null): OutputIconv;
 
         // Signals
         /** @signal */
@@ -3706,7 +3706,7 @@ export namespace Gsf {
         get_bytes(): Uint8Array | null;
 
         /**
-         * @returns The data that has been written to `mem`. The caller takes ownership and the buffer belonging to `mem` is set to `null`.
+         * @returns The data that has been written to `mem`.  The caller takes ownership and the buffer belonging to `mem` is set to `null`.
          */
         steal_bytes(): Uint8Array | null;
     }

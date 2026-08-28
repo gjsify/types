@@ -75,6 +75,9 @@
       "@girs/dex-1": [
             "../dex-1/index.d.ts"
       ],
+      "@girs/giounix-2.0": [
+            "../giounix-2.0/index.d.ts"
+      ],
       "@girs/gjs": [
             "../gjs/index.d.ts"
       ]

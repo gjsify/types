@@ -553,11 +553,13 @@ export namespace Dee {
         // Properties
         /**
          * @construct-only
+         * @default null
          */
         get bus_address(): string;
 
         /**
          * @construct-only
+         * @default null
          */
         get busAddress(): string;
 
@@ -617,12 +619,14 @@ export namespace Dee {
         /**
          * Property holding the primary path used to store and load resources
          * @construct-only
+         * @default null
          */
         get primary_path(): string;
 
         /**
          * Property holding the primary path used to store and load resources
          * @construct-only
+         * @default null
          */
         get primaryPath(): string;
 
@@ -1311,27 +1315,37 @@ export namespace Dee {
         // Properties
         /**
          * @read-only
+         * @default null
          */
         get swarm_leader(): string;
 
         /**
          * @read-only
+         * @default null
          */
         get swarmLeader(): string;
 
+        /**
+         * @default null
+         */
         get swarm_name(): string;
         set swarm_name(val: string);
 
+        /**
+         * @default null
+         */
         get swarmName(): string;
         set swarmName(val: string);
 
         /**
          * @construct-only
+         * @default false
          */
         get swarm_owner(): boolean;
 
         /**
          * @construct-only
+         * @default false
          */
         get swarmOwner(): boolean;
 
@@ -1503,6 +1517,7 @@ export namespace Dee {
          * if the implementation manipulates with the rows in the model and keep
          * track of seqnums yourself.
          * @construct-only
+         * @default true
          */
         get inherit_seqnums(): boolean;
 
@@ -1513,6 +1528,7 @@ export namespace Dee {
          * if the implementation manipulates with the rows in the model and keep
          * track of seqnums yourself.
          * @construct-only
+         * @default true
          */
         get inheritSeqnums(): boolean;
 
@@ -1521,6 +1537,7 @@ export namespace Dee {
          * from the back end model. This is especially useful for sub classes wishing
          * to do their own more advanced signal forwarding.
          * @construct-only
+         * @default true
          */
         get proxy_signals(): boolean;
 
@@ -1529,6 +1546,7 @@ export namespace Dee {
          * from the back end model. This is especially useful for sub classes wishing
          * to do their own more advanced signal forwarding.
          * @construct-only
+         * @default true
          */
         get proxySignals(): boolean;
 
@@ -4425,21 +4443,25 @@ export namespace Dee {
         // Properties
         /**
          * @construct-only
+         * @default null
          */
         get bus_address(): string;
 
         /**
          * @construct-only
+         * @default null
          */
         get busAddress(): string;
 
         /**
          * @construct-only
+         * @default true
          */
         get same_user_only(): boolean;
 
         /**
          * @construct-only
+         * @default true
          */
         get sameUserOnly(): boolean;
 
@@ -4545,6 +4567,7 @@ export namespace Dee {
          * 
          * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
          * @construct-only
+         * @default Dee.SharedModelAccessMode.WORLD_WRITABLE
          */
         get access_mode(): SharedModelAccessMode;
 
@@ -4557,6 +4580,7 @@ export namespace Dee {
          * 
          * See also DeePeer:swarm-owner property to ensure ownership of a swarm.
          * @construct-only
+         * @default Dee.SharedModelAccessMode.WORLD_WRITABLE
          */
         get accessMode(): SharedModelAccessMode;
 
@@ -4569,6 +4593,7 @@ export namespace Dee {
          * a shared model is used from multiple threads, or when not using {@link GLib.MainLoop}.
          * When disabled, `dee_shared_model_flush_revision_queue()` needs to be called
          * explicitely.
+         * @default Dee.SharedModelFlushMode.AUTOMATIC
          */
         get flush_mode(): SharedModelFlushMode;
         set flush_mode(val: SharedModelFlushMode);
@@ -4582,6 +4607,7 @@ export namespace Dee {
          * a shared model is used from multiple threads, or when not using {@link GLib.MainLoop}.
          * When disabled, `dee_shared_model_flush_revision_queue()` needs to be called
          * explicitely.
+         * @default Dee.SharedModelFlushMode.AUTOMATIC
          */
         get flushMode(): SharedModelFlushMode;
         set flushMode(val: SharedModelFlushMode);
@@ -4600,6 +4626,7 @@ export namespace Dee {
          * modifying the model in any way (except calling `dee_model_set_schema()`)
          * you should wait for it to become synchronized.
          * @read-only
+         * @default false
          */
         get "synchronized"(): boolean;
 
@@ -6171,7 +6198,7 @@ export namespace Dee {
      * provided {@link Dee.Model} API. It is owned by DeeModel and should not be freed.
      * @gir-type Struct
      */
-    class ModelIter {
+    abstract class ModelIter {
         static $gtype: GObject.GType<ModelIter>;
     }
 

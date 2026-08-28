@@ -102,6 +102,30 @@ export namespace Soup {
 
 
     /**
+     * A {@link SoupCookieJar} error.
+     * @gir-type Struct
+     */
+    class CookieJarError extends GLib.Error {
+        static $gtype: GObject.GType<GLib.Error>;
+
+        // Static fields
+        /**
+         * an error from a database operation
+         */
+        static DB: number;
+
+        // Constructors
+        constructor(options: { message: string; code: number });
+
+        // Static methods
+        /**
+         * Registers error quark for SoupCookieJar.
+         */
+        static quark(): GLib.Quark;
+    }
+
+
+    /**
      * @gir-type Enum
      */
     export namespace DateFormat {
@@ -1081,6 +1105,13 @@ export namespace Soup {
     function check_version(major: number, minor: number, micro: number): boolean;
 
     /**
+     * Registers error quark for SoupCookieJar.
+     * @returns Error quark for SoupCookieJar.
+     * @since 3.8
+     */
+    function cookie_jar_error_quark(): GLib.Quark;
+
+    /**
      * Parses `header` and returns a {@link Cookie}.
      * 
      * If `header` contains multiple cookies, only the first one will be parsed.
@@ -1289,6 +1320,18 @@ export namespace Soup {
      * @returns whether or not `header` contains `token`
      */
     function header_contains(header: string, token: string): boolean;
+
+    /**
+     * Parses `header` to see if it contains the token `token` (matched
+     * case-sensitively).
+     * 
+     * Note that this can't be used with lists that have qvalues.
+     * @param header An HTTP header suitable for parsing with   {@link header_parse_list}
+     * @param token a token
+     * @returns whether or not `header` contains `token`
+     * @since 3.8
+     */
+    function header_contains_case_sensitive(header: string, token: string): boolean;
 
     /**
      * Frees `param_list`.
@@ -3135,6 +3178,106 @@ export namespace Soup {
     }
 
 
+    namespace CompressionDictionaryRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::cancelled": (pspec: GObject.ParamSpec) => void;
+            "notify::dictionary": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            cancelled: boolean;
+            dictionary: GLib.Bytes | Uint8Array;
+        }
+    }
+
+    /**
+     * Represents a pending request for a compression dictionary.
+     * 
+     * An instance is emitted with the `Soup.Message::request-compression-dictionary`
+     * signal. The handler should either call
+     * {@link CompressionDictionaryRequest.set_dictionary} (synchronously or after
+     * ref-ing the object and completing asynchronously) or call
+     * {@link CompressionDictionaryRequest.cancel}, then return `true`. Return `false`
+     * to let other signal handlers run; if no handler returns `true` the request is
+     * treated as cancelled.
+     * @gir-type Class
+     * @since 3.8
+     */
+    class CompressionDictionaryRequest extends GObject.Object {
+        static $gtype: GObject.GType<CompressionDictionaryRequest>;
+
+        // Properties
+        /**
+         * Whether the request has been cancelled.
+         * 
+         * Set to `true` by {@link CompressionDictionaryRequest.cancel}.
+         * @since 3.8
+         * @read-only
+         * @default false
+         */
+        get cancelled(): boolean;
+
+        /**
+         * The raw dictionary bytes provided to resolve the request, or `null`
+         * if none has been set yet.
+         * 
+         * Set with {@link CompressionDictionaryRequest.set_dictionary}.
+         * @since 3.8
+         * @read-only
+         */
+        get dictionary(): GLib.Bytes;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CompressionDictionaryRequest.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CompressionDictionaryRequest.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CompressionDictionaryRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompressionDictionaryRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CompressionDictionaryRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompressionDictionaryRequest.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CompressionDictionaryRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompressionDictionaryRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Cancels a pending `Soup.Message::request-compression-dictionary` request,
+         * causing the response to fail.
+         * 
+         * This can be called synchronously inside the signal handler or asynchronously
+         * after ref-ing `request` and returning `true` from the handler.
+         */
+        cancel(): void;
+
+        /**
+         * Provides the dictionary bytes for a pending
+         * `Soup.Message::request-compression-dictionary` request.
+         * 
+         * This can be called synchronously inside the signal handler or asynchronously
+         * after ref-ing `request` and returning `true` from the handler.
+         * @param dictionary the raw dictionary bytes
+         */
+        set_dictionary(dictionary: GLib.Bytes | Uint8Array): void;
+    }
+
+
     namespace ContentDecoder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -3148,7 +3291,7 @@ export namespace Soup {
      * 
      * {@link ContentDecoder} handles adding the "Accept-Encoding" header on
      * outgoing messages, and processing the "Content-Encoding" header on
-     * incoming ones. Currently it supports the "gzip", "deflate", and "br"
+     * incoming ones. Currently it supports the "gzip", "deflate", "br", and "zstd"
      * content codings.
      * 
      * A {@link ContentDecoder} will automatically be
@@ -3562,13 +3705,16 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends CookieJar.SignalSignatures {
             "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::max-size": (pspec: GObject.ParamSpec) => void;
             "notify::accept-policy": (pspec: GObject.ParamSpec) => void;
             "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CookieJar.ConstructorProps, SessionFeature.ConstructorProps {
+        interface ConstructorProps extends CookieJar.ConstructorProps, Gio.Initable.ConstructorProps, SessionFeature.ConstructorProps {
             filename: string;
+            max_size: bigint | number;
+            maxSize: bigint | number;
         }
     }
 
@@ -3581,9 +3727,12 @@ export namespace Soup {
      * (This is identical to `SoupCookieJarSqlite` in
      * libsoup-gnome; it has just been moved into libsoup proper, and
      * renamed to avoid conflicting.)
+     * 
+     * Since 3.8 this class implements {@link Gio.Initable} to track failures
+     * opening the database. See {@link SoupCookieJarDB.new_with_error}.
      * @gir-type Class
      */
-    class CookieJarDB extends CookieJar implements SessionFeature {
+    class CookieJarDB extends CookieJar implements Gio.Initable, SessionFeature {
         static $gtype: GObject.GType<CookieJarDB>;
 
         // Properties
@@ -3593,6 +3742,22 @@ export namespace Soup {
          * @default null
          */
         get filename(): string;
+
+        /**
+         * Cookie-storage maximum database size.
+         * @since 3.8
+         * @construct-only
+         * @default 0
+         */
+        get max_size(): number;
+
+        /**
+         * Cookie-storage maximum database size.
+         * @since 3.8
+         * @construct-only
+         * @default 0
+         */
+        get maxSize(): number;
 
         /**
          * Compile-time signal type information.
@@ -3613,6 +3778,8 @@ export namespace Soup {
         // Conflicted with Soup.CookieJar.new
         static ["new"](...args: never[]): any;
 
+        static new_with_error(filename: string, read_only: boolean): CookieJarDB;
+
         // Signals
         /** @signal */
         connect<K extends keyof CookieJarDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieJarDB.SignalSignatures[K]>): number;
@@ -3625,6 +3792,128 @@ export namespace Soup {
         /** @signal */
         emit<K extends keyof CookieJarDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieJarDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Get the maximum size for the database file storage
+         * 
+         * This method returns the currently configured max database file size. A return value of zero
+         * indicates that no limit is configured.
+         * @returns Database max file size
+         */
+        get_max_size(): number;
+
+        /**
+         * Set the maximum size for the database file storage
+         * 
+         * If `max_size` is 0, it means "no limit", in which case the database file size will be limited only
+         * by the database capabilities / intrinsic limits.
+         * 
+         * If `max_size` has a higher limit than supported by the database, the max_size will be internally
+         * set to the limit supported by the database.
+         * 
+         * The `max_size` will be internally truncated to a multiple of the database page size. If the page
+         * size is, for example, 4K, setting a max size of 10K will effectively limit the database size to
+         * 8K to ensure it does not grow beyond the specified limit.
+         * 
+         * Attempting to set a limit that is less than the already used database file storage will NOT
+         * truncate the database, but won't allow the database to grow further in size (although writes
+         * might be still accepted within the already allocated space).
+         * 
+         * This value does not persist in the database. Each construction of this class must set
+         * the property again or it will use the default value.
+         * @param max_size Max database file size, in bytes `error` A {@link GLib.Error}
+         * @returns `true` is configuration was successful, otherwise `false` and `error` will be set.
+         */
+        set_max_size(max_size: bigint | number): boolean;
+
+        /**
+         * Initializes the object implementing the interface.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_initable_new()` should typically be used instead.
+         * 
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or `g_async_initable_init_async()`.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
+         * the object doesn't support cancellable initialization the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of `init()` can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         * 
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         * 
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         */
+        init(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Initializes the object implementing the interface.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_initable_new()` should typically be used instead.
+         * 
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or `g_async_initable_init_async()`.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
+         * the object doesn't support cancellable initialization the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of `init()` can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         * 
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         * 
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
+         */
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -4253,6 +4542,21 @@ export namespace Soup {
              */
             "request-certificate-password": (arg0: Gio.TlsPassword) => boolean | void;
             /**
+             * Emitted when the server responds with `Content-Encoding: dcb` or
+             * `Content-Encoding: dcz` and libsoup needs the raw dictionary bytes
+             * to set up decompression.
+             * 
+             * Call {@link CompressionDictionaryRequest.set_dictionary} on `request`
+             * to provide the dictionary, or {@link CompressionDictionaryRequest.cancel}
+             * to abort. Either can be done synchronously inside this handler, or
+             * asynchronously after calling {@link GObject.Object.ref} on `request`
+             * and returning `true`.
+             * @signal
+             * @since 3.8
+             * @run-last
+             */
+            "request-compression-dictionary": (arg0: CompressionDictionaryRequest) => boolean | void;
+            /**
              * Emitted when a request that was already sent once is now
              * being sent again.
              * 
@@ -4663,6 +4967,13 @@ export namespace Soup {
         disable_feature(feature_type: GObject.GType): void;
 
         /**
+         * Gets the SHA-256 hash of the shared dictionary previously set with
+         * {@link Message.set_compression_dictionary_hash}.
+         * @returns the raw 32-byte SHA-256 hash, or `null`
+         */
+        get_compression_dictionary_hash(): GLib.Bytes | null;
+
+        /**
          * Returns the unique idenfier for the last connection used.
          * 
          * This may be 0 if it was a cached resource or it has not gotten
@@ -4846,6 +5157,25 @@ export namespace Soup {
          * @param flags a set of {@link Soup.MessageFlags} values
          */
         remove_flags(flags: MessageFlags): void;
+
+        /**
+         * Sets the SHA-256 hash of the shared dictionary to advertise for Compression
+         * Dictionary Transport (RFC 9842).
+         * 
+         * When set, {@link ContentDecoder} will include `dcb` and/or `dcz` in the
+         * `Accept-Encoding` request header (over HTTPS) and will send an
+         * `Available-Dictionary` header containing the base64-encoded `hash`.
+         * When the server responds with `Content-Encoding: dcb` or `dcz`, the
+         * `Soup.Message::request-compression-dictionary` signal is emitted so the
+         * caller can supply the actual dictionary bytes.
+         * 
+         * The hash does not survive redirects: a dictionary is chosen for a specific
+         * request URL, so when `msg` is redirected the hash and the `Available-Dictionary`
+         * header are cleared. It is the caller's responsibility to select and set a new
+         * dictionary appropriate for the redirect target, if any.
+         * @param hash a {@link GLib.Bytes} containing the raw SHA-256 hash (32 bytes) of the   shared dictionary, or `null` to unset
+         */
+        set_compression_dictionary_hash(hash: GLib.Bytes | Uint8Array | null): void;
 
         /**
          * Sets `first_party` as the main document {@link GLib.Uri} for `msg`.
@@ -7444,6 +7774,7 @@ export namespace Soup {
             "notify::keepalive-interval": (pspec: GObject.ParamSpec) => void;
             "notify::keepalive-pong-timeout": (pspec: GObject.ParamSpec) => void;
             "notify::max-incoming-payload-size": (pspec: GObject.ParamSpec) => void;
+            "notify::max-total-message-size": (pspec: GObject.ParamSpec) => void;
             "notify::origin": (pspec: GObject.ParamSpec) => void;
             "notify::protocol": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
@@ -7463,6 +7794,8 @@ export namespace Soup {
             keepalivePongTimeout: number;
             max_incoming_payload_size: bigint | number;
             maxIncomingPayloadSize: bigint | number;
+            max_total_message_size: bigint | number;
+            maxTotalMessageSize: bigint | number;
             origin: string | null;
             protocol: string | null;
             state: WebsocketState;
@@ -7583,22 +7916,64 @@ export namespace Soup {
         set keepalivePongTimeout(val: number);
 
         /**
-         * The maximum payload size for incoming packets.
+         * The maximum payload size for incoming packets, or 0 to not limit it.
          * 
-         * The protocol expects or 0 to not limit it.
+         * Each message may consist of multiple packets, so also refer to
+         * {@link WebsocketConnection.max_total_message_size}.
          * @default 131072
          */
         get max_incoming_payload_size(): number;
         set max_incoming_payload_size(val: bigint | number);
 
         /**
-         * The maximum payload size for incoming packets.
+         * The maximum payload size for incoming packets, or 0 to not limit it.
          * 
-         * The protocol expects or 0 to not limit it.
+         * Each message may consist of multiple packets, so also refer to
+         * {@link WebsocketConnection.max_total_message_size}.
          * @default 131072
          */
         get maxIncomingPayloadSize(): number;
         set maxIncomingPayloadSize(val: bigint | number);
+
+        /**
+         * The maximum size for incoming messages.
+         * 
+         * Set to a value to limit the total message size, or 0 to not
+         * limit it.
+         * 
+         * {@link Server.add_websocket_handler} will set this to a nonzero
+         * default value to mitigate denial of service attacks. Clients must
+         * choose their own default if they need to mitigate denial of service
+         * attacks. You also need to set your own default if creating your own
+         * server SoupWebsocketConnection without using SoupServer.
+         * 
+         * Each message may consist of multiple packets, so also refer to
+         * {@link WebsocketConnection.max_incoming_payload_size}.
+         * @since 3.8
+         * @default 0
+         */
+        get max_total_message_size(): number;
+        set max_total_message_size(val: bigint | number);
+
+        /**
+         * The maximum size for incoming messages.
+         * 
+         * Set to a value to limit the total message size, or 0 to not
+         * limit it.
+         * 
+         * {@link Server.add_websocket_handler} will set this to a nonzero
+         * default value to mitigate denial of service attacks. Clients must
+         * choose their own default if they need to mitigate denial of service
+         * attacks. You also need to set your own default if creating your own
+         * server SoupWebsocketConnection without using SoupServer.
+         * 
+         * Each message may consist of multiple packets, so also refer to
+         * {@link WebsocketConnection.max_incoming_payload_size}.
+         * @since 3.8
+         * @default 0
+         */
+        get maxTotalMessageSize(): number;
+        set maxTotalMessageSize(val: bigint | number);
 
         /**
          * The client's Origin.
@@ -7735,6 +8110,12 @@ export namespace Soup {
         get_max_incoming_payload_size(): number;
 
         /**
+         * Gets the maximum total message size allowed for packets.
+         * @returns the maximum total message size.
+         */
+        get_max_total_message_size(): number;
+
+        /**
          * Get the origin of the WebSocket.
          * @returns the origin
          */
@@ -7820,6 +8201,14 @@ export namespace Soup {
          * @param max_incoming_payload_size the maximum payload size
          */
         set_max_incoming_payload_size(max_incoming_payload_size: bigint | number): void;
+
+        /**
+         * Sets the maximum total message size allowed for packets.
+         * 
+         * It does not limit the outgoing packet size.
+         * @param max_total_message_size the maximum total message size
+         */
+        set_max_total_message_size(max_total_message_size: bigint | number): void;
     }
 
 
@@ -8107,6 +8496,11 @@ export namespace Soup {
      * @gir-type Alias
      */
     type CacheClass = typeof Cache;
+
+    /**
+     * @gir-type Alias
+     */
+    type CompressionDictionaryRequestClass = typeof CompressionDictionaryRequest;
 
     /**
      * @gir-type Alias

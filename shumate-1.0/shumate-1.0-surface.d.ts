@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Shumate-1.0.
  *
- * GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.6.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+ * GENERATED — do not edit. Provenance: Shumate-1.0 — library 1.7.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
  *
  * 10 concrete widgets, 12 declarations, 5 enum nick unions, 4 slot candidates.
  *
@@ -104,10 +104,11 @@ export type ShumateMapConstructOnly = GtkWidgetConstructOnly | GtkAccessibleCons
 
 /** A [class@Shumate.Layer] implementation that fetches tiles from a [class@Shumate.MapSource] and draws them as a grid. */
 export interface ShumateMapLayerProps extends ShumateLayerProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
+    /** The source of the tiles this map layer displays. */
     'map-source'?: Shumate.MapSource;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type ShumateMapLayerConstructOnly = ShumateLayerConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | 'map-source';
+export type ShumateMapLayerConstructOnly = ShumateLayerConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 /** Markers represent points of interest on a map. */
 export interface ShumateMarkerProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, ShumateLocationProps {

@@ -271,21 +271,25 @@ export namespace DbusmenuGtk {
         // Properties
         /**
          * @construct-only
+         * @default null
          */
         get dbus_name(): string;
 
         /**
          * @construct-only
+         * @default null
          */
         get dbusName(): string;
 
         /**
          * @construct-only
+         * @default null
          */
         get dbus_object(): string;
 
         /**
          * @construct-only
+         * @default null
          */
         get dbusObject(): string;
 

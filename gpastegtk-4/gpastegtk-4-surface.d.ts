@@ -3,7 +3,7 @@
  *
  * GENERATED — do not edit. Provenance: GPasteGtk-4 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
  *
- * 7 concrete widgets, 7 declarations, 0 enum nick unions, 0 slot candidates.
+ * 8 concrete widgets, 8 declarations, 0 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -70,6 +70,11 @@ export interface GPasteGtkPreferencesHistorySettingsPageProps extends GPasteGtkP
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GPasteGtkPreferencesHistorySettingsPageConstructOnly = GPasteGtkPreferencesPageConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
+export interface GPasteGtkPreferencesImagesPageProps extends GPasteGtkPreferencesPageProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GPasteGtkPreferencesImagesPageConstructOnly = GPasteGtkPreferencesPageConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
+
 export interface GPasteGtkPreferencesPageProps extends AdwPreferencesPageProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -127,6 +132,13 @@ export interface Widgets {
         props: GPasteGtkPreferencesHistorySettingsPageProps;
         signals: GPasteGtk.PreferencesHistorySettingsPage.SignalSignatures;
         constructOnly: GPasteGtkPreferencesHistorySettingsPageConstructOnly;
+        slotCandidates: {};
+    };
+    GPasteGtkPreferencesImagesPage: {
+        class: GPasteGtk.PreferencesImagesPage;
+        props: GPasteGtkPreferencesImagesPageProps;
+        signals: GPasteGtk.PreferencesImagesPage.SignalSignatures;
+        constructOnly: GPasteGtkPreferencesImagesPageConstructOnly;
         slotCandidates: {};
     };
     GPasteGtkPreferencesPage: {

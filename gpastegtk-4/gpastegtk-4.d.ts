@@ -35,17 +35,19 @@ export namespace GPasteGtk {
      */
 
 
+    const GLOBAL_SHORTCUT_BUS_NAME: string;
+
     /**
      * Compute the checksum of an image
-     * @param texture the {@link Gdk.Texture} to checksum
+     * @param image the {@link Gdk.Texture} to checksum
      * @returns the newly allocated checksum
      */
-    function util_compute_checksum(texture: Gdk.Texture): string;
+    function util_compute_checksum(image: Gdk.Texture): string;
 
     /**
      * Ask the user for confirmation
      * @param parent the parent {@link Gtk.Window}
-     * @param action 
+     * @param action the label for the confirm button
      * @param msg the message to display
      * @param on_confirmation handler to invoke when we get a confirmation
      */
@@ -100,6 +102,452 @@ export namespace GPasteGtk {
     interface TextCallback {
         (settings: GPaste.Settings, data: string): void;
     }
+
+    namespace GlobalShortcutClient {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-connection": (pspec: GObject.ParamSpec) => void;
+            "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name-owner": (pspec: GObject.ParamSpec) => void;
+            "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, GPaste.KeybindingProvider.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class GlobalShortcutClient extends Gio.DBusProxy implements GPaste.KeybindingProvider, Gio.AsyncInitable<GlobalShortcutClient>, Gio.DBusInterface, Gio.Initable {
+        static $gtype: GObject.GType<GlobalShortcutClient>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: GlobalShortcutClient.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<GlobalShortcutClient.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static new_finish(result: Gio.AsyncResult): GlobalShortcutClient;
+
+        // Conflicted with Gio.AsyncInitable.new_finish
+        static new_finish(...args: never[]): any;
+
+        static new_sync(): GlobalShortcutClient;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof GlobalShortcutClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GlobalShortcutClient.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof GlobalShortcutClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GlobalShortcutClient.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof GlobalShortcutClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GlobalShortcutClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+        /**
+         * Create a new instance of {@link GPasteGtk.GlobalShortcutClient}
+         * @param callback Callback function to invoke when the proxy is ready.
+         */
+        static ["new"](callback: Gio.AsyncReadyCallback<GlobalShortcutClient> | null): void;
+
+        /**
+         * @param args 
+         */
+    // Conflicted with Gio.DBusProxy.new
+        static ["new"](...args: never[]): any;
+
+        /**
+         * Emit the "keybinding-activated" signal on `self`.
+         * @param id the id of the activated shortcut (its dconf key)
+         */
+        emit_keybinding_activated(id: string): void;
+
+        /**
+         * Replace all currently registered shortcuts with `accels`.
+         * @param accels a `null`-terminated (by id) array of {@link GPaste.KeybindingAccelerator}
+         */
+        grab_all(accels: GPaste.KeybindingAccelerator[]): void;
+
+        /**
+         * Release all currently registered shortcuts.
+         */
+        ungrab_all(): void;
+
+        /**
+         * Replace all currently registered shortcuts with `accels`.
+         * @param accels a `null`-terminated (by id) array of {@link GPaste.KeybindingAccelerator}
+         * @virtual
+         */
+        vfunc_grab_all(accels: GPaste.KeybindingAccelerator[]): void;
+
+        /**
+         * Release all currently registered shortcuts.
+         * @virtual
+         */
+        vfunc_ungrab_all(): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         */
+        new_finish(res: Gio.AsyncResult): GlobalShortcutClient;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusProxy.new_finish
+        new_finish(...args: never[]): any;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
+         */
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+
+        /**
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         */
+        get_object(): Gio.DBusObject | null;
+
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
+         * 
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         */
+        set_object(object: Gio.DBusObject | null): void;
+
+        /**
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @virtual
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
+         * 
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
+         */
+        vfunc_set_object(object: Gio.DBusObject | null): void;
+
+        /**
+         * Initializes the object implementing the interface.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_initable_new()` should typically be used instead.
+         * 
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or `g_async_initable_init_async()`.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
+         * the object doesn't support cancellable initialization the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of `init()` can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         * 
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         * 
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         */
+        init(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Initializes the object implementing the interface.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_initable_new()` should typically be used instead.
+         * 
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or `g_async_initable_init_async()`.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
+         * the object doesn't support cancellable initialization the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of `init()` can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         * 
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         * 
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
+         */
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+    }
+
 
     namespace PreferencesBehaviourPage {
         // Signal signatures
@@ -382,12 +830,12 @@ export namespace GPasteGtk {
          * @param on_value_changed the callback to call when the value changes
          * @param on_reset the callback to call when the value is reset
          * @param settings a {@link GPaste.Settings} instance
-         * @returns the {@link Gtk.Switch} we just added
+         * @returns the {@link Adw.SwitchRow} we just added
          */
-        add_boolean_setting(label: string, value: boolean, on_value_changed: BooleanCallback, on_reset: ResetCallback, settings: GPaste.Settings): Gtk.Switch;
+        add_boolean_setting(label: string, value: boolean, on_value_changed: BooleanCallback, on_reset: ResetCallback, settings: GPaste.Settings): Adw.SwitchRow;
 
         /**
-         * Add a new boolean settings to the current pane
+         * Add a new range settings to the current pane
          * @param label the label to display
          * @param value the deafault value
          * @param min the minimal authorized value
@@ -396,9 +844,9 @@ export namespace GPasteGtk {
          * @param on_value_changed the callback to call when the value changes
          * @param on_reset the callback to call when the value is reset
          * @param settings a {@link GPaste.Settings} instance
-         * @returns the {@link Gtk.SpinButton} we just added
+         * @returns the {@link Adw.SpinRow} we just added
          */
-        add_range_setting(label: string, value: number, min: number, max: number, step: number, on_value_changed: RangeCallback, on_reset: ResetCallback, settings: GPaste.Settings): Gtk.SpinButton;
+        add_range_setting(label: string, value: number, min: number, max: number, step: number, on_value_changed: RangeCallback, on_reset: ResetCallback, settings: GPaste.Settings): Adw.SpinRow;
 
         /**
          * Add a new text settings to the current pane
@@ -407,9 +855,9 @@ export namespace GPasteGtk {
          * @param on_value_changed the callback to call when the value changes
          * @param on_reset the callback to call when the value is reset
          * @param settings a {@link GPaste.Settings} instance
-         * @returns the {@link Gtk.EntryBuffer} from the {@link Gtk.Entry} we just added
+         * @returns the {@link Adw.EntryRow} we just added
          */
-        add_text_setting(label: string, value: string, on_value_changed: TextCallback, on_reset: ResetCallback, settings: GPaste.Settings): Gtk.EntryBuffer;
+        add_text_setting(label: string, value: string, on_value_changed: TextCallback, on_reset: ResetCallback, settings: GPaste.Settings): Adw.EntryRow;
     }
 
 
@@ -499,6 +947,96 @@ export namespace GPasteGtk {
 
         /** @signal */
         emit<K extends keyof PreferencesHistorySettingsPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesHistorySettingsPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+
+    namespace PreferencesImagesPage {
+        // Signal signatures
+        interface SignalSignatures extends PreferencesPage.SignalSignatures {
+            "notify::banner": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::description-centered": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::use-underline": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends PreferencesPage.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class PreferencesImagesPage extends PreferencesPage implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+        static $gtype: GObject.GType<PreferencesImagesPage>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: PreferencesImagesPage.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<PreferencesImagesPage.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](manager: PreferencesManager): PreferencesImagesPage;
+
+        // Conflicted with Adw.PreferencesPage.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof PreferencesImagesPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesImagesPage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof PreferencesImagesPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesImagesPage.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof PreferencesImagesPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesImagesPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
@@ -844,6 +1382,11 @@ export namespace GPasteGtk {
     /**
      * @gir-type Alias
      */
+    type GlobalShortcutClientClass = typeof GlobalShortcutClient;
+
+    /**
+     * @gir-type Alias
+     */
     type PreferencesBehaviourPageClass = typeof PreferencesBehaviourPage;
 
     /**
@@ -860,6 +1403,11 @@ export namespace GPasteGtk {
      * @gir-type Alias
      */
     type PreferencesHistorySettingsPageClass = typeof PreferencesHistorySettingsPage;
+
+    /**
+     * @gir-type Alias
+     */
+    type PreferencesImagesPageClass = typeof PreferencesImagesPage;
 
     /**
      * @gir-type Alias

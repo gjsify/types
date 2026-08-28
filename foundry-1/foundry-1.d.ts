@@ -18,12 +18,231 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type Json from '@girs/json-1.0';
 import type Dex from '@girs/dex-1';
+import type GioUnix from '@girs/giounix-2.0';
 
 export namespace Foundry {
 
     /**
      * Foundry-1
      */
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AcpChangedFileKind {
+        export const $gtype: GObject.GType<AcpChangedFileKind>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AcpChangedFileKind {
+        UNKNOWN,
+        CREATED,
+        MODIFIED,
+        DELETED,
+        PATCHED,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AcpConnectionState {
+        export const $gtype: GObject.GType<AcpConnectionState>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AcpConnectionState {
+        NEW,
+        STARTING,
+        INITIALIZING,
+        AUTH_REQUIRED,
+        READY,
+        CLOSING,
+        CLOSED,
+        FAILED,
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    class AcpError extends GLib.Error {
+        static $gtype: GObject.GType<GLib.Error>;
+
+        // Static fields
+        static PARSE: number;
+
+        static INVALID_REQUEST: number;
+
+        static METHOD_NOT_FOUND: number;
+
+        static INVALID_PARAMS: number;
+
+        static INTERNAL: number;
+
+        static AUTH_REQUIRED: number;
+
+        static RESOURCE_NOT_FOUND: number;
+
+        static TRANSPORT_CLOSED: number;
+
+        static CANCELLED: number;
+
+        static CONFLICT: number;
+
+        static UNSUPPORTED: number;
+
+        // Constructors
+        constructor(options: { message: string; code: number });
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AcpEventKind {
+        export const $gtype: GObject.GType<AcpEventKind>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AcpEventKind {
+        UNKNOWN,
+        MESSAGE_CHUNK,
+        MESSAGE,
+        STEP,
+        TOOL_CALL,
+        TOOL_UPDATE,
+        TOOL_RESULT,
+        PERMISSION_REQUEST,
+        PERMISSION_RESPONSE,
+        TERMINAL_CREATED,
+        TERMINAL_OUTPUT,
+        TERMINAL_EXITED,
+        TERMINAL_RELEASED,
+        FILE_READ,
+        FILE_WRITE,
+        FILE_PATCH,
+        FILE_CREATED,
+        FILE_DELETED,
+        MODE_CHANGED,
+        CONFIG_CHANGED,
+        ERROR,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AcpEventState {
+        export const $gtype: GObject.GType<AcpEventState>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AcpEventState {
+        PENDING,
+        RUNNING,
+        COMPLETED,
+        FAILED,
+        CANCELLED,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AcpSessionState {
+        export const $gtype: GObject.GType<AcpSessionState>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AcpSessionState {
+        NEW,
+        LOADING,
+        IDLE,
+        RUNNING,
+        CANCELLING,
+        CLOSED,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AcpSessionUpdateKind {
+        export const $gtype: GObject.GType<AcpSessionUpdateKind>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AcpSessionUpdateKind {
+        UNKNOWN,
+        MESSAGE_CHUNK,
+        MESSAGE,
+        STEP,
+        TOOL_CALL,
+        TOOL_UPDATE,
+        TOOL_RESULT,
+        TERMINAL_CREATED,
+        TERMINAL_OUTPUT,
+        TERMINAL_EXITED,
+        FILE_READ,
+        FILE_WRITE,
+        FILE_PATCH,
+        FILE_CREATED,
+        FILE_DELETED,
+        PROGRESS,
+        ERROR,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AcpStopReason {
+        export const $gtype: GObject.GType<AcpStopReason>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AcpStopReason {
+        END_TURN,
+        MAX_TOKENS,
+        MAX_TURN_REQUESTS,
+        REFUSAL,
+        CANCELLED,
+        UNKNOWN,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AcpTerminalState {
+        export const $gtype: GObject.GType<AcpTerminalState>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AcpTerminalState {
+        RUNNING,
+        EXITED,
+        FAILED,
+        CANCELLED,
+    }
 
 
     /**
@@ -43,6 +262,118 @@ export namespace Foundry {
 
         // Constructors
         constructor(options: { message: string; code: number });
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace CiArtifactKind {
+        export const $gtype: GObject.GType<CiArtifactKind>;
+    }
+
+    /**
+     * Describes the kind of output produced by a CI run.
+     * @gir-type Enum
+     * @since 1.2
+     */
+    enum CiArtifactKind {
+        /**
+         * a regular file
+         */
+        FILE,
+        /**
+         * a directory
+         */
+        DIRECTORY,
+        /**
+         * a JUnit test report
+         */
+        JUNIT,
+        /**
+         * a coverage report
+         */
+        COVERAGE,
+        /**
+         * a code quality report
+         */
+        CODE_QUALITY,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace CiJobDisposition {
+        export const $gtype: GObject.GType<CiJobDisposition>;
+    }
+
+    /**
+     * Describes how a CI provider selected or excluded a job.
+     * @gir-type Enum
+     * @since 1.2
+     */
+    enum CiJobDisposition {
+        /**
+         * the job is selected for execution
+         */
+        SELECTED,
+        /**
+         * the job was skipped by pipeline rules
+         */
+        SKIPPED,
+        /**
+         * the job requires manual selection
+         */
+        MANUAL,
+        /**
+         * the job cannot run locally
+         */
+        UNSUPPORTED,
+        /**
+         * the job is blocked by dependencies
+         */
+        BLOCKED,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace CiRunState {
+        export const $gtype: GObject.GType<CiRunState>;
+    }
+
+    /**
+     * Describes the current state of a CI run.
+     * @gir-type Enum
+     * @since 1.2
+     */
+    enum CiRunState {
+        /**
+         * the run has not started
+         */
+        PENDING,
+        /**
+         * the run is preparing its environment
+         */
+        PREPARING,
+        /**
+         * the run is executing
+         */
+        RUNNING,
+        /**
+         * the run completed successfully
+         */
+        PASSED,
+        /**
+         * the run failed
+         */
+        FAILED,
+        /**
+         * the run was cancelled
+         */
+        CANCELLED,
     }
 
 
@@ -583,6 +914,25 @@ export namespace Foundry {
     }
 
 
+    /**
+     * @gir-type Enum
+     */
+    export namespace VcsGraphPoint {
+        export const $gtype: GObject.GType<VcsGraphPoint>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum VcsGraphPoint {
+        TOP,
+        CENTER,
+        BOTTOM,
+    }
+
+
+    const ACP_PROTOCOL_VERSION: number;
+
     const DOCUMENTATION_ATTRIBUTE_DEPRECATED: string;
 
     const DOCUMENTATION_ATTRIBUTE_SINCE: string;
@@ -600,6 +950,13 @@ export namespace Foundry {
     const SEARCH_CATEGORY_SYMBOLS: string;
 
     const TEXT_SETTING_LAST: number;
+
+    /**
+     * Gets the ACP error domain.
+     * @returns a {@link GLib.Quark}
+     * @since 1.2
+     */
+    function acp_error_quark(): GLib.Quark;
 
     /**
      * @param instance 
@@ -637,9 +994,19 @@ export namespace Foundry {
     function dup_projects_directory_file(): Gio.File;
 
     /**
+     * Canonicalize `file` as if via `realpath()`, raising an error if it
+     * doesn't exist or otherwise isn't accessible.
      * @param file a {@link Gio.File}
      */
     function file_canonicalize(file: Gio.File): Gio.File;
+
+    /**
+     * Canonicalize `file` as if via `realpath()`, raising an error if it
+     * doesn't exist or otherwise isn't accessible.
+     * @param file a {@link Gio.File}
+     * @returns a future that resolves to a {@link Gio.File}  for the `realpath()` of `file`
+     */
+    function file_canonicalize_await(file: Gio.File): Dex.Future;
 
     /**
      * Locates `name` within any of the ancestors of `file` up to the root of
@@ -1086,6 +1453,58 @@ export namespace Foundry {
     /**
      * @gir-type Flags
      */
+    export namespace AcpAgentCapabilityFlags {
+        export const $gtype: GObject.GType<AcpAgentCapabilityFlags>;
+    }
+
+    /**
+     * @gir-type Flags
+     */
+    enum AcpAgentCapabilityFlags {
+        NONE,
+        RESUME_SESSION,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace AcpChangedFileFlags {
+        export const $gtype: GObject.GType<AcpChangedFileFlags>;
+    }
+
+    /**
+     * @gir-type Flags
+     */
+    enum AcpChangedFileFlags {
+        NONE,
+        STAGED,
+        UNSTAGED,
+        UNTRACKED,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace AcpClientCapabilityFlags {
+        export const $gtype: GObject.GType<AcpClientCapabilityFlags>;
+    }
+
+    /**
+     * @gir-type Flags
+     */
+    enum AcpClientCapabilityFlags {
+        NONE,
+        FS_READ_TEXT_FILE,
+        FS_WRITE_TEXT_FILE,
+        TERMINAL,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
     export namespace BuildPipelinePhase {
         export const $gtype: GObject.GType<BuildPipelinePhase>;
     }
@@ -1217,6 +1636,2743 @@ export namespace Foundry {
         REMOVED,
         CHANGED,
         PREVIOUS_REMOVED,
+    }
+
+
+    namespace AcpAgent {
+        // Signal signatures
+        interface SignalSignatures extends Contextual.SignalSignatures {
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::context": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
+            id: string;
+            name: string;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    abstract class AcpAgent extends Contextual implements Json.Serializable {
+        static $gtype: GObject.GType<AcpAgent>;
+
+        // Properties
+        /**
+         * @read-only
+         * @default null
+         */
+        get id(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get name(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpAgent.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpAgent.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpAgent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpAgent.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpAgent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpAgent.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpAgent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpAgent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * @virtual
+         */
+        vfunc_dup_id(): string;
+
+        /**
+         * @virtual
+         */
+        vfunc_dup_name(): string;
+
+        /**
+         * Gets provider-side capabilities supported by `self`.
+         * 
+         * If {@link Foundry.AcpAgentCapabilityFlags.RESUME_SESSION} is set,
+         * {@link Foundry.AcpAgent.resume_session} is a supported operation for
+         * session identifiers previously issued by this agent or provider. It does not
+         * imply that every arbitrary session identifier is valid.
+         * @virtual
+         */
+        vfunc_get_capabilities(): AcpAgentCapabilityFlags;
+
+        /**
+         * Starts a fresh ACP session for `self`.
+         * @param client a {@link Foundry.AcpClient} to receive client-side requests
+         * @param pipeline a {@link Foundry.BuildPipeline} to use for launch
+         * @virtual
+         */
+        vfunc_open_session(client: AcpClient, pipeline: BuildPipeline | null): Dex.Future;
+
+        /**
+         * Starts a session using `session_id`. Implementations may multiplex sessions
+         * or map the identifier to a process-specific transport.
+         * @param client a {@link Foundry.AcpClient} to receive client-side requests
+         * @param pipeline a {@link Foundry.BuildPipeline} to use for launch
+         * @param session_id session identifier to resume
+         * @virtual
+         */
+        vfunc_resume_session(client: AcpClient, pipeline: BuildPipeline | null, session_id: string): Dex.Future;
+
+        // Methods
+        /**
+         * @returns the agent identifier
+         */
+        dup_id(): string;
+
+        /**
+         * @returns the user-visible agent name
+         */
+        dup_name(): string;
+
+        /**
+         * Gets provider-side capabilities supported by `self`.
+         * 
+         * If {@link Foundry.AcpAgentCapabilityFlags.RESUME_SESSION} is set,
+         * {@link Foundry.AcpAgent.resume_session} is a supported operation for
+         * session identifiers previously issued by this agent or provider. It does not
+         * imply that every arbitrary session identifier is valid.
+         * @returns the agent capability flags
+         */
+        get_capabilities(): AcpAgentCapabilityFlags;
+
+        /**
+         * Starts a fresh ACP session for `self`.
+         * @param client a {@link Foundry.AcpClient} to receive client-side requests
+         * @param pipeline a {@link Foundry.BuildPipeline} to use for launch
+         * @returns a {@link Dex.Future}
+         */
+        open_session(client: AcpClient, pipeline: BuildPipeline | null): Dex.Future;
+
+        /**
+         * Starts a session using `session_id`. Implementations may multiplex sessions
+         * or map the identifier to a process-specific transport.
+         * @param client a {@link Foundry.AcpClient} to receive client-side requests
+         * @param pipeline a {@link Foundry.BuildPipeline} to use for launch
+         * @param session_id session identifier to resume
+         * @returns a {@link Dex.Future}
+         */
+        resume_session(client: AcpClient, pipeline: BuildPipeline | null, session_id: string): Dex.Future;
+
+        /**
+         * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
+         * virtual function.
+         * 
+         * This function can be used inside a custom implementation of the
+         * `deserialize_property()` virtual function in lieu of calling the
+         * default implementation through `g_type_default_interface_peek()`:
+         * 
+         * ```c
+         * JsonSerializable *iface;
+         * gboolean res;
+         * 
+         * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
+         * res = iface->deserialize_property (serializable, property_name,
+         *                                    value,
+         *                                    pspec,
+         *                                    property_node);
+         * ```
+         * @param property_name the name of the property to deserialize
+         * @param value a pointer to an uninitialized value
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @returns `TRUE` if the property was successfully deserialized
+         */
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+
+        /**
+         * Calls the default implementation of the {@link Json.Serializable.serialize_property}
+         * virtual function.
+         * 
+         * This function can be used inside a custom implementation of the
+         * `serialize_property()` virtual function in lieu of calling the
+         * default implementation through `g_type_default_interface_peek()`:
+         * 
+         * ```c
+         * JsonSerializable *iface;
+         * JsonNode *node;
+         * 
+         * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
+         * node = iface->serialize_property (serializable, property_name,
+         *                                   value,
+         *                                   pspec);
+         * ```
+         * 
+         * This function will return `NULL` if the property could not be
+         * serialized.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @returns a node containing the   serialized property
+         */
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to deserialize the
+         * property contained inside `property_node` and place its value
+         * into `value`.
+         * 
+         * The `value` can be:
+         * 
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
+         *   initialized with the expected type of the property by using the given
+         *   property description (since JSON-GLib 1.6)
+         * - a {@link GObject.Value} initialized with the expected type of the property
+         * 
+         * This function will not be called for properties that are marked as
+         * as `G_PARAM_CONSTRUCT_ONLY`.
+         * @param property_name the name of the property to serialize
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @returns `TRUE` if the property was successfully deserialized
+         */
+        deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Json.Node): [boolean, unknown];
+
+        /**
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
+         * description for the given name.
+         * @param name the name of the property
+         * @returns the property description
+         */
+        find_property(name: string): GObject.ParamSpec | null;
+
+        /**
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
+         * the given property.
+         * @param pspec a property description
+         */
+        get_property(pspec: GObject.ParamSpec): unknown;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with GObject.Object.get_property
+        get_property(...args: never[]): any;
+
+        /**
+         * Calls the {@link Json.Serializable.list_properties} implementation on
+         * the {@link Json.Serializable} instance, which will return the list of serializable
+         * properties.
+         * @returns the serializable   properties of the object
+         */
+        list_properties(): GObject.ParamSpec[];
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to serialize an object
+         * property into a JSON node.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @returns a node containing the serialized property
+         */
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
+         * with the given value.
+         * @param pspec a property description
+         * @param value the property value to set
+         */
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with GObject.Object.set_property
+        set_property(...args: never[]): any;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to deserialize the
+         * property contained inside `property_node` and place its value
+         * into `value`.
+         * 
+         * The `value` can be:
+         * 
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
+         *   initialized with the expected type of the property by using the given
+         *   property description (since JSON-GLib 1.6)
+         * - a {@link GObject.Value} initialized with the expected type of the property
+         * 
+         * This function will not be called for properties that are marked as
+         * as `G_PARAM_CONSTRUCT_ONLY`.
+         * @param property_name the name of the property to serialize
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @virtual
+         */
+        vfunc_deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Json.Node): [boolean, GObject.Value | any];
+
+        /**
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
+         * description for the given name.
+         * @param name the name of the property
+         * @virtual
+         */
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
+
+        /**
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
+         * the given property.
+         * @param pspec a property description
+         * @virtual
+         */
+        vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with GObject.Object.vfunc_get_property
+        vfunc_get_property(...args: never[]): any;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to serialize an object
+         * property into a JSON node.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @virtual
+         */
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
+         * with the given value.
+         * @param pspec a property description
+         * @param value the property value to set
+         * @virtual
+         */
+        vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with GObject.Object.vfunc_set_property
+        vfunc_set_property(...args: never[]): any;
+    }
+
+
+    namespace AcpChangedFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::kind": (pspec: GObject.ParamSpec) => void;
+            "notify::last-event-id": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            flags: AcpChangedFileFlags;
+            kind: AcpChangedFileKind;
+            last_event_id: string;
+            lastEventId: string;
+            path: string;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpChangedFile extends GObject.Object {
+        static $gtype: GObject.GType<AcpChangedFile>;
+
+        // Properties
+        /**
+         * @read-only
+         * @default Foundry.AcpChangedFileFlags.NONE
+         */
+        get flags(): AcpChangedFileFlags;
+
+        /**
+         * @read-only
+         * @default Foundry.AcpChangedFileKind.UNKNOWN
+         */
+        get kind(): AcpChangedFileKind;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get last_event_id(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get lastEventId(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get path(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpChangedFile.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpChangedFile.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](path: string, kind: AcpChangedFileKind, last_event_id: string | null, flags: AcpChangedFileFlags): AcpChangedFile;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpChangedFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpChangedFile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpChangedFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpChangedFile.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpChangedFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpChangedFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the last event identifier known to   reference this file
+         */
+        dup_last_event_id(): string | null;
+
+        /**
+         * @returns the changed file path
+         */
+        dup_path(): string;
+
+        /**
+         * @returns status flags for the changed file
+         */
+        get_flags(): AcpChangedFileFlags;
+
+        /**
+         * @returns the kind of change
+         */
+        get_kind(): AcpChangedFileKind;
+    }
+
+
+    namespace AcpConnection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            state: AcpConnectionState;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpConnection extends GObject.Object {
+        static $gtype: GObject.GType<AcpConnection>;
+
+        // Properties
+        /**
+         * @read-only
+         * @default Foundry.AcpConnectionState.NEW
+         */
+        get state(): AcpConnectionState;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpConnection.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpConnection.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](context: Context, agent: AcpAgent, client: AcpClient): AcpConnection;
+
+        static new_for_pipeline(context: Context, agent: AcpAgent, client: AcpClient, pipeline: BuildPipeline | null): AcpConnection;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpConnection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpConnection.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Requests authentication using `method_id`.
+         * @param method_id the ACP authentication method identifier
+         * @returns a {@link Dex.Future}
+         */
+        authenticate(method_id: string): Dex.Future;
+
+        /**
+         * Waits for the ACP connection to close.
+         * @returns a {@link Dex.Future}
+         */
+        ["await"](): Dex.Future;
+
+        /**
+         * Closes the ACP transport.
+         * @returns a {@link Dex.Future}
+         */
+        close(): Dex.Future;
+
+        /**
+         * @returns the negotiated agent name
+         */
+        dup_agent_name(): string | null;
+
+        /**
+         * @returns the negotiated agent title
+         */
+        dup_agent_title(): string | null;
+
+        /**
+         * @returns the negotiated agent version
+         */
+        dup_agent_version(): string | null;
+
+        /**
+         * @returns the connection state
+         */
+        get_state(): AcpConnectionState;
+
+        /**
+         * Negotiates ACP protocol capabilities with the agent.
+         * @param client_name stable client identifier
+         * @param client_title user-visible client title
+         * @param client_version client version
+         * @param client_capabilities enabled client capability flags
+         * @returns a {@link Dex.Future}
+         */
+        initialize(client_name: string, client_title: string, client_version: string, client_capabilities: AcpClientCapabilityFlags): Dex.Future;
+
+        /**
+         * Creates a new ACP session using `session/new`.
+         * @param cwd an absolute working directory, or `null` for the project root
+         * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.AcpSession}
+         */
+        new_session(cwd: string | null): Dex.Future;
+
+        /**
+         * Starts the connection transport.
+         * @returns a {@link Dex.Future}
+         */
+        start(): Dex.Future;
+    }
+
+
+    namespace AcpContentBlock {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpContentBlock extends GObject.Object {
+        static $gtype: GObject.GType<AcpContentBlock>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpContentBlock.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpContentBlock.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static new_resource_link(uri: string, name: string | null, mime_type: string | null): AcpContentBlock;
+
+        static new_text(text: string): AcpContentBlock;
+
+        static new_text_resource(uri: string, mime_type: string | null, text: string): AcpContentBlock;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpContentBlock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpContentBlock.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpContentBlock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpContentBlock.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpContentBlock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpContentBlock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the MIME type
+         */
+        dup_mime_type(): string | null;
+
+        /**
+         * @returns the display name
+         */
+        dup_name(): string | null;
+
+        /**
+         * @returns the text
+         */
+        dup_text(): string | null;
+
+        /**
+         * @returns the resource URI
+         */
+        dup_uri(): string | null;
+    }
+
+
+    namespace AcpEvent {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::body": (pspec: GObject.ParamSpec) => void;
+            "notify::event-id": (pspec: GObject.ParamSpec) => void;
+            "notify::kind": (pspec: GObject.ParamSpec) => void;
+            "notify::parent-event-id": (pspec: GObject.ParamSpec) => void;
+            "notify::raw": (pspec: GObject.ParamSpec) => void;
+            "notify::raw-kind": (pspec: GObject.ParamSpec) => void;
+            "notify::session-id": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::turn-id": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            body: string;
+            event_id: string;
+            eventId: string;
+            kind: AcpEventKind;
+            parent_event_id: string;
+            parentEventId: string;
+            raw: Json.Node;
+            raw_kind: string;
+            rawKind: string;
+            session_id: string;
+            sessionId: string;
+            state: AcpEventState;
+            timestamp: bigint | number;
+            title: string;
+            turn_id: string;
+            turnId: string;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpEvent extends GObject.Object {
+        static $gtype: GObject.GType<AcpEvent>;
+
+        // Properties
+        /**
+         * @read-only
+         * @default null
+         */
+        get body(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get event_id(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get eventId(): string;
+
+        /**
+         * @read-only
+         * @default Foundry.AcpEventKind.UNKNOWN
+         */
+        get kind(): AcpEventKind;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get parent_event_id(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get parentEventId(): string;
+
+        /**
+         * @read-only
+         */
+        get raw(): Json.Node;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get raw_kind(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get rawKind(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get session_id(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get sessionId(): string;
+
+        /**
+         * @read-only
+         * @default Foundry.AcpEventState.PENDING
+         */
+        get state(): AcpEventState;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get timestamp(): number;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get title(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get turn_id(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get turnId(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpEvent.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpEvent.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](session_id: string, kind: AcpEventKind): AcpEvent;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpEvent.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpEvent.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns event detail text
+         */
+        dup_body(): string | null;
+
+        /**
+         * @returns the event identifier
+         */
+        dup_event_id(): string | null;
+
+        /**
+         * @returns the parent event identifier
+         */
+        dup_parent_event_id(): string | null;
+
+        /**
+         * @returns the raw protocol JSON for diagnostics
+         */
+        dup_raw(): Json.Node | null;
+
+        /**
+         * @returns the protocol-specific kind
+         */
+        dup_raw_kind(): string | null;
+
+        /**
+         * @returns the ACP session identifier
+         */
+        dup_session_id(): string;
+
+        /**
+         * @returns a short human-facing summary
+         */
+        dup_title(): string | null;
+
+        /**
+         * @returns the prompt turn identifier
+         */
+        dup_turn_id(): string | null;
+
+        /**
+         * @returns the normalized event kind
+         */
+        get_kind(): AcpEventKind;
+
+        /**
+         * @returns the event state
+         */
+        get_state(): AcpEventState;
+
+        /**
+         * @returns a wall-clock timestamp in microseconds since the Unix epoch
+         */
+        get_timestamp(): number;
+    }
+
+
+    namespace AcpManager {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {
+            "notify::context": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpManager<A extends GObject.Object = GObject.Object> extends Service implements Gio.ListModel<A>, Json.Serializable {
+        static $gtype: GObject.GType<AcpManager>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpManager.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpManager.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpManager.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Finds an available ACP agent by identifier.
+         * @param id the agent identifier
+         * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.AcpAgent}
+         */
+        find_agent(id: string): Dex.Future;
+
+        /**
+         * @returns a {@link Gio.ListModel} of {@link Foundry.AcpAgent}
+         */
+        list_agents(): Gio.ListModel;
+
+        /**
+         * Lists loaded ACP providers.
+         * @returns a {@link Gio.ListModel} of {@link Foundry.AcpProvider}
+         */
+        list_providers(): Gio.ListModel;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @returns the {@link GObject.GType} of the items contained in `list`.
+         */
+        get_item_type(): GObject.GType;
+
+        /**
+         * Gets the number of items in `list`.
+         * 
+         * Depending on the model implementation, calling this function may be
+         * less efficient than iterating the list with increasing values for
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @returns the number of items in `list`.
+         */
+        get_n_items(): number;
+
+        /**
+         * Get the item at `position`.
+         * 
+         * If `position` is greater than the number of items in `list`, `null` is
+         * returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.
+         * 
+         * This function is meant to be used by language bindings in place
+         * of `g_list_model_get_item()`.
+         * 
+         * See also: `g_list_model_get_n_items()`
+         * @param position the position of the item to fetch
+         * @returns the object at `position`.
+         */
+        get_item(position: number): A | null;
+
+        /**
+         * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
+         * 
+         * This function should only be called by classes implementing
+         * {@link Gio.ListModel}. It has to be called after the internal representation
+         * of `list` has been updated, because handlers connected to this signal
+         * might query the new state of the list.
+         * 
+         * Implementations must only make changes to the model (as visible to
+         * its consumer) in places that will not cause problems for that
+         * consumer.  For models that are driven directly by a write API (such
+         * as {@link Gio.ListStore}), changes can be reported in response to uses of that
+         * API.  For models that represent remote data, changes should only be
+         * made from a fresh mainloop dispatch.  It is particularly not
+         * permitted to make changes in response to a call to the {@link Gio.ListModel}
+         * consumer API.
+         * 
+         * Stated another way: in general, it is assumed that code making a
+         * series of accesses to the model via the API, without returning to the
+         * mainloop, and without calling other code, will continue to view the
+         * same contents of the model.
+         * @param position the position at which `list` changed
+         * @param removed the number of items removed
+         * @param added the number of items added
+         */
+        items_changed(position: number, removed: number, added: number): void;
+
+        /**
+         * Get the item at `position`. If `position` is greater than the number of
+         * items in `list`, `null` is returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.  See `g_list_model_get_n_items()`.
+         * 
+         * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
+         * @param position the position of the item to fetch
+         * @virtual
+         */
+        vfunc_get_item(position: number): A | null;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @virtual
+         */
+        vfunc_get_item_type(): GObject.GType;
+
+        /**
+         * Gets the number of items in `list`.
+         * 
+         * Depending on the model implementation, calling this function may be
+         * less efficient than iterating the list with increasing values for
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @virtual
+         */
+        vfunc_get_n_items(): number;
+    }
+
+
+    namespace AcpPermissionOption {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpPermissionOption extends GObject.Object {
+        static $gtype: GObject.GType<AcpPermissionOption>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpPermissionOption.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpPermissionOption.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](id: string, label: string | null, description: string | null, destructive: boolean): AcpPermissionOption;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpPermissionOption.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionOption.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpPermissionOption.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionOption.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpPermissionOption.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionOption.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the option description
+         */
+        dup_description(): string | null;
+
+        /**
+         * @returns the option identifier
+         */
+        dup_id(): string;
+
+        /**
+         * @returns the option label
+         */
+        dup_label(): string | null;
+
+        /**
+         * @returns the raw protocol JSON
+         */
+        dup_raw(): Json.Node | null;
+
+        /**
+         * @returns `true` if the option is marked destructive
+         */
+        get_destructive(): boolean;
+    }
+
+
+    namespace AcpPermissionPolicy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpPermissionPolicy extends GObject.Object {
+        static $gtype: GObject.GType<AcpPermissionPolicy>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpPermissionPolicy.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpPermissionPolicy.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](context: Context | null): AcpPermissionPolicy;
+
+        static new_for_project_directory(project_directory: Gio.File | null): AcpPermissionPolicy;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpPermissionPolicy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionPolicy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpPermissionPolicy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionPolicy.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpPermissionPolicy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionPolicy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Checks if `path` is contained by the policy project directory. Relative paths
+         * are resolved below the project directory when one is configured.
+         * @param path a local path from a permission request
+         * @returns `true` if `path` is contained by the project directory
+         */
+        contains_path(path: string): boolean;
+
+        /**
+         * Applies the headless policy to `request`.
+         * 
+         * The policy only auto-selects a non-destructive allow option when the request
+         * is low risk and any provided path remains inside the configured project
+         * directory. Requests outside the project, high-risk requests, unknown-risk
+         * requests, or destructive defaults are cancelled unless an explicit UI layer
+         * replaces this decision.
+         * @param request a {@link Foundry.AcpPermissionRequest}
+         * @returns a {@link Foundry.AcpPermissionResponse}
+         */
+        decide(request: AcpPermissionRequest): AcpPermissionResponse;
+
+        /**
+         * @returns the project directory used for   containment checks
+         */
+        dup_project_directory(): Gio.File | null;
+
+        /**
+         * Applies the policy to `request` and wraps the response in a future for use by
+         * {@link Foundry.AcpClient} implementations.
+         * @param request a {@link Foundry.AcpPermissionRequest}
+         * @returns a {@link Dex.Future} resolving to a   {@link Foundry.AcpPermissionResponse}
+         */
+        request_permission(request: AcpPermissionRequest): Dex.Future;
+    }
+
+
+    namespace AcpPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpPermissionRequest extends GObject.Object {
+        static $gtype: GObject.GType<AcpPermissionRequest>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpPermissionRequest.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpPermissionRequest.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionRequest.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the command when provided
+         */
+        dup_command(): string | null;
+
+        /**
+         * @returns the default or recommended option
+         */
+        dup_default_option(): string | null;
+
+        /**
+         * @returns the request description
+         */
+        dup_description(): string | null;
+
+        /**
+         * @returns the path or target resource when provided
+         */
+        dup_path(): string | null;
+
+        /**
+         * @returns the raw request JSON
+         */
+        dup_raw(): Json.Node;
+
+        /**
+         * @returns the request identifier
+         */
+        dup_request_id(): string | null;
+
+        /**
+         * @returns the risk level when provided
+         */
+        dup_risk_level(): string | null;
+
+        /**
+         * @returns the session identifier
+         */
+        dup_session_id(): string | null;
+
+        /**
+         * @returns the request title
+         */
+        dup_title(): string | null;
+
+        /**
+         * @returns the associated tool call identifier
+         */
+        dup_tool_call_id(): string | null;
+
+        /**
+         * @returns the tool name
+         */
+        dup_tool_name(): string | null;
+
+        /**
+         * Lists structured permission options.
+         * @returns a {@link Gio.ListModel} of   {@link Foundry.AcpPermissionOption}
+         */
+        list_options(): Gio.ListModel;
+    }
+
+
+    namespace AcpPermissionResponse {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpPermissionResponse extends GObject.Object {
+        static $gtype: GObject.GType<AcpPermissionResponse>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpPermissionResponse.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpPermissionResponse.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static new_cancelled(): AcpPermissionResponse;
+
+        static new_selected(option_id: string): AcpPermissionResponse;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpPermissionResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionResponse.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpPermissionResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPermissionResponse.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpPermissionResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPermissionResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the selected option identifier
+         */
+        dup_option_id(): string | null;
+
+        /**
+         * @returns `true` if the permission was cancelled
+         */
+        get_cancelled(): boolean;
+    }
+
+
+    namespace AcpProjectClient {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, AcpClient.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpProjectClient extends GObject.Object implements AcpClient {
+        static $gtype: GObject.GType<AcpProjectClient>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpProjectClient.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpProjectClient.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](context: Context): AcpProjectClient;
+
+        static new_for_project_directory(project_directory: Gio.File): AcpProjectClient;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpProjectClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpProjectClient.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpProjectClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpProjectClient.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpProjectClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpProjectClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the permission policy used by `self`
+         */
+        dup_permission_policy(): AcpPermissionPolicy;
+
+        /**
+         * @returns the project directory used for containment checks
+         */
+        dup_project_directory(): Gio.File;
+
+        /**
+         * Refreshes `session`'s changed-file model from the active project VCS.
+         * 
+         * This currently uses Git status data when the active VCS is
+         * {@link Foundry.GitVcs}. Other VCS implementations are ignored until they
+         * expose a list-status API.
+         * @param session a {@link Foundry.AcpSession}
+         * @returns a {@link Dex.Future} that resolves when refresh   has completed
+         */
+        refresh_changed_files(session: AcpSession): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/create` request.
+         * 
+         * The returned future must resolve to a {@link Foundry.AcpTerminal}.
+         * @param session a {@link Foundry.AcpSession}
+         * @param command the command to execute
+         * @param argv command arguments
+         * @param cwd working directory
+         * @param environ environment
+         * @param output_byte_limit output byte limit, or -1 for default
+         * @returns a {@link Dex.Future}
+         */
+        create_terminal(session: AcpSession, command: string, argv: string[] | null, cwd: string | null, environ: string[] | null, output_byte_limit: bigint | number): Dex.Future;
+
+        /**
+         * Handles an ACP `fs/read_text_file` request.
+         * 
+         * The returned future must resolve to a UTF-8 string.
+         * @param session a {@link Foundry.AcpSession}
+         * @param path an absolute path
+         * @param line 1-based start line, or zero for the beginning
+         * @param limit maximum line count, or zero for no explicit limit
+         * @returns a {@link Dex.Future}
+         */
+        read_text_file(session: AcpSession, path: string, line: number, limit: number): Dex.Future;
+
+        /**
+         * Requests permission for an agent tool call.
+         * 
+         * The returned future must resolve to a {@link Foundry.AcpPermissionResponse}.
+         * @param session a {@link Foundry.AcpSession}
+         * @param request a {@link Foundry.AcpPermissionRequest}
+         * @returns a {@link Dex.Future}
+         */
+        request_permission(session: AcpSession, request: AcpPermissionRequest): Dex.Future;
+
+        /**
+         * Delivers an ACP `session/update` notification to the client.
+         * @param session a {@link Foundry.AcpSession}
+         * @param update a {@link Foundry.AcpSessionUpdate}
+         * @returns a {@link Dex.Future} resolving when local delivery   is complete
+         */
+        session_update(session: AcpSession, update: AcpSessionUpdate): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/kill` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @returns a {@link Dex.Future}
+         */
+        terminal_kill(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/output` request.
+         * 
+         * The returned future must resolve to a {@link Foundry.AcpTerminalOutput}.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @returns a {@link Dex.Future}
+         */
+        terminal_output(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/release` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @returns a {@link Dex.Future}
+         */
+        terminal_release(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/wait_for_exit` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @returns a {@link Dex.Future}
+         */
+        terminal_wait_for_exit(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `fs/write_text_file` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param path an absolute path
+         * @param content UTF-8 content
+         * @returns a {@link Dex.Future}
+         */
+        write_text_file(session: AcpSession, path: string, content: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/create` request.
+         * 
+         * The returned future must resolve to a {@link Foundry.AcpTerminal}.
+         * @param session a {@link Foundry.AcpSession}
+         * @param command the command to execute
+         * @param argv command arguments
+         * @param cwd working directory
+         * @param environ environment
+         * @param output_byte_limit output byte limit, or -1 for default
+         * @virtual
+         */
+        vfunc_create_terminal(session: AcpSession, command: string, argv: string[] | null, cwd: string | null, environ: string[] | null, output_byte_limit: number): Dex.Future;
+
+        /**
+         * Handles an ACP `fs/read_text_file` request.
+         * 
+         * The returned future must resolve to a UTF-8 string.
+         * @param session a {@link Foundry.AcpSession}
+         * @param path an absolute path
+         * @param line 1-based start line, or zero for the beginning
+         * @param limit maximum line count, or zero for no explicit limit
+         * @virtual
+         */
+        vfunc_read_text_file(session: AcpSession, path: string, line: number, limit: number): Dex.Future;
+
+        /**
+         * Refreshes `session`'s changed-file model after a prompt or terminal has
+         * completed.
+         * @param session a {@link Foundry.AcpSession}
+         * @virtual
+         */
+        vfunc_refresh_changed_files(session: AcpSession): Dex.Future;
+
+        /**
+         * Requests permission for an agent tool call.
+         * 
+         * The returned future must resolve to a {@link Foundry.AcpPermissionResponse}.
+         * @param session a {@link Foundry.AcpSession}
+         * @param request a {@link Foundry.AcpPermissionRequest}
+         * @virtual
+         */
+        vfunc_request_permission(session: AcpSession, request: AcpPermissionRequest): Dex.Future;
+
+        /**
+         * Delivers an ACP `session/update` notification to the client.
+         * @param session a {@link Foundry.AcpSession}
+         * @param update a {@link Foundry.AcpSessionUpdate}
+         * @virtual
+         */
+        vfunc_session_update(session: AcpSession, update: AcpSessionUpdate): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/kill` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @virtual
+         */
+        vfunc_terminal_kill(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/output` request.
+         * 
+         * The returned future must resolve to a {@link Foundry.AcpTerminalOutput}.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @virtual
+         */
+        vfunc_terminal_output(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/release` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @virtual
+         */
+        vfunc_terminal_release(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/wait_for_exit` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @virtual
+         */
+        vfunc_terminal_wait_for_exit(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `fs/write_text_file` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param path an absolute path
+         * @param content UTF-8 content
+         * @virtual
+         */
+        vfunc_write_text_file(session: AcpSession, path: string, content: string): Dex.Future;
+    }
+
+
+    namespace AcpPromptResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpPromptResult extends GObject.Object {
+        static $gtype: GObject.GType<AcpPromptResult>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpPromptResult.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpPromptResult.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpPromptResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPromptResult.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpPromptResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpPromptResult.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpPromptResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpPromptResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the protocol stop reason
+         */
+        dup_raw_stop_reason(): string | null;
+
+        /**
+         * @returns the normalized stop reason
+         */
+        get_stop_reason(): AcpStopReason;
+    }
+
+
+    namespace AcpProvider {
+        // Signal signatures
+        interface SignalSignatures extends Contextual.SignalSignatures {
+            "notify::plugin-info": (pspec: GObject.ParamSpec) => void;
+            "notify::context": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
+            plugin_info: Peas.PluginInfo;
+            pluginInfo: Peas.PluginInfo;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    abstract class AcpProvider<A extends GObject.Object = GObject.Object> extends Contextual implements Gio.ListModel<A>, Json.Serializable {
+        static $gtype: GObject.GType<AcpProvider>;
+
+        // Properties
+        /**
+         * @construct-only
+         */
+        get plugin_info(): Peas.PluginInfo;
+
+        /**
+         * @construct-only
+         */
+        get pluginInfo(): Peas.PluginInfo;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpProvider.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpProvider.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpProvider.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpProvider.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * Gets a user-visible name for the provider.
+         * @virtual
+         */
+        vfunc_dup_name(): string;
+
+        // Methods
+        /**
+         * Adds `agent` to the provider.
+         * @param agent a {@link Foundry.AcpAgent}
+         */
+        agent_added(agent: AcpAgent): void;
+
+        /**
+         * Removes `agent` from the provider.
+         * @param agent a {@link Foundry.AcpAgent}
+         */
+        agent_removed(agent: AcpAgent): void;
+
+        /**
+         * Gets a user-visible name for the provider.
+         * @returns the provider name
+         */
+        dup_name(): string;
+
+        /**
+         * Gets the plugin information for the provider.
+         * @returns a {@link Peas.PluginInfo}
+         */
+        dup_plugin_info(): Peas.PluginInfo | null;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @returns the {@link GObject.GType} of the items contained in `list`.
+         */
+        get_item_type(): GObject.GType;
+
+        /**
+         * Gets the number of items in `list`.
+         * 
+         * Depending on the model implementation, calling this function may be
+         * less efficient than iterating the list with increasing values for
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @returns the number of items in `list`.
+         */
+        get_n_items(): number;
+
+        /**
+         * Get the item at `position`.
+         * 
+         * If `position` is greater than the number of items in `list`, `null` is
+         * returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.
+         * 
+         * This function is meant to be used by language bindings in place
+         * of `g_list_model_get_item()`.
+         * 
+         * See also: `g_list_model_get_n_items()`
+         * @param position the position of the item to fetch
+         * @returns the object at `position`.
+         */
+        get_item(position: number): A | null;
+
+        /**
+         * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
+         * 
+         * This function should only be called by classes implementing
+         * {@link Gio.ListModel}. It has to be called after the internal representation
+         * of `list` has been updated, because handlers connected to this signal
+         * might query the new state of the list.
+         * 
+         * Implementations must only make changes to the model (as visible to
+         * its consumer) in places that will not cause problems for that
+         * consumer.  For models that are driven directly by a write API (such
+         * as {@link Gio.ListStore}), changes can be reported in response to uses of that
+         * API.  For models that represent remote data, changes should only be
+         * made from a fresh mainloop dispatch.  It is particularly not
+         * permitted to make changes in response to a call to the {@link Gio.ListModel}
+         * consumer API.
+         * 
+         * Stated another way: in general, it is assumed that code making a
+         * series of accesses to the model via the API, without returning to the
+         * mainloop, and without calling other code, will continue to view the
+         * same contents of the model.
+         * @param position the position at which `list` changed
+         * @param removed the number of items removed
+         * @param added the number of items added
+         */
+        items_changed(position: number, removed: number, added: number): void;
+
+        /**
+         * Get the item at `position`. If `position` is greater than the number of
+         * items in `list`, `null` is returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.  See `g_list_model_get_n_items()`.
+         * 
+         * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
+         * @param position the position of the item to fetch
+         * @virtual
+         */
+        vfunc_get_item(position: number): A | null;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @virtual
+         */
+        vfunc_get_item_type(): GObject.GType;
+
+        /**
+         * Gets the number of items in `list`.
+         * 
+         * Depending on the model implementation, calling this function may be
+         * less efficient than iterating the list with increasing values for
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @virtual
+         */
+        vfunc_get_n_items(): number;
+
+        /**
+         * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
+         * virtual function.
+         * 
+         * This function can be used inside a custom implementation of the
+         * `deserialize_property()` virtual function in lieu of calling the
+         * default implementation through `g_type_default_interface_peek()`:
+         * 
+         * ```c
+         * JsonSerializable *iface;
+         * gboolean res;
+         * 
+         * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
+         * res = iface->deserialize_property (serializable, property_name,
+         *                                    value,
+         *                                    pspec,
+         *                                    property_node);
+         * ```
+         * @param property_name the name of the property to deserialize
+         * @param value a pointer to an uninitialized value
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @returns `TRUE` if the property was successfully deserialized
+         */
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+
+        /**
+         * Calls the default implementation of the {@link Json.Serializable.serialize_property}
+         * virtual function.
+         * 
+         * This function can be used inside a custom implementation of the
+         * `serialize_property()` virtual function in lieu of calling the
+         * default implementation through `g_type_default_interface_peek()`:
+         * 
+         * ```c
+         * JsonSerializable *iface;
+         * JsonNode *node;
+         * 
+         * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
+         * node = iface->serialize_property (serializable, property_name,
+         *                                   value,
+         *                                   pspec);
+         * ```
+         * 
+         * This function will return `NULL` if the property could not be
+         * serialized.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @returns a node containing the   serialized property
+         */
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to deserialize the
+         * property contained inside `property_node` and place its value
+         * into `value`.
+         * 
+         * The `value` can be:
+         * 
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
+         *   initialized with the expected type of the property by using the given
+         *   property description (since JSON-GLib 1.6)
+         * - a {@link GObject.Value} initialized with the expected type of the property
+         * 
+         * This function will not be called for properties that are marked as
+         * as `G_PARAM_CONSTRUCT_ONLY`.
+         * @param property_name the name of the property to serialize
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @returns `TRUE` if the property was successfully deserialized
+         */
+        deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Json.Node): [boolean, unknown];
+
+        /**
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
+         * description for the given name.
+         * @param name the name of the property
+         * @returns the property description
+         */
+        find_property(name: string): GObject.ParamSpec | null;
+
+        /**
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
+         * the given property.
+         * @param pspec a property description
+         */
+        get_property(pspec: GObject.ParamSpec): unknown;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with GObject.Object.get_property
+        get_property(...args: never[]): any;
+
+        /**
+         * Calls the {@link Json.Serializable.list_properties} implementation on
+         * the {@link Json.Serializable} instance, which will return the list of serializable
+         * properties.
+         * @returns the serializable   properties of the object
+         */
+        list_properties(): GObject.ParamSpec[];
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to serialize an object
+         * property into a JSON node.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @returns a node containing the serialized property
+         */
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
+         * with the given value.
+         * @param pspec a property description
+         * @param value the property value to set
+         */
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with GObject.Object.set_property
+        set_property(...args: never[]): any;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to deserialize the
+         * property contained inside `property_node` and place its value
+         * into `value`.
+         * 
+         * The `value` can be:
+         * 
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
+         *   initialized with the expected type of the property by using the given
+         *   property description (since JSON-GLib 1.6)
+         * - a {@link GObject.Value} initialized with the expected type of the property
+         * 
+         * This function will not be called for properties that are marked as
+         * as `G_PARAM_CONSTRUCT_ONLY`.
+         * @param property_name the name of the property to serialize
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @virtual
+         */
+        vfunc_deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Json.Node): [boolean, GObject.Value | any];
+
+        /**
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
+         * description for the given name.
+         * @param name the name of the property
+         * @virtual
+         */
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
+
+        /**
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
+         * the given property.
+         * @param pspec a property description
+         * @virtual
+         */
+        vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with GObject.Object.vfunc_get_property
+        vfunc_get_property(...args: never[]): any;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to serialize an object
+         * property into a JSON node.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @virtual
+         */
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
+         * with the given value.
+         * @param pspec a property description
+         * @param value the property value to set
+         * @virtual
+         */
+        vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with GObject.Object.vfunc_set_property
+        vfunc_set_property(...args: never[]): any;
+    }
+
+
+    namespace AcpSession {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            state: AcpSessionState;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpSession extends GObject.Object {
+        static $gtype: GObject.GType<AcpSession>;
+
+        // Properties
+        /**
+         * @read-only
+         * @default Foundry.AcpSessionState.NEW
+         */
+        get state(): AcpSessionState;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpSession.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpSession.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpSession.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpSession.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Sends an ACP `session/cancel` notification.
+         * @returns a {@link Dex.Future}
+         */
+        cancel(): Dex.Future;
+
+        /**
+         * Requests the agent close the session.
+         * @returns a {@link Dex.Future}
+         */
+        close(): Dex.Future;
+
+        /**
+         * @returns the active permission request
+         */
+        dup_active_permission_request(): AcpPermissionRequest | null;
+
+        /**
+         * @returns the owning ACP connection
+         */
+        dup_connection(): AcpConnection;
+
+        /**
+         * @returns the current running or blocking event
+         */
+        dup_current_activity(): AcpEvent | null;
+
+        /**
+         * @returns the ACP session identifier
+         */
+        dup_id(): string;
+
+        /**
+         * @returns the session state
+         */
+        get_state(): AcpSessionState;
+
+        /**
+         * Lists terminal handles known to the session. Terminals remain in the model
+         * after exit until they are released by the ACP agent.
+         * @returns a {@link Gio.ListModel} of {@link Foundry.AcpTerminal}
+         */
+        list_active_terminals(): Gio.ListModel;
+
+        /**
+         * Lists files known to have changed during the session.
+         * @returns a {@link Gio.ListModel} of   {@link Foundry.AcpChangedFile}
+         */
+        list_changed_files(): Gio.ListModel;
+
+        /**
+         * Lists normalized monitoring events for the session.
+         * @returns a {@link Gio.ListModel} of {@link Foundry.AcpEvent}
+         */
+        list_events(): Gio.ListModel;
+
+        /**
+         * Sends a prompt turn to the ACP agent.
+         * @param blocks content blocks for the prompt
+         * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.AcpPromptResult}
+         */
+        prompt(blocks: AcpContentBlock[]): Dex.Future;
+
+        /**
+         * Requests a session config option change.
+         * @param config_id the ACP config option identifier
+         * @param value_id the ACP config value identifier
+         * @returns a {@link Dex.Future}
+         */
+        set_config_option(config_id: string, value_id: string): Dex.Future;
+
+        /**
+         * Requests a session mode change.
+         * @param mode_id the ACP mode identifier
+         * @returns a {@link Dex.Future}
+         */
+        set_mode(mode_id: string): Dex.Future;
+    }
+
+
+    namespace AcpSessionUpdate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpSessionUpdate extends GObject.Object {
+        static $gtype: GObject.GType<AcpSessionUpdate>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpSessionUpdate.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpSessionUpdate.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpSessionUpdate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpSessionUpdate.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpSessionUpdate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpSessionUpdate.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpSessionUpdate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpSessionUpdate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns a command from the update
+         */
+        dup_command(): string | null;
+
+        /**
+         * Gets parsed content blocks from the update.
+         * @returns content blocks
+         */
+        dup_content_blocks(): AcpContentBlock[];
+
+        /**
+         * @returns a working directory from the update
+         */
+        dup_cwd(): string | null;
+
+        /**
+         * @returns a summary of the file edit
+         */
+        dup_edit_summary(): string | null;
+
+        /**
+         * @returns the error domain from the update
+         */
+        dup_error_domain(): string | null;
+
+        /**
+         * @returns an error message from the update
+         */
+        dup_error_message(): string | null;
+
+        /**
+         * @returns the update variant name
+         */
+        dup_kind(): string | null;
+
+        /**
+         * @returns the previous file path from the update
+         */
+        dup_old_path(): string | null;
+
+        /**
+         * @returns a file path from the update
+         */
+        dup_path(): string | null;
+
+        /**
+         * @returns progress or status text from the update
+         */
+        dup_progress_text(): string | null;
+
+        /**
+         * @returns the raw update JSON
+         */
+        dup_raw(): Json.Node;
+
+        /**
+         * @returns a terminal identifier from the update
+         */
+        dup_terminal_id(): string | null;
+
+        /**
+         * @returns a text-like payload when present
+         */
+        dup_text(): string | null;
+
+        /**
+         * @returns the tool call identifier
+         */
+        dup_tool_call_id(): string | null;
+
+        /**
+         * @returns the tool name
+         */
+        dup_tool_name(): string | null;
+
+        /**
+         * @returns the tool status
+         */
+        dup_tool_status(): string | null;
+
+        /**
+         * @returns a human-facing tool title
+         */
+        dup_tool_title(): string | null;
+
+        /**
+         * Gets the byte count from `self`, if present.
+         * @returns `true` if a byte count was found
+         */
+        get_byte_count(): [boolean, number];
+
+        /**
+         * Gets the error code from `self`, if present.
+         * @returns `true` if an error code was found
+         */
+        get_error_code(): [boolean, number];
+
+        /**
+         * Gets the affected line range from `self`, if present.
+         * @returns `true` if line range data was found
+         */
+        get_line_range(): [boolean, number, number];
+
+        /**
+         * Gets the terminal exit status from `self`, if present.
+         * @returns `true` if an exit status was found
+         */
+        get_terminal_exit_status(): [boolean, number];
+
+        /**
+         * Gets the normalized update kind for `self`.
+         * @returns a {@link Foundry.AcpSessionUpdateKind}
+         */
+        get_update_kind(): AcpSessionUpdateKind;
+    }
+
+
+    namespace AcpTerminal {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::argv": (pspec: GObject.ParamSpec) => void;
+            "notify::command": (pspec: GObject.ParamSpec) => void;
+            "notify::created-at": (pspec: GObject.ParamSpec) => void;
+            "notify::cwd": (pspec: GObject.ParamSpec) => void;
+            "notify::exit-signal": (pspec: GObject.ParamSpec) => void;
+            "notify::exit-status": (pspec: GObject.ParamSpec) => void;
+            "notify::exited-at": (pspec: GObject.ParamSpec) => void;
+            "notify::has-exit-status": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::latest-output": (pspec: GObject.ParamSpec) => void;
+            "notify::output-byte-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::scrollback": (pspec: GObject.ParamSpec) => void;
+            "notify::started-at": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::truncated": (pspec: GObject.ParamSpec) => void;
+            "notify::turn-id": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            argv: string[];
+            command: string;
+            created_at: bigint | number;
+            createdAt: bigint | number;
+            cwd: string;
+            exit_signal: string;
+            exitSignal: string;
+            exit_status: number;
+            exitStatus: number;
+            exited_at: bigint | number;
+            exitedAt: bigint | number;
+            has_exit_status: boolean;
+            hasExitStatus: boolean;
+            id: string;
+            latest_output: string;
+            latestOutput: string;
+            output_byte_limit: bigint | number;
+            outputByteLimit: bigint | number;
+            scrollback: string;
+            started_at: bigint | number;
+            startedAt: bigint | number;
+            state: AcpTerminalState;
+            truncated: boolean;
+            turn_id: string;
+            turnId: string;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpTerminal extends GObject.Object {
+        static $gtype: GObject.GType<AcpTerminal>;
+
+        // Properties
+        /**
+         * @read-only
+         */
+        get argv(): string[];
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get command(): string;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get created_at(): number;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get createdAt(): number;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get cwd(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get exit_signal(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get exitSignal(): string;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get exit_status(): number;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get exitStatus(): number;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get exited_at(): number;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get exitedAt(): number;
+
+        /**
+         * @read-only
+         * @default false
+         */
+        get has_exit_status(): boolean;
+
+        /**
+         * @read-only
+         * @default false
+         */
+        get hasExitStatus(): boolean;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get id(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get latest_output(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get latestOutput(): string;
+
+        /**
+         * @read-only
+         * @default -1
+         */
+        get output_byte_limit(): number;
+
+        /**
+         * @read-only
+         * @default -1
+         */
+        get outputByteLimit(): number;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get scrollback(): string;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get started_at(): number;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get startedAt(): number;
+
+        /**
+         * @read-only
+         * @default Foundry.AcpTerminalState.RUNNING
+         */
+        get state(): AcpTerminalState;
+
+        /**
+         * @read-only
+         * @default false
+         */
+        get truncated(): boolean;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get turn_id(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get turnId(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpTerminal.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpTerminal.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](id: string): AcpTerminal;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpTerminal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpTerminal.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpTerminal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpTerminal.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpTerminal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpTerminal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the argument vector used to create the terminal
+         */
+        dup_argv(): string[] | null;
+
+        /**
+         * @returns the command used to create the terminal
+         */
+        dup_command(): string | null;
+
+        /**
+         * @returns the working directory for the terminal
+         */
+        dup_cwd(): string | null;
+
+        /**
+         * @returns the exit signal name, if any
+         */
+        dup_exit_signal(): string | null;
+
+        /**
+         * @returns the protocol terminal identifier
+         */
+        dup_id(): string;
+
+        /**
+         * @returns the most recent terminal output text
+         */
+        dup_latest_output(): string | null;
+
+        /**
+         * @returns accumulated terminal output
+         */
+        dup_scrollback(): string;
+
+        /**
+         * @returns the prompt turn identifier that   created the terminal
+         */
+        dup_turn_id(): string | null;
+
+        /**
+         * @returns wall-clock creation time in microseconds since the Unix epoch
+         */
+        get_created_at(): number;
+
+        /**
+         * @returns the exit status, or zero if none has been reported
+         */
+        get_exit_status(): number;
+
+        /**
+         * @returns wall-clock subprocess exit time in microseconds since the Unix   epoch, or zero if the terminal has not exited
+         */
+        get_exited_at(): number;
+
+        /**
+         * @returns the configured output byte limit, or -1 for the default
+         */
+        get_output_byte_limit(): number;
+
+        /**
+         * @returns wall-clock subprocess start time in microseconds since the Unix   epoch, or zero if unknown
+         */
+        get_started_at(): number;
+
+        /**
+         * @returns the terminal state
+         */
+        get_state(): AcpTerminalState;
+
+        /**
+         * @returns `true` if output has been truncated
+         */
+        get_truncated(): boolean;
+    }
+
+
+    namespace AcpTerminalOutput {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AcpTerminalOutput extends GObject.Object {
+        static $gtype: GObject.GType<AcpTerminalOutput>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AcpTerminalOutput.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<AcpTerminalOutput.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](text: string, truncated: boolean, has_exit_status: boolean, exit_code: number, signal_name: string | null): AcpTerminalOutput;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof AcpTerminalOutput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpTerminalOutput.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof AcpTerminalOutput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AcpTerminalOutput.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof AcpTerminalOutput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AcpTerminalOutput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the signal name
+         */
+        dup_signal(): string | null;
+
+        /**
+         * @returns the terminal output
+         */
+        dup_text(): string;
+
+        /**
+         * @returns the exit code
+         */
+        get_exit_code(): number;
+
+        /**
+         * @returns `true` if output was truncated
+         */
+        get_truncated(): boolean;
+
+        /**
+         * @returns `true` if an exit status is available
+         */
+        has_exit_status(): boolean;
     }
 
 
@@ -4124,6 +7280,1515 @@ export namespace Foundry {
     }
 
 
+    namespace CiArtifact {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::kind": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            file: Gio.File;
+            kind: CiArtifactKind;
+            name: string;
+        }
+    }
+
+    /**
+     * A file or directory produced by a continuous integration run.
+     * @gir-type Class
+     * @since 1.2
+     */
+    class CiArtifact extends GObject.Object {
+        static $gtype: GObject.GType<CiArtifact>;
+
+        // Properties
+        /**
+         * The artifact location.
+         * @since 1.2
+         * @read-only
+         */
+        get file(): Gio.File;
+
+        /**
+         * The kind of artifact.
+         * @since 1.2
+         * @read-only
+         * @default Foundry.CiArtifactKind.FILE
+         */
+        get kind(): CiArtifactKind;
+
+        /**
+         * The user-visible artifact name.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get name(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CiArtifact.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CiArtifact.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](name: string, file: Gio.File, kind: CiArtifactKind): CiArtifact;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CiArtifact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiArtifact.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CiArtifact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiArtifact.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CiArtifact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiArtifact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns a {@link Gio.File}
+         */
+        dup_file(): Gio.File;
+
+        /**
+         * Gets the user-visible name of the artifact.
+         * @returns the artifact name
+         */
+        dup_name(): string;
+
+        /**
+         * Gets the kind of artifact.
+         * @returns the artifact kind
+         */
+        get_kind(): CiArtifactKind;
+    }
+
+
+    namespace CiJob {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::can-run": (pspec: GObject.ParamSpec) => void;
+            "notify::can-shell": (pspec: GObject.ParamSpec) => void;
+            "notify::disposition": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::image": (pspec: GObject.ParamSpec) => void;
+            "notify::pipeline": (pspec: GObject.ParamSpec) => void;
+            "notify::provider": (pspec: GObject.ParamSpec) => void;
+            "notify::reason": (pspec: GObject.ParamSpec) => void;
+            "notify::stage": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            can_run: boolean;
+            canRun: boolean;
+            can_shell: boolean;
+            canShell: boolean;
+            disposition: CiJobDisposition;
+            id: string;
+            image: string;
+            pipeline: CiPipeline;
+            provider: CiProvider;
+            reason: string;
+            stage: string;
+            title: string;
+        }
+    }
+
+    /**
+     * Abstract representation of a job in a continuous integration pipeline.
+     * 
+     * CI providers subclass {@link Foundry.CiJob} and implement the virtual getters.
+     * The corresponding properties are read-only. Subclasses whose values can
+     * change must emit `notify` for the affected property.
+     * @gir-type Class
+     * @since 1.2
+     */
+    abstract class CiJob extends GObject.Object {
+        static $gtype: GObject.GType<CiJob>;
+
+        // Properties
+        /**
+         * Whether the job can be run locally.
+         * @since 1.2
+         * @read-only
+         * @default false
+         */
+        get can_run(): boolean;
+
+        /**
+         * Whether the job can be run locally.
+         * @since 1.2
+         * @read-only
+         * @default false
+         */
+        get canRun(): boolean;
+
+        /**
+         * Whether an interactive shell can be opened for the job.
+         * @since 1.2
+         * @read-only
+         * @default false
+         */
+        get can_shell(): boolean;
+
+        /**
+         * Whether an interactive shell can be opened for the job.
+         * @since 1.2
+         * @read-only
+         * @default false
+         */
+        get canShell(): boolean;
+
+        /**
+         * How the provider selected or excluded the job.
+         * @since 1.2
+         * @read-only
+         * @default Foundry.CiJobDisposition.SELECTED
+         */
+        get disposition(): CiJobDisposition;
+
+        /**
+         * The provider-specific job identifier.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get id(): string;
+
+        /**
+         * The execution image requested by the job.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get image(): string;
+
+        /**
+         * The pipeline containing the job.
+         * @since 1.2
+         * @read-only
+         */
+        get pipeline(): CiPipeline;
+
+        /**
+         * The provider which created the job.
+         * @since 1.2
+         * @read-only
+         */
+        get provider(): CiProvider;
+
+        /**
+         * The provider's explanation for the job disposition.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get reason(): string;
+
+        /**
+         * The pipeline stage containing the job.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get stage(): string;
+
+        /**
+         * The user-visible job title.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get title(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CiJob.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CiJob.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CiJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiJob.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CiJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiJob.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CiJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiJob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * Gets the provider-specific identifier for the job.
+         * @virtual
+         */
+        vfunc_dup_id(): string | null;
+
+        /**
+         * Gets the execution image requested by the job, if any.
+         * @virtual
+         */
+        vfunc_dup_image(): string | null;
+
+        /**
+         * Gets the pipeline containing the job.
+         * @virtual
+         */
+        vfunc_dup_pipeline(): CiPipeline | null;
+
+        /**
+         * Gets the provider which created the job.
+         * @virtual
+         */
+        vfunc_dup_provider(): CiProvider | null;
+
+        /**
+         * Gets the provider's explanation for the job disposition.
+         * @virtual
+         */
+        vfunc_dup_reason(): string | null;
+
+        /**
+         * Gets the pipeline stage containing the job.
+         * @virtual
+         */
+        vfunc_dup_stage(): string | null;
+
+        /**
+         * Gets the user-visible title of the job.
+         * @virtual
+         */
+        vfunc_dup_title(): string | null;
+
+        /**
+         * Checks whether the job can be run locally.
+         * @virtual
+         */
+        vfunc_get_can_run(): boolean;
+
+        /**
+         * Checks whether an interactive shell can be opened for the job.
+         * @virtual
+         */
+        vfunc_get_can_shell(): boolean;
+
+        /**
+         * Gets how the provider selected or excluded the job.
+         * @virtual
+         */
+        vfunc_get_disposition(): CiJobDisposition;
+
+        // Methods
+        /**
+         * Gets the provider-specific identifier for the job.
+         * @returns the job identifier
+         */
+        dup_id(): string | null;
+
+        /**
+         * Gets the execution image requested by the job, if any.
+         * @returns the image reference
+         */
+        dup_image(): string | null;
+
+        /**
+         * Gets the pipeline containing the job.
+         * @returns a {@link Foundry.CiPipeline}
+         */
+        dup_pipeline(): CiPipeline | null;
+
+        /**
+         * Gets the provider which created the job.
+         * @returns a {@link Foundry.CiProvider}
+         */
+        dup_provider(): CiProvider | null;
+
+        /**
+         * Gets the provider's explanation for the job disposition.
+         * @returns the disposition reason
+         */
+        dup_reason(): string | null;
+
+        /**
+         * Gets the pipeline stage containing the job.
+         * @returns the stage name
+         */
+        dup_stage(): string | null;
+
+        /**
+         * Gets the user-visible title of the job.
+         * @returns the job title
+         */
+        dup_title(): string | null;
+
+        /**
+         * Checks whether the job can be run locally.
+         * @returns `true` if the job can be run
+         */
+        get_can_run(): boolean;
+
+        /**
+         * Checks whether an interactive shell can be opened for the job.
+         * @returns `true` if a shell can be opened
+         */
+        get_can_shell(): boolean;
+
+        /**
+         * Gets how the provider selected or excluded the job.
+         * @returns the job disposition
+         */
+        get_disposition(): CiJobDisposition;
+    }
+
+
+    namespace CiManager {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {
+            /**
+             * Emitted when the available CI pipelines may have changed.
+             * @signal
+             * @since 1.2
+             * @run-last
+             */
+            invalidated: () => void;
+            "notify::context": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
+    }
+
+    /**
+     * Project service which aggregates installed continuous integration
+     * providers.
+     * 
+     * The manager loads {@link Foundry.CiProvider} extensions and routes runs
+     * back to the provider which created a pipeline or job.
+     * @gir-type Class
+     * @since 1.2
+     */
+    class CiManager extends Service implements Json.Serializable {
+        static $gtype: GObject.GType<CiManager>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CiManager.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CiManager.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CiManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CiManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiManager.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CiManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Lists pipelines from all loaded CI providers.
+         * 
+         * This is active discovery and may access remote resources. UI consumers
+         * should call this only in response to an explicit user action, such as
+         * opening a continuous integration panel.
+         * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.CiPipeline} or rejects with error
+         */
+        list_pipelines(): Dex.Future;
+
+        /**
+         * Starts selected jobs using the provider which created `pipeline`.
+         * @param pipeline a pipeline to run
+         * @param job_ids job identifiers, or `null`
+         * @param options options for the run
+         * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiRun} or rejects with error
+         */
+        run(pipeline: CiPipeline, job_ids: string[] | null, options: CiRunOptions | null): Dex.Future;
+
+        /**
+         * Starts a shell using the provider which created `job`.
+         * @param job a job whose environment should be opened
+         * @param options options for the shell
+         * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiRun} or rejects with error
+         */
+        run_shell(job: CiJob, options: CiRunOptions | null): Dex.Future;
+    }
+
+
+    namespace CiPipeline {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::provider": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            id: string;
+            provider: CiProvider;
+            title: string;
+        }
+    }
+
+    /**
+     * Abstract representation of a continuous integration pipeline.
+     * 
+     * CI providers subclass {@link Foundry.CiPipeline} to expose provider-specific
+     * pipelines and their jobs. The properties are read-only. Subclasses whose
+     * values can change must emit `notify` for the affected property and emit
+     * `Gio.ListModel::items-changed` from the model returned by
+     * {@link Foundry.CiPipeline.list_jobs}.
+     * @gir-type Class
+     * @since 1.2
+     */
+    abstract class CiPipeline extends GObject.Object {
+        static $gtype: GObject.GType<CiPipeline>;
+
+        // Properties
+        /**
+         * The provider-specific pipeline identifier.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get id(): string;
+
+        /**
+         * The provider which created the pipeline.
+         * @since 1.2
+         * @read-only
+         */
+        get provider(): CiProvider;
+
+        /**
+         * The user-visible pipeline title.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get title(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CiPipeline.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CiPipeline.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CiPipeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiPipeline.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CiPipeline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiPipeline.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CiPipeline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiPipeline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * Gets the provider-specific identifier for the pipeline.
+         * @virtual
+         */
+        vfunc_dup_id(): string | null;
+
+        /**
+         * Gets the provider which created the pipeline.
+         * @virtual
+         */
+        vfunc_dup_provider(): CiProvider | null;
+
+        /**
+         * Gets the user-visible title of the pipeline.
+         * @virtual
+         */
+        vfunc_dup_title(): string | null;
+
+        /**
+         * Lists the jobs known to the pipeline.
+         * @virtual
+         */
+        vfunc_list_jobs(): Gio.ListModel;
+
+        // Methods
+        /**
+         * Gets the provider-specific identifier for the pipeline.
+         * @returns the pipeline identifier
+         */
+        dup_id(): string | null;
+
+        /**
+         * Gets the provider which created the pipeline.
+         * @returns a {@link Foundry.CiProvider}
+         */
+        dup_provider(): CiProvider | null;
+
+        /**
+         * Gets the user-visible title of the pipeline.
+         * @returns the pipeline title
+         */
+        dup_title(): string | null;
+
+        /**
+         * Finds a job in the pipeline by identifier.
+         * @param id a job identifier
+         * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiJob} or rejects with error
+         */
+        find_job(id: string): Dex.Future;
+
+        /**
+         * Lists the jobs known to the pipeline.
+         * @returns a {@link Gio.ListModel} of   {@link Foundry.CiJob}
+         */
+        list_jobs(): Gio.ListModel;
+    }
+
+
+    namespace CiProvider {
+        // Signal signatures
+        interface SignalSignatures extends Contextual.SignalSignatures {
+            /**
+             * Emitted when the provider's available pipelines have changed.
+             * @signal
+             * @since 1.2
+             * @run-last
+             */
+            invalidated: () => void;
+            "notify::context": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
+    }
+
+    /**
+     * Extension point for continuous integration implementations.
+     * 
+     * Providers discover pipelines for a project and create asynchronous
+     * {@link Foundry.CiRun} objects for jobs and interactive job shells.
+     * Provider implementations should perform blocking work in fibers on a
+     * worker scheduler and use libdex asynchronous I/O helpers where available.
+     * 
+     * Loading a provider must remain passive. Providers should defer pipeline
+     * discovery and remote access until {@link Foundry.CiProvider.list_pipelines}
+     * is called by an explicit consumer action.
+     * @gir-type Class
+     * @since 1.2
+     */
+    abstract class CiProvider extends Contextual implements Json.Serializable {
+        static $gtype: GObject.GType<CiProvider>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CiProvider.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CiProvider.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CiProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiProvider.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CiProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiProvider.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CiProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * Lists the pipelines available for the current project.
+         * 
+         * This is active discovery and may access remote resources. UI consumers
+         * should call this only in response to an explicit user action.
+         * @virtual
+         */
+        vfunc_list_pipelines(): Dex.Future;
+
+        /**
+         * Starts a local pipeline run. If `job_ids` is `null` or empty, the provider
+         * runs the jobs selected by its pipeline rules. The run is exposed through
+         * the context's {@link Foundry.OperationManager} until it completes or is
+         * cancelled.
+         * @param pipeline a pipeline created by `self`
+         * @param job_ids job identifiers, or `null`
+         * @param options options for the run
+         * @virtual
+         */
+        vfunc_run(pipeline: CiPipeline, job_ids: string[] | null, options: CiRunOptions): Dex.Future;
+
+        /**
+         * Starts an interactive shell using the job's local execution environment.
+         * The standard file descriptors in `options` are borrowed for the duration
+         * of the run.
+         * @param job a job created by `self`
+         * @param options options for the shell
+         * @virtual
+         */
+        vfunc_run_shell(job: CiJob, options: CiRunOptions): Dex.Future;
+
+        // Methods
+        /**
+         * Notifies the CI manager that the provider's pipelines have changed.
+         */
+        invalidate(): void;
+
+        /**
+         * Lists the pipelines available for the current project.
+         * 
+         * This is active discovery and may access remote resources. UI consumers
+         * should call this only in response to an explicit user action.
+         * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.CiPipeline} or rejects with error
+         */
+        list_pipelines(): Dex.Future;
+
+        /**
+         * Starts a local pipeline run. If `job_ids` is `null` or empty, the provider
+         * runs the jobs selected by its pipeline rules. The run is exposed through
+         * the context's {@link Foundry.OperationManager} until it completes or is
+         * cancelled.
+         * @param pipeline a pipeline created by `self`
+         * @param job_ids job identifiers, or `null`
+         * @param options options for the run
+         * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiRun} or rejects with error
+         */
+        run(pipeline: CiPipeline, job_ids: string[] | null, options: CiRunOptions): Dex.Future;
+
+        /**
+         * Starts an interactive shell using the job's local execution environment.
+         * The standard file descriptors in `options` are borrowed for the duration
+         * of the run.
+         * @param job a job created by `self`
+         * @param options options for the shell
+         * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiRun} or rejects with error
+         */
+        run_shell(job: CiJob, options: CiRunOptions): Dex.Future;
+
+        /**
+         * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
+         * virtual function.
+         * 
+         * This function can be used inside a custom implementation of the
+         * `deserialize_property()` virtual function in lieu of calling the
+         * default implementation through `g_type_default_interface_peek()`:
+         * 
+         * ```c
+         * JsonSerializable *iface;
+         * gboolean res;
+         * 
+         * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
+         * res = iface->deserialize_property (serializable, property_name,
+         *                                    value,
+         *                                    pspec,
+         *                                    property_node);
+         * ```
+         * @param property_name the name of the property to deserialize
+         * @param value a pointer to an uninitialized value
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @returns `TRUE` if the property was successfully deserialized
+         */
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+
+        /**
+         * Calls the default implementation of the {@link Json.Serializable.serialize_property}
+         * virtual function.
+         * 
+         * This function can be used inside a custom implementation of the
+         * `serialize_property()` virtual function in lieu of calling the
+         * default implementation through `g_type_default_interface_peek()`:
+         * 
+         * ```c
+         * JsonSerializable *iface;
+         * JsonNode *node;
+         * 
+         * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
+         * node = iface->serialize_property (serializable, property_name,
+         *                                   value,
+         *                                   pspec);
+         * ```
+         * 
+         * This function will return `NULL` if the property could not be
+         * serialized.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @returns a node containing the   serialized property
+         */
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to deserialize the
+         * property contained inside `property_node` and place its value
+         * into `value`.
+         * 
+         * The `value` can be:
+         * 
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
+         *   initialized with the expected type of the property by using the given
+         *   property description (since JSON-GLib 1.6)
+         * - a {@link GObject.Value} initialized with the expected type of the property
+         * 
+         * This function will not be called for properties that are marked as
+         * as `G_PARAM_CONSTRUCT_ONLY`.
+         * @param property_name the name of the property to serialize
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @returns `TRUE` if the property was successfully deserialized
+         */
+        deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Json.Node): [boolean, unknown];
+
+        /**
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
+         * description for the given name.
+         * @param name the name of the property
+         * @returns the property description
+         */
+        find_property(name: string): GObject.ParamSpec | null;
+
+        /**
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
+         * the given property.
+         * @param pspec a property description
+         */
+        get_property(pspec: GObject.ParamSpec): unknown;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with GObject.Object.get_property
+        get_property(...args: never[]): any;
+
+        /**
+         * Calls the {@link Json.Serializable.list_properties} implementation on
+         * the {@link Json.Serializable} instance, which will return the list of serializable
+         * properties.
+         * @returns the serializable   properties of the object
+         */
+        list_properties(): GObject.ParamSpec[];
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to serialize an object
+         * property into a JSON node.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @returns a node containing the serialized property
+         */
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
+         * with the given value.
+         * @param pspec a property description
+         * @param value the property value to set
+         */
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with GObject.Object.set_property
+        set_property(...args: never[]): any;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to deserialize the
+         * property contained inside `property_node` and place its value
+         * into `value`.
+         * 
+         * The `value` can be:
+         * 
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
+         *   initialized with the expected type of the property by using the given
+         *   property description (since JSON-GLib 1.6)
+         * - a {@link GObject.Value} initialized with the expected type of the property
+         * 
+         * This function will not be called for properties that are marked as
+         * as `G_PARAM_CONSTRUCT_ONLY`.
+         * @param property_name the name of the property to serialize
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @virtual
+         */
+        vfunc_deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Json.Node): [boolean, GObject.Value | any];
+
+        /**
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
+         * description for the given name.
+         * @param name the name of the property
+         * @virtual
+         */
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
+
+        /**
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
+         * the given property.
+         * @param pspec a property description
+         * @virtual
+         */
+        vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with GObject.Object.vfunc_get_property
+        vfunc_get_property(...args: never[]): any;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to serialize an object
+         * property into a JSON node.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @virtual
+         */
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
+         * with the given value.
+         * @param pspec a property description
+         * @param value the property value to set
+         * @virtual
+         */
+        vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with GObject.Object.vfunc_set_property
+        vfunc_set_property(...args: never[]): any;
+    }
+
+
+    namespace CiRun {
+        // Signal signatures
+        interface SignalSignatures extends Contextual.SignalSignatures {
+            "notify::exit-status": (pspec: GObject.ParamSpec) => void;
+            "notify::output-dir": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::context": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
+            exit_status: number;
+            exitStatus: number;
+            output_dir: string;
+            outputDir: string;
+            progress: number;
+            state: CiRunState;
+        }
+    }
+
+    /**
+     * Abstract representation of an asynchronous continuous integration run.
+     * 
+     * CI providers subclass {@link Foundry.CiRun} and own the run's state,
+     * completion, progress, output, and artifacts. The corresponding properties
+     * are read-only. Subclasses whose values change must emit `notify` for the
+     * affected property and emit `Gio.ListModel::items-changed` from the
+     * model returned by {@link Foundry.CiRun.list_artifacts}.
+     * @gir-type Class
+     * @since 1.2
+     */
+    abstract class CiRun extends Contextual implements Json.Serializable {
+        static $gtype: GObject.GType<CiRun>;
+
+        // Properties
+        /**
+         * The process-style exit status, or -1 until completion.
+         * @since 1.2
+         * @read-only
+         * @default -1
+         */
+        get exit_status(): number;
+
+        /**
+         * The process-style exit status, or -1 until completion.
+         * @since 1.2
+         * @read-only
+         * @default -1
+         */
+        get exitStatus(): number;
+
+        /**
+         * The directory containing durable run output.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get output_dir(): string;
+
+        /**
+         * The directory containing durable run output.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get outputDir(): string;
+
+        /**
+         * The current progress from 0.0 to 1.0.
+         * @since 1.2
+         * @read-only
+         * @default 0
+         */
+        get progress(): number;
+
+        /**
+         * The current run state.
+         * @since 1.2
+         * @read-only
+         * @default Foundry.CiRunState.PENDING
+         */
+        get state(): CiRunState;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CiRun.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CiRun.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CiRun.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiRun.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CiRun.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiRun.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CiRun.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiRun.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * Awaits completion of the run.
+         * @virtual
+         */
+        vfunc_await(): Dex.Future;
+
+        /**
+         * Requests cancellation of the run.
+         * @virtual
+         */
+        vfunc_cancel(): void;
+
+        /**
+         * Gets the directory containing the run's durable output.
+         * @virtual
+         */
+        vfunc_dup_output_dir(): string | null;
+
+        /**
+         * Gets the exit status, or -1 before successful completion.
+         * @virtual
+         */
+        vfunc_get_exit_status(): number;
+
+        /**
+         * Gets the current progress.
+         * @virtual
+         */
+        vfunc_get_progress(): number;
+
+        /**
+         * Gets the current run state.
+         * @virtual
+         */
+        vfunc_get_state(): CiRunState;
+
+        /**
+         * Lists artifacts discovered by the run.
+         * 
+         * The returned model may emit `Gio.ListModel::items-changed` as the
+         * provider discovers artifacts.
+         * @virtual
+         */
+        vfunc_list_artifacts(): Gio.ListModel;
+
+        // Methods
+        /**
+         * Awaits completion of the run.
+         * @returns a {@link Dex.Future} that resolves to the exit   status or rejects with error
+         */
+        ["await"](): Dex.Future;
+
+        /**
+         * Requests cancellation of the run.
+         */
+        cancel(): void;
+
+        /**
+         * Gets the directory containing the run's durable output.
+         * @returns the output directory
+         */
+        dup_output_dir(): string | null;
+
+        /**
+         * Gets the exit status, or -1 before successful completion.
+         * @returns the exit status
+         */
+        get_exit_status(): number;
+
+        /**
+         * Gets the current progress.
+         * @returns progress from 0.0 to 1.0
+         */
+        get_progress(): number;
+
+        /**
+         * Gets the current run state.
+         * @returns the current state
+         */
+        get_state(): CiRunState;
+
+        /**
+         * Lists artifacts discovered by the run.
+         * 
+         * The returned model may emit `Gio.ListModel::items-changed` as the
+         * provider discovers artifacts.
+         * @returns a {@link Gio.ListModel} of   {@link Foundry.CiArtifact}
+         */
+        list_artifacts(): Gio.ListModel;
+
+        /**
+         * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
+         * virtual function.
+         * 
+         * This function can be used inside a custom implementation of the
+         * `deserialize_property()` virtual function in lieu of calling the
+         * default implementation through `g_type_default_interface_peek()`:
+         * 
+         * ```c
+         * JsonSerializable *iface;
+         * gboolean res;
+         * 
+         * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
+         * res = iface->deserialize_property (serializable, property_name,
+         *                                    value,
+         *                                    pspec,
+         *                                    property_node);
+         * ```
+         * @param property_name the name of the property to deserialize
+         * @param value a pointer to an uninitialized value
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @returns `TRUE` if the property was successfully deserialized
+         */
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+
+        /**
+         * Calls the default implementation of the {@link Json.Serializable.serialize_property}
+         * virtual function.
+         * 
+         * This function can be used inside a custom implementation of the
+         * `serialize_property()` virtual function in lieu of calling the
+         * default implementation through `g_type_default_interface_peek()`:
+         * 
+         * ```c
+         * JsonSerializable *iface;
+         * JsonNode *node;
+         * 
+         * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
+         * node = iface->serialize_property (serializable, property_name,
+         *                                   value,
+         *                                   pspec);
+         * ```
+         * 
+         * This function will return `NULL` if the property could not be
+         * serialized.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @returns a node containing the   serialized property
+         */
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to deserialize the
+         * property contained inside `property_node` and place its value
+         * into `value`.
+         * 
+         * The `value` can be:
+         * 
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
+         *   initialized with the expected type of the property by using the given
+         *   property description (since JSON-GLib 1.6)
+         * - a {@link GObject.Value} initialized with the expected type of the property
+         * 
+         * This function will not be called for properties that are marked as
+         * as `G_PARAM_CONSTRUCT_ONLY`.
+         * @param property_name the name of the property to serialize
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @returns `TRUE` if the property was successfully deserialized
+         */
+        deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Json.Node): [boolean, unknown];
+
+        /**
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
+         * description for the given name.
+         * @param name the name of the property
+         * @returns the property description
+         */
+        find_property(name: string): GObject.ParamSpec | null;
+
+        /**
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
+         * the given property.
+         * @param pspec a property description
+         */
+        get_property(pspec: GObject.ParamSpec): unknown;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with GObject.Object.get_property
+        get_property(...args: never[]): any;
+
+        /**
+         * Calls the {@link Json.Serializable.list_properties} implementation on
+         * the {@link Json.Serializable} instance, which will return the list of serializable
+         * properties.
+         * @returns the serializable   properties of the object
+         */
+        list_properties(): GObject.ParamSpec[];
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to serialize an object
+         * property into a JSON node.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @returns a node containing the serialized property
+         */
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
+         * with the given value.
+         * @param pspec a property description
+         * @param value the property value to set
+         */
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with GObject.Object.set_property
+        set_property(...args: never[]): any;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to deserialize the
+         * property contained inside `property_node` and place its value
+         * into `value`.
+         * 
+         * The `value` can be:
+         * 
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
+         *   initialized with the expected type of the property by using the given
+         *   property description (since JSON-GLib 1.6)
+         * - a {@link GObject.Value} initialized with the expected type of the property
+         * 
+         * This function will not be called for properties that are marked as
+         * as `G_PARAM_CONSTRUCT_ONLY`.
+         * @param property_name the name of the property to serialize
+         * @param pspec a property description
+         * @param property_node the JSON node containing the serialized property
+         * @virtual
+         */
+        vfunc_deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Json.Node): [boolean, GObject.Value | any];
+
+        /**
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
+         * description for the given name.
+         * @param name the name of the property
+         * @virtual
+         */
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
+
+        /**
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
+         * the given property.
+         * @param pspec a property description
+         * @virtual
+         */
+        vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with GObject.Object.vfunc_get_property
+        vfunc_get_property(...args: never[]): any;
+
+        /**
+         * Asks a {@link Json.Serializable} implementation to serialize an object
+         * property into a JSON node.
+         * @param property_name the name of the property to serialize
+         * @param value the value of the property to serialize
+         * @param pspec a property description
+         * @virtual
+         */
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
+
+        /**
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
+         * with the given value.
+         * @param pspec a property description
+         * @param value the property value to set
+         * @virtual
+         */
+        vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with GObject.Object.vfunc_set_property
+        vfunc_set_property(...args: never[]): any;
+    }
+
+
+    namespace CiRunOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * Provider-independent options for local CI execution.
+     * 
+     * A provider reads a stable snapshot of these values when
+     * {@link Foundry.CiProvider.run} or {@link Foundry.CiProvider.run_shell}
+     * is called. File descriptors are borrowed; the caller must keep them open
+     * until the resulting {@link Foundry.CiRun} completes.
+     * @gir-type Class
+     * @since 1.2
+     */
+    class CiRunOptions extends GObject.Object {
+        static $gtype: GObject.GType<CiRunOptions>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CiRunOptions.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CiRunOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](): CiRunOptions;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CiRunOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiRunOptions.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CiRunOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CiRunOptions.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CiRunOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CiRunOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Gets the requested directory for durable run output.
+         * @returns the output directory
+         */
+        dup_output_dir(): string | null;
+
+        /**
+         * Gets whether execution stops after the first failed job.
+         * @returns `true` if execution stops after the first failure
+         */
+        get_fail_fast(): boolean;
+
+        /**
+         * Gets the maximum number of jobs which may run concurrently.
+         * @returns the maximum concurrent job count
+         */
+        get_max_jobs(): number;
+
+        /**
+         * Gets whether network access should be avoided.
+         * @returns `true` if the run should remain offline
+         */
+        get_offline(): boolean;
+
+        /**
+         * Gets whether execution state should be preserved.
+         * @returns `true` if execution state should be preserved
+         */
+        get_save_state(): boolean;
+
+        /**
+         * Gets whether the job workspace should be preserved.
+         * @returns `true` if the workspace should be preserved
+         */
+        get_save_workspace(): boolean;
+
+        /**
+         * Gets the borrowed standard error file descriptor.
+         * @returns the standard error file descriptor, or -1
+         */
+        get_stderr_fd(): number;
+
+        /**
+         * Gets the borrowed standard input file descriptor.
+         * @returns the standard input file descriptor, or -1
+         */
+        get_stdin_fd(): number;
+
+        /**
+         * Gets the borrowed standard output file descriptor.
+         * @returns the standard output file descriptor, or -1
+         */
+        get_stdout_fd(): number;
+
+        /**
+         * Sets whether execution stops after the first failed job.
+         * @param fail_fast whether to stop after the first failed job
+         */
+        set_fail_fast(fail_fast: boolean): void;
+
+        /**
+         * Sets the borrowed file descriptors used for the run. Passing -1 requests
+         * the provider's default behavior for that stream.
+         * @param stdin_fd standard input, or -1
+         * @param stdout_fd standard output, or -1
+         * @param stderr_fd standard error, or -1
+         */
+        set_fds(stdin_fd: number, stdout_fd: number, stderr_fd: number): void;
+
+        /**
+         * Sets the maximum number of jobs which may run concurrently.
+         * @param max_jobs the maximum concurrent job count
+         */
+        set_max_jobs(max_jobs: number): void;
+
+        /**
+         * Sets whether the provider should avoid network access.
+         * @param offline whether network access should be avoided
+         */
+        set_offline(offline: boolean): void;
+
+        /**
+         * Sets the requested directory for durable run output.
+         * @param output_dir a directory for durable run output
+         */
+        set_output_dir(output_dir: string | null): void;
+
+        /**
+         * Sets whether execution state should be preserved after the run.
+         * @param save_state whether execution state should be preserved
+         */
+        set_save_state(save_state: boolean): void;
+
+        /**
+         * Sets whether the job workspace should be preserved after the run.
+         * 
+         * Enabling this option also enables preservation of execution state.
+         * @param save_workspace whether the workspace should be preserved
+         */
+        set_save_workspace(save_workspace: boolean): void;
+    }
+
+
     namespace CliCommandTree {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -4195,10 +8860,37 @@ export namespace Foundry {
         lookup(args: string, options: CliOptions): CliCommand;
 
         /**
-         * @param path 
-         * @param command 
+         * Registers `command` at `path`.
+         * 
+         * The command's description is used as its help summary. Use
+         * {@link Foundry.CliCommandTree.register_full} when positional argument
+         * syntax should be displayed in generated help.
+         * @param path the command path
+         * @param command the command implementation
          */
-        register(path: string, command: CliCommand): void;
+        register(path: string[], command: CliCommand): void;
+
+        /**
+         * Registers `command` at `path` with separate help metadata.
+         * 
+         * The `summary` should be a short verb phrase without positional argument
+         * syntax. The `arguments` should contain only positional arguments because
+         * the generated help adds option syntax automatically.
+         * @param path the command path
+         * @param command the command implementation
+         * @param summary a short summary of the command, or `null` to preserve   an existing group summary
+         * @param _arguments the command's positional argument synopsis
+         */
+        register_full(path: string[], command: CliCommand, summary: string | null, _arguments: string | null): void;
+
+        /**
+         * Adds help metadata to a command group. The group may be registered before
+         * or after its child commands and may also have a command of its own.
+         * @param path the command group path
+         * @param gettext_package gettext package for `summary`
+         * @param summary a short summary of the command group
+         */
+        register_group(path: string[], gettext_package: string | null, summary: string): void;
     }
 
 
@@ -7322,8 +12014,10 @@ export namespace Foundry {
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::acp-manager": (pspec: GObject.ParamSpec) => void;
             "notify::build-manager": (pspec: GObject.ParamSpec) => void;
             "notify::build-system": (pspec: GObject.ParamSpec) => void;
+            "notify::ci-manager": (pspec: GObject.ParamSpec) => void;
             "notify::command-manager": (pspec: GObject.ParamSpec) => void;
             "notify::config-manager": (pspec: GObject.ParamSpec) => void;
             "notify::debugger-manager": (pspec: GObject.ParamSpec) => void;
@@ -7349,16 +12043,21 @@ export namespace Foundry {
             "notify::test-manager": (pspec: GObject.ParamSpec) => void;
             "notify::text-manager": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::title-with-fallback": (pspec: GObject.ParamSpec) => void;
             "notify::tweak-manager": (pspec: GObject.ParamSpec) => void;
             "notify::vcs-manager": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            acp_manager: AcpManager;
+            acpManager: AcpManager;
             build_manager: BuildManager;
             buildManager: BuildManager;
             build_system: string;
             buildSystem: string;
+            ci_manager: CiManager;
+            ciManager: CiManager;
             command_manager: CommandManager;
             commandManager: CommandManager;
             config_manager: ConfigManager;
@@ -7408,6 +12107,8 @@ export namespace Foundry {
             text_manager: TextManager;
             textManager: TextManager;
             title: string;
+            title_with_fallback: string;
+            titleWithFallback: string;
             tweak_manager: TweakManager;
             tweakManager: TweakManager;
             vcs_manager: VcsManager;
@@ -7431,6 +12132,16 @@ export namespace Foundry {
         /**
          * @read-only
          */
+        get acp_manager(): AcpManager;
+
+        /**
+         * @read-only
+         */
+        get acpManager(): AcpManager;
+
+        /**
+         * @read-only
+         */
         get build_manager(): BuildManager;
 
         /**
@@ -7449,6 +12160,20 @@ export namespace Foundry {
          * @default null
          */
         get buildSystem(): string;
+
+        /**
+         * The continuous integration manager for the project.
+         * @since 1.2
+         * @read-only
+         */
+        get ci_manager(): CiManager;
+
+        /**
+         * The continuous integration manager for the project.
+         * @since 1.2
+         * @read-only
+         */
+        get ciManager(): CiManager;
 
         /**
          * @read-only
@@ -7711,6 +12436,28 @@ export namespace Foundry {
         set title(val: string);
 
         /**
+         * The title of the context, falling back to the project directory basename
+         * when {@link Foundry.Context.title} is unset.
+         * 
+         * This is `null` when the context is shared.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get title_with_fallback(): string;
+
+        /**
+         * The title of the context, falling back to the project directory basename
+         * when {@link Foundry.Context.title} is unset.
+         * 
+         * This is `null` when the context is shared.
+         * @since 1.2
+         * @read-only
+         * @default null
+         */
+        get titleWithFallback(): string;
+
+        /**
          * @read-only
          */
         get tweak_manager(): TweakManager;
@@ -7773,6 +12520,12 @@ export namespace Foundry {
 
         // Methods
         /**
+         * Gets the {@link Foundry.AcpManager} instance.
+         * @returns a {@link Foundry.AcpManager}
+         */
+        dup_acp_manager(): AcpManager;
+
+        /**
          * Gets a {@link Gio.ActionGroup} that contains various actions for the context.
          * 
          * Actions may be provided by subclassing FoundryService and implementing the
@@ -7801,6 +12554,12 @@ export namespace Foundry {
          * @returns a build-system name or `null`
          */
         dup_build_system(): string | null;
+
+        /**
+         * Gets the CI manager for the project.
+         * @returns a {@link Foundry.CiManager}
+         */
+        dup_ci_manager(): CiManager;
 
         /**
          * Gets the {@link Foundry.CommandManager} instance.
@@ -7960,6 +12719,15 @@ export namespace Foundry {
         dup_text_manager(): TextManager;
 
         dup_title(): string | null;
+
+        /**
+         * Gets the title of the context.
+         * 
+         * If {@link Foundry.Context.title} is unset, the basename of
+         * {@link Foundry.Context.project_directory} will be used instead.
+         * @returns the title of the context, or `null`   when the context is shared
+         */
+        dup_title_with_fallback(): string | null;
 
         /**
          * Gets the {@link Foundry.TweakManager} instance.
@@ -26419,6 +31187,103 @@ export namespace Foundry {
     }
 
 
+    namespace FutureItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::future": (pspec: GObject.ParamSpec) => void;
+            "notify::item": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            future: Dex.Future;
+            item: GObject.Object;
+        }
+    }
+
+    /**
+     * A property-notifying wrapper around a {@link Dex.Future} that resolves to a
+     * {@link GObject.Object}.
+     * 
+     * {@link Foundry.FutureItem} is useful when a future-backed object needs to be
+     * exposed to property expressions or bindings. When the future resolves,
+     * {@link Foundry.FutureItem.item} is notified so expressions can re-read
+     * the object from the future result.
+     * @gir-type Class
+     * @since 1.2
+     */
+    class FutureItem extends GObject.Object {
+        static $gtype: GObject.GType<FutureItem>;
+
+        // Properties
+        /**
+         * The future to observe for an object result.
+         * @since 1.2
+         */
+        get future(): Dex.Future;
+        set future(val: Dex.Future);
+
+        /**
+         * The resolved object result from {@link Foundry.FutureItem.future}.
+         * @since 1.2
+         * @read-only
+         */
+        get item(): GObject.Object;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: FutureItem.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<FutureItem.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](future: Dex.Future | null): FutureItem;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof FutureItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FutureItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof FutureItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FutureItem.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof FutureItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FutureItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Gets the future currently observed by `self`.
+         * @returns a {@link Dex.Future} or `null`
+         */
+        dup_future(): Dex.Future | null;
+
+        /**
+         * Gets the object resolved by the observed future.
+         * @returns a   {@link GObject.Object} or `null`
+         */
+        dup_item<T = GObject.Object>(): T;
+
+        /**
+         * Sets the future observed by `self`.
+         * 
+         * {@link Foundry.FutureItem.item} is notified after `future` is set and when
+         * `future` completes. If an older future completes after this call, its result is
+         * ignored.
+         * @param future a future resolving to a {@link GObject.Object}
+         */
+        set_future(future: Dex.Future | null): void;
+    }
+
+
     namespace Gir {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -26934,9 +31799,13 @@ export namespace Foundry {
     namespace GitCommitBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::amend": (pspec: GObject.ParamSpec) => void;
             "notify::author-email": (pspec: GObject.ParamSpec) => void;
             "notify::author-name": (pspec: GObject.ParamSpec) => void;
+            "notify::busy": (pspec: GObject.ParamSpec) => void;
+            "notify::can-amend": (pspec: GObject.ParamSpec) => void;
             "notify::can-commit": (pspec: GObject.ParamSpec) => void;
+            "notify::changed": (pspec: GObject.ParamSpec) => void;
             "notify::message": (pspec: GObject.ParamSpec) => void;
             "notify::signing-format": (pspec: GObject.ParamSpec) => void;
             "notify::signing-key": (pspec: GObject.ParamSpec) => void;
@@ -26948,12 +31817,17 @@ export namespace Foundry {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            amend: boolean;
             author_email: string;
             authorEmail: string;
             author_name: string;
             authorName: string;
+            busy: boolean;
+            can_amend: boolean;
+            canAmend: boolean;
             can_commit: boolean;
             canCommit: boolean;
+            changed: Gio.ListModel;
             message: string;
             signing_format: string;
             signingFormat: string;
@@ -26973,6 +31847,18 @@ export namespace Foundry {
         static $gtype: GObject.GType<GitCommitBuilder>;
 
         // Properties
+        /**
+         * Whether the builder will amend the commit it was created for.
+         * 
+         * Changing this property reloads the builder state asynchronously. During
+         * that reload {@link Foundry.GitCommitBuilder.busy} is `true` and
+         * {@link Foundry.GitCommitBuilder.can_commit} is `false`.
+         * @since 1.2
+         * @default false
+         */
+        get amend(): boolean;
+        set amend(val: boolean);
+
         /**
          * The email address of the commit author.
          * 
@@ -27014,6 +31900,30 @@ export namespace Foundry {
         set authorName(val: string);
 
         /**
+         * Whether the builder is asynchronously reloading state.
+         * @since 1.2
+         * @read-only
+         * @default false
+         */
+        get busy(): boolean;
+
+        /**
+         * Whether the builder has a commit that can be amended.
+         * @since 1.2
+         * @read-only
+         * @default false
+         */
+        get can_amend(): boolean;
+
+        /**
+         * Whether the builder has a commit that can be amended.
+         * @since 1.2
+         * @read-only
+         * @default false
+         */
+        get canAmend(): boolean;
+
+        /**
          * Whether the builder has sufficient information to create a commit.
          * 
          * This property is `true` when both a non-empty commit message and at least
@@ -27034,6 +31944,18 @@ export namespace Foundry {
          * @default false
          */
         get canCommit(): boolean;
+
+        /**
+         * A list model containing all staged and unstaged files, deduplicated by
+         * repository-relative path.
+         * 
+         * The list model contains {@link Foundry.GitStatusEntry} objects representing
+         * files in the working tree or index that have changes. Files with both
+         * staged and unstaged changes appear only once.
+         * @since 1.2
+         * @read-only
+         */
+        get changed(): Gio.ListModel;
 
         /**
          * The commit message.
@@ -27195,6 +32117,24 @@ export namespace Foundry {
         dup_when(): GLib.DateTime | null;
 
         /**
+         * Gets whether the builder will amend the selected commit.
+         * @returns `true` if the builder is in amend mode
+         */
+        get_amend(): boolean;
+
+        /**
+         * Gets whether the builder is asynchronously reloading its internal state.
+         * @returns `true` if the builder is busy
+         */
+        get_busy(): boolean;
+
+        /**
+         * Gets whether the builder has a commit that can be amended.
+         * @returns `true` if amend mode can be enabled
+         */
+        get_can_amend(): boolean;
+
+        /**
          * Checks whether the builder has sufficient information to create a commit.
          * 
          * Returns `true` if both a non-empty commit message and at least one staged
@@ -27213,6 +32153,16 @@ export namespace Foundry {
          * @returns `true` if `file` was untracked when the builder was created,   `false` otherwise
          */
         is_untracked(file: Gio.File): boolean;
+
+        /**
+         * Gets a list model containing all files with staged or unstaged changes.
+         * 
+         * The list model contains {@link Foundry.GitStatusEntry} objects representing
+         * files in the working tree or index that have changes. Files with both
+         * staged and unstaged changes appear only once.
+         * @returns a {@link Gio.ListModel} of   {@link Foundry.GitStatusEntry} objects representing changed files
+         */
+        list_changed(): Gio.ListModel;
 
         /**
          * Gets a list model containing all files that are currently staged for commit.
@@ -27280,12 +32230,35 @@ export namespace Foundry {
          * Creates a new builder similar to `self`, copying all string and GDateTime
          * properties from the existing builder.
          * 
-         * The new builder will use the same VCS instance, parent commit (or HEAD if
-         * no parent was set), context lines, author name, author email, signing key,
-         * signing format, and timestamp as `self`.
+         * The new builder will use the same VCS instance, commit mode, baseline
+         * commit (or HEAD if no baseline was set), context lines, author name, author
+         * email, signing key, signing format, and timestamp as `self`.
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.GitCommitBuilder}.
          */
         new_similar(): Dex.Future;
+
+        /**
+         * Sets whether the builder should amend the selected commit. Changing this
+         * property schedules an asynchronous reload of the builder's diff baseline and
+         * list models, so there can be a delay before staged and unstaged changes
+         * reflect the new mode. While that reload is running
+         * {@link Foundry.GitCommitBuilder.busy} is `true` and
+         * {@link Foundry.GitCommitBuilder.can_commit} is `false`.
+         * 
+         * This property is primarily intended for user interfaces which bind to the
+         * builder and need to switch an existing builder between normal and amend
+         * views. When enabling amend mode, the builder's commit message is replaced
+         * with the message from the commit being amended.
+         * 
+         * For programmatic single-parent amend flows where the caller already knows
+         * the desired parent for the replacement commit, prefer creating the builder
+         * with that parent using {@link Foundry.GitCommitBuilder.new} and leaving this
+         * property unset. This property is still useful when a UI needs the model
+         * reload behavior, or when preserving the parent set of the commit being
+         * amended matters.
+         * @param amend whether to amend the selected commit
+         */
+        set_amend(amend: boolean): void;
 
         /**
          * Sets the author email address that will be used for the commit.
@@ -28233,6 +33206,13 @@ export namespace Foundry {
         commit(message: string, author_name: string | null, author_email: string | null): Dex.Future;
 
         /**
+         * Discards all changes in the working directory and index, including untracked
+         * files, returning the checkout to `HEAD`.
+         * @returns a {@link Dex.Future} that resolves to any value   or rejects with error.
+         */
+        discard_changes(): Dex.Future;
+
+        /**
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.GitStatusEntry}.
          */
         list_status(): Dex.Future;
@@ -28274,6 +33254,12 @@ export namespace Foundry {
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.GitCommit} representing the stash commit or   rejects with error.
          */
         stash(): Dex.Future;
+
+        /**
+         * Stashes the current working directory changes, including untracked files.
+         * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.GitCommit} representing the stash commit or   rejects with error.
+         */
+        stash_all(): Dex.Future;
 
         /**
          * @param entry a {@link Foundry.GitStatusEntry}
@@ -46830,6 +51816,16 @@ export namespace Foundry {
         vfunc_list_tags(): Dex.Future;
 
         /**
+         * Loads a graph of commits reachable from `start`, excluding commits reachable
+         * from `end` when provided. This follows Git range semantics like `end..start`.
+         * @param start a {@link Foundry.VcsCommit}
+         * @param end optional exclusive end commit
+         * @param limit maximum number of rows to load, or 0 for no limit
+         * @virtual
+         */
+        vfunc_load_graph(start: VcsCommit, end: VcsCommit | null, limit: number): Dex.Future;
+
+        /**
          * Loads the tip (most recent commit) from the repository.
          * @virtual
          */
@@ -46965,6 +51961,16 @@ export namespace Foundry {
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.VcsTag}.
          */
         list_tags(): Dex.Future;
+
+        /**
+         * Loads a graph of commits reachable from `start`, excluding commits reachable
+         * from `end` when provided. This follows Git range semantics like `end..start`.
+         * @param start a {@link Foundry.VcsCommit}
+         * @param end optional exclusive end commit
+         * @param limit maximum number of rows to load, or 0 for no limit
+         * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.VcsGraph} or rejects with error.
+         */
+        load_graph(start: VcsCommit, end: VcsCommit | null, limit: number): Dex.Future;
 
         /**
          * Loads the tip (most recent commit) from the repository.
@@ -48206,6 +53212,331 @@ export namespace Foundry {
         dup_file(): Gio.File;
 
         dup_relative_path(): string;
+    }
+
+
+    namespace VcsGraph {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    abstract class VcsGraph<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
+        static $gtype: GObject.GType<VcsGraph>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: VcsGraph.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<VcsGraph.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof VcsGraph.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsGraph.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof VcsGraph.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsGraph.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof VcsGraph.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsGraph.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * Gets the graph entry at `position`.
+         * @param position the entry position
+         * @virtual
+         */
+        vfunc_dup_entry(position: number): VcsGraphEntry | null;
+
+        /**
+         * @virtual
+         */
+        vfunc_get_n_items(): number;
+
+        /**
+         * Gets the maximum number of lanes used by the graph.
+         * @virtual
+         */
+        vfunc_get_n_lanes(): number;
+
+        // Methods
+        /**
+         * Gets the graph entry at `position`.
+         * @param position the entry position
+         * @returns a {@link Foundry.VcsGraphEntry}
+         */
+        dup_entry(position: number): VcsGraphEntry | null;
+
+        /**
+         * Gets the maximum number of lanes used by the graph.
+         * @returns the number of lanes
+         */
+        get_n_lanes(): number;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @returns the {@link GObject.GType} of the items contained in `list`.
+         */
+        get_item_type(): GObject.GType;
+
+        /**
+         * Gets the number of items in `list`.
+         * 
+         * Depending on the model implementation, calling this function may be
+         * less efficient than iterating the list with increasing values for
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @returns the number of items in `list`.
+         */
+        get_n_items(): number;
+
+        /**
+         * Get the item at `position`.
+         * 
+         * If `position` is greater than the number of items in `list`, `null` is
+         * returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.
+         * 
+         * This function is meant to be used by language bindings in place
+         * of `g_list_model_get_item()`.
+         * 
+         * See also: `g_list_model_get_n_items()`
+         * @param position the position of the item to fetch
+         * @returns the object at `position`.
+         */
+        get_item(position: number): A | null;
+
+        /**
+         * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
+         * 
+         * This function should only be called by classes implementing
+         * {@link Gio.ListModel}. It has to be called after the internal representation
+         * of `list` has been updated, because handlers connected to this signal
+         * might query the new state of the list.
+         * 
+         * Implementations must only make changes to the model (as visible to
+         * its consumer) in places that will not cause problems for that
+         * consumer.  For models that are driven directly by a write API (such
+         * as {@link Gio.ListStore}), changes can be reported in response to uses of that
+         * API.  For models that represent remote data, changes should only be
+         * made from a fresh mainloop dispatch.  It is particularly not
+         * permitted to make changes in response to a call to the {@link Gio.ListModel}
+         * consumer API.
+         * 
+         * Stated another way: in general, it is assumed that code making a
+         * series of accesses to the model via the API, without returning to the
+         * mainloop, and without calling other code, will continue to view the
+         * same contents of the model.
+         * @param position the position at which `list` changed
+         * @param removed the number of items removed
+         * @param added the number of items added
+         */
+        items_changed(position: number, removed: number, added: number): void;
+
+        /**
+         * Get the item at `position`. If `position` is greater than the number of
+         * items in `list`, `null` is returned.
+         * 
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.  See `g_list_model_get_n_items()`.
+         * 
+         * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
+         * @param position the position of the item to fetch
+         * @virtual
+         */
+        vfunc_get_item(position: number): A | null;
+
+        /**
+         * Gets the type of the items in `list`.
+         * 
+         * All items returned from `g_list_model_get_item()` are of the type
+         * returned by this function, or a subtype, or if the type is an
+         * interface, they are an implementation of that interface.
+         * 
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
+         * model.
+         * @virtual
+         */
+        vfunc_get_item_type(): GObject.GType;
+    }
+
+
+    namespace VcsGraphEntry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::commit-id": (pspec: GObject.ParamSpec) => void;
+            "notify::commit-lane": (pspec: GObject.ParamSpec) => void;
+            "notify::n-lanes": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            commit_id: string;
+            commitId: string;
+            commit_lane: number;
+            commitLane: number;
+            n_lanes: number;
+            nLanes: number;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    abstract class VcsGraphEntry extends GObject.Object {
+        static $gtype: GObject.GType<VcsGraphEntry>;
+
+        // Properties
+        /**
+         * @read-only
+         * @default null
+         */
+        get commit_id(): string;
+
+        /**
+         * @read-only
+         * @default null
+         */
+        get commitId(): string;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get commit_lane(): number;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get commitLane(): number;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get n_lanes(): number;
+
+        /**
+         * @read-only
+         * @default 0
+         */
+        get nLanes(): number;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: VcsGraphEntry.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<VcsGraphEntry.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof VcsGraphEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsGraphEntry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof VcsGraphEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VcsGraphEntry.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof VcsGraphEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VcsGraphEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * Gets the commit identifier represented by this graph row.
+         * @virtual
+         */
+        vfunc_dup_commit_id(): string;
+
+        /**
+         * Gets the lane containing the commit node.
+         * @virtual
+         */
+        vfunc_get_commit_lane(): number;
+
+        /**
+         * Gets the number of lanes required by this graph row.
+         * @virtual
+         */
+        vfunc_get_n_lanes(): number;
+
+        /**
+         * Gets the number of graph segments in this row.
+         * @virtual
+         */
+        vfunc_get_n_segments(): number;
+
+        /**
+         * Gets a graph segment for this row.
+         * @param position the segment position
+         * @virtual
+         */
+        vfunc_get_segment(position: number): [boolean, VcsGraphSegment];
+
+        // Methods
+        /**
+         * Gets the commit identifier represented by this graph row.
+         * @returns the commit identifier
+         */
+        dup_commit_id(): string;
+
+        /**
+         * Gets the lane containing the commit node.
+         * @returns the commit lane
+         */
+        get_commit_lane(): number;
+
+        /**
+         * Gets the number of lanes required by this graph row.
+         * @returns the number of lanes
+         */
+        get_n_lanes(): number;
+
+        /**
+         * Gets the number of graph segments in this row.
+         * @returns the number of segments
+         */
+        get_n_segments(): number;
+
+        /**
+         * Gets a graph segment for this row.
+         * @param position the segment position
+         * @returns `true` if `segment` was set, otherwise `false`
+         */
+        get_segment(position: number): [boolean, VcsGraphSegment];
     }
 
 
@@ -49534,6 +54865,96 @@ export namespace Foundry {
 
 
     /**
+     * @gir-type Alias
+     */
+    type AcpAgentClass = typeof AcpAgent;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpChangedFileClass = typeof AcpChangedFile;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpClientInterface = typeof AcpClient;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpConnectionClass = typeof AcpConnection;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpContentBlockClass = typeof AcpContentBlock;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpEventClass = typeof AcpEvent;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpManagerClass = typeof AcpManager;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpPermissionOptionClass = typeof AcpPermissionOption;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpPermissionPolicyClass = typeof AcpPermissionPolicy;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpPermissionRequestClass = typeof AcpPermissionRequest;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpPermissionResponseClass = typeof AcpPermissionResponse;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpProjectClientClass = typeof AcpProjectClient;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpPromptResultClass = typeof AcpPromptResult;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpProviderClass = typeof AcpProvider;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpSessionClass = typeof AcpSession;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpSessionUpdateClass = typeof AcpSessionUpdate;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpTerminalClass = typeof AcpTerminal;
+
+    /**
+     * @gir-type Alias
+     */
+    type AcpTerminalOutputClass = typeof AcpTerminalOutput;
+
+    /**
      * @gir-type Struct
      */
     class Action {
@@ -49639,6 +55060,41 @@ export namespace Foundry {
      * @gir-type Alias
      */
     type BuildTargetClass = typeof BuildTarget;
+
+    /**
+     * @gir-type Alias
+     */
+    type CiArtifactClass = typeof CiArtifact;
+
+    /**
+     * @gir-type Alias
+     */
+    type CiJobClass = typeof CiJob;
+
+    /**
+     * @gir-type Alias
+     */
+    type CiManagerClass = typeof CiManager;
+
+    /**
+     * @gir-type Alias
+     */
+    type CiPipelineClass = typeof CiPipeline;
+
+    /**
+     * @gir-type Alias
+     */
+    type CiProviderClass = typeof CiProvider;
+
+    /**
+     * @gir-type Alias
+     */
+    type CiRunClass = typeof CiRun;
+
+    /**
+     * @gir-type Alias
+     */
+    type CiRunOptionsClass = typeof CiRunOptions;
 
     /**
      * @gir-type Struct
@@ -50438,6 +55894,11 @@ export namespace Foundry {
      * @gir-type Alias
      */
     type ForgeUserClass = typeof ForgeUser;
+
+    /**
+     * @gir-type Alias
+     */
+    type FutureItemClass = typeof FutureItem;
 
     /**
      * @gir-type Alias
@@ -51364,6 +56825,35 @@ export namespace Foundry {
     /**
      * @gir-type Alias
      */
+    type VcsGraphClass = typeof VcsGraph;
+
+    /**
+     * @gir-type Alias
+     */
+    type VcsGraphEntryClass = typeof VcsGraphEntry;
+
+    /**
+     * @gir-type Struct
+     */
+    class VcsGraphSegment {
+        static $gtype: GObject.GType<VcsGraphSegment>;
+
+        // Fields
+        from_lane: number;
+
+        to_lane: number;
+
+        from_point: VcsGraphPoint;
+
+        to_point: VcsGraphPoint;
+
+        color_id: number;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
     type VcsLineChangesClass = typeof VcsLineChanges;
 
     /**
@@ -51410,6 +56900,226 @@ export namespace Foundry {
      * @gir-type Alias
      */
     type WebIntentClass = typeof WebIntent;
+
+    namespace AcpClient {
+        /**
+         * Interface for implementing AcpClient.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+
+            // Virtual methods
+            /**
+             * Handles an ACP `terminal/create` request.
+             * 
+             * The returned future must resolve to a {@link Foundry.AcpTerminal}.
+             * @param session a {@link Foundry.AcpSession}
+             * @param command the command to execute
+             * @param argv command arguments
+             * @param cwd working directory
+             * @param environ environment
+             * @param output_byte_limit output byte limit, or -1 for default
+             * @virtual
+             */
+            vfunc_create_terminal(session: AcpSession, command: string, argv: string[] | null, cwd: string | null, environ: string[] | null, output_byte_limit: number): Dex.Future;
+
+            /**
+             * Handles an ACP `fs/read_text_file` request.
+             * 
+             * The returned future must resolve to a UTF-8 string.
+             * @param session a {@link Foundry.AcpSession}
+             * @param path an absolute path
+             * @param line 1-based start line, or zero for the beginning
+             * @param limit maximum line count, or zero for no explicit limit
+             * @virtual
+             */
+            vfunc_read_text_file(session: AcpSession, path: string, line: number, limit: number): Dex.Future;
+
+            /**
+             * Refreshes `session`'s changed-file model after a prompt or terminal has
+             * completed.
+             * @param session a {@link Foundry.AcpSession}
+             * @virtual
+             */
+            vfunc_refresh_changed_files(session: AcpSession): Dex.Future;
+
+            /**
+             * Requests permission for an agent tool call.
+             * 
+             * The returned future must resolve to a {@link Foundry.AcpPermissionResponse}.
+             * @param session a {@link Foundry.AcpSession}
+             * @param request a {@link Foundry.AcpPermissionRequest}
+             * @virtual
+             */
+            vfunc_request_permission(session: AcpSession, request: AcpPermissionRequest): Dex.Future;
+
+            /**
+             * Delivers an ACP `session/update` notification to the client.
+             * @param session a {@link Foundry.AcpSession}
+             * @param update a {@link Foundry.AcpSessionUpdate}
+             * @virtual
+             */
+            vfunc_session_update(session: AcpSession, update: AcpSessionUpdate): Dex.Future;
+
+            /**
+             * Handles an ACP `terminal/kill` request.
+             * @param session a {@link Foundry.AcpSession}
+             * @param terminal_id the protocol terminal identifier
+             * @virtual
+             */
+            vfunc_terminal_kill(session: AcpSession, terminal_id: string): Dex.Future;
+
+            /**
+             * Handles an ACP `terminal/output` request.
+             * 
+             * The returned future must resolve to a {@link Foundry.AcpTerminalOutput}.
+             * @param session a {@link Foundry.AcpSession}
+             * @param terminal_id the protocol terminal identifier
+             * @virtual
+             */
+            vfunc_terminal_output(session: AcpSession, terminal_id: string): Dex.Future;
+
+            /**
+             * Handles an ACP `terminal/release` request.
+             * @param session a {@link Foundry.AcpSession}
+             * @param terminal_id the protocol terminal identifier
+             * @virtual
+             */
+            vfunc_terminal_release(session: AcpSession, terminal_id: string): Dex.Future;
+
+            /**
+             * Handles an ACP `terminal/wait_for_exit` request.
+             * @param session a {@link Foundry.AcpSession}
+             * @param terminal_id the protocol terminal identifier
+             * @virtual
+             */
+            vfunc_terminal_wait_for_exit(session: AcpSession, terminal_id: string): Dex.Future;
+
+            /**
+             * Handles an ACP `fs/write_text_file` request.
+             * @param session a {@link Foundry.AcpSession}
+             * @param path an absolute path
+             * @param content UTF-8 content
+             * @virtual
+             */
+            vfunc_write_text_file(session: AcpSession, path: string, content: string): Dex.Future;
+        }
+
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface AcpClientNamespace {
+        $gtype: GObject.GType<AcpClient>;
+        prototype: AcpClient;
+    }
+    /**
+     * @gir-type Interface
+     */
+    interface AcpClient extends GObject.Object, AcpClient.Interface {
+
+        // Methods
+        /**
+         * Handles an ACP `terminal/create` request.
+         * 
+         * The returned future must resolve to a {@link Foundry.AcpTerminal}.
+         * @param session a {@link Foundry.AcpSession}
+         * @param command the command to execute
+         * @param argv command arguments
+         * @param cwd working directory
+         * @param environ environment
+         * @param output_byte_limit output byte limit, or -1 for default
+         * @returns a {@link Dex.Future}
+         */
+        create_terminal(session: AcpSession, command: string, argv: string[] | null, cwd: string | null, environ: string[] | null, output_byte_limit: bigint | number): Dex.Future;
+
+        /**
+         * Handles an ACP `fs/read_text_file` request.
+         * 
+         * The returned future must resolve to a UTF-8 string.
+         * @param session a {@link Foundry.AcpSession}
+         * @param path an absolute path
+         * @param line 1-based start line, or zero for the beginning
+         * @param limit maximum line count, or zero for no explicit limit
+         * @returns a {@link Dex.Future}
+         */
+        read_text_file(session: AcpSession, path: string, line: number, limit: number): Dex.Future;
+
+        /**
+         * Refreshes `session`'s changed-file model after a prompt or terminal has
+         * completed.
+         * @param session a {@link Foundry.AcpSession}
+         * @returns a {@link Dex.Future}
+         */
+        refresh_changed_files(session: AcpSession): Dex.Future;
+
+        /**
+         * Requests permission for an agent tool call.
+         * 
+         * The returned future must resolve to a {@link Foundry.AcpPermissionResponse}.
+         * @param session a {@link Foundry.AcpSession}
+         * @param request a {@link Foundry.AcpPermissionRequest}
+         * @returns a {@link Dex.Future}
+         */
+        request_permission(session: AcpSession, request: AcpPermissionRequest): Dex.Future;
+
+        /**
+         * Delivers an ACP `session/update` notification to the client.
+         * @param session a {@link Foundry.AcpSession}
+         * @param update a {@link Foundry.AcpSessionUpdate}
+         * @returns a {@link Dex.Future} resolving when local delivery   is complete
+         */
+        session_update(session: AcpSession, update: AcpSessionUpdate): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/kill` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @returns a {@link Dex.Future}
+         */
+        terminal_kill(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/output` request.
+         * 
+         * The returned future must resolve to a {@link Foundry.AcpTerminalOutput}.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @returns a {@link Dex.Future}
+         */
+        terminal_output(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/release` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @returns a {@link Dex.Future}
+         */
+        terminal_release(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `terminal/wait_for_exit` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param terminal_id the protocol terminal identifier
+         * @returns a {@link Dex.Future}
+         */
+        terminal_wait_for_exit(session: AcpSession, terminal_id: string): Dex.Future;
+
+        /**
+         * Handles an ACP `fs/write_text_file` request.
+         * @param session a {@link Foundry.AcpSession}
+         * @param path an absolute path
+         * @param content UTF-8 content
+         * @returns a {@link Dex.Future}
+         */
+        write_text_file(session: AcpSession, path: string, content: string): Dex.Future;
+    }
+
+
+    export const AcpClient: AcpClientNamespace & {
+        new (): AcpClient; // This allows `obj instanceof AcpClient`
+    };
 
     namespace TextBuffer {
         /**

@@ -1778,7 +1778,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): null;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): null;
 
         /**
          * @param a_type 
@@ -1793,7 +1793,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): Gee.Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): Gee.Iterator;
 
         /**
          * @param pred 
@@ -1871,7 +1871,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): never;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): null;
 
         /**
          * @param a_type 
@@ -1939,13 +1939,13 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_max(compare: GLib.CompareDataFunc): never;
+        vfunc_max(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
          * @virtual
          */
-        vfunc_min(compare: GLib.CompareDataFunc): never;
+        vfunc_min(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
@@ -13699,7 +13699,7 @@ export namespace GXml {
         /**
          * @param value 
          */
-        set_value(value: never): void;
+        set_value(value: null): void;
 
         unset(): void;
 
@@ -13709,7 +13709,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldMapFunc, seed: never): null;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldMapFunc, seed: null): null;
 
         /**
          * @param f 
@@ -13735,12 +13735,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_key(): never;
+        vfunc_get_key(): null;
 
         /**
          * @virtual
          */
-        vfunc_get_value(): never;
+        vfunc_get_value(): null;
 
         /**
          * @param value 
@@ -13760,7 +13760,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldMapFunc, seed: null): never;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldMapFunc, seed: null): null;
 
         /**
          * @param f 
@@ -14011,7 +14011,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): null;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): null;
 
         /**
          * @param a_type 
@@ -14026,7 +14026,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): Gee.Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): Gee.Iterator;
 
         /**
          * @param pred 
@@ -14104,7 +14104,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): never;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): null;
 
         /**
          * @param a_type 
@@ -14172,13 +14172,13 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_max(compare: GLib.CompareDataFunc): never;
+        vfunc_max(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
          * @virtual
          */
-        vfunc_min(compare: GLib.CompareDataFunc): never;
+        vfunc_min(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
@@ -14216,7 +14216,7 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get(): never;
+        vfunc_get(): null;
 
         /**
          * @virtual
@@ -14264,7 +14264,7 @@ export namespace GXml {
         /**
          * @param item 
          */
-        set(item: never): void;
+        set(item: null): void;
 
         /**
          * @param args 
@@ -14275,7 +14275,7 @@ export namespace GXml {
         /**
          * @param item 
          */
-        add(item: never): void;
+        add(item: null): void;
 
         index(): number;
 
@@ -14299,7 +14299,7 @@ export namespace GXml {
         /**
          * @param item 
          */
-        insert(item: never): void;
+        insert(item: null): void;
 
         /**
          * @param item 
@@ -14443,7 +14443,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): null;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): null;
 
         /**
          * @param a_type 
@@ -14458,7 +14458,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): Gee.Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): Gee.Iterator;
 
         /**
          * @param pred 
@@ -14536,7 +14536,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): never;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): null;
 
         /**
          * @param a_type 
@@ -14604,13 +14604,13 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_max(compare: GLib.CompareDataFunc): never;
+        vfunc_max(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
          * @virtual
          */
-        vfunc_min(compare: GLib.CompareDataFunc): never;
+        vfunc_min(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
@@ -14648,7 +14648,7 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get(): never;
+        vfunc_get(): null;
 
         /**
          * @virtual
@@ -14668,7 +14668,7 @@ export namespace GXml {
         /**
          * @param item 
          */
-        set(item: never): void;
+        set(item: null): void;
 
         /**
          * @param args 
@@ -14679,7 +14679,7 @@ export namespace GXml {
         /**
          * @param item 
          */
-        add(item: never): void;
+        add(item: null): void;
 
         index(): number;
 
@@ -17314,7 +17314,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): null;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): null;
 
         /**
          * @param a_type 
@@ -17329,7 +17329,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): Gee.Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): Gee.Iterator;
 
         /**
          * @param pred 
@@ -17407,7 +17407,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): never;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): null;
 
         /**
          * @param a_type 
@@ -17475,13 +17475,13 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_max(compare: GLib.CompareDataFunc): never;
+        vfunc_max(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
          * @virtual
          */
-        vfunc_min(compare: GLib.CompareDataFunc): never;
+        vfunc_min(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 

@@ -194,14 +194,14 @@ export namespace Caribou {
          * @param func 
          * @virtual
          */
-        vfunc_register_key_func(keyval: number, func: KeyButtonCallback): void;
+        vfunc_register_key_func(keyval: number, func: KeyButtonCallback | null): void;
 
         /**
          * @param button 
          * @param func 
          * @virtual
          */
-        vfunc_register_button_func(button: number, func: KeyButtonCallback): void;
+        vfunc_register_button_func(button: number, func: KeyButtonCallback | null): void;
 
         // Methods
         /**
@@ -242,13 +242,13 @@ export namespace Caribou {
          * @param keyval 
          * @param func 
          */
-        register_key_func(keyval: number, func: KeyButtonCallback): void;
+        register_key_func(keyval: number, func: KeyButtonCallback | null): void;
 
         /**
          * @param button 
          * @param func 
          */
-        register_button_func(button: number, func: KeyButtonCallback): void;
+        register_button_func(button: number, func: KeyButtonCallback | null): void;
 
         get_display(): Gdk.Display;
     }
@@ -907,7 +907,7 @@ export namespace Caribou {
             showSubkeys: boolean;
             name: string;
             keyval: number;
-            text: string;
+            text: string | null;
             label: string;
         }
     }
@@ -949,8 +949,8 @@ export namespace Caribou {
         get keyval(): number;
         set keyval(val: number);
 
-        get text(): string;
-        set text(val: string);
+        get text(): string | null;
+        set text(val: string | null);
 
         get label(): string;
         set label(val: string);
@@ -972,7 +972,7 @@ export namespace Caribou {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, text: string): KeyModel;
+        static ["new"](name: string, text: string | null): KeyModel;
 
         // Signals
         /** @signal */
@@ -1037,7 +1037,7 @@ export namespace Caribou {
 
         get_keyval(): number;
 
-        get_text(): string;
+        get_text(): string | null;
 
         get_label(): string;
 
@@ -1499,12 +1499,12 @@ export namespace Caribou {
         /**
          * @virtual
          */
-        vfunc_child_select(): IScannableItem;
+        vfunc_child_select(): IScannableItem | null;
 
         // Methods
         get_scan_children(): IScannableItem[];
 
-        child_select(): IScannableItem;
+        child_select(): IScannableItem | null;
 
         /** @category Inherited from Caribou.IScannableGroup */
         get scan_grouping(): ScanGrouping;
@@ -1519,7 +1519,7 @@ export namespace Caribou {
         /**
          * @param cycles 
          */
-        child_step(cycles: number): IScannableItem;
+        child_step(cycles: number): IScannableItem | null;
 
         get_step_path(): IScannableItem[];
 
@@ -1541,7 +1541,7 @@ export namespace Caribou {
          * @param cycles 
          * @virtual
          */
-        vfunc_child_step(cycles: number): IScannableItem;
+        vfunc_child_step(cycles: number): IScannableItem | null;
 
         /**
          * @virtual
@@ -1832,7 +1832,7 @@ export namespace Caribou {
             /**
              * @virtual
              */
-            vfunc_child_select(): IScannableItem;
+            vfunc_child_select(): IScannableItem | null;
 
             /**
              * @virtual
@@ -1848,7 +1848,7 @@ export namespace Caribou {
              * @param cycles 
              * @virtual
              */
-            vfunc_child_step(cycles: number): IScannableItem;
+            vfunc_child_step(cycles: number): IScannableItem | null;
 
             /**
              * @virtual
@@ -1897,7 +1897,7 @@ export namespace Caribou {
         set scanGrouping(val: ScanGrouping);
 
         // Methods
-        child_select(): IScannableItem;
+        child_select(): IScannableItem | null;
 
         scan_reset(): void;
 
@@ -1906,7 +1906,7 @@ export namespace Caribou {
         /**
          * @param cycles 
          */
-        child_step(cycles: number): IScannableItem;
+        child_step(cycles: number): IScannableItem | null;
 
         get_step_path(): IScannableItem[];
 

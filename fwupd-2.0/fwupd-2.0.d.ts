@@ -171,6 +171,35 @@ export namespace Fwupd {
 
 
     /**
+     * @gir-type Enum
+     */
+    enum JcatBlobKind {
+        UNKNOWN,
+        SHA256,
+        GPG,
+        PKCS7,
+        SHA1,
+        BT_MANIFEST,
+        BT_CHECKPOINT,
+        BT_INCLUSION_PROOF,
+        BT_VERIFIER,
+        ED25519,
+        SHA512,
+        BT_LOGINDEX,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    enum JcatBlobMethod {
+        UNKNOWN,
+        CHECKSUM,
+        SIGNATURE,
+    }
+
+
+    /**
      * JSON node kind.
      * @gir-type Enum
      */
@@ -494,7 +523,7 @@ export namespace Fwupd {
          */
         INTEL_ME,
         /**
-         * Intel ME-style A.B.CC.DDDD notation notation, with offset 11.
+         * Intel ME-style A.B.CC.DDDD notation, with offset 11.
          */
         INTEL_ME2,
         /**
@@ -521,6 +550,10 @@ export namespace Fwupd {
          * Intel ME-style bitshifted notation, with offset 19.
          */
         INTEL_CSME19,
+        /**
+         * Compal BIOS-style version number, as two hex bytes.
+         */
+        COMPAL_BIOS,
     }
 
 
@@ -562,6 +595,10 @@ export namespace Fwupd {
 
     const ERROR_LAST: number;
 
+    const JCAT_BLOB_KIND_LAST: number;
+
+    const JCAT_BLOB_METHOD_LAST: number;
+
     const JSON_NODE_KIND_LAST: number;
 
     /**
@@ -578,6 +615,13 @@ export namespace Fwupd {
      * The compile-time minor version
      */
     const MINOR_VERSION: number;
+
+    /**
+     * The percentage value when the daemon does not know the current progress value. This usually
+     * results in a "bouncing" progressbar.
+     * @since 2.1.3
+     */
+    const PERCENTAGE_UNKNOWN: number;
 
     const RELEASE_URGENCY_LAST: number;
 
@@ -650,904 +694,6 @@ export namespace Fwupd {
 
     const REQUEST_KIND_LAST: number;
 
-    /**
-     * Result key to represent AppstreamId
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_APPSTREAM_ID: string;
-
-    /**
-     * Result key to represent the current battery level in percent.
-     * Expressed from 0-100%, or 101 for invalid or unset.
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_BATTERY_LEVEL: string;
-
-    /**
-     * Result key to represent the minimum battery level required to perform an update.
-     * Expressed from 0-100%, or 101 for invalid or unset.
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_BATTERY_THRESHOLD: string;
-
-    /**
-     * Result key to represent the current value of BIOS setting.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_BIOS_SETTING_CURRENT_VALUE: string;
-
-    /**
-     * Result key to represent the filename within `path` for BIOS setting value operations.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_BIOS_SETTING_FILENAME: string;
-
-    /**
-     * Result key to represent the unique identifier of the BIOS setting.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_BIOS_SETTING_ID: string;
-
-    /**
-     * Result key to represent the upper bound for an integer BIOS setting.
-     * or minimum length for string BIOS setting.
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_BIOS_SETTING_LOWER_BOUND: string;
-
-    /**
-     * Result key to represent possible values
-     * 
-     * The D-Bus type signature string is 'as' i.e. an array of strings.
-     */
-    const RESULT_KEY_BIOS_SETTING_POSSIBLE_VALUES: string;
-
-    /**
-     * Result key to represent whether BIOS setting is read only
-     * 
-     * The D-Bus type signature string is 'b' i.e. a boolean.
-     */
-    const RESULT_KEY_BIOS_SETTING_READ_ONLY: string;
-
-    /**
-     * Result key to represent the scalar increment for an integer BIOS setting.
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_BIOS_SETTING_SCALAR_INCREMENT: string;
-
-    /**
-     * Result key to represent the value that would enable this attribute.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_BIOS_SETTING_TARGET_VALUE: string;
-
-    /**
-     * Result key to represent the type of BIOS setting.
-     * 0 is invalid, 1+ represent an attribute type
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_BIOS_SETTING_TYPE: string;
-
-    /**
-     * Result key to represent the lower bound for an integer BIOS setting
-     * or maximum length for string BIOS setting.
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_BIOS_SETTING_UPPER_BOUND: string;
-
-    /**
-     * Result key to represent Branch
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_BRANCH: string;
-
-    /**
-     * Result key to represent Categories
-     * 
-     * The D-Bus type signature string is 'as' i.e. an array of strings.
-     */
-    const RESULT_KEY_CATEGORIES: string;
-
-    /**
-     * Result key to represent Checksum
-     * 
-     * The D-Bus type signature string is 'as' i.e. an array of strings.
-     */
-    const RESULT_KEY_CHECKSUM: string;
-
-    /**
-     * Result key to represent CompositeId
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_COMPOSITE_ID: string;
-
-    /**
-     * Result key to represent Created
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_CREATED: string;
-
-    /**
-     * Result key to represent Description
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_DESCRIPTION: string;
-
-    /**
-     * Result key to represent DetachCaption
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_DETACH_CAPTION: string;
-
-    /**
-     * Result key to represent DetachImage
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_DETACH_IMAGE: string;
-
-    /**
-     * Result key to represent DetailsUrl
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_DETAILS_URL: string;
-
-    /**
-     * Result key to represent DeviceId
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_DEVICE_ID: string;
-
-    /**
-     * Result key to represent the device name.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_DEVICE_NAME: string;
-
-    /**
-     * Result key to represent the distribution ID.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_DISTRO_ID: string;
-
-    /**
-     * Result key to represent the distribution variant.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_DISTRO_VARIANT: string;
-
-    /**
-     * Result key to represent the distribution version.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_DISTRO_VERSION: string;
-
-    /**
-     * Result key to represent Filename
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_FILENAME: string;
-
-    /**
-     * Result key to represent Flags
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_FLAGS: string;
-
-    /**
-     * Result key to represent FlashesLeft
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_FLASHES_LEFT: string;
-
-    /**
-     * Result key to represent Guid
-     * 
-     * The D-Bus type signature string is 'as' i.e. an array of strings.
-     */
-    const RESULT_KEY_GUID: string;
-
-    /**
-     * Result key to represent Homepage
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_HOMEPAGE: string;
-
-    /**
-     * Result key to represent HsiLevel
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_HSI_LEVEL: string;
-
-    /**
-     * Result key to represent HsiResult
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_HSI_RESULT: string;
-
-    /**
-     * Result key to represent the fallback HsiResult
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_HSI_RESULT_FALLBACK: string;
-
-    /**
-     * Result key to represent the desired HsiResult
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_HSI_RESULT_SUCCESS: string;
-
-    /**
-     * Result key to represent Icon
-     * 
-     * The D-Bus type signature string is 'as' i.e. an array of strings.
-     */
-    const RESULT_KEY_ICON: string;
-
-    /**
-     * Result key to represent InstallDuration
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_INSTALL_DURATION: string;
-
-    /**
-     * Result key to represent InstanceIds
-     * 
-     * The D-Bus type signature string is 'as' i.e. an array of strings.
-     */
-    const RESULT_KEY_INSTANCE_IDS: string;
-
-    /**
-     * Result key to represent Issues
-     * 
-     * The D-Bus type signature string is 'as' i.e. an array of strings.
-     */
-    const RESULT_KEY_ISSUES: string;
-
-    /**
-     * Result key to represent the current kernel setting.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_KERNEL_CURRENT_VALUE: string;
-
-    /**
-     * Result key to represent the target kernel setting.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_KERNEL_TARGET_VALUE: string;
-
-    /**
-     * Result key to represent License
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_LICENSE: string;
-
-    /**
-     * Result key to represent Locations
-     * 
-     * The D-Bus type signature string is 'as' i.e. an array of strings.
-     */
-    const RESULT_KEY_LOCATIONS: string;
-
-    /**
-     * Result key to represent Metadata
-     * 
-     * The D-Bus type signature string is 'a{ss}' i.e. a string dictionary.
-     */
-    const RESULT_KEY_METADATA: string;
-
-    /**
-     * Result key to represent Modified
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_MODIFIED: string;
-
-    /**
-     * Result key to represent Name
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_NAME: string;
-
-    /**
-     * Result key to represent NameVariantSuffix
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_NAME_VARIANT_SUFFIX: string;
-
-    /**
-     * Result key to represent ParentDeviceId
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_PARENT_DEVICE_ID: string;
-
-    /**
-     * Result key to represent progress percentage, typically installation or verification
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_PERCENTAGE: string;
-
-    /**
-     * Result key to represent Plugin
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_PLUGIN: string;
-
-    /**
-     * Result key to represent problems
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_PROBLEMS: string;
-
-    /**
-     * Result key to represent Protocol
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_PROTOCOL: string;
-
-    /**
-     * Result key to represent Release
-     * 
-     * The D-Bus type signature string is 'a{sv}' i.e. a variant dictionary.
-     */
-    const RESULT_KEY_RELEASE: string;
-
-    /**
-     * Result key to represent the release ID.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_RELEASE_ID: string;
-
-    /**
-     * Result key to represent RemoteId
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_REMOTE_ID: string;
-
-    /**
-     * Result key to represent an array of reports.
-     * 
-     * The D-Bus type signature string is 'a{sv}' i.e. a variant dictionary.
-     */
-    const RESULT_KEY_REPORTS: string;
-
-    /**
-     * Result key to represent RequestFlags
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_REQUEST_FLAGS: string;
-
-    /**
-     * Result key to represent RequestKind
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_REQUEST_KIND: string;
-
-    /**
-     * Result key to represent SourceUrl
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_SBOM_URL: string;
-
-    /**
-     * Result key to represent Serial
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_SERIAL: string;
-
-    /**
-     * Result key to represent Size
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_SIZE: string;
-
-    /**
-     * Result key to represent SourceUrl
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_SOURCE_URL: string;
-
-    /**
-     * Result key to represent Status
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_STATUS: string;
-
-    /**
-     * Result key to represent Summary
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_SUMMARY: string;
-
-    /**
-     * Result key to represent release tags
-     * 
-     * The D-Bus type signature string is 'as' i.e. an array of strings.
-     */
-    const RESULT_KEY_TAGS: string;
-
-    /**
-     * Result key to represent TrustFlags
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_TRUST_FLAGS: string;
-
-    /**
-     * Result key to represent UpdateError
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_UPDATE_ERROR: string;
-
-    /**
-     * Result key to represent UpdateImage
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_UPDATE_IMAGE: string;
-
-    /**
-     * Result key to represent UpdateMessage
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_UPDATE_MESSAGE: string;
-
-    /**
-     * Result key to represent UpdateState
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_UPDATE_STATE: string;
-
-    /**
-     * Result key to represent Urgency
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_URGENCY: string;
-
-    /**
-     * Result key to represent Uri
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_URI: string;
-
-    /**
-     * Result key to represent Vendor
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_VENDOR: string;
-
-    /**
-     * Result key to represent VendorId
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_VENDOR_ID: string;
-
-    /**
-     * Result key to represent Version
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_VERSION: string;
-
-    /**
-     * Result key to represent VersionBootloader
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_VERSION_BOOTLOADER: string;
-
-    /**
-     * Result key to represent VersionBootloaderRaw
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_VERSION_BOOTLOADER_RAW: string;
-
-    /**
-     * Result key to represent VersionBuildDate
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_VERSION_BUILD_DATE: string;
-
-    /**
-     * Result key to represent VersionFormat
-     * 
-     * The D-Bus type signature string is 'u' i.e. a unsigned 32 bit integer.
-     */
-    const RESULT_KEY_VERSION_FORMAT: string;
-
-    /**
-     * Result key to represent VersionLowest
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_VERSION_LOWEST: string;
-
-    /**
-     * Result key to represent VersionLowestRaw
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_VERSION_LOWEST_RAW: string;
-
-    /**
-     * Result key to represent the old version string.
-     * 
-     * The D-Bus type signature string is 's' i.e. a string.
-     */
-    const RESULT_KEY_VERSION_OLD: string;
-
-    /**
-     * Result key to represent VersionRaw
-     * 
-     * The D-Bus type signature string is 't' i.e. a unsigned 64 bit integer.
-     */
-    const RESULT_KEY_VERSION_RAW: string;
-
-    /**
-     * Host Security ID attribute for Platform Secure Boot of AMD platform
-     * firmware
-     * @since 2.1.1
-     */
-    const SECURITY_ATTR_ID_AMD_PLATFORM_SECURE_BOOT: string;
-
-    /**
-     * Host Security ID attribute for Rollback protection of AMD platform
-     * firmware
-     * @since 1.8.0
-     */
-    const SECURITY_ATTR_ID_AMD_ROLLBACK_PROTECTION: string;
-
-    /**
-     * Host Security ID attribute for AMD SMM locked
-     * @since 2.0.2
-     */
-    const SECURITY_ATTR_ID_AMD_SMM_LOCKED: string;
-
-    /**
-     * Host Security ID attribute for SPI replay protection
-     * @since 1.8.0
-     */
-    const SECURITY_ATTR_ID_AMD_SPI_REPLAY_PROTECTION: string;
-
-    /**
-     * Host Security ID attribute for SPI Write protection
-     * @since 1.8.0
-     */
-    const SECURITY_ATTR_ID_AMD_SPI_WRITE_PROTECTION: string;
-
-    /**
-     * Host Security ID attribute indicating Capsule updates are supported by the BIOS.
-     * @since 1.9.6
-     */
-    const SECURITY_ATTR_ID_BIOS_CAPSULE_UPDATES: string;
-
-    /**
-     * Host Security ID attribute for Rollback protection of BIOS firmware
-     * @since 1.8.8
-     */
-    const SECURITY_ATTR_ID_BIOS_ROLLBACK_PROTECTION: string;
-
-    /**
-     * Host Security ID attribute for Intel CET active
-     * 
-     * NOTE: This used to be known as org.fwupd.hsi.IntelCet.Active before fwupd 2.0.0
-     * @since 2.0.0
-     */
-    const SECURITY_ATTR_ID_CET_ACTIVE: string;
-
-    /**
-     * Host Security ID attribute for Intel CET enabled
-     * 
-     * NOTE: This used to be known as org.fwupd.hsi.IntelCet.Enabled before fwupd 2.0.0
-     * @since 2.0.0
-     */
-    const SECURITY_ATTR_ID_CET_ENABLED: string;
-
-    /**
-     * Host Security ID attribute indicating encrypted RAM available
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_ENCRYPTED_RAM: string;
-
-    /**
-     * Host Security ID attribute for attestation
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_FWUPD_ATTESTATION: string;
-
-    /**
-     * Host Security ID attribute for plugins
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_FWUPD_PLUGINS: string;
-
-    /**
-     * Host Security ID attribute for updates
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_FWUPD_UPDATES: string;
-
-    /**
-     * Host Security ID attribute for host emulation
-     * @since 1.8.3
-     */
-    const SECURITY_ATTR_ID_HOST_EMULATION: string;
-
-    const SECURITY_ATTR_ID_HP_SURESTART: string;
-
-    /**
-     * Host Security ID attribute for Intel Bootguard ACM
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_INTEL_BOOTGUARD_ACM: string;
-
-    /**
-     * Host Security ID attribute for Intel Bootguard enabled
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_INTEL_BOOTGUARD_ENABLED: string;
-
-    /**
-     * Host Security ID attribute for Intel Bootguard OTP fuse
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_INTEL_BOOTGUARD_OTP: string;
-
-    /**
-     * Host Security ID attribute for Intel Bootguard policy
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_INTEL_BOOTGUARD_POLICY: string;
-
-    /**
-     * Host Security ID attribute for Intel Bootguard verified
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_INTEL_BOOTGUARD_VERIFIED: string;
-
-    /**
-     * Host Security ID attribute indicating the processor is safe against Gather Data Sampling.
-     * @since 1.9.4
-     */
-    const SECURITY_ATTR_ID_INTEL_GDS: string;
-
-    /**
-     * Host Security ID attribute for IOMMU
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_IOMMU: string;
-
-    /**
-     * Host Security ID attribute for kernel lockdown
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_KERNEL_LOCKDOWN: string;
-
-    /**
-     * Host Security ID attribute for kernel swap
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_KERNEL_SWAP: string;
-
-    /**
-     * Host Security ID attribute for kernel taint
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_KERNEL_TAINTED: string;
-
-    /**
-     * Host Security ID attribute for Intel ME Key Manifest
-     * @since 1.8.7
-     */
-    const SECURITY_ATTR_ID_MEI_KEY_MANIFEST: string;
-
-    /**
-     * Host Security ID attribute for Intel ME manufacturing mode
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_MEI_MANUFACTURING_MODE: string;
-
-    /**
-     * Host Security ID attribute for Intel ME override strap
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_MEI_OVERRIDE_STRAP: string;
-
-    /**
-     * Host Security ID attribute for Intel ME version
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_MEI_VERSION: string;
-
-    /**
-     * Host Security ID attribute for parts with debugging capabilities enabled
-     * 
-     * This was previously known as org.fwupd.hsi.PlatformDebugEnabled for Intel 1.5.0+
-     * It was renamed for all vendor support in 1.8.0. *
-     * @since 1.8.0
-     */
-    const SECURITY_ATTR_ID_PLATFORM_DEBUG_ENABLED: string;
-
-    /**
-     * Host Security ID attribute for parts locked from debugging
-     * 
-     * This was previously known as org.fwupd.hsi.IntelDci.Locked for Intel 1.5.0+
-     * It was renamed for all vendor support in 1.8.0.
-     * @since 1.8.0
-     */
-    const SECURITY_ATTR_ID_PLATFORM_DEBUG_LOCKED: string;
-
-    /**
-     * Host Security ID attribute for fused parts
-     * @since 1.8.0
-     */
-    const SECURITY_ATTR_ID_PLATFORM_FUSED: string;
-
-    /**
-     * Host Security ID attribute for Pre-boot DMA protection
-     * 
-     * This was previously known as org.fwupd.hsi.AcpiDmar for Intel from 1.5.0+.
-     * @since 1.8.0
-     */
-    const SECURITY_ATTR_ID_PREBOOT_DMA_PROTECTION: string;
-
-    /**
-     * Host Security ID attribute for SMAP
-     * 
-     * NOTE: This attribute use to be known as org.fwupd.hsi.IntelSmap before fwupd 2.0.0
-     * @since 2.0.0
-     */
-    const SECURITY_ATTR_ID_SMAP: string;
-
-    /**
-     * Host Security ID attribute for Intel SPI BIOSWE configuration
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_SPI_BIOSWE: string;
-
-    /**
-     * Host Security ID attribute for Intel SPI BLE configuration
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_SPI_BLE: string;
-
-    /**
-     * Host Security ID attribute for Intel SPI descriptor
-     * @since 1.6.0
-     */
-    const SECURITY_ATTR_ID_SPI_DESCRIPTOR: string;
-
-    /**
-     * Host Security ID attribute for Intel SPI SMM BWP
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_SPI_SMM_BWP: string;
-
-    /**
-     * Host Security ID attribute for Supported CPU
-     * @since 1.8.0
-     */
-    const SECURITY_ATTR_ID_SUPPORTED_CPU: string;
-
-    /**
-     * Host Security ID attribute for Suspend to Idle
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_SUSPEND_TO_IDLE: string;
-
-    /**
-     * Host Security ID attribute for Suspend to RAM
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_SUSPEND_TO_RAM: string;
-
-    /**
-     * Host Security ID attribute for empty PCR
-     * @since 1.7.2
-     */
-    const SECURITY_ATTR_ID_TPM_EMPTY_PCR: string;
-
-    /**
-     * Host Security ID attribute for TPM PCR0 reconstruction
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_TPM_RECONSTRUCTION_PCR0: string;
-
-    /**
-     * Host Security ID attribute for TPM 2.0
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_TPM_VERSION_20: string;
-
-    /**
-     * Host Security ID attribute indicating if Bootservice-only variables are hidden.
-     * @since 1.9.3
-     */
-    const SECURITY_ATTR_ID_UEFI_BOOTSERVICE_VARS: string;
-
-    /**
-     * Host Security ID attribute for UEFI db certificate store
-     * @since 2.0.8
-     */
-    const SECURITY_ATTR_ID_UEFI_DB: string;
-
-    /**
-     * Host Security ID attribute for UEFI memory protection
-     * @since 2.0.7
-     */
-    const SECURITY_ATTR_ID_UEFI_MEMORY_PROTECTION: string;
-
-    /**
-     * Host Security ID attribute for UEFI PK
-     * @since 1.5.5
-     */
-    const SECURITY_ATTR_ID_UEFI_PK: string;
-
-    /**
-     * Host Security ID attribute for UEFI secure boot
-     * @since 1.5.0
-     */
-    const SECURITY_ATTR_ID_UEFI_SECUREBOOT: string;
-
     const SECURITY_ATTR_LEVEL_LAST: number;
 
     const SECURITY_ATTR_RESULT_LAST: number;
@@ -1567,7 +713,7 @@ export namespace Fwupd {
     function checksum_format_for_display(checksum: string | null): string;
 
     /**
-     * Gets a the best possible checksum kind.
+     * Gets the best possible checksum kind.
      * @param checksums checksums
      * @returns a checksum from the array, or `null` if nothing was suitable
      * @since 0.9.4
@@ -1876,6 +1022,23 @@ export namespace Fwupd {
     function json_node_kind_to_string(val: JsonNodeKind): string;
 
     /**
+     * Calculates if a percentage change is significant, and worth notifying the client about.
+     * @param value_old a percentage value
+     * @param value_new another percentage value
+     * @returns `true` for success
+     * @since 2.1.3
+     */
+    function percentage_delta_notify(value_old: number, value_new: number): boolean;
+
+    /**
+     * Calculates is a percentage value is valid, i.e. `>= 0.0` and `<= 100.0`.
+     * @param value maybe a percentage value
+     * @returns `true` for success
+     * @since 2.1.3
+     */
+    function percentage_is_valid(value: number): boolean;
+
+    /**
      * Converts a string to an enumerated value.
      * @param val a string, e.g. `idle`
      * @returns enumerated value
@@ -1914,6 +1077,62 @@ export namespace Fwupd {
      * @since 0.7.0
      */
     function update_state_to_string(val: UpdateState): string;
+
+    /**
+     * Gets a boolean value from a variant.
+     * @param value a {@link GLib.Variant}
+     * @returns boolean, or `false` if not valid
+     * @since 2.1.4
+     */
+    function variant_get_boolean(value: GLib.Variant): boolean;
+
+    /**
+     * Gets a double from a variant.
+     * @param value a {@link GLib.Variant}
+     * @returns double, or -1.0 if not valid
+     * @since 2.1.4
+     */
+    function variant_get_double(value: GLib.Variant): number;
+
+    /**
+     * Gets an signed integer from a variant.
+     * @param value a {@link GLib.Variant}
+     * @returns integer, or 0 if not valid
+     * @since 2.1.4
+     */
+    function variant_get_int32(value: GLib.Variant): number;
+
+    /**
+     * Gets a string value from a variant.
+     * @param value a {@link GLib.Variant}
+     * @returns string, or `null` if not valid
+     * @since 2.1.4
+     */
+    function variant_get_string(value: GLib.Variant): string;
+
+    /**
+     * Gets an array of strings from a variant.
+     * @param value a {@link GLib.Variant}
+     * @returns An array of constant strings
+     * @since 2.1.4
+     */
+    function variant_get_strv(value: GLib.Variant): string[];
+
+    /**
+     * Gets an unsigned integer from a variant, handling both 'u' and 'i' types.
+     * @param value a {@link GLib.Variant}
+     * @returns integer, or 0 if not valid
+     * @since 2.1.4
+     */
+    function variant_get_uint32(value: GLib.Variant): number;
+
+    /**
+     * Gets an unsigned integer from a variant, handling both 't' and 'x' types.
+     * @param value a {@link GLib.Variant}
+     * @returns integer, or 0 if not valid
+     * @since 2.1.4
+     */
+    function variant_get_uint64(value: GLib.Variant): number;
 
     /**
      * Converts a string to an enumerated value.
@@ -1990,6 +1209,10 @@ export namespace Fwupd {
          * Compress values to the smallest possible size.
          */
         COMPRESSED,
+        /**
+         * Do not include timestamps.
+         */
+        NO_TIMESTAMP,
     }
 
 
@@ -2024,7 +1247,7 @@ export namespace Fwupd {
          */
         SUPPORTED,
         /**
-         * The device requires entering a bootloader mode to be manually.
+         * The device requires entering a bootloader mode to be updated.
          */
         NEEDS_BOOTLOADER,
         /**
@@ -2044,7 +1267,7 @@ export namespace Fwupd {
          */
         IS_BOOTLOADER,
         /**
-         * The device is in the middle of and update and the hardware is waiting to be probed or
+         * The device is in the middle of an update and the hardware is waiting to be probed or
          * replugged.
          */
         WAIT_FOR_REPLUG,
@@ -2145,11 +1368,11 @@ export namespace Fwupd {
         AFFECTS_FDE,
         /**
          * The device is no longer supported by the original hardware vendor as it is considered
-         * end-of-life. It it unlikely to receive firmware updates, even for security issues.
+         * end-of-life. It is unlikely to receive firmware updates, even for security issues.
          */
         END_OF_LIFE,
         /**
-         * The firmware payload is verified on-device the payload using strong cryptography such
+         * The firmware payload is verified on-device using strong cryptography such
          * as RSA, AES or ECC.
          * It is usually not possible to modify or flash custom firmware not provided by the vendor.
          */
@@ -2400,6 +1623,15 @@ export namespace Fwupd {
 
 
     /**
+     * @gir-type Flags
+     */
+    enum JcatBlobFlags {
+        NONE,
+        IS_UTF8,
+    }
+
+
+    /**
      * JSON export flags.
      * @gir-type Flags
      */
@@ -2516,7 +1748,7 @@ export namespace Fwupd {
          */
         READY,
         /**
-         * The plugin is used for virtual devices that exercising daemon flows.
+         * The plugin is used for virtual devices that exercise daemon flows.
          */
         TEST_ONLY,
         /**
@@ -2621,6 +1853,10 @@ export namespace Fwupd {
          * Do not slow deployment using phased updates.
          */
         NO_PHASED_UPDATES,
+        /**
+         * A username and/or password is required
+         */
+        REQUIRES_AUTH,
     }
 
 
@@ -2715,7 +1951,7 @@ export namespace Fwupd {
          */
         RUNTIME_ISSUE,
         /**
-         * Contact the firmware vendor for a update.
+         * Contact the firmware vendor for an update.
          */
         ACTION_CONTACT_OEM,
         /**
@@ -2808,7 +2044,15 @@ export namespace Fwupd {
 
         // Virtual methods
         /**
+         * @virtual
+         */
+        vfunc_read_value(): string;
+
+        /**
          * Writes a new value into the setting if it is different from the current value.
+         * 
+         * If `fwupd_bios_setting_add_possible_value_full()` was used then the display value is automatically
+         * mapped to the raw value before being written.
          * 
          * NOTE: A subclass should handle the `->write_value()` vfunc and actually write the value to the
          * firmware.
@@ -2824,6 +2068,26 @@ export namespace Fwupd {
          * @param possible_value the possible
          */
         add_possible_value(possible_value: string): void;
+
+        /**
+         * Adds a possible value to the attribute that is automatically mapped to a raw value.
+         * 
+         * The raw value will be used in the `class->write_value` vfunc.
+         * @param possible_value the possible value that we show the user, e.g. `Disabled`
+         * @param possible_value_raw the possible value that we send the hardware, e.g. `0`
+         */
+        add_possible_value_full(possible_value: string, possible_value_raw: string): void;
+
+        /**
+         * Gets the vendor-neutral fwupd AppStream identifier for this setting,
+         * e.g. `org.fwupd.bios.secure-boot`.
+         * 
+         * This is a registered identifier documented by fwupd that allows software to
+         * treat the same conceptual setting consistently even though vendors name and
+         * value it differently.
+         * @returns AppStream ID if set otherwise NULL
+         */
+        get_appstream_id(): string;
 
         /**
          * Gets the string representation of the current_value stored in an attribute
@@ -2845,6 +2109,12 @@ export namespace Fwupd {
          * @returns the value filename or NULL if not set
          */
         get_filename(): string;
+
+        /**
+         * Gets the icon name for this setting, e.g. `application-certificate`.
+         * @returns icon name if set otherwise NULL
+         */
+        get_icon(): string;
 
         /**
          * Gets the unique attribute identifier for this attribute/driver
@@ -2921,8 +2191,13 @@ export namespace Fwupd {
         map_possible_value(key: string): string;
 
         /**
+         * Sets the vendor-neutral fwupd AppStream identifier for this setting.
+         * @param appstream_id the fwupd AppStream identifier
+         */
+        set_appstream_id(appstream_id: string | null): void;
+
+        /**
          * Sets the string stored in an attribute.
-         * This doesn't change the representation in the kernel.
          * @param value The string to set an attribute to
          */
         set_current_value(value: string | null): void;
@@ -2939,6 +2214,12 @@ export namespace Fwupd {
          * @param filename the filename within `path` for value operations
          */
         set_filename(filename: string): void;
+
+        /**
+         * Sets the icon name for this setting.
+         * @param icon the icon name
+         */
+        set_icon(icon: string | null): void;
 
         /**
          * Sets the unique attribute identifier for this attribute
@@ -2992,7 +2273,22 @@ export namespace Fwupd {
         set_upper_bound(val: bigint | number): void;
 
         /**
+         * Reads the current value, converting to the display value as required.
+         * 
+         * NOTE: A subclass should handle the `->read_value()` vfunc and actually read the raw value from
+         * the firmware.
+         * 
+         * If `fwupd_bios_setting_add_possible_value_full()` was used then the raw value is automatically
+         * mapped to the display value before being set as the current version.
+         * @returns `true` for success
+         */
+        setup(): boolean;
+
+        /**
          * Writes a new value into the setting if it is different from the current value.
+         * 
+         * If `fwupd_bios_setting_add_possible_value_full()` was used then the display value is automatically
+         * mapped to the raw value before being written.
          * 
          * NOTE: A subclass should handle the `->write_value()` vfunc and actually write the value to the
          * firmware.
@@ -3166,6 +2462,7 @@ export namespace Fwupd {
             "notify::interactive": (pspec: GObject.ParamSpec) => void;
             "notify::only-trusted": (pspec: GObject.ParamSpec) => void;
             "notify::percentage": (pspec: GObject.ParamSpec) => void;
+            "notify::percentage-full": (pspec: GObject.ParamSpec) => void;
             "notify::status": (pspec: GObject.ParamSpec) => void;
             "notify::tainted": (pspec: GObject.ParamSpec) => void;
         }
@@ -3192,6 +2489,8 @@ export namespace Fwupd {
             only_trusted: boolean;
             onlyTrusted: boolean;
             percentage: number;
+            percentage_full: number;
+            percentageFull: number;
             status: number;
             tainted: boolean;
         }
@@ -3368,6 +2667,22 @@ export namespace Fwupd {
         set percentage(val: number);
 
         /**
+         * The last-reported percentage of the daemon.
+         * @since 2.1.3
+         * @default -1
+         */
+        get percentage_full(): number;
+        set percentage_full(val: number);
+
+        /**
+         * The last-reported percentage of the daemon.
+         * @since 2.1.3
+         * @default -1
+         */
+        get percentageFull(): number;
+        set percentageFull(val: number);
+
+        /**
          * The last-reported status of the daemon.
          * @since 0.7.0
          * @default 0
@@ -3497,6 +2812,13 @@ export namespace Fwupd {
          * @param value the value `key` should be set
          */
         add_hint(key: string, value: string | null): void;
+
+        /**
+         * Adds a HwID entry.
+         * @param key the key
+         * @param value the value
+         */
+        add_hwid(key: string, value: string | null): void;
 
         /**
          * Builds a JSON report for the list of devices.
@@ -4510,6 +3832,12 @@ export namespace Fwupd {
          * @returns a percentage, or 0 for unknown.
          */
         get_percentage(): number;
+
+        /**
+         * Gets the last returned percentage value.
+         * @returns a percentage, or `FWUPD_PERCENTAGE_UNKNOWN` for unknown.
+         */
+        get_percentage_full(): number;
 
         /**
          * Gets all the plugins being used the daemon.
@@ -5617,10 +4945,23 @@ export namespace Fwupd {
         set_feature_flags_finish(res: Gio.AsyncResult): boolean;
 
         /**
+         * Sets the string that represents the host machine ID.
+         * @param host_security_id A semantic version, e.g. "1.2.3"
+         */
+        set_host_security_id(host_security_id: string): void;
+
+        /**
          * Sets the internal main context to use for returning progress signals.
          * @param main_ctx the global default main context to use
          */
         set_main_context(main_ctx: GLib.MainContext | null): void;
+
+        /**
+         * Sets an override for synchronous client functionality.
+         * @param impl a {@link Fwupd.ClientSyncImpl}
+         * @param userdata userdata to use with the {@link Fwupd.ClientSyncImpl}
+         */
+        set_sync_impl(impl: ClientSyncImpl, userdata: null): void;
 
         /**
          * Manually sets the user agent that is used for downloading. The user agent
@@ -6502,6 +5843,12 @@ export namespace Fwupd {
         get_created(): number;
 
         /**
+         * Gets the device URL.
+         * @returns a URL, or `null` if unset
+         */
+        get_details_url(): string;
+
+        /**
          * Gets device flags.
          * @returns device flags, or 0 if unset
          */
@@ -6539,6 +5886,12 @@ export namespace Fwupd {
          * @returns the ID, or `null` if unset
          */
         get_id(): string;
+
+        /**
+         * Gets the device ID suffixed with the display name if set.
+         * @returns a string value, or `null` if invalid.
+         */
+        get_id_display(): string;
 
         /**
          * Gets the time estimate for firmware installation (in seconds)
@@ -6701,6 +6054,18 @@ export namespace Fwupd {
          * @returns the version format, or {@link Fwupd.VersionFormat.UNKNOWN} if unset
          */
         get_version_format(): VersionFormat;
+
+        /**
+         * Gets the highest version of firmware the device will accept.
+         * @returns the device version_highest, or `null` if unset
+         */
+        get_version_highest(): string;
+
+        /**
+         * Gets the highest version of firmware the device will accept in raw format.
+         * @returns integer version number, or %0 if unset
+         */
+        get_version_highest_raw(): number;
 
         /**
          * Gets the lowest version of firmware the device will accept.
@@ -6870,6 +6235,12 @@ export namespace Fwupd {
         set_created(created: bigint | number): void;
 
         /**
+         * Sets the device URL.
+         * @param details_url a URL, or `null`
+         */
+        set_details_url(details_url: string | null): void;
+
+        /**
          * Sets device flags.
          * @param flags device flags, e.g. {@link Fwupd.DeviceFlags.REQUIRE_AC}
          */
@@ -7008,6 +6379,18 @@ export namespace Fwupd {
         set_version_format(version_format: VersionFormat): void;
 
         /**
+         * Sets the highest version of firmware the device will accept.
+         * @param version_highest the version
+         */
+        set_version_highest(version_highest: string | null): void;
+
+        /**
+         * Sets the raw highest version number from the hardware before being converted to a string.
+         * @param version_highest_raw the raw highest version
+         */
+        set_version_highest_raw(version_highest_raw: bigint | number): void;
+
+        /**
          * Sets the lowest version of firmware the device will accept.
          * @param version_lowest the version
          */
@@ -7024,6 +6407,668 @@ export namespace Fwupd {
          * @param version_raw the raw hardware version
          */
         set_version_raw(version_raw: bigint | number): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string, appending it to `str`.
+         * @param idt the indent
+         * @param str a string to append to
+         */
+        add_string(idt: number, str: GLib.String): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a JSON object.
+         * @param json_obj a JSON object
+         * @returns `true` on success
+         */
+        from_json(json_obj: JsonObject): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a JSON string.
+         * @param json JSON text
+         * @returns `true` on success
+         */
+        from_json_string(json: string): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a {@link GLib.Variant} value.
+         * @param value a JSON node
+         * @returns `true` on success
+         */
+        from_variant(value: GLib.Variant): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a JSON builder object.
+         * @param json_obj a JSON builder
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         */
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         * @returns a string
+         */
+        to_json_string(flags: CodecFlags): string;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string.
+         * @returns a string
+         */
+        to_string(): string;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a {@link GLib.Variant}.
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         * @returns a {@link GLib.Variant}
+         */
+        to_variant(flags: CodecFlags): GLib.Variant;
+
+        /**
+         * @param json_obj 
+         * @param flags 
+         * @virtual
+         */
+        vfunc_add_json(json_obj: JsonObject, flags: CodecFlags): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string, appending it to `str`.
+         * @param idt the indent
+         * @param str a string to append to
+         * @virtual
+         */
+        vfunc_add_string(idt: number, str: GLib.String): void;
+
+        /**
+         * @param builder 
+         * @param flags 
+         * @virtual
+         */
+        vfunc_add_variant(builder: GLib.VariantBuilder, flags: CodecFlags): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a JSON object.
+         * @param json_obj a JSON object
+         * @virtual
+         */
+        vfunc_from_json(json_obj: JsonObject): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a {@link GLib.Variant} value.
+         * @param value a JSON node
+         * @virtual
+         */
+        vfunc_from_variant(value: GLib.Variant): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string.
+         * @virtual
+         */
+        vfunc_to_string(): string;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a {@link GLib.Variant}.
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         * @virtual
+         */
+        vfunc_to_variant(flags: CodecFlags): GLib.Variant;
+    }
+
+
+    namespace JcatBlob {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Codec.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class JcatBlob extends GObject.Object implements Codec {
+        static $gtype: GObject.GType<JcatBlob>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: JcatBlob.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<JcatBlob.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](kind: JcatBlobKind, data: GLib.Bytes | Uint8Array, flags: JcatBlobFlags): JcatBlob;
+
+        static new_utf8(kind: JcatBlobKind, data: string): JcatBlob;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof JcatBlob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JcatBlob.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof JcatBlob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JcatBlob.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof JcatBlob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JcatBlob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+        /**
+         * Converts an enumerated value to a string.
+         * @param val value, e.g. {@link Fwupd.JcatBlobFlags.IS_UTF8}
+         */
+        static flags_to_string(val: JcatBlobFlags): string;
+
+        /**
+         * Converts a string to an enumerated value.
+         * @param val a string, e.g. `sha256`
+         */
+        static kind_from_string(val: string | null): JcatBlobKind;
+
+        /**
+         * Converts an enumerated value to a string.
+         * @param val value, e.g. {@link Fwupd.JcatBlobKind.SHA256}
+         */
+        static kind_to_string(val: JcatBlobKind): string;
+
+        /**
+         * Converts an enumerated value to a string.
+         * @param val value, e.g. {@link Fwupd.JcatBlobMethod.CHECKSUM}
+         */
+        static method_to_string(val: JcatBlobMethod): string;
+
+        // Methods
+        /**
+         * Gets the data stored in the blob, typically in binary (unprintable) form.
+         * @returns a {@link GLib.Bytes}, or `null` if the filename was not found
+         */
+        get_data(): GLib.Bytes;
+
+        /**
+         * @param args 
+         */
+    // Conflicted with GObject.Object.get_data
+        get_data(...args: never[]): any;
+
+        /**
+         * Gets the data stored in the blob, in human readable form.
+         * @returns either UTF-8 text, or base64 encoded version of binary data
+         */
+        get_data_as_string(): string;
+
+        /**
+         * gets the blob kind
+         * @returns {@link Fwupd.JcatBlobKind}, e.g. {@link Fwupd.JcatBlobKind.SHA256}
+         */
+        get_kind(): JcatBlobKind;
+
+        /**
+         * Gets the blob target.
+         * @returns {@link Fwupd.JcatBlobKind}, e.g. {@link Fwupd.JcatBlobKind.SHA256}
+         */
+        get_target(): JcatBlobKind;
+
+        /**
+         * Gets the creation timestamp for the blob.
+         * @returns UTC UNIX time, or 0 if unset
+         */
+        get_timestamp(): number;
+
+        /**
+         * Sets the blob target.
+         * @param target a {@link Fwupd.JcatBlobKind}, e.g. {@link Fwupd.JcatBlobKind.SHA256}
+         */
+        set_target(target: JcatBlobKind): void;
+
+        /**
+         * Sets the creation timestamp for the blob.
+         * @param timestamp UTC timestamp
+         */
+        set_timestamp(timestamp: bigint | number): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string, appending it to `str`.
+         * @param idt the indent
+         * @param str a string to append to
+         */
+        add_string(idt: number, str: GLib.String): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a JSON object.
+         * @param json_obj a JSON object
+         * @returns `true` on success
+         */
+        from_json(json_obj: JsonObject): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a JSON string.
+         * @param json JSON text
+         * @returns `true` on success
+         */
+        from_json_string(json: string): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a {@link GLib.Variant} value.
+         * @param value a JSON node
+         * @returns `true` on success
+         */
+        from_variant(value: GLib.Variant): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a JSON builder object.
+         * @param json_obj a JSON builder
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         */
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         * @returns a string
+         */
+        to_json_string(flags: CodecFlags): string;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string.
+         * @returns a string
+         */
+        to_string(): string;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a {@link GLib.Variant}.
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         * @returns a {@link GLib.Variant}
+         */
+        to_variant(flags: CodecFlags): GLib.Variant;
+
+        /**
+         * @param json_obj 
+         * @param flags 
+         * @virtual
+         */
+        vfunc_add_json(json_obj: JsonObject, flags: CodecFlags): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string, appending it to `str`.
+         * @param idt the indent
+         * @param str a string to append to
+         * @virtual
+         */
+        vfunc_add_string(idt: number, str: GLib.String): void;
+
+        /**
+         * @param builder 
+         * @param flags 
+         * @virtual
+         */
+        vfunc_add_variant(builder: GLib.VariantBuilder, flags: CodecFlags): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a JSON object.
+         * @param json_obj a JSON object
+         * @virtual
+         */
+        vfunc_from_json(json_obj: JsonObject): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a {@link GLib.Variant} value.
+         * @param value a JSON node
+         * @virtual
+         */
+        vfunc_from_variant(value: GLib.Variant): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string.
+         * @virtual
+         */
+        vfunc_to_string(): string;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a {@link GLib.Variant}.
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         * @virtual
+         */
+        vfunc_to_variant(flags: CodecFlags): GLib.Variant;
+    }
+
+
+    namespace JcatFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Codec.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class JcatFile extends GObject.Object implements Codec {
+        static $gtype: GObject.GType<JcatFile>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: JcatFile.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<JcatFile.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](): JcatFile;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof JcatFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JcatFile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof JcatFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JcatFile.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof JcatFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JcatFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Adds an item to a file.
+         * @param item {@link Fwupd.JcatItem}
+         */
+        add_item(item: JcatItem): void;
+
+        /**
+         * Exports a FwupdJcat file to a compressed blob.
+         * @returns a {@link GLib.Bytes}
+         */
+        export_bytes(): GLib.Bytes;
+
+        /**
+         * Exports a FwupdJcat file to raw JSON.
+         * @param flags a {@link Fwupd.CodecFlags}, typically {@link Fwupd.CodecFlags.NONE}
+         * @returns JSON output, or `null` for error
+         */
+        export_json(flags: CodecFlags): string;
+
+        /**
+         * Finds the item with the specified ID, falling back to the ID alias if set.
+         * @param id An ID, typically a filename basename
+         * @returns a {@link Fwupd.JcatItem}, or `null` if the filename was not found
+         */
+        get_item_by_id(id: string): JcatItem;
+
+        /**
+         * Finds the default item. If more than one {@link Fwupd.JcatItem} exists this function will
+         * return with an error.
+         * @returns a {@link Fwupd.JcatItem}, or `null` if no default exists
+         */
+        get_item_default(): JcatItem;
+
+        /**
+         * Returns all the items in the file.
+         * @returns all the items in the file
+         */
+        get_items(): JcatItem[];
+
+        /**
+         * Returns the major version number of the FwupdJcat specification
+         * @returns integer
+         */
+        get_version_major(): number;
+
+        /**
+         * Returns the minor version number of the FwupdJcat specification
+         * @returns integer
+         */
+        get_version_minor(): number;
+
+        /**
+         * Imports a compressed FwupdJcat file from a blob of data.
+         * @param blob a {@link GLib.Bytes}
+         * @returns `true` for success
+         */
+        import_bytes(blob: GLib.Bytes | Uint8Array): boolean;
+
+        /**
+         * Imports a FwupdJcat file from raw JSON.
+         * @param json JSON data
+         * @returns `true` for success
+         */
+        import_json(json: string): boolean;
+
+        /**
+         * Imports a compressed FwupdJcat file from a file.
+         * @param istream {@link Gio.InputStream}
+         * @returns `true` for success
+         */
+        import_stream(istream: Gio.InputStream): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string, appending it to `str`.
+         * @param idt the indent
+         * @param str a string to append to
+         */
+        add_string(idt: number, str: GLib.String): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a JSON object.
+         * @param json_obj a JSON object
+         * @returns `true` on success
+         */
+        from_json(json_obj: JsonObject): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a JSON string.
+         * @param json JSON text
+         * @returns `true` on success
+         */
+        from_json_string(json: string): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a {@link GLib.Variant} value.
+         * @param value a JSON node
+         * @returns `true` on success
+         */
+        from_variant(value: GLib.Variant): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a JSON builder object.
+         * @param json_obj a JSON builder
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         */
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         * @returns a string
+         */
+        to_json_string(flags: CodecFlags): string;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string.
+         * @returns a string
+         */
+        to_string(): string;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a {@link GLib.Variant}.
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         * @returns a {@link GLib.Variant}
+         */
+        to_variant(flags: CodecFlags): GLib.Variant;
+
+        /**
+         * @param json_obj 
+         * @param flags 
+         * @virtual
+         */
+        vfunc_add_json(json_obj: JsonObject, flags: CodecFlags): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string, appending it to `str`.
+         * @param idt the indent
+         * @param str a string to append to
+         * @virtual
+         */
+        vfunc_add_string(idt: number, str: GLib.String): void;
+
+        /**
+         * @param builder 
+         * @param flags 
+         * @virtual
+         */
+        vfunc_add_variant(builder: GLib.VariantBuilder, flags: CodecFlags): void;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a JSON object.
+         * @param json_obj a JSON object
+         * @virtual
+         */
+        vfunc_from_json(json_obj: JsonObject): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} from a {@link GLib.Variant} value.
+         * @param value a JSON node
+         * @virtual
+         */
+        vfunc_from_variant(value: GLib.Variant): boolean;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a debug string.
+         * @virtual
+         */
+        vfunc_to_string(): string;
+
+        /**
+         * Converts an object that implements {@link Fwupd.Codec} to a {@link GLib.Variant}.
+         * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
+         * @virtual
+         */
+        vfunc_to_variant(flags: CodecFlags): GLib.Variant;
+    }
+
+
+    namespace JcatItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Codec.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class JcatItem extends GObject.Object implements Codec {
+        static $gtype: GObject.GType<JcatItem>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: JcatItem.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<JcatItem.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](id: string): JcatItem;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof JcatItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JcatItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof JcatItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JcatItem.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof JcatItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JcatItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Adds an item alias ID. Alias IDs are matched when using functions such as
+         * `fwupd_jcat_file_get_item_by_id()`.
+         * @param id An item ID alias, typically a file basename
+         */
+        add_alias_id(id: string): void;
+
+        /**
+         * Adds a new blob to the item.
+         * @param blob {@link Fwupd.JcatBlob}
+         */
+        add_blob(blob: JcatBlob): void;
+
+        /**
+         * Gets the list of alias IDs.
+         * @returns array
+         */
+        get_alias_ids(): string[];
+
+        /**
+         * Gets the item blobs by a specific kind.
+         * @param kind {@link Fwupd.JcatBlobKind}, e.g. {@link Fwupd.JcatBlobKind.SHA256}
+         * @returns a blob, or `null`
+         */
+        get_blob_by_kind(kind: JcatBlobKind): JcatBlob;
+
+        /**
+         * Gets all the blobs for this item.
+         * @returns blobs
+         */
+        get_blobs(): JcatBlob[];
+
+        /**
+         * Gets the item blobs by a specific kind.
+         * @param kind {@link Fwupd.JcatBlobKind}, e.g. {@link Fwupd.JcatBlobKind.SHA256}
+         * @returns blobs
+         */
+        get_blobs_by_kind(kind: JcatBlobKind): JcatBlob[];
+
+        /**
+         * Returns the item ID.
+         * @returns string
+         */
+        get_id(): string;
+
+        /**
+         * Returns the item ID, if safe to use as a path.
+         * @returns string
+         */
+        get_id_safe(): string;
+
+        /**
+         * Finds out if any of the blobs are targeting an internal checksum.
+         * If this returns with success then the caller might be able to use functions like
+         * `fwupd_jcat_context_verify_target()` supplying some target checksums.
+         * @returns `true` on success
+         */
+        has_target(): boolean;
+
+        /**
+         * Removes an item alias ID.
+         * @param id An item ID alias, typically a file basename
+         */
+        remove_alias_id(id: string): void;
 
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string, appending it to `str`.
@@ -8491,6 +8536,12 @@ export namespace Fwupd {
         load_signature_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
 
         /**
+         * Loads the secrets from a per-user store.
+         * @returns `true` for success
+         */
+        load_user_secrets(): boolean;
+
+        /**
          * Gets if the metadata remote needs re-downloading.
          * @returns a `TRUE` if the remote contents are considered old
          */
@@ -8501,6 +8552,12 @@ export namespace Fwupd {
          * @param flag the {@link Fwupd.RemoteFlags}, e.g. {@link Fwupd.RemoteFlags.APPROVAL_REQUIRED}
          */
         remove_flag(flag: RemoteFlags): void;
+
+        /**
+         * Saves the secrets to a per-user store.
+         * @returns `true` for success
+         */
+        save_user_secrets(): boolean;
 
         /**
          * Sets the remote agreement in AppStream markup format
@@ -9508,10 +9565,10 @@ export namespace Fwupd {
         static flag_from_string(flag: string | null): SecurityAttrFlags;
 
         /**
-         * Returns the printable string for the flag.
-         * @param flag security attribute flags, e.g. {@link Fwupd.SecurityAttrFlags.SUCCESS}
+         * Converts an enumerated value to a string.
+         * @param val value, e.g. {@link Fwupd.SecurityAttrFlags.SUCCESS}
          */
-        static flag_to_string(flag: SecurityAttrFlags): string;
+        static flag_to_string(val: SecurityAttrFlags): string;
 
         /**
          * Returns the string suffix for the flag.
@@ -9526,10 +9583,10 @@ export namespace Fwupd {
         static result_from_string(result: string | null): SecurityAttrResult;
 
         /**
-         * Returns the printable string for the result enum.
-         * @param result security attribute result, e.g. {@link Fwupd.SecurityAttrResult.ENABLED}
+         * Converts an enumerated value to a string.
+         * @param val value, e.g. {@link Fwupd.SecurityAttrResult.ENABLED}
          */
-        static result_to_string(result: SecurityAttrResult): string;
+        static result_to_string(val: SecurityAttrResult): string;
 
         // Methods
         /**
@@ -9968,6 +10025,14 @@ export namespace Fwupd {
     type ClientClass = typeof Client;
 
     /**
+     * @gir-type Struct
+     */
+    abstract class ClientSyncImpl {
+        static $gtype: GObject.GType<ClientSyncImpl>;
+    }
+
+
+    /**
      * @gir-type Alias
      */
     type CodecInterface = typeof Codec;
@@ -9976,6 +10041,21 @@ export namespace Fwupd {
      * @gir-type Alias
      */
     type DeviceClass = typeof Device;
+
+    /**
+     * @gir-type Alias
+     */
+    type JcatBlobClass = typeof JcatBlob;
+
+    /**
+     * @gir-type Alias
+     */
+    type JcatFileClass = typeof JcatFile;
+
+    /**
+     * @gir-type Alias
+     */
+    type JcatItemClass = typeof JcatItem;
 
     /**
      * A JSON array.
@@ -10158,7 +10238,7 @@ export namespace Fwupd {
         add_object(key: string, json_obj: JsonObject): void;
 
         /**
-         * Adds a  object to the JSON object.
+         * Adds a string:string object to the JSON object.
          * @param key dictionary key
          * @param value a hash table
          */

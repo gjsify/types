@@ -12,6 +12,10 @@ import '@girs/gjs';
 
 // Module dependencies
 import type Gitg from '@girs/gitg-1.0';
+import type GtkSource from '@girs/gtksource-4';
+import type Gtk from '@girs/gtk-3.0';
+import type xlib from '@girs/xlib-2.0';
+import type Gdk from '@girs/gdk-3.0';
 import type cairo from 'cairo';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
@@ -20,13 +24,10 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type Gee from '@girs/gee-0.8';
-import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type Ggit from '@girs/ggit-1.0';
-import type Gtk from '@girs/gtk-3.0';
-import type xlib from '@girs/xlib-2.0';
 import type Atk from '@girs/atk-1.0';
+import type Gee from '@girs/gee-0.8';
+import type Ggit from '@girs/ggit-1.0';
 
 export namespace GitgExt {
 
@@ -808,6 +809,11 @@ export namespace GitgExt {
     /**
      * @gir-type Alias
      */
+    type FetchAvoidTagsIface = typeof FetchAvoidTags;
+
+    /**
+     * @gir-type Alias
+     */
     type HistoryPanelIface = typeof HistoryPanel;
 
     /**
@@ -1388,6 +1394,64 @@ export namespace GitgExt {
 
     export const CommitAction: CommitActionNamespace & {
         new (): CommitAction; // This allows `obj instanceof CommitAction`
+    };
+
+    namespace FetchAvoidTags {
+        /**
+         * Interface for implementing FetchAvoidTags.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+
+            // Virtual methods
+            /**
+             * @virtual
+             */
+            vfunc_get_no_tags(): boolean;
+
+            /**
+             * @param value 
+             * @virtual
+             */
+            vfunc_set_no_tags(value: boolean): void;
+        }
+
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            no_tags: boolean;
+            noTags: boolean;
+        }
+    }
+
+    export interface FetchAvoidTagsNamespace {
+        $gtype: GObject.GType<FetchAvoidTags>;
+        prototype: FetchAvoidTags;
+    }
+    /**
+     * @gir-type Interface
+     */
+    interface FetchAvoidTags extends GObject.Object, FetchAvoidTags.Interface {
+
+        // Properties
+        get no_tags(): boolean;
+        set no_tags(val: boolean);
+
+        get noTags(): boolean;
+        set noTags(val: boolean);
+
+        // Methods
+        get_no_tags(): boolean;
+
+        /**
+         * @param value 
+         */
+        set_no_tags(value: boolean): void;
+    }
+
+
+    export const FetchAvoidTags: FetchAvoidTagsNamespace & {
+        new (): FetchAvoidTags; // This allows `obj instanceof FetchAvoidTags`
     };
 
     namespace HistoryPanel {

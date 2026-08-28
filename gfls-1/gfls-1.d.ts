@@ -33,6 +33,53 @@ export namespace Gfls {
 
 
     /**
+     * @gir-type Enum
+     */
+    export namespace IconvResult {
+        export const $gtype: GObject.GType<IconvResult>;
+    }
+
+    /**
+     * Used as the result value of `gfls_iconv_feed()`.
+     * @gir-type Enum
+     * @since 0.4
+     */
+    enum IconvResult {
+        /**
+         * Everything OK.
+         */
+        OK,
+        /**
+         * An error occurred.
+         */
+        ERROR,
+        /**
+         * Stopped at an invalid character in
+         *   the `inbuf`; or the character could not be represented in the target
+         *   character set. `*inbuf` is left pointing to the beginning of the invalid or
+         *   unconvertible sequence.
+         */
+        ILLEGAL_SEQUENCE,
+        /**
+         * The input byte sequence ends with
+         *   an incomplete multi-byte character. `*inbuf` is left pointing to the
+         *   beginning of the incomplete multi-byte character.
+         */
+        INCOMPLETE_INPUT,
+        /**
+         * The output buffer has no more
+         *   room for the next converted character.
+         */
+        OUTPUT_BUFFER_FULL,
+        /**
+         * A number of nonreversible
+         *   conversions have been performed.
+         */
+        LOSSY_CONVERSION,
+    }
+
+
+    /**
      * An error code used with the `GFLS_LOADER_ERROR` domain.
      * @gir-type Struct
      */
@@ -65,6 +112,54 @@ export namespace Gfls {
 
 
     /**
+     * This function converts `input_bytes` from a codeset to another.
+     * 
+     * `from_codeset` and `to_codeset` must be compatible with iconv, see
+     * `gfls_iconv_open()`.
+     * 
+     * Note that `from_codeset` and `to_codeset` can be equal. It is useful to
+     * identify the valid characters from the invalid ones.
+     * 
+     * The output is the combination of `output_bytes` and
+     * `output_bytes_valid_region`. Output bytes that are part of
+     * `output_bytes_valid_region` are the valid characters (successfully converted).
+     * The other output bytes are invalid characters (copied as is from
+     * `input_bytes`).
+     * 
+     * If `allow_invalid_characters` is `false`:
+     * - As soon as an invalid character is encountered, `false` is returned by this
+     *   function and `output_bytes` and `output_bytes_valid_region` will return
+     *   `null`.
+     * - Otherwise, if everything goes well, `true` is returned alongside the
+     *   `output_bytes` and `output_bytes_valid_region` (the latter contains in this
+     *   case only one, valid sub-region).
+     * @param input_bytes the input {@link GLib.Bytes} to convert.
+     * @param to_codeset destination codeset.
+     * @param from_codeset source codeset.
+     * @param allow_invalid_characters whether invalid characters are allowed.
+     * @returns `true` on success, `false` otherwise.
+     * @since 0.4
+     */
+    function encoding_convert(input_bytes: GLib.Bytes | Uint8Array, to_codeset: string, from_codeset: string, allow_invalid_characters: boolean): [boolean, GLib.Bytes, BytesRegion];
+
+    /**
+     * Tries a conversion on `input_bytes`, discarding the output.
+     * 
+     * `from_codeset` and `to_codeset` must be compatible with iconv, see
+     * `gfls_iconv_open()`.
+     * 
+     * If `input_bytes` ends with an incomplete multi-byte character, that part is
+     * ignored. So `input_bytes` can be for example the first chunk of a file when
+     * loading it.
+     * @param input_bytes a {@link GLib.Bytes}.
+     * @param to_codeset destination codeset.
+     * @param from_codeset source codeset.
+     * @returns `true` if and only if `input_bytes` can be converted without errors,   without invalid characters and without fallback characters.
+     * @since 0.4
+     */
+    function encoding_try_convert(input_bytes: GLib.Bytes | Uint8Array, to_codeset: string, from_codeset: string): boolean;
+
+    /**
      * Free the resources allocated by Gfls. For example it unrefs the singleton
      * objects.
      * 
@@ -83,88 +178,6 @@ export namespace Gfls {
      * @since 0.1
      */
     function init(): void;
-
-    /**
-     * This function starts a read operation on `input_stream`. It is meant to be
-     * used as the only read operation on `input_stream`, to get a {@link GLib.Bytes} as a
-     * result, with `max_size` as the provided maximum number of bytes to read.
-     * 
-     * `expected_size` is typically a {@link Gio.File} size as returned by
-     * `g_file_info_get_size()`. But note that in that case, the returned {@link GLib.Bytes} may
-     * contain a different number of bytes than what was expected (the
-     * TOC/TOU problem: time of check to time of use). `expected_size` is used as an
-     * indication to how much memory to allocate initially.
-     * 
-     * See the {@link Gio.AsyncResult} documentation to know how to use this function.
-     * @param input_stream a {@link Gio.InputStream}.
-     * @param expected_size the expected number of bytes contained in `input_stream`.
-     * @param max_size the maximum number of bytes to read.
-     * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-     * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-     * @since 0.1
-     */
-    function input_stream_read_async(input_stream: Gio.InputStream, expected_size: bigint | number, max_size: bigint | number, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>;
-    /**
-     * This function starts a read operation on `input_stream`. It is meant to be
-     * used as the only read operation on `input_stream`, to get a {@link GLib.Bytes} as a
-     * result, with `max_size` as the provided maximum number of bytes to read.
-     * 
-     * `expected_size` is typically a {@link Gio.File} size as returned by
-     * `g_file_info_get_size()`. But note that in that case, the returned {@link GLib.Bytes} may
-     * contain a different number of bytes than what was expected (the
-     * TOC/TOU problem: time of check to time of use). `expected_size` is used as an
-     * indication to how much memory to allocate initially.
-     * 
-     * See the {@link Gio.AsyncResult} documentation to know how to use this function.
-     * @param input_stream a {@link Gio.InputStream}.
-     * @param expected_size the expected number of bytes contained in `input_stream`.
-     * @param max_size the maximum number of bytes to read.
-     * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-     * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-     * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
-     * @since 0.1
-     */
-    function input_stream_read_async(input_stream: Gio.InputStream, expected_size: bigint | number, max_size: bigint | number, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.InputStream> | null): void;
-    /**
-     * This function starts a read operation on `input_stream`. It is meant to be
-     * used as the only read operation on `input_stream`, to get a {@link GLib.Bytes} as a
-     * result, with `max_size` as the provided maximum number of bytes to read.
-     * 
-     * `expected_size` is typically a {@link Gio.File} size as returned by
-     * `g_file_info_get_size()`. But note that in that case, the returned {@link GLib.Bytes} may
-     * contain a different number of bytes than what was expected (the
-     * TOC/TOU problem: time of check to time of use). `expected_size` is used as an
-     * indication to how much memory to allocate initially.
-     * 
-     * See the {@link Gio.AsyncResult} documentation to know how to use this function.
-     * @param input_stream a {@link Gio.InputStream}.
-     * @param expected_size the expected number of bytes contained in `input_stream`.
-     * @param max_size the maximum number of bytes to read.
-     * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-     * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-     * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
-     * @since 0.1
-     */
-    function input_stream_read_async(input_stream: Gio.InputStream, expected_size: bigint | number, max_size: bigint | number, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.InputStream> | null): globalThis.Promise<GLib.Bytes> | void;
-
-    /**
-     * Finishes an operation started with `gfls_input_stream_read_async()`.
-     * 
-     * If `is_truncated` is set to `true`, it is not an error (`error` is not set), and
-     * a {@link GLib.Bytes} is returned. However, since `gfls_input_stream_read_async()` is meant
-     * to be used as the only read operation on `input_stream`, it is an undefined
-     * behavior if you try to read more content from `input_stream`.
-     * 
-     * The data contained in the resulting {@link GLib.Bytes} is always zero-terminated, but
-     * this is not included in the {@link GLib.Bytes} length. The resulting {@link GLib.Bytes} should be
-     * freed with `g_bytes_unref()` when no longer in use.
-     * @param input_stream a {@link Gio.InputStream}.
-     * @param result a {@link Gio.AsyncResult}.
-     * @param is_truncated will be set to `true` if the `input_stream` contains more data   to be read, but the maximum number of bytes to read has been reached.
-     * @returns a {@link GLib.Bytes}, or `null` on error.
-     * @since 0.1
-     */
-    function input_stream_read_finish(input_stream: Gio.InputStream, result: Gio.AsyncResult, is_truncated: boolean): GLib.Bytes;
 
     /**
      * Starts a basic file loading operation.
@@ -249,6 +262,13 @@ export namespace Gfls {
      * @since 0.3
      */
     function utf8_find_very_long_line(str: string, max_n_bytes_per_line: number): string;
+
+    /**
+     * @gir-type Callback
+     */
+    interface SimpleProgressCallback {
+        (number: number): void;
+    }
 
     /**
      * @gir-type Callback
@@ -460,6 +480,133 @@ export namespace Gfls {
      */
     abstract class AttributeKeysPrivate {
         static $gtype: GObject.GType<AttributeKeysPrivate>;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class BytesRegion {
+        static $gtype: GObject.GType<BytesRegion>;
+
+        // Methods
+        /**
+         * Frees `region`.
+         */
+        free(): void;
+
+        /**
+         * Frees `iter`.
+         * @param iter a {@link Gfls.BytesRegionIter}.
+         */
+        iter_free(iter: BytesRegionIter | null): void;
+
+        /**
+         * Gets the sub-region at this iterator.
+         * 
+         * `sub_region_size` and `offset` can be used as arguments to
+         * `g_bytes_get_region()`.
+         * 
+         * `is_part_of_region` has the same meaning as for
+         * `gfls_bytes_region_builder_append()`. {@link Gfls.BytesRegionIter} iterates on both the
+         * region and the holes, so that the corresponding {@link GLib.Bytes} is traversed from
+         * start to end.
+         * @param iter a {@link Gfls.BytesRegionIter}. It must not be the end iterator.
+         */
+        iter_get_sub_region(iter: BytesRegionIter): [number, number, boolean];
+
+        /**
+         * @param iter a {@link Gfls.BytesRegionIter}.
+         * @returns whether `iter` is the end iterator.
+         */
+        iter_is_end(iter: BytesRegionIter): boolean;
+
+        /**
+         * Moves `iter` to the next sub-region.
+         * 
+         * If all sub-regions have been traversed, `iter` is set to the end iterator.
+         * @param iter a {@link Gfls.BytesRegionIter}. The end iterator is accepted as an input   value.
+         */
+        iter_next(iter: BytesRegionIter): void;
+
+        /**
+         * @param bytes a {@link GLib.Bytes}.
+         * @returns whether `region` can be applied to `bytes` (it checks the total size).
+         */
+        match_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
+
+        /**
+         * The format is:
+         * 
+         * `[offset, sub_region_size, is_part_of_region]\n`
+         * 
+         * One line per sub-region, in order.
+         * @returns a string representation of `region`.
+         */
+        to_string(): string;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class BytesRegionBuilder {
+        static $gtype: GObject.GType<BytesRegionBuilder>;
+
+        // Methods
+        /**
+         * Appends a sub-region at the end.
+         * 
+         * If `is_part_of_region` is `false` it creates a hole.
+         * 
+         * Contiguous sub-regions of the same kind are merged and will thus be treated
+         * as a single sub-region. So you can conveniently call this function several
+         * times in a row with the same value for `is_part_of_region`.
+         * 
+         * In order to create a {@link Gfls.BytesRegion} that will traverse a whole {@link GLib.Bytes}, it
+         * is required to call this function the right amount of times, even if it ends
+         * with a hole. See also `gfls_bytes_region_match_bytes()`.
+         * @param sub_region_length the length of the sub-region. Must not be equal to 0.
+         * @param is_part_of_region whether the sub-region is part of the region.
+         */
+        append(sub_region_length: bigint | number, is_part_of_region: boolean): void;
+
+        /**
+         * Creates a {@link Gfls.BytesRegion} and frees `builder`.
+         * @param free_data if `true`, the data is freed as well.
+         * @returns a {@link Gfls.BytesRegion}, or `null` if   `free_data` is `true`.
+         */
+        free(free_data: boolean): BytesRegion | null;
+
+        /**
+         * @returns the current total size, in number of bytes (holes included).
+         */
+        get_current_size(): number;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class BytesRegionIter {
+        static $gtype: GObject.GType<BytesRegionIter>;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class Iconv {
+        static $gtype: GObject.GType<Iconv>;
+
+        // Methods
+        /**
+         * Closes and frees `conv`.
+         * 
+         * If you need to know if closing `conv` returns an error, call
+         * `gfls_iconv_close()` explicitly beforehand.
+         */
+        free(): void;
     }
 
 

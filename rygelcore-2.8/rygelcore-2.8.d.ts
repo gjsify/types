@@ -220,82 +220,6 @@ export namespace RygelCore {
     }
 
 
-    namespace BasicManagement {
-        // Signal signatures
-        interface SignalSignatures extends GUPnP.Service.SignalSignatures {
-            "notify::max-history-size": (pspec: GObject.ParamSpec) => void;
-            "notify::root-device": (pspec: GObject.ParamSpec) => void;
-            "notify::context": (pspec: GObject.ParamSpec) => void;
-            "notify::document": (pspec: GObject.ParamSpec) => void;
-            "notify::element": (pspec: GObject.ParamSpec) => void;
-            "notify::location": (pspec: GObject.ParamSpec) => void;
-            "notify::service-type": (pspec: GObject.ParamSpec) => void;
-            "notify::udn": (pspec: GObject.ParamSpec) => void;
-            "notify::url-base": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends GUPnP.Service.ConstructorProps {
-            max_history_size: number;
-            maxHistorySize: number;
-        }
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class BasicManagement extends GUPnP.Service {
-        static $gtype: GObject.GType<BasicManagement>;
-
-        // Properties
-        get max_history_size(): number;
-        set max_history_size(val: number);
-
-        get maxHistorySize(): number;
-        set maxHistorySize(val: number);
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: BasicManagement.SignalSignatures;
-
-        // Fields
-        device_status: string;
-
-        // Constructors
-        constructor(properties?: Partial<BasicManagement.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ["new"](): BasicManagement;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof BasicManagement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BasicManagement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof BasicManagement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BasicManagement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof BasicManagement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BasicManagement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-        get_max_history_size(): number;
-
-        /**
-         * @param value 
-         */
-        set_max_history_size(value: number): void;
-    }
-
-
     namespace DescriptionFile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -470,60 +394,6 @@ export namespace RygelCore {
          * @param b 
          */
         static compare_by_name(a: DLNAProfile, b: DLNAProfile): number;
-    }
-
-
-    namespace EnergyManagement {
-        // Signal signatures
-        interface SignalSignatures extends GUPnP.Service.SignalSignatures {
-            "notify::root-device": (pspec: GObject.ParamSpec) => void;
-            "notify::context": (pspec: GObject.ParamSpec) => void;
-            "notify::document": (pspec: GObject.ParamSpec) => void;
-            "notify::element": (pspec: GObject.ParamSpec) => void;
-            "notify::location": (pspec: GObject.ParamSpec) => void;
-            "notify::service-type": (pspec: GObject.ParamSpec) => void;
-            "notify::udn": (pspec: GObject.ParamSpec) => void;
-            "notify::url-base": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class EnergyManagement extends GUPnP.Service {
-        static $gtype: GObject.GType<EnergyManagement>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: EnergyManagement.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<EnergyManagement.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ["new"](): EnergyManagement;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof EnergyManagement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnergyManagement.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof EnergyManagement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EnergyManagement.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof EnergyManagement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EnergyManagement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
     }
 
 
@@ -2984,19 +2854,6 @@ export namespace RygelCore {
     /**
      * @gir-type Alias
      */
-    type BasicManagementClass = typeof BasicManagement;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class BasicManagementPrivate {
-        static $gtype: GObject.GType<BasicManagementPrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
     type DescriptionFileClass = typeof DescriptionFile;
 
     /**
@@ -3017,19 +2874,6 @@ export namespace RygelCore {
      */
     abstract class DLNAProfilePrivate {
         static $gtype: GObject.GType<DLNAProfilePrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
-    type EnergyManagementClass = typeof EnergyManagement;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class EnergyManagementPrivate {
-        static $gtype: GObject.GType<EnergyManagementPrivate>;
     }
 
 

@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for GtkSource-5.
  *
- * GENERATED — do not edit. Provenance: GtkSource-5 — library 5.20.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+ * GENERATED — do not edit. Provenance: GtkSource-5 — library 5.21.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
  *
  * 10 concrete widgets, 12 declarations, 11 enum nick unions, 2 slot candidates.
  *

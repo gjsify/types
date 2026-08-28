@@ -55,7 +55,6 @@ export interface ECertificateWidgetProps extends GtkBoxProps, GtkAccessibleProps
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type ECertificateWidgetConstructOnly = GtkBoxConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkOrientableConstructOnly;
 
-/** Contains only private data that should be read and manipulated using the functions below. */
 export interface ERemindersWidgetProps extends GtkGridProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkOrientableProps {
     watcher?: ECal.ReminderWatcher;
 }

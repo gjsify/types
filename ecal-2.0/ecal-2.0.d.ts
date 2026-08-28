@@ -1919,8 +1919,6 @@ export namespace ECal {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.2
      */
@@ -3785,8 +3783,6 @@ export namespace ECal {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.2
      */
@@ -5179,8 +5175,6 @@ export namespace ECal {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.30
      */

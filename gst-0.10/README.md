@@ -5,25 +5,25 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gst-0.10)
 
 
-GJS TypeScript type definitions for Gst-0.10, generated from library version 0.10.29 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.2.0.
+GJS TypeScript type definitions for Gst-0.10, generated from library version 0.10.29 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.3.0.
 
 ## Install
 
-To use this type definitions, install them with NPM:
+Install the type definitions with npm:
 ```bash
 npm install @girs/gst-0.10
 ```
 
 ## Usage
 
-You can import this package into your project like this:
+Import it like any other module:
 ```ts
 import Gst from '@girs/gst-0.10';
 ```
 
 ### Ambient Modules
 
-You can also use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) to import this module like you would do this in JavaScript.
+[Ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) let you write the same import you would in plain JavaScript.
 For this you need to include `@girs/gst-0.10` or `@girs/gst-0.10/ambient` in your `tsconfig` or entry point Typescript file:
 
 `index.ts`:
@@ -42,7 +42,7 @@ import '@girs/gst-0.10'
 }
 ```
 
-Now you can import the ambient module with TypeScript support: 
+The ambient module now resolves with types:
 
 ```ts
 import Gst from 'gi://Gst?version=0.10';
@@ -50,7 +50,7 @@ import Gst from 'gi://Gst?version=0.10';
 
 ### Global import
 
-You can also import the module with Typescript support using the global `imports.gi` object of GJS.
+GJS's global `imports.gi` works too, with types.
 For this you need to include `@girs/gst-0.10` or `@girs/gst-0.10/import` in your `tsconfig` or entry point Typescript file:
 
 `index.ts`:
@@ -69,7 +69,7 @@ import '@girs/gst-0.10'
 }
 ```
 
-Now you have also type support for this, too:
+That form carries types as well:
 
 ```ts
 const Gst = imports.gi.Gst;
@@ -77,7 +77,7 @@ const Gst = imports.gi.Gst;
 
 ### Bundle
 
-Depending on your project configuration, it is recommended to use a bundler like [esbuild](https://esbuild.github.io/). You can find examples using different bundlers [here](https://github.com/gjsify/ts-for-gir/tree/main/examples).
+Most projects want a bundler. [esbuild](https://esbuild.github.io/) is the smallest thing that works; the [examples directory](https://github.com/gjsify/ts-for-gir/tree/main/examples) has setups for several others.
 
 ## Other packages
 

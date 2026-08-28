@@ -606,7 +606,7 @@ export namespace GioUnix {
          * Gets the keywords from the desktop file.
          * @returns The value of the   [`Keywords` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-keywords)
          */
-        get_keywords(): string[];
+        get_keywords(): string[] | null;
 
         /**
          * Looks up a localized string value in the keyfile backing `info`
@@ -670,7 +670,7 @@ export namespace GioUnix {
          * @param key the key to look up
          * @returns a `NULL`-terminated string array or `NULL` if the specified   key cannot be found. The array should be freed with {@link GLib.strfreev}.
          */
-        get_string_list(key: string): string[];
+        get_string_list(key: string): string[] | null;
 
         /**
          * Returns whether `key` exists in the `Desktop Entry` group
@@ -869,7 +869,7 @@ export namespace GioUnix {
          * the application.
          * @returns a list of content types.
          */
-        get_supported_types(): string[];
+        get_supported_types(): string[] | null;
 
         /**
          * Launches the application. Passes `files` to the launched application
@@ -1133,7 +1133,7 @@ export namespace GioUnix {
          * the application.
          * @virtual
          */
-        vfunc_get_supported_types(): string[];
+        vfunc_get_supported_types(): string[] | null;
 
         /**
          * Launches the application. Passes `files` to the launched application

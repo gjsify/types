@@ -1,15 +1,15 @@
 // The widget vocabulary of WebKit2-4.1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: WebKit2-4.1 — library 2.52.1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+// GENERATED — do not edit. Provenance: WebKit2-4.1 — library 2.53.91 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
 // name here is real needs values, not declarations.
 
-export const SURFACE_PROVENANCE = 'WebKit2-4.1 — library 2.52.1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface';
+export const SURFACE_PROVENANCE = 'WebKit2-4.1 — library 2.53.91 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface';
 
 export const OWN_PROPS = {
-    WebKitWebView: ['automation-presentation-type', 'camera-capture-state', 'default-content-security-policy', 'display-capture-state', 'editable', 'is-controlled-by-automation', 'is-ephemeral', 'is-muted', 'microphone-capture-state', 'related-view', 'settings', 'user-content-manager', 'web-context', 'web-extension-mode', 'website-policies', 'zoom-level'],
+    WebKitWebView: ['automation-presentation-type', 'camera-capture-state', 'default-content-security-policy', 'display-capture-state', 'editable', 'is-controlled-by-automation', 'is-ephemeral', 'is-muted', 'magnification', 'microphone-capture-state', 'related-view', 'settings', 'user-content-manager', 'web-context', 'web-extension-mode', 'website-policies', 'zoom-level'],
 };
 
 export const OWN_SIGNALS = {
@@ -32,7 +32,7 @@ export const ENUM_NICKS = {
     WebKitCredentialPersistence: ['none', 'for-session', 'permanent'],
     WebKitFeatureStatus: ['embedder', 'unstable', 'internal', 'developer', 'testable', 'preview', 'stable', 'mature'],
     WebKitHardwareAccelerationPolicy: ['on-demand', 'always', 'never'],
-    WebKitInputPurpose: ['free-form', 'digits', 'number', 'phone', 'url', 'email', 'password'],
+    WebKitInputPurpose: ['free-form', 'digits', 'number', 'phone', 'url', 'email', 'password', 'search'],
     WebKitInsecureContentEvent: ['run', 'displayed'],
     WebKitLoadEvent: ['started', 'redirected', 'committed', 'finished'],
     WebKitMediaCaptureState: ['none', 'active', 'muted'],
@@ -65,6 +65,7 @@ export const SINCE = {
     'WebKitWebView.is-controlled-by-automation': '2.18',
     'WebKitWebView.is-ephemeral': '2.16',
     'WebKitWebView.is-muted': '2.30',
+    'WebKitWebView.magnification': '2.54',
     'WebKitWebView.microphone-capture-state': '2.34',
     'WebKitWebView.related-view': '2.4',
     'WebKitWebView.settings': '2.6',

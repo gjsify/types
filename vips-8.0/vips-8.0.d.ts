@@ -5902,7 +5902,8 @@ export namespace Vips {
         autorot_remove_angle(): void;
 
         /**
-         * Test if `image` is in a colourspace that {@link Image.colourspace} can process.
+         * Test if `image` is in a colourspace that {@link Image.colourspace} can
+         * process.
          * @returns `TRUE` if `image` is in a supported colourspace.
          */
         colourspace_issupported(): boolean;
@@ -6970,7 +6971,7 @@ export namespace Vips {
     /**
      * An abstract base class for the various interpolation functions.
      * 
-     * Use `vips --list classes` to see all the interpolators available.
+     * Use `vips --list VipsInterpolate` to see all the interpolators available.
      * 
      * An interpolator consists of a function to perform the interpolation, plus
      * some extra data fields which tells libvips how to call the function and
@@ -7326,7 +7327,7 @@ export namespace Vips {
 
         /**
          * The inverse of {@link Object.new_from_string}: turn `object` into eg.
-         * `"VipsInterpolateSnohalo1(blur=.333333)"`.
+         * `"bicubic"`.
          * @param buf write string here
          * @virtual
          */
@@ -7427,7 +7428,7 @@ export namespace Vips {
 
         /**
          * The inverse of {@link Object.new_from_string}: turn `object` into eg.
-         * `"VipsInterpolateSnohalo1(blur=.333333)"`.
+         * `"bicubic"`.
          * @param buf write string here
          */
         to_string(buf: Buf): void;
@@ -8316,6 +8317,10 @@ export namespace Vips {
          * pointer to the bytes is returned in `data`. The number of bytes actually
          * read is returned -- it may be less than `length` if the file is shorter than
          * `length`. A negative number indicates a read error.
+         * 
+         * Do not use it if `length` is greater than `UINT_MAX`.
+         * {@link GLib.ByteArray} stores the length of its data in `guint`, which
+         * may be shorter than `size_t`.
          * @param data return a pointer to the bytes read here
          * @param length max number of bytes to read
          * @returns number of bytes read, or -1 on error.

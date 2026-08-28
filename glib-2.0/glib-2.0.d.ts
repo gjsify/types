@@ -2089,7 +2089,7 @@ export class VariantType<S extends string = any> {
 
         /**
          * Replacement failed due to an ill-formed replacement
-         *     string.
+         *   string.
          */
         static REPLACE: number;
 
@@ -2100,53 +2100,53 @@ export class VariantType<S extends string = any> {
 
         /**
          * Internal error of the regular expression engine.
-         *     Since 2.16
+         *   Since 2.16
          */
         static INTERNAL: number;
 
         /**
-         * "\\" at end of pattern. Since 2.16
+         * `\` at end of pattern. Since 2.16
          */
         static STRAY_BACKSLASH: number;
 
         /**
-         * "\\c" at end of pattern. Since 2.16
+         * `\c` at end of pattern. Since 2.16
          */
         static MISSING_CONTROL_CHAR: number;
 
         /**
-         * Unrecognized character follows "\\".
-         *     Since 2.16
+         * Unrecognized character follows `\`.
+         *   Since 2.16
          */
         static UNRECOGNIZED_ESCAPE: number;
 
         /**
-         * Numbers out of order in "{}"
-         *     quantifier. Since 2.16
+         * Numbers out of order in `{}`
+         *   quantifier. Since 2.16
          */
         static QUANTIFIERS_OUT_OF_ORDER: number;
 
         /**
-         * Number too big in "{}" quantifier.
-         *     Since 2.16
+         * Number too big in `{}` quantifier.
+         *   Since 2.16
          */
         static QUANTIFIER_TOO_BIG: number;
 
         /**
-         * Missing terminating "]" for
-         *     character class. Since 2.16
+         * Missing terminating `]` for
+         *   character class. Since 2.16
          */
         static UNTERMINATED_CHARACTER_CLASS: number;
 
         /**
          * Invalid escape sequence
-         *     in character class. Since 2.16
+         *   in character class. Since 2.16
          */
         static INVALID_ESCAPE_IN_CHARACTER_CLASS: number;
 
         /**
          * Range out of order in character class.
-         *     Since 2.16
+         *   Since 2.16
          */
         static RANGE_OUT_OF_ORDER: number;
 
@@ -2156,38 +2156,38 @@ export class VariantType<S extends string = any> {
         static NOTHING_TO_REPEAT: number;
 
         /**
-         * Unrecognized character after "(?",
-         *     "(?<" or "(?P". Since 2.16
+         * Unrecognized character after `(?`,
+         *   `(?<` or `(?P`. Since 2.16
          */
         static UNRECOGNIZED_CHARACTER: number;
 
         /**
          * POSIX named classes are
-         *     supported only within a class. Since 2.16
+         *   supported only within a class. Since 2.16
          */
         static POSIX_NAMED_CLASS_OUTSIDE_CLASS: number;
 
         /**
-         * Missing terminating ")" or ")"
-         *     without opening "(". Since 2.16
+         * Missing terminating `)` or `)`
+         *   without opening `(`. Since 2.16
          */
         static UNMATCHED_PARENTHESIS: number;
 
         /**
          * Reference to non-existent
-         *     subpattern. Since 2.16
+         *   subpattern. Since 2.16
          */
         static INEXISTENT_SUBPATTERN_REFERENCE: number;
 
         /**
-         * Missing terminating ")" after comment.
-         *     Since 2.16
+         * Missing terminating `)` after comment.
+         *   Since 2.16
          */
         static UNTERMINATED_COMMENT: number;
 
         /**
          * Regular expression too large.
-         *     Since 2.16
+         *   Since 2.16
          */
         static EXPRESSION_TOO_LARGE: number;
 
@@ -2198,148 +2198,149 @@ export class VariantType<S extends string = any> {
 
         /**
          * Lookbehind assertion is not
-         *     fixed length. Since 2.16
+         *   fixed length. Since 2.16
          */
         static VARIABLE_LENGTH_LOOKBEHIND: number;
 
         /**
-         * Malformed number or name after "(?(".
-         *     Since 2.16
+         * Malformed number or name after `(?(`.
+         *   Since 2.16
          */
         static MALFORMED_CONDITION: number;
 
         /**
          * Conditional group contains
-         *     more than two branches. Since 2.16
+         *   more than two branches. Since 2.16
          */
         static TOO_MANY_CONDITIONAL_BRANCHES: number;
 
         /**
-         * Assertion expected after "(?(".
-         *     Since 2.16
+         * Assertion expected after `(?(`.
+         *   Since 2.16
          */
         static ASSERTION_EXPECTED: number;
 
         /**
          * Unknown POSIX class name.
-         *     Since 2.16
+         *   Since 2.16
          */
         static UNKNOWN_POSIX_CLASS_NAME: number;
 
         /**
          * POSIX collating
-         *     elements are not supported. Since 2.16
+         *   elements are not supported. Since 2.16
          */
         static POSIX_COLLATING_ELEMENTS_NOT_SUPPORTED: number;
 
         /**
-         * Character value in "\\x{...}" sequence
-         *     is too large. Since 2.16
+         * Character value in `\x{...}` sequence
+         *   is too large. Since 2.16
          */
         static HEX_CODE_TOO_LARGE: number;
 
         /**
-         * Invalid condition "(?(0)". Since 2.16
+         * Invalid condition `(?(0)`. Since 2.16
          */
         static INVALID_CONDITION: number;
 
         /**
-         * \\C not allowed in
-         *     lookbehind assertion. Since 2.16
+         * `\C` not allowed in
+         *   lookbehind assertion. Since 2.16
          */
         static SINGLE_BYTE_MATCH_IN_LOOKBEHIND: number;
 
         /**
          * Recursive call could loop indefinitely.
-         *     Since 2.16
+         *   Since 2.16
          */
         static INFINITE_LOOP: number;
 
         /**
          * Missing terminator
-         *     in subpattern name. Since 2.16
+         *   in subpattern name. Since 2.16
          */
         static MISSING_SUBPATTERN_NAME_TERMINATOR: number;
 
         /**
          * Two named subpatterns have
-         *     the same name. Since 2.16
+         *   the same name. Since 2.16
          */
         static DUPLICATE_SUBPATTERN_NAME: number;
 
         /**
-         * Malformed "\\P" or "\\p" sequence.
-         *     Since 2.16
+         * Malformed `\P` or `\p` sequence.
+         *   Since 2.16
          */
         static MALFORMED_PROPERTY: number;
 
         /**
-         * Unknown property name after "\\P" or
-         *     "\\p". Since 2.16
+         * Unknown property name after `\P` or
+         *   `\p`. Since 2.16
          */
         static UNKNOWN_PROPERTY: number;
 
         /**
          * Subpattern name is too long
-         *     (maximum 32 characters). Since 2.16
+         *   (maximum 32 characters). Since 2.16
          */
         static SUBPATTERN_NAME_TOO_LONG: number;
 
         /**
          * Too many named subpatterns (maximum
-         *     10,000). Since 2.16
+         *   10,000). Since 2.16
          */
         static TOO_MANY_SUBPATTERNS: number;
 
         /**
-         * Octal value is greater than "\\377".
-         *     Since 2.16
+         * Octal value is greater than `\377`.
+         *   Since 2.16
          */
         static INVALID_OCTAL_VALUE: number;
 
         /**
-         * "DEFINE" group contains more
-         *     than one branch. Since 2.16
+         * `DEFINE` group contains more
+         *   than one branch. Since 2.16
          */
         static TOO_MANY_BRANCHES_IN_DEFINE: number;
 
         /**
-         * Repeating a "DEFINE" group is not allowed.
-         *     This error is never raised. Since: 2.16 Deprecated: 2.34
+         * Repeating a `DEFINE` group is not allowed.
+         *   This error is never raised. Since: 2.16 Deprecated: 2.34
          */
         static DEFINE_REPETION: number;
 
         /**
          * Inconsistent newline options.
-         *     Since 2.16
+         *   Since 2.16
          */
         static INCONSISTENT_NEWLINE_OPTIONS: number;
 
         /**
-         * "\\g" is not followed by a braced,
-         *      angle-bracketed, or quoted name or number, or by a plain number. Since: 2.16
+         * `\g` is not followed by a braced,
+         *   angle-bracketed, or quoted name or number, or by a plain number. Since: 2.16
          */
         static MISSING_BACK_REFERENCE: number;
 
         /**
-         * relative reference must not be zero. Since: 2.34
+         * Relative reference must not be
+         *   zero. Since: 2.34
          */
         static INVALID_RELATIVE_REFERENCE: number;
 
         /**
-         * the backtracing
-         *     control verb used does not allow an argument. Since: 2.34
+         * The backtracing
+         *   control verb used does not allow an argument. Since: 2.34
          */
         static BACKTRACKING_CONTROL_VERB_ARGUMENT_FORBIDDEN: number;
 
         /**
-         * unknown backtracing
-         *     control verb. Since: 2.34
+         * Unknown backtracing
+         *   control verb. Since: 2.34
          */
         static UNKNOWN_BACKTRACKING_CONTROL_VERB: number;
 
         /**
-         * number is too big in escape sequence. Since: 2.34
+         * Number is too big in escape sequence. Since: 2.34
          */
         static NUMBER_TOO_BIG: number;
 
@@ -2355,53 +2356,53 @@ export class VariantType<S extends string = any> {
 
         /**
          * In JavaScript compatibility mode,
-         *     "[" is an invalid data character. Since: 2.34
+         *   `[` is an invalid data character. Since: 2.34
          */
         static INVALID_DATA_CHARACTER: number;
 
         /**
          * different names for subpatterns of the
-         *     same number are not allowed. Since: 2.34
+         *   same number are not allowed. Since: 2.34
          */
         static EXTRA_SUBPATTERN_NAME: number;
 
         /**
-         * the backtracing control
-         *     verb requires an argument. Since: 2.34
+         * The backtracing control
+         *   verb requires an argument. Since: 2.34
          */
         static BACKTRACKING_CONTROL_VERB_ARGUMENT_REQUIRED: number;
 
         /**
-         * "\\c" must be followed by an ASCII
-         *     character. Since: 2.34
+         * `\c` must be followed by an ASCII
+         *   character. Since: 2.34
          */
         static INVALID_CONTROL_CHAR: number;
 
         /**
-         * "\\k" is not followed by a braced, angle-bracketed, or
-         *     quoted name. Since: 2.34
+         * `\k` is not followed by a braced,
+         *   angle-bracketed, or quoted name. Since: 2.34
          */
         static MISSING_NAME: number;
 
         /**
-         * "\\N" is not supported in a class. Since: 2.34
+         * `\N` is not supported in a class. Since: 2.34
          */
         static NOT_SUPPORTED_IN_CLASS: number;
 
         /**
-         * too many forward references. Since: 2.34
+         * Too many forward references. Since: 2.34
          */
         static TOO_MANY_FORWARD_REFERENCES: number;
 
         /**
-         * the name is too long in "(*MARK)", "(*PRUNE)",
-         *     "(*SKIP)", or "(*THEN)". Since: 2.34
+         * The name is too long in `(*MARK)`, `(*PRUNE)`,
+         *   `(*SKIP)`, or `(*THEN)`. Since: 2.34
          */
         static NAME_TOO_LONG: number;
 
         /**
-         * the character value in the \\u sequence is
-         *     too large. Since: 2.34
+         * The character value in the `\u`
+         *   sequence is too large. Since: 2.34
          */
         static CHARACTER_VALUE_TOO_LARGE: number;
 
@@ -3059,27 +3060,27 @@ export class VariantType<S extends string = any> {
          */
         ZERO_WIDTH_JOINER,
         /**
-         * Aksara (AK). Since: 2.80
+         * Aksara (AK).
          */
         AKSARA,
         /**
-         * Aksara Pre-Base (AP). Since: 2.80
+         * Aksara Pre-Base (AP).
          */
         AKSARA_PRE_BASE,
         /**
-         * Aksara Start (AS). Since: 2.80
+         * Aksara Start (AS).
          */
         AKSARA_START,
         /**
-         * Virama Final (VF). Since: 2.80
+         * Virama Final (VF).
          */
         VIRAMA_FINAL,
         /**
-         * Virama (VI). Since: 2.80
+         * Virama (VI).
          */
         VIRAMA,
         /**
-         * Unambiguous Hyphen (HH). Since: 2.88
+         * Unambiguous Hyphen (HH).
          */
         UNAMBIGUOUS_HYPHEN,
     }
@@ -3762,55 +3763,59 @@ export class VariantType<S extends string = any> {
          */
         MATH,
         /**
-         * Kawi. Since 2.74
+         * Kawi.
+         * 
+         * Since 2.74
          */
         KAWI,
         /**
-         * Nag Mundari. Since 2.74
+         * Nag Mundari.
+         * 
+         * Since 2.74
          */
         NAG_MUNDARI,
         /**
-         * Todhri. Since: 2.84
+         * Todhri.
          */
         TODHRI,
         /**
-         * Garay. Since: 2.84
+         * Garay.
          */
         GARAY,
         /**
-         * Tulu-Tigalari. Since: 2.84
+         * Tulu-Tigalari.
          */
         TULU_TIGALARI,
         /**
-         * Sunuwar. Since: 2.84
+         * Sunuwar.
          */
         SUNUWAR,
         /**
-         * Gurung Khema. Since: 2.84
+         * Gurung Khema.
          */
         GURUNG_KHEMA,
         /**
-         * Kirat Rai. Since: 2.84
+         * Kirat Rai.
          */
         KIRAT_RAI,
         /**
-         * Ol Onal. Since: 2.84
+         * Ol Onal.
          */
         OL_ONAL,
         /**
-         * Sidetic. Since: 2.88
+         * Sidetic.
          */
         SIDETIC,
         /**
-         * Tolong Siki. Since: 2.88
+         * Tolong Siki.
          */
         TOLONG_SIKI,
         /**
-         * Tai Yo. Since: 2.88
+         * Tai Yo.
          */
         TAI_YO,
         /**
-         * Beria Erfe. Since: 2.88
+         * Beria Erfe.
          */
         BERIA_ERFE,
     }
@@ -4061,6 +4066,10 @@ export class VariantType<S extends string = any> {
          * the user's Movies directory
          */
         DIRECTORY_VIDEOS,
+        /**
+         * The user's Projects directory.
+         */
+        DIRECTORY_PROJECTS,
         /**
          * the number of enum values
          */
@@ -5388,8 +5397,10 @@ export class VariantType<S extends string = any> {
      * 
      * If the correct value would cause overflow, plus or minus `HUGE_VAL`
      * is returned (according to the sign of the value), and `ERANGE` is
-     * stored in `errno`. If the correct value would cause underflow,
-     * zero is returned and `ERANGE` is stored in `errno`.
+     * stored in `errno`. If the correct value would cause underflow, a value
+     * whose magnitude is no greater than the smallest normalised positive number
+     * is returned; whether `ERANGE` is set is implementation-defined (it may
+     * not be set for gradual underflow where a subnormal value is returned).
      * 
      * This function resets `errno` before calling `strtod()` so that
      * you can reliably detect overflow and underflow.
@@ -8164,6 +8175,10 @@ export class VariantType<S extends string = any> {
      * schedule simultaneously for this process.  This is intended to be
      * used as a parameter to `g_thread_pool_new()` for CPU bound tasks and
      * similar cases.
+     * 
+     * On platforms where enough information is known, this will be the number of
+     * high performance cores and will not include low power ‘efficiency’ cores.
+     * Use platform specific APIs to query for low power cores if needed.
      * @returns Number of schedulable threads, always greater than 0
      * @since 2.36
      */
@@ -10997,6 +11012,15 @@ export class VariantType<S extends string = any> {
     function set_prgname(prgname: string): void;
 
     /**
+     * If `g_get_prgname()` is not set, this is the same as setting
+     * the name via `g_set_prgname()` and `true` is returned. Otherwise,
+     * does nothing and returns `false`. This is thread-safe.
+     * @param prgname the name of the program.
+     * @returns whether g_prgname was initialized by the call.
+     */
+    function set_prgname_once(prgname: string): boolean;
+
+    /**
      * Sets an environment variable. On UNIX, both the variable's name and
      * value can be arbitrary byte strings, except that the variable's name
      * cannot contain '='. On Windows, they should be in UTF-8.
@@ -11044,6 +11068,9 @@ export class VariantType<S extends string = any> {
      * guaranteed that `argvp` will be a non-empty array if this function returns
      * successfully.
      * 
+     * When constructing `command_line`, quote any filenames or potentially
+     * untrusted input using {@link GLib.shell_quote}.
+     * 
      * Free the returned vector with `g_strfreev()`.
      * @param command_line command line to parse
      * @returns `true` on success, `false` if error set
@@ -11054,8 +11081,11 @@ export class VariantType<S extends string = any> {
      * Quotes a string so that the shell (/bin/sh) will interpret the
      * quoted string to mean `unquoted_string`.
      * 
-     * If you pass a filename to the shell, for example, you should first
-     * quote it with this function.
+     * If you pass a filename or other untrusted input to {@link GLib.shell_parse_argv},
+     * you should first quote it with this function. This is sufficient to ensure
+     * untrusted input cannot ‘break out’ of the quotes. Beware: this only works
+     * because {@link GLib.shell_parse_argv} is not a real Unix shell. Quoting untrusted
+     * input is not an adequate security mechanism when using a real shell.
      * 
      * The return value must be freed with `g_free()`.
      * 
@@ -11636,6 +11666,9 @@ export class VariantType<S extends string = any> {
      * A simple version of `g_spawn_async()` that parses a command line with
      * `g_shell_parse_argv()` and passes it to `g_spawn_async()`.
      * 
+     * Filenames and potentially untrusted input in `command_line` should be quoted
+     * using {@link GLib.shell_quote}.
+     * 
      * Runs a command line in the background. Unlike `g_spawn_async()`, the
      * {@link GLib.SpawnFlags.SEARCH_PATH} flag is enabled, other flags are not. Note
      * that {@link GLib.SpawnFlags.SEARCH_PATH} can have security implications, so
@@ -11654,7 +11687,9 @@ export class VariantType<S extends string = any> {
      * 
      * See `g_spawn_sync()` for full details.
      * 
-     * The `command_line` argument will be parsed by `g_shell_parse_argv()`.
+     * The `command_line` argument will be parsed by {@link GLib.shell_parse_argv}.
+     * Filenames and potentially untrusted input should be quoted using
+     * {@link GLib.shell_quote}.
      * 
      * Unlike `g_spawn_sync()`, the {@link GLib.SpawnFlags.SEARCH_PATH} flag is enabled.
      * Note that {@link GLib.SpawnFlags.SEARCH_PATH} can have security implications, so
@@ -13259,6 +13294,21 @@ export class VariantType<S extends string = any> {
      * @returns the newly-created timeout source
      */
     function timeout_source_new(interval: number): Source;
+
+    /**
+     * Creates a new timeout source.
+     * 
+     * The source will not initially be associated with any {@link GLib.MainContext}
+     * and must be added to one with {@link GLib.Source.attach} before it will be
+     * executed.
+     * 
+     * The interval given is in terms of monotonic time, not wall clock
+     * time.  See {@link GLib.get_monotonic_time_ns}.
+     * @param interval the timeout interval in nanoseconds
+     * @returns the newly-created timeout source
+     * @since 2.90
+     */
+    function timeout_source_new_ns(interval: bigint | number): Source;
 
     /**
      * Creates a new timeout source.
@@ -15419,15 +15469,17 @@ export class VariantType<S extends string = any> {
          */
         BITS,
         /**
-         * return only value, without unit; this should
-         *     not be used together with `G_FORMAT_SIZE_LONG_FORMAT`
-         *     nor `G_FORMAT_SIZE_ONLY_UNIT`. Since: 2.74
+         * Returns only the value, without a unit.
+         * 
+         * This should not be used together with `G_FORMAT_SIZE_LONG_FORMAT` nor
+         * `G_FORMAT_SIZE_ONLY_UNIT`.
          */
         ONLY_VALUE,
         /**
-         * return only unit, without value; this should
-         *     not be used together with `G_FORMAT_SIZE_LONG_FORMAT`
-         *     nor `G_FORMAT_SIZE_ONLY_VALUE`. Since: 2.74
+         * Returns only the unit, without a value.
+         * 
+         * This should not be used together with `G_FORMAT_SIZE_LONG_FORMAT` nor
+         * `G_FORMAT_SIZE_ONLY_VALUE`.
          */
         ONLY_UNIT,
     }
@@ -15499,53 +15551,53 @@ export class VariantType<S extends string = any> {
      */
     enum IOFlags {
         /**
-         * no special flags set. Since: 2.74
+         * No special flags set.
          */
         NONE,
         /**
-         * turns on append mode, corresponds to `O_APPEND`
+         * Turns on append mode, corresponds to `O_APPEND`
          *     (see the documentation of the UNIX `open()` syscall)
          */
         APPEND,
         /**
-         * turns on nonblocking mode, corresponds to
+         * Turns on nonblocking mode, corresponds to
          *     `O_NONBLOCK`/`O_NDELAY` (see the documentation of the UNIX `open()`
          *     syscall)
          */
         NONBLOCK,
         /**
-         * indicates that the io channel is readable.
+         * Indicates that the io channel is readable.
          *     This flag cannot be changed.
          */
         IS_READABLE,
         /**
-         * indicates that the io channel is writable.
+         * Indicates that the io channel is writable.
          *     This flag cannot be changed.
          */
         IS_WRITABLE,
         /**
-         * a misspelled version of `G_IO_FLAG_IS_WRITABLE`
+         * A misspelled version of `G_IO_FLAG_IS_WRITABLE`
          *     that existed before the spelling was fixed in GLib 2.30. It is kept
          *     here for compatibility reasons. Deprecated since 2.30
          */
         IS_WRITEABLE,
         /**
-         * indicates that the io channel is seekable,
+         * Indicates that the io channel is seekable,
          *     i.e. that `g_io_channel_seek_position()` can be used on it.
          *     This flag cannot be changed.
          */
         IS_SEEKABLE,
         /**
-         * the mask that specifies all the valid flags.
+         * The mask that specifies all the valid flags.
          */
         MASK,
         /**
-         * the mask of the flags that are returned from
+         * The mask of the flags that are returned from
          *     `g_io_channel_get_flags()`
          */
         GET_MASK,
         /**
-         * the mask of the flags that the user can modify
+         * The mask of the flags that the user can modify
          *     with `g_io_channel_set_flags()`
          */
         SET_MASK,
@@ -15707,11 +15759,11 @@ export class VariantType<S extends string = any> {
      */
     enum MarkupParseFlags {
         /**
-         * No special behaviour. Since: 2.74
+         * No special behaviour.
          */
         DEFAULT_FLAGS,
         /**
-         * flag you should not use
+         * Flag you should not use
          */
         DO_NOT_USE_THIS_UNSUPPORTED_FLAG,
         /**
@@ -15810,111 +15862,111 @@ export class VariantType<S extends string = any> {
      */
     enum RegexCompileFlags {
         /**
-         * No special options set. Since: 2.74
+         * No special options set.
          */
         DEFAULT,
         /**
          * Letters in the pattern match both upper- and
-         *     lowercase letters. This option can be changed within a pattern
-         *     by a "(?i)" option setting.
+         *   lowercase letters. This option can be changed within a pattern
+         *   by a `(?i)` option setting.
          */
         CASELESS,
         /**
-         * By default, GRegex treats the strings as consisting
-         *     of a single line of characters (even if it actually contains
-         *     newlines). The "start of line" metacharacter ("^") matches only
-         *     at the start of the string, while the "end of line" metacharacter
-         *     ("$") matches only at the end of the string, or before a terminating
-         *     newline (unless {@link GLib.RegexCompileFlags.DOLLAR_ENDONLY} is set). When
-         *     {@link GLib.RegexCompileFlags.MULTILINE} is set, the "start of line" and "end of line"
-         *     constructs match immediately following or immediately before any
-         *     newline in the string, respectively, as well as at the very start
-         *     and end. This can be changed within a pattern by a "(?m)" option
-         *     setting.
+         * By default, {@link GLib.Regex} treats the strings as consisting
+         *   of a single line of characters (even if it actually contains
+         *   newlines). The ‘start of line’ metacharacter (`^`) matches only
+         *   at the start of the string, while the ‘end of line’ metacharacter
+         *   (`$`) matches only at the end of the string, or before a terminating
+         *   newline (unless {@link GLib.RegexCompileFlags.DOLLAR_ENDONLY} is set). When
+         *   {@link GLib.RegexCompileFlags.MULTILINE} is set, the ‘start of line’ and
+         *   ‘end of line’ constructs match immediately following or immediately before
+         *   any newline in the string, respectively, as well as at the very start
+         *   and end. This can be changed within a pattern by a `(?m)` option
+         *   setting.
          */
         MULTILINE,
         /**
-         * A dot metacharacter (".") in the pattern matches all
-         *     characters, including newlines. Without it, newlines are excluded.
-         *     This option can be changed within a pattern by a ("?s") option setting.
+         * A dot metacharacter (`.`) in the pattern matches all
+         *   characters, including newlines. Without it, newlines are excluded.
+         *   This option can be changed within a pattern by a `(?s)` option setting.
          */
         DOTALL,
         /**
          * Whitespace data characters in the pattern are
-         *     totally ignored except when escaped or inside a character class.
-         *     Whitespace does not include the VT character (code 11). In addition,
-         *     characters between an unescaped "#" outside a character class and
-         *     the next newline character, inclusive, are also ignored. This can
-         *     be changed within a pattern by a "(?x)" option setting.
+         *   totally ignored except when escaped or inside a character class.
+         *   Whitespace does not include the VT character (code 11). In addition,
+         *   characters between an unescaped `#` outside a character class and
+         *   the next newline character, inclusive, are also ignored. This can
+         *   be changed within a pattern by a `(?x)` option setting.
          */
         EXTENDED,
         /**
-         * The pattern is forced to be "anchored", that is,
-         *     it is constrained to match only at the first matching point in the
-         *     string that is being searched. This effect can also be achieved by
-         *     appropriate constructs in the pattern itself such as the "^"
-         *     metacharacter.
+         * The pattern is forced to be ‘anchored’, that is,
+         *   it is constrained to match only at the first matching point in the
+         *   string that is being searched. This effect can also be achieved by
+         *   appropriate constructs in the pattern itself such as the `^`
+         *   metacharacter.
          */
         ANCHORED,
         /**
-         * A dollar metacharacter ("$") in the pattern
-         *     matches only at the end of the string. Without this option, a
-         *     dollar also matches immediately before the final character if
-         *     it is a newline (but not before any other newlines). This option
-         *     is ignored if {@link GLib.RegexCompileFlags.MULTILINE} is set.
+         * A dollar metacharacter (`$`) in the pattern
+         *   matches only at the end of the string. Without this option, a
+         *   dollar also matches immediately before the final character if
+         *   it is a newline (but not before any other newlines). This option
+         *   is ignored if {@link GLib.RegexCompileFlags.MULTILINE} is set.
          */
         DOLLAR_ENDONLY,
         /**
-         * Inverts the "greediness" of the quantifiers so that
-         *     they are not greedy by default, but become greedy if followed by "?".
-         *     It can also be set by a "(?U)" option setting within the pattern.
+         * Inverts the ‘greediness’ of the quantifiers so that
+         *   they are not greedy by default, but become greedy if followed by `?`.
+         *   It can also be set by a `(?U)` option setting within the pattern.
          */
         UNGREEDY,
         /**
          * Usually strings must be valid UTF-8 strings, using this
-         *     flag they are considered as a raw sequence of bytes.
+         *   flag they are considered as a raw sequence of bytes.
          */
         RAW,
         /**
          * Disables the use of numbered capturing
-         *     parentheses in the pattern. Any opening parenthesis that is not
-         *     followed by "?" behaves as if it were followed by "?:" but named
-         *     parentheses can still be used for capturing (and they acquire numbers
-         *     in the usual way).
+         *   parentheses in the pattern. Any opening parenthesis that is not
+         *   followed by `?` behaves as if it were followed by `?:` but named
+         *   parentheses can still be used for capturing (and they acquire numbers
+         *   in the usual way).
          */
         NO_AUTO_CAPTURE,
         /**
          * Since 2.74 and the port to pcre2, requests JIT
-         *     compilation, which, if the just-in-time compiler is available, further
-         *     processes a compiled pattern into machine code that executes much
-         *     faster. However, it comes at the cost of extra processing before the
-         *     match is performed, so it is most beneficial to use this when the same
-         *     compiled pattern is used for matching many times. Before 2.74 this
-         *     option used the built-in non-JIT optimizations in pcre1.
+         *   compilation, which, if the just-in-time compiler is available, further
+         *   processes a compiled pattern into machine code that executes much
+         *   faster. However, it comes at the cost of extra processing before the
+         *   match is performed, so it is most beneficial to use this when the same
+         *   compiled pattern is used for matching many times. Before 2.74 this
+         *   option used the built-in non-JIT optimizations in pcre1.
          */
         OPTIMIZE,
         /**
          * Limits an unanchored pattern to match before (or at) the
-         *     first newline. Since: 2.34
+         *   first newline. Since: 2.34
          */
         FIRSTLINE,
         /**
          * Names used to identify capturing subpatterns need not
-         *     be unique. This can be helpful for certain types of pattern when it
-         *     is known that only one instance of the named subpattern can ever be
-         *     matched.
+         *   be unique. This can be helpful for certain types of pattern when it
+         *   is known that only one instance of the named subpattern can ever be
+         *   matched.
          */
         DUPNAMES,
         /**
          * Usually any newline character or character sequence is
-         *     recognized. If this option is set, the only recognized newline character
-         *     is '\r'.
+         *   recognized. If this option is set, the only recognized newline character
+         *   is `\r`.
          */
         NEWLINE_CR,
         /**
          * Usually any newline character or character sequence is
-         *     recognized. If this option is set, the only recognized newline character
-         *     is '\n'.
+         *   recognized. If this option is set, the only recognized newline character
+         *   is `\n`.
          */
         NEWLINE_LF,
         NEWLINE_RESERVED1,
@@ -15928,111 +15980,118 @@ export class VariantType<S extends string = any> {
      */
     enum RegexMatchFlags {
         /**
-         * No special options set. Since: 2.74
+         * No special options set.
          */
         DEFAULT,
         /**
-         * The pattern is forced to be "anchored", that is,
-         *     it is constrained to match only at the first matching point in the
-         *     string that is being searched. This effect can also be achieved by
-         *     appropriate constructs in the pattern itself such as the "^"
-         *     metacharacter.
+         * The pattern is forced to be ‘anchored’, that is,
+         *   it is constrained to match only at the first matching point in the
+         *   string that is being searched. This effect can also be achieved by
+         *   appropriate constructs in the pattern itself such as the `^`
+         *   metacharacter.
          */
         ANCHORED,
         /**
          * Specifies that first character of the string is
-         *     not the beginning of a line, so the circumflex metacharacter should
-         *     not match before it. Setting this without {@link GLib.RegexCompileFlags.MULTILINE} (at
-         *     compile time) causes circumflex never to match. This option affects
-         *     only the behaviour of the circumflex metacharacter, it does not
-         *     affect "\A".
+         *   not the beginning of a line, so the circumflex metacharacter should
+         *   not match before it. Setting this without
+         *   {@link GLib.RegexCompileFlags.MULTILINE} (at
+         *   compile time) causes circumflex never to match. This option affects
+         *   only the behaviour of the circumflex metacharacter, it does not
+         *   affect `\A`.
          */
         NOTBOL,
         /**
          * Specifies that the end of the subject string is
-         *     not the end of a line, so the dollar metacharacter should not match
-         *     it nor (except in multiline mode) a newline immediately before it.
-         *     Setting this without {@link GLib.RegexCompileFlags.MULTILINE} (at compile time) causes
-         *     dollar never to match. This option affects only the behaviour of
-         *     the dollar metacharacter, it does not affect "\Z" or "\z".
+         *   not the end of a line, so the dollar metacharacter should not match
+         *   it nor (except in multiline mode) a newline immediately before it.
+         *   Setting this without {@link GLib.RegexCompileFlags.MULTILINE}
+         *   (at compile time) causes dollar never to match. This option affects only
+         *   the behaviour of the dollar metacharacter, it does not affect `\Z` or `\z`.
          */
         NOTEOL,
         /**
          * An empty string is not considered to be a valid
-         *     match if this option is set. If there are alternatives in the pattern,
-         *     they are tried. If all the alternatives match the empty string, the
-         *     entire match fails. For example, if the pattern "a?b?" is applied to
-         *     a string not beginning with "a" or "b", it matches the empty string
-         *     at the start of the string. With this flag set, this match is not
-         *     valid, so GRegex searches further into the string for occurrences
-         *     of "a" or "b".
+         *   match if this option is set. If there are alternatives in the pattern,
+         *   they are tried. If all the alternatives match the empty string, the
+         *   entire match fails. For example, if the pattern `a?b?` is applied to
+         *   a string not beginning with `a` or `b`, it matches the empty string
+         *   at the start of the string. With this flag set, this match is not
+         *   valid, so {@link GLib.Regex} searches further into the string for
+         *   occurrences of `a` or `b`.
          */
         NOTEMPTY,
         /**
          * Turns on the partial matching feature, for more
-         *     documentation on partial matching see `g_match_info_is_partial_match()`.
+         *   documentation on partial matching see
+         *   {@link GLib.MatchInfo.is_partial_match}.
          */
         PARTIAL,
         /**
          * Overrides the newline definition set when
-         *     creating a new {@link GLib.Regex}, setting the '\r' character as line terminator.
+         *   creating a new {@link GLib.Regex}, setting the `\r` character as line
+         *   terminator.
          */
         NEWLINE_CR,
         /**
          * Overrides the newline definition set when
-         *     creating a new {@link GLib.Regex}, setting the '\n' character as line terminator.
+         *   creating a new {@link GLib.Regex}, setting the `\n` character as line
+         *   terminator.
          */
         NEWLINE_LF,
         /**
          * Overrides the newline definition set when
-         *     creating a new {@link GLib.Regex}, setting the '\r\n' characters sequence as line terminator.
+         *   creating a new {@link GLib.Regex}, setting the `\r\n` character sequence as
+         *   line terminator.
          */
         NEWLINE_CRLF,
         /**
          * Overrides the newline definition set when
-         *     creating a new {@link GLib.Regex}, any Unicode newline sequence
-         *     is recognised as a newline. These are '\r', '\n' and '\rn', and the
-         *     single characters U+000B LINE TABULATION, U+000C FORM FEED (FF),
-         *     U+0085 NEXT LINE (NEL), U+2028 LINE SEPARATOR and
-         *     U+2029 PARAGRAPH SEPARATOR.
+         *   creating a new {@link GLib.Regex}, any Unicode newline sequence
+         *   is recognised as a newline. These are `\r`, `\n` and `\r\n`, and the
+         *   single characters U+000B LINE TABULATION, U+000C FORM FEED (FF),
+         *   U+0085 NEXT LINE (NEL), U+2028 LINE SEPARATOR and
+         *   U+2029 PARAGRAPH SEPARATOR.
          */
         NEWLINE_ANY,
         /**
          * Overrides the newline definition set when
-         *     creating a new {@link GLib.Regex}; any '\r', '\n', or '\r\n' character sequence
-         *     is recognized as a newline. Since: 2.34
+         *   creating a new {@link GLib.Regex}; any `\r`, `\n`, or `\r\n` character
+         *   sequence is recognized as a newline. Since: 2.34
          */
         NEWLINE_ANYCRLF,
         /**
-         * Overrides the newline definition for "\R" set when
-         *     creating a new {@link GLib.Regex}; only '\r', '\n', or '\r\n' character sequences
-         *     are recognized as a newline by "\R". Since: 2.34
+         * Overrides the newline definition for `\R` set when
+         *   creating a new {@link GLib.Regex}; only `\r`, `\n`, or `\r\n` character
+         *   sequences are recognized as a newline by `\R`. Since: 2.34
          */
         BSR_ANYCRLF,
         /**
-         * Overrides the newline definition for "\R" set when
-         *     creating a new {@link GLib.Regex}; any Unicode newline character or character sequence
-         *     are recognized as a newline by "\R". These are '\r', '\n' and '\rn', and the
-         *     single characters U+000B LINE TABULATION, U+000C FORM FEED (FF),
-         *     U+0085 NEXT LINE (NEL), U+2028 LINE SEPARATOR and
-         *     U+2029 PARAGRAPH SEPARATOR. Since: 2.34
+         * Overrides the newline definition for `\R` set when
+         *   creating a new {@link GLib.Regex}; any Unicode newline characters or
+         *   character sequences are recognized as a newline by `\R`. These are `\r`,
+         *   `\n` and `\r\n`, and the single characters U+000B LINE TABULATION,
+         *   U+000C FORM FEED (FF), U+0085 NEXT LINE (NEL), U+2028 LINE SEPARATOR and
+         *   U+2029 PARAGRAPH SEPARATOR. Since: 2.34
          */
         BSR_ANY,
         /**
-         * An alias for {@link GLib.RegexMatchFlags.PARTIAL}. Since: 2.34
+         * An alias for {@link GLib.RegexMatchFlags.PARTIAL}.
+         *   Since: 2.34
          */
         PARTIAL_SOFT,
         /**
-         * Turns on the partial matching feature. In contrast to
-         *     to {@link GLib.RegexMatchFlags.PARTIAL_SOFT}, this stops matching as soon as a partial match
-         *     is found, without continuing to search for a possible complete match. See
-         *     `g_match_info_is_partial_match()` for more information. Since: 2.34
+         * Turns on the partial matching feature. In
+         *   contrast to {@link GLib.RegexMatchFlags.PARTIAL_SOFT}, this stops matching
+         *   as soon as a partial match is found, without continuing to search for a
+         *   possible complete match. See {@link GLib.MatchInfo.is_partial_match} for
+         *   more information. Since: 2.34
          */
         PARTIAL_HARD,
         /**
-         * Like {@link GLib.RegexMatchFlags.NOTEMPTY}, but only applied to
-         *     the start of the matched string. For anchored
-         *     patterns this can only happen for pattern containing "\K". Since: 2.34
+         * Like {@link GLib.RegexMatchFlags.NOTEMPTY},
+         *   but only applied to the start of the matched string. For anchored
+         *   patterns this can only happen for pattern containing `\K`. Since: 2.34
          */
         NOTEMPTY_ATSTART,
     }
@@ -16121,7 +16180,7 @@ export class VariantType<S extends string = any> {
      */
     enum TestSubprocessFlags {
         /**
-         * Default behaviour. Since: 2.74
+         * Default behaviour.
          */
         DEFAULT,
         /**
@@ -16161,7 +16220,7 @@ export class VariantType<S extends string = any> {
      */
     enum TestTrapFlags {
         /**
-         * Default behaviour. Since: 2.74
+         * Default behaviour.
          */
         DEFAULT,
         /**
@@ -18829,19 +18888,29 @@ export class VariantType<S extends string = any> {
         add_years(years: number): DateTime | null;
 
         /**
-         * A comparison function for `GDateTimes` that is suitable
-         * as a {@link GLib.CompareFunc}. Both `GDateTimes` must be non-`null`.
-         * @param dt2 second {@link GLib.DateTime} to compare
-         * @returns -1, 0 or 1 if `dt1` is less than, equal to or greater   than `dt2`.
+         * A comparison function for date-times that is suitable
+         * as a {@link GLib.CompareFunc}.
+         * 
+         * This effectively converts both date-times to the same time zone before
+         * comparing, so date-times in different time zones can compare equal if they
+         * refer to the same instant. See {@link GLib.DateTime.difference}.
+         * 
+         * Both date-times must be non-`NULL`.
+         * @param dt2 second date-time to compare
+         * @returns `-1`, `0` or `1` if `dt1` is less than, equal to or greater than `dt2`
          */
         compare(dt2: DateTime): number;
 
         /**
-         * Calculates the difference in time between `end` and `begin`.  The
-         * {@link GLib.TimeSpan} that is returned is effectively `end` - `begin` (ie:
-         * positive if the first parameter is larger).
-         * @param begin a {@link GLib.DateTime}
-         * @returns the difference between the two {@link GLib.DateTime}, as a time   span expressed in microseconds.
+         * Calculates the difference in time between `end` and `begin`.
+         * 
+         * The time span that is returned is effectively `end` - `begin` (positive if the
+         * first parameter is larger).
+         * 
+         * This effectively converts both date-times to the same time zone before
+         * calculating the difference.
+         * @param begin another date-time
+         * @returns the difference between the two date-times, as a time   span expressed in microseconds
          */
         difference(begin: DateTime): TimeSpan;
 
@@ -18850,6 +18919,11 @@ export class VariantType<S extends string = any> {
          * 
          * Equal here means that they represent the same moment after converting
          * them to the same time zone.
+         * 
+         * If you need to check that the date-times are in the same time zone as well
+         * as referring to the same instant in time, additionally compare the values
+         * returned by {@link GLib.TimeZone.get_offset} for the time zones for the two
+         * date-times.
          * @param dt2 a {@link GLib.DateTime}
          * @returns `true` if `dt1` and `dt2` are equal
          */
@@ -19835,88 +19909,36 @@ export class VariantType<S extends string = any> {
 
 
     /**
-     * HMACs should be used when producing a cookie or hash based on data
-     * and a key. Simple mechanisms for using SHA1 and other algorithms to
-     * digest a key and data together are vulnerable to various security
-     * issues.
-     * [HMAC](http://en.wikipedia.org/wiki/HMAC)
-     * uses algorithms like SHA1 in a secure way to produce a digest of a
-     * key and data.
-     * 
-     * Both the key and data are arbitrary byte arrays of bytes or characters.
-     * 
-     * Support for HMAC Digests has been added in GLib 2.30, and support for SHA-512
-     * in GLib 2.42. Support for SHA-384 was added in GLib 2.52.
-     * 
-     * To create a new {@link GLib.Hmac}, use {@link GLib.Hmac.new}. To free a {@link GLib.Hmac}, use
-     * {@link GLib.Hmac.unref}.
      * @gir-type Struct
-     * @since 2.30
      */
     class Hmac {
         static $gtype: GObject.GType<Hmac>;
 
         // Constructors
-        constructor(digest_type: ChecksumType, key: Uint8Array | string);
+        constructor(digest_type: ChecksumType, key: number, key_len: bigint | number);
 
-        static ["new"](digest_type: ChecksumType, key: Uint8Array | string): Hmac;
+        static ["new"](digest_type: ChecksumType, key: number, key_len: bigint | number): Hmac;
 
         // Methods
-        /**
-         * Copies a {@link GLib.Hmac}. If `hmac` has been closed, by calling
-         * `g_hmac_get_string()` or `g_hmac_get_digest()`, the copied
-         * HMAC will be closed as well.
-         * @returns the copy of the passed {@link GLib.Hmac}. Use `g_hmac_unref()`   when finished using it.
-         */
         copy(): Hmac;
 
         /**
-         * Gets the digest from `checksum` as a raw binary array and places it
-         * into `buffer`. The size of the digest depends on the type of checksum.
-         * 
-         * Once this function has been called, the {@link GLib.Hmac} is closed and can
-         * no longer be updated with `g_checksum_update()`.
-         * @param buffer output buffer
+         * @param buffer 
+         * @param digest_len 
          */
-        get_digest(buffer: Uint8Array | string): void;
+        get_digest(buffer: number, digest_len: bigint | number): void;
 
-        /**
-         * Gets the HMAC as a hexadecimal string.
-         * 
-         * Once this function has been called the {@link GLib.Hmac} can no longer be
-         * updated with `g_hmac_update()`.
-         * 
-         * The hexadecimal characters will be lower case.
-         * @returns the hexadecimal representation of the HMAC. The   returned string is owned by the HMAC and should not be modified   or freed.
-         */
         get_string(): string;
 
-        /**
-         * Atomically increments the reference count of `hmac` by one.
-         * 
-         * This function is MT-safe and may be called from any thread.
-         * @returns the passed in {@link GLib.Hmac}.
-         */
         ref(): Hmac;
 
-        /**
-         * Atomically decrements the reference count of `hmac` by one.
-         * 
-         * If the reference count drops to 0, all keys and values will be
-         * destroyed, and all memory allocated by the hash table is released.
-         * This function is MT-safe and may be called from any thread.
-         * Frees the memory allocated for `hmac`.
-         */
         unref(): void;
 
         /**
-         * Feeds `data` into an existing {@link GLib.Hmac}.
-         * 
-         * The HMAC must still be open, that is `g_hmac_get_string()` or
-         * `g_hmac_get_digest()` must not have been called on `hmac`.
-         * @param data buffer used to compute the checksum
+         * @param data 
+         * @param length 
          */
-        update(data: Uint8Array | string): void;
+        update(data: number, length: bigint | number): void;
     }
 
 
@@ -20941,6 +20963,83 @@ export class VariantType<S extends string = any> {
         load_from_file(file: string, flags: KeyFileFlags): boolean;
 
         /**
+         * Evaluates and merges configuration key/values from multiple Unix directories into a single key file.
+         * 
+         * This function reads and merges all available configuration files based on the rules defined by
+         * the [UAPI Configuration Files Specification](https://github.com/uapi-group/specifications/blob/main/specs/configuration_files_specification.md) (version 1).
+         * 
+         * This API is primarily intended for system daemons or CLI tools that need to load systemd-style
+         * configuration files spread across vendor and customization directories. User applications
+         * should generally use [`GSettings`](../gio/class.Settings.html) instead to manage user preferences.
+         * 
+         * ### Directory Layout Guidance
+         * When choosing paths for `etc_subdir` and `usr_subdir`, you should prefer using your build
+         * system's standard configuration variables (such as `$sysconfdir` and `$libdir`) rather
+         * than hard-coding absolute paths. For context, on a standard Linux layout, `etc_subdir`
+         * typically points to administrative overrides (e.g., `/etc`), `run_subdir` to /run while
+         * `usr_subdir` points to the vendor defaults (e.g., `/usr/lib` or `/usr/share`). Passing `NULL`
+         * will fall back to platform-specific defaults where appropriate.
+         * 
+         * ### Relationship to XDG Base Directory Specification
+         * Note that this function operates independently of the
+         * [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/)
+         * and {@link GLib.get_system_config_dirs}. While XDG directories (like `$XDG_CONFIG_DIRS`)
+         * are intended to manage desktop session applications and user-facing environments, this
+         * API is strictly designed for low-level system-wide components following the UAPI
+         * specification. Mixing the two concepts should be avoided.
+         * 
+         * Note that this function is synchronous and blocking. Because it may load an arbitrary amount
+         * of files, it is best suited for application startup or non-interactive environments. If called
+         * from a user-interactive UI thread, you must handle asynchronicity yourself if needed.
+         * 
+         * If no file for parsing has been found, {@link GLib.KeyFileError.NOT_FOUND} is returned.
+         * If files have been found but the OS returns an error when opening or reading a
+         * file, a {@link GLib.FileError} is returned. If there is a problem parsing
+         * files, a {@link GLib.KeyFileError} is returned.
+         * 
+         * 
+         * The following example parses files in following order:
+         * 
+         * - `<SYSCONFDIR>/project/mydaemon.conf`
+         * - `/run/project/mydaemon.conf` (if <SYSCONFDIR>/project/mydaemon.conf is not defined)
+         * - `<LIBDIR>/project/mydaemon.conf`
+         *   (if `<SYSCONFDIR>/project/mydaemon.conf` and `/run/project/mydaemon.conf are not defined`)
+         * - valid drop-ins in `<SYSCONFDIR>/project/mydaemon.conf.d/`, `/run/project/mydaemon.conf.d/`, `<LIBDIR>/project/mydaemon.conf.d/`
+         * 
+         * ```
+         * g_autoptr(GKeyFile) kf = g_key_file_new ();
+         * g_autoptr(GError) local_error = NULL;
+         * 
+         * // Using build-configured paths or defaults instead of hardcoded strings
+         * gboolean success = g_key_file_load_unix_configurations (kf,
+         *                                                         "my-daemon",
+         *                                                         SYSCONFDIR,
+         *                                                         RUNDIR,
+         *                                                         LIBDIR,
+         *                                                         "mydaemon",
+         *                                                         "conf",
+         *                                                         G_KEY_FILE_NONE,
+         *                                                         &local_error);
+         * if (!success)
+         *   {
+         *     g_warning ("Failed to load configuration: %s", local_error->message);
+         *     return;
+         *   }
+         * 
+         * g_autofree char *val = g_key_file_get_string (kf, "Management", "Setting", NULL);
+         * ```
+         * @param project name of the project used as subdirectory
+         * @param etc_subdir directory path for administrative configuration files
+         * @param run_subdir directory path for ephemeral overrides
+         * @param usr_subdir directory path for vendor-defined settings
+         * @param config_name basename of the configuration file
+         * @param config_suffix suffix of the configuration file
+         * @param flags flags from {@link GLib.KeyFileFlags}
+         * @returns true on success, false otherwise
+         */
+        load_unix_configurations(project: string | null, etc_subdir: string | null, run_subdir: string | null, usr_subdir: string | null, config_name: string, config_suffix: string | null, flags: KeyFileFlags): boolean;
+
+        /**
          * Increases the reference count of `key_file`.
          * @returns the same `key_file`.
          */
@@ -21847,6 +21946,28 @@ export class VariantType<S extends string = any> {
         free(): void;
 
         /**
+         * Retrieves the start and end positions of an attribute assignment
+         * in a start tag.
+         * 
+         * This function can be used in the `start_element` callback to
+         * obtain location information for error reporting.
+         * 
+         * Calling it outside of the `start_element` callback
+         * has undefined results.
+         * 
+         * Note that `line_number` and `char_number` are intended for human
+         * readable error messages and are therefore 1-based and in Unicode
+         * characters. `offset` on the other hand is meant for programmatic
+         * use, and thus is 0-based and in bytes.
+         * 
+         * The information is meant to accompany the values returned by
+         * {@link GLib.MarkupParseContext.get_position}, and comes with the
+         * same accuracy guarantees.
+         * @param attr the index of the attribute to query
+         */
+        get_attribute_position(attr: number): [number, number, number, number, number, number];
+
+        /**
          * Retrieves the name of the currently open element.
          * 
          * If called from the start_element or end_element handlers this will
@@ -21896,6 +22017,8 @@ export class VariantType<S extends string = any> {
          * 
          * This function can be used in the `start_element` or `end_element`
          * callbacks to obtain location information for error reporting.
+         * 
+         * Calling it outside of these callbacks has undefined results.
          * 
          * Note that `line_number` and `char_number` are intended for human
          * readable error messages and are therefore 1-based and in Unicode
@@ -22113,8 +22236,8 @@ export class VariantType<S extends string = any> {
 
 
     /**
-     * A GMatchInfo is an opaque struct used to return information about
-     * matches.
+     * An opaque struct used to return information about matches to a
+     * {@link GLib.Regex}.
      * @gir-type Struct
      */
     abstract class MatchInfo {
@@ -22152,6 +22275,8 @@ export class VariantType<S extends string = any> {
          * If `match_num` is a valid sub pattern but it didn't match anything
          * (e.g. sub pattern 1, matching "b" against "(a)?b") then an empty
          * string is returned.
+         * When a partial match is reported via `g_match_info_is_partial_match()`
+         * only the full text of the match can be queried (`match_num` must be `0`).
          * 
          * If the match was obtained using the DFA algorithm, that is using
          * `g_regex_match_all()` or `g_regex_match_all_full()`, the retrieved
@@ -22174,6 +22299,9 @@ export class VariantType<S extends string = any> {
          * 
          * If a sub pattern didn't match anything (e.g. sub pattern 1, matching
          * "b" against "(a)?b") then an empty string is inserted.
+         * 
+         * When a partial match is reported via `g_match_info_is_partial_match()`
+         * only the full text of the match will be returned, i.e. an array of size 1.
          * 
          * If the last match was obtained using the DFA algorithm, that is using
          * `g_regex_match_all()` or `g_regex_match_all_full()`, the retrieved
@@ -22221,6 +22349,8 @@ export class VariantType<S extends string = any> {
          * 
          * Valid values for `match_num` are `0` for the full text of the match,
          * `1` for the first paren set, `2` for the second, and so on.
+         * When a partial match is reported via `g_match_info_is_partial_match()`
+         * only the full text of the match can be queried (`match_num` must be `0`).
          * 
          * As `end_pos` is set to the byte after the final byte of the match (on success),
          * the length of the match can be calculated as `end_pos - start_pos`.
@@ -22491,6 +22621,10 @@ export class VariantType<S extends string = any> {
          * 
          * There were formerly some restrictions on the pattern for partial matching.
          * The restrictions no longer apply.
+         * 
+         * If the match was partial `g_match_info_fetch()`, `g_match_info_fetch_pos()`
+         * and `g_match_info_fetch_all()` can be called to retrieve the text and positions
+         * of the entire match, i.e. only for sub expression `0`.
          * 
          * See pcrepartial(3) for more information on partial matching.
          * @returns `true` if the match was partial, `false` otherwise
@@ -24590,11 +24724,12 @@ export class VariantType<S extends string = any> {
          * you use any {@link GLib.MatchInfo} method (except `g_match_info_free()`) after
          * freeing or modifying `string` then the behaviour is undefined.
          * @param string the string to scan for matches
+         * @param string_len the length of `string`, in bytes, or -1 if `string` is nul-terminated
          * @param start_position starting index of the string to match, in bytes
          * @param match_options match options
          * @returns `true` is the string matched, `false` otherwise
          */
-        match_all_full(string: string[], start_position: number, match_options: RegexMatchFlags): [boolean, MatchInfo | null];
+        match_all_full(string: string, string_len: bigint | number, start_position: number, match_options: RegexMatchFlags): [boolean, MatchInfo | null];
 
         /**
          * Scans for a match in `string` for the pattern in `regex`.
@@ -24651,11 +24786,12 @@ export class VariantType<S extends string = any> {
          * ```
          * 
          * @param string the string to scan for matches
+         * @param string_len the length of `string`, in bytes, or -1 if `string` is nul-terminated
          * @param start_position starting index of the string to match, in bytes
          * @param match_options match options
          * @returns `true` is the string matched, `false` otherwise
          */
-        match_full(string: string[], start_position: number, match_options: RegexMatchFlags): [boolean, MatchInfo | null];
+        match_full(string: string, string_len: bigint | number, start_position: number, match_options: RegexMatchFlags): [boolean, MatchInfo | null];
 
         /**
          * Increases reference count of `regex` by 1.
@@ -24675,11 +24811,11 @@ export class VariantType<S extends string = any> {
          * 
          * There are also escapes that changes the case of the following text:
          * 
-         * - \l: Convert to lower case the next character
-         * - \u: Convert to upper case the next character
-         * - \L: Convert to lower case till \E
-         * - \U: Convert to upper case till \E
-         * - \E: End case modification
+         * - `\l`: Convert to lower case the next character
+         * - `\u`: Convert to upper case the next character
+         * - `\L`: Convert to lower case until the next `\E`
+         * - `\U`: Convert to upper case until the next `\E`
+         * - `\E`: End case modification
          * 
          * If you do not need to use backreferences use `g_regex_replace_literal()`.
          * 
@@ -24689,14 +24825,15 @@ export class VariantType<S extends string = any> {
          * 
          * Setting `start_position` differs from just passing over a shortened
          * string and setting {@link GLib.RegexMatchFlags.NOTBOL} in the case of a pattern that
-         * begins with any kind of lookbehind assertion, such as "\b".
+         * begins with any kind of lookbehind assertion, such as `"\b"`.
          * @param string the string to perform matches against
+         * @param string_len the length of `string`, in bytes, or -1 if `string` is nul-terminated
          * @param start_position starting index of the string to match, in bytes
          * @param replacement text to replace each match with
          * @param match_options options for the match
          * @returns a newly allocated string containing the replacements
          */
-        replace(string: string[], start_position: number, replacement: string, match_options: RegexMatchFlags): string;
+        replace(string: string, string_len: bigint | number, start_position: number, replacement: string, match_options: RegexMatchFlags): string;
 
         /**
          * Replaces occurrences of the pattern in regex with the output of
@@ -24747,12 +24884,13 @@ export class VariantType<S extends string = any> {
          * ```
          * 
          * @param string string to perform matches against
+         * @param string_len the length of `string`, in bytes, or -1 if `string` is nul-terminated
          * @param start_position starting index of the string to match, in bytes
          * @param match_options options for the match
          * @param _eval a function to call for each match
          * @returns a newly allocated string containing the replacements
          */
-        replace_eval(string: string[], start_position: number, match_options: RegexMatchFlags, _eval: RegexEvalCallback): string;
+        replace_eval(string: string, string_len: bigint | number, start_position: number, match_options: RegexMatchFlags, _eval: RegexEvalCallback): string;
 
         /**
          * Replaces all occurrences of the pattern in `regex` with the
@@ -24764,12 +24902,13 @@ export class VariantType<S extends string = any> {
          * case of a pattern that begins with any kind of lookbehind
          * assertion, such as "\b".
          * @param string the string to perform matches against
+         * @param string_len the length of `string`, in bytes, or -1 if `string` is nul-terminated
          * @param start_position starting index of the string to match, in bytes
          * @param replacement text to replace each match with
          * @param match_options options for the match
          * @returns a newly allocated string containing the replacements
          */
-        replace_literal(string: string[], start_position: number, replacement: string, match_options: RegexMatchFlags): string;
+        replace_literal(string: string, string_len: bigint | number, start_position: number, replacement: string, match_options: RegexMatchFlags): string;
 
         /**
          * Breaks the string on the pattern, and returns an array of the tokens.
@@ -24818,12 +24957,13 @@ export class VariantType<S extends string = any> {
          * string and setting {@link GLib.RegexMatchFlags.NOTBOL} in the case of a pattern
          * that begins with any kind of lookbehind assertion, such as "\b".
          * @param string the string to split with the pattern
+         * @param string_len the length of `string`, in bytes, or -1 if `string` is nul-terminated
          * @param start_position starting index of the string to match, in bytes
          * @param match_options match time option flags
          * @param max_tokens the maximum number of tokens to split `string` into.   If this is less than 1, the string is split completely
          * @returns a `null`-terminated gchar ** array. Free it using `g_strfreev()`
          */
-        split_full(string: string[], start_position: number, match_options: RegexMatchFlags, max_tokens: number): string[];
+        split_full(string: string, string_len: bigint | number, start_position: number, match_options: RegexMatchFlags, max_tokens: number): string[];
 
         /**
          * Decreases reference count of `regex` by 1. When reference count drops
@@ -25838,6 +25978,14 @@ export class VariantType<S extends string = any> {
         attach(context: MainContext | null): number;
 
         /**
+         * Unsets any previously set ready time.
+         * 
+         * If the source does not have a ready time set, this function
+         * does nothing.
+         */
+        clear_ready_time(): void;
+
+        /**
          * Removes a source from its {@link GLib.MainContext}, if any, and marks it as
          * destroyed.
          * 
@@ -25944,6 +26092,18 @@ export class VariantType<S extends string = any> {
         get_ready_time(): number;
 
         /**
+         * Gets the ‘ready time’ of `source`, as set by
+         * {@link GLib.Source.set_ready_time_ns}. If no ready time has been set
+         * or it has been cleared via method@GLib.Source.clear_ready_time], this
+         * function returns false.
+         * 
+         * Any time before or equal to the current monotonic time (including zero)
+         * is an indication that the source will fire immediately.
+         * @returns true if the source has a ready time set.
+         */
+        get_ready_time_ns(): [boolean, number];
+
+        /**
          * Gets the time to be used when checking this source.
          * 
          * The advantage of
@@ -25956,6 +26116,20 @@ export class VariantType<S extends string = any> {
          * @returns the monotonic time in microseconds
          */
         get_time(): number;
+
+        /**
+         * Gets the time to be used when checking this source.
+         * 
+         * The advantage of calling this function over calling
+         * {@link GLib.get_monotonic_time_ns} directly is
+         * that when checking multiple sources, GLib can cache a single value
+         * instead of having to repeatedly get the system monotonic time.
+         * 
+         * The time here is the system monotonic time, if available, or some
+         * other reasonable alternative otherwise.  See {@link GLib.get_monotonic_time_ns}.
+         * @returns the monotonic time in nanoseconds
+         */
+        get_time_ns(): number;
 
         /**
          * Returns whether `source` has been destroyed.
@@ -26226,6 +26400,8 @@ export class VariantType<S extends string = any> {
          * 
          * If `ready_time` is `-1` then the source is never woken up on the basis
          * of the passage of time.
+         * Since GLib 2.90 {@link GLib.Source.clear_ready_time} should be used
+         * instead for this purpose.
          * 
          * Dispatching the source does not reset the ready time.  You should do
          * so yourself, from the source dispatch function.
@@ -26241,9 +26417,37 @@ export class VariantType<S extends string = any> {
          * 
          * This API is only intended to be used by implementations of {@link GLib.Source}.
          * Do not call this API on a {@link GLib.Source} that you did not create.
-         * @param ready_time the monotonic time at which the source will be ready;   `0` for ‘immediately’, `-1` for ‘never’
+         * @param ready_time the monotonic time in microseconds at which the source will   be ready; `0` for ‘immediately’, `-1` for ‘never’
          */
         set_ready_time(ready_time: bigint | number): void;
+
+        /**
+         * Sets a source to be dispatched when the given monotonic time is
+         * reached (or passed).
+         * 
+         * If the monotonic time is in the past (as it
+         * always will be if `ready_time` is `0`) then the source will be
+         * dispatched immediately.
+         * 
+         * Dispatching the source does not reset the ready time.  You should do
+         * so yourself, from the source dispatch function.
+         * 
+         * To reset the ready time, use {@link GLib.Source.clear_ready_time}.
+         * 
+         * Note that if you have a pair of sources where the ready time of one
+         * suggests that it will be delivered first but the priority for the
+         * other suggests that it would be delivered first, and the ready time
+         * for both sources is reached during the same main context iteration,
+         * then the order of dispatch is undefined.
+         * 
+         * It is a no-op to call this function on a {@link GLib.Source} which has
+         * already been destroyed with {@link GLib.Source.destroy}.
+         * 
+         * This API is only intended to be used by implementations of {@link GLib.Source}.
+         * Do not call this API on a {@link GLib.Source} that you did not create.
+         * @param ready_time the monotonic time in nanoseconds at which the source will   be ready; `0` for ‘immediately’
+         */
+        set_ready_time_ns(ready_time: bigint | number): void;
 
         /**
          * A variant of {@link GLib.Source.set_name} that does not
@@ -26475,6 +26679,10 @@ export class VariantType<S extends string = any> {
          * 
          * Instead of passing `false` to this function, consider using
          * `g_string_free_and_steal()`.
+         * 
+         * Similarly, instead of passing `TRUE` to this function,
+         * {@link GLib.String.free_deep} can be used. In particular, it can be used
+         * with {@link GLib.clear_pointer}.
          * @param free_segment if `true`, the actual character data is freed as well
          * @returns the character data of `string`          (i.e. `null` if `free_segment` is `true`)
          */
@@ -26488,6 +26696,19 @@ export class VariantType<S extends string = any> {
          * @returns the character data of `string`
          */
         free_and_steal(): string;
+
+        /**
+         * Frees the memory allocated for the {@link GLib.String} together with its
+         * character data.
+         * 
+         * This is equivalent to calling `g_string_free (string, TRUE)`, but it can
+         * be used with {@link GLib.clear_pointer}:
+         * 
+         * ```c
+         * g_clear_pointer (&my_string, g_string_free_deep);
+         * ```
+         */
+        free_deep(): void;
 
         /**
          * Transfers ownership of the contents of `string` to a newly allocated

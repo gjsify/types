@@ -159,14 +159,15 @@ export namespace AppStreamCompose {
 
     /**
      * Builds a global component ID from a component-id
-     * and a (usually MD5) checksum generated from the component data.
+     * and a checksum (usually Blake3) generated from the component data.
      * 
      * The global-id is used as a global, unique identifier for a component.
      * (while the component-ID is local, e.g. for one source).
      * Its primary usecase is to identify a media directory on the filesystem which is
      * associated with this component.
      * @param component_id an AppStream component ID.
-     * @param checksum a MD5 hashsum as string generated from the component's combined metadata.
+     * @param checksum a checksum as string generated from the component's combined metadata.
+     * @returns The new global ID. Free with %g_free.
      */
     function build_component_global_id(component_id: string, checksum: string): string;
 
@@ -174,6 +175,18 @@ export namespace AppStreamCompose {
      * @returns An error quark.
      */
     function compose_error_quark(): GLib.Quark;
+
+    /**
+     * Compute a checksum for the given content.
+     * 
+     * The output of this function is intended to be used with %asc_build_component_global_id
+     * to form a unique global ID. The generated checksum is intended to be used as content-ID.
+     * Do not assume it is cryptographically secure or has a certain length!
+     * @param data The data to hash.
+     * @param length Length of `data`.
+     * @returns The hash as hexadecimal string. Free with %g_free
+     */
+    function compute_content_checksum_for_data(data: string, length: bigint | number): string;
 
     /**
      * Generate a filename from a web-URL that can be used to store the
@@ -683,6 +696,9 @@ export namespace AppStreamCompose {
          * This may be useful in case a special language pack layout is used,
          * but is generally not necessary to be set explicitly, as locale
          * will be found in the unit where the metadata is by default.
+         * 
+         * Do not forget to open the locale unit, before running compose
+         * actions with it!
          * @param locale_unit the unit used for locale processing.
          */
         set_locale_unit(locale_unit: Unit): void;

@@ -512,10 +512,9 @@ export const _LocalFilePrototype: typeof File.prototype;
          * While `quark_volatile` has a `volatile` qualifier, this is a historical
          * artifact and the argument passed to it should not be `volatile`.
          * @param error_domain_quark_name the error domain name
-         * @param quark_volatile return location for the {@link GLib.Quark} representing the   error domain
          * @param entries items to register
          */
-        static register_error_domain(error_domain_quark_name: string, quark_volatile: bigint | number, entries: DBusErrorEntry[]): void;
+        static register_error_domain(error_domain_quark_name: string, entries: DBusErrorEntry[]): number;
 
         /**
          * Sets `*error` to a new {@link GLib.Error} created with
@@ -781,6 +780,41 @@ export const _LocalFilePrototype: typeof File.prototype;
          *    DEVICE` command)
          */
         PASSWORD,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace EcnCodePoint {
+        export const $gtype: GObject.GType<EcnCodePoint>;
+    }
+
+    /**
+     * Possible values of Explicit Congestion Notification code points.
+     * 
+     * These appear in `TOS` (IPv4) or `TCLASS` (IPv6) packet headers and
+     * are described in [RFC 3168](https://www.rfc-editor.org/rfc/rfc3168#section-5).
+     * @gir-type Enum
+     * @since 2.88
+     */
+    enum EcnCodePoint {
+        /**
+         * Not ECN-capable transport
+         */
+        NO_ECN,
+        /**
+         * ECN Capable Transport(1)
+         */
+        ECT_1,
+        /**
+         * ECN Capable Transport(0)
+         */
+        ECT_0,
+        /**
+         * Congestion Experienced
+         */
+        ECT_CE,
     }
 
 
@@ -1340,32 +1374,6 @@ export const _LocalFilePrototype: typeof File.prototype;
 
         // Constructors
         constructor(options: { message: string; code: number });
-    }
-
-
-    /**
-     * @gir-type Enum
-     */
-    export namespace IOModuleScopeFlags {
-        export const $gtype: GObject.GType<IOModuleScopeFlags>;
-    }
-
-    /**
-     * Flags for use with `g_io_module_scope_new()`.
-     * @gir-type Enum
-     * @since 2.30
-     */
-    enum IOModuleScopeFlags {
-        /**
-         * No module scan flags
-         */
-        NONE,
-        /**
-         * When using this scope to load or
-         *     scan modules, automatically block a modules which has the same base
-         *     basename as previously loaded module.
-         */
-        BLOCK_DUPLICATES,
     }
 
 
@@ -1958,28 +1966,6 @@ export const _LocalFilePrototype: typeof File.prototype;
 
 
     /**
-     * @gir-type Enum
-     */
-    export namespace TlsCertificateRequestFlags {
-        export const $gtype: GObject.GType<TlsCertificateRequestFlags>;
-    }
-
-    /**
-     * Flags for `g_tls_interaction_request_certificate()`,
-     * `g_tls_interaction_request_certificate_async()`, and
-     * `g_tls_interaction_invoke_request_certificate()`.
-     * @gir-type Enum
-     * @since 2.40
-     */
-    enum TlsCertificateRequestFlags {
-        /**
-         * No flags
-         */
-        NONE,
-    }
-
-
-    /**
      * An error code used with `G_TLS_CHANNEL_BINDING_ERROR` in a {@link GLib.Error} to
      * indicate a TLS channel binding retrieval error.
      * @gir-type Struct
@@ -2062,37 +2048,9 @@ export const _LocalFilePrototype: typeof File.prototype;
          */
         SERVER_END_POINT,
         /**
-         * [`tls-exporter`](https://www.rfc-editor.org/rfc/rfc9266.html) binding
-         *    type. Since: 2.74
+         * [`tls-exporter`](https://www.rfc-editor.org/rfc/rfc9266.html) binding type.
          */
         EXPORTER,
-    }
-
-
-    /**
-     * @gir-type Enum
-     */
-    export namespace TlsDatabaseLookupFlags {
-        export const $gtype: GObject.GType<TlsDatabaseLookupFlags>;
-    }
-
-    /**
-     * Flags for `g_tls_database_lookup_certificate_for_handle()`,
-     * `g_tls_database_lookup_certificate_issuer()`,
-     * and `g_tls_database_lookup_certificates_issued_by()`.
-     * @gir-type Enum
-     * @since 2.30
-     */
-    enum TlsDatabaseLookupFlags {
-        /**
-         * No lookup flags
-         */
-        NONE,
-        /**
-         * Restrict lookup to certificates that have
-         *     a private key.
-         */
-        KEYPAIR,
     }
 
 
@@ -2601,6 +2559,13 @@ export const _LocalFilePrototype: typeof File.prototype;
      * 
      * An example use would be during listing files, to avoid recursive
      * directory scanning.
+     * 
+     * For local files on Linux, this is a combination of the file’s device number
+     * and inode, so is invariant with respect to hard linking. The format used by
+     * other VFS implementations may vary, and some VFS backends may not set it.
+     * 
+     * For simply seeing if two {@link Gio.File} instances refer to the same path
+     * on disk, see {@link Gio.File.equal}.
      */
     const FILE_ATTRIBUTE_ID_FILE: string;
 
@@ -2862,6 +2827,11 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     /**
      * A key in the "standard" namespace for checking if a file is a backup file.
+     * 
+     * The exact semantics of what constitutes a backup file are backend-specific.
+     * For local files, a file is considered a backup if its name ends with `~`
+     * and it is a regular file. This follows the POSIX convention used by text
+     * editors such as Emacs.
      * 
      * Corresponding {@link Gio.FileAttributeType} is {@link Gio.FileAttributeType.BOOLEAN}.
      */
@@ -3661,7 +3631,9 @@ export const _LocalFilePrototype: typeof File.prototype;
     /**
      * Creates a new {@link Gio.AppInfo} from the given information.
      * 
-     * Note that for `commandline`, the quoting rules of the `Exec` key of the
+     * When constructing `commandline`, quote any filenames or potentially-
+     * untrusted input using {@link GLib.shell_quote}, and note that the
+     * quoting rules of the `Exec` key of the
      * [freedesktop.org Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec)
      * are applied. For example, if the `commandline` contains
      * percent-encoded URIs, the percent-character must be doubled in order to prevent it from
@@ -4499,11 +4471,10 @@ export const _LocalFilePrototype: typeof File.prototype;
      * While `quark_volatile` has a `volatile` qualifier, this is a historical
      * artifact and the argument passed to it should not be `volatile`.
      * @param error_domain_quark_name the error domain name
-     * @param quark_volatile return location for the {@link GLib.Quark} representing the   error domain
      * @param entries items to register
      * @since 2.26
      */
-    function dbus_error_register_error_domain(error_domain_quark_name: string, quark_volatile: bigint | number, entries: DBusErrorEntry[]): void;
+    function dbus_error_register_error_domain(error_domain_quark_name: string, entries: DBusErrorEntry[]): number;
 
     /**
      * Looks for extra information in the error message used to recover
@@ -5207,6 +5178,12 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     /**
      * Gets the default {@link Gio.NetworkMonitor} for the system.
+     * 
+     * Some implementations complete their initialization asynchronously:
+     * properties such as {@link Gio.NetworkMonitor.network_available} may start at their
+     * default values and update shortly afterwards, with notify emissions, once
+     * the state is resolved from the thread-default main context of this first
+     * call.
      * @returns a {@link Gio.NetworkMonitor}, which will be     a dummy object if no network monitor is available
      * @since 2.32
      */
@@ -5833,8 +5810,9 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * This application handles opening files (in
          *     the primary instance). Note that this flag only affects the default
-         *     implementation of `local_command_line()`, and has no effect if
-         *     {@link Gio.ApplicationFlags.HANDLES_COMMAND_LINE} is given.
+         *     implementation of `local_command_line()`. It can be useful even when
+         *     using `G_APPLICATION_HANDLES_COMMAND_LINE` to handle
+         *     `org.freedesktop.Application.open`.
          *     See `g_application_run()` for details.
          */
         HANDLES_OPEN,
@@ -6118,12 +6096,15 @@ export const _LocalFilePrototype: typeof File.prototype;
          */
         AUTHENTICATION_REQUIRE_SAME_USER,
         /**
-         * When authenticating, try to use
-         *  protocols that work across a Linux user namespace boundary, even if this
-         *  reduces interoperability with older D-Bus implementations. This currently
-         *  affects client-side `EXTERNAL` authentication, for which this flag makes
-         *  connections to a server in another user namespace succeed, but causes
-         *  a deadlock when connecting to a GDBus server older than 2.73.3. Since: 2.74
+         * Prefers protocols that work across user namespace boundaries during
+         * authentication.
+         * 
+         * When authenticating, try to use protocols that work across a Linux user
+         * namespace boundary, even if this reduces interoperability with older D-Bus
+         * implementations. This currently affects client-side `EXTERNAL`
+         * authentication, for which this flag makes connections to a server in
+         * another user namespace succeed, but causes a deadlock when connecting to a
+         * GDBus server older than 2.73.3.
          */
         CROSS_NAMESPACE,
     }
@@ -6665,6 +6646,32 @@ export const _LocalFilePrototype: typeof File.prototype;
     /**
      * @gir-type Flags
      */
+    export namespace IOModuleScopeFlags {
+        export const $gtype: GObject.GType<IOModuleScopeFlags>;
+    }
+
+    /**
+     * Flags for use with `g_io_module_scope_new()`.
+     * @gir-type Flags
+     * @since 2.30
+     */
+    enum IOModuleScopeFlags {
+        /**
+         * No module scan flags
+         */
+        NONE,
+        /**
+         * When using this scope to load or
+         *     scan modules, automatically block a modules which has the same base
+         *     basename as previously loaded module.
+         */
+        BLOCK_DUPLICATES,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
     export namespace IOStreamSpliceFlags {
         export const $gtype: GObject.GType<IOStreamSpliceFlags>;
     }
@@ -7053,7 +7060,7 @@ export const _LocalFilePrototype: typeof File.prototype;
      */
     enum TlsCertificateFlags {
         /**
-         * No flags set. Since: 2.74
+         * No flags set.
          */
         NO_FLAGS,
         /**
@@ -7095,6 +7102,55 @@ export const _LocalFilePrototype: typeof File.prototype;
          *   flags
          */
         VALIDATE_ALL,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace TlsCertificateRequestFlags {
+        export const $gtype: GObject.GType<TlsCertificateRequestFlags>;
+    }
+
+    /**
+     * Flags for `g_tls_interaction_request_certificate()`,
+     * `g_tls_interaction_request_certificate_async()`, and
+     * `g_tls_interaction_invoke_request_certificate()`.
+     * @gir-type Flags
+     * @since 2.40
+     */
+    enum TlsCertificateRequestFlags {
+        /**
+         * No flags
+         */
+        NONE,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace TlsDatabaseLookupFlags {
+        export const $gtype: GObject.GType<TlsDatabaseLookupFlags>;
+    }
+
+    /**
+     * Flags for `g_tls_database_lookup_certificate_for_handle()`,
+     * `g_tls_database_lookup_certificate_issuer()`,
+     * and `g_tls_database_lookup_certificates_issued_by()`.
+     * @gir-type Flags
+     * @since 2.30
+     */
+    enum TlsDatabaseLookupFlags {
+        /**
+         * No lookup flags
+         */
+        NONE,
+        /**
+         * Restrict lookup to certificates that have
+         *     a private key.
+         */
+        KEYPAIR,
     }
 
 
@@ -8227,6 +8283,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * 
          * It is important to use the proper GVariant format when retrieving
          * the options with `g_variant_dict_lookup()`:
+         * 
          * - for {@link GLib.OptionArg.NONE}, use `b`
          * - for {@link GLib.OptionArg.STRING}, use `&s`
          * - for {@link GLib.OptionArg.INT}, use `i`
@@ -8535,7 +8592,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * and override `local_command_line()`. In this case, you most likely want
          * to return `true` from your `local_command_line()` implementation to
          * suppress the default handling. See
-         * [gapplication-example-cmdline2.c][https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-cmdline2.c]
+         * [gapplication-example-cmdline2.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-cmdline2.c)
          * for an example.
          * 
          * If, after the above is done, the use count of the application is zero
@@ -9745,7 +9802,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * in the value of a single environment variable.
          * @returns the environment strings, or `null` if they were not sent
          */
-        get_environ(): string[];
+        get_environ(): string[] | null;
 
         /**
          * Gets the exit status of `cmdline`.  See
@@ -12036,7 +12093,11 @@ export const _LocalFilePrototype: typeof File.prototype;
          * This operation can fail if {@link Gio.Credentials} is not supported on the
          * OS or if the native credentials type does not contain information
          * about the UNIX user.
-         * @returns The UNIX user identifier or `-1` if `error` is set.
+         * 
+         * As the signedness of `uid_t` is not specified by POSIX, it is recommended to
+         * check `error` for failure rather than trying to check the return value,
+         * particularly in language bindings.
+         * @returns The UNIX user identifier or `(uid_t) -1` if `error` is set.
          */
         get_unix_user(): never;
 
@@ -14777,6 +14838,13 @@ export const _LocalFilePrototype: typeof File.prototype;
         vfunc_get_info(): DBusInterfaceInfo;
 
         /**
+         * @param args 
+         * @virtual
+         */
+    // Conflicted with Gio.DBusInterface.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
+
+        /**
          * Gets all D-Bus properties for `interface_`.
          * @virtual
          */
@@ -14842,6 +14910,12 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @returns A {@link Gio.DBusInterfaceInfo} (never `null`). Do not free.
          */
         get_info(): DBusInterfaceInfo;
+
+        /**
+         * @param args 
+         */
+    // Conflicted with Gio.DBusInterface.get_info
+        get_info(...args: never[]): any;
 
         /**
          * Gets the object path that `interface_` is exported on, if any.
@@ -15053,19 +15127,23 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * Utility function to calculate how many bytes are needed to
          * completely deserialize the D-Bus message stored at `blob`.
-         * @param blob A blob representing a binary D-Bus message.
+         * 
+         * An error will be returned if `blob` contains invalid data, or if not enough
+         * data is available to determine the size.
+         * @param blob a blob representing a   binary D-Bus message.
          */
         static bytes_needed(blob: Uint8Array | string): number;
 
         // Methods
         /**
-         * Copies `message`. The copy is a deep copy and the returned
-         * {@link Gio.DBusMessage} is completely identical except that it is guaranteed
-         * to not be locked.
+         * Copies `message` with a deep copy.
          * 
-         * This operation can fail if e.g. `message` contains file descriptors
+         * The returned D-Bus message is completely identical to `message` except that it
+         * is guaranteed to not be locked.
+         * 
+         * This operation can fail if (for example) `message` contains file descriptors
          * and the per-process or system-wide open files limit is reached.
-         * @returns A new {@link Gio.DBusMessage} or `null` if `error` is set.     Free with `g_object_unref()`.
+         * @returns A new D-Bus message
          */
         copy(): DBusMessage;
 
@@ -15074,7 +15152,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * 
          * See {@link Gio.DBusMessage.get_arg0_path} for returning object-path-typed
          * arg0 values.
-         * @returns The string item or `null` if the first item in the body of `message` is not a string.
+         * @returns The string item, or `NULL` if the first item in the body   of `message` is not a string
          */
         get_arg0(): string | null;
 
@@ -15082,117 +15160,130 @@ export const _LocalFilePrototype: typeof File.prototype;
          * Convenience to get the first item in the body of `message`.
          * 
          * See {@link Gio.DBusMessage.get_arg0} for returning string-typed arg0 values.
-         * @returns The object path item or `NULL` if the first item in the   body of `message` is not an object path.
+         * @returns The object path item, or `NULL` if the first item in the   body of `message` is not an object path
          */
         get_arg0_path(): string | null;
 
         /**
          * Gets the body of a message.
-         * @returns A {@link GLib.Variant} or `null` if the body is empty. Do not free, it is owned by `message`.
+         * @returns A {@link GLib.Variant}, or `NULL` if the   body is empty
          */
         get_body(): GLib.Variant | null;
 
         /**
          * Gets the byte order of `message`.
-         * @returns The byte order.
+         * @returns The byte order
          */
         get_byte_order(): DBusMessageByteOrder;
 
         /**
-         * Convenience getter for the {@link Gio.DBusMessageHeaderField.DESTINATION} header field.
-         * @returns The value.
+         * Convenience getter for the {@link Gio.DBusMessageHeaderField.DESTINATION}
+         * header field.
+         * @returns The value
          */
         get_destination(): string | null;
 
         /**
-         * Convenience getter for the {@link Gio.DBusMessageHeaderField.ERROR_NAME} header field.
-         * @returns The value.
+         * Convenience getter for the {@link Gio.DBusMessageHeaderField.ERROR_NAME}
+         * header field.
+         * @returns The value
          */
         get_error_name(): string | null;
 
         /**
          * Gets the flags for `message`.
-         * @returns Flags that are set (typically values from the {@link Gio.DBusMessageFlags} enumeration bitwise ORed together).
+         * @returns Flags that are set (typically values from the   {@link Gio.DBusMessageFlags} enumeration bitwise ORed together)
          */
         get_flags(): DBusMessageFlags;
 
         /**
          * Gets a header field on `message`.
          * 
-         * The caller is responsible for checking the type of the returned {@link GLib.Variant}
-         * matches what is expected.
-         * @param header_field A 8-bit unsigned integer (typically a value from the {@link Gio.DBusMessageHeaderField} enumeration)
-         * @returns A {@link GLib.Variant} with the value if the header was found, `null` otherwise. Do not free, it is owned by `message`.
+         * The caller is responsible for checking the type of the returned
+         * {@link GLib.Variant} matches what is expected.
+         * @param header_field a 8-bit unsigned integer (typically a value from the   {@link Gio.DBusMessageHeaderField} enumeration)
+         * @returns A {@link GLib.Variant} with the value, or   `NULL` if the header was not found
          */
         get_header(header_field: DBusMessageHeaderField): GLib.Variant | null;
 
         /**
          * Gets an array of all header fields on `message` that are set.
-         * @returns An array of header fields terminated by {@link Gio.DBusMessageHeaderField.INVALID}.  Each element is a `guchar`. Free with `g_free()`.
+         * 
+         * Each element in the array is an `unsigned char`.
+         * @returns An array of header   fields terminated by {@link Gio.DBusMessageHeaderField.INVALID}
          */
         get_header_fields(): Uint8Array;
 
         /**
-         * Convenience getter for the {@link Gio.DBusMessageHeaderField.INTERFACE} header field.
-         * @returns The value.
+         * Convenience getter for the {@link Gio.DBusMessageHeaderField.INTERFACE} header
+         * field.
+         * @returns The value
          */
         get_interface(): string | null;
 
         /**
-         * Checks whether `message` is locked. To monitor changes to this
-         * value, connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to listen for changes
-         * on the {@link Gio.DBusMessage.locked} property.
-         * @returns `true` if `message` is locked, `false` otherwise.
+         * Checks whether `message` is locked.
+         * 
+         * To monitor changes to this value, connect to the
+         * `GObject.Object::notify` signal to listen for changes on the
+         * {@link Gio.DBusMessage.locked} property.
+         * @returns true if `message` is locked, false otherwise
          */
         get_locked(): boolean;
 
         /**
-         * Convenience getter for the {@link Gio.DBusMessageHeaderField.MEMBER} header field.
-         * @returns The value.
+         * Convenience getter for the {@link Gio.DBusMessageHeaderField.MEMBER} header
+         * field.
+         * @returns The value
          */
         get_member(): string | null;
 
         /**
          * Gets the type of `message`.
-         * @returns A 8-bit unsigned integer (typically a value from the {@link Gio.DBusMessageType} enumeration).
+         * @returns A 8-bit unsigned integer (typically a value from the   {@link Gio.DBusMessageType} enumeration)
          */
         get_message_type(): DBusMessageType;
 
         /**
-         * Convenience getter for the {@link Gio.DBusMessageHeaderField.NUM_UNIX_FDS} header field.
-         * @returns The value.
+         * Convenience getter for the {@link Gio.DBusMessageHeaderField.NUM_UNIX_FDS}
+         * header field.
+         * @returns The value
          */
         get_num_unix_fds(): number;
 
         /**
-         * Convenience getter for the {@link Gio.DBusMessageHeaderField.PATH} header field.
-         * @returns The value.
+         * Convenience getter for the {@link Gio.DBusMessageHeaderField.PATH} header
+         * field.
+         * @returns The value
          */
         get_path(): string | null;
 
         /**
-         * Convenience getter for the {@link Gio.DBusMessageHeaderField.REPLY_SERIAL} header field.
-         * @returns The value.
+         * Convenience getter for the {@link Gio.DBusMessageHeaderField.REPLY_SERIAL}
+         * header field.
+         * @returns The value
          */
         get_reply_serial(): number;
 
         /**
-         * Convenience getter for the {@link Gio.DBusMessageHeaderField.SENDER} header field.
-         * @returns The value.
+         * Convenience getter for the {@link Gio.DBusMessageHeaderField.SENDER} header
+         * field.
+         * @returns The value
          */
         get_sender(): string | null;
 
         /**
          * Gets the serial for `message`.
-         * @returns A `guint32`.
+         * @returns The serial number, which should not be zero
          */
         get_serial(): number;
 
         /**
-         * Convenience getter for the {@link Gio.DBusMessageHeaderField.SIGNATURE} header field.
+         * Convenience getter for the [enum@Gio.DBusMessageHeaderField.SIGNATURE header
+         * field.
          * 
-         * This will always be non-`null`, but may be an empty string.
-         * @returns The value.
+         * This will always be non-`NULL`, but may be an empty string.
+         * @returns The value
          */
         get_signature(): string;
 
@@ -15202,39 +15293,40 @@ export const _LocalFilePrototype: typeof File.prototype;
          * This method is only available on UNIX.
          * 
          * The file descriptors normally correspond to `G_VARIANT_TYPE_HANDLE`
-         * values in the body of the message. For example,
-         * if `g_variant_get_handle()` returns 5, that is intended to be a reference
-         * to the file descriptor that can be accessed by
+         * values in the body of the message. For example, if
+         * {@link GLib.Variant.get_handle} returns 5, that is intended to be a
+         * reference to the file descriptor that can be accessed by
          * `g_unix_fd_list_get (list, 5, ...)`.
-         * @returns A {@link Gio.UnixFDList} or `null` if no file descriptors are associated. Do not free, this object is owned by `message`.
+         * @returns A {@link Gio.UnixFDList} or `NULL` if no   file descriptors are associated
          */
         get_unix_fd_list(): UnixFDList | null;
 
         /**
-         * If `message` is locked, does nothing. Otherwise locks the message.
+         * Locks the message.
+         * 
+         * If `message` is locked already, this does nothing.
          */
         lock(): void;
 
         /**
-         * Creates a new {@link Gio.DBusMessage} that is an error reply to `method_call_message`.
-         * @param error_name A valid D-Bus error name.
-         * @param error_message The D-Bus error message.
-         * @returns A {@link Gio.DBusMessage}. Free with `g_object_unref()`.
+         * Creates a new D-Bus message that is an error reply to `method_call_message`.
+         * @param error_name a valid D-Bus error name
+         * @param error_message the D-Bus error message
+         * @returns The D-Bus message
          */
         new_method_error_literal(error_name: string, error_message: string): DBusMessage;
 
         /**
-         * Creates a new {@link Gio.DBusMessage} that is a reply to `method_call_message`.
-         * @returns {@link Gio.DBusMessage}. Free with `g_object_unref()`.
+         * Creates a new D-Bus message that is a reply to `method_call_message`.
+         * @returns The D-Bus message
          */
         new_method_reply(): DBusMessage;
 
         /**
          * Produces a human-readable multi-line description of `message`.
          * 
-         * The contents of the description has no ABI guarantees, the contents
-         * and formatting is subject to change at any time. Typical output
-         * looks something like this:
+         * The contents and formatting are subject to change at any time and no ABI
+         * guarantees are given. Typical output looks something like this:
          * ```
          * Flags:   none
          * Version: 0
@@ -15262,42 +15354,45 @@ export const _LocalFilePrototype: typeof File.prototype;
          * UNIX File Descriptors:
          *   fd 12: dev=0:10,mode=020620,ino=5,uid=500,gid=5,rdev=136:2,size=0,atime=1273085037,mtime=1273085851,ctime=1272982635
          * ```
-         * @param indent Indentation level.
-         * @returns A string that should be freed with {@link GLib.free}.
+         * @param indent indentation level
+         * @returns Human readable description   of `message`
          */
         print(indent: number): string;
 
         /**
-         * Sets the body `message`. As a side-effect the
-         * {@link Gio.DBusMessageHeaderField.SIGNATURE} header field is set to the
-         * type string of `body` (or cleared if `body` is `null`).
+         * Sets the body of `message`.
+         * 
+         * As a side-effect the {@link Gio.DBusMessageHeaderField.SIGNATURE} header field
+         *   is set to the type string of `body` (or cleared if `body` is `NULL`).
          * 
          * If `body` is floating, `message` assumes ownership of `body`.
-         * @param body Either `null` or a {@link GLib.Variant} that is a tuple.
+         * @param body a {@link GLib.Variant} containing a tuple, or `NULL` if no body is   needed
          */
         set_body(body: GLib.Variant): void;
 
         /**
          * Sets the byte order of `message`.
-         * @param byte_order The byte order.
+         * @param byte_order the byte order
          */
         set_byte_order(byte_order: DBusMessageByteOrder): void;
 
         /**
-         * Convenience setter for the {@link Gio.DBusMessageHeaderField.DESTINATION} header field.
-         * @param value The value to set.
+         * Convenience setter for the {@link Gio.DBusMessageHeaderField.DESTINATION}
+         * header field.
+         * @param value the value to set
          */
         set_destination(value: string | null): void;
 
         /**
-         * Convenience setter for the {@link Gio.DBusMessageHeaderField.ERROR_NAME} header field.
-         * @param value The value to set.
+         * Convenience setter for the {@link Gio.DBusMessageHeaderField.ERROR_NAME}
+         * header field.
+         * @param value the value to set
          */
-        set_error_name(value: string): void;
+        set_error_name(value: string | null): void;
 
         /**
          * Sets the flags to set on `message`.
-         * @param flags Flags for `message` that are set (typically values from the {@link Gio.DBusMessageFlags} enumeration bitwise ORed together).
+         * @param flags flags for `message` that are set (typically values from the   {@link Gio.DBusMessageFlags} enumeration bitwise ORed together)
          */
         set_flags(flags: DBusMessageFlags): void;
 
@@ -15305,50 +15400,56 @@ export const _LocalFilePrototype: typeof File.prototype;
          * Sets a header field on `message`.
          * 
          * If `value` is floating, `message` assumes ownership of `value`.
-         * @param header_field A 8-bit unsigned integer (typically a value from the {@link Gio.DBusMessageHeaderField} enumeration)
-         * @param value A {@link GLib.Variant} to set the header field or `null` to clear the header field.
+         * @param header_field a 8-bit unsigned integer (typically a value from the   [enum@Gio.DBusMessageHeaderField enumeration)
+         * @param value a {@link GLib.Variant} to set the header field, or `NULL`   to clear the header field.
          */
         set_header(header_field: DBusMessageHeaderField, value: GLib.Variant | null): void;
 
         /**
-         * Convenience setter for the {@link Gio.DBusMessageHeaderField.INTERFACE} header field.
-         * @param value The value to set.
+         * Convenience setter for the {@link Gio.DBusMessageHeaderField.INTERFACE} header
+         * field.
+         * @param value the value to set
          */
         set_interface(value: string | null): void;
 
         /**
-         * Convenience setter for the {@link Gio.DBusMessageHeaderField.MEMBER} header field.
-         * @param value The value to set.
+         * Convenience setter for the {@link Gio.DBusMessageHeaderField.MEMBER} header
+         * field.
+         * @param value the value to set
          */
         set_member(value: string | null): void;
 
         /**
          * Sets `message` to be of `type`.
-         * @param type A 8-bit unsigned integer (typically a value from the {@link Gio.DBusMessageType} enumeration).
+         * @param type a 8-bit unsigned integer (typically a value from the   {@link Gio.DBusMessageType} enumeration)
          */
         set_message_type(type: DBusMessageType): void;
 
         /**
-         * Convenience setter for the {@link Gio.DBusMessageHeaderField.NUM_UNIX_FDS} header field.
-         * @param value The value to set.
+         * Convenience setter for the {@link Gio.DBusMessageHeaderField.NUM_UNIX_FDS}
+         * header field.
+         * @param value the value to set
          */
         set_num_unix_fds(value: number): void;
 
         /**
-         * Convenience setter for the {@link Gio.DBusMessageHeaderField.PATH} header field.
-         * @param value The value to set.
+         * Convenience setter for the {@link Gio.DBusMessageHeaderField.PATH} header
+         * field.
+         * @param value the value to set
          */
         set_path(value: string | null): void;
 
         /**
-         * Convenience setter for the {@link Gio.DBusMessageHeaderField.REPLY_SERIAL} header field.
-         * @param value The value to set.
+         * Convenience setter for the {@link Gio.DBusMessageHeaderField.REPLY_SERIAL}
+         * header field.
+         * @param value the value to set
          */
         set_reply_serial(value: number): void;
 
         /**
-         * Convenience setter for the {@link Gio.DBusMessageHeaderField.SENDER} header field.
-         * @param value The value to set.
+         * Convenience setter for the {@link Gio.DBusMessageHeaderField.SENDER} header
+         * field.
+         * @param value the value to set
          */
         set_sender(value: string | null): void;
 
@@ -15357,21 +15458,23 @@ export const _LocalFilePrototype: typeof File.prototype;
          * 
          * The [D-Bus specification](https://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-messages)
          * does not allow the `serial` to be zero.
-         * @param serial A `guint32`, which must not be zero.
+         * @param serial a serial number, which must not be zero
          */
         set_serial(serial: number): void;
 
         /**
-         * Convenience setter for the {@link Gio.DBusMessageHeaderField.SIGNATURE} header field.
-         * @param value The value to set.
+         * Convenience setter for the {@link Gio.DBusMessageHeaderField.SIGNATURE} header
+         * field.
+         * @param value the value to set
          */
         set_signature(value: string | null): void;
 
         /**
-         * Sets the UNIX file descriptors associated with `message`. As a
-         * side-effect the {@link Gio.DBusMessageHeaderField.NUM_UNIX_FDS} header
+         * Sets the UNIX file descriptors associated with `message`.
+         * 
+         * As a side-effect the {@link Gio.DBusMessageHeaderField.NUM_UNIX_FDS} header
          * field is set to the number of fds in `fd_list` (or cleared if
-         * `fd_list` is `null`).
+         * `fd_list` is `NULL`).
          * 
          * This method is only available on UNIX.
          * 
@@ -15379,27 +15482,31 @@ export const _LocalFilePrototype: typeof File.prototype;
          * please note that non-GDBus implementations of D-Bus can usually only
          * access file descriptors if they are referenced by a value of type
          * `G_VARIANT_TYPE_HANDLE` in the body of the message.
-         * @param fd_list A {@link Gio.UnixFDList} or `null`.
+         * @param fd_list A {@link Gio.UnixFDList}, or `NULL` to clear
          */
         set_unix_fd_list(fd_list: UnixFDList | null): void;
 
         /**
-         * Serializes `message` to a blob. The byte order returned by
-         * `g_dbus_message_get_byte_order()` will be used.
-         * @param capabilities A {@link Gio.DBusCapabilityFlags} describing what protocol features are supported.
-         * @returns A pointer to a valid binary D-Bus message of `out_size` bytes generated by `message` or `null` if `error` is set. Free with `g_free()`.
+         * Serializes `message` to a blob.
+         * 
+         * The byte order returned by {@link Gio.DBusMessage.get_byte_order} will be
+         * used.
+         * @param capabilities flags describing what protocol features are supported
+         * @returns A pointer to a   valid binary D-Bus message of `out_size` bytes generated by `message`
          */
         to_blob(capabilities: DBusCapabilityFlags): Uint8Array;
 
         /**
-         * If `message` is not of type {@link Gio.DBusMessageType.ERROR} does
-         * nothing and returns `false`.
+         * Encodes the error in `message` as a {@link GLib.Error}.
          * 
-         * Otherwise this method encodes the error in `message` as a {@link GLib.Error}
-         * using `g_dbus_error_set_dbus_error()` using the information in the
+         * If `message` is of type {@link Gio.DBusMessageType.ERROR}, this function
+         * calls {@link Gio.DBusError.set_dbus_error} using the information in the
          * {@link Gio.DBusMessageHeaderField.ERROR_NAME} header field of `message` as
-         * well as the first string item in `message`'s body.
-         * @returns `true` if `error` was set, `false` otherwise.
+         * well as the first string item in `message`’s body.
+         * 
+         * If `message` is not of type {@link Gio.DBusMessageType.ERROR}, this function
+         * does nothing and returns false.
+         * @returns true if `error` was set, false otherwise
          */
         to_gerror(): boolean;
     }
@@ -17156,14 +17263,14 @@ export const _LocalFilePrototype: typeof File.prototype;
             gDefaultTimeout: number;
             g_flags: DBusProxyFlags;
             gFlags: DBusProxyFlags;
-            g_interface_info: DBusInterfaceInfo;
-            gInterfaceInfo: DBusInterfaceInfo;
+            g_interface_info: DBusInterfaceInfo | null;
+            gInterfaceInfo: DBusInterfaceInfo | null;
             g_interface_name: string;
             gInterfaceName: string;
-            g_name: string;
-            gName: string;
-            g_name_owner: string;
-            gNameOwner: string;
+            g_name: string | null;
+            gName: string | null;
+            g_name_owner: string | null;
+            gNameOwner: string | null;
             g_object_path: string;
             gObjectPath: string;
         }
@@ -17337,8 +17444,8 @@ export const _LocalFilePrototype: typeof File.prototype;
          * service-side is not considered an ABI break.
          * @since 2.26
          */
-        get g_interface_info(): DBusInterfaceInfo;
-        set g_interface_info(val: DBusInterfaceInfo);
+        get g_interface_info(): DBusInterfaceInfo | null;
+        set g_interface_info(val: DBusInterfaceInfo | null);
 
         /**
          * Ensure that interactions with this proxy conform to the given
@@ -17367,8 +17474,8 @@ export const _LocalFilePrototype: typeof File.prototype;
          * service-side is not considered an ABI break.
          * @since 2.26
          */
-        get gInterfaceInfo(): DBusInterfaceInfo;
-        set gInterfaceInfo(val: DBusInterfaceInfo);
+        get gInterfaceInfo(): DBusInterfaceInfo | null;
+        set gInterfaceInfo(val: DBusInterfaceInfo | null);
 
         /**
          * The D-Bus interface name the proxy is for.
@@ -17392,7 +17499,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @construct-only
          * @default null
          */
-        get g_name(): string;
+        get g_name(): string | null;
 
         /**
          * The well-known or unique name that the proxy is for.
@@ -17400,7 +17507,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @construct-only
          * @default null
          */
-        get gName(): string;
+        get gName(): string | null;
 
         /**
          * The unique name that owns {@link Gio.DBusProxy.g_name} or `null` if no-one
@@ -17410,7 +17517,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @read-only
          * @default null
          */
-        get g_name_owner(): string;
+        get g_name_owner(): string | null;
 
         /**
          * The unique name that owns {@link Gio.DBusProxy.g_name} or `null` if no-one
@@ -17420,7 +17527,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @read-only
          * @default null
          */
-        get gNameOwner(): string;
+        get gNameOwner(): string | null;
 
         /**
          * The object path the proxy is for.
@@ -18186,9 +18293,14 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): DBusInterfaceInfo;
+        get_info(): DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -18207,9 +18319,14 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): DBusInterfaceInfo;
+        vfunc_get_info(): DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -21633,6 +21750,11 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * Checks if a file is a backup file.
          * 
+         * The exact semantics of what constitutes a backup file are
+         * backend-specific. For local files, a file is considered a backup
+         * if its name ends with `~` and it is a regular file. This follows
+         * the POSIX convention used by text editors such as Emacs.
+         * 
          * It is an error to call this if the {@link Gio.FileInfo} does not contain
          * `G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP`.
          * @returns `true` if file is a backup file, `false` otherwise.
@@ -22790,8 +22912,10 @@ export const _LocalFilePrototype: typeof File.prototype;
 
         /**
          * Gets an array of completion strings for a given initial text.
+         * 
+         * The strings are returned in an undefined order.
          * @param initial_text text to be completed.
-         * @returns array of strings with possible completions for `initial_text`. This array must be freed by `g_strfreev()` when finished.
+         * @returns array of strings with   possible completions for `initial_text`
          */
         get_completions(initial_text: string): string[];
 
@@ -23448,8 +23572,12 @@ export const _LocalFilePrototype: typeof File.prototype;
         has_pending(): boolean;
 
         /**
-         * Checks if a stream is closed.
-         * @returns `true` if the stream is closed.
+         * Checks if a stream has been closed.
+         * 
+         * This only indicates whether the I/O stream has been closed at the top level
+         * by calling {@link Gio.IOStream.close}. If the underlying input and output
+         * streams have been closed separately, this method will still return false.
+         * @returns true if the stream has been closed; false otherwise
          */
         is_closed(): boolean;
 
@@ -23476,6 +23604,152 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         splice_async(stream2: IOStream, flags: IOStreamSpliceFlags, io_priority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+    }
+
+
+    namespace IPTosMessage {
+        // Signal signatures
+        interface SignalSignatures extends SocketControlMessage.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends SocketControlMessage.ConstructorProps {}
+    }
+
+    /**
+     * Contains the type of service (ToS) byte of an IPv4 header.
+     * 
+     * This consists of the DSCP field as per
+     * [RFC 2474](https://www.rfc-editor.org/rfc/rfc2474#section-3),
+     * and the ECN field as per
+     * [RFC 3168](https://www.rfc-editor.org/rfc/rfc3168#section-5).
+     * 
+     * It may be received using {@link Gio.Socket.receive_message} over UDP sockets
+     * (i.e. sockets in the `G_SOCKET_FAMILY_IPV4` family with
+     * `G_SOCKET_TYPE_DATAGRAM` type). The message is not meant for sending. To set
+     * ToS field to be used in datagrams sent on a {@link Gio.Socket} use:
+     * ```c
+     * g_socket_set_option (socket, IPPROTO_IP, IP_TOS, <ToS value>, &error);
+     * ```
+     * @gir-type Class
+     * @since 2.88
+     */
+    class IPTosMessage extends SocketControlMessage {
+        static $gtype: GObject.GType<IPTosMessage>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: IPTosMessage.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<IPTosMessage.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](dscp: number, ecn: EcnCodePoint): IPTosMessage;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof IPTosMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IPTosMessage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof IPTosMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IPTosMessage.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof IPTosMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IPTosMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Gets the differentiated services code point stored in `message`.
+         * @returns A DSCP value as described in [RFC 2474](https://www.rfc-editor.org/rfc/rfc2474.html#section-3).
+         */
+        get_dscp(): number;
+
+        /**
+         * Gets the Explicit Congestion Notification code point stored in `message`.
+         * @returns An ECN value as described in [RFC 3168](https://www.rfc-editor.org/rfc/rfc3168#section-5).
+         */
+        get_ecn(): EcnCodePoint;
+    }
+
+
+    namespace IPv6TclassMessage {
+        // Signal signatures
+        interface SignalSignatures extends SocketControlMessage.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends SocketControlMessage.ConstructorProps {}
+    }
+
+    /**
+     * Contains the Traffic Class byte of an IPv6 header.
+     * 
+     * This consists of the DSCP field as per
+     * [RFC 2474](https://www.rfc-editor.org/rfc/rfc2474#section-3),
+     * and the ECN field as per
+     * [RFC 3168](https://www.rfc-editor.org/rfc/rfc3168#section-5).
+     * 
+     * It may be received using {@link Gio.Socket.receive_message} over UDP sockets
+     * (i.e. sockets in the `G_SOCKET_FAMILY_IPV6` family with
+     * `G_SOCKET_TYPE_DATAGRAM` type). The message is not meant for sending. To set
+     * Traffic Class field to be used in datagrams sent on a {@link Gio.Socket} use:
+     * ```c
+     * g_socket_set_option (socket, IPPROTO_IPV6, IPV6_TCLASS, <TC value>, &error);
+     * ```
+     * @gir-type Class
+     * @since 2.88
+     */
+    class IPv6TclassMessage extends SocketControlMessage {
+        static $gtype: GObject.GType<IPv6TclassMessage>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: IPv6TclassMessage.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<IPv6TclassMessage.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](dscp: number, ecn: EcnCodePoint): IPv6TclassMessage;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof IPv6TclassMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IPv6TclassMessage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof IPv6TclassMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IPv6TclassMessage.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof IPv6TclassMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IPv6TclassMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Gets the differentiated services code point stored in `message`.
+         * @returns A DSCP value as described in [RFC 2474](https://www.rfc-editor.org/rfc/rfc2474.html#section-3).
+         */
+        get_dscp(): number;
+
+        /**
+         * Gets the Explicit Congestion Notification code point stored in `message`.
+         * @returns An ECN value as described in [RFC 3168](https://www.rfc-editor.org/rfc/rfc3168#section-5).
+         */
+        get_ecn(): EcnCodePoint;
     }
 
 
@@ -24620,8 +24894,14 @@ export const _LocalFilePrototype: typeof File.prototype;
         has_pending(): boolean;
 
         /**
-         * Checks if an input stream is closed.
-         * @returns `true` if the stream is closed.
+         * Checks if an input stream has been closed.
+         * 
+         * This only indicates whether the stream has been closed from this end by
+         * calling {@link Gio.InputStream.close}. If the stream is a pipe or socket,
+         * for example, and the process on the other end has closed its end, this method
+         * will still return false. Methods which try to read from the input stream will
+         * return any remaining data, end-of-file or an error, however.
+         * @returns true if the stream has been closed; false otherwise
          */
         is_closed(): boolean;
 
@@ -26903,7 +27183,7 @@ export const _LocalFilePrototype: typeof File.prototype;
              * 
              * As an example, if the menu contains items a, b, c, d (in that
              * order) and the signal (2, 1, 3) occurs then the new composition of
-             * the menu will be a, b, _, _, _, d (with each _ representing some
+             * the menu will be a, b, \_, \_, \_, d (with each _ representing some
              * new item).
              * 
              * Signal handlers may query the model (particularly the added items)
@@ -27008,6 +27288,7 @@ export const _LocalFilePrototype: typeof File.prototype;
      * While a wide variety of stateful actions is possible, the following
      * is the minimum that is expected to be supported by all users of exported
      * menu information:
+     * 
      * - an action with no parameter type and no state
      * - an action with no parameter type and boolean state
      * - an action with string parameter type and string state
@@ -28291,6 +28572,9 @@ export const _LocalFilePrototype: typeof File.prototype;
      * clicked.
      * 
      * A notification can be sent with {@link Gio.Application.send_notification}.
+     * 
+     * In Windows, notification actions are unsupported, when sending the notification
+     * a warning will be printed if a default action or action buttons were added.
      * @gir-type Class
      * @since 2.40
      */
@@ -28910,8 +29194,14 @@ export const _LocalFilePrototype: typeof File.prototype;
         has_pending(): boolean;
 
         /**
-         * Checks if an output stream has already been closed.
-         * @returns `true` if `stream` is closed. `false` otherwise.
+         * Checks if an output stream has been closed.
+         * 
+         * This only indicates whether the stream has been closed from this end by
+         * calling {@link Gio.OutputStream.close}. If the stream is a pipe or socket,
+         * for example, and the process on the other end has closed its end, this method
+         * will still return false. Methods which try to write to the output stream will
+         * return an error, however.
+         * @returns true if the stream has been closed; false otherwise
          */
         is_closed(): boolean;
 
@@ -35699,12 +35989,14 @@ export const _LocalFilePrototype: typeof File.prototype;
         get_family(): SocketFamily;
 
         /**
-         * Returns the underlying OS socket object. On unix this
-         * is a socket file descriptor, and on Windows this is
-         * a Winsock2 SOCKET handle. This may be useful for
-         * doing platform specific or otherwise unusual operations
-         * on the socket.
-         * @returns the file descriptor of the socket.
+         * Gets the underlying OS socket descriptor.
+         * 
+         * On Unix this is a socket file descriptor, and on Windows this is
+         * a Winsock2 `SOCKET` handle.
+         * 
+         * This may be useful for doing platform specific or otherwise unusual
+         * operations on the socket.
+         * @returns the file descriptor of the socket, or `-1` if the socket has not yet   been initialised or has been closed
          */
         get_fd(): number;
 
@@ -38074,7 +38366,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * Gets the underlying {@link Gio.Socket} object of the connection.
          * This can be useful if you want to do something unusual on it
          * not supported by the {@link Gio.SocketConnection} APIs.
-         * @returns a {@link Gio.Socket} or `null` on error.
+         * @returns the underlying socket
          */
         get_socket(): Socket;
 
@@ -38108,7 +38400,7 @@ export const _LocalFilePrototype: typeof File.prototype;
      * These messages are sent with {@link Gio.Socket.send_message} and received
      * with {@link Gio.Socket.receive_message}.
      * 
-     * To extend the set of control message that can be sent, subclass this
+     * To extend the set of control messages that can be sent, subclass this
      * class and override the `get_size`, `get_level`, `get_type` and `serialize`
      * methods.
      * 
@@ -44409,19 +44701,36 @@ export const _LocalFilePrototype: typeof File.prototype;
          * system-wide file descriptor limit.
          * 
          * The index of the file descriptor in the list is returned.  If you use
-         * this index with `g_unix_fd_list_get()` then you will receive back a
+         * this index with {@link Gio.UnixFDList.get} then you will receive back a
          * duplicated copy of the same file descriptor.
          * @param fd a valid open file descriptor
-         * @returns the index of the appended fd in case of success, else -1          (and `error` is set)
+         * @returns the index of the appended fd in case of success, else `-1`          (and `error` is set)
          */
         append(fd: number): number;
+
+        /**
+         * Adds a file descriptor to `list`.
+         * 
+         * After this call, `fd` belongs to the `list` and may no longer be closed by the
+         * caller.
+         * 
+         * The file descriptor `fd` should be set to close-on-exec.
+         * 
+         * The index of the file descriptor in the list is returned. If you use this
+         * index with {@link Gio.UnixFDList.get} then you will receive back a
+         * duplicated copy of the same file descriptor.
+         * @param fd a valid open file descriptor
+         * @returns the index of the appended `fd`
+         */
+        append_take(fd: number): number;
 
         /**
          * Gets a file descriptor out of `list`.
          * 
          * `index_` specifies the index of the file descriptor to get.  It is a
-         * programmer error for `index_` to be out of range; see
-         * `g_unix_fd_list_get_length()`.
+         * programmer error for `index_` to be out of range. Either use
+         * {@link Gio.UnixFDList.lookup} to do a checked lookup, or check the index
+         * against the list length using {@link Gio.UnixFDList.get_length}.
          * 
          * The file descriptor is duplicated using `dup()` and set as
          * close-on-exec before being returned.  You must call `close()` on it
@@ -44430,7 +44739,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * A possible cause of failure is exceeding the per-process or
          * system-wide file descriptor limit.
          * @param index_ the index into the list
-         * @returns the file descriptor, or -1 in case of error
+         * @returns the file descriptor, or `-1` in case of error
          */
         get(index_: number): number;
 
@@ -44442,6 +44751,36 @@ export const _LocalFilePrototype: typeof File.prototype;
         get_length(): number;
 
         /**
+         * Looks up a file descriptor in `list` at position `index_`.
+         * 
+         * `index_` specifies the index of the file descriptor to get. If no file
+         * descriptor exists at this index, `-1` is returned.
+         * 
+         * After this call, the descriptor remains the property of `list`. The caller
+         * must not close it. The descriptor is valid only until `list` is changed in any
+         * way.
+         * @param index_ the file descriptor index
+         * @returns the file descriptor, or `-1` if not found
+         */
+        lookup(index_: bigint | number): number;
+
+        /**
+         * Gets a file descriptor out of `list`.
+         * 
+         * `index_` specifies the index of the file descriptor to get. It is a programmer
+         * error for `index_` to be out of range; see {@link Gio.UnixFDList.get_length}.
+         * 
+         * This will always return a valid (non-negative) file descriptor.
+         * 
+         * After this call, the descriptor remains the property of `list`. The caller
+         * must not close it. The descriptor is valid only until `list` is changed in any
+         * way.
+         * @param index_ the index into the list
+         * @returns the file descriptor
+         */
+        peek(index_: bigint | number): number;
+
+        /**
          * Returns the array of file descriptors that is contained in this
          * object.
          * 
@@ -44449,11 +44788,11 @@ export const _LocalFilePrototype: typeof File.prototype;
          * caller must not close them and must not free the array.  The array is
          * valid only until `list` is changed in any way.
          * 
-         * If `length` is non-`null` then it is set to the number of file
+         * If `length` is non-`NULL` then it is set to the number of file
          * descriptors in the returned array. The returned array is also
-         * terminated with -1.
+         * terminated with `-1`.
          * 
-         * This function never returns `null`. In case there are no file
+         * This function never returns `NULL`. In case there are no file
          * descriptors contained in `list`, an empty array is returned.
          * @returns an array of file     descriptors
          */
@@ -44472,11 +44811,11 @@ export const _LocalFilePrototype: typeof File.prototype;
          * descriptors.  The file descriptors in the array are set to
          * close-on-exec.
          * 
-         * If `length` is non-`null` then it is set to the number of file
+         * If `length` is non-`NULL` then it is set to the number of file
          * descriptors in the returned array. The returned array is also
-         * terminated with -1.
+         * terminated with `-1`.
          * 
-         * This function never returns `null`. In case there are no file
+         * This function never returns `NULL`. In case there are no file
          * descriptors contained in `list`, an empty array is returned.
          * @returns an array of file     descriptors
          */
@@ -46076,6 +46415,11 @@ export const _LocalFilePrototype: typeof File.prototype;
     type CredentialsClass = typeof Credentials;
 
     /**
+     * @gir-type Alias
+     */
+    type DBusActionGroupClass = typeof DBusActionGroup;
+
+    /**
      * Information about an annotation.
      * @gir-type Struct
      * @since 2.26
@@ -46818,7 +47162,7 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * Checks if the matcher will match all of the keys in a given namespace.
          * This will always return `true` if a wildcard character is in use (e.g. if
-         * matcher was created with "standard::*" and `ns` is "standard", or if matcher was created
+         * matcher was created with "standard::\*" and `ns` is "standard", or if matcher was created
          * using "*" and namespace is anything.)
          * 
          * TODO: this is awkwardly worded.
@@ -47214,6 +47558,16 @@ export const _LocalFilePrototype: typeof File.prototype;
         static $gtype: GObject.GType<IOStreamPrivate>;
     }
 
+
+    /**
+     * @gir-type Alias
+     */
+    type IPTosMessageClass = typeof IPTosMessage;
+
+    /**
+     * @gir-type Alias
+     */
+    type IPv6TclassMessageClass = typeof IPv6TclassMessage;
 
     /**
      * @gir-type Alias
@@ -47789,9 +48143,9 @@ export const _LocalFilePrototype: typeof File.prototype;
      * supported.
      * 
      * Substitutions must start with a slash, and must not contain a trailing slash
-     * before the `=`.  The path after the slash should ideally be absolute, but
-     * this is not strictly required.  It is possible to overlay the location of a
-     * single resource with an individual file.
+     * before the `=`.  The filesystem path after the `=` should ideally be absolute,
+     * but this is not strictly required.  It is possible to overlay the location of
+     * a single resource with an individual file.
      * @gir-type Struct
      * @since 2.32
      */
@@ -49994,7 +50348,7 @@ export const _LocalFilePrototype: typeof File.prototype;
              * the application.
              * @virtual
              */
-            vfunc_get_supported_types(): string[];
+            vfunc_get_supported_types(): string[] | null;
 
             /**
              * Launches the application. Passes `files` to the launched application
@@ -50133,7 +50487,9 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
         * Creates a new {@link Gio.AppInfo} from the given information.
         * 
-        * Note that for `commandline`, the quoting rules of the `Exec` key of the
+        * When constructing `commandline`, quote any filenames or potentially-
+        * untrusted input using {@link GLib.shell_quote}, and note that the
+        * quoting rules of the `Exec` key of the
         * [freedesktop.org Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec)
         * are applied. For example, if the `commandline` contains
         * percent-encoded URIs, the percent-character must be doubled in order to prevent it from
@@ -50453,7 +50809,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * the application.
          * @returns a list of content types.
          */
-        get_supported_types(): string[];
+        get_supported_types(): string[] | null;
 
         /**
          * Launches the application. Passes `files` to the launched application
@@ -51384,9 +51740,14 @@ export const _LocalFilePrototype: typeof File.prototype;
             /**
              * Gets D-Bus introspection information for the D-Bus interface
              * implemented by `interface_`.
+             * 
+             * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+             * construction of `interface_` and is also not made available otherwise.
+             * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+             * {@link Gio.DBusInterfaceInfo}.
              * @virtual
              */
-            vfunc_get_info(): DBusInterfaceInfo;
+            vfunc_get_info(): DBusInterfaceInfo | null;
 
             /**
              * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -51428,9 +51789,14 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): DBusInterfaceInfo;
+        get_info(): DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -54272,23 +54638,23 @@ export const _LocalFilePrototype: typeof File.prototype;
 
             /**
              * Gets the requested information about the files in a directory.
-             * The result is a {@link Gio.FileEnumerator} object that will give out
-             * {@link Gio.FileInfo} objects for all the files in the directory.
+             * The result is a {@link FileEnumerator} object that will give out
+             * {@link FileInfo} objects for all the files in the directory.
              * 
              * The `attributes` value is a string that specifies the file
              * attributes that should be gathered. It is not an error if
              * it's not possible to read a particular requested attribute
              * from a file - it just won't be set. `attributes` should
              * be a comma-separated list of attributes or attribute wildcards.
-             * The wildcard "*" means all attributes, and a wildcard like
-             * "standard::*" means all attributes in the standard namespace.
-             * An example attribute query be "standard::*,owner::user".
+             * The wildcard `*` means all attributes, and a wildcard like
+             * `"standard::*"` means all attributes in the standard namespace.
+             * An example attribute query be `"standard::*,owner::user"`.
              * The standard attributes are available as defines, like
-             * `G_FILE_ATTRIBUTE_STANDARD_NAME`. `G_FILE_ATTRIBUTE_STANDARD_NAME` should
-             * always be specified if you plan to call `g_file_enumerator_get_child()` or
-             * `g_file_enumerator_iterate()` on the returned enumerator.
+             * {@link FILE_ATTRIBUTE_STANDARD_NAME}. {@link FILE_ATTRIBUTE_STANDARD_NAME} should
+             * always be specified if you plan to call {@link FileEnumerator.get_child} or
+             * {@link FileEnumerator.iterate} on the returned enumerator.
              * 
-             * If `cancellable` is not `null`, then the operation can be cancelled
+             * If `cancellable` is not `NULL`, then the operation can be cancelled
              * by triggering the cancellable object from another thread. If the
              * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
              * returned.
@@ -54334,9 +54700,17 @@ export const _LocalFilePrototype: typeof File.prototype;
             /**
              * Checks if the two given `GFiles` refer to the same file.
              * 
+             * This function can be used with {@link Gio.File.hash} to insert
+             * {@link Gio.File}s efficiently in a hash table.
+             * 
              * Note that two `GFiles` that differ can still refer to the same
              * file on the filesystem due to various forms of filename
-             * aliasing.
+             * aliasing. For local files, this function essentially compares the file paths,
+             * so two {@link Gio.File}s which point to different hard or soft links will not
+             * be considered equal, despite pointing to the same content.
+             * 
+             * For determining whether two files are hardlinked, see
+             * {@link Gio.FILE_ATTRIBUTE_ID_FILE}.
              * 
              * This call does no blocking I/O.
              * @param file2 the second {@link Gio.File}
@@ -54928,7 +55302,7 @@ export const _LocalFilePrototype: typeof File.prototype;
              * that should be gathered. It is not an error if it's not possible
              * to read a particular requested attribute from a file - it just
              * won't be set. `attributes` should be a comma-separated list of
-             * attributes or attribute wildcards. The wildcard "*" means all
+             * attributes or attribute wildcards. The wildcard "\*" means all
              * attributes, and a wildcard like "filesystem::*" means all attributes
              * in the filesystem namespace. The standard namespace for filesystem
              * attributes is "filesystem". Common attributes of interest are
@@ -55001,7 +55375,7 @@ export const _LocalFilePrototype: typeof File.prototype;
              *  - {@link Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME}
              * 
              * `attributes` should be a comma-separated list of attributes or attribute
-             * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+             * wildcards. The wildcard `"\*"` means all attributes, and a wildcard like
              * `"standard::*"` means all attributes in the standard namespace.
              * An example attribute query might be `"standard::*,owner::user"`.
              * The standard attributes are available as defines, like
@@ -55740,9 +56114,9 @@ export const _LocalFilePrototype: typeof File.prototype;
      * short. Entity tags are somewhat like a more abstract version of the
      * traditional mtime, and can be used to quickly determine if the file
      * has been modified from the version on the file system. See the
-     * HTTP 1.1
-     * [specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)
-     * for HTTP `ETag` headers, which are a very similar concept.
+     * description of HTTP ETags in
+     * [RFC9110](https://www.rfc-editor.org/rfc/rfc9110.html#name-etag).
+     * {@link Gio.File} Entity Tags are a very similar concept.
      * @gir-type Interface
      */
     interface File extends GObject.Object, File.Interface {
@@ -56288,23 +56662,23 @@ export const _LocalFilePrototype: typeof File.prototype;
 
         /**
          * Gets the requested information about the files in a directory.
-         * The result is a {@link Gio.FileEnumerator} object that will give out
-         * {@link Gio.FileInfo} objects for all the files in the directory.
+         * The result is a {@link FileEnumerator} object that will give out
+         * {@link FileInfo} objects for all the files in the directory.
          * 
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
          * it's not possible to read a particular requested attribute
          * from a file - it just won't be set. `attributes` should
          * be a comma-separated list of attributes or attribute wildcards.
-         * The wildcard "*" means all attributes, and a wildcard like
-         * "standard::*" means all attributes in the standard namespace.
-         * An example attribute query be "standard::*,owner::user".
+         * The wildcard `*` means all attributes, and a wildcard like
+         * `"standard::*"` means all attributes in the standard namespace.
+         * An example attribute query be `"standard::*,owner::user"`.
          * The standard attributes are available as defines, like
-         * `G_FILE_ATTRIBUTE_STANDARD_NAME`. `G_FILE_ATTRIBUTE_STANDARD_NAME` should
-         * always be specified if you plan to call `g_file_enumerator_get_child()` or
-         * `g_file_enumerator_iterate()` on the returned enumerator.
+         * {@link FILE_ATTRIBUTE_STANDARD_NAME}. {@link FILE_ATTRIBUTE_STANDARD_NAME} should
+         * always be specified if you plan to call {@link FileEnumerator.get_child} or
+         * {@link FileEnumerator.iterate} on the returned enumerator.
          * 
-         * If `cancellable` is not `null`, then the operation can be cancelled
+         * If `cancellable` is not `NULL`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
@@ -56315,7 +56689,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @param attributes an attribute query string
          * @param flags a set of {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @returns A {@link Gio.FileEnumerator} if successful,   `null` on error. Free the returned object with `g_object_unref()`.
+         * @returns A {@link Gio.FileEnumerator} if successful,   `null` on error. Free the returned object with {@link GObject.Object.unref}.
          */
         enumerate_children(attributes: string, flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileEnumerator;
 
@@ -56386,9 +56760,17 @@ export const _LocalFilePrototype: typeof File.prototype;
         /**
          * Checks if the two given `GFiles` refer to the same file.
          * 
+         * This function can be used with {@link Gio.File.hash} to insert
+         * {@link Gio.File}s efficiently in a hash table.
+         * 
          * Note that two `GFiles` that differ can still refer to the same
          * file on the filesystem due to various forms of filename
-         * aliasing.
+         * aliasing. For local files, this function essentially compares the file paths,
+         * so two {@link Gio.File}s which point to different hard or soft links will not
+         * be considered equal, despite pointing to the same content.
+         * 
+         * For determining whether two files are hardlinked, see
+         * {@link Gio.FILE_ATTRIBUTE_ID_FILE}.
          * 
          * This call does no blocking I/O.
          * @param file2 the second {@link Gio.File}
@@ -57451,7 +57833,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          * that should be gathered. It is not an error if it's not possible
          * to read a particular requested attribute from a file - it just
          * won't be set. `attributes` should be a comma-separated list of
-         * attributes or attribute wildcards. The wildcard "*" means all
+         * attributes or attribute wildcards. The wildcard "\*" means all
          * attributes, and a wildcard like "filesystem::*" means all attributes
          * in the filesystem namespace. The standard namespace for filesystem
          * attributes is "filesystem". Common attributes of interest are
@@ -57560,7 +57942,7 @@ export const _LocalFilePrototype: typeof File.prototype;
          *  - {@link Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME}
          * 
          * `attributes` should be a comma-separated list of attributes or attribute
-         * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+         * wildcards. The wildcard `"\*"` means all attributes, and a wildcard like
          * `"standard::*"` means all attributes in the standard namespace.
          * An example attribute query might be `"standard::*,owner::user"`.
          * The standard attributes are available as defines, like
@@ -57979,9 +58361,44 @@ export const _LocalFilePrototype: typeof File.prototype;
          * @param make_backup `true` if a backup should be created
          * @param flags a set of {@link Gio.FileCreateFlags}
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         */
+        replace_contents_bytes_async(contents: GLib.Bytes | Uint8Array, etag: string | null, make_backup: boolean, flags: FileCreateFlags, cancellable: Cancellable | null): globalThis.Promise<string>;
+
+        /**
+         * Same as `g_file_replace_contents_async()` but takes a {@link GLib.Bytes} input instead.
+         * This function will keep a ref on `contents` until the operation is done.
+         * Unlike `g_file_replace_contents_async()` this allows forgetting about the
+         * content without waiting for the callback.
+         * 
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * `g_file_replace_contents_finish()`.
+         * @param contents a {@link GLib.Bytes}
+         * @param etag a new [entity tag](#entity-tags) for the `file`, or `null`
+         * @param make_backup `true` if a backup should be created
+         * @param flags a set of {@link Gio.FileCreateFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         replace_contents_bytes_async(contents: GLib.Bytes | Uint8Array, etag: string | null, make_backup: boolean, flags: FileCreateFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Same as `g_file_replace_contents_async()` but takes a {@link GLib.Bytes} input instead.
+         * This function will keep a ref on `contents` until the operation is done.
+         * Unlike `g_file_replace_contents_async()` this allows forgetting about the
+         * content without waiting for the callback.
+         * 
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * `g_file_replace_contents_finish()`.
+         * @param contents a {@link GLib.Bytes}
+         * @param etag a new [entity tag](#entity-tags) for the `file`, or `null`
+         * @param make_backup `true` if a backup should be created
+         * @param flags a set of {@link Gio.FileCreateFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        replace_contents_bytes_async(contents: GLib.Bytes | Uint8Array, etag: string | null, make_backup: boolean, flags: FileCreateFlags, cancellable: Cancellable | null, callback?: AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes an asynchronous replace of the given `file`. See
@@ -60166,6 +60583,12 @@ export const _LocalFilePrototype: typeof File.prototype;
         prototype: NetworkMonitor;
         /**
         * Gets the default {@link Gio.NetworkMonitor} for the system.
+        * 
+        * Some implementations complete their initialization asynchronously:
+        * properties such as {@link Gio.NetworkMonitor.network_available} may start at their
+        * default values and update shortly afterwards, with notify emissions, once
+        * the state is resolved from the thread-default main context of this first
+        * call.
         */
         get_default(): NetworkMonitor;
     }

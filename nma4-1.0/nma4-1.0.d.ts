@@ -341,7 +341,7 @@ export namespace NMA4 {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -668,7 +668,7 @@ export namespace NMA4 {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }

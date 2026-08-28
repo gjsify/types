@@ -414,8 +414,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.4
      */
@@ -813,8 +811,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.4
      */
@@ -925,8 +921,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.26
      */
@@ -1392,8 +1386,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.48
      */
@@ -1738,8 +1730,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -2309,8 +2299,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -2415,8 +2403,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.4
      */
@@ -2578,8 +2564,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.4
      */
@@ -2899,8 +2883,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      */
     class FileCache extends GObject.Object {
@@ -3061,8 +3043,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -3611,8 +3591,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.16
      */
@@ -3737,8 +3715,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.6
      */
@@ -4181,8 +4157,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.16
      */
@@ -4409,8 +4383,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.8
      */
@@ -4653,8 +4625,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.8
      */
@@ -4757,8 +4727,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.8
      */
@@ -4867,8 +4835,6 @@ export namespace EBackend {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.26
      */

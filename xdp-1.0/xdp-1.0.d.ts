@@ -104,6 +104,23 @@ export namespace Xdp {
     /**
      * @gir-type Enum
      */
+    export namespace InputCaptureSessionPersistence {
+        export const $gtype: GObject.GType<InputCaptureSessionPersistence>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum InputCaptureSessionPersistence {
+        NONE,
+        TRANSIENT,
+        PERSISTENT,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyState {
         export const $gtype: GObject.GType<KeyState>;
     }
@@ -344,6 +361,10 @@ export namespace Xdp {
          * a remote desktop session.
          */
         REMOTE_DESKTOP,
+        /**
+         * an input capture session.
+         */
+        INPUT_CAPTURE,
     }
 
 
@@ -546,6 +567,37 @@ export namespace Xdp {
     /**
      * @gir-type Flags
      */
+    export namespace InputCapability {
+        export const $gtype: GObject.GType<InputCapability>;
+    }
+
+    /**
+     * Flags to specify what input device capabilities should be captured
+     * @gir-type Flags
+     */
+    enum InputCapability {
+        /**
+         * no device
+         */
+        NONE,
+        /**
+         * capture the keyboard
+         */
+        KEYBOARD,
+        /**
+         * capture pointer events
+         */
+        POINTER,
+        /**
+         * capture touchscreen events
+         */
+        TOUCHSCREEN,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
     export namespace LauncherType {
         export const $gtype: GObject.GType<LauncherType>;
     }
@@ -586,6 +638,10 @@ export namespace Xdp {
          * Allow selecting multiple files
          */
         MULTIPLE,
+        /**
+         * Select folders instead of files (Since: 0.10)
+         */
+        DIRECTORY,
     }
 
 
@@ -780,6 +836,546 @@ export namespace Xdp {
     }
 
 
+    namespace InputCapturePointerBarrier {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::x1": (pspec: GObject.ParamSpec) => void;
+            "notify::x2": (pspec: GObject.ParamSpec) => void;
+            "notify::y1": (pspec: GObject.ParamSpec) => void;
+            "notify::y2": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            id: number;
+            is_active: boolean;
+            isActive: boolean;
+            x1: number;
+            x2: number;
+            y1: number;
+            y2: number;
+        }
+    }
+
+    /**
+     * A representation of a pointer barrier on an {@link InputCaptureZone}.
+     * Barriers can be assigned with
+     * {@link InputCaptureSession.set_pointer_barriers}, once the Portal
+     * interaction is complete the barrier's "is-active" state indicates whether
+     * the barrier is active. Barriers can only be used once, subsequent calls to
+     * {@link InputCaptureSession.set_pointer_barriers} will invalidate all
+     * current barriers.
+     * @gir-type Class
+     */
+    class InputCapturePointerBarrier extends GObject.Object {
+        static $gtype: GObject.GType<InputCapturePointerBarrier>;
+
+        // Properties
+        /**
+         * The caller-assigned unique id of this barrier
+         * @construct-only
+         * @default 0
+         */
+        get id(): number;
+
+        /**
+         * A boolean indicating whether this barrier is active. A barrier cannot
+         * become active once it failed to apply, barriers that are not active can
+         * be thus cleaned up by the caller.
+         * @read-only
+         * @default false
+         */
+        get is_active(): boolean;
+
+        /**
+         * A boolean indicating whether this barrier is active. A barrier cannot
+         * become active once it failed to apply, barriers that are not active can
+         * be thus cleaned up by the caller.
+         * @read-only
+         * @default false
+         */
+        get isActive(): boolean;
+
+        /**
+         * The pointer barrier x offset in logical pixels
+         * @construct-only
+         * @default 0
+         */
+        get x1(): number;
+
+        /**
+         * The pointer barrier x offset in logical pixels
+         * @construct-only
+         * @default 0
+         */
+        get x2(): number;
+
+        /**
+         * The pointer barrier y offset in logical pixels
+         * @construct-only
+         * @default 0
+         */
+        get y1(): number;
+
+        /**
+         * The pointer barrier y offset in logical pixels
+         * @construct-only
+         * @default 0
+         */
+        get y2(): number;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: InputCapturePointerBarrier.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<InputCapturePointerBarrier.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof InputCapturePointerBarrier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputCapturePointerBarrier.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof InputCapturePointerBarrier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputCapturePointerBarrier.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof InputCapturePointerBarrier.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputCapturePointerBarrier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+
+    namespace InputCaptureSession {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when an InputCapture session activates and sends events. When this
+             * signal is emitted, events will appear on the transport layer.
+             * @signal
+             * @run-cleanup
+             */
+            activated: (arg0: number, arg1: GLib.Variant) => void;
+            /**
+             * Emitted when an InputCapture session deactivates and no longer sends
+             * events.
+             * @signal
+             * @run-cleanup
+             */
+            deactivated: (arg0: number, arg1: GLib.Variant) => void;
+            /**
+             * Emitted when an InputCapture session is disabled. This signal
+             * is emitted when capturing was disabled by the server.
+             * @signal
+             * @run-cleanup
+             */
+            disabled: (arg0: GLib.Variant) => void;
+            /**
+             * Emitted when an InputCapture session's zones have changed. When this
+             * signal is emitted, all current zones will have their
+             * {@link InputCaptureZone.is_valid} property set to `false` and all
+             * internal references to those zones have been released. This signal is
+             * sent after libportal has fetched the updated zones, a caller should call
+             * `xdp_input_capture_session_get_zones()` to retrieve the new zones.
+             * @signal
+             * @run-cleanup
+             */
+            "zones-changed": (arg0: GLib.Variant) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * A representation of a long-lived input capture portal interaction.
+     * 
+     * The {@link InputCaptureSession} object is used to represent portal
+     * interactions with the input capture desktop portal that extend over
+     * multiple portal calls. Usually a caller creates an input capture session,
+     * requests the available zones and sets up pointer barriers on those zones
+     * before enabling the session.
+     * 
+     * To find available zones, call {@link InputCaptureSession.get_zones}.
+     * These {@link InputCaptureZone} object represent the accessible desktop area
+     * for input capturing. {@link InputCapturePointerBarrier} objects can be set
+     * up on these zones to trigger input capture.
+     * 
+     * The {@link InputCaptureSession} wraps a {@link Session} object.
+     * @gir-type Class
+     */
+    class InputCaptureSession extends GObject.Object {
+        static $gtype: GObject.GType<InputCaptureSession>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: InputCaptureSession.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<InputCaptureSession.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof InputCaptureSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputCaptureSession.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof InputCaptureSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputCaptureSession.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof InputCaptureSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputCaptureSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Connect this session to an EIS implementation and return the fd.
+         * This fd can be passed into `ei_setup_backend_fd()`. See the libei
+         * documentation for details.
+         * 
+         * This is a sync DBus invocation.
+         * @returns a socket to the EIS implementation for this input capture session or a negative errno on failure.
+         */
+        connect_to_eis(): number;
+
+        /**
+         * Disables this input capture session.
+         */
+        disable(): void;
+
+        /**
+         * Enables this input capture session. In the future, this client may receive
+         * input events.
+         */
+        enable(): void;
+
+        /**
+         * Returns the restore token for this session or NULL if none exists. This token
+         * can be passed to {@link InputCaptureSession.set_restore_token} for a future
+         * session to restore this session, possibly skipping interactive permission
+         * dialogs.
+         * 
+         * This method only returns a token for a session created with
+         * {@link Portal.create_input_capture_session2} and only once
+         * {@link InputCaptureSession.start_finish} has completed.
+         * 
+         * The token may change with every session.
+         * @returns the restore token or NULL
+         */
+        get_restore_token(): string;
+
+        /**
+         * Return the {@link XdpSession} for this InputCapture session.
+         * @returns a {@link Session} object
+         */
+        get_session(): Session;
+
+        /**
+         * Obtains the current set of {@link InputCaptureZone} objects.
+         * 
+         * The returned object is valid until the zones are invalidated by the
+         * `Xdp.InputCaptureSession::zones-changed` signal.
+         * 
+         * Unless the session is active, this function returns `NULL`.
+         * @returns the available zones. The caller must keep a reference to the list or the elements if used outside the immediate scope.
+         */
+        get_zones(): InputCaptureZone[];
+
+        /**
+         * Releases this input capture session without a suggested cursor position.
+         * @param activation_id 
+         */
+        release(activation_id: number): void;
+
+        /**
+         * Releases this input capture session with a suggested cursor position.
+         * Note that the implementation is not required to honour this position.
+         * @param activation_id 
+         * @param cursor_x_position the suggested cursor x position once capture has been released
+         * @param cursor_y_position the suggested cursor y position once capture has been released
+         */
+        release_at(activation_id: number, cursor_x_position: number, cursor_y_position: number): void;
+
+        /**
+         * Sets the pointer barriers for this session. When the request is done,
+         * `callback` will be called. You can then call
+         * {@link InputCaptureSession.set_pointer_barriers_finish} to
+         * get the results. The result of this request is the list of pointer barriers
+         * that failed to apply - barriers not present in the returned list are active.
+         * 
+         * Once the pointer barrier is
+         * applied (i.e. the reply to the DBus Request has been received), the
+         * the {@link InputCapturePointerBarrier.is_active} property is changed on
+         * that barrier. Failed barriers have the property set to a `false` value.
+         * @param barriers the pointer barriers to apply
+         * @param cancellable 
+         */
+        set_pointer_barriers(barriers: InputCapturePointerBarrier[], cancellable: Gio.Cancellable | null): globalThis.Promise<InputCapturePointerBarrier[]>;
+
+        /**
+         * Sets the pointer barriers for this session. When the request is done,
+         * `callback` will be called. You can then call
+         * {@link InputCaptureSession.set_pointer_barriers_finish} to
+         * get the results. The result of this request is the list of pointer barriers
+         * that failed to apply - barriers not present in the returned list are active.
+         * 
+         * Once the pointer barrier is
+         * applied (i.e. the reply to the DBus Request has been received), the
+         * the {@link InputCapturePointerBarrier.is_active} property is changed on
+         * that barrier. Failed barriers have the property set to a `false` value.
+         * @param barriers the pointer barriers to apply
+         * @param cancellable 
+         * @param callback 
+         */
+        set_pointer_barriers(barriers: InputCapturePointerBarrier[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Sets the pointer barriers for this session. When the request is done,
+         * `callback` will be called. You can then call
+         * {@link InputCaptureSession.set_pointer_barriers_finish} to
+         * get the results. The result of this request is the list of pointer barriers
+         * that failed to apply - barriers not present in the returned list are active.
+         * 
+         * Once the pointer barrier is
+         * applied (i.e. the reply to the DBus Request has been received), the
+         * the {@link InputCapturePointerBarrier.is_active} property is changed on
+         * that barrier. Failed barriers have the property set to a `false` value.
+         * @param barriers the pointer barriers to apply
+         * @param cancellable 
+         * @param callback 
+         */
+        set_pointer_barriers(barriers: InputCapturePointerBarrier[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<InputCapturePointerBarrier[]> | void;
+
+        /**
+         * Finishes the set-pointer-barriers request, and returns a GList with the pointer
+         * barriers that failed to apply and should be cleaned up by the caller.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a list of failed pointer barriers
+         */
+        set_pointer_barriers_finish(result: Gio.AsyncResult): InputCapturePointerBarrier[];
+
+        /**
+         * Sets the restore token for the session about to be started. This instructs
+         * the portal to restore the previous session identified by this token.
+         * 
+         * This method can only be called for a session created with
+         * {@link Portal.create_input_capture_session2} and only before
+         * {@link InputCaptureSession.start} has been called. It has no effect
+         * otherwise.
+         * 
+         * The restore token for the current session can be obtained with
+         * {@link InputCaptureSession.get_restore_token}.
+         * @param restore_token a restore token from a previous session
+         */
+        set_restore_token(restore_token: string): void;
+
+        /**
+         * Requests session persistence from the portal. A persistent session can
+         * be restored using the restore token, see
+         * {@link InputCaptureSession.set_restore_token}.
+         * 
+         * This method can only be called for a session created with
+         * {@link Portal.create_input_capture_session2} and only before
+         * {@link InputCaptureSession.start} has been called. It has no effect
+         * otherwise.
+         * 
+         * The default persistence is none.
+         * @param persistence the session persistence for this session
+         */
+        set_session_persistence(persistence: InputCaptureSessionPersistence): void;
+
+        /**
+         * Start the input capture session.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link InputCaptureSession.start_finish} to get the results.
+         * @param parent parent window information
+         * @param capabilities which kinds of capabilities to request
+         * @param cancellable optional {@link Gio.Cancellable}
+         */
+        start(parent: Parent | null, capabilities: InputCapability, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Start the input capture session.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link InputCaptureSession.start_finish} to get the results.
+         * @param parent parent window information
+         * @param capabilities which kinds of capabilities to request
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        start(parent: Parent | null, capabilities: InputCapability, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Start the input capture session.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link InputCaptureSession.start_finish} to get the results.
+         * @param parent parent window information
+         * @param capabilities which kinds of capabilities to request
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        start(parent: Parent | null, capabilities: InputCapability, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finishes the InputCapture Start request, and returns TRUE if it was
+         * successful.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns TRUE on success.
+         */
+        start_finish(result: Gio.AsyncResult): boolean;
+    }
+
+
+    namespace InputCaptureZone {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::is-valid": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::zone-set": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            height: number;
+            is_valid: boolean;
+            isValid: boolean;
+            width: number;
+            x: number;
+            y: number;
+            zone_set: number;
+            zoneSet: number;
+        }
+    }
+
+    /**
+     * A representation of a zone that supports input capture.
+     * 
+     * The {@link XdpInputCaptureZone} object is used to represent a zone on the
+     * user-visible desktop that may be used to set up
+     * {@link XdpInputCapturePointerBarrier} objects. In most cases, the set of
+     * {@link XdpInputCaptureZone} objects represent the available monitors but the
+     * exact implementation is up to the implementation.
+     * @gir-type Class
+     */
+    class InputCaptureZone extends GObject.Object {
+        static $gtype: GObject.GType<InputCaptureZone>;
+
+        // Properties
+        /**
+         * The height of this zone in logical pixels
+         * @construct-only
+         * @default 0
+         */
+        get height(): number;
+
+        /**
+         * A boolean indicating whether this zone is currently valid. Zones are
+         * invalidated by the Portal's ZonesChanged signal, see
+         * `Xdp.InputCaptureSession::zones-changed`.
+         * 
+         * Once invalidated, a Zone can be discarded by the caller, it cannot become
+         * valid again.
+         * @default true
+         */
+        get is_valid(): boolean;
+        set is_valid(val: boolean);
+
+        /**
+         * A boolean indicating whether this zone is currently valid. Zones are
+         * invalidated by the Portal's ZonesChanged signal, see
+         * `Xdp.InputCaptureSession::zones-changed`.
+         * 
+         * Once invalidated, a Zone can be discarded by the caller, it cannot become
+         * valid again.
+         * @default true
+         */
+        get isValid(): boolean;
+        set isValid(val: boolean);
+
+        /**
+         * The width of this zone in logical pixels
+         * @construct-only
+         * @default 0
+         */
+        get width(): number;
+
+        /**
+         * The x offset of this zone in logical pixels
+         * @construct-only
+         * @default 0
+         */
+        get x(): number;
+
+        /**
+         * The x offset of this zone in logical pixels
+         * @construct-only
+         * @default 0
+         */
+        get y(): number;
+
+        /**
+         * @construct-only
+         * @default 0
+         */
+        get zone_set(): number;
+
+        /**
+         * @construct-only
+         * @default 0
+         */
+        get zoneSet(): number;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: InputCaptureZone.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<InputCaptureZone.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof InputCaptureZone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputCaptureZone.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof InputCaptureZone.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputCaptureZone.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof InputCaptureZone.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputCaptureZone.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+
     namespace Portal {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -964,19 +1560,33 @@ export namespace Xdp {
          * 
          * - title `s`: a user-visible string to display as title
          * - body `s`: a user-visible string to display as body
-         * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize})
+         * - markup-body `s`: a user-visible string to display as body with support for markup
+         * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize}
+         *   for class@Gio.ThemedIcon, class@Gio.FileIcon and class@Gio.BytesIcon)
+         * - sound `v`: a serialized sound
          * - priority `s`: "low", "normal", "high" or "urgent"
          * - default-action `s`: name of an action that
          *     will be activated when the user clicks on the notification
          * - default-action-target `v`: target parameter to send along when
          *     activating the default action.
          * - buttons `aa{sv}`: array of serialized buttons
+         * - display-hint `as`: An array of display hints.
+         * - category `s`: A category for this notification. [See the spec for supported categories](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Notification.html#org-freedesktop-portal-notification-addnotification)
+         * 
+         * The serialized sound consists of a `s` or `sv`:
+         * - default : Play the default sound for the notification.
+         * - silent : Don't ever play a sound for the notification.
+         * - file `s`: A path to a sound file.
+         * - bytes `ay`: An array of bytes.
+         * 
+         * The supported sound formats are ogg/opus, ogg/vorbis and wav/pcm.
          * 
          * Each serialized button is a dictionary with the following supported keys:
          * 
-         * - label `s`: user-visible lable for the button. Mandatory
+         * - label `s`: user-visible label for the button. Mandatory without a purpose.
          * - action `s`: name of an action that will be activated when
          *     the user clicks on the button. Mandatory
+         * - purpose `s`: information used by the server to style the button specially.
          * - target `v`: target parameter to send along when activating
          *     the button
          * 
@@ -1003,19 +1613,33 @@ export namespace Xdp {
          * 
          * - title `s`: a user-visible string to display as title
          * - body `s`: a user-visible string to display as body
-         * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize})
+         * - markup-body `s`: a user-visible string to display as body with support for markup
+         * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize}
+         *   for class@Gio.ThemedIcon, class@Gio.FileIcon and class@Gio.BytesIcon)
+         * - sound `v`: a serialized sound
          * - priority `s`: "low", "normal", "high" or "urgent"
          * - default-action `s`: name of an action that
          *     will be activated when the user clicks on the notification
          * - default-action-target `v`: target parameter to send along when
          *     activating the default action.
          * - buttons `aa{sv}`: array of serialized buttons
+         * - display-hint `as`: An array of display hints.
+         * - category `s`: A category for this notification. [See the spec for supported categories](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Notification.html#org-freedesktop-portal-notification-addnotification)
+         * 
+         * The serialized sound consists of a `s` or `sv`:
+         * - default : Play the default sound for the notification.
+         * - silent : Don't ever play a sound for the notification.
+         * - file `s`: A path to a sound file.
+         * - bytes `ay`: An array of bytes.
+         * 
+         * The supported sound formats are ogg/opus, ogg/vorbis and wav/pcm.
          * 
          * Each serialized button is a dictionary with the following supported keys:
          * 
-         * - label `s`: user-visible lable for the button. Mandatory
+         * - label `s`: user-visible label for the button. Mandatory without a purpose.
          * - action `s`: name of an action that will be activated when
          *     the user clicks on the button. Mandatory
+         * - purpose `s`: information used by the server to style the button specially.
          * - target `v`: target parameter to send along when activating
          *     the button
          * 
@@ -1043,19 +1667,33 @@ export namespace Xdp {
          * 
          * - title `s`: a user-visible string to display as title
          * - body `s`: a user-visible string to display as body
-         * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize})
+         * - markup-body `s`: a user-visible string to display as body with support for markup
+         * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize}
+         *   for class@Gio.ThemedIcon, class@Gio.FileIcon and class@Gio.BytesIcon)
+         * - sound `v`: a serialized sound
          * - priority `s`: "low", "normal", "high" or "urgent"
          * - default-action `s`: name of an action that
          *     will be activated when the user clicks on the notification
          * - default-action-target `v`: target parameter to send along when
          *     activating the default action.
          * - buttons `aa{sv}`: array of serialized buttons
+         * - display-hint `as`: An array of display hints.
+         * - category `s`: A category for this notification. [See the spec for supported categories](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Notification.html#org-freedesktop-portal-notification-addnotification)
+         * 
+         * The serialized sound consists of a `s` or `sv`:
+         * - default : Play the default sound for the notification.
+         * - silent : Don't ever play a sound for the notification.
+         * - file `s`: A path to a sound file.
+         * - bytes `ay`: An array of bytes.
+         * 
+         * The supported sound formats are ogg/opus, ogg/vorbis and wav/pcm.
          * 
          * Each serialized button is a dictionary with the following supported keys:
          * 
-         * - label `s`: user-visible lable for the button. Mandatory
+         * - label `s`: user-visible label for the button. Mandatory without a purpose.
          * - action `s`: name of an action that will be activated when
          *     the user clicks on the button. Mandatory
+         * - purpose `s`: information used by the server to style the button specially.
          * - target `v`: target parameter to send along when activating
          *     the button
          * 
@@ -1149,6 +1787,98 @@ export namespace Xdp {
         compose_email_finish(result: Gio.AsyncResult): boolean;
 
         /**
+         * Creates a session for input capture
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.create_input_capture_session_finish} to get the results.
+         * @param parent parent window information
+         * @param capabilities which kinds of capabilities to request
+         * @param cancellable optional {@link Gio.Cancellable}
+         */
+        create_input_capture_session(parent: Parent | null, capabilities: InputCapability, cancellable: Gio.Cancellable | null): globalThis.Promise<InputCaptureSession>;
+
+        /**
+         * Creates a session for input capture
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.create_input_capture_session_finish} to get the results.
+         * @param parent parent window information
+         * @param capabilities which kinds of capabilities to request
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        create_input_capture_session(parent: Parent | null, capabilities: InputCapability, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Creates a session for input capture
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.create_input_capture_session_finish} to get the results.
+         * @param parent parent window information
+         * @param capabilities which kinds of capabilities to request
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        create_input_capture_session(parent: Parent | null, capabilities: InputCapability, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<InputCaptureSession> | void;
+
+        /**
+         * Creates an inactive session for input capture.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.create_input_capture_session2_finish} to get the results.
+         * @param cancellable optional {@link Gio.Cancellable}
+         */
+        create_input_capture_session2(cancellable: Gio.Cancellable | null): globalThis.Promise<InputCaptureSession>;
+
+        /**
+         * Creates an inactive session for input capture.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.create_input_capture_session2_finish} to get the results.
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        create_input_capture_session2(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Creates an inactive session for input capture.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.create_input_capture_session2_finish} to get the results.
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        create_input_capture_session2(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<InputCaptureSession> | void;
+
+        /**
+         * Finishes the InputCapture CreateSession2 method call, and returns a
+         * {@link InputCaptureSession}. To get to the {@link Session} within use
+         * `xdp_input_capture_session_get_session()`.
+         * 
+         * The created session is inactive, and must be started with
+         * [method.InputCaptureSession.start].
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a {@link InputCaptureSession}
+         */
+        create_input_capture_session2_finish(result: Gio.AsyncResult): InputCaptureSession;
+
+        /**
+         * Creates an inactive session for input capture.
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @returns a {@link InputCaptureSession}
+         */
+        create_input_capture_session2_sync(cancellable: Gio.Cancellable | null): InputCaptureSession;
+
+        /**
+         * Finishes the InputCapture CreateSession request, and returns a
+         * {@link InputCaptureSession}. To get to the {@link Session} within use
+         * `xdp_input_capture_session_get_session()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a {@link InputCaptureSession}
+         */
+        create_input_capture_session_finish(result: Gio.AsyncResult): InputCaptureSession;
+
+        /**
          * Creates a session for remote desktop.
          * 
          * When the request is done, `callback` will be called. You can then
@@ -1195,6 +1925,22 @@ export namespace Xdp {
          * @returns a {@link Session}
          */
         create_remote_desktop_session_finish(result: Gio.AsyncResult): Session;
+
+        /**
+         * Creates a session for remote desktop.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.create_remote_desktop_session_finish} to get the results.
+         * @param devices which kinds of input devices to ofer in the new dialog
+         * @param outputs which kinds of source to offer in the dialog
+         * @param flags options for this call
+         * @param cursor_mode the cursor mode of the session
+         * @param persist_mode the persist mode of the session
+         * @param restore_token the token of a previous screencast session to restore
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        create_remote_desktop_session_full(devices: DeviceType, outputs: OutputType, flags: RemoteDesktopFlags, cursor_mode: CursorMode, persist_mode: PersistMode, restore_token: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Creates a session for a screencast.
@@ -1384,6 +2130,61 @@ export namespace Xdp {
          * @returns `true` if the uninstallation was successful, `false` with `error` set   otherwise
          */
         dynamic_launcher_uninstall(desktop_file_id: string): boolean;
+
+        /**
+         * Retrieving the input portal API version.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.get_input_capture_version_finish} to get the results.
+         * @param cancellable optional {@link Gio.Cancellable}
+         */
+        get_input_capture_version(cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
+
+        /**
+         * Retrieving the input portal API version.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.get_input_capture_version_finish} to get the results.
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        get_input_capture_version(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Retrieving the input portal API version.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.get_input_capture_version_finish} to get the results.
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        get_input_capture_version(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
+
+        /**
+         * Finishes retrieving the input portal API version.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns the API version of the input capture portal, or -1 on error
+         */
+        get_input_capture_version_finish(result: Gio.AsyncResult): number;
+
+        /**
+         * Retrieving the input portal API version.
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @returns the API version of the input capture portal, or -1 on error
+         */
+        get_input_capture_version_sync(cancellable: Gio.Cancellable | null): number;
+
+        /**
+         * This function returns an object to access settings exposed through
+         * the portal.
+         * @returns a {@link Settings} new settings object.
+         */
+        get_settings(): Settings;
+
+        /**
+         * @returns a vardict of supported options for properties that have options.
+         */
+        get_supported_notification_options(): GLib.Variant;
 
         /**
          * Gets information about the user.
@@ -1930,7 +2731,7 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        request_background(parent: Parent | null, reason: string | null, commandline: string[], flags: BackgroundFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        request_background(parent: Parent | null, reason: string | null, commandline: string[] | null, flags: BackgroundFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests background permissions.
@@ -1944,7 +2745,7 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        request_background(parent: Parent | null, reason: string | null, commandline: string[], flags: BackgroundFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        request_background(parent: Parent | null, reason: string | null, commandline: string[] | null, flags: BackgroundFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests background permissions.
@@ -1958,7 +2759,7 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        request_background(parent: Parent | null, reason: string | null, commandline: string[], flags: BackgroundFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        request_background(parent: Parent | null, reason: string | null, commandline: string[] | null, flags: BackgroundFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the request.
@@ -2361,7 +3162,7 @@ export namespace Xdp {
          * @param sandbox_expose_ro paths to expose ro in the new sandbox, or `NULL`
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        spawn(cwd: string, argv: string[], fds: number[] | null, map_to: number[] | null, env: string[] | null, flags: SpawnFlags, sandbox_expose: string[] | null, sandbox_expose_ro: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
+        spawn(cwd: string, argv: string[], fds: number[] | null, map_to: number[] | null, env: string[] | null, flags: SpawnFlags, sandbox_expose: string[] | null, sandbox_expose_ro: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<never>;
 
         /**
          * Creates a new copy of the applications sandbox, and runs
@@ -2399,7 +3200,7 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        spawn(cwd: string, argv: string[], fds: number[] | null, map_to: number[] | null, env: string[] | null, flags: SpawnFlags, sandbox_expose: string[] | null, sandbox_expose_ro: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
+        spawn(cwd: string, argv: string[], fds: number[] | null, map_to: number[] | null, env: string[] | null, flags: SpawnFlags, sandbox_expose: string[] | null, sandbox_expose_ro: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<never> | void;
 
         /**
          * Finishes the spawn request.
@@ -2408,7 +3209,7 @@ export namespace Xdp {
          * @param result a {@link Gio.AsyncResult}
          * @returns the pid of the spawned process.
          */
-        spawn_finish(result: Gio.AsyncResult): number;
+        spawn_finish(result: Gio.AsyncResult): never;
 
         /**
          * Sends a Unix signal to a process that has been spawned
@@ -2417,7 +3218,7 @@ export namespace Xdp {
          * @param signal the Unix signal to send (see signal(7))
          * @param to_process_group whether to send the signal to the process     group of the process
          */
-        spawn_signal(pid: number, signal: number, to_process_group: boolean): void;
+        spawn_signal(pid: never, signal: number, to_process_group: boolean): void;
 
         /**
          * Takes a screenshot.
@@ -2705,6 +3506,16 @@ export namespace Xdp {
              * @run-cleanup
              */
             closed: () => void;
+            /**
+             * @signal
+             * @run-cleanup
+             */
+            "selection-owner-changed": (arg0: string[], arg1: boolean) => void;
+            /**
+             * @signal
+             * @run-cleanup
+             */
+            "selection-transfer": (arg0: string, arg1: number) => void;
         }
 
         // Constructor properties interface
@@ -2806,6 +3617,13 @@ export namespace Xdp {
         get_restore_token(): string | null;
 
         /**
+         * Get the currently advertised mime types of the current clipboard selection
+         * owner.
+         * @returns A NULL terminated array of mime type strings.
+         */
+        get_selection_mime_types(): string[];
+
+        /**
          * Obtains information about the state of the session that is represented
          * by `session`.
          * @returns the state of `session`
@@ -2839,6 +3657,17 @@ export namespace Xdp {
          * @returns the selected streams
          */
         get_streams(): GLib.Variant;
+
+        /**
+         * Returns TRUE if the session has enabled clipboard integration.
+         */
+        is_clipboard_enabled(): boolean;
+
+        /**
+         * Return TRUE if the most recently received clipboard selection owner is the
+         * selection of this session.
+         */
+        is_selection_owned_by_session(): boolean;
 
         /**
          * Changes the state of the key to `state`.
@@ -2916,6 +3745,51 @@ export namespace Xdp {
          * @param y new Y position
          */
         pointer_position(stream: number, x: number, y: number): void;
+
+        /**
+         * Requests clipboard integration on the session.
+         */
+        request_clipboard(): void;
+
+        /**
+         * Request to read the contents of the current clipboard selection in the passed
+         * mime type format. On success a file descriptor is returned, which can be read
+         * from to retrieve the clipboard selection content.
+         * @param mime_type a string containing the requested mime type
+         * @returns A file descriptor, or -1 on error. The caller must close the file descriptor when finished with it.
+         */
+        selection_read(mime_type: string): number;
+
+        /**
+         * Retrieve a file descriptor to write the content of the clipboard selection
+         * to. The content should be formatted according to the mime type of the mime
+         * type passed via the `Xdp.Session::selection-transfer` that carried the
+         * passed serial number.
+         * @param serial a serial number
+         * @returns a file descriptor to a pipe to write the clipboard selection content to, or -1 on error. The caller must close the file descriptor when finished with it.
+         */
+        selection_write(serial: number): number;
+
+        /**
+         * Notify whether a clipboard selection write operation associated with the
+         * passed serial was successful or not.
+         * @param serial a serial number
+         * @param success TRUE if the transfer was successful
+         */
+        selection_write_done(serial: number, success: boolean): void;
+
+        /**
+         * Set the clipboard selection to advertise support for the passed list of mime
+         * types.
+         * 
+         * When some entity in the windowing system requests to retrieve the contents of
+         * the selection, the `Xdp.Session::selection-transfer` signal is emitted. In
+         * response to this, the caller of this function must respond by calling
+         * {@link Session.selection_write} with the serial number passed via the
+         * mentioned signal.
+         * @param mime_types A NULL terminated array of mime type strings.
+         */
+        set_selection(mime_types: string): void;
 
         /**
          * Starts the session.
@@ -2997,17 +3871,123 @@ export namespace Xdp {
     }
 
 
+    namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when a setting value is changed externally.
+             * @signal
+             * @run-first
+             */
+            changed: (arg0: string, arg1: string, arg2: GLib.Variant) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * A representation of the settings exposed by the portal.
+     * 
+     * The {@link Settings} object is used to access and observe the settings
+     * exposed by xdg-desktop-portal.
+     * 
+     * It is obtained from {@link Portal.get_settings}. Call
+     * {@link Settings.read_value} to read a settings value. Connect to
+     * `Xdp.Settings::changed` to observe value changes.
+     * @gir-type Class
+     */
+    class Settings extends GObject.Object {
+        static $gtype: GObject.GType<Settings>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Settings.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Read all the setting values within `namespace`.
+         * @param namespaces List of namespaces to filter results by, supports simple globbing explained below.
+         * @param cancellable a GCancellable or NULL.
+         * @returns a value containing all the values, or `null` if not found. If `error` is not NULL, then the error is returned.
+         */
+        read_all_values(namespaces: string, cancellable: Gio.Cancellable | null): GLib.Variant;
+
+        /**
+         * Read a setting value as unsigned int within `namespace_`, with `key`.
+         * @param namespace_ the namespace of the value.
+         * @param key the key of the value.
+         * @param cancellable a GCancellable or NULL.
+         * @returns the stringint value, or NULL if not found or not the right type. If `error` is not NULL, then the error is returned.
+         */
+        read_string(namespace_: string, key: string, cancellable: Gio.Cancellable | null): string;
+
+        /**
+         * Read a setting value as unsigned int within `namespace_`, with `key`.
+         * @param namespace_ the namespace of the value.
+         * @param key the key of the value.
+         * @param cancellable a GCancellable or NULL.
+         * @returns the uint value, or 0 if not found or not the right type. If `error` is not NULL, then the error is returned.
+         */
+        read_uint(namespace_: string, key: string, cancellable: Gio.Cancellable | null): number;
+
+        /**
+         * Read a setting value within `namespace_`, with `key`.
+         * @param namespace_ the namespace of the value.
+         * @param key the key of the value.
+         * @param cancellable a GCancellable or NULL.
+         * @returns the value, or `null` if not found. If `error` is not NULL, then the error is returned.
+         */
+        read_value(namespace_: string, key: string, cancellable: Gio.Cancellable | null): GLib.Variant;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type InputCapturePointerBarrierClass = typeof InputCapturePointerBarrier;
+
+    /**
+     * @gir-type Alias
+     */
+    type InputCaptureSessionClass = typeof InputCaptureSession;
+
+    /**
+     * @gir-type Alias
+     */
+    type InputCaptureZoneClass = typeof InputCaptureZone;
+
     /**
      * Parent window abstraction.
      * 
-     * The {@link Parent} struct provides an abstract way to represent
-     * a window, without introducing a dependency on a toolkit
-     * library.
+     * The {@link Parent} struct provides an abstract way to represent a window,
+     * without introducing a dependency on a toolkit library.
      * 
-     * An XdpParent implementation for GTK is included in the
-     * `portal-gtk3.h` and `portal-gtk4.h` header files, in the form of inline functions.
-     * To create a XdpParent for a GTK window, use
-     * `xdp_parent_new_gtk()`.
+     * XdpParent implementations for GTK 3, GTK 4, Qt 5, and Qt 6 are available as
+     * separate libraries.
      * @gir-type Struct
      */
     abstract class Parent {
@@ -3036,6 +4016,11 @@ export namespace Xdp {
      * @gir-type Alias
      */
     type SessionClass = typeof Session;
+
+    /**
+     * @gir-type Alias
+     */
+    type SettingsClass = typeof Settings;
 
     /**
      * Name of the imported GIR library

@@ -2641,6 +2641,8 @@ export namespace AgsAudio {
 
     const ALSA_MIDIIN_DEFAULT_BUFFER_SIZE: number;
 
+    const AMPLIFIER10_UTIL_AMP_COUNT: number;
+
     const AMPLIFIER_UTIL_AMP_COUNT: number;
 
     const AUDIO_APPLICATION_CONTEXT_DEFAULT_LOADER_INTERVAL: number;
@@ -2781,6 +2783,8 @@ export namespace AgsAudio {
 
     const FX_LV2_AUDIO_DEFAULT_MIDI_LENGHT: number;
 
+    const FX_MODULAR_SYNTH_AUDIO_DEFAULT_BUFFER_SIZE: number;
+
     const FX_NOTATION_AUDIO_DEFAULT_LOOP_END: number;
 
     const FX_NOTATION_AUDIO_DEFAULT_LOOP_START: number;
@@ -2918,6 +2922,24 @@ export namespace AgsAudio {
     const MIDI_PARSER_MTHD: string;
 
     const MIDI_TICS_PER_BEAT: number;
+
+    const MODULAR_SYNTH_SENDS_COUNT: number;
+
+    const MODULAR_SYNTH_UTIL_DEFAULT_LFO_DEPTH: number;
+
+    const MODULAR_SYNTH_UTIL_DEFAULT_LFO_FREQUENCY: number;
+
+    const MODULAR_SYNTH_UTIL_DEFAULT_LFO_TUNING: number;
+
+    const MODULAR_SYNTH_UTIL_DEFAULT_OSC_FREQUENCY: number;
+
+    const MODULAR_SYNTH_UTIL_DEFAULT_OSC_PHASE: number;
+
+    const MODULAR_SYNTH_UTIL_DEFAULT_OSC_VOLUME: number;
+
+    const MODULAR_SYNTH_UTIL_DEFAULT_PITCH_TUNING: number;
+
+    const MODULAR_SYNTH_UTIL_DEFAULT_VOLUME: number;
 
     const MOVE_NOTE_DEFAULT_X_LENGTH: number;
 
@@ -3123,6 +3145,16 @@ export namespace AgsAudio {
 
     const PLUGIN_NAME_VOLUME: string;
 
+    const PORT_BOOLEAN_BUF_SIZE: number;
+
+    const PORT_DOUBLE_BUF_SIZE: number;
+
+    const PORT_FLOAT_BUF_SIZE: number;
+
+    const PORT_INT64_BUF_SIZE: number;
+
+    const PORT_UINT64_BUF_SIZE: number;
+
     const PROGRAM_CLIPBOARD_FORMAT: string;
 
     const PROGRAM_CLIPBOARD_LEGACY_FORMAT: string;
@@ -3284,6 +3316,13 @@ export namespace AgsAudio {
     const WAVE_MINIMUM_BUFFER_LENGTH: number;
 
     const WAVE_TICS_PER_BEAT: number;
+
+    /**
+     * Allocate {@link AgsAudio.Amplifier10Util}-struct
+     * @returns a new {@link AgsAudio.Amplifier10Util}-struct
+     * @since 8.4.0
+     */
+    function amplifier10_util_alloc(): Amplifier10Util;
 
     /**
      * Allocate {@link AgsAudio.AmplifierUtil}-struct
@@ -3955,6 +3994,20 @@ export namespace AgsAudio {
     function fx_analyse_channel_input_data_get_strct_mutex(input_data: null): null;
 
     /**
+     * Allocate {@link AgsAudio.FxBufferAudioScopeData}-struct
+     * @returns the new {@link AgsAudio.FxBufferAudioScopeData}-struct
+     * @since 8.1.2
+     */
+    function fx_buffer_audio_scope_data_alloc(): null;
+
+    /**
+     * Free `scope_data`.
+     * @param scope_data the {@link AgsAudio.FxBufferAudioScopeData}-struct
+     * @since 8.1.2
+     */
+    function fx_buffer_audio_scope_data_free(scope_data: null): void;
+
+    /**
      * Allocate {@link AgsAudio.FxBufferChannelInputData}-struct
      * @returns the new {@link AgsAudio.FxBufferChannelInputData}-struct
      * @since 3.3.0
@@ -4123,6 +4176,13 @@ export namespace AgsAudio {
      * @since 5.5.0
      */
     function midi_util_alloc(): MidiUtil;
+
+    /**
+     * Allocate {@link AgsAudio.ModularSynthUtil}-struct
+     * @returns a new {@link AgsAudio.ModularSynthUtil}-struct
+     * @since 8.2.0
+     */
+    function modular_synth_util_alloc(): ModularSynthUtil;
 
     /**
      * Allocate {@link AgsAudio.NoiseUtil}-struct.
@@ -6464,6 +6524,21 @@ export namespace AgsAudio {
     enum MidiUmpFunctionBlockDiscoveryFilterBitmap {
         INFO_NOTIFICATION,
         NAME_NOTIFICATION,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    enum ModularSynthSends {
+        OSC_0_FREQUENCY,
+        OSC_0_PHASE,
+        OSC_0_VOLUME,
+        OSC_1_FREQUENCY,
+        OSC_1_PHASE,
+        OSC_1_VOLUME,
+        PITCH_TUNING,
+        VOLUME,
     }
 
 
@@ -8982,6 +9057,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -9020,6 +9096,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -9028,6 +9105,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -9988,6 +10066,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -10026,6 +10105,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -10034,6 +10114,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -23638,8 +23719,8 @@ export namespace AgsAudio {
         get_ui_filename(): string;
 
         /**
-         * Get plugin so.
-         * @returns the plugin so
+         * Get UI plugin so.
+         * @returns the UI plugin so
          */
         get_ui_plugin_so(): null;
 
@@ -23728,13 +23809,14 @@ export namespace AgsAudio {
         set_ui_filename(ui_filename: string): void;
 
         /**
-         * @param ui_plugin 
+         * Set UI plugin.
+         * @param ui_plugin the UIplugin
          */
         set_ui_plugin(ui_plugin: GObject.Object): void;
 
         /**
          * Set ui_plugin_so.
-         * @param ui_plugin_so the plugin so
+         * @param ui_plugin_so the UI plugin so
          */
         set_ui_plugin_so(ui_plugin_so: null): void;
 
@@ -26481,6 +26563,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -26547,6 +26630,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -26555,6 +26639,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -26587,7 +26672,7 @@ export namespace AgsAudio {
         /**
          * The precision of the buffer
          * @since 3.0.0
-         * @default 16
+         * @default 4294967280
          */
         get format(): number;
         set format(val: number);
@@ -27521,6 +27606,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -27585,16 +27671,18 @@ export namespace AgsAudio {
         set coreAudioPort(val: never);
 
         /**
-         * tact
+         * tact.
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
         set delay_factor(val: number);
 
         /**
-         * tact
+         * tact.
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -27627,7 +27715,7 @@ export namespace AgsAudio {
         /**
          * The precision of the buffer
          * @since 3.0.0
-         * @default 16
+         * @default 4294967280
          */
         get format(): number;
         set format(val: number);
@@ -29240,7 +29328,7 @@ export namespace AgsAudio {
         /**
          * The precision of the buffer
          * @since 7.3.6
-         * @default 16
+         * @default 4294967280
          */
         get format(): number;
         set format(val: number);
@@ -32918,6 +33006,8 @@ export namespace AgsAudio {
         // Fields
         recall_audio: RecallAudio;
 
+        scope_data: FxBufferAudioScopeData[];
+
         // Constructors
         constructor(properties?: Partial<FxBufferAudio.ConstructorProps>, ...args: any[]);
 
@@ -33067,6 +33157,10 @@ export namespace AgsAudio {
 
         // Fields
         recall_audio_signal: RecallAudioSignal;
+
+        destination_recycling: Recycling;
+
+        destination_audio_signal: AudioSignal;
 
         // Constructors
         constructor(properties?: Partial<FxBufferAudioSignal.ConstructorProps>, ...args: any[]);
@@ -39698,6 +39792,1690 @@ export namespace AgsAudio {
 
         /** @signal */
         emit<K extends keyof FxLv2Recycling.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FxLv2Recycling.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+
+    namespace FxModularSynthAudio {
+        // Signal signatures
+        interface SignalSignatures extends FxNotationAudio.SignalSignatures {
+            "notify::amplifier-0-amp-0-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::amplifier0-amp0-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::amplifier-0-amp-1-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::amplifier0-amp1-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::amplifier-0-amp-2-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::amplifier0-amp2-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::amplifier-0-amp-3-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::amplifier0-amp3-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::amplifier-0-filter-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::amplifier0-filter-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::chorus-delay": (pspec: GObject.ParamSpec) => void;
+            "notify::chorus-depth": (pspec: GObject.ParamSpec) => void;
+            "notify::chorus-enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::chorus-input-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::chorus-lfo-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::chorus-lfo-oscillator": (pspec: GObject.ParamSpec) => void;
+            "notify::chorus-mix": (pspec: GObject.ParamSpec) => void;
+            "notify::chorus-output-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::chorus-pitch-type": (pspec: GObject.ParamSpec) => void;
+            "notify::low-pass-0-cut-off-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::low-pass0-cut-off-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::low-pass-0-filter-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::low-pass0-filter-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::low-pass-0-no-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::low-pass0-no-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-0-attack": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env0-attack": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-0-decay": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env0-decay": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-0-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env0-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-0-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env0-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-0-release": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env0-release": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-0-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env0-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-0-sustain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env0-sustain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-1-attack": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env1-attack": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-1-decay": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env1-decay": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-1-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env1-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-1-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env1-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-1-release": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env1-release": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-1-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env1-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-env-1-sustain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-env1-sustain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-0-depth": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo0-depth": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-0-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo0-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-0-oscillator": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo0-oscillator": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-0-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo0-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-0-tuning": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo0-tuning": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-1-depth": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo1-depth": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-1-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo1-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-1-oscillator": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo1-oscillator": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-1-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo1-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-lfo-1-tuning": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-lfo1-tuning": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-noise-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-noise-frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-noise-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-noise-gain": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-noise-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-noise-sends": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-0-key": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc0-key": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-0-octave": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc0-octave": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-0-oscillator": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc0-oscillator": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-0-phase": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc0-phase": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-0-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc0-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-1-key": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc1-key": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-1-octave": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc1-octave": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-1-oscillator": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc1-oscillator": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-1-phase": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc1-phase": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-osc-1-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-osc1-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-pitch-tuning": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-pitch-tuning": (pspec: GObject.ParamSpec) => void;
+            "notify::synth-0-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::synth0-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::bpm": (pspec: GObject.ParamSpec) => void;
+            "notify::delay": (pspec: GObject.ParamSpec) => void;
+            "notify::duration": (pspec: GObject.ParamSpec) => void;
+            "notify::loop": (pspec: GObject.ParamSpec) => void;
+            "notify::loop-end": (pspec: GObject.ParamSpec) => void;
+            "notify::loop-start": (pspec: GObject.ParamSpec) => void;
+            "notify::tact": (pspec: GObject.ParamSpec) => void;
+            "notify::audio": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::automation-port": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer-size": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::child-type": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::effect-index": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::format": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::line": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::pad": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::port": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-container": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-dependency": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-id": (pspec: GObject.ParamSpec) => void;
+            "notify::samplerate": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends FxNotationAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
+            amplifier_0_amp_0_gain: Port;
+            amplifier0Amp0Gain: Port;
+            amplifier_0_amp_1_gain: Port;
+            amplifier0Amp1Gain: Port;
+            amplifier_0_amp_2_gain: Port;
+            amplifier0Amp2Gain: Port;
+            amplifier_0_amp_3_gain: Port;
+            amplifier0Amp3Gain: Port;
+            amplifier_0_filter_gain: Port;
+            amplifier0FilterGain: Port;
+            chorus_delay: Port;
+            chorusDelay: Port;
+            chorus_depth: Port;
+            chorusDepth: Port;
+            chorus_enabled: Port;
+            chorusEnabled: Port;
+            chorus_input_volume: Port;
+            chorusInputVolume: Port;
+            chorus_lfo_frequency: Port;
+            chorusLfoFrequency: Port;
+            chorus_lfo_oscillator: Port;
+            chorusLfoOscillator: Port;
+            chorus_mix: Port;
+            chorusMix: Port;
+            chorus_output_volume: Port;
+            chorusOutputVolume: Port;
+            chorus_pitch_type: Port;
+            chorusPitchType: Port;
+            low_pass_0_cut_off_frequency: Port;
+            lowPass0CutOffFrequency: Port;
+            low_pass_0_filter_gain: Port;
+            lowPass0FilterGain: Port;
+            low_pass_0_no_clip: Port;
+            lowPass0NoClip: Port;
+            synth_0_env_0_attack: Port;
+            synth0Env0Attack: Port;
+            synth_0_env_0_decay: Port;
+            synth0Env0Decay: Port;
+            synth_0_env_0_frequency: Port;
+            synth0Env0Frequency: Port;
+            synth_0_env_0_gain: Port;
+            synth0Env0Gain: Port;
+            synth_0_env_0_release: Port;
+            synth0Env0Release: Port;
+            synth_0_env_0_sends: Port;
+            synth0Env0Sends: Port;
+            synth_0_env_0_sustain: Port;
+            synth0Env0Sustain: Port;
+            synth_0_env_1_attack: Port;
+            synth0Env1Attack: Port;
+            synth_0_env_1_decay: Port;
+            synth0Env1Decay: Port;
+            synth_0_env_1_frequency: Port;
+            synth0Env1Frequency: Port;
+            synth_0_env_1_gain: Port;
+            synth0Env1Gain: Port;
+            synth_0_env_1_release: Port;
+            synth0Env1Release: Port;
+            synth_0_env_1_sends: Port;
+            synth0Env1Sends: Port;
+            synth_0_env_1_sustain: Port;
+            synth0Env1Sustain: Port;
+            synth_0_lfo_0_depth: Port;
+            synth0Lfo0Depth: Port;
+            synth_0_lfo_0_frequency: Port;
+            synth0Lfo0Frequency: Port;
+            synth_0_lfo_0_oscillator: Port;
+            synth0Lfo0Oscillator: Port;
+            synth_0_lfo_0_sends: Port;
+            synth0Lfo0Sends: Port;
+            synth_0_lfo_0_tuning: Port;
+            synth0Lfo0Tuning: Port;
+            synth_0_lfo_1_depth: Port;
+            synth0Lfo1Depth: Port;
+            synth_0_lfo_1_frequency: Port;
+            synth0Lfo1Frequency: Port;
+            synth_0_lfo_1_oscillator: Port;
+            synth0Lfo1Oscillator: Port;
+            synth_0_lfo_1_sends: Port;
+            synth0Lfo1Sends: Port;
+            synth_0_lfo_1_tuning: Port;
+            synth0Lfo1Tuning: Port;
+            synth_0_noise_frequency: Port;
+            synth0NoiseFrequency: Port;
+            synth_0_noise_gain: Port;
+            synth0NoiseGain: Port;
+            synth_0_noise_sends: Port;
+            synth0NoiseSends: Port;
+            synth_0_osc_0_key: Port;
+            synth0Osc0Key: Port;
+            synth_0_osc_0_octave: Port;
+            synth0Osc0Octave: Port;
+            synth_0_osc_0_oscillator: Port;
+            synth0Osc0Oscillator: Port;
+            synth_0_osc_0_phase: Port;
+            synth0Osc0Phase: Port;
+            synth_0_osc_0_volume: Port;
+            synth0Osc0Volume: Port;
+            synth_0_osc_1_key: Port;
+            synth0Osc1Key: Port;
+            synth_0_osc_1_octave: Port;
+            synth0Osc1Octave: Port;
+            synth_0_osc_1_oscillator: Port;
+            synth0Osc1Oscillator: Port;
+            synth_0_osc_1_phase: Port;
+            synth0Osc1Phase: Port;
+            synth_0_osc_1_volume: Port;
+            synth0Osc1Volume: Port;
+            synth_0_pitch_tuning: Port;
+            synth0PitchTuning: Port;
+            synth_0_volume: Port;
+            synth0Volume: Port;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class FxModularSynthAudio extends FxNotationAudio implements Ags.Connectable {
+        static $gtype: GObject.GType<FxModularSynthAudio>;
+
+        // Properties
+        /**
+         * The amplifier 0 amp-0 gain.
+         * @since 8.2.0
+         */
+        get amplifier_0_amp_0_gain(): Port;
+        set amplifier_0_amp_0_gain(val: Port);
+
+        /**
+         * The amplifier 0 amp-0 gain.
+         * @since 8.2.0
+         */
+        get amplifier0Amp0Gain(): Port;
+        set amplifier0Amp0Gain(val: Port);
+
+        /**
+         * The amplifier 0 amp-1 gain.
+         * @since 8.2.0
+         */
+        get amplifier_0_amp_1_gain(): Port;
+        set amplifier_0_amp_1_gain(val: Port);
+
+        /**
+         * The amplifier 0 amp-1 gain.
+         * @since 8.2.0
+         */
+        get amplifier0Amp1Gain(): Port;
+        set amplifier0Amp1Gain(val: Port);
+
+        /**
+         * The amplifier 0 amp-2 gain.
+         * @since 8.2.0
+         */
+        get amplifier_0_amp_2_gain(): Port;
+        set amplifier_0_amp_2_gain(val: Port);
+
+        /**
+         * The amplifier 0 amp-2 gain.
+         * @since 8.2.0
+         */
+        get amplifier0Amp2Gain(): Port;
+        set amplifier0Amp2Gain(val: Port);
+
+        /**
+         * The amplifier 0 amp-3 gain.
+         * @since 8.2.0
+         */
+        get amplifier_0_amp_3_gain(): Port;
+        set amplifier_0_amp_3_gain(val: Port);
+
+        /**
+         * The amplifier 0 amp-3 gain.
+         * @since 8.2.0
+         */
+        get amplifier0Amp3Gain(): Port;
+        set amplifier0Amp3Gain(val: Port);
+
+        /**
+         * The amplifier 0 filter gain.
+         * @since 8.2.0
+         */
+        get amplifier_0_filter_gain(): Port;
+        set amplifier_0_filter_gain(val: Port);
+
+        /**
+         * The amplifier 0 filter gain.
+         * @since 8.2.0
+         */
+        get amplifier0FilterGain(): Port;
+        set amplifier0FilterGain(val: Port);
+
+        /**
+         * The chorus delay.
+         * @since 8.2.0
+         */
+        get chorus_delay(): Port;
+        set chorus_delay(val: Port);
+
+        /**
+         * The chorus delay.
+         * @since 8.2.0
+         */
+        get chorusDelay(): Port;
+        set chorusDelay(val: Port);
+
+        /**
+         * The chorus depth.
+         * @since 8.2.0
+         */
+        get chorus_depth(): Port;
+        set chorus_depth(val: Port);
+
+        /**
+         * The chorus depth.
+         * @since 8.2.0
+         */
+        get chorusDepth(): Port;
+        set chorusDepth(val: Port);
+
+        /**
+         * The chorus enabled.
+         * @since 8.2.0
+         */
+        get chorus_enabled(): Port;
+        set chorus_enabled(val: Port);
+
+        /**
+         * The chorus enabled.
+         * @since 8.2.0
+         */
+        get chorusEnabled(): Port;
+        set chorusEnabled(val: Port);
+
+        /**
+         * The chorus input volume.
+         * @since 8.2.0
+         */
+        get chorus_input_volume(): Port;
+        set chorus_input_volume(val: Port);
+
+        /**
+         * The chorus input volume.
+         * @since 8.2.0
+         */
+        get chorusInputVolume(): Port;
+        set chorusInputVolume(val: Port);
+
+        /**
+         * The chorus lfo frequency.
+         * @since 8.2.0
+         */
+        get chorus_lfo_frequency(): Port;
+        set chorus_lfo_frequency(val: Port);
+
+        /**
+         * The chorus lfo frequency.
+         * @since 8.2.0
+         */
+        get chorusLfoFrequency(): Port;
+        set chorusLfoFrequency(val: Port);
+
+        /**
+         * The chorus lfo oscillator.
+         * @since 8.2.0
+         */
+        get chorus_lfo_oscillator(): Port;
+        set chorus_lfo_oscillator(val: Port);
+
+        /**
+         * The chorus lfo oscillator.
+         * @since 8.2.0
+         */
+        get chorusLfoOscillator(): Port;
+        set chorusLfoOscillator(val: Port);
+
+        /**
+         * The chorus mix.
+         * @since 8.2.0
+         */
+        get chorus_mix(): Port;
+        set chorus_mix(val: Port);
+
+        /**
+         * The chorus mix.
+         * @since 8.2.0
+         */
+        get chorusMix(): Port;
+        set chorusMix(val: Port);
+
+        /**
+         * The chorus output volume.
+         * @since 8.2.0
+         */
+        get chorus_output_volume(): Port;
+        set chorus_output_volume(val: Port);
+
+        /**
+         * The chorus output volume.
+         * @since 8.2.0
+         */
+        get chorusOutputVolume(): Port;
+        set chorusOutputVolume(val: Port);
+
+        /**
+         * The chorus pitch type.
+         * @since 8.2.0
+         */
+        get chorus_pitch_type(): Port;
+        set chorus_pitch_type(val: Port);
+
+        /**
+         * The chorus pitch type.
+         * @since 8.2.0
+         */
+        get chorusPitchType(): Port;
+        set chorusPitchType(val: Port);
+
+        /**
+         * The low-pass-0-cut-off-frequency.
+         * @since 8.2.0
+         */
+        get low_pass_0_cut_off_frequency(): Port;
+        set low_pass_0_cut_off_frequency(val: Port);
+
+        /**
+         * The low-pass-0-cut-off-frequency.
+         * @since 8.2.0
+         */
+        get lowPass0CutOffFrequency(): Port;
+        set lowPass0CutOffFrequency(val: Port);
+
+        /**
+         * The low-pass-0-filter-gain.
+         * @since 8.2.0
+         */
+        get low_pass_0_filter_gain(): Port;
+        set low_pass_0_filter_gain(val: Port);
+
+        /**
+         * The low-pass-0-filter-gain.
+         * @since 8.2.0
+         */
+        get lowPass0FilterGain(): Port;
+        set lowPass0FilterGain(val: Port);
+
+        /**
+         * The low-pass-0-no-clip.
+         * @since 8.2.0
+         */
+        get low_pass_0_no_clip(): Port;
+        set low_pass_0_no_clip(val: Port);
+
+        /**
+         * The low-pass-0-no-clip.
+         * @since 8.2.0
+         */
+        get lowPass0NoClip(): Port;
+        set lowPass0NoClip(val: Port);
+
+        /**
+         * The synth 0 env-0 attack.
+         * @since 8.2.0
+         */
+        get synth_0_env_0_attack(): Port;
+        set synth_0_env_0_attack(val: Port);
+
+        /**
+         * The synth 0 env-0 attack.
+         * @since 8.2.0
+         */
+        get synth0Env0Attack(): Port;
+        set synth0Env0Attack(val: Port);
+
+        /**
+         * The synth 0 env-0 decay.
+         * @since 8.2.0
+         */
+        get synth_0_env_0_decay(): Port;
+        set synth_0_env_0_decay(val: Port);
+
+        /**
+         * The synth 0 env-0 decay.
+         * @since 8.2.0
+         */
+        get synth0Env0Decay(): Port;
+        set synth0Env0Decay(val: Port);
+
+        /**
+         * The synth 0 env-0 frequency.
+         * @since 8.2.0
+         */
+        get synth_0_env_0_frequency(): Port;
+        set synth_0_env_0_frequency(val: Port);
+
+        /**
+         * The synth 0 env-0 frequency.
+         * @since 8.2.0
+         */
+        get synth0Env0Frequency(): Port;
+        set synth0Env0Frequency(val: Port);
+
+        /**
+         * The synth 0 env-0 gain.
+         * @since 8.2.0
+         */
+        get synth_0_env_0_gain(): Port;
+        set synth_0_env_0_gain(val: Port);
+
+        /**
+         * The synth 0 env-0 gain.
+         * @since 8.2.0
+         */
+        get synth0Env0Gain(): Port;
+        set synth0Env0Gain(val: Port);
+
+        /**
+         * The synth 0 env-0 release.
+         * @since 8.2.0
+         */
+        get synth_0_env_0_release(): Port;
+        set synth_0_env_0_release(val: Port);
+
+        /**
+         * The synth 0 env-0 release.
+         * @since 8.2.0
+         */
+        get synth0Env0Release(): Port;
+        set synth0Env0Release(val: Port);
+
+        /**
+         * The synth 0 env-0 sends.
+         * @since 8.2.0
+         */
+        get synth_0_env_0_sends(): Port;
+        set synth_0_env_0_sends(val: Port);
+
+        /**
+         * The synth 0 env-0 sends.
+         * @since 8.2.0
+         */
+        get synth0Env0Sends(): Port;
+        set synth0Env0Sends(val: Port);
+
+        /**
+         * The synth 0 env-0 sustain.
+         * @since 8.2.0
+         */
+        get synth_0_env_0_sustain(): Port;
+        set synth_0_env_0_sustain(val: Port);
+
+        /**
+         * The synth 0 env-0 sustain.
+         * @since 8.2.0
+         */
+        get synth0Env0Sustain(): Port;
+        set synth0Env0Sustain(val: Port);
+
+        /**
+         * The synth 0 env-1 attack.
+         * @since 8.2.0
+         */
+        get synth_0_env_1_attack(): Port;
+        set synth_0_env_1_attack(val: Port);
+
+        /**
+         * The synth 0 env-1 attack.
+         * @since 8.2.0
+         */
+        get synth0Env1Attack(): Port;
+        set synth0Env1Attack(val: Port);
+
+        /**
+         * The synth 0 env-1 decay.
+         * @since 8.2.0
+         */
+        get synth_0_env_1_decay(): Port;
+        set synth_0_env_1_decay(val: Port);
+
+        /**
+         * The synth 0 env-1 decay.
+         * @since 8.2.0
+         */
+        get synth0Env1Decay(): Port;
+        set synth0Env1Decay(val: Port);
+
+        /**
+         * The synth 0 env-1 frequency.
+         * @since 8.2.0
+         */
+        get synth_0_env_1_frequency(): Port;
+        set synth_0_env_1_frequency(val: Port);
+
+        /**
+         * The synth 0 env-1 frequency.
+         * @since 8.2.0
+         */
+        get synth0Env1Frequency(): Port;
+        set synth0Env1Frequency(val: Port);
+
+        /**
+         * The synth 0 env-1 gain.
+         * @since 8.2.0
+         */
+        get synth_0_env_1_gain(): Port;
+        set synth_0_env_1_gain(val: Port);
+
+        /**
+         * The synth 0 env-1 gain.
+         * @since 8.2.0
+         */
+        get synth0Env1Gain(): Port;
+        set synth0Env1Gain(val: Port);
+
+        /**
+         * The synth 0 env-1 release.
+         * @since 8.2.0
+         */
+        get synth_0_env_1_release(): Port;
+        set synth_0_env_1_release(val: Port);
+
+        /**
+         * The synth 0 env-1 release.
+         * @since 8.2.0
+         */
+        get synth0Env1Release(): Port;
+        set synth0Env1Release(val: Port);
+
+        /**
+         * The synth 0 env-1 sends.
+         * @since 8.2.0
+         */
+        get synth_0_env_1_sends(): Port;
+        set synth_0_env_1_sends(val: Port);
+
+        /**
+         * The synth 0 env-1 sends.
+         * @since 8.2.0
+         */
+        get synth0Env1Sends(): Port;
+        set synth0Env1Sends(val: Port);
+
+        /**
+         * The synth 0 env-1 sustain.
+         * @since 8.2.0
+         */
+        get synth_0_env_1_sustain(): Port;
+        set synth_0_env_1_sustain(val: Port);
+
+        /**
+         * The synth 0 env-1 sustain.
+         * @since 8.2.0
+         */
+        get synth0Env1Sustain(): Port;
+        set synth0Env1Sustain(val: Port);
+
+        /**
+         * The synth 0 lfo-0 depth.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_0_depth(): Port;
+        set synth_0_lfo_0_depth(val: Port);
+
+        /**
+         * The synth 0 lfo-0 depth.
+         * @since 8.2.0
+         */
+        get synth0Lfo0Depth(): Port;
+        set synth0Lfo0Depth(val: Port);
+
+        /**
+         * The synth 0 lfo-0 frequency.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_0_frequency(): Port;
+        set synth_0_lfo_0_frequency(val: Port);
+
+        /**
+         * The synth 0 lfo-0 frequency.
+         * @since 8.2.0
+         */
+        get synth0Lfo0Frequency(): Port;
+        set synth0Lfo0Frequency(val: Port);
+
+        /**
+         * The synth 0 lfo-0 oscillator.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_0_oscillator(): Port;
+        set synth_0_lfo_0_oscillator(val: Port);
+
+        /**
+         * The synth 0 lfo-0 oscillator.
+         * @since 8.2.0
+         */
+        get synth0Lfo0Oscillator(): Port;
+        set synth0Lfo0Oscillator(val: Port);
+
+        /**
+         * The synth 0 lfo-0 sends.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_0_sends(): Port;
+        set synth_0_lfo_0_sends(val: Port);
+
+        /**
+         * The synth 0 lfo-0 sends.
+         * @since 8.2.0
+         */
+        get synth0Lfo0Sends(): Port;
+        set synth0Lfo0Sends(val: Port);
+
+        /**
+         * The synth 0 lfo-0 tuning.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_0_tuning(): Port;
+        set synth_0_lfo_0_tuning(val: Port);
+
+        /**
+         * The synth 0 lfo-0 tuning.
+         * @since 8.2.0
+         */
+        get synth0Lfo0Tuning(): Port;
+        set synth0Lfo0Tuning(val: Port);
+
+        /**
+         * The synth 0 lfo-1 depth.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_1_depth(): Port;
+        set synth_0_lfo_1_depth(val: Port);
+
+        /**
+         * The synth 0 lfo-1 depth.
+         * @since 8.2.0
+         */
+        get synth0Lfo1Depth(): Port;
+        set synth0Lfo1Depth(val: Port);
+
+        /**
+         * The synth 0 lfo-1 frequency.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_1_frequency(): Port;
+        set synth_0_lfo_1_frequency(val: Port);
+
+        /**
+         * The synth 0 lfo-1 frequency.
+         * @since 8.2.0
+         */
+        get synth0Lfo1Frequency(): Port;
+        set synth0Lfo1Frequency(val: Port);
+
+        /**
+         * The synth 0 lfo-1 oscillator.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_1_oscillator(): Port;
+        set synth_0_lfo_1_oscillator(val: Port);
+
+        /**
+         * The synth 0 lfo-1 oscillator.
+         * @since 8.2.0
+         */
+        get synth0Lfo1Oscillator(): Port;
+        set synth0Lfo1Oscillator(val: Port);
+
+        /**
+         * The synth 0 lfo-1 sends.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_1_sends(): Port;
+        set synth_0_lfo_1_sends(val: Port);
+
+        /**
+         * The synth 0 lfo-1 sends.
+         * @since 8.2.0
+         */
+        get synth0Lfo1Sends(): Port;
+        set synth0Lfo1Sends(val: Port);
+
+        /**
+         * The synth 0 lfo-1 tuning.
+         * @since 8.2.0
+         */
+        get synth_0_lfo_1_tuning(): Port;
+        set synth_0_lfo_1_tuning(val: Port);
+
+        /**
+         * The synth 0 lfo-1 tuning.
+         * @since 8.2.0
+         */
+        get synth0Lfo1Tuning(): Port;
+        set synth0Lfo1Tuning(val: Port);
+
+        /**
+         * The synth 0 noise frequency.
+         * @since 8.2.0
+         */
+        get synth_0_noise_frequency(): Port;
+        set synth_0_noise_frequency(val: Port);
+
+        /**
+         * The synth 0 noise frequency.
+         * @since 8.2.0
+         */
+        get synth0NoiseFrequency(): Port;
+        set synth0NoiseFrequency(val: Port);
+
+        /**
+         * The synth 0 noise gain.
+         * @since 8.2.0
+         */
+        get synth_0_noise_gain(): Port;
+        set synth_0_noise_gain(val: Port);
+
+        /**
+         * The synth 0 noise gain.
+         * @since 8.2.0
+         */
+        get synth0NoiseGain(): Port;
+        set synth0NoiseGain(val: Port);
+
+        /**
+         * The synth 0 noise sends.
+         * @since 8.2.0
+         */
+        get synth_0_noise_sends(): Port;
+        set synth_0_noise_sends(val: Port);
+
+        /**
+         * The synth 0 noise sends.
+         * @since 8.2.0
+         */
+        get synth0NoiseSends(): Port;
+        set synth0NoiseSends(val: Port);
+
+        /**
+         * The synth-0 osc-0 key.
+         * @since 8.2.0
+         */
+        get synth_0_osc_0_key(): Port;
+        set synth_0_osc_0_key(val: Port);
+
+        /**
+         * The synth-0 osc-0 key.
+         * @since 8.2.0
+         */
+        get synth0Osc0Key(): Port;
+        set synth0Osc0Key(val: Port);
+
+        /**
+         * The synth-0 osc-0 octave.
+         * @since 8.2.0
+         */
+        get synth_0_osc_0_octave(): Port;
+        set synth_0_osc_0_octave(val: Port);
+
+        /**
+         * The synth-0 osc-0 octave.
+         * @since 8.2.0
+         */
+        get synth0Osc0Octave(): Port;
+        set synth0Osc0Octave(val: Port);
+
+        /**
+         * The synth-0 osc-0 oscillator.
+         * @since 8.2.0
+         */
+        get synth_0_osc_0_oscillator(): Port;
+        set synth_0_osc_0_oscillator(val: Port);
+
+        /**
+         * The synth-0 osc-0 oscillator.
+         * @since 8.2.0
+         */
+        get synth0Osc0Oscillator(): Port;
+        set synth0Osc0Oscillator(val: Port);
+
+        /**
+         * The synth-0 osc-0 phase.
+         * @since 8.2.0
+         */
+        get synth_0_osc_0_phase(): Port;
+        set synth_0_osc_0_phase(val: Port);
+
+        /**
+         * The synth-0 osc-0 phase.
+         * @since 8.2.0
+         */
+        get synth0Osc0Phase(): Port;
+        set synth0Osc0Phase(val: Port);
+
+        /**
+         * The synth-0 osc-0 volume.
+         * @since 8.2.0
+         */
+        get synth_0_osc_0_volume(): Port;
+        set synth_0_osc_0_volume(val: Port);
+
+        /**
+         * The synth-0 osc-0 volume.
+         * @since 8.2.0
+         */
+        get synth0Osc0Volume(): Port;
+        set synth0Osc0Volume(val: Port);
+
+        /**
+         * The synth-0 osc-1 key.
+         * @since 8.2.0
+         */
+        get synth_0_osc_1_key(): Port;
+        set synth_0_osc_1_key(val: Port);
+
+        /**
+         * The synth-0 osc-1 key.
+         * @since 8.2.0
+         */
+        get synth0Osc1Key(): Port;
+        set synth0Osc1Key(val: Port);
+
+        /**
+         * The synth-0 osc-1 octave.
+         * @since 8.2.0
+         */
+        get synth_0_osc_1_octave(): Port;
+        set synth_0_osc_1_octave(val: Port);
+
+        /**
+         * The synth-0 osc-1 octave.
+         * @since 8.2.0
+         */
+        get synth0Osc1Octave(): Port;
+        set synth0Osc1Octave(val: Port);
+
+        /**
+         * The synth-0 osc-1 oscillator.
+         * @since 8.2.0
+         */
+        get synth_0_osc_1_oscillator(): Port;
+        set synth_0_osc_1_oscillator(val: Port);
+
+        /**
+         * The synth-0 osc-1 oscillator.
+         * @since 8.2.0
+         */
+        get synth0Osc1Oscillator(): Port;
+        set synth0Osc1Oscillator(val: Port);
+
+        /**
+         * The synth-0 osc-1 phase.
+         * @since 8.2.0
+         */
+        get synth_0_osc_1_phase(): Port;
+        set synth_0_osc_1_phase(val: Port);
+
+        /**
+         * The synth-0 osc-1 phase.
+         * @since 8.2.0
+         */
+        get synth0Osc1Phase(): Port;
+        set synth0Osc1Phase(val: Port);
+
+        /**
+         * The synth-0 osc-1 volume.
+         * @since 8.2.0
+         */
+        get synth_0_osc_1_volume(): Port;
+        set synth_0_osc_1_volume(val: Port);
+
+        /**
+         * The synth-0 osc-1 volume.
+         * @since 8.2.0
+         */
+        get synth0Osc1Volume(): Port;
+        set synth0Osc1Volume(val: Port);
+
+        /**
+         * The synth 0 pitch tuning.
+         * @since 8.2.0
+         */
+        get synth_0_pitch_tuning(): Port;
+        set synth_0_pitch_tuning(val: Port);
+
+        /**
+         * The synth 0 pitch tuning.
+         * @since 8.2.0
+         */
+        get synth0PitchTuning(): Port;
+        set synth0PitchTuning(val: Port);
+
+        /**
+         * The synth 0 volume.
+         * @since 8.2.0
+         */
+        get synth_0_volume(): Port;
+        set synth_0_volume(val: Port);
+
+        /**
+         * The synth 0 volume.
+         * @since 8.2.0
+         */
+        get synth0Volume(): Port;
+        set synth0Volume(val: Port);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: FxModularSynthAudio.SignalSignatures;
+
+        // Fields
+        fx_notation_audio: FxNotationAudio;
+
+        synth_0_pitch_type: Port;
+
+        scope_data: FxModularSynthAudioScopeData[];
+
+        // Constructors
+        constructor(properties?: Partial<FxModularSynthAudio.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](audio: Audio): FxModularSynthAudio;
+
+        // Conflicted with AgsAudio.Recall.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect_after<K extends keyof FxModularSynthAudio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FxModularSynthAudio.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof FxModularSynthAudio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FxModularSynthAudio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+
+    namespace FxModularSynthAudioProcessor {
+        // Signal signatures
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+            "notify::audio": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::automation-port": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer-size": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::child-type": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::effect-index": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::format": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::line": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::pad": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::port": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-container": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-dependency": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-id": (pspec: GObject.ParamSpec) => void;
+            "notify::samplerate": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class FxModularSynthAudioProcessor extends FxNotationAudioProcessor implements Ags.Connectable, Ags.Countable, Ags.Seekable, Ags.Tactable {
+        static $gtype: GObject.GType<FxModularSynthAudioProcessor>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: FxModularSynthAudioProcessor.SignalSignatures;
+
+        // Fields
+        fx_notation_audio_processor: FxNotationAudioProcessor;
+
+        // Constructors
+        constructor(properties?: Partial<FxModularSynthAudioProcessor.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](audio: Audio): FxModularSynthAudioProcessor;
+
+        // Conflicted with AgsAudio.RecallAudioRun.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect_after<K extends keyof FxModularSynthAudioProcessor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FxModularSynthAudioProcessor.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof FxModularSynthAudioProcessor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FxModularSynthAudioProcessor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        /**
+         * Retrieve current position of MIDI.
+         * @returns the current position
+         */
+        get_midi_counter(): number;
+
+        /**
+         * Retrieve current position of notation.
+         * @returns the current position
+         */
+        get_notation_counter(): number;
+
+        /**
+         * Retrieve current position of sequencer.
+         * @returns the current position
+         */
+        get_sequencer_counter(): number;
+
+        /**
+         * Retrieve current position of wave.
+         * @returns the current position
+         */
+        get_wave_counter(): number;
+
+        /**
+         * Retrieve current position of MIDI.
+         * @virtual
+         */
+        vfunc_get_midi_counter(): bigint | number;
+
+        /**
+         * Retrieve current position of notation.
+         * @virtual
+         */
+        vfunc_get_notation_counter(): bigint | number;
+
+        /**
+         * Retrieve current position of sequencer.
+         * @virtual
+         */
+        vfunc_get_sequencer_counter(): bigint | number;
+
+        /**
+         * Retrieve current position of wave.
+         * @virtual
+         */
+        vfunc_get_wave_counter(): bigint | number;
+
+        /**
+         * Seek.
+         * @param offset the offset
+         * @param whence the direction, see {@link Ags.SeekType}-enum
+         */
+        seek(offset: bigint | number, whence: number): void;
+
+        /**
+         * Seek.
+         * @param offset the offset
+         * @param whence the direction, see {@link Ags.SeekType}-enum
+         * @virtual
+         */
+        vfunc_seek(offset: number, whence: number): void;
+
+        /**
+         * Change bpm.
+         * @param new_bpm the new bpm
+         * @param old_bpm the old bpm
+         */
+        change_bpm(new_bpm: number, old_bpm: number): void;
+
+        /**
+         * Change midi duration.
+         * @param midi_duration the duration
+         */
+        change_midi_duration(midi_duration: bigint | number): void;
+
+        /**
+         * Change notation duration.
+         * @param notation_duration the duration
+         */
+        change_notation_duration(notation_duration: bigint | number): void;
+
+        /**
+         * Change sequencer duration.
+         * @param sequencer_duration the duration
+         */
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
+
+        /**
+         * Change tact.
+         * @param new_tact the new tact
+         * @param old_tact the old tact
+         */
+        change_tact(new_tact: number, old_tact: number): void;
+
+        /**
+         * Change wave duration.
+         * @param wave_duration the duration
+         */
+        change_wave_duration(wave_duration: bigint | number): void;
+
+        /**
+         * Get bpm.
+         * @returns the bpm
+         */
+        get_bpm(): number;
+
+        /**
+         * Get midi duration.
+         * @returns the midi duration
+         */
+        get_midi_duration(): number;
+
+        /**
+         * Get notation duration.
+         * @returns the notation duration
+         */
+        get_notation_duration(): number;
+
+        /**
+         * Get sequencer duration.
+         * @returns the sequencer duration
+         */
+        get_sequencer_duration(): number;
+
+        /**
+         * Get tact.
+         * @returns the tact
+         */
+        get_tact(): number;
+
+        /**
+         * Get wave duration.
+         * @returns the wave duration
+         */
+        get_wave_duration(): number;
+
+        /**
+         * Change bpm.
+         * @param new_bpm the new bpm
+         * @param old_bpm the old bpm
+         * @virtual
+         */
+        vfunc_change_bpm(new_bpm: number, old_bpm: number): void;
+
+        /**
+         * Change midi duration.
+         * @param midi_duration the duration
+         * @virtual
+         */
+        vfunc_change_midi_duration(midi_duration: number): void;
+
+        /**
+         * Change notation duration.
+         * @param notation_duration the duration
+         * @virtual
+         */
+        vfunc_change_notation_duration(notation_duration: number): void;
+
+        /**
+         * Change sequencer duration.
+         * @param sequencer_duration the duration
+         * @virtual
+         */
+        vfunc_change_sequencer_duration(sequencer_duration: number): void;
+
+        /**
+         * Change tact.
+         * @param new_tact the new tact
+         * @param old_tact the old tact
+         * @virtual
+         */
+        vfunc_change_tact(new_tact: number, old_tact: number): void;
+
+        /**
+         * Change wave duration.
+         * @param wave_duration the duration
+         * @virtual
+         */
+        vfunc_change_wave_duration(wave_duration: number): void;
+
+        /**
+         * Get bpm.
+         * @virtual
+         */
+        vfunc_get_bpm(): number;
+
+        /**
+         * Get midi duration.
+         * @virtual
+         */
+        vfunc_get_midi_duration(): bigint | number;
+
+        /**
+         * Get notation duration.
+         * @virtual
+         */
+        vfunc_get_notation_duration(): bigint | number;
+
+        /**
+         * Get sequencer duration.
+         * @virtual
+         */
+        vfunc_get_sequencer_duration(): bigint | number;
+
+        /**
+         * Get tact.
+         * @virtual
+         */
+        vfunc_get_tact(): number;
+
+        /**
+         * Get wave duration.
+         * @virtual
+         */
+        vfunc_get_wave_duration(): bigint | number;
+    }
+
+
+    namespace FxModularSynthAudioSignal {
+        // Signal signatures
+        interface SignalSignatures extends FxNotationAudioSignal.SignalSignatures {
+            "notify::destination": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::automation-port": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer-size": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::child-type": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::effect-index": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::format": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::line": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::pad": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::port": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-container": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-dependency": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-id": (pspec: GObject.ParamSpec) => void;
+            "notify::samplerate": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class FxModularSynthAudioSignal extends FxNotationAudioSignal implements Ags.Connectable {
+        static $gtype: GObject.GType<FxModularSynthAudioSignal>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: FxModularSynthAudioSignal.SignalSignatures;
+
+        // Fields
+        fx_notation_audio_signal: FxNotationAudioSignal;
+
+        // Constructors
+        constructor(properties?: Partial<FxModularSynthAudioSignal.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](audio_signal: AudioSignal): FxModularSynthAudioSignal;
+
+        // Conflicted with AgsAudio.RecallAudioSignal.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect_after<K extends keyof FxModularSynthAudioSignal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FxModularSynthAudioSignal.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof FxModularSynthAudioSignal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FxModularSynthAudioSignal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+
+    namespace FxModularSynthChannel {
+        // Signal signatures
+        interface SignalSignatures extends FxNotationChannel.SignalSignatures {
+            "notify::destination": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::automation-port": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer-size": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::child-type": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::effect-index": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::format": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::line": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::pad": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::port": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-container": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-dependency": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-id": (pspec: GObject.ParamSpec) => void;
+            "notify::samplerate": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class FxModularSynthChannel extends FxNotationChannel implements Ags.Connectable {
+        static $gtype: GObject.GType<FxModularSynthChannel>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: FxModularSynthChannel.SignalSignatures;
+
+        // Fields
+        fx_notation_channel: FxNotationChannel;
+
+        // Constructors
+        constructor(properties?: Partial<FxModularSynthChannel.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](channel: Channel): FxModularSynthChannel;
+
+        // Conflicted with AgsAudio.RecallChannel.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect_after<K extends keyof FxModularSynthChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FxModularSynthChannel.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof FxModularSynthChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FxModularSynthChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+
+    namespace FxModularSynthChannelProcessor {
+        // Signal signatures
+        interface SignalSignatures extends FxNotationChannelProcessor.SignalSignatures {
+            "notify::destination": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-audio-run": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::automation-port": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer-size": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::child-type": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::effect-index": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::format": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::line": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::pad": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::port": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-container": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-dependency": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-id": (pspec: GObject.ParamSpec) => void;
+            "notify::samplerate": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class FxModularSynthChannelProcessor extends FxNotationChannelProcessor implements Ags.Connectable {
+        static $gtype: GObject.GType<FxModularSynthChannelProcessor>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: FxModularSynthChannelProcessor.SignalSignatures;
+
+        // Fields
+        fx_notation_channel_processor: FxNotationChannelProcessor;
+
+        // Constructors
+        constructor(properties?: Partial<FxModularSynthChannelProcessor.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](channel: Channel): FxModularSynthChannelProcessor;
+
+        // Conflicted with AgsAudio.RecallChannelRun.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect_after<K extends keyof FxModularSynthChannelProcessor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FxModularSynthChannelProcessor.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof FxModularSynthChannelProcessor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FxModularSynthChannelProcessor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+
+    namespace FxModularSynthRecycling {
+        // Signal signatures
+        interface SignalSignatures extends FxNotationRecycling.SignalSignatures {
+            "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::child-destination": (pspec: GObject.ParamSpec) => void;
+            "notify::child-source": (pspec: GObject.ParamSpec) => void;
+            "notify::destination": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::automation-port": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer-size": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::child-type": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::effect-index": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::format": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::input-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::line": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi1-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-port-specifier": (pspec: GObject.ParamSpec) => void;
+            "notify::midi2-cc-to-value": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard": (pspec: GObject.ParamSpec) => void;
+            "notify::output-soundcard-channel": (pspec: GObject.ParamSpec) => void;
+            "notify::pad": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::port": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-container": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-dependency": (pspec: GObject.ParamSpec) => void;
+            "notify::recall-id": (pspec: GObject.ParamSpec) => void;
+            "notify::samplerate": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class FxModularSynthRecycling extends FxNotationRecycling implements Ags.Connectable {
+        static $gtype: GObject.GType<FxModularSynthRecycling>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: FxModularSynthRecycling.SignalSignatures;
+
+        // Fields
+        fx_notation_recycling: FxNotationRecycling;
+
+        // Constructors
+        constructor(properties?: Partial<FxModularSynthRecycling.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](recycling: Recycling): FxModularSynthRecycling;
+
+        // Conflicted with AgsAudio.RecallRecycling.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect_after<K extends keyof FxModularSynthRecycling.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FxModularSynthRecycling.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof FxModularSynthRecycling.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FxModularSynthRecycling.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
@@ -57045,6 +58823,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.6.0
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -57083,6 +58862,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.6.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -57091,6 +58871,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.6.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -58142,6 +59923,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.6.0
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -58180,6 +59962,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.6.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -58188,6 +59971,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.6.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -63173,6 +64957,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -63211,6 +64996,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -63219,6 +65005,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -64213,6 +66000,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -64251,6 +66039,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -64259,6 +66048,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -76210,6 +78000,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -76248,6 +78039,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -76256,6 +78048,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -77216,6 +79009,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -77254,6 +79048,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -77262,6 +79057,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.13.2
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -80726,6 +82522,12 @@ export namespace AgsAudio {
          * Loads conversion object by using `plugin_port` and sets in on `port`.
          * @param plugin_port the {@link AgsAudio.PluginPort}
          */
+        util_load_audio_unit_conversion(plugin_port: PluginPort): void;
+
+        /**
+         * Loads conversion object by using `plugin_port` and sets in on `port`.
+         * @param plugin_port the {@link AgsAudio.PluginPort}
+         */
         util_load_ladspa_conversion(plugin_port: PluginPort): void;
 
         /**
@@ -82131,6 +83933,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -82169,6 +83972,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -82177,6 +83981,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -83171,6 +84976,7 @@ export namespace AgsAudio {
         /**
          * Attack of the buffer
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @read-only
          */
         get attack(): null;
@@ -83209,6 +85015,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delay_factor(): number;
@@ -83217,6 +85024,7 @@ export namespace AgsAudio {
         /**
          * tact
          * @since 3.0.0
+         * @deprecated use AgsFrameClock instead
          * @default 1
          */
         get delayFactor(): number;
@@ -100191,6 +101999,676 @@ export namespace AgsAudio {
     /**
      * @gir-type Struct
      */
+    class Amplifier10Util {
+        static $gtype: GObject.GType<Amplifier10Util>;
+
+        // Fields
+        source: null;
+
+        source_stride: number;
+
+        destination: null;
+
+        destination_stride: number;
+
+        mix_buffer: null;
+
+        buffer_length: number;
+
+        format: Ags.SoundcardFormat;
+
+        samplerate: number;
+
+        amp_0_enabled: number;
+
+        amp_0_frequency: number;
+
+        amp_0_bandwidth: number;
+
+        amp_0_gain: number;
+
+        amp_1_enabled: number;
+
+        amp_1_frequency: number;
+
+        amp_1_bandwidth: number;
+
+        amp_1_gain: number;
+
+        amp_2_enabled: number;
+
+        amp_2_frequency: number;
+
+        amp_2_bandwidth: number;
+
+        amp_2_gain: number;
+
+        amp_3_enabled: number;
+
+        amp_3_frequency: number;
+
+        amp_3_bandwidth: number;
+
+        amp_3_gain: number;
+
+        amp_4_enabled: number;
+
+        amp_4_frequency: number;
+
+        amp_4_bandwidth: number;
+
+        amp_4_gain: number;
+
+        amp_5_enabled: number;
+
+        amp_5_frequency: number;
+
+        amp_5_bandwidth: number;
+
+        amp_5_gain: number;
+
+        amp_6_enabled: number;
+
+        amp_6_frequency: number;
+
+        amp_6_bandwidth: number;
+
+        amp_6_gain: number;
+
+        amp_7_enabled: number;
+
+        amp_7_frequency: number;
+
+        amp_7_bandwidth: number;
+
+        amp_7_gain: number;
+
+        amp_8_enabled: number;
+
+        amp_8_frequency: number;
+
+        amp_8_bandwidth: number;
+
+        amp_8_gain: number;
+
+        amp_9_enabled: number;
+
+        amp_9_frequency: number;
+
+        amp_9_bandwidth: number;
+
+        amp_9_gain: number;
+
+        bypass: number;
+
+        filter_gain: number;
+
+        fade: number;
+
+        proc_sect: Amplifier10UtilProc[];
+
+        // Static methods
+        /**
+         * Allocate {@link AgsAudio.Amplifier10Util}-struct
+         */
+        static alloc(): Amplifier10Util;
+
+        // Methods
+        /**
+         * Create a copy of `ptr`.
+         * @returns a pointer of the new {@link AgsAudio.Amplifier10Util}-struct
+         */
+        copy(): null;
+
+        /**
+         * Free the memory of `ptr`.
+         */
+        free(): void;
+
+        /**
+         * Get amp 0 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 0
+         */
+        get_amp_0_bandwidth(): number;
+
+        /**
+         * Get amp 0 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 0
+         */
+        get_amp_0_frequency(): number;
+
+        /**
+         * Get amp 0 gain of `amplifier10_util`.
+         * @returns the gain of amp 0
+         */
+        get_amp_0_gain(): number;
+
+        /**
+         * Get amp 1 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 1
+         */
+        get_amp_1_bandwidth(): number;
+
+        /**
+         * Get amp 1 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 1
+         */
+        get_amp_1_frequency(): number;
+
+        /**
+         * Get amp 1 gain of `amplifier10_util`.
+         * @returns the gain of amp 1
+         */
+        get_amp_1_gain(): number;
+
+        /**
+         * Get amp 2 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 2
+         */
+        get_amp_2_bandwidth(): number;
+
+        /**
+         * Get amp 2 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 2
+         */
+        get_amp_2_frequency(): number;
+
+        /**
+         * Get amp 2 gain of `amplifier10_util`.
+         * @returns the gain of amp 2
+         */
+        get_amp_2_gain(): number;
+
+        /**
+         * Get amp 3 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 3
+         */
+        get_amp_3_bandwidth(): number;
+
+        /**
+         * Get amp 3 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 3
+         */
+        get_amp_3_frequency(): number;
+
+        /**
+         * Get amp 3 gain of `amplifier10_util`.
+         * @returns the gain of amp 3
+         */
+        get_amp_3_gain(): number;
+
+        /**
+         * Get amp 4 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 4
+         */
+        get_amp_4_bandwidth(): number;
+
+        /**
+         * Get amp 4 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 4
+         */
+        get_amp_4_frequency(): number;
+
+        /**
+         * Get amp 4 gain of `amplifier10_util`.
+         * @returns the gain of amp 4
+         */
+        get_amp_4_gain(): number;
+
+        /**
+         * Get amp 0 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 0
+         */
+        get_amp_5_bandwidth(): number;
+
+        /**
+         * Get amp 0 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 0
+         */
+        get_amp_5_frequency(): number;
+
+        /**
+         * Get amp 0 gain of `amplifier10_util`.
+         * @returns the gain of amp 0
+         */
+        get_amp_5_gain(): number;
+
+        /**
+         * Get amp 1 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 1
+         */
+        get_amp_6_bandwidth(): number;
+
+        /**
+         * Get amp 1 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 1
+         */
+        get_amp_6_frequency(): number;
+
+        /**
+         * Get amp 1 gain of `amplifier10_util`.
+         * @returns the gain of amp 1
+         */
+        get_amp_6_gain(): number;
+
+        /**
+         * Get amp 2 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 2
+         */
+        get_amp_7_bandwidth(): number;
+
+        /**
+         * Get amp 2 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 2
+         */
+        get_amp_7_frequency(): number;
+
+        /**
+         * Get amp 2 gain of `amplifier10_util`.
+         * @returns the gain of amp 2
+         */
+        get_amp_7_gain(): number;
+
+        /**
+         * Get amp 3 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 3
+         */
+        get_amp_8_bandwidth(): number;
+
+        /**
+         * Get amp 3 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 3
+         */
+        get_amp_8_frequency(): number;
+
+        /**
+         * Get amp 3 gain of `amplifier10_util`.
+         * @returns the gain of amp 3
+         */
+        get_amp_8_gain(): number;
+
+        /**
+         * Get amp 4 bandwidth of `amplifier10_util`.
+         * @returns the bandwidth of amp 4
+         */
+        get_amp_9_bandwidth(): number;
+
+        /**
+         * Get amp 4 frequency of `amplifier10_util`.
+         * @returns the frequency of amp 4
+         */
+        get_amp_9_frequency(): number;
+
+        /**
+         * Get amp 4 gain of `amplifier10_util`.
+         * @returns the gain of amp 4
+         */
+        get_amp_9_gain(): number;
+
+        /**
+         * Get buffer length of `amplifier10_util`.
+         * @returns the buffer length
+         */
+        get_buffer_length(): number;
+
+        /**
+         * Get destination buffer of `amplifier10_util`.
+         * @returns the destination buffer
+         */
+        get_destination(): null;
+
+        /**
+         * Get destination stride of `amplifier10_util`.
+         * @returns the destination buffer stride
+         */
+        get_destination_stride(): number;
+
+        /**
+         * Get filter gain of `amplifier10_util`.
+         * @returns the gain of filter
+         */
+        get_filter_gain(): number;
+
+        /**
+         * Get format of `amplifier10_util`.
+         * @returns the format
+         */
+        get_format(): Ags.SoundcardFormat;
+
+        /**
+         * Get samplerate of `amplifier10_util`.
+         * @returns the samplerate
+         */
+        get_samplerate(): number;
+
+        /**
+         * Get source buffer of `amplifier10_util`.
+         * @returns the source buffer
+         */
+        get_source(): null;
+
+        /**
+         * Get source stride of `amplifier10_util`.
+         * @returns the source buffer stride
+         */
+        get_source_stride(): number;
+
+        /**
+         * Process amplifier10.
+         */
+        process(): void;
+
+        /**
+         * Process amplifier10 of complex floating point data.
+         */
+        process_complex(): void;
+
+        /**
+         * Process amplifier10 of double precision floating point data.
+         */
+        process_double(): void;
+
+        /**
+         * Process amplifier10 of floating point data.
+         */
+        process_float(): void;
+
+        /**
+         * Process amplifier10 of signed 16 bit data.
+         */
+        process_s16(): void;
+
+        /**
+         * Process amplifier10 of signed 24 bit data.
+         */
+        process_s24(): void;
+
+        /**
+         * Process amplifier10 of signed 32 bit data.
+         */
+        process_s32(): void;
+
+        /**
+         * Process amplifier10 of signed 64 bit data.
+         */
+        process_s64(): void;
+
+        /**
+         * Process amplifier10 of signed 8 bit data.
+         */
+        process_s8(): void;
+
+        /**
+         * Set `amp_0_bandwidth` of `amplifier10_util`.
+         * @param amp_0_bandwidth the amp 0 bandwidth
+         */
+        set_amp_0_bandwidth(amp_0_bandwidth: number): void;
+
+        /**
+         * Set `amp_0_frequency` of `amplifier10_util`.
+         * @param amp_0_frequency the amp 0 frequency
+         */
+        set_amp_0_frequency(amp_0_frequency: number): void;
+
+        /**
+         * Set `amp_0_gain` of `amplifier10_util`.
+         * @param amp_0_gain the amp 0 gain
+         */
+        set_amp_0_gain(amp_0_gain: number): void;
+
+        /**
+         * Set `amp_1_bandwidth` of `amplifier10_util`.
+         * @param amp_1_bandwidth the amp 1 bandwidth
+         */
+        set_amp_1_bandwidth(amp_1_bandwidth: number): void;
+
+        /**
+         * Set `amp_1_frequency` of `amplifier10_util`.
+         * @param amp_1_frequency the amp 1 frequency
+         */
+        set_amp_1_frequency(amp_1_frequency: number): void;
+
+        /**
+         * Set `amp_1_gain` of `amplifier10_util`.
+         * @param amp_1_gain the amp 1 gain
+         */
+        set_amp_1_gain(amp_1_gain: number): void;
+
+        /**
+         * Set `amp_2_bandwidth` of `amplifier10_util`.
+         * @param amp_2_bandwidth the amp 2 bandwidth
+         */
+        set_amp_2_bandwidth(amp_2_bandwidth: number): void;
+
+        /**
+         * Set `amp_2_frequency` of `amplifier10_util`.
+         * @param amp_2_frequency the amp 2 frequency
+         */
+        set_amp_2_frequency(amp_2_frequency: number): void;
+
+        /**
+         * Set `amp_2_gain` of `amplifier10_util`.
+         * @param amp_2_gain the amp 2 gain
+         */
+        set_amp_2_gain(amp_2_gain: number): void;
+
+        /**
+         * Set `amp_3_bandwidth` of `amplifier10_util`.
+         * @param amp_3_bandwidth the amp 3 bandwidth
+         */
+        set_amp_3_bandwidth(amp_3_bandwidth: number): void;
+
+        /**
+         * Set `amp_3_frequency` of `amplifier10_util`.
+         * @param amp_3_frequency the amp 3 frequency
+         */
+        set_amp_3_frequency(amp_3_frequency: number): void;
+
+        /**
+         * Set `amp_3_gain` of `amplifier10_util`.
+         * @param amp_3_gain the amp 3 gain
+         */
+        set_amp_3_gain(amp_3_gain: number): void;
+
+        /**
+         * Set `amp_4_bandwidth` of `amplifier10_util`.
+         * @param amp_4_bandwidth the amp 4 bandwidth
+         */
+        set_amp_4_bandwidth(amp_4_bandwidth: number): void;
+
+        /**
+         * Set `amp_4_frequency` of `amplifier10_util`.
+         * @param amp_4_frequency the amp 4 frequency
+         */
+        set_amp_4_frequency(amp_4_frequency: number): void;
+
+        /**
+         * Set `amp_4_gain` of `amplifier10_util`.
+         * @param amp_4_gain the amp 4 gain
+         */
+        set_amp_4_gain(amp_4_gain: number): void;
+
+        /**
+         * Set `amp_5_bandwidth` of `amplifier10_util`.
+         * @param amp_5_bandwidth the amp 0 bandwidth
+         */
+        set_amp_5_bandwidth(amp_5_bandwidth: number): void;
+
+        /**
+         * Set `amp_5_frequency` of `amplifier10_util`.
+         * @param amp_5_frequency the amp 0 frequency
+         */
+        set_amp_5_frequency(amp_5_frequency: number): void;
+
+        /**
+         * Set `amp_5_gain` of `amplifier10_util`.
+         * @param amp_5_gain the amp 0 gain
+         */
+        set_amp_5_gain(amp_5_gain: number): void;
+
+        /**
+         * Set `amp_6_bandwidth` of `amplifier10_util`.
+         * @param amp_6_bandwidth the amp 1 bandwidth
+         */
+        set_amp_6_bandwidth(amp_6_bandwidth: number): void;
+
+        /**
+         * Set `amp_6_frequency` of `amplifier10_util`.
+         * @param amp_6_frequency the amp 1 frequency
+         */
+        set_amp_6_frequency(amp_6_frequency: number): void;
+
+        /**
+         * Set `amp_6_gain` of `amplifier10_util`.
+         * @param amp_6_gain the amp 1 gain
+         */
+        set_amp_6_gain(amp_6_gain: number): void;
+
+        /**
+         * Set `amp_7_bandwidth` of `amplifier10_util`.
+         * @param amp_7_bandwidth the amp 2 bandwidth
+         */
+        set_amp_7_bandwidth(amp_7_bandwidth: number): void;
+
+        /**
+         * Set `amp_7_frequency` of `amplifier10_util`.
+         * @param amp_7_frequency the amp 2 frequency
+         */
+        set_amp_7_frequency(amp_7_frequency: number): void;
+
+        /**
+         * Set `amp_7_gain` of `amplifier10_util`.
+         * @param amp_7_gain the amp 2 gain
+         */
+        set_amp_7_gain(amp_7_gain: number): void;
+
+        /**
+         * Set `amp_8_bandwidth` of `amplifier10_util`.
+         * @param amp_8_bandwidth the amp 3 bandwidth
+         */
+        set_amp_8_bandwidth(amp_8_bandwidth: number): void;
+
+        /**
+         * Set `amp_8_frequency` of `amplifier10_util`.
+         * @param amp_8_frequency the amp 3 frequency
+         */
+        set_amp_8_frequency(amp_8_frequency: number): void;
+
+        /**
+         * Set `amp_8_gain` of `amplifier10_util`.
+         * @param amp_8_gain the amp 3 gain
+         */
+        set_amp_8_gain(amp_8_gain: number): void;
+
+        /**
+         * Set `amp_9_bandwidth` of `amplifier10_util`.
+         * @param amp_9_bandwidth the amp 4 bandwidth
+         */
+        set_amp_9_bandwidth(amp_9_bandwidth: number): void;
+
+        /**
+         * Set `amp_9_frequency` of `amplifier10_util`.
+         * @param amp_9_frequency the amp 4 frequency
+         */
+        set_amp_9_frequency(amp_9_frequency: number): void;
+
+        /**
+         * Set `amp_9_gain` of `amplifier10_util`.
+         * @param amp_9_gain the amp 4 gain
+         */
+        set_amp_9_gain(amp_9_gain: number): void;
+
+        /**
+         * Set `buffer_length` of `amplifier10_util`.
+         * @param buffer_length the buffer length
+         */
+        set_buffer_length(buffer_length: number): void;
+
+        /**
+         * Set `destination` buffer of `amplifier10_util`.
+         * @param destination the destination buffer
+         */
+        set_destination(destination: null): void;
+
+        /**
+         * Set `destination` stride of `amplifier10_util`.
+         * @param destination_stride the destination buffer stride
+         */
+        set_destination_stride(destination_stride: number): void;
+
+        /**
+         * Set `filter_gain` of `amplifier10_util`.
+         * @param filter_gain the filter gain
+         */
+        set_filter_gain(filter_gain: number): void;
+
+        /**
+         * Set `format` of `amplifier10_util`.
+         * @param format the format
+         */
+        set_format(format: Ags.SoundcardFormat): void;
+
+        /**
+         * Set `samplerate` of `amplifier10_util`.
+         * @param samplerate the samplerate
+         */
+        set_samplerate(samplerate: number): void;
+
+        /**
+         * Set `source` buffer of `amplifier10_util`.
+         * @param source the source buffer
+         */
+        set_source(source: null): void;
+
+        /**
+         * Set `source` stride of `amplifier10_util`.
+         * @param source_stride the source buffer stride
+         */
+        set_source_stride(source_stride: number): void;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    class Amplifier10UtilProc {
+        static $gtype: GObject.GType<Amplifier10UtilProc>;
+
+        // Fields
+        f: number;
+
+        b: number;
+
+        g: number;
+
+        a: number;
+
+        s1: number;
+
+        s2: number;
+
+        z1: number;
+
+        z2: number;
+
+        // Constructors
+
+        constructor(properties?: Partial<{
+            f: number;
+            b: number;
+            g: number;
+            a: number;
+            s1: number;
+            s2: number;
+            z1: number;
+            z2: number;
+        }>);
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
     class AmplifierUtil {
         static $gtype: GObject.GType<AmplifierUtil>;
 
@@ -100713,6 +103191,46 @@ export namespace AgsAudio {
          * @param count count frames
          */
         clear_float(buffer: number, channels: number, count: number): void;
+
+        /**
+         * Clears a buffer.
+         * @param buffer the buffer to clear
+         * @param channels number of channels
+         * @param count count frames
+         */
+        clear_s16(buffer: number, channels: number, count: number): void;
+
+        /**
+         * Clears a buffer.
+         * @param buffer the buffer to clear
+         * @param channels number of channels
+         * @param count count frames
+         */
+        clear_s24(buffer: number, channels: number, count: number): void;
+
+        /**
+         * Clears a buffer.
+         * @param buffer the buffer to clear
+         * @param channels number of channels
+         * @param count count frames
+         */
+        clear_s32(buffer: number, channels: number, count: number): void;
+
+        /**
+         * Clears a buffer.
+         * @param buffer the buffer to clear
+         * @param channels number of channels
+         * @param count count frames
+         */
+        clear_s64(buffer: bigint | number, channels: number, count: number): void;
+
+        /**
+         * Clears a buffer.
+         * @param buffer the buffer to clear
+         * @param channels number of channels
+         * @param count count frames
+         */
+        clear_s8(buffer: number, channels: number, count: number): void;
 
         /**
          * Create a copy of `ptr`.
@@ -102315,47 +104833,47 @@ export namespace AgsAudio {
 
         // Methods
         /**
-         * Choralize `chorus_util`.
+         * Compute chorus of `chorus_util`.
          */
         compute(): void;
 
         /**
-         * Choralize `chorus_util` of complex data.
+         * Compute chorus of `chorus_util` of complex data.
          */
         compute_complex(): void;
 
         /**
-         * Choralize `chorus_util` of double precision floating point data.
+         * Compute chorus of `chorus_util` of double precision floating point data.
          */
         compute_double(): void;
 
         /**
-         * Choralize `chorus_util` of floating point data.
+         * Compute chorus of `chorus_util` of floating point data.
          */
         compute_float(): void;
 
         /**
-         * Choralize `chorus_util` of signed 16 bit data.
+         * Compute chorus of `chorus_util` of signed 16 bit data.
          */
         compute_s16(): void;
 
         /**
-         * Choralize `chorus_util` of signed 24 bit data.
+         * Compute chorus of `chorus_util` of signed 24 bit data.
          */
         compute_s24(): void;
 
         /**
-         * Choralize `chorus_util` of signed 32 bit data.
+         * Compute chorus of `chorus_util` of signed 32 bit data.
          */
         compute_s32(): void;
 
         /**
-         * Choralize `chorus_util` of signed 64 bit data.
+         * Compute chorus of `chorus_util` of signed 64 bit data.
          */
         compute_s64(): void;
 
         /**
-         * Choralize `chorus_util` of signed 8 bit data.
+         * Compute chorus of `chorus_util` of signed 8 bit data.
          */
         compute_s8(): void;
 
@@ -106216,6 +108734,26 @@ export namespace AgsAudio {
     type FxBufferAudioProcessorClass = typeof FxBufferAudioProcessor;
 
     /**
+     * @gir-type Struct
+     */
+    class FxBufferAudioScopeData {
+        static $gtype: GObject.GType<FxBufferAudioScopeData>;
+
+        // Static methods
+        /**
+         * Allocate {@link AgsAudio.FxBufferAudioScopeData}-struct
+         */
+        static alloc(): null;
+
+        /**
+         * Free `scope_data`.
+         * @param scope_data the {@link AgsAudio.FxBufferAudioScopeData}-struct
+         */
+        static free(scope_data: null): void;
+    }
+
+
+    /**
      * @gir-type Alias
      */
     type FxBufferAudioSignalClass = typeof FxBufferAudioSignal;
@@ -106698,7 +109236,11 @@ export namespace AgsAudio {
 
         output: number;
 
+        output_size: number;
+
         input: number;
+
+        input_size: number;
 
         midiin_event_port: null;
 
@@ -106740,7 +109282,11 @@ export namespace AgsAudio {
         // Fields
         output: number;
 
+        output_size: number;
+
         input: number;
+
+        input_size: number;
 
         midiin_event_port: null;
 
@@ -106801,7 +109347,11 @@ export namespace AgsAudio {
         // Fields
         output: number;
 
+        output_size: number;
+
         input: number;
+
+        input_size: number;
 
         // Methods
         /**
@@ -106820,6 +109370,89 @@ export namespace AgsAudio {
      * @gir-type Alias
      */
     type FxLv2RecyclingClass = typeof FxLv2Recycling;
+
+    /**
+     * @gir-type Struct
+     */
+    class FxModularSynthAudioChannelData {
+        static $gtype: GObject.GType<FxModularSynthAudioChannelData>;
+
+        // Fields
+        synth_buffer_0: null;
+
+        input_data: FxModularSynthAudioInputData[];
+
+        // Methods
+        /**
+         * Free `channel_data`.
+         */
+        free(): void;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type FxModularSynthAudioClass = typeof FxModularSynthAudio;
+
+    /**
+     * @gir-type Struct
+     */
+    class FxModularSynthAudioInputData {
+        static $gtype: GObject.GType<FxModularSynthAudioInputData>;
+
+        // Fields
+        key_on: number;
+
+        // Methods
+        /**
+         * Free `input_data`.
+         */
+        free(): void;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type FxModularSynthAudioProcessorClass = typeof FxModularSynthAudioProcessor;
+
+    /**
+     * @gir-type Struct
+     */
+    class FxModularSynthAudioScopeData {
+        static $gtype: GObject.GType<FxModularSynthAudioScopeData>;
+
+        // Fields
+        audio_channels: number;
+
+        // Methods
+        /**
+         * Free `scope_data`.
+         */
+        free(): void;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type FxModularSynthAudioSignalClass = typeof FxModularSynthAudioSignal;
+
+    /**
+     * @gir-type Alias
+     */
+    type FxModularSynthChannelClass = typeof FxModularSynthChannel;
+
+    /**
+     * @gir-type Alias
+     */
+    type FxModularSynthChannelProcessorClass = typeof FxModularSynthChannelProcessor;
+
+    /**
+     * @gir-type Alias
+     */
+    type FxModularSynthRecyclingClass = typeof FxModularSynthRecycling;
 
     /**
      * @gir-type Alias
@@ -112268,6 +114901,722 @@ export namespace AgsAudio {
          * @returns the SMF buffer
          */
         to_smf(midi_buffer: number, buffer_length: number, delta_time: number, smf_buffer_length: number): number;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    class ModularSynthUtil {
+        static $gtype: GObject.GType<ModularSynthUtil>;
+
+        // Fields
+        source: null;
+
+        source_stride: number;
+
+        buffer_length: number;
+
+        format: Ags.SoundcardFormat;
+
+        samplerate: number;
+
+        osc_0_oscillator: SynthOscillatorMode;
+
+        osc_0_frequency: number;
+
+        osc_0_phase: number;
+
+        osc_0_volume: number;
+
+        osc_1_oscillator: SynthOscillatorMode;
+
+        osc_1_frequency: number;
+
+        osc_1_phase: number;
+
+        osc_1_volume: number;
+
+        pitch_util: null;
+
+        pitch_buffer: null;
+
+        pitch_type: GObject.GType;
+
+        pitch_base_key: number;
+
+        pitch_tuning: number;
+
+        volume: number;
+
+        env_0_util: null;
+
+        env_0_attack: number;
+
+        env_0_decay: number;
+
+        env_0_sustain: number;
+
+        env_0_release: number;
+
+        env_0_gain: number;
+
+        env_0_frequency: number;
+
+        env_0_sends: number[];
+
+        env_0_buffer: null;
+
+        env_1_util: null;
+
+        env_1_attack: number;
+
+        env_1_decay: number;
+
+        env_1_sustain: number;
+
+        env_1_release: number;
+
+        env_1_gain: number;
+
+        env_1_frequency: number;
+
+        env_1_sends: number[];
+
+        env_1_buffer: null;
+
+        lfo_0_util: null;
+
+        lfo_0_oscillator: SynthOscillatorMode;
+
+        lfo_0_frequency: number;
+
+        lfo_0_depth: number;
+
+        lfo_0_tuning: number;
+
+        lfo_0_sends: number[];
+
+        lfo_0_buffer: null;
+
+        lfo_1_util: null;
+
+        lfo_1_oscillator: SynthOscillatorMode;
+
+        lfo_1_frequency: number;
+
+        lfo_1_depth: number;
+
+        lfo_1_tuning: number;
+
+        lfo_1_sends: number[];
+
+        lfo_1_buffer: null;
+
+        noise_util: null;
+
+        noise_frequency: number;
+
+        noise_gain: number;
+
+        noise_sends: number[];
+
+        noise_buffer: null;
+
+        frame_count: number;
+
+        offset: number;
+
+        note_256th_mode: boolean;
+
+        offset_256th: number;
+
+        // Static methods
+        /**
+         * Allocate {@link AgsAudio.ModularSynthUtil}-struct
+         */
+        static alloc(): ModularSynthUtil;
+
+        // Methods
+        compute(): void;
+
+        compute_complex(): void;
+
+        compute_double(): void;
+
+        compute_float(): void;
+
+        compute_s16(): void;
+
+        compute_s24(): void;
+
+        compute_s32(): void;
+
+        compute_s64(): void;
+
+        compute_s8(): void;
+
+        /**
+         * Create a copy of `ptr`.
+         * @returns a pointer of the new {@link AgsAudio.ModularSynthUtil}-struct
+         */
+        copy(): null;
+
+        /**
+         * Free the memory of `ptr`.
+         */
+        free(): void;
+
+        /**
+         * Get buffer length of `modular_synth_util`.
+         * @returns the buffer length
+         */
+        get_buffer_length(): number;
+
+        /**
+         * Get env-0 attack of `modular_synth_util`.
+         * @returns the env-0 attack
+         */
+        get_env_0_attack(): number;
+
+        /**
+         * Get env-0 decay of `modular_synth_util`.
+         * @returns the env-0 decay
+         */
+        get_env_0_decay(): number;
+
+        /**
+         * Get env-0 frequency of `modular_synth_util`.
+         * @returns the env-0 frequency
+         */
+        get_env_0_frequency(): number;
+
+        /**
+         * Get env-0 gain of `modular_synth_util`.
+         * @returns the env-0 gain
+         */
+        get_env_0_gain(): number;
+
+        /**
+         * Get env-0 release of `modular_synth_util`.
+         * @returns the env-0 release
+         */
+        get_env_0_release(): number;
+
+        /**
+         * Get env-0 sends of `modular_synth_util`.
+         * @returns the env-0 sends
+         */
+        get_env_0_sends(): [number, number];
+
+        /**
+         * Get env-0 sustain of `modular_synth_util`.
+         * @returns the env-0 sustain
+         */
+        get_env_0_sustain(): number;
+
+        /**
+         * Get env-1 attack of `modular_synth_util`.
+         * @returns the env-1 attack
+         */
+        get_env_1_attack(): number;
+
+        /**
+         * Get env-1 decay of `modular_synth_util`.
+         * @returns the env-1 decay
+         */
+        get_env_1_decay(): number;
+
+        /**
+         * Get env-1 frequency of `modular_synth_util`.
+         * @returns the env-1 frequency
+         */
+        get_env_1_frequency(): number;
+
+        /**
+         * Get env-1 gain of `modular_synth_util`.
+         * @returns the env-1 gain
+         */
+        get_env_1_gain(): number;
+
+        /**
+         * Get env-1 release of `modular_synth_util`.
+         * @returns the env-1 release
+         */
+        get_env_1_release(): number;
+
+        /**
+         * Get env-1 sends of `modular_synth_util`.
+         * @param env_1_sends_count 
+         * @returns the env-1 sends
+         */
+        get_env_1_sends(env_1_sends_count: number): number;
+
+        /**
+         * Get env-1 sustain of `modular_synth_util`.
+         * @returns the env-1 sustain
+         */
+        get_env_1_sustain(): number;
+
+        /**
+         * Get audio buffer util format of `modular_synth_util`.
+         * @returns the audio buffer util format
+         */
+        get_format(): Ags.SoundcardFormat;
+
+        /**
+         * Get frame count of `modular_synth_util`.
+         * @returns the frame count
+         */
+        get_frame_count(): number;
+
+        /**
+         * Get lfo-0 depth of `modular_synth_util`.
+         * @returns the lfo-0 depth
+         */
+        get_lfo_0_depth(): number;
+
+        /**
+         * Get lfo-0 frequency of `modular_synth_util`.
+         * @returns the lfo-0 frequency
+         */
+        get_lfo_0_frequency(): number;
+
+        /**
+         * Get lfo-0 oscillator mode of `modular_synth_util`.
+         * @returns the lfo-0 oscillator mode as {@link AgsAudio.SynthOscillatorMode}-enum
+         */
+        get_lfo_0_oscillator(): SynthOscillatorMode;
+
+        /**
+         * Get lfo-0 sends of `modular_synth_util`.
+         * @param lfo_0_sends_count 
+         * @returns the lfo-0 sends
+         */
+        get_lfo_0_sends(lfo_0_sends_count: number): number;
+
+        /**
+         * Get lfo-0 tuning of `modular_synth_util`.
+         * @returns the lfo-0 tuning
+         */
+        get_lfo_0_tuning(): number;
+
+        /**
+         * Get lfo-1 depth of `modular_synth_util`.
+         * @returns the lfo-1 depth
+         */
+        get_lfo_1_depth(): number;
+
+        /**
+         * Get lfo-1 frequency of `modular_synth_util`.
+         * @returns the lfo-1 frequency
+         */
+        get_lfo_1_frequency(): number;
+
+        /**
+         * Get lfo-1 oscillator mode of `modular_synth_util`.
+         * @returns the lfo-1 oscillator mode as {@link AgsAudio.SynthOscillatorMode}-mode
+         */
+        get_lfo_1_oscillator(): SynthOscillatorMode;
+
+        /**
+         * Get lfo-1 sends of `modular_synth_util`.
+         * @param lfo_1_sends_count 
+         * @returns the lfo-1 sends
+         */
+        get_lfo_1_sends(lfo_1_sends_count: number): number;
+
+        /**
+         * Get lfo-1 tuning of `modular_synth_util`.
+         * @returns the lfo-1 tuning
+         */
+        get_lfo_1_tuning(): number;
+
+        /**
+         * Get noise frequency of `modular_synth_util`.
+         * @returns the noise frequency
+         */
+        get_noise_frequency(): number;
+
+        /**
+         * Get noise gain of `modular_synth_util`.
+         * @returns the noise gain
+         */
+        get_noise_gain(): number;
+
+        /**
+         * Get noise sends of `modular_synth_util`.
+         * @param noise_sends_count 
+         * @returns the noise sends
+         */
+        get_noise_sends(noise_sends_count: number): number;
+
+        /**
+         * Get note 256th mode of `modular_synth_util`.
+         * @returns `true` if note 256th mode, otherwise `false`
+         */
+        get_note_256th_mode(): boolean;
+
+        /**
+         * Get offset of `modular_synth_util`.
+         * @returns the offset
+         */
+        get_offset(): number;
+
+        /**
+         * Get offset as note 256th of `modular_synth_util`.
+         * @returns the offset as note 256th
+         */
+        get_offset_256th(): number;
+
+        /**
+         * Get osc-0 frequency of `modular_synth_util`.
+         * @returns the osc-0 frequency
+         */
+        get_osc_0_frequency(): number;
+
+        /**
+         * Get osc-0 oscillator mode of `modular_synth_util`.
+         * @returns the osc-0 oscillator mode as {@link AgsAudio.SynthOscillatorMode}-enum
+         */
+        get_osc_0_oscillator(): SynthOscillatorMode;
+
+        /**
+         * Get osc-0 phase of `modular_synth_util`.
+         * @returns the osc-0 phase
+         */
+        get_osc_0_phase(): number;
+
+        /**
+         * Get osc-0 volume of `modular_synth_util`.
+         * @returns the osc-0 volume
+         */
+        get_osc_0_volume(): number;
+
+        /**
+         * Get osc-1 frequency of `modular_synth_util`.
+         * @returns the osc-1 frequency
+         */
+        get_osc_1_frequency(): number;
+
+        /**
+         * Get osc-1 oscillator mode of `modular_synth_util`.
+         * @returns the osc-1 oscillator mode as {@link AgsAudio.SynthOscillatorMode}-enum
+         */
+        get_osc_1_oscillator(): SynthOscillatorMode;
+
+        /**
+         * Get osc-1 phase of `modular_synth_util`.
+         * @returns the osc-1 phase
+         */
+        get_osc_1_phase(): number;
+
+        /**
+         * Get osc-1 volume of `modular_synth_util`.
+         * @returns the osc-1 volume
+         */
+        get_osc_1_volume(): number;
+
+        /**
+         * Get pitch tuning of `modular_synth_util`.
+         * @returns the pitch tuning
+         */
+        get_pitch_tuning(): number;
+
+        /**
+         * Get samplerate of `modular_synth_util`.
+         * @returns the samplerate
+         */
+        get_samplerate(): number;
+
+        /**
+         * Get source buffer of `modular_synth_util`.
+         * @returns the source buffer
+         */
+        get_source(): null;
+
+        /**
+         * Get source stride of `modular_synth_util`.
+         * @returns the source buffer stride
+         */
+        get_source_stride(): number;
+
+        /**
+         * Get volume of `modular_synth_util`.
+         * @returns the volume
+         */
+        get_volume(): number;
+
+        /**
+         * Set `buffer_length` of `modular_synth_util`.
+         * @param buffer_length the buffer length
+         */
+        set_buffer_length(buffer_length: number): void;
+
+        /**
+         * Set `env_0_attack` of `modular_synth_util`.
+         * @param env_0_attack the env-0 attack
+         */
+        set_env_0_attack(env_0_attack: number): void;
+
+        /**
+         * Set `env_0_decay` of `modular_synth_util`.
+         * @param env_0_decay the env-0 decay
+         */
+        set_env_0_decay(env_0_decay: number): void;
+
+        /**
+         * Set `env_0_frequency` of `modular_synth_util`.
+         * @param env_0_frequency the env-0 frequency
+         */
+        set_env_0_frequency(env_0_frequency: number): void;
+
+        /**
+         * Set `env_0_gain` of `modular_synth_util`.
+         * @param env_0_gain the env-0 gain
+         */
+        set_env_0_gain(env_0_gain: number): void;
+
+        /**
+         * Set `env_0_release` of `modular_synth_util`.
+         * @param env_0_release the env-0 release
+         */
+        set_env_0_release(env_0_release: number): void;
+
+        /**
+         * Set `env_0_sends` of `modular_synth_util`.
+         * @param env_0_sends the env-0 sends
+         * @param env_0_sends_count the env-0 sends count
+         */
+        set_env_0_sends(env_0_sends: bigint | number, env_0_sends_count: number): void;
+
+        /**
+         * Set `env_0_sustain` of `modular_synth_util`.
+         * @param env_0_sustain the env-0 sustain
+         */
+        set_env_0_sustain(env_0_sustain: number): void;
+
+        /**
+         * Set `env_1_attack` of `modular_synth_util`.
+         * @param env_1_attack the env-1 attack
+         */
+        set_env_1_attack(env_1_attack: number): void;
+
+        /**
+         * Set `env_1_decay` of `modular_synth_util`.
+         * @param env_1_decay the env-1 decay
+         */
+        set_env_1_decay(env_1_decay: number): void;
+
+        /**
+         * Set `env_1_frequency` of `modular_synth_util`.
+         * @param env_1_frequency the env-1 frequency
+         */
+        set_env_1_frequency(env_1_frequency: number): void;
+
+        /**
+         * Set `env_1_gain` of `modular_synth_util`.
+         * @param env_1_gain the env-1 gain
+         */
+        set_env_1_gain(env_1_gain: number): void;
+
+        /**
+         * Set `env_1_release` of `modular_synth_util`.
+         * @param env_1_release the env-1 release
+         */
+        set_env_1_release(env_1_release: number): void;
+
+        /**
+         * Set `env_1_sends` of `modular_synth_util`.
+         * @param env_1_sends the env-1 sends
+         * @param env_1_sends_count 
+         */
+        set_env_1_sends(env_1_sends: bigint | number, env_1_sends_count: number): void;
+
+        /**
+         * Set `env_1_sustain` of `modular_synth_util`.
+         * @param env_1_sustain the env-1 sustain
+         */
+        set_env_1_sustain(env_1_sustain: number): void;
+
+        /**
+         * Set `format` of `modular_synth_util`.
+         * @param format the audio buffer util format
+         */
+        set_format(format: Ags.SoundcardFormat): void;
+
+        /**
+         * Set `frame_count` of `modular_synth_util`.
+         * @param frame_count the frame count
+         */
+        set_frame_count(frame_count: number): void;
+
+        /**
+         * @param lfo_0_depth 
+         */
+        set_lfo_0_depth(lfo_0_depth: number): void;
+
+        /**
+         * @param lfo_0_frequency 
+         */
+        set_lfo_0_frequency(lfo_0_frequency: number): void;
+
+        /**
+         * @param lfo_0_oscillator 
+         */
+        set_lfo_0_oscillator(lfo_0_oscillator: SynthOscillatorMode): void;
+
+        /**
+         * @param lfo_0_sends 
+         * @param lfo_0_sends_count 
+         */
+        set_lfo_0_sends(lfo_0_sends: bigint | number, lfo_0_sends_count: number): void;
+
+        /**
+         * @param lfo_0_tuning 
+         */
+        set_lfo_0_tuning(lfo_0_tuning: number): void;
+
+        /**
+         * @param lfo_1_depth 
+         */
+        set_lfo_1_depth(lfo_1_depth: number): void;
+
+        /**
+         * @param lfo_1_frequency 
+         */
+        set_lfo_1_frequency(lfo_1_frequency: number): void;
+
+        /**
+         * @param lfo_1_oscillator 
+         */
+        set_lfo_1_oscillator(lfo_1_oscillator: SynthOscillatorMode): void;
+
+        /**
+         * @param lfo_1_sends 
+         * @param lfo_1_sends_count 
+         */
+        set_lfo_1_sends(lfo_1_sends: bigint | number, lfo_1_sends_count: number): void;
+
+        /**
+         * @param lfo_1_tuning 
+         */
+        set_lfo_1_tuning(lfo_1_tuning: number): void;
+
+        /**
+         * Set `noise_frequency` of `modular_synth_util`.
+         * @param noise_frequency the noise frequency
+         */
+        set_noise_frequency(noise_frequency: number): void;
+
+        /**
+         * Set `noise_gain` of `modular_synth_util`.
+         * @param noise_gain the noise gain
+         */
+        set_noise_gain(noise_gain: number): void;
+
+        /**
+         * Set `noise_sends` of `modular_synth_util`.
+         * @param noise_sends the noise sends
+         * @param noise_sends_count 
+         */
+        set_noise_sends(noise_sends: bigint | number, noise_sends_count: number): void;
+
+        /**
+         * Set `note_256th_mode` of `modular_synth_util`.
+         * @param note_256th_mode the note 256th mode
+         */
+        set_note_256th_mode(note_256th_mode: boolean): void;
+
+        /**
+         * Set `offset` of `modular_synth_util`.
+         * @param offset the offset
+         */
+        set_offset(offset: number): void;
+
+        /**
+         * Set `offset_256th` of `modular_synth_util`.
+         * @param offset_256th the offset as note 256th
+         */
+        set_offset_256th(offset_256th: number): void;
+
+        /**
+         * Set `osc_0_frequency` of `modular_synth_util`.
+         * @param osc_0_frequency the osc-0 frequency
+         */
+        set_osc_0_frequency(osc_0_frequency: number): void;
+
+        /**
+         * Set `osc_0_oscillator` of `modular_synth_util`.
+         * @param osc_0_oscillator the osc-0 oscillator mode as {@link AgsAudio.SynthOscillatorMode}-enum
+         */
+        set_osc_0_oscillator(osc_0_oscillator: SynthOscillatorMode): void;
+
+        /**
+         * Set `osc_0_phase` of `modular_synth_util`.
+         * @param osc_0_phase the osc-0 phase
+         */
+        set_osc_0_phase(osc_0_phase: number): void;
+
+        /**
+         * Set `osc_0_volume` of `modular_synth_util`.
+         * @param osc_0_volume the osc-0 volume
+         */
+        set_osc_0_volume(osc_0_volume: number): void;
+
+        /**
+         * Set `osc_1_frequency` of `modular_synth_util`.
+         * @param osc_1_frequency the osc-1 frequency
+         */
+        set_osc_1_frequency(osc_1_frequency: number): void;
+
+        /**
+         * Set `osc_1_oscillator` of `modular_synth_util`.
+         * @param osc_1_oscillator the osc-1 oscillator mode as {@link AgsAudio.SynthOscillatorMode}-enum
+         */
+        set_osc_1_oscillator(osc_1_oscillator: SynthOscillatorMode): void;
+
+        /**
+         * Set `osc_1_phase` of `modular_synth_util`.
+         * @param osc_1_phase the osc-1 phase
+         */
+        set_osc_1_phase(osc_1_phase: number): void;
+
+        /**
+         * Set `osc_1_volume` of `modular_synth_util`.
+         * @param osc_1_volume the osc-1 volume
+         */
+        set_osc_1_volume(osc_1_volume: number): void;
+
+        /**
+         * Set `pitch_tuning` of `modular_synth_util`.
+         * @param pitch_tuning the pitch tuning
+         */
+        set_pitch_tuning(pitch_tuning: number): void;
+
+        /**
+         * Set `samplerate` of `modular_synth_util`.
+         * @param samplerate the samplerate
+         */
+        set_samplerate(samplerate: number): void;
+
+        /**
+         * Set `source` buffer of `modular_synth_util`.
+         * @param source the source buffer
+         */
+        set_source(source: null): void;
+
+        /**
+         * Set `source` stride of `modular_synth_util`.
+         * @param source_stride the source buffer stride
+         */
+        set_source_stride(source_stride: number): void;
+
+        /**
+         * Set `volume` of `modular_synth_util`.
+         * @param volume the volume
+         */
+        set_volume(volume: number): void;
     }
 
 

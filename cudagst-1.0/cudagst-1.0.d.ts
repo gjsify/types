@@ -573,6 +573,23 @@ export namespace CudaGst {
 
 
     /**
+     * @gir-type Struct
+     */
+    class uuid {
+        static $gtype: GObject.GType<uuid>;
+
+        // Fields
+        bytes: number[];
+
+        // Constructors
+
+        constructor(properties?: Partial<{
+            bytes: number[];
+        }>);
+    }
+
+
+    /**
      * @gir-type Alias
      */
     type array = never;

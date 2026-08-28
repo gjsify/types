@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Thunarx-3.0.
  *
- * GENERATED — do not edit. Provenance: Thunarx-3.0 — library 4.20.7 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Thunarx-3.0 — library 4.20.9 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
  *
  * 1 concrete widgets, 1 declarations, 0 enum nick unions, 1 slot candidates.
  *

@@ -331,10 +331,37 @@ export namespace GnomeBG {
 
         /**
          * Tries to load the slide show asynchronously.
+         * 
+         * Use `gnome_bg_slide_show_load_finish()` to get the result.
+         * @param cancellable a {@link Gio.Cancellable}
+         */
+        load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Tries to load the slide show asynchronously.
+         * 
+         * Use `gnome_bg_slide_show_load_finish()` to get the result.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback
          */
         load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Tries to load the slide show asynchronously.
+         * 
+         * Use `gnome_bg_slide_show_load_finish()` to get the result.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback the callback
+         */
+        load_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finish an asynchronous operation to load the slide show that was
+         * started with `gnome_bg_slide_show_load_async()`.
+         * @param res A {@link Gio.AsyncResult}
+         * @returns `false` on error, `true` otherwise
+         */
+        load_finish(res: Gio.AsyncResult): boolean;
     }
 
 

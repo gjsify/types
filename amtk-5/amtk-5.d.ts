@@ -991,6 +991,149 @@ export namespace Amtk {
     }
 
 
+    namespace TreeViewScrolledWindowSizing {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ScrolledWindow.SignalSignatures {
+            "notify::monitor-limit-enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::hscrollbar-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::kinetic-scrolling": (pspec: GObject.ParamSpec) => void;
+            "notify::max-content-height": (pspec: GObject.ParamSpec) => void;
+            "notify::max-content-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-content-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-content-width": (pspec: GObject.ParamSpec) => void;
+            "notify::overlay-scrolling": (pspec: GObject.ParamSpec) => void;
+            "notify::propagate-natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::propagate-natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::shadow-type": (pspec: GObject.ParamSpec) => void;
+            "notify::vadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::vscrollbar-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::window-placement": (pspec: GObject.ParamSpec) => void;
+            "notify::window-placement-set": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+            monitor_limit_enabled: boolean;
+            monitorLimitEnabled: boolean;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class TreeViewScrolledWindowSizing extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
+        static $gtype: GObject.GType<TreeViewScrolledWindowSizing>;
+
+        // Properties
+        /**
+         * Whether to take the {@link Gdk.Monitor} size into account as a maximum width
+         * and height to apply.
+         * @since 5.10
+         * @default true
+         */
+        get monitor_limit_enabled(): boolean;
+        set monitor_limit_enabled(val: boolean);
+
+        /**
+         * Whether to take the {@link Gdk.Monitor} size into account as a maximum width
+         * and height to apply.
+         * @since 5.10
+         * @default true
+         */
+        get monitorLimitEnabled(): boolean;
+        set monitorLimitEnabled(val: boolean);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: TreeViewScrolledWindowSizing.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<TreeViewScrolledWindowSizing.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](): TreeViewScrolledWindowSizing;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof TreeViewScrolledWindowSizing.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeViewScrolledWindowSizing.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof TreeViewScrolledWindowSizing.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeViewScrolledWindowSizing.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof TreeViewScrolledWindowSizing.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeViewScrolledWindowSizing.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the current value of the   {@link Amtk.TreeViewScrolledWindowSizing.monitor_limit_enabled} property.
+         */
+        get_monitor_limit(): boolean;
+
+        /**
+         * @returns the {@link Gtk.TreeView}, if the child widget is   a {@link Gtk.TreeView}. Otherwise `null` is returned.
+         */
+        get_tree_view(): Gtk.TreeView | null;
+
+        /**
+         * Sets the {@link Amtk.TreeViewScrolledWindowSizing.monitor_limit_enabled} property.
+         * @param monitor_limit the new value.
+         */
+        set_monitor_limit(monitor_limit: boolean): void;
+    }
+
+
     /**
      * @gir-type Struct
      */
@@ -1198,6 +1341,19 @@ export namespace Amtk {
      */
     abstract class MenuShellPrivate {
         static $gtype: GObject.GType<MenuShellPrivate>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type TreeViewScrolledWindowSizingClass = typeof TreeViewScrolledWindowSizing;
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class TreeViewScrolledWindowSizingPrivate {
+        static $gtype: GObject.GType<TreeViewScrolledWindowSizingPrivate>;
     }
 
 

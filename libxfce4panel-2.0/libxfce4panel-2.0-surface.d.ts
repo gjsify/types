@@ -3,7 +3,7 @@
  *
  * GENERATED — do not edit. Provenance: Libxfce4panel-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
  *
- * 3 concrete widgets, 4 declarations, 2 enum nick unions, 1 slot candidates.
+ * 3 concrete widgets, 3 declarations, 2 enum nick unions, 1 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -70,7 +70,7 @@ export interface XfcePanelImageProps extends GtkWidgetProps, GtkBuildableProps {
 export type XfcePanelImageConstructOnly = GtkWidgetConstructOnly | GtkBuildableConstructOnly;
 
 /** This struct contain private data only and should be accessed by the functions below. */
-export interface XfcePanelPluginProps extends GtkEventBoxProps, GtkBuildableProps, XfcePanelPluginProviderProps {
+export interface XfcePanelPluginProps extends GtkEventBoxProps, GtkBuildableProps {
     /** The arguments the plugin was started with. */
     arguments?: string[];
     /**
@@ -102,12 +102,7 @@ export interface XfcePanelPluginProps extends GtkEventBoxProps, GtkBuildableProp
     'unique-id'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type XfcePanelPluginConstructOnly = GtkEventBoxConstructOnly | GtkBuildableConstructOnly | XfcePanelPluginProviderConstructOnly | 'arguments' | 'comment' | 'display-name' | 'name' | 'unique-id';
-
-export interface XfcePanelPluginProviderProps {
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type XfcePanelPluginProviderConstructOnly = never;
+export type XfcePanelPluginConstructOnly = GtkEventBoxConstructOnly | GtkBuildableConstructOnly | 'arguments' | 'comment' | 'display-name' | 'name' | 'unique-id';
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.

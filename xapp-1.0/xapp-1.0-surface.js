@@ -15,14 +15,14 @@ export const OWN_PROPS = {
 };
 
 export const OWN_SIGNALS = {
-    XAppIconChooserDialog: ['close', 'select'],
+    XAppIconChooserDialog: ['select'],
     XAppPreferencesWindow: ['close'],
 };
 
 export const DECLS = {
     XAppGtkWindow: ['XAppGtkWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     XAppIconChooserButton: ['XAppIconChooserButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
-    XAppIconChooserDialog: ['XAppIconChooserDialog', 'XAppGtkWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+    XAppIconChooserDialog: ['XAppIconChooserDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     XAppPreferencesWindow: ['XAppPreferencesWindow', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     XAppStackSidebar: ['XAppStackSidebar', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
 };

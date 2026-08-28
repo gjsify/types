@@ -702,11 +702,9 @@ export namespace Panel {
         interface SignalSignatures extends Adw.Application.SignalSignatures {
             "notify::style-manager": (pspec: GObject.ParamSpec) => void;
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
-            "notify::autosave-interval": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
             "notify::register-session": (pspec: GObject.ParamSpec) => void;
             "notify::screensaver-active": (pspec: GObject.ParamSpec) => void;
-            "notify::support-save": (pspec: GObject.ParamSpec) => void;
             "notify::action-group": (pspec: GObject.ParamSpec) => void;
             "notify::application-id": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -1705,7 +1703,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -2537,7 +2535,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -2552,7 +2550,7 @@ export namespace Panel {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -3027,7 +3025,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -3547,7 +3545,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -3562,7 +3560,7 @@ export namespace Panel {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -4143,7 +4141,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -5246,7 +5244,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -5697,7 +5695,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -6612,7 +6610,7 @@ export namespace Panel {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -6628,14 +6626,14 @@ export namespace Panel {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -6675,7 +6673,7 @@ export namespace Panel {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -6692,14 +6690,14 @@ export namespace Panel {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -6799,7 +6797,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -7288,7 +7286,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -7303,7 +7301,7 @@ export namespace Panel {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -9514,7 +9512,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -9983,7 +9981,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -10439,7 +10437,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -11278,7 +11276,7 @@ export namespace Panel {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual

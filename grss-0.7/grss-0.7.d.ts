@@ -782,9 +782,11 @@ export namespace Grss {
 
         /**
          * Retrieves the geo reference of the `item`.
+         * @param latitude will be assigned to the latitude of the point, or `null`.
+         * @param longitude will be assigned to the longitude of the point, or `null`.
          * @returns `true` if `item` has geographic coordinates assigned and `latitude` and `longitude` have been set, `false` if `item` has not geo reference.
          */
-        get_geo_point(): [boolean, number, number];
+        get_geo_point(latitude: number, longitude: number): boolean;
 
         /**
          * Retrieves the ID assigned to the `item`. If no ID was set with
@@ -1067,8 +1069,8 @@ export namespace Grss {
 
         // Methods
         /**
-         * Creates a new file with the list of `channels` represented in the required
-         * `format`. If the file already exists at the `uri` location, it is overwritten.
+         * Creates a new file with the list of `channels` rappresented in the required
+         * `format`. It a file already exists at the `uri` location, it is overwritten.
          * @param channels list of `GrssFeedChannels`.
          * @param format string rappresenting the desired export format, as returnes by          `grss_feeds_group_get_formats()`.
          * @param uri URI of the file to write.

@@ -11,6 +11,10 @@
 import '@girs/gjs';
 
 // Module dependencies
+import type GtkSource from '@girs/gtksource-4';
+import type Gtk from '@girs/gtk-3.0';
+import type xlib from '@girs/xlib-2.0';
+import type Gdk from '@girs/gdk-3.0';
 import type cairo from 'cairo';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
@@ -19,13 +23,10 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type Gee from '@girs/gee-0.8';
-import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type Ggit from '@girs/ggit-1.0';
-import type Gtk from '@girs/gtk-3.0';
-import type xlib from '@girs/xlib-2.0';
 import type Atk from '@girs/atk-1.0';
+import type Gee from '@girs/gee-0.8';
+import type Ggit from '@girs/ggit-1.0';
 
 export namespace Gitg {
 
@@ -304,9 +305,25 @@ export namespace Gitg {
     }
 
 
-    function commit_model_columns_type(): GObject.GType;
+    /**
+     * @param self 
+     */
+    function commit_model_columns_type(self: CommitModelColumns): GObject.GType;
 
-    function init(): void;
+    /**
+     * @param self 
+     */
+    function commit_model_columns_name(self: CommitModelColumns): string | null;
+
+    /**
+     * @param self 
+     */
+    function commit_model_columns_nick(self: CommitModelColumns): string;
+
+    /**
+     * @param test 
+     */
+    function init(test: boolean): void;
 
     /**
      * @gir-type Flags
@@ -2832,6 +2849,154 @@ export namespace Gitg {
     }
 
 
+    namespace EntryHistory {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+            /**
+             * @signal
+             */
+            "activated-with-text": (arg0: string) => void;
+            "notify::activates-default": (pspec: GObject.ParamSpec) => void;
+            "notify::attributes": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::caps-lock-warning": (pspec: GObject.ParamSpec) => void;
+            "notify::completion": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
+            "notify::editable": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-emoji-completion": (pspec: GObject.ParamSpec) => void;
+            "notify::has-frame": (pspec: GObject.ParamSpec) => void;
+            "notify::im-module": (pspec: GObject.ParamSpec) => void;
+            "notify::inner-border": (pspec: GObject.ParamSpec) => void;
+            "notify::input-hints": (pspec: GObject.ParamSpec) => void;
+            "notify::input-purpose": (pspec: GObject.ParamSpec) => void;
+            "notify::invisible-char": (pspec: GObject.ParamSpec) => void;
+            "notify::invisible-char-set": (pspec: GObject.ParamSpec) => void;
+            "notify::max-length": (pspec: GObject.ParamSpec) => void;
+            "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
+            "notify::overwrite-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::placeholder-text": (pspec: GObject.ParamSpec) => void;
+            "notify::populate-all": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-activatable": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-gicon": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-stock": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-storage-type": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::progress-fraction": (pspec: GObject.ParamSpec) => void;
+            "notify::progress-pulse-step": (pspec: GObject.ParamSpec) => void;
+            "notify::scroll-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-activatable": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-gicon": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-stock": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-storage-type": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
+            "notify::shadow-type": (pspec: GObject.ParamSpec) => void;
+            "notify::show-emoji-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::tabs": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::text-length": (pspec: GObject.ParamSpec) => void;
+            "notify::truncate-multiline": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::width-chars": (pspec: GObject.ParamSpec) => void;
+            "notify::xalign": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Gtk.Entry.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class EntryHistory extends Gtk.Entry {
+        static $gtype: GObject.GType<EntryHistory>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: EntryHistory.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<EntryHistory.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](history_file_path: string | null): EntryHistory;
+
+        // Conflicted with Gtk.Entry.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof EntryHistory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryHistory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof EntryHistory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryHistory.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof EntryHistory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryHistory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        clear_history(): void;
+
+        get_history(): Gee.ArrayList;
+    }
+
+
     namespace FontManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -3871,24 +4036,30 @@ export namespace Gitg {
         download_finish(_res_: Gio.AsyncResult): void;
 
         /**
-         * @param branch 
+         * @param force 
+         * @param local_ref 
+         * @param remote_ref 
          * @param callbacks 
          */
-        push(branch: string, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        push(force: boolean, local_ref: string, remote_ref: string, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
 
         /**
-         * @param branch 
+         * @param force 
+         * @param local_ref 
+         * @param remote_ref 
          * @param callbacks 
          * @param _callback_ 
          */
-        push(branch: string, callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        push(force: boolean, local_ref: string, remote_ref: string, callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
-         * @param branch 
+         * @param force 
+         * @param local_ref 
+         * @param remote_ref 
          * @param callbacks 
          * @param _callback_ 
          */
-        push(branch: string, callbacks: Ggit.RemoteCallbacks | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        push(force: boolean, local_ref: string, remote_ref: string, callbacks: Ggit.RemoteCallbacks | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param args 
@@ -3904,22 +4075,25 @@ export namespace Gitg {
         /**
          * @param message 
          * @param callbacks 
+         * @param download_tags 
          */
-        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null, download_tags: Ggit.RemoteDownloadTagsType | null): globalThis.Promise<void>;
 
         /**
          * @param message 
          * @param callbacks 
+         * @param download_tags 
          * @param _callback_ 
          */
-        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null, download_tags: Ggit.RemoteDownloadTagsType | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param message 
          * @param callbacks 
+         * @param download_tags 
          * @param _callback_ 
          */
-        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null, download_tags: Ggit.RemoteDownloadTagsType | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6168,6 +6342,10 @@ export namespace Gitg {
         // Fields
         ref_count: number;
 
+        gitg_utils_gitg_styles_path_added: boolean;
+
+        gitg_utils_theme_light_dark: Gee.HashMap | null;
+
         // Constructors
         _init(...args: any[]): void;
 
@@ -6196,6 +6374,39 @@ export namespace Gitg {
          * @param path 
          */
         static expand_home_dir(path: string): string;
+
+        static get_source_style_manager(): GtkSource.StyleSchemeManager;
+
+        /**
+         * @param settings 
+         * @param to 
+         * @param from 
+         */
+        static update_style_value(settings: Gio.Settings | null, to: string, from: string): void;
+
+        /**
+         * @param settings 
+         */
+        static update_style_by_theme(settings: Gio.Settings | null): void;
+
+        /**
+         * @param settings 
+         * @param source_buffer 
+         */
+        static update_buffer_style(settings: Gio.Settings, source_buffer: GtkSource.Buffer): void;
+
+        /**
+         * @param repository 
+         * @param name 
+         */
+        static is_main_remote(repository: Repository | null, name: string): boolean;
+
+        /**
+         * @param repository 
+         * @param key 
+         * @param default_value 
+         */
+        static get_config_value(repository: Repository | null, key: string, default_value: string | null): string | null;
     }
 
 
@@ -6422,6 +6633,19 @@ export namespace Gitg {
      */
     abstract class DiffViewPrivate {
         static $gtype: GObject.GType<DiffViewPrivate>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type EntryHistoryClass = typeof EntryHistory;
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class EntryHistoryPrivate {
+        static $gtype: GObject.GType<EntryHistoryPrivate>;
     }
 
 

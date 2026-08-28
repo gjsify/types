@@ -1,12 +1,12 @@
 // The widget vocabulary of GtkSource-5 as runtime data.
 //
-// GENERATED — do not edit. Provenance: GtkSource-5 — library 5.20.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+// GENERATED — do not edit. Provenance: GtkSource-5 — library 5.21.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
 // name here is real needs values, not declarations.
 
-export const SURFACE_PROVENANCE = 'GtkSource-5 — library 5.20.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object';
+export const SURFACE_PROVENANCE = 'GtkSource-5 — library 5.21.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object';
 
 export const OWN_PROPS = {
     GtkSourceCompletionCell: ['column', 'markup', 'paintable', 'text', 'widget'],

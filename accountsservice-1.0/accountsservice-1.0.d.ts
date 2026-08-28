@@ -630,7 +630,7 @@ export namespace AccountsService {
          * Retrieves the ID of `user`.
          * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
-        get_uid(): number;
+        get_uid(): never;
 
         /**
          * Retrieves the login name of `user`.
@@ -831,6 +831,12 @@ export namespace AccountsService {
          * @param x_session an x session (e.g. gnome)
          */
         set_x_session(x_session: string): void;
+
+        /**
+         * Retrieves whether the user is a backed by systemd-homed or not.
+         * @returns `true` if the user is backed by systemd-homed
+         */
+        uses_homed(): boolean;
     }
 
 
@@ -1176,7 +1182,7 @@ export namespace AccountsService {
          * @param id the uid of the user to get.
          * @returns {@link AccountsService.User} object
          */
-        get_user_by_id(id: number): User;
+        get_user_by_id(id: never): User;
 
         /**
          * Switch the display to the login manager.

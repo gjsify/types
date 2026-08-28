@@ -5054,6 +5054,10 @@ export namespace Skk {
              * @signal
              */
             "delete-surrounding-text": (arg0: number, arg1: number) => boolean | void;
+            /**
+             * @signal
+             */
+            "request-selection-text": () => void;
             "notify::candidates": (pspec: GObject.ParamSpec) => void;
             "notify::input-mode": (pspec: GObject.ParamSpec) => void;
             "notify::auto-start-henkan-keywords": (pspec: GObject.ParamSpec) => void;
@@ -5179,6 +5183,11 @@ export namespace Skk {
         remove_dictionary(dict: Dict): void;
 
         /**
+         * @param text 
+         */
+        set_selection_text(text: string | null): void;
+
+        /**
          * @param keyseq 
          */
         process_key_events(keyseq: string): boolean;
@@ -5201,6 +5210,12 @@ export namespace Skk {
         get_preedit_underline(): [number, number];
 
         save_dictionaries(): void;
+
+        /**
+         * @param mode 
+         * @param sources 
+         */
+        set_completion_order(mode: string, sources: CompletionSource[]): void;
 
         get_dictionaries(): Dict[];
 
@@ -5677,6 +5692,170 @@ export namespace Skk {
     }
 
 
+    namespace CompletionSource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::priority": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            priority: number;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    abstract class CompletionSource extends GObject.Object {
+        static $gtype: GObject.GType<CompletionSource>;
+
+        // Properties
+        get priority(): number;
+        set priority(val: number);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CompletionSource.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CompletionSource.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CompletionSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CompletionSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionSource.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CompletionSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompletionSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+        /**
+         * @param midasi 
+         * @virtual
+         */
+        vfunc_get_completions(midasi: string): string[];
+
+        // Methods
+        /**
+         * @param midasi 
+         */
+        get_completions(midasi: string): string[];
+
+        get_priority(): number;
+
+        /**
+         * @param value 
+         */
+        set_priority(value: number): void;
+    }
+
+
+    namespace DictCompletionSource {
+        // Signal signatures
+        interface SignalSignatures extends CompletionSource.SignalSignatures {
+            "notify::priority": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends CompletionSource.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class DictCompletionSource extends CompletionSource {
+        static $gtype: GObject.GType<DictCompletionSource>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: DictCompletionSource.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<DictCompletionSource.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](dict: Dict, priority: number): DictCompletionSource;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof DictCompletionSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DictCompletionSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof DictCompletionSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DictCompletionSource.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof DictCompletionSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DictCompletionSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+
+    namespace CompletionService {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class CompletionService {
+        static $gtype: GObject.GType<CompletionService>;
+
+        // Fields
+        ref_count: number;
+
+        // Constructors
+        _init(...args: any[]): void;
+
+        static ["new"](): CompletionService;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CompletionService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionService.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CompletionService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CompletionService.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CompletionService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CompletionService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @param source_object 
+         * @param priority 
+         */
+        add_source(source_object: GObject.Object, priority: number): void;
+
+        /**
+         * @param midasi 
+         */
+        get_completions(midasi: string): string[];
+    }
+
+
     /**
      * @gir-type Alias
      */
@@ -5856,6 +6035,45 @@ export namespace Skk {
      */
     abstract class NicolaKeyEventFilterPrivate {
         static $gtype: GObject.GType<NicolaKeyEventFilterPrivate>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type CompletionSourceClass = typeof CompletionSource;
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class CompletionSourcePrivate {
+        static $gtype: GObject.GType<CompletionSourcePrivate>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type DictCompletionSourceClass = typeof DictCompletionSource;
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class DictCompletionSourcePrivate {
+        static $gtype: GObject.GType<DictCompletionSourcePrivate>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type CompletionServiceClass = typeof CompletionService;
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class CompletionServicePrivate {
+        static $gtype: GObject.GType<CompletionServicePrivate>;
     }
 
 

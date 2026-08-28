@@ -485,11 +485,14 @@ export namespace GcrUi {
         set_attributes(attrs: Gck.Attributes | null): void;
 
         /**
+         * signal emitted when data being rendered changes
          * @virtual
          */
         vfunc_data_changed(): void;
 
         /**
+         * method invoked to populate a popup menu with additional
+         *                  renderer options
          * @param viewer 
          * @param menu 
          * @virtual
@@ -1899,11 +1902,14 @@ export namespace GcrUi {
         set_attributes(attrs: Gck.Attributes | null): void;
 
         /**
+         * signal emitted when data being rendered changes
          * @virtual
          */
         vfunc_data_changed(): void;
 
         /**
+         * method invoked to populate a popup menu with additional
+         *                  renderer options
          * @param viewer 
          * @param menu 
          * @virtual
@@ -2040,6 +2046,7 @@ export namespace GcrUi {
 
         // Virtual methods
         /**
+         * Emitted when the import completes, or fails.
          * @param importer 
          * @param error 
          * @virtual
@@ -2047,6 +2054,7 @@ export namespace GcrUi {
         vfunc_imported(importer: Gcr.Importer, error: GLib.Error): void;
 
         /**
+         * Emitted when the import begins.
          * @param importer 
          * @virtual
          */
@@ -2498,11 +2506,14 @@ export namespace GcrUi {
         render_view(viewer: Viewer): void;
 
         /**
+         * signal emitted when data being rendered changes
          * @virtual
          */
         vfunc_data_changed(): void;
 
         /**
+         * method invoked to populate a popup menu with additional
+         *                  renderer options
          * @param viewer 
          * @param menu 
          * @virtual
@@ -3033,48 +3044,56 @@ export namespace GcrUi {
         /**
          * Whether the choice check box is visible or not.
          * @read-only
+         * @default false
          */
         get choice_visible(): boolean;
 
         /**
          * Whether the choice check box is visible or not.
          * @read-only
+         * @default false
          */
         get choiceVisible(): boolean;
 
         /**
          * Whether the password confirm entry is visible or not.
          * @read-only
+         * @default false
          */
         get confirm_visible(): boolean;
 
         /**
          * Whether the password confirm entry is visible or not.
          * @read-only
+         * @default false
          */
         get confirmVisible(): boolean;
 
         /**
          * Whether the password entry is visible or not.
          * @read-only
+         * @default false
          */
         get password_visible(): boolean;
 
         /**
          * Whether the password entry is visible or not.
          * @read-only
+         * @default false
          */
         get passwordVisible(): boolean;
 
         /**
          * Whether the warning label is visible or not.
          * @read-only
+         * @default false
          */
         get warning_visible(): boolean;
 
         /**
          * Whether the warning label is visible or not.
          * @read-only
+         * @default false
          */
         get warningVisible(): boolean;
 
@@ -4156,9 +4175,15 @@ export namespace GcrUi {
         static $gtype: GObject.GType<UnlockOptionsWidget>;
 
         // Properties
+        /**
+         * @default null
+         */
         get choice(): string;
         set choice(val: string);
 
+        /**
+         * @default 0
+         */
         get ttl(): number;
         set ttl(val: number);
 
@@ -4349,6 +4374,7 @@ export namespace GcrUi {
          * 
          * Used as a hint when displaying a title for the data, but may be
          * overridden by the parsed data.
+         * @default null
          */
         get display_name(): string;
         set display_name(val: string);
@@ -4359,6 +4385,7 @@ export namespace GcrUi {
          * 
          * Used as a hint when displaying a title for the data, but may be
          * overridden by the parsed data.
+         * @default null
          */
         get displayName(): string;
         set displayName(val: string);
@@ -4688,11 +4715,14 @@ export namespace GcrUi {
 
             // Virtual methods
             /**
+             * signal emitted when data being rendered changes
              * @virtual
              */
             vfunc_data_changed(): void;
 
             /**
+             * method invoked to populate a popup menu with additional
+             *                  renderer options
              * @param viewer 
              * @param menu 
              * @virtual

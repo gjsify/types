@@ -404,7 +404,7 @@ export namespace Modulemd {
 
 
     /**
-     * The ModuleStream v3 specification defines the maximum lenth of the context
+     * The ModuleStream v3 specification defines the maximum length of the context
      * field.
      * @since 2.10
      */
@@ -1738,7 +1738,7 @@ export namespace Modulemd {
         /**
          * @param stream The stream to look up obsoletes for.
          * @param context The stream context to look up obsoletes for.
-         * @returns The newest active obsoletes attached to this module with specified stream and context (when eol_date is not set or it already occured the obsoletes is active). If no context is passed it matches obsoletes without context.
+         * @returns The newest active obsoletes attached to this module with specified stream and context (when eol_date is not set or it already occurred the obsoletes is active). If no context is passed it matches obsoletes without context.
          */
         get_newest_active_obsoletes(stream: string, context: string | null): Obsoletes;
 
@@ -3589,7 +3589,7 @@ export namespace Modulemd {
         get_reset(): boolean;
 
         /**
-         * @returns If this {@link Modulemd.Obsoletes} object has eol_date set and the date has not occured yet it returns false otherwise it returns true. (When eol_date is not set or it already occured the obsoletes is active.)
+         * @returns If this {@link Modulemd.Obsoletes} object has eol_date set and the date has not occurred yet it returns false otherwise it returns true. (When eol_date is not set or it already occurred the obsoletes is active.)
          */
         is_active(): boolean;
 

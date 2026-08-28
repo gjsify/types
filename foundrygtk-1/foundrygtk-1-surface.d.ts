@@ -3,7 +3,7 @@
  *
  * GENERATED — do not edit. Provenance: FoundryGtk-1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
  *
- * 5 concrete widgets, 5 declarations, 0 enum nick unions, 0 slot candidates.
+ * 6 concrete widgets, 6 declarations, 0 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -64,6 +64,17 @@ export interface FoundryDiagnosticsGutterRendererProps extends GtkSourceGutterRe
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type FoundryDiagnosticsGutterRendererConstructOnly = GtkSourceGutterRendererConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
+/** A widget that displays Git graph lanes for a [class@Foundry.VcsGraphEntry]. */
+export interface FoundryGitLanesProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
+    /**
+     * The graph entry to render.
+     * @since 1.2
+     */
+    entry?: Foundry.VcsGraphEntry;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type FoundryGitLanesConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
+
 export interface FoundryMarkupViewProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -120,6 +131,13 @@ export interface Widgets {
         props: FoundryDiagnosticsGutterRendererProps;
         signals: FoundryGtk.DiagnosticsGutterRenderer.SignalSignatures;
         constructOnly: FoundryDiagnosticsGutterRendererConstructOnly;
+        slotCandidates: {};
+    };
+    FoundryGitLanes: {
+        class: FoundryGtk.GitLanes;
+        props: FoundryGitLanesProps;
+        signals: FoundryGtk.GitLanes.SignalSignatures;
+        constructOnly: FoundryGitLanesConstructOnly;
         slotCandidates: {};
     };
     FoundryMarkupView: {

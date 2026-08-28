@@ -15,7 +15,7 @@ import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type GIRepository from '@girs/girepository-2.0';
+import type GIRepository from '@girs/girepository-3.0';
 
 export namespace Peas {
 
@@ -255,12 +255,14 @@ export namespace Peas {
 
         // Virtual methods
         /**
+         * Signal class handler for the {@link Peas.Engine.SignalSignatures.load_plugin | Peas.Engine::load-plugin} signal.
          * @param info 
          * @virtual
          */
         vfunc_load_plugin(info: PluginInfo): void;
 
         /**
+         * Signal class handler for the {@link Peas.Engine.SignalSignatures.unload_plugin | Peas.Engine::unload-plugin} signal.
          * @param info 
          * @virtual
          */
@@ -640,6 +642,7 @@ export namespace Peas {
 
         // Virtual methods
         /**
+         * The VFunc for `peas_extension_set_call()`.
          * @param method_name 
          * @param args 
          * @virtual
@@ -647,6 +650,8 @@ export namespace Peas {
         vfunc_call(method_name: string, args: GIRepository.Argument): boolean;
 
         /**
+         * Signal class handler for the
+         *                   {@link Peas.ExtensionSet.SignalSignatures.extension_added | Peas.ExtensionSet::extension-added} signal.
          * @param info 
          * @param exten 
          * @virtual
@@ -654,6 +659,8 @@ export namespace Peas {
         vfunc_extension_added(info: PluginInfo, exten: Extension): void;
 
         /**
+         * Signal class handler for the
+         *                   {@link Peas.ExtensionSet.SignalSignatures.extension_removed | Peas.ExtensionSet::extension-removed} signal.
          * @param info 
          * @param exten 
          * @virtual

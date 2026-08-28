@@ -182,6 +182,8 @@ export namespace BlockDev {
 
         static RAID_NO_EXIST: number;
 
+        static DEVICE_NOEXIST: number;
+
         // Constructors
         constructor(options: { message: string; code: number });
     }
@@ -612,6 +614,7 @@ export namespace BlockDev {
      */
     enum NVMESanitizeStatus {
         NEVER_SANITIZED,
+        IN_PROGRESS,
         IN_PROGESS,
         SUCCESS,
         SUCCESS_NO_DEALLOC,
@@ -1146,6 +1149,21 @@ export namespace BlockDev {
      */
     function btrfs_delete_subvolume(mountpoint: string, name: string, extra: ExtraArg[] | null): boolean;
 
+    /**
+     * @param mountpoint mountpoint of the btrfs volume to delete subvolume from
+     * @param name name of the subvolume
+     * @param recursive whether to delete child subvolumes recursively
+     * @param extra extra options for the subvolume deletion (right now                                               passed to the 'btrfs' utility)
+     * @returns whether the `mountpoint`/`name` subvolume was successfully deleted or not If `recursive` is `true`, all child subvolumes will be deleted before deleting the subvolume itself. This requires btrfs-progs >= 6.12. Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.DELETE} if `recursive` is `false`,                {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.DELETE_RECURSIVE} if `recursive` is `true`
+     */
+    function btrfs_delete_subvolume_recursive(mountpoint: string, name: string, recursive: boolean, extra: ExtraArg[] | null): boolean;
+
+    /**
+     * @param mountpoint a mountpoint of the queried btrfs volume
+     * @returns device stats for each device that is part of the btrfs volume mounted at `mountpoint` or `null` in case of error Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.QUERY}
+     */
+    function btrfs_device_stats(mountpoint: string): BtrfsDeviceStats[];
+
     function btrfs_error_quark(): GLib.Quark;
 
     /**
@@ -1246,6 +1264,16 @@ export namespace BlockDev {
     function crypto_bitlk_open(device: string, name: string, context: CryptoKeyslotContext, read_only: boolean): boolean;
 
     /**
+     * Supported `context` types for this function: passphrase, key file
+     * @param device the device to open
+     * @param name name for the BITLK device
+     * @param context key slot context (passphrase/keyfile/token...) for this BITLK device
+     * @param flags activation flags for the BITLK device
+     * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.BITLK}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     */
+    function crypto_bitlk_open_flags(device: string, name: string, context: CryptoKeyslotContext, flags: CryptoOpenFlags): boolean;
+
+    /**
      * @param device the queried device
      * @returns `true` if the given `device` is a LUKS device or `false` if not or failed to determine (the `error`) is populated with the error in such cases) Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.QUERY}
      */
@@ -1262,7 +1290,7 @@ export namespace BlockDev {
      * To achieve this, we calculate the chi square value of the first
      * 512 Bytes and treat devices with a chi square value between 136
      * and 426 as candidates for being encrypted.
-     * For the reasoning, see: https://tails.boum.org/blueprint/veracrypt/
+     * For the reasoning, see: https://gitlab.tails.boum.org/tails/blueprints/-/wikis/veracrypt/#detecting-veracrypt-volumes
      * @param device the queried device
      * @returns `true` if the given `device` seems to be encrypted or `false` if not or failed to determine (the `error`) is populated with the error in such cases) Tech category: {@link BlockDev.CryptoTech.TRUECRYPT}-{@link BlockDev.CryptoTechMode.QUERY}
      */
@@ -1295,6 +1323,16 @@ export namespace BlockDev {
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.FVAULT2}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
      */
     function crypto_fvault2_open(device: string, name: string, context: CryptoKeyslotContext, read_only: boolean): boolean;
+
+    /**
+     * Supported `context` types for this function: passphrase, key file
+     * @param device the device to open
+     * @param name name for the FVAULT2 device
+     * @param context key slot context (passphrase/keyfile/token...) for this FVAULT2 volume
+     * @param flags activation flags for the FVAULT2 device
+     * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.FVAULT2}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     */
+    function crypto_fvault2_open_flags(device: string, name: string, context: CryptoKeyslotContext, flags: CryptoOpenFlags): boolean;
 
     /**
      * @returns A newly generated `BD_CRYPTO_BACKUP_PASSPHRASE_LENGTH`-long passphrase. See `BD_CRYPTO_BACKUP_PASSPHRASE_CHARSET` for the definition of the charset used for the passphrase. Tech category: always available
@@ -1371,6 +1409,13 @@ export namespace BlockDev {
     function crypto_luks_change_key(device: string, context: CryptoKeyslotContext, ncontext: CryptoKeyslotContext): boolean;
 
     /**
+     * @param label label to check
+     * @param subsystem subsystem to check
+     * @returns whether `label` and `subsystem` are valid for LUKS2 or not          (reason is provided in `error`) Tech category: always available
+     */
+    function crypto_luks_check_label(label: string | null, subsystem: string | null): boolean;
+
+    /**
      * @param luks_device LUKS device to close
      * @returns whether the given `luks_device` was successfully closed or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
      */
@@ -1441,6 +1486,16 @@ export namespace BlockDev {
     function crypto_luks_open(device: string, name: string, context: CryptoKeyslotContext, read_only: boolean): boolean;
 
     /**
+     * Supported `context` types for this function: passphrase, key file, keyring
+     * @param device the device to open
+     * @param name name for the LUKS device
+     * @param context key slot context (passphrase/keyfile/token...) to open this LUKS `device`
+     * @param flags activation flags for the LUKS device
+     * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE} Example of using %bd_crypto_luks_open_flags with %BDCryptoKeyslotContext: |[<!-- language="C" --> BDCryptoKeyslotContext *context = NULL; context = bd_crypto_keyslot_context_new_passphrase ("passphrase", 10, NULL); bd_crypto_luks_open_flags ("/dev/vda1", "luks-device", context, 0, NULL); ]|
+     */
+    function crypto_luks_open_flags(device: string, name: string, context: CryptoKeyslotContext, flags: CryptoOpenFlags): boolean;
+
+    /**
      * Supported `context` types for this function: passphrase, key file
      * @param device device to add new key to
      * @param context key slot context (passphrase/keyfile/token...) to remove from this LUKS `device`
@@ -1463,7 +1518,7 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) for `luks_device`
      * @returns whether the given `luks_device` was successfully resumed or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.SUSPEND_RESUME}
      */
-    function crypto_luks_resume(luks_device: string, context: CryptoKeyslotContext | null): boolean;
+    function crypto_luks_resume(luks_device: string, context: CryptoKeyslotContext): boolean;
 
     /**
      * @param device device to set label on
@@ -1568,6 +1623,21 @@ export namespace BlockDev {
     function crypto_tc_open(device: string, name: string, context: CryptoKeyslotContext | null, keyfiles: string[] | null, hidden: boolean, system: boolean, veracrypt: boolean, veracrypt_pim: number, read_only: boolean): boolean;
 
     /**
+     * Supported `context` types for this function: passphrase
+     * @param device the device to open
+     * @param name name for the TrueCrypt/VeraCrypt device
+     * @param context passphrase key slot context for this TrueCrypt/VeraCrypt volume
+     * @param keyfiles paths to the keyfiles for the TrueCrypt/VeraCrypt volume
+     * @param hidden whether a hidden volume inside the volume should be opened
+     * @param system whether to try opening as an encrypted system (with boot loader)
+     * @param veracrypt whether to try VeraCrypt modes (TrueCrypt modes are tried anyway)
+     * @param veracrypt_pim VeraCrypt PIM value (only used if `veracrypt` is `true`)
+     * @param flags activation flags for the TrueCrypt/VeraCrypt device
+     * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.TRUECRYPT}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     */
+    function crypto_tc_open_flags(device: string, name: string, context: CryptoKeyslotContext | null, keyfiles: string[] | null, hidden: boolean, system: boolean, veracrypt: boolean, veracrypt_pim: number, flags: CryptoOpenFlags): boolean;
+
+    /**
      * @param map_name name of the map
      * @param device device to create map for
      * @param length length of the mapping in sectors
@@ -1595,7 +1665,7 @@ export namespace BlockDev {
      * @param map_name name of the queried map
      * @param live_only whether to go through the live maps only or not
      * @param active_only whether to ignore suspended maps or not
-     * @returns whether the given `map_name` exists (and is live if `live_only` is `true` (and is active if `active_only` is `true`)). Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.QUERY}
+     * @returns whether the given `map_name` exists (and is live if `live_only` is `true` (and is active if `active_only` is `true`)). If `false` is returned, `error` indicates whether error appeared (non-`null`) or not (`null`). Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.QUERY}
      */
     function dm_map_exists(map_name: string, live_only: boolean, active_only: boolean): boolean;
 
@@ -2245,7 +2315,7 @@ export namespace BlockDev {
      * @param mountpoint mountpoint for `device`, if not specified `device`                            entry from fstab will be used
      * @param fstype filesystem type
      * @param options comma delimited options for mount
-     * @param extra extra options for the mount;                                               currently only 'run_as_uid'                                               and 'run_as_gid' are supported;                                               value must be a valid non zero                                               uid (gid), if you specify one of                                               these, the function will run in                                               a child process with real user
+     * @param extra extra options for the mount;                                               currently only 'run_as_uid'                                               and 'run_as_gid' are supported;                                               value must be a valid non zero                                               uid (gid), if you specify one of                                               these, the function will run in                                               a child process with real user                                               and/or group ID set to these values.
      * @returns whether `device` (or `mountpoint`) was successfully mounted or not Tech category: {@link BlockDev.FSTech.MOUNT} (no mode, ignored)
      */
     function fs_mount(device: string | null, mountpoint: string | null, fstype: string | null, options: string | null, extra: ExtraArg[] | null): boolean;
@@ -2477,7 +2547,7 @@ export namespace BlockDev {
      * @param spec mount point or device to unmount
      * @param lazy enable/disable lazy unmount
      * @param force enable/disable force unmount
-     * @param extra extra options for the unmount;                                               currently only 'run_as_uid'                                               and 'run_as_gid' are supported;                                               value must be a valid non zero                                               uid (gid), if you specify one of                                               these, the function will run in                                               a child process with real user
+     * @param extra extra options for the unmount;                                               currently only 'run_as_uid'                                               and 'run_as_gid' are supported;                                               value must be a valid non zero                                               uid (gid), if you specify one of                                               these, the function will run in                                               a child process with real user                                               and/or group ID set to these values.
      * @returns whether `spec` was successfully unmounted or not Tech category: {@link BlockDev.FSTech.MOUNT} (no mode, ignored)
      */
     function fs_unmount(spec: string, lazy: boolean, force: boolean, extra: ExtraArg[] | null): boolean;
@@ -2651,7 +2721,7 @@ export namespace BlockDev {
 
     /**
      * @param file path of the backing file to get loop name for
-     * @returns name of the loop device associated with the given `file` Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.QUERY}
+     * @returns name of the loop device associated with the given `file` or `null` if failed to determine Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.QUERY}
      */
     function loop_get_loop_name(file: string): string;
 
@@ -2701,7 +2771,7 @@ export namespace BlockDev {
      * @param read_only whether to setup as read-only (`true`) or read-write (`false`)
      * @param part_scan whether to enforce partition scan on the newly created device or not
      * @param sector_size logical sector size for the loop device in bytes (or 0 for default)
-     * @returns whether an new loop device was successfully setup for `fd` or not Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.CREATE}
+     * @returns whether a new loop device was successfully setup for `fd` or not Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.CREATE}
      */
     function loop_setup_from_fd(fd: number, offset: bigint | number, size: bigint | number, read_only: boolean, part_scan: boolean, sector_size: bigint | number): [boolean, string];
 
@@ -3478,7 +3548,7 @@ export namespace BlockDev {
 
     /**
      * @param uuid UUID to canonicalize
-     * @returns canonicalized form of `uuid` This function expects a UUID in the form that mdadm returns. The change is as follows: 3386ff85:f5012621:4a435f06:1eb47236 -> 3386ff85-f501-2621-4a43-5f061eb47236 Tech category: always available
+     * @returns canonicalized form of `uuid` or `null` in case of error This function expects a UUID in the form that mdadm returns. The change is as follows: 3386ff85:f5012621:4a435f06:1eb47236 -> 3386ff85-f501-2621-4a43-5f061eb47236 Tech category: always available
      */
     function md_canonicalize_uuid(uuid: string): string;
 
@@ -3535,7 +3605,7 @@ export namespace BlockDev {
 
     /**
      * @param uuid UUID to transform into format used by MD RAID
-     * @returns transformed form of `uuid` This function expects a UUID in the canonical (traditional format) and returns a UUID in the format used by MD RAID and is thus reverse to `bd_md_canonicalize_uuid()`. The change is as follows: 3386ff85-f501-2621-4a43-5f061eb47236 -> 3386ff85:f5012621:4a435f06:1eb47236 Tech category: always available
+     * @returns transformed form of `uuid` or `null` in case of error This function expects a UUID in the canonical (traditional format) and returns a UUID in the format used by MD RAID and is thus reverse to `bd_md_canonicalize_uuid()`. The change is as follows: 3386ff85-f501-2621-4a43-5f061eb47236 -> 3386ff85:f5012621:4a435f06:1eb47236 Tech category: always available
      */
     function md_get_md_uuid(uuid: string): string;
 
@@ -3648,10 +3718,10 @@ export namespace BlockDev {
     function nvdimm_is_tech_avail(tech: NVDIMMTech, mode: bigint | number): boolean;
 
     /**
-     * @param bus return only namespaces on given bus (specified by name),                     `null` may be specified to return namespaces from all buses
-     * @param region return only namespaces on given region (specified by regionX name or region id),                        `null` may be specified to return namespaces from all regions
+     * @param bus return only namespaces on given bus (specified by name),                    `null` may be specified to return namespaces from all buses
+     * @param region return only namespaces on given region (specified by 'regionX' name),                        `null` may be specified to return namespaces from all regions
      * @param idle whether to list idle (not enabled) namespaces too
-     * @param extra extra options for the creation (right now                                                 passed to the 'ndctl' utility)
+     * @param extra extra options (currently unused)
      * @returns information about the namespaces on `bus` and `region` or                                     `null` if no namespaces were found (`error` may be set to indicate error) Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.QUERY}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
      */
@@ -3711,10 +3781,10 @@ export namespace BlockDev {
 
     /**
      * @param namespace name of the namespace to reconfigure
-     * @param mode mode type to set (memory/sector/raw/dax)
+     * @param mode mode type to set (raw/sector/memory/dax/fsdax/devdax)
      * @param force whether to use force to reconfigure an active namespace
      * @param extra extra options for the creation (right now                                                 passed to the 'ndctl' utility)
-     * @returns whether `namespace` was successfully reconfigured or not
+     * @returns whether `namespace` was successfully reconfigured or not Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.RECONFIGURE}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
      */
     function nvdimm_namespace_reconfigure(namespace: string, mode: NVDIMMNamespaceMode, force: boolean, extra: ExtraArg[] | null): boolean;
@@ -3768,7 +3838,7 @@ export namespace BlockDev {
      * @param subsysnqn The name for the NVMe subsystem to connect to.
      * @param transport The network fabric used for a NVMe-over-Fabrics network.
      * @param transport_addr The network address of the Controller. For transports using IP addressing (e.g. `rdma`) this should be an IP-based address.
-     * @param transport_svcid The transport service ID.  For transports using IP addressing (e.g. `tcp`, `rdma`) this field is the port number. The default port number for the `tcp` and `rdma` transports is `4420` and `8009` respectively when the well-known Discovery NQN is specified.
+     * @param transport_svcid The transport service ID. For transports using IP addressing (e.g. `tcp`, `rdma`) this field is the port number. The default port number for the `tcp` and `rdma` transports is `4420` and `8009` respectively when the well-known Discovery NQN is specified.
      * @param host_traddr The network address used on the host to connect to the Controller. For TCP, this sets the source address on the socket.
      * @param host_iface The network interface used on the host to connect to the Controller (e.g. IP `eth1`, `enp2s0`). This forces the connection to be made on a specific interface instead of letting the system decide.
      * @param host_nqn Overrides the default Host NQN that identifies the NVMe Host. If this option is `null`, the default is read from `/etc/nvme/hostnqn` first.                        If that does not exist, the autogenerated NQN value from the NVMe Host kernel module is used next. The Host NQN uniquely identifies the NVMe Host.
@@ -3814,13 +3884,24 @@ export namespace BlockDev {
     /**
      * A convenient utility function to look up all controllers associated
      *  with a NVMe subsystem the specified namespace is part of.
-     * @param ns_sysfs_path NVMe namespace device file.
+     * @param ns_sysfs_path NVMe namespace sysfs path.
      * @param subsysnqn Limit matching to the specified subsystem NQN.
      * @param host_nqn Limit matching to the specified host NQN.
      * @param host_id Limit matching to the specified host ID.
      * @returns list of controller sysfs paths          or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
      */
     function nvme_find_ctrls_for_ns(ns_sysfs_path: string, subsysnqn: string | null, host_nqn: string | null, host_id: string | null): string[];
+
+    /**
+     * A convenient utility function to look up all namespaces associated
+     *  with the specified NVMe controller.
+     * @param ctrl_sysfs_path NVMe controller sysfs path.
+     * @param subsysnqn Limit matching to the specified subsystem NQN.
+     * @param host_nqn Limit matching to the specified host NQN.
+     * @param host_id Limit matching to the specified host ID.
+     * @returns list of namespace sysfs paths          or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     */
+    function nvme_find_namespaces_for_ctrl(ctrl_sysfs_path: string, subsysnqn: string | null, host_nqn: string | null, host_id: string | null): string[];
 
     /**
      * Performs low level format of the NVM media, destroying all data and metadata for either
@@ -3971,7 +4052,7 @@ export namespace BlockDev {
      * @param overwrite_pass_count number of overwrite passes [1-15] or 0 for the default (16 passes).
      * @param overwrite_pattern a 32-bit pattern used for the Overwrite sanitize operation.
      * @param overwrite_invert_pattern invert the overwrite pattern between passes.
-     * @returns `true` if the format command finished successfully, `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.MANAGE}
+     * @returns `true` if the sanitize command was successfully submitted, `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.MANAGE}
      */
     function nvme_sanitize(device: string, action: NVMESanitizeAction, no_dealloc: boolean, overwrite_pass_count: number, overwrite_pattern: number, overwrite_invert_pattern: boolean): boolean;
 
@@ -4136,7 +4217,7 @@ export namespace BlockDev {
      * @param disk device the partition belongs to
      * @param part partition the UUID should be set for
      * @param uuid partition UUID to set
-     * @returns whether the `uuid` type was successfully set for `part` or not Tech category: {@link BlockDev.PartTechMode.MODIFY_PART} + the tech according to the partition table type
+     * @returns whether the `uuid` type was successfully set for `part` or not Tech category: {@link BlockDev.PartTech.GPT}-{@link BlockDev.PartTechMode.MODIFY_PART}
      */
     function part_set_part_uuid(disk: string, part: string, uuid: string): boolean;
 
@@ -4179,7 +4260,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.SmartTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function smart_is_tech_avail(tech: SmartTechMode, mode: bigint | number): boolean;
+    function smart_is_tech_avail(tech: SmartTech, mode: bigint | number): boolean;
 
     /**
      * Retrieve SMART information from SCSI or SAS-compliant drive.
@@ -4423,6 +4504,10 @@ export namespace BlockDev {
 
     /**
      * Convenient function for logging to stdout. Can be used as {@link BlockDev.UtilsLogFunc}.
+     * 
+     * Note: This function uses GLib logging functions like %g_info or %g_warning
+     *       for the printing to stdout/stderr so these messages can be redirected
+     *       when a custom log handler is set using e.g. %g_log_set_handler.
      * @param level log level
      * @param msg log message
      */
@@ -4523,6 +4608,7 @@ export namespace BlockDev {
         DELETE,
         MODIFY,
         QUERY,
+        DELETE_RECURSIVE,
     }
 
 
@@ -4550,6 +4636,15 @@ export namespace BlockDev {
         NO_READ_WORKQUEUE,
         NO_WRITE_WORKQUEUE,
         HIGH_PRIORITY,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    enum CryptoOpenFlags {
+        ALLOW_DISCARDS,
+        READONLY,
     }
 
 
@@ -4864,6 +4959,40 @@ export namespace BlockDev {
 
         /**
          * Frees `info`.
+         */
+        free(): void;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    class BtrfsDeviceStats {
+        static $gtype: GObject.GType<BtrfsDeviceStats>;
+
+        // Fields
+        id: number;
+
+        path: string;
+
+        write_io_errs: number;
+
+        read_io_errs: number;
+
+        flush_io_errs: number;
+
+        corruption_errs: number;
+
+        generation_errs: number;
+
+        // Methods
+        /**
+         * Creates a new copy of `stats`.
+         */
+        copy(): BtrfsDeviceStats;
+
+        /**
+         * Frees `stats`.
          */
         free(): void;
     }
@@ -5735,18 +5864,16 @@ export namespace BlockDev {
 
         mode: LVMCacheMode;
 
-        // Static methods
-        /**
-         * Frees `data`.
-         * @param data %BDLVMCacheStats to free
-         */
-        static free(data: LVMLVdata | null): void;
-
         // Methods
         /**
          * Creates a new copy of `data`.
          */
         copy(): LVMCacheStats;
+
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
 

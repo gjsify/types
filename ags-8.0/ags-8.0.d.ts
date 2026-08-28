@@ -9860,7 +9860,7 @@ export namespace Ags {
         // Fields
         gobject: GObject.Object;
 
-        flags: number;
+        flags: TimestampFlags;
 
         delay: number;
 
@@ -12041,6 +12041,14 @@ export namespace Ags {
         get_complex(str: string): Complex;
 
         /**
+         * @param str 
+         * @param csv_separator 
+         * @param csv_row 
+         * @param column_count 
+         */
+        get_csv_row_as_int64(str: string, csv_separator: number, csv_row: bigint | number, column_count: number): void;
+
+        /**
          * Get double precision size floating point number from string.
          * @param str the string
          * @returns the double precision size floating point number
@@ -12107,6 +12115,13 @@ export namespace Ags {
          * @returns the newly allocated string
          */
         put_complex(value: Complex): string;
+
+        /**
+         * @param csv_separator 
+         * @param csv_row 
+         * @param column_count 
+         */
+        put_csv_row_as_int64(csv_separator: number, csv_row: bigint | number, column_count: number): string;
 
         /**
          * Put double precision size floating point number to string.

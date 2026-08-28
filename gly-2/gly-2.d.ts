@@ -24,6 +24,34 @@ export namespace Gly {
 
 
     /**
+     * @gir-type Enum
+     */
+    export namespace ColorMode {
+        export const $gtype: GObject.GType<ColorMode>;
+    }
+
+    /**
+     * Specifies what defines the textures color profile.
+     * @gir-type Enum
+     * @since 2.2
+     */
+    enum ColorMode {
+        /**
+         * The frame's texture is in sRGB color profile. No further color inforamtion is available.
+         */
+        SRGB,
+        /**
+         * The frame's texture is in the color profile as specified by {@link Frame.get_color_cicp}.
+         */
+        CICP,
+        /**
+         * The frame's texture is in the color profile as specified by {@link Frame.get_color_icc_profile}.
+         */
+        ICC_PROFILE,
+    }
+
+
+    /**
      * Errors that can appear while loading images.
      * @gir-type Struct
      */
@@ -165,6 +193,31 @@ export namespace Gly {
          * 16-bit gray
          */
         G16,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace PhysicalDimensionUnit {
+        export const $gtype: GObject.GType<PhysicalDimensionUnit>;
+    }
+
+    /**
+     * Sandbox mechanisms
+     * @gir-type Enum
+     * @since 2.2
+     */
+    enum PhysicalDimensionUnit {
+        /**
+         * `GLY_PHYSICAL_DIMENSION_UNIT_PICA`
+         */
+        INCH,
+        PICA,
+        POINT,
+        METER,
+        CENTIMETER,
+        MILLIMETER,
     }
 
 
@@ -380,7 +433,7 @@ export namespace Gly {
      * guint8 data[] = {255, 0, 0};
      * gsize length = sizeof(data);
      * GBytes *texture = g_bytes_new(data, length);
-     * GlyNewFrame *new_frame = gly_creator_add_frame(creator, 1, 1, GLY_MEMORY_R8G8B8, texture);
+     * GlyNewFrame *new_frame = gly_creator_add_frame(creator, 1, 1, GLY_MEMORY_R8G8B8, texture, NULL);
      * 
      * // Create JPEG
      * GlyEncodedImage *encoded_image = gly_creator_create(creator, NULL);
@@ -673,12 +726,30 @@ export namespace Gly {
         get_color_cicp(): Cicp | null;
 
         /**
+         * Returns the ICC profile for the frames texture.
+         * This value is `NULL` if no CICP is used.
+         * @returns Binary ICC profile
+         */
+        get_color_icc_profile(): GLib.Bytes | null;
+
+        /**
+         * This function advertises which property contains the color information for the frame's texture. See [Enum.ColorMode] for details.
+         * @returns Color Mode
+         */
+        get_color_mode(): ColorMode;
+
+        /**
          * Duration to show frame for animations.
          * 
          * If the value is zero, the image is not animated.
          * @returns Duration in microseconds.
          */
         get_delay(): number;
+
+        /**
+         * @returns More information about the frame
+         */
+        get_details(): FrameDetails;
 
         /**
          * Height for image data in pixels
@@ -703,6 +774,73 @@ export namespace Gly {
          * @returns Width in pixels
          */
         get_width(): number;
+    }
+
+
+    namespace FrameDetails {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::pixel-density": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            pixel_density: PixelDensity;
+            pixelDensity: PixelDensity;
+        }
+    }
+
+    /**
+     * Detailled information about a frame.
+     * @gir-type Class
+     * @since 2.2
+     */
+    class FrameDetails extends GObject.Object {
+        static $gtype: GObject.GType<FrameDetails>;
+
+        // Properties
+        /**
+         * @read-only
+         */
+        get pixel_density(): PixelDensity;
+
+        /**
+         * @read-only
+         */
+        get pixelDensity(): PixelDensity;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: FrameDetails.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<FrameDetails.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof FrameDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FrameDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof FrameDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FrameDetails.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof FrameDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FrameDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns Pixel density.
+         */
+        get_pixel_density(): PixelDensity;
     }
 
 
@@ -822,7 +960,7 @@ export namespace Gly {
          * 
          * ::: warning
          *     Most loaders will ignore this option. Currently, only the SVG
-         *     loader is known to obay it.
+         *     loader is known to obey it.
          * @param width Maximum width
          * @param height Maximum height
          */
@@ -947,7 +1085,7 @@ export namespace Gly {
          * guaranteed to only return values from 1 to 8.
          * 
          * If {@link Loader.set_apply_transformations} is set to `FALSE`,
-         * the orientation has to be corrected manually to dispaly the image
+         * the orientation has to be corrected manually to display the image
          * correctly.
          */
         get_transformation_orientation(): number;
@@ -1003,24 +1141,27 @@ export namespace Gly {
     namespace Loader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            "notify::apply-transformation": (pspec: GObject.ParamSpec) => void;
+            "notify::accepted-memory-formats": (pspec: GObject.ParamSpec) => void;
+            "notify::apply-transformations": (pspec: GObject.ParamSpec) => void;
             "notify::bytes": (pspec: GObject.ParamSpec) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
+            "notify::color-convert-icc-srgb": (pspec: GObject.ParamSpec) => void;
             "notify::file": (pspec: GObject.ParamSpec) => void;
-            "notify::memory-format-selection": (pspec: GObject.ParamSpec) => void;
             "notify::sandbox-selector": (pspec: GObject.ParamSpec) => void;
             "notify::stream": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            apply_transformation: boolean;
-            applyTransformation: boolean;
+            accepted_memory_formats: MemoryFormatSelection;
+            acceptedMemoryFormats: MemoryFormatSelection;
+            apply_transformations: boolean;
+            applyTransformations: boolean;
             bytes: GLib.Bytes | Uint8Array;
             cancellable: Gio.Cancellable;
+            color_convert_icc_srgb: boolean;
+            colorConvertIccSrgb: boolean;
             file: Gio.File;
-            memory_format_selection: MemoryFormatSelection;
-            memoryFormatSelection: MemoryFormatSelection;
             sandbox_selector: SandboxSelector;
             sandboxSelector: SandboxSelector;
             stream: Gio.InputStream;
@@ -1059,58 +1200,70 @@ export namespace Gly {
 
         // Properties
         /**
-         * @default false
+         * @write-only
+         * @default 0
          */
-        get apply_transformation(): boolean;
-        set apply_transformation(val: boolean);
+        set accepted_memory_formats(val: MemoryFormatSelection);
 
         /**
+         * @write-only
+         * @default 0
+         */
+        set acceptedMemoryFormats(val: MemoryFormatSelection);
+
+        /**
+         * @write-only
          * @default false
          */
-        get applyTransformation(): boolean;
-        set applyTransformation(val: boolean);
+        set apply_transformations(val: boolean);
+
+        /**
+         * @write-only
+         * @default false
+         */
+        set applyTransformations(val: boolean);
 
         /**
          * @construct-only
          */
-        get bytes(): GLib.Bytes;
+        set bytes(val: GLib.Bytes | Uint8Array);
 
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
 
         /**
+         * @write-only
+         * @default false
+         */
+        set color_convert_icc_srgb(val: boolean);
+
+        /**
+         * @write-only
+         * @default false
+         */
+        set colorConvertIccSrgb(val: boolean);
+
+        /**
          * @construct-only
          */
-        get file(): Gio.File;
+        set file(val: Gio.File);
 
         /**
-         * @default 0
-         */
-        get memory_format_selection(): MemoryFormatSelection;
-        set memory_format_selection(val: MemoryFormatSelection);
-
-        /**
-         * @default 0
-         */
-        get memoryFormatSelection(): MemoryFormatSelection;
-        set memoryFormatSelection(val: MemoryFormatSelection);
-
-        /**
+         * @write-only
          * @default Auto
          */
-        get sandbox_selector(): SandboxSelector;
         set sandbox_selector(val: SandboxSelector);
 
         /**
+         * @write-only
          * @default Auto
          */
-        get sandboxSelector(): SandboxSelector;
         set sandboxSelector(val: SandboxSelector);
 
         /**
          * @construct-only
          */
-        get stream(): Gio.InputStream;
+        set stream(val: Gio.InputStream);
 
         /**
          * Compile-time signal type information.
@@ -1223,6 +1376,14 @@ export namespace Gly {
         set_apply_transformations(apply_transformations: boolean): void;
 
         /**
+         * Sets whether to convert textures to sRGB if ICC profile is present
+         * 
+         * This option is enabled by default.
+         * @param convert 
+         */
+        set_color_convert_icc_srgb(convert: boolean): void;
+
+        /**
          * Selects which sandbox mechanism should be used. The default without calling this function is {@link SandboxSelector}`.AUTO`.
          * @param sandbox_selector Method by which the sandbox mechanism is selected
          */
@@ -1232,10 +1393,26 @@ export namespace Gly {
 
     namespace NewFrame {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::color-icc-profile": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::memory-format": (pspec: GObject.ParamSpec) => void;
+            "notify::stride": (pspec: GObject.ParamSpec) => void;
+            "notify::texture": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+        }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            color_icc_profile: GLib.Bytes | Uint8Array;
+            colorIccProfile: GLib.Bytes | Uint8Array;
+            height: number;
+            memory_format: MemoryFormat;
+            memoryFormat: MemoryFormat;
+            stride: number;
+            texture: GLib.Bytes | Uint8Array;
+            width: number;
+        }
     }
 
     /**
@@ -1245,6 +1422,48 @@ export namespace Gly {
      */
     class NewFrame extends GObject.Object {
         static $gtype: GObject.GType<NewFrame>;
+
+        // Properties
+        get color_icc_profile(): GLib.Bytes;
+        set color_icc_profile(val: GLib.Bytes | Uint8Array);
+
+        get colorIccProfile(): GLib.Bytes;
+        set colorIccProfile(val: GLib.Bytes | Uint8Array);
+
+        /**
+         * @construct-only
+         * @default 0
+         */
+        get height(): number;
+
+        /**
+         * @construct-only
+         * @default R8g8b8
+         */
+        get memory_format(): MemoryFormat;
+
+        /**
+         * @construct-only
+         * @default R8g8b8
+         */
+        get memoryFormat(): MemoryFormat;
+
+        /**
+         * @construct-only
+         * @default 0
+         */
+        get stride(): number;
+
+        /**
+         * @construct-only
+         */
+        get texture(): GLib.Bytes;
+
+        /**
+         * @construct-only
+         * @default 0
+         */
+        get width(): number;
 
         /**
          * Compile-time signal type information.
@@ -1279,6 +1498,148 @@ export namespace Gly {
          * @returns `TRUE` if format supports ICC color profiles.
          */
         set_color_icc_profile(icc_profile: GLib.Bytes | Uint8Array): boolean;
+
+        /**
+         * @param pixel_density 
+         */
+        set_pixel_density(pixel_density: PixelDensity): void;
+    }
+
+
+    namespace PixelDensity {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::x-unit": (pspec: GObject.ParamSpec) => void;
+            "notify::x-value": (pspec: GObject.ParamSpec) => void;
+            "notify::y-unit": (pspec: GObject.ParamSpec) => void;
+            "notify::y-value": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            x_unit: PhysicalDimensionUnit;
+            xUnit: PhysicalDimensionUnit;
+            x_value: number;
+            xValue: number;
+            y_unit: PhysicalDimensionUnit;
+            yUnit: PhysicalDimensionUnit;
+            y_value: number;
+            yValue: number;
+        }
+    }
+
+    /**
+     * Pixel density.
+     * @gir-type Class
+     * @since 2.2
+     */
+    class PixelDensity extends GObject.Object {
+        static $gtype: GObject.GType<PixelDensity>;
+
+        // Properties
+        /**
+         * @default Inch
+         */
+        get x_unit(): PhysicalDimensionUnit;
+        set x_unit(val: PhysicalDimensionUnit);
+
+        /**
+         * @default Inch
+         */
+        get xUnit(): PhysicalDimensionUnit;
+        set xUnit(val: PhysicalDimensionUnit);
+
+        /**
+         * @default 0
+         */
+        get x_value(): number;
+        set x_value(val: number);
+
+        /**
+         * @default 0
+         */
+        get xValue(): number;
+        set xValue(val: number);
+
+        /**
+         * @default Inch
+         */
+        get y_unit(): PhysicalDimensionUnit;
+        set y_unit(val: PhysicalDimensionUnit);
+
+        /**
+         * @default Inch
+         */
+        get yUnit(): PhysicalDimensionUnit;
+        set yUnit(val: PhysicalDimensionUnit);
+
+        /**
+         * @default 0
+         */
+        get y_value(): number;
+        set y_value(val: number);
+
+        /**
+         * @default 0
+         */
+        get yValue(): number;
+        set yValue(val: number);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: PixelDensity.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<PixelDensity.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](x_value: number, x_unit: PhysicalDimensionUnit, y_value: number, y_unit: PhysicalDimensionUnit): PixelDensity;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof PixelDensity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PixelDensity.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof PixelDensity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PixelDensity.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof PixelDensity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PixelDensity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @param unit 
+         * @returns Converted pixel density
+         */
+        convert(unit: PhysicalDimensionUnit): PixelDensity;
+
+        /**
+         * @returns Horizontal pixel density unit
+         */
+        get_x_unit(): PhysicalDimensionUnit;
+
+        /**
+         * @returns Horizontal pixel density
+         */
+        get_x_value(): number;
+
+        /**
+         * @returns Horizontal pixel density unit
+         */
+        get_y_unit(): PhysicalDimensionUnit;
+
+        /**
+         * @returns Vertical pixel density
+         */
+        get_y_value(): number;
     }
 
 
@@ -1333,6 +1694,11 @@ export namespace Gly {
     /**
      * @gir-type Alias
      */
+    type FrameDetailsClass = typeof FrameDetails;
+
+    /**
+     * @gir-type Alias
+     */
     type FrameRequestClass = typeof FrameRequest;
 
     /**
@@ -1349,6 +1715,11 @@ export namespace Gly {
      * @gir-type Alias
      */
     type NewFrameClass = typeof NewFrame;
+
+    /**
+     * @gir-type Alias
+     */
+    type PixelDensityClass = typeof PixelDensity;
 
     /**
      * Name of the imported GIR library

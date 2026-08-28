@@ -231,6 +231,16 @@ export namespace GDesktopEnums {
     /**
      * @gir-type Enum
      */
+    enum MouseScrollMethod {
+        DEFAULT,
+        NONE,
+        ON_BUTTON_DOWN,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
     enum PadButtonAction {
         NONE,
         HELP,
@@ -272,6 +282,15 @@ export namespace GDesktopEnums {
     /**
      * @gir-type Enum
      */
+    enum ReducedMotion {
+        NO_PREFERENCE,
+        REDUCE,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
     enum ScreensaverMode {
         BLANK_ONLY,
         RANDOM,
@@ -290,6 +309,15 @@ export namespace GDesktopEnums {
         FORWARD,
         SWITCH_MONITOR,
         KEYBINDING,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    enum StylusEraserButtonMode {
+        DEFAULT,
+        BUTTON,
     }
 
 
@@ -383,6 +411,21 @@ export namespace GDesktopEnums {
     enum VisualBellType {
         FULLSCREEN_FLASH,
         FRAME_FLASH,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    enum Weekday {
+        DEFAULT,
+        MONDAY,
+        TUESDAY,
+        WEDNESDAY,
+        THURSDAY,
+        FRIDAY,
+        SATURDAY,
+        SUNDAY,
     }
 
 

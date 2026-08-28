@@ -18,6 +18,7 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstCodecs from '@girs/gstcodecs-1.0';
+import type GstCodecParsers from '@girs/gstcodecparsers-1.0';
 
 export namespace GstDxva {
 
@@ -118,7 +119,7 @@ export namespace GstDxva {
          * @param dst 
          * @virtual
          */
-        vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+        vfunc_duplicate_picture(src: GstCodecs.CodecPicture, dst: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -131,13 +132,13 @@ export namespace GstDxva {
          * @param picture 
          * @virtual
          */
-        vfunc_get_picture_id(picture: never): number;
+        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
 
         /**
          * @param picture 
          * @virtual
          */
-        vfunc_new_picture(picture: never): Gst.FlowReturn;
+        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -154,7 +155,7 @@ export namespace GstDxva {
          * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: GstCodecs.CodecPicture, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -168,7 +169,7 @@ export namespace GstDxva {
          * @param picture_id 
          * @virtual
          */
-        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -249,19 +250,19 @@ export namespace GstDxva {
          * @param dst 
          * @virtual
          */
-        vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+        vfunc_duplicate_picture(src: GstCodecs.CodecPicture, dst: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param picture 
          * @virtual
          */
-        vfunc_get_picture_id(picture: never): number;
+        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
 
         /**
          * @param picture 
          * @virtual
          */
-        vfunc_new_picture(picture: never): Gst.FlowReturn;
+        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -278,7 +279,7 @@ export namespace GstDxva {
          * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: GstCodecs.CodecPicture, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -292,7 +293,7 @@ export namespace GstDxva {
          * @param picture_id 
          * @virtual
          */
-        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -371,13 +372,13 @@ export namespace GstDxva {
          * @param picture 
          * @virtual
          */
-        vfunc_get_picture_id(picture: never): number;
+        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
 
         /**
          * @param picture 
          * @virtual
          */
-        vfunc_new_picture(picture: never): Gst.FlowReturn;
+        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -394,7 +395,7 @@ export namespace GstDxva {
          * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: GstCodecs.CodecPicture, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -408,7 +409,7 @@ export namespace GstDxva {
          * @param picture_id 
          * @virtual
          */
-        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -488,19 +489,19 @@ export namespace GstDxva {
          * @param dst 
          * @virtual
          */
-        vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+        vfunc_duplicate_picture(src: GstCodecs.CodecPicture, dst: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param picture 
          * @virtual
          */
-        vfunc_get_picture_id(picture: never): number;
+        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
 
         /**
          * @param picture 
          * @virtual
          */
-        vfunc_new_picture(picture: never): Gst.FlowReturn;
+        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -517,7 +518,7 @@ export namespace GstDxva {
          * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: GstCodecs.CodecPicture, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -531,7 +532,7 @@ export namespace GstDxva {
          * @param picture_id 
          * @virtual
          */
-        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -613,13 +614,13 @@ export namespace GstDxva {
          * @param picture 
          * @virtual
          */
-        vfunc_get_picture_id(picture: never): number;
+        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
 
         /**
          * @param picture 
          * @virtual
          */
-        vfunc_new_picture(picture: never): Gst.FlowReturn;
+        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -636,7 +637,7 @@ export namespace GstDxva {
          * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: GstCodecs.CodecPicture, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -650,7 +651,7 @@ export namespace GstDxva {
          * @param picture_id 
          * @virtual
          */
-        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -730,7 +731,7 @@ export namespace GstDxva {
          * @param dst 
          * @virtual
          */
-        vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+        vfunc_duplicate_picture(src: GstCodecs.CodecPicture, dst: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -743,13 +744,13 @@ export namespace GstDxva {
          * @param picture 
          * @virtual
          */
-        vfunc_get_picture_id(picture: never): number;
+        vfunc_get_picture_id(picture: GstCodecs.CodecPicture): number;
 
         /**
          * @param picture 
          * @virtual
          */
-        vfunc_new_picture(picture: never): Gst.FlowReturn;
+        vfunc_new_picture(picture: GstCodecs.CodecPicture): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -766,7 +767,7 @@ export namespace GstDxva {
          * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: GstCodecs.CodecPicture, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
 
         /**
          * @param args 
@@ -780,7 +781,7 @@ export namespace GstDxva {
          * @param picture_id 
          * @virtual
          */
-        vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+        vfunc_start_picture(picture: GstCodecs.CodecPicture, picture_id: number): Gst.FlowReturn;
 
         /**
          * @param args 

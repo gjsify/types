@@ -699,11 +699,37 @@ export namespace GstGL {
     function buffer_pool_config_get_gl_allocation_params(config: Gst.Structure): GLAllocationParams | null;
 
     /**
+     * See `gst_buffer_pool_config_set_gl_min_free_queue_size()`.
+     * @param config a buffer pool config
+     * @returns then number of buffers configured the free queue
+     * @since 1.24
+     */
+    function buffer_pool_config_get_gl_min_free_queue_size(config: Gst.Structure): number;
+
+    /**
      * Sets `params` on `config`
      * @param config a buffer pool config
      * @param params a {@link GstGL.GLAllocationParams}
      */
     function buffer_pool_config_set_gl_allocation_params(config: Gst.Structure, params: GLAllocationParams | null): void;
+
+    /**
+     * Instructs the {@link GstGL.GLBufferPool} to keep `queue_size` amount of buffers around
+     * before allowing them for reuse.
+     * 
+     * This is helpful to allow GPU processing to complete before the CPU
+     * operations on the same buffer could start.  Particularly useful when
+     * uploading or downloading data to/from the GPU.
+     * 
+     * A value of 0 disabled this functionality.
+     * 
+     * This value must be less than the configured maximum amount of buffers for
+     * this `config`.
+     * @param config a buffer pool config
+     * @param queue_size the number of buffers
+     * @since 1.24
+     */
+    function buffer_pool_config_set_gl_min_free_queue_size(config: Gst.Structure, queue_size: number): void;
 
     /**
      * @param context a {@link Gst.Context}
@@ -786,6 +812,32 @@ export namespace GstGL {
     function gl_context_error_quark(): GLib.Quark;
 
     /**
+     * Given the DRM formats in `src` {@link GObject.Value}, collect corresponding GST formats to
+     * `dst` {@link GObject.Value}. This function returns `false` if  the context is not an EGL
+     * context.
+     * @param context a {@link Gst.Context}
+     * @param src value of "drm-format" field in {@link Gst.Caps} as {@link GObject.Value}
+     * @param flags transformation flags
+     * @param dst empty destination {@link GObject.Value}
+     * @returns whether any valid GST video formats were found and stored in `dst`
+     * @since 1.26
+     */
+    function gl_dma_buf_transform_drm_formats_to_gst_formats(context: GLContext, src: GObject.Value | any, flags: GLDrmFormatFlags, dst: GObject.Value | any): [boolean, unknown];
+
+    /**
+     * Given the video formats in `src` {@link GObject.Value}, collect corresponding drm formats
+     * supported by `context` into `dst` {@link GObject.Value}. This function returns `false` if
+     * the context is not an EGL context.
+     * @param context a {@link Gst.Context}
+     * @param src value of "format" field in {@link Gst.Caps} as {@link GObject.Value}
+     * @param flags transformation flags
+     * @param dst empty destination {@link GObject.Value}
+     * @returns whether any valid drm formats were found and stored in `dst`
+     * @since 1.26
+     */
+    function gl_dma_buf_transform_gst_formats_to_drm_formats(context: GLContext, src: GObject.Value | any, flags: GLDrmFormatFlags, dst: GObject.Value | any): [boolean, unknown];
+
+    /**
      * @param element 
      * @param display 
      */
@@ -830,6 +882,13 @@ export namespace GstGL {
      * @since 1.16
      */
     function gl_format_is_supported(context: GLContext, format: GLFormat): boolean;
+
+    /**
+     * @param gl_format the {@link GstGL.GLFormat}
+     * @returns the number of components in a {@link GstGL.GLFormat}
+     * @since 1.24
+     */
+    function gl_format_n_components(gl_format: GLFormat): number;
 
     /**
      * Get the unsized format and type from `format` for usage in glReadPixels,
@@ -964,6 +1023,17 @@ export namespace GstGL {
 
     function gl_stereo_downmix_mode_get_type(): GObject.GType;
 
+    /**
+     * Given `swizzle`, produce `inversion` such that:
+     * 
+     * `swizzle`[`inversion`[i]] == identity[i] where:
+     * - identity = {0, 1, 2,...}
+     * - unset fields are marked by -1
+     * @param swizzle input swizzle
+     * @since 1.24
+     */
+    function gl_swizzle_invert(swizzle: number[]): number[];
+
     function gl_sync_meta_api_get_type(): GObject.GType;
 
     function gl_sync_meta_get_info(): Gst.MetaInfo;
@@ -1028,6 +1098,23 @@ export namespace GstGL {
      * @returns The minimum supported {@link GstGL.GLSLVersion} available for `gl_api`, `maj` and `min`
      */
     function gl_version_to_glsl_version(gl_api: GLAPI, maj: number, min: number): GLSLVersion;
+
+    /**
+     * Calculates the swizzle indices for `video_format` and `gl_format` in order to
+     * access a texture such that accessing a texel from a texture through the swizzle
+     * index produces values in the order (R, G, B, A) or (Y, U, V, A).
+     * 
+     * For multi-planer formats, the swizzle index uses the same component order (RGBA/YUVA)
+     * and should be applied after combining multiple planes into a single rgba/yuva value.
+     * e.g. sampling from a NV12 format would have Y from one texture and UV from
+     * another texture into a (Y, U, V) value.  Add an Aplha component and then
+     * perform swizzling.  Sampling from NV21 would produce (Y, V, U) which is then
+     * swizzled to (Y, U, V).
+     * @param video_format the {@link GstVideo.VideoFormat} in use
+     * @returns whether valid swizzle indices could be found
+     * @since 1.24
+     */
+    function gl_video_format_swizzle(video_format: GstVideo.VideoFormat): [boolean, number[]];
 
     /**
      * @returns the quark used for {@link GstGL.GLWindow} in {@link GLib.Error}'s
@@ -1377,9 +1464,46 @@ export namespace GstGL {
          */
         ANDROID,
         /**
+         * Mesa3D surfaceless display using the EGL_PLATFORM_SURFACELESS_MESA
+         * extension.
+         */
+        EGL_SURFACELESS,
+        /**
          * any display type
          */
         ANY,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace GLDrmFormatFlags {
+        export const $gtype: GObject.GType<GLDrmFormatFlags>;
+    }
+
+    /**
+     * @gir-type Flags
+     * @since 1.26
+     */
+    enum GLDrmFormatFlags {
+        /**
+         * include external-only formats
+         */
+        INCLUDE_EXTERNAL,
+        /**
+         * only include formats with linear modifier
+         */
+        LINEAR_ONLY,
+        /**
+         * include emulated formats
+         */
+        INCLUDE_EMULATED,
+        /**
+         * EGL is responsible for the colorspace conversion. In this case, all
+         * supported modifiers get translated to RGBA.
+         */
+        DIRECT_IMPORT,
     }
 
 
@@ -1525,6 +1649,9 @@ export namespace GstGL {
 
         // Virtual methods
         /**
+         * called in the GL thread when caps are set on `filter`.
+         *               Note: this will also be called when changing OpenGL contexts
+         *               where {@link GstBase.BaseTransform.SignalSignatures.set_caps | GstBase.BaseTransform::set_caps} may not.
          * @param incaps 
          * @param outcaps 
          * @virtual
@@ -1532,11 +1659,13 @@ export namespace GstGL {
         vfunc_gl_set_caps(incaps: Gst.Caps, outcaps: Gst.Caps): boolean;
 
         /**
+         * called in the GL thread to setup the element GL state.
          * @virtual
          */
         vfunc_gl_start(): boolean;
 
         /**
+         * called in the GL thread to setup the element GL state.
          * @virtual
          */
         vfunc_gl_stop(): void;
@@ -1602,6 +1731,7 @@ export namespace GstGL {
 
         // Virtual methods
         /**
+         * a {@link GstGL.GLBaseMemoryAllocatorAllocFunction}
          * @param params the {@link GstGL.GLAllocationParams} to allocate the memory with
          * @virtual
          */
@@ -1711,6 +1841,9 @@ export namespace GstGL {
             "notify::max-last-buffer-repeat": (pspec: GObject.ParamSpec) => void;
             "notify::repeat-after-eos": (pspec: GObject.ParamSpec) => void;
             "notify::zorder": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-buffers": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-bytes": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-time": (pspec: GObject.ParamSpec) => void;
             "notify::emit-signals": (pspec: GObject.ParamSpec) => void;
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::direction": (pspec: GObject.ParamSpec) => void;
@@ -1840,20 +1973,29 @@ export namespace GstGL {
 
         // Virtual methods
         /**
+         * called in the GL thread to fill the current video texture.
          * @param mem 
          * @virtual
          */
         vfunc_fill_gl_memory(mem: GLMemory): boolean;
 
         /**
+         * called in the GL thread to setup the element GL state.
          * @virtual
          */
         vfunc_gl_start(): boolean;
 
         /**
+         * called in the GL thread to setup the element GL state.
          * @virtual
          */
         vfunc_gl_stop(): void;
+
+        // Methods
+        /**
+         * @returns the configured {@link GstGL.GLContext}.
+         */
+        get_gl_context(): GLContext | null;
     }
 
 
@@ -2044,6 +2186,11 @@ export namespace GstGL {
         static fixate_caps(context: GLContext, direction: Gst.PadDirection, caps: Gst.Caps, other: Gst.Caps): Gst.Caps;
 
         /**
+         * @param context a {@link GstGL.GLContext}
+         */
+        static swizzle_shader_string(context: GLContext): string;
+
+        /**
          * Provides an implementation of {@link GstBase.BaseTransformClass}.transform_caps()
          * @param context a {@link GstGL.GLContext} to use for transforming `caps`
          * @param direction a {@link Gst.PadDirection}
@@ -2051,6 +2198,18 @@ export namespace GstGL {
          * @param filter a set of filter {@link Gst.Caps}
          */
         static transform_caps(context: GLContext, direction: Gst.PadDirection, caps: Gst.Caps, filter: Gst.Caps): Gst.Caps;
+
+        /**
+         * The returned glsl function has declaration:
+         * 
+         * `vec3 yuv_to_rgb (vec3 rgb, vec3 offset, vec3 ycoeff, vec3 ucoeff, vec3 vcoeff);`
+         * 
+         * The Y component is placed in the 0th index of the returned value, The U component in the
+         * 1st, and the V component in the 2nd.  offset, ycoeff, ucoeff, and vcoeff are the
+         * specific coefficients and offset used for the conversion.
+         * @param context a {@link GstGL.GLContext}
+         */
+        static yuv_to_rgb_shader_string(context: GLContext): string;
 
         // Methods
         /**
@@ -2206,11 +2365,13 @@ export namespace GstGL {
         vfunc_check_feature(feature: string): boolean;
 
         /**
+         * choose a format for the framebuffer
          * @virtual
          */
         vfunc_choose_format(): boolean;
 
         /**
+         * create the OpenGL context
          * @param gl_api 
          * @param other_context 
          * @virtual
@@ -2218,6 +2379,7 @@ export namespace GstGL {
         vfunc_create_context(gl_api: GLAPI, other_context: GLContext): boolean;
 
         /**
+         * destroy the OpenGL context
          * @virtual
          */
         vfunc_destroy_context(): void;
@@ -2569,7 +2731,7 @@ export namespace GstGL {
      * There are a number of environment variables that influence the choice of
      * platform and window system specific functionality.
      * - GST_GL_WINDOW influences the window system to use.  Common values are
-     *   'x11', 'wayland', 'win32' or 'cocoa'.
+     *   'x11', 'wayland', 'surfaceless', 'win32' or 'cocoa'.
      * - GST_GL_PLATFORM influences the OpenGL platform to use.  Common values are
      *   'egl', 'glx', 'wgl' or 'cgl'.
      * - GST_GL_API influences the OpenGL API requested by the OpenGL platform.
@@ -2787,6 +2949,10 @@ export namespace GstGL {
 
         // Virtual methods
         /**
+         * perform operations on the input and output buffers.  In general,
+         *          you should avoid using this method if at all possible. One valid
+         *          use-case for using this is keeping previous buffers for future calculations.
+         *          Note: If `filter` exists, then `filter_texture` is not run
          * @param inbuf 
          * @param outbuf 
          * @virtual
@@ -2802,11 +2968,13 @@ export namespace GstGL {
         vfunc_filter_texture(input: GLMemory, output: GLMemory): boolean;
 
         /**
+         * perform initialization when the Framebuffer object is created
          * @virtual
          */
         vfunc_init_fbo(): boolean;
 
         /**
+         * mirror from {@link GstBase.BaseTransform}
          * @param incaps 
          * @param outcaps 
          * @virtual
@@ -2814,6 +2982,8 @@ export namespace GstGL {
         vfunc_set_caps(incaps: Gst.Caps, outcaps: Gst.Caps): boolean;
 
         /**
+         * Perform sub-class specific modifications of the
+         *   caps to be processed between upload on input and before download for output.
          * @param direction 
          * @param caps 
          * @param filter_caps 
@@ -3163,6 +3333,9 @@ export namespace GstGL {
             "notify::max-last-buffer-repeat": (pspec: GObject.ParamSpec) => void;
             "notify::repeat-after-eos": (pspec: GObject.ParamSpec) => void;
             "notify::zorder": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-buffers": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-bytes": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-time": (pspec: GObject.ParamSpec) => void;
             "notify::emit-signals": (pspec: GObject.ParamSpec) => void;
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::direction": (pspec: GObject.ParamSpec) => void;
@@ -3891,6 +4064,15 @@ export namespace GstGL {
         static get_input_template_caps(): Gst.Caps;
 
         // Methods
+        /**
+         * Fixate the `othercaps` based on the information of the `caps`.
+         * @param direction the pad {@link Gst.PadDirection}
+         * @param caps a {@link Gst.Caps} as the reference
+         * @param othercaps a {@link Gst.Caps} to fixate
+         * @returns the fixated caps
+         */
+        fixate_caps(direction: Gst.PadDirection, caps: Gst.Caps, othercaps: Gst.Caps): Gst.Caps;
+
         get_caps(): [Gst.Caps | null, Gst.Caps | null];
 
         /**
@@ -4217,6 +4399,7 @@ export namespace GstGL {
 
         // Virtual methods
         /**
+         * close the connection to the display
          * @virtual
          */
         vfunc_close(): void;
@@ -4234,11 +4417,15 @@ export namespace GstGL {
         vfunc_draw(): void;
 
         /**
+         * Gets the current windowing system display connection
          * @virtual
          */
         vfunc_get_display(): bigint | number;
 
         /**
+         * Gets the current window handle that this {@link GstGL.GLWindow} is
+         *                     rendering into.  This may return a different value to
+         *                     what is passed into `set_window_handle`
          * @virtual
          */
         vfunc_get_window_handle(): bigint | number;
@@ -4261,6 +4448,7 @@ export namespace GstGL {
         vfunc_has_output_surface(): boolean;
 
         /**
+         * open the connection to the display
          * @virtual
          */
         vfunc_open(): boolean;
@@ -4354,6 +4542,11 @@ export namespace GstGL {
          * @returns the windowing system display handle for this `window`
          */
         get_display(): number;
+
+        /**
+         * @returns whether an visible output surface has been requested
+         */
+        get_request_output_surface(): boolean;
 
         get_surface_dimensions(): [number, number];
 
@@ -4468,6 +4661,12 @@ export namespace GstGL {
          * @returns whether the specified region could be set
          */
         set_render_rectangle(x: number, y: number, width: number, height: number): boolean;
+
+        /**
+         * Configure whether a visible output surface is requested.
+         * @param output_surface whether to request an output surface.
+         */
+        set_request_output_surface(output_surface: boolean): void;
 
         /**
          * Sets the resize callback called every time a resize of the window occurs.

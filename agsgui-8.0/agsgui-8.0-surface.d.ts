@@ -26,7 +26,7 @@
 
 import type AgsGui from './agsgui-8.0.js';
 import type GObject from '@girs/gobject-2.0';
-import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkGridConstructOnly, GtkGridProps, GtkNativeConstructOnly, GtkNativeProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkRootConstructOnly, GtkRootProps, GtkShortcutManagerConstructOnly, GtkShortcutManagerProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-4.0/surface';
+import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkAccessibleRangeConstructOnly, GtkAccessibleRangeProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkGridConstructOnly, GtkGridProps, GtkNativeConstructOnly, GtkNativeProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkRootConstructOnly, GtkRootProps, GtkShortcutManagerConstructOnly, GtkShortcutManagerProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-4.0/surface';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -310,7 +310,7 @@ export interface AgsCartesianProps extends GtkWidgetProps, GtkAccessibleProps, G
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AgsCartesianConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
-export interface AgsDialProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
+export interface AgsDialProps extends GtkWidgetProps, GtkAccessibleProps, GtkAccessibleRangeProps, GtkBuildableProps, GtkConstraintTargetProps {
     /**
      * The adjustment storing current value and boundaries.
      * @since 3.0.0
@@ -363,7 +363,7 @@ export interface AgsDialProps extends GtkWidgetProps, GtkAccessibleProps, GtkBui
     'scale-precision'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AgsDialConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
+export type AgsDialConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkAccessibleRangeConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 export interface AgsExpanderProps extends GtkBoxProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkOrientableProps {
 }
@@ -460,7 +460,7 @@ export interface AgsIconLinkProps extends GtkBoxProps, GtkAccessibleProps, GtkBu
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AgsIconLinkConstructOnly = GtkBoxConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkOrientableConstructOnly;
 
-export interface AgsIndicatorProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkOrientableProps {
+export interface AgsIndicatorProps extends GtkWidgetProps, GtkAccessibleProps, GtkAccessibleRangeProps, GtkBuildableProps, GtkConstraintTargetProps, GtkOrientableProps {
     /**
      * The adjustment giving indicator value.
      * @since 3.0.0
@@ -488,7 +488,7 @@ export interface AgsIndicatorProps extends GtkWidgetProps, GtkAccessibleProps, G
     'segment-width'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type AgsIndicatorConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkOrientableConstructOnly;
+export type AgsIndicatorConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkAccessibleRangeConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkOrientableConstructOnly;
 
 export interface AgsInputDialogProps extends GtkWindowProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkNativeProps, GtkRootProps, GtkShortcutManagerProps {
 }

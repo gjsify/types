@@ -9,7 +9,6 @@
 
 import './mtk-18-ambient.d.ts';
 
-import './mtk-18-import.d.ts';
 
 import Mtk from './mtk-18.js';
 export default Mtk;

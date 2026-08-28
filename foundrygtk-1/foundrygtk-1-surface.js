@@ -11,6 +11,7 @@ export const SURFACE_PROVENANCE = 'FoundryGtk-1 — dropped empty base(s): GObje
 export const OWN_PROPS = {
     FoundryChangesGutterRenderer: ['show-overview'],
     FoundryDiagnosticsGutterRenderer: ['diagnostics'],
+    FoundryGitLanes: ['entry'],
     FoundrySourceView: ['document', 'enable-completion', 'enable-vim', 'font', 'line-height', 'show-diagnostics', 'show-line-changes', 'show-line-changes-overview'],
     FoundryTerminal: ['palette'],
 };
@@ -20,6 +21,7 @@ export const OWN_SIGNALS = {};
 export const DECLS = {
     FoundryChangesGutterRenderer: ['FoundryChangesGutterRenderer', 'GtkSourceGutterRenderer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     FoundryDiagnosticsGutterRenderer: ['FoundryDiagnosticsGutterRenderer', 'GtkSourceGutterRenderer', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    FoundryGitLanes: ['FoundryGitLanes', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     FoundryMarkupView: ['FoundryMarkupView', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     FoundrySourceView: ['FoundrySourceView', 'GtkSourceView', 'GtkTextView', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
     FoundryTerminal: ['FoundryTerminal', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
@@ -29,4 +31,6 @@ export const ENUM_NICKS = {};
 
 export const SLOT_CANDIDATES = {};
 
-export const SINCE = {};
+export const SINCE = {
+    'FoundryGitLanes.entry': '1.2',
+};

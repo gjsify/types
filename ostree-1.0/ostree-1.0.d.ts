@@ -30,6 +30,54 @@ export namespace OSTree {
         NONE,
         DEVELOPMENT,
         HOTFIX,
+        TRANSIENT,
+    }
+
+
+    /**
+     * Errors returned by signature creation and verification operations in OSTree.
+     * These may be returned by any API which creates or verifies signatures.
+     * @gir-type Struct
+     */
+    class GpgError extends GLib.Error {
+        static $gtype: GObject.GType<GLib.Error>;
+
+        // Static fields
+        /**
+         * A signature was expected, but not found.
+         */
+        static NO_SIGNATURE: number;
+
+        /**
+         * A signature was malformed.
+         */
+        static INVALID_SIGNATURE: number;
+
+        /**
+         * A signature was found, but was created with a key not in the
+         * configured keyrings.
+         */
+        static MISSING_KEY: number;
+
+        /**
+         * A signature was expired. Since: 2020.1.
+         */
+        static EXPIRED_SIGNATURE: number;
+
+        /**
+         * A signature was found, but the key used to
+         *   sign it has expired. Since: 2020.1.
+         */
+        static EXPIRED_KEY: number;
+
+        /**
+         * A signature was found, but the key used to
+         *   sign it has been revoked. Since: 2020.1.
+         */
+        static REVOKED_KEY: number;
+
+        // Constructors
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -91,20 +139,25 @@ export namespace OSTree {
          *   user
          */
         USER_EMAIL,
-    }
-
-
-    /**
-     * Formatting flags for `ostree_gpg_verify_result_describe()`.  Currently
-     * there's only one possible output format, but this enumeration allows
-     * for future variations.
-     * @gir-type Enum
-     */
-    enum GpgSignatureFormatFlags {
         /**
-         * Use the default output format
+         * [#G_VARIANT_TYPE_STRING] Fingerprint of the signing key's primary key
+         *   (will be the same as OSTREE_GPG_SIGNATURE_ATTR_FINGERPRINT if the
+         *   the signature is already from the primary key rather than a subkey,
+         *   and will be the empty string if the key is missing.)
          */
-        GPG_SIGNATURE_FORMAT_DEFAULT,
+        FINGERPRINT_PRIMARY,
+        /**
+         * [#G_VARIANT_TYPE_INT64] Key expiration Unix timestamp (0 if no
+         *   expiration or if the key is missing)
+         */
+        KEY_EXP_TIMESTAMP,
+        /**
+         * [#G_VARIANT_TYPE_INT64] Key expiration Unix timestamp of the signing key's
+         *   primary key (will be the same as OSTREE_GPG_SIGNATURE_ATTR_KEY_EXP_TIMESTAMP
+         *   if the signing key is the primary key and 0 if no expiration or if the key
+         *   is missing)
+         */
+        KEY_EXP_TIMESTAMP_PRIMARY,
     }
 
 
@@ -138,6 +191,35 @@ export namespace OSTree {
          * Detached metadata for a commit
          */
         COMMIT_META,
+        /**
+         * Symlink to a .file given its checksum on the payload only.
+         */
+        PAYLOAD_LINK,
+        /**
+         * Detached xattrs content, for 'bare-split-xattrs' mode.
+         */
+        FILE_XATTRS,
+        /**
+         * Hardlink to a .file-xattrs given the checksum of its .file
+         * object.
+         */
+        FILE_XATTRS_LINK,
+    }
+
+
+    /**
+     * @gir-type Enum
+     * @since 2018.2
+     */
+    enum RepoCheckoutFilterResult {
+        /**
+         * Do checkout this object
+         */
+        ALLOW,
+        /**
+         * Ignore this object
+         */
+        SKIP,
     }
 
 
@@ -165,9 +247,20 @@ export namespace OSTree {
          */
         NONE,
         /**
-         * When layering checkouts, overwrite earlier files, but keep earlier directories
+         * When layering checkouts, `unlink()` and replace
+         * existing files, but do not modify existing directories (unless whiteouts are enabled, then
+         * directories are replaced)
          */
         UNION_FILES,
+        /**
+         * Only add new files/directories
+         */
+        ADD_FILES,
+        /**
+         * Like UNION_FILES, but error if files are not
+         * identical (requires hardlink checkouts)
+         */
+        UNION_IDENTICAL,
     }
 
 
@@ -198,13 +291,19 @@ export namespace OSTree {
 
 
     /**
+     * Flags controlling repository locking.
      * @gir-type Enum
+     * @since 2021.3
      */
-    enum RepoListRefsExtFlags {
+    enum RepoLockType {
         /**
-         * No flags.
+         * A "read only" lock; multiple readers are allowed.
          */
-        REPO_LIST_REFS_EXT_NONE,
+        SHARED,
+        /**
+         * A writable lock at most one writer can be active, and zero readers.
+         */
+        EXCLUSIVE,
     }
 
 
@@ -215,36 +314,34 @@ export namespace OSTree {
      */
     enum RepoMode {
         /**
-         * Files are stored as themselves; checkouts are hardlinks; can only be written as root
+         * Files are stored as themselves; checkouts are hardlinks; can only be
+         * written as root
          */
         BARE,
         /**
-         * Files are compressed, should be owned by non-root.  Can be served via HTTP
+         * Files are compressed, should be owned by non-root.  Can be served via
+         * HTTP.  Since: 2017.12
+         */
+        ARCHIVE,
+        /**
+         * Legacy alias for `OSTREE_REPO_MODE_ARCHIVE`
          */
         ARCHIVE_Z2,
         /**
-         * Files are stored as themselves, except ownership; can be written by user. Hardlinks work only in user checkouts.
+         * Files are stored as themselves, except ownership; can be written by
+         * user. Hardlinks work only in user checkouts.
          */
         BARE_USER,
-    }
-
-
-    /**
-     * @gir-type Enum
-     */
-    enum RepoPruneFlags {
         /**
-         * No special options for pruning
+         * Same as BARE_USER, but all metadata is not stored, so it can
+         * only be used for user checkouts. Does not need xattrs.
          */
-        NONE,
+        BARE_USER_ONLY,
         /**
-         * Don't actually delete objects
+         * Same as BARE_USER, but xattrs are stored separately from
+         * file content, with dedicated object types.
          */
-        NO_PRUNE,
-        /**
-         * Do not traverse individual commit objects, only follow refs
-         */
-        REFS_ONLY,
+        BARE_SPLIT_XATTRS,
     }
 
 
@@ -253,21 +350,27 @@ export namespace OSTree {
      * @gir-type Enum
      */
     enum RepoRemoteChange {
-        ADD,
-        ADD_IF_NOT_EXISTS,
-        DELETE,
-        DELETE_IF_EXISTS,
-    }
-
-
-    /**
-     * @gir-type Enum
-     */
-    enum RepoResolveRevExtFlags {
         /**
-         * No flags.
+         * Add a remote
          */
-        REPO_RESOLVE_REV_EXT_NONE,
+        ADD,
+        /**
+         * Like above, but do nothing if the remote exists
+         */
+        ADD_IF_NOT_EXISTS,
+        /**
+         * Delete a remote
+         */
+        DELETE,
+        /**
+         * Delete a remote, do nothing if the remote does not
+         * exist
+         */
+        DELETE_IF_EXISTS,
+        /**
+         * Add or replace a remote (Since: 2019.2)
+         */
+        REPLACE,
     }
 
 
@@ -287,29 +390,180 @@ export namespace OSTree {
     }
 
 
+    /**
+     * Flags controlling static delta index generation.
+     * @gir-type Enum
+     */
+    enum StaticDeltaIndexFlags {
+        /**
+         * No special flags
+         */
+        STATIC_DELTA_INDEX_FLAGS_NONE,
+    }
+
+
     const COMMIT_GVARIANT_STRING: string;
+
+    /**
+     * GVariant type `s`.  Intended to describe the CPU architecture.  This is a freeform string, and
+     * some distributions which have existing package managers might want to match that schema.  If you
+     * don't have a prior schema, it's recommended to use `uname -m` by default (i.e. the Linux kernel
+     * schema).  In the future ostree might include a builtin function to compare architectures.
+     * @since 2020.4
+     */
+    const COMMIT_META_KEY_ARCHITECTURE: string;
+
+    /**
+     * GVariant type `s`.  If this is added to a commit, `ostree_repo_pull()`
+     * will enforce that the commit was retrieved from a repository which has
+     * the same collection ID.  See `ostree_repo_set_collection_id()`.
+     * This is most useful in concert with `OSTREE_COMMIT_META_KEY_REF_BINDING`,
+     * as it more strongly binds the commit to the repository and branch.
+     * @since 2018.6
+     */
+    const COMMIT_META_KEY_COLLECTION_BINDING: string;
+
+    /**
+     * GVariant type `s`. This metadata key is used to display vendor's message
+     * when an update stream for a particular branch ends. It usually provides
+     * update instructions for the users.
+     * @since 2017.7
+     */
+    const COMMIT_META_KEY_ENDOFLIFE: string;
+
+    /**
+     * GVariant type `s`.  Should contain a refspec defining a new target branch;
+     * `ostree admin upgrade` and {@link OSTree.SysrootUpgrader} will automatically initiate
+     * a rebase upon encountering this metadata key.
+     * @since 2017.7
+     */
+    const COMMIT_META_KEY_ENDOFLIFE_REBASE: string;
+
+    /**
+     * GVariant type `as`; each element is a branch name. If this is added to a
+     * commit, `ostree_repo_pull()` will enforce that the commit was retrieved from
+     * one of the branch names in this array.  This prevents "sidegrade" attacks.
+     * The rationale for having this support multiple branch names is that it helps
+     * support a "promotion" model of taking a commit and moving it between development
+     * and production branches.
+     * @since 2017.9
+     */
+    const COMMIT_META_KEY_REF_BINDING: string;
+
+    /**
+     * GVariant type `s`. This should hold a relatively short single line value
+     * containing a human-readable "source" for a commit, intended to be displayed
+     * near the origin ref.  This is particularly useful for systems that inject
+     * content into an OSTree commit from elsewhere - for example, generating from
+     * an OCI or qcow2 image. Or if generating from packages, the enabled repository
+     * names and their versions.
+     * 
+     * Try to keep this key short (e.g. < 80 characters) and human-readable; if you
+     * desire machine readable data, consider injecting separate metadata keys.
+     * @since 2017.13
+     */
+    const COMMIT_META_KEY_SOURCE_TITLE: string;
+
+    /**
+     * GVariant type `s`. This metadata key is used for version numbers. A freeform
+     * string; the intention is that systems using ostree do not interpret this
+     * semantically as traditional package managers do.
+     * 
+     * This is the only ostree-defined metadata key that does not start with `ostree.`.
+     * @since 2014.9
+     */
+    const COMMIT_META_KEY_VERSION: string;
 
     const DIRMETA_GVARIANT_STRING: string;
 
     const FILEMETA_GVARIANT_STRING: string;
 
+    const GPG_KEY_GVARIANT_STRING: string;
+
     /**
-     * Maximum permitted size in bytes of metadata objects.  This is an
-     * arbitrary number, but really, no one should be putting humongous
-     * data in metadata.
+     * Default limit for maximum permitted size in bytes of metadata objects fetched
+     * over HTTP (including repo/config files, refs, and commit/dirtree/dirmeta
+     * objects). This is an arbitrary number intended to mitigate disk space
+     * exhaustion attacks.
      */
     const MAX_METADATA_SIZE: number;
 
     /**
-     * Objects committed above this size will be allowed, but a warning
-     * will be emitted.
+     * This variable is no longer meaningful, it is kept only for compatibility.
      */
     const MAX_METADATA_WARN_SIZE: number;
 
     /**
-     * Maximum depth of metadata.
+     * GVariant type `b`: Set if this commit is intended to be bootable
+     * @since 2021.1
      */
-    const MAX_RECURSION: number;
+    const METADATA_KEY_BOOTABLE: string;
+
+    /**
+     * GVariant type `s`: Contains the Linux kernel release (i.e. `uname -r`)
+     * @since 2021.1
+     */
+    const METADATA_KEY_LINUX: string;
+
+    /**
+     * GVariant type `s`. This key can be used in the repo metadata which is stored
+     * in OSTREE_REPO_METADATA_REF as well as in the summary. The semantics of this
+     * are that the remote repository wants clients to update their remote config
+     * to add this collection ID (clients can't do P2P operations involving a
+     * remote without a collection ID configured on it, even if one is configured
+     * on the server side). Clients must never change or remove a collection ID
+     * already set in their remote config.
+     * 
+     * Currently, OSTree does not implement changing a remote config based on this
+     * key, but it may do so in a later release, and until then clients such as
+     * Flatpak may implement it.
+     * 
+     * This is a replacement for the similar metadata key implemented by flatpak,
+     * `xa.collection-id`, which is now deprecated as clients which supported it had
+     * bugs with their P2P implementations.
+     * @since 2018.9
+     */
+    const META_KEY_DEPLOY_COLLECTION_ID: string;
+
+    /**
+     * The name of a {@link GLib.KeyFile} group for data that should not
+     * be carried across upgrades.  For more information,
+     * see `ostree_deployment_origin_remove_transient_state()`.
+     * @since 2018.3
+     */
+    const ORIGIN_TRANSIENT_GROUP: string;
+
+    /**
+     * Filesystem path that is created on an ostree-booted system.
+     * @since 2022.2
+     */
+    const PATH_BOOTED: string;
+
+    /**
+     * ostree release version component (e.g. 2 if `OSTREE_VERSION` is 2017.2)
+     * @since 2017.4
+     */
+    const RELEASE_VERSION: number;
+
+    /**
+     * The name of a ref which is used to store metadata for the entire repository,
+     * such as its expected update time (`ostree.summary.expires`), name, or new
+     * GPG keys. Metadata is stored on contentless commits in the ref, and hence is
+     * signed with the commits.
+     * 
+     * This supersedes the additional metadata dictionary in the `summary` file
+     * (see `ostree_repo_regenerate_summary()`), as the use of a ref means that the
+     * metadata for multiple upstream repositories can be included in a single mirror
+     * repository, disambiguating the refs using collection IDs. In order to support
+     * peer to peer redistribution of repository metadata, repositories must set a
+     * collection ID (ostree_repo_set_collection_id()).
+     * 
+     * Users of OSTree may place arbitrary metadata in commits on this ref, but the
+     * keys must be namespaced by product or developer. For example,
+     * `exampleos.end-of-life`. The `ostree.` prefix is reserved.
+     * @since 2018.6
+     */
+    const REPO_METADATA_REF: string;
 
     /**
      * Length of a sha256 digest when expressed as raw bytes
@@ -320,6 +574,18 @@ export namespace OSTree {
      * Length of a sha256 digest when expressed as a hexadecimal string
      */
     const SHA256_STRING_LEN: number;
+
+    /**
+     * The name of the default ed25519 signing type.
+     * @since 2020.4
+     */
+    const SIGN_NAME_ED25519: string;
+
+    /**
+     * The name of the spki signing type.
+     * @since 2024.7
+     */
+    const SIGN_NAME_SPKI: string;
 
     const SUMMARY_GVARIANT_STRING: string;
 
@@ -334,17 +600,67 @@ export namespace OSTree {
 
     const TREE_GVARIANT_STRING: string;
 
-    const WITH_AUTOCLEANUPS: number;
+    /**
+     * ostree version.
+     * @since 2017.4
+     */
+    const VERSION: number;
+
+    /**
+     * ostree version, encoded as a string, useful for printing and
+     * concatenation.
+     * @since 2017.4
+     */
+    const VERSION_S: string;
+
+    /**
+     * ostree year version component (e.g. 2017 if `OSTREE_VERSION` is 2017.2)
+     * @since 2017.4
+     */
+    const YEAR_VERSION: number;
+
+    /**
+     * In many cases using libostree, a program may need to "break"
+     * hardlinks by performing a copy.  For example, in order to
+     * logically append to a file.
+     * 
+     * This function performs full copying, including e.g. extended
+     * attributes and permissions of both regular files and symbolic links.
+     * 
+     * If the file is not hardlinked, this function does nothing and
+     * returns successfully.
+     * 
+     * This function does not perform synchronization via `fsync()` or
+     * `fdatasync()`; the idea is this will commonly be done as part
+     * of an `ostree_repo_commit_transaction()`, which itself takes
+     * care of synchronization.
+     * @param dfd Directory fd
+     * @param path Path relative to `dfd`
+     * @param skip_xattrs Do not copy extended attributes
+     * @param cancellable 
+     * @since 2017.15
+     */
+    function break_hardlink(dfd: number, path: string, skip_xattrs: boolean, cancellable: Gio.Cancellable | null): boolean;
+
+    /**
+     * @param required_year Major/year required
+     * @param required_release Release version required
+     * @returns `true` if current libostree has at least the requested version, `false` otherwise
+     * @since 2017.4
+     */
+    function check_version(required_year: number, required_release: number): boolean;
 
     /**
      * @param csum An binary checksum of length 32
      * @returns Modified base64 encoding of `csum` The "modified" term refers to the fact that instead of '/', the '_' character is used.
+     * @since 2016.8
      */
     function checksum_b64_from_bytes(csum: Uint8Array | string): string;
 
     /**
      * @param checksum An ASCII checksum
      * @returns Binary version of `checksum`.
+     * @since 2016.8
      */
     function checksum_b64_to_bytes(checksum: string): Uint8Array;
 
@@ -408,6 +724,21 @@ export namespace OSTree {
     function checksum_file_async_finish(f: Gio.File, result: Gio.AsyncResult): [boolean, Uint8Array];
 
     /**
+     * Compute the OSTree checksum for a given file. This is an fd-relative version
+     * of `ostree_checksum_file()` which also takes flags and fills in a caller
+     * allocated buffer.
+     * @param dfd Directory file descriptor
+     * @param path Subpath `stbuf` (allow-none): Optional stat buffer
+     * @param stbuf 
+     * @param objtype Object type
+     * @param flags Flags `out_checksum` (out) (transfer full): Return location for hex checksum
+     * @param out_checksum 
+     * @param cancellable Cancellable
+     * @since 2017.13
+     */
+    function checksum_file_at(dfd: number, path: string, stbuf: null, objtype: ObjectType, flags: ChecksumFlags, out_checksum: string, cancellable: Gio.Cancellable | null): boolean;
+
+    /**
      * Compute the OSTree checksum for a given input.
      * @param file_info File information
      * @param xattrs Optional extended attributes
@@ -449,8 +780,6 @@ export namespace OSTree {
      */
     function checksum_to_bytes_v(checksum: string): GLib.Variant;
 
-    function cmd__private__(): CmdPrivateVTable;
-
     /**
      * Compare two binary checksums, using `memcmp()`.
      * @param a A binary checksum
@@ -459,15 +788,73 @@ export namespace OSTree {
     function cmp_checksum_bytes(a: number, b: number): number;
 
     /**
+     * Copy an array of `OstreeCollectionRefs`, including deep copies of all its
+     * elements. `refs` must be `null`-terminated; it may be empty, but must not be
+     * `null`.
+     * @param refs `null`-terminated array of `OstreeCollectionRefs`
+     * @returns a newly allocated copy of `refs`
+     * @since 2018.6
+     */
+    function collection_ref_dupv(refs: CollectionRef[]): CollectionRef[];
+
+    /**
+     * Free the given array of `refs`, including freeing all its elements. `refs`
+     * must be `null`-terminated; it may be empty, but must not be `null`.
+     * @param refs an array of `OstreeCollectionRefs`
+     * @since 2018.6
+     */
+    function collection_ref_freev(refs: CollectionRef[]): void;
+
+    /**
+     * There are use cases where one wants a checksum just of the content of a
+     * commit. OSTree commits by default capture the current timestamp, and may have
+     * additional metadata, which means that re-committing identical content
+     * often results in a new checksum.
+     * 
+     * By comparing checksums of content, it's possible to easily distinguish
+     * cases where nothing actually changed.
+     * 
+     * The content checksums is simply defined as `SHA256(root dirtree_checksum ||
+     * root_dirmeta_checksum)`, i.e. the SHA-256 of the root "dirtree" object's checksum concatenated
+     * with the root "dirmeta" checksum (both in binary form, not hexadecimal).
+     * @param commit_variant A commit object
+     * @returns A SHA-256 hex string, or `null` if `commit_variant` is not well-formed
+     * @since 2018.2
+     */
+    function commit_get_content_checksum(commit_variant: GLib.Variant): string | null;
+
+    /**
+     * Reads a commit's "ostree.sizes" metadata and returns an array of
+     * {@link OSTree.CommitSizesEntry} in `out_sizes_entries`. Each element
+     * represents an object in the commit. If the commit does not contain
+     * the "ostree.sizes" metadata, a {@link Gio.IOErrorEnum.NOT_FOUND} error will be
+     * returned.
+     * @param commit_variant variant of type {@link OSTree.ObjectType.COMMIT}
+     * @since 2020.1
+     */
+    function commit_get_object_sizes(commit_variant: GLib.Variant): [boolean, CommitSizesEntry[] | null];
+
+    /**
      * @param commit_variant Variant of type {@link OSTree.ObjectType.COMMIT}
      * @returns Checksum of the parent commit of `commit_variant`, or `null` if none
      */
-    function commit_get_parent(commit_variant: GLib.Variant): string;
+    function commit_get_parent(commit_variant: GLib.Variant): string | null;
 
     /**
-     * @param commit_variant 
+     * @param commit_variant Commit object
+     * @returns timestamp in seconds since the Unix epoch, UTC
+     * @since 2016.3
      */
     function commit_get_timestamp(commit_variant: GLib.Variant): number;
+
+    /**
+     * Update provided `dict` with standard metadata for bootable OSTree commits.
+     * @param root Root filesystem to be committed
+     * @param dict Dictionary to update
+     * @param cancellable 
+     * @since 2021.1
+     */
+    function commit_metadata_for_bootable(root: Gio.File, dict: GLib.VariantDict, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * A thin wrapper for `ostree_content_stream_parse()`; this function
@@ -522,6 +909,21 @@ export namespace OSTree {
     function diff_dirs(flags: DiffFlags, a: Gio.File, b: Gio.File, modified: DiffItem[], removed: Gio.File[], added: Gio.File[], cancellable: Gio.Cancellable | null): boolean;
 
     /**
+     * Compute the difference between directory `a` and `b` as 3 separate
+     * sets of {@link OSTree.DiffItem} in `modified`, `removed`, and `added`.
+     * @param flags Flags
+     * @param a First directory path, or `null`
+     * @param b First directory path
+     * @param modified Modified files
+     * @param removed Removed files
+     * @param added Added files
+     * @param options Options
+     * @param cancellable Cancellable
+     * @since 2017.4
+     */
+    function diff_dirs_with_options(flags: DiffFlags, a: Gio.File, b: Gio.File, modified: DiffItem[], removed: Gio.File[], added: Gio.File[], options: DiffDirsOptions | null, cancellable: Gio.Cancellable | null): boolean;
+
+    /**
      * Print the contents of a diff to stdout.
      * @param a First directory path
      * @param b First directory path
@@ -532,10 +934,45 @@ export namespace OSTree {
     function diff_print(a: Gio.File, b: Gio.File, modified: DiffItem[], removed: Gio.File[], added: Gio.File[]): void;
 
     /**
+     * Retrieve all extended attributes in a canonical (sorted) order from
+     * the given file descriptor.
+     * @param fd File descriptor
+     * @param cancellable Cancellable
+     * @returns A GVariant of type `a(ayay)`
+     */
+    function fs_get_all_xattrs(fd: number, cancellable: Gio.Cancellable | null): GLib.Variant;
+
+    /**
+     * Retrieve all extended attributes in a canonical (sorted) order from
+     * the given path, relative to the provided directory file descriptor.
+     * The target path will not be dereferenced.  Currently on Linux, this
+     * API must be used currently to retrieve extended attributes
+     * for symbolic links because while `O_PATH` exists, it cannot be used
+     * with `fgetxattr()`.
+     * @param dfd Directory file descriptor
+     * @param path Filesystem path
+     * @param cancellable Cancellable
+     * @returns A GVariant of type `a(ayay)`
+     */
+    function fs_get_all_xattrs_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): GLib.Variant;
+
+    /**
+     * @since 2017.10
+     */
+    function gpg_error_quark(): GLib.Quark;
+
+    /**
      * Use this function with {@link GLib.HashTable} and `ostree_object_name_serialize()`.
      * @param a A {@link GLib.Variant} containing a serialized object
      */
     function hash_object_name(a: null): number;
+
+    /**
+     * Frees the OstreeKernelArgs structure pointed by *loc
+     * @param loc Address of an OstreeKernelArgs pointer
+     * @since 2019.3
+     */
+    function kernel_args_cleanup(loc: null): void;
 
     /**
      * @param objtype 
@@ -582,12 +1019,13 @@ export namespace OSTree {
     function object_type_to_string(objtype: ObjectType): string;
 
     /**
-     * Split a refspec like "gnome-ostree:gnome-ostree/buildmaster" into
-     * two parts; `out_remote` will be set to "gnome-ostree", and `out_ref`
-     * will be "gnome-ostree/buildmaster".
-     * 
-     * If `refspec` refers to a local ref, `out_remote` will be `null`.
+     * Split a refspec like `gnome-ostree:gnome-ostree/buildmain` or just
+     * `gnome-ostree/buildmain` into two parts. In the first case, `out_remote`
+     * will be set to `gnome-ostree`, and `out_ref` to `gnome-ostree/buildmain`.
+     * In the second case (a local ref), `out_remote` will be `null`, and `out_ref`
+     * will be `gnome-ostree/buildmain`. In both cases, `true` will be returned.
      * @param refspec A "refspec" string
+     * @returns `true` on successful parsing, `false` otherwise
      */
     function parse_refspec(refspec: string): [boolean, string, string];
 
@@ -598,8 +1036,24 @@ export namespace OSTree {
      * @param file_info A file info
      * @param xattrs Optional extended attributes
      * @param cancellable Cancellable
+     * @since 2016.6
      */
     function raw_file_to_archive_z2_stream(input: Gio.InputStream, file_info: Gio.FileInfo, xattrs: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream];
+
+    /**
+     * Like `ostree_raw_file_to_archive_z2_stream()`, but supports an extensible set
+     * of flags. The following flags are currently defined:
+     * 
+     * - `compression-level` (`i`): Level of compression to use, 0–9, with 0 being
+     *   the least compression, and <0 giving the default level (currently 6).
+     * @param input File raw content stream
+     * @param file_info A file info
+     * @param xattrs Optional extended attributes
+     * @param options A GVariant `a{sv}` with an extensible set of flags
+     * @param cancellable Cancellable
+     * @since 2017.3
+     */
+    function raw_file_to_archive_z2_stream_with_options(input: Gio.InputStream, file_info: Gio.FileInfo, xattrs: GLib.Variant | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream];
 
     /**
      * Convert from a "bare" file representation into an
@@ -618,11 +1072,102 @@ export namespace OSTree {
     function repo_commit_traverse_iter_cleanup(p: null): void;
 
     /**
+     * A version of `ostree_repo_finder_resolve_async()` which queries one or more
+     * `finders` in parallel and combines the results.
+     * @param finders non-empty array of `OstreeRepoFinders`
+     * @param refs non-empty array of collection–ref pairs to find remotes for
+     * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+     * @param cancellable a {@link Gio.Cancellable}, or `null`
+     * @since 2018.6
+     */
+    function repo_finder_resolve_all_async(finders: RepoFinder[], refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null): globalThis.Promise<RepoFinderResult[]>;
+    /**
+     * A version of `ostree_repo_finder_resolve_async()` which queries one or more
+     * `finders` in parallel and combines the results.
+     * @param finders non-empty array of `OstreeRepoFinders`
+     * @param refs non-empty array of collection–ref pairs to find remotes for
+     * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+     * @param cancellable a {@link Gio.Cancellable}, or `null`
+     * @param callback asynchronous completion callback
+     * @since 2018.6
+     */
+    function repo_finder_resolve_all_async(finders: RepoFinder[], refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<RepoFinder[]> | null): void;
+    /**
+     * A version of `ostree_repo_finder_resolve_async()` which queries one or more
+     * `finders` in parallel and combines the results.
+     * @param finders non-empty array of `OstreeRepoFinders`
+     * @param refs non-empty array of collection–ref pairs to find remotes for
+     * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+     * @param cancellable a {@link Gio.Cancellable}, or `null`
+     * @param callback asynchronous completion callback
+     * @since 2018.6
+     */
+    function repo_finder_resolve_all_async(finders: RepoFinder[], refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<RepoFinder[]> | null): globalThis.Promise<RepoFinderResult[]> | void;
+
+    /**
+     * Get the results from a `ostree_repo_finder_resolve_all_async()` operation.
+     * @param result {@link Gio.AsyncResult} from the callback
+     * @returns array of zero    or more results
+     * @since 2018.6
+     */
+    function repo_finder_resolve_all_finish(result: Gio.AsyncResult): RepoFinderResult[];
+
+    /**
+     * Free the given `results` array, freeing each element and the container.
+     * @param results an {@link OSTree.RepoFinderResult}
+     * @since 2018.6
+     */
+    function repo_finder_result_freev(results: RepoFinderResult[]): void;
+
+    /**
+     * Return an array with newly allocated instances of all available
+     * signing engines; they will not be initialized.
+     * @returns an array of signing engines
+     * @since 2020.2
+     */
+    function sign_get_all(): Sign[];
+
+    /**
+     * Create a new instance of a signing engine.
+     * @param name the name of desired signature engine
+     * @returns New signing engine, or `null` if the engine is not known
+     * @since 2020.2
+     */
+    function sign_get_by_name(name: string): Sign;
+
+    /**
      * Use this function to see if input strings are checksums.
      * @param sha256 SHA256 hex string
      * @returns `true` if `sha256` is a valid checksum string, `false` otherwise
      */
     function validate_checksum_string(sha256: string): boolean;
+
+    /**
+     * Check whether the given `collection_id` is valid. Return an error if it is
+     * invalid or `null`.
+     * 
+     * Valid collection IDs are reverse DNS names:
+     *  * They are composed of 1 or more elements separated by a period (`.`) character.
+     *    All elements must contain at least one character.
+     *  * Each element must only contain the ASCII characters `[A-Z][a-z][0-9]_` and must not
+     *    begin with a digit.
+     *  * They must contain at least one `.` (period) character (and thus at least two elements).
+     *  * They must not begin with a `.` (period) character.
+     *  * They must not exceed 255 characters in length.
+     * 
+     * (This makes their format identical to D-Bus interface names, for consistency.)
+     * @param collection_id A collection ID
+     * @returns `true` if `collection_id` is a valid collection ID, `false` if it is invalid    or `null`
+     * @since 2018.6
+     */
+    function validate_collection_id(collection_id: string | null): boolean;
+
+    /**
+     * @param remote_name A remote name
+     * @returns `true` if `remote_name` is a valid remote name
+     * @since 2017.8
+     */
+    function validate_remote_name(remote_name: string): boolean;
 
     /**
      * @param rev A revision string
@@ -680,6 +1225,13 @@ export namespace OSTree {
     /**
      * @gir-type Callback
      */
+    interface RepoCheckoutFilter {
+        (repo: Repo, path: string, stbuf: null): RepoCheckoutFilterResult;
+    }
+
+    /**
+     * @gir-type Callback
+     */
     interface RepoCommitFilter {
         (repo: Repo, path: string, file_info: Gio.FileInfo): RepoCommitFilterResult;
     }
@@ -692,6 +1244,37 @@ export namespace OSTree {
     }
 
     /**
+     * @gir-type Callback
+     */
+    interface RepoImportArchiveTranslatePathname {
+        (repo: Repo, stbuf: null, src_path: string): string;
+    }
+
+    /**
+     * Flags influencing checksumming logic.
+     * @gir-type Flags
+     * @since 2017.13
+     */
+    enum ChecksumFlags {
+        /**
+         * Default checksumming without tweaks.
+         *    (Since: 2017.13.)
+         */
+        NONE,
+        /**
+         * Ignore xattrs when checksumming.
+         *    (Since: 2017.13.)
+         */
+        IGNORE_XATTRS,
+        /**
+         * Use canonical uid/gid/mode
+         *    values, for bare-user-only mode. (Since: 2021.4.)
+         */
+        CANONICAL_PERMISSIONS,
+    }
+
+
+    /**
      * @gir-type Flags
      */
     enum DiffFlags {
@@ -701,6 +1284,23 @@ export namespace OSTree {
 
 
     /**
+     * Formatting flags for `ostree_gpg_verify_result_describe()`.  Currently
+     * there's only one possible output format, but this enumeration allows
+     * for future variations.
+     * @gir-type Flags
+     */
+    enum GpgSignatureFormatFlags {
+        /**
+         * Use the default output format
+         */
+        GPG_SIGNATURE_FORMAT_DEFAULT,
+    }
+
+
+    /**
+     * Flags modifying commit behavior. In bare-user-only mode,
+     * `OSTREE_REPO_COMMIT_MODIFIER_FLAGS_CANONICAL_PERMISSIONS` and
+     * `OSTREE_REPO_COMMIT_MODIFIER_FLAGS_SKIP_XATTRS` are automatically enabled.
      * @gir-type Flags
      */
     enum RepoCommitModifierFlags {
@@ -716,14 +1316,55 @@ export namespace OSTree {
          * Generate size information.
          */
         GENERATE_SIZES,
+        /**
+         * Canonicalize permissions.
+         */
+        CANONICAL_PERMISSIONS,
+        /**
+         * Emit an error if configured SELinux
+         * policy does not provide a label
+         */
+        ERROR_ON_UNLABELED,
+        /**
+         * Delete added files/directories after commit; Since:
+         * 2017.13
+         */
+        CONSUME,
+        /**
+         * If a devino cache hit is found, skip
+         * modifier filters (non-directories only); Since: 2017.14
+         */
+        DEVINO_CANONICAL,
+        /**
+         * For SELinux and other systems, label
+         * /usr/etc as if it was /etc.
+         */
+        SELINUX_LABEL_V1,
     }
 
 
     /**
+     * Flags representing the state of a commit in the local repository, as returned
+     * by `ostree_repo_load_commit()`.
      * @gir-type Flags
+     * @since 2015.7
      */
     enum RepoCommitState {
-        REPO_COMMIT_STATE_PARTIAL,
+        /**
+         * Commit is complete. This is the default.
+         *    (Since: 2017.14.)
+         */
+        NORMAL,
+        /**
+         * One or more objects are missing from the
+         *    local copy of the commit, but metadata is present. (Since: 2015.7.)
+         */
+        PARTIAL,
+        /**
+         * One or more objects are missing from the
+         *    local copy of the commit, due to an fsck --delete. (Since: 2019.4.)
+         */
+        FSCK_PARTIAL,
     }
 
 
@@ -731,7 +1372,15 @@ export namespace OSTree {
      * @gir-type Flags
      */
     enum RepoCommitTraverseFlags {
-        REPO_COMMIT_TRAVERSE_FLAG_NONE,
+        /**
+         * No special options for traverse
+         */
+        NONE,
+        /**
+         * Traverse and retrieve only commit objects.
+         * (Since: 2022.2)
+         */
+        COMMIT_ONLY,
     }
 
 
@@ -761,13 +1410,61 @@ export namespace OSTree {
     /**
      * @gir-type Flags
      */
+    enum RepoListRefsExtFlags {
+        /**
+         * No flags.
+         */
+        NONE,
+        /**
+         * Only list aliases.  Since: 2017.10
+         */
+        ALIASES,
+        /**
+         * Exclude remote refs.  Since: 2017.11
+         */
+        EXCLUDE_REMOTES,
+        /**
+         * Exclude mirrored refs.  Since: 2019.2
+         */
+        EXCLUDE_MIRRORS,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    enum RepoPruneFlags {
+        /**
+         * No special options for pruning
+         */
+        NONE,
+        /**
+         * Don't actually delete objects
+         */
+        NO_PRUNE,
+        /**
+         * Do not traverse individual commit objects, only follow refs
+         * for reachability calculations
+         */
+        REFS_ONLY,
+        /**
+         * Only traverse commit objects.  (Since 2022.2)
+         */
+        COMMIT_ONLY,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
     enum RepoPullFlags {
         /**
          * No special options for pull
          */
         NONE,
         /**
-         * Write out refs suitable for mirrors
+         * Write out refs suitable for mirrors and fetch all refs if none
+         * requested
          */
         MIRROR,
         /**
@@ -775,9 +1472,55 @@ export namespace OSTree {
          */
         COMMIT_ONLY,
         /**
-         * Don't trust local remote
+         * Do verify checksums of local (filesystem-accessible)
+         * repositories (defaults on for HTTP)
          */
         UNTRUSTED,
+        /**
+         * Since 2017.7.  Reject writes of content objects with
+         * modes outside of 0775.
+         */
+        BAREUSERONLY_FILES,
+        /**
+         * Don't verify checksums of objects HTTP repositories
+         * (Since: 2017.12)
+         */
+        TRUSTED_HTTP,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    enum RepoResolveRevExtFlags {
+        /**
+         * No flags.
+         */
+        NONE,
+        /**
+         * Exclude remote and mirrored refs. Since: 2019.2
+         */
+        LOCAL_ONLY,
+    }
+
+
+    /**
+     * @gir-type Flags
+     * @since 2021.4
+     */
+    enum RepoVerifyFlags {
+        /**
+         * No flags
+         */
+        NONE,
+        /**
+         * Skip GPG verification
+         */
+        NO_GPG,
+        /**
+         * Skip all other signature verification methods
+         */
+        NO_SIGNAPI,
     }
 
 
@@ -799,6 +1542,8 @@ export namespace OSTree {
         RETAIN,
         NOT_DEFAULT,
         NO_CLEAN,
+        RETAIN_PENDING,
+        RETAIN_ROLLBACK,
     }
 
 
@@ -815,9 +1560,16 @@ export namespace OSTree {
      */
     enum SysrootUpgraderFlags {
         /**
-         * Do not error if the origin has an unconfigured-state key
+         * Do not error if the origin has an
+         * unconfigured-state key
          */
         IGNORE_UNCONFIGURED,
+        /**
+         * Enable "staging" (finalization at shutdown); recommended
+         *    (Since: 2021.4)
+         */
+        STAGE,
+        KEXEC,
     }
 
 
@@ -827,6 +1579,7 @@ export namespace OSTree {
     enum SysrootUpgraderPullFlags {
         NONE,
         ALLOW_OLDER,
+        SYNTHETIC,
     }
 
 
@@ -867,8 +1620,6 @@ export namespace OSTree {
 
         static ["new"](): AsyncProgress;
 
-        static new_and_connect(changed: null, user_data: null): AsyncProgress;
-
         // Signals
         /** @signal */
         connect<K extends keyof AsyncProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncProgress.SignalSignatures[K]>): number;
@@ -891,13 +1642,29 @@ export namespace OSTree {
 
         // Methods
         /**
+         * Atomically copies all the state from `self` to `dest`, without invoking the
+         * callback.
+         * This is used for proxying progress objects across different `GMainContexts`.
+         * @param dest An {@link OSTree.AsyncProgress} to copy to
+         */
+        copy_state(dest: AsyncProgress): void;
+
+        /**
          * Process any pending signals, ensuring the main context is cleared
          * of sources used by this object.  Also ensures that no further
          * events will be queued.
          */
         finish(): void;
 
-        get_status(): string;
+        /**
+         * Get the human-readable status string from the {@link OSTree.AsyncProgress}. This
+         * operation is thread-safe. The retuned value may be `null` if no status is
+         * set.
+         * 
+         * This is a convenience function to get the well-known `status` key.
+         * @returns the current status, or `null` if none is set
+         */
+        get_status(): string | null;
 
         /**
          * @param key 
@@ -910,9 +1677,21 @@ export namespace OSTree {
         get_uint64(key: string): number;
 
         /**
-         * @param status 
+         * Look up a key in the {@link OSTree.AsyncProgress} and return the {@link GLib.Variant} associated
+         * with it. The lookup is thread-safe.
+         * @param key a key to look up
+         * @returns value for the given `key`, or `null` if    it was not set
          */
-        set_status(status: string): void;
+        get_variant(key: string): GLib.Variant | null;
+
+        /**
+         * Set the human-readable status string for the {@link OSTree.AsyncProgress}. This
+         * operation is thread-safe. `null` may be passed to clear the status.
+         * 
+         * This is a convenience function to set the well-known `status` key.
+         * @param status new status string, or `null` to clear the status
+         */
+        set_status(status: string | null): void;
 
         /**
          * @param key 
@@ -925,6 +1704,18 @@ export namespace OSTree {
          * @param value 
          */
         set_uint64(key: string, value: bigint | number): void;
+
+        /**
+         * Assign a new `value` to the given `key`, replacing any existing value. The
+         * operation is thread-safe. `value` may be a floating reference;
+         * `g_variant_ref_sink()` will be called on it.
+         * 
+         * Any watchers of the {@link OSTree.AsyncProgress} will be notified of the change if
+         * `value` differs from the existing value for `key`.
+         * @param key a key to set
+         * @param value the value to assign to `key`
+         */
+        set_variant(key: string, value: GLib.Variant): void;
     }
 
 
@@ -978,9 +1769,26 @@ export namespace OSTree {
         clone(): BootconfigParser;
 
         /**
-         * @param key 
+         * Get the value corresponding to `key` from the boot configuration dictionary.
+         * @param key the key name to retrieve
+         * @returns The corresponding value, or `null` if the key hasn't been found.
          */
-        get(key: string): string;
+        get(key: string): string | null;
+
+        /**
+         * @returns Array of initrds or `null` if none are set.
+         */
+        get_overlay_initrds(): string[] | null;
+
+        /**
+         * @returns Amount of boot tries
+         */
+        get_tries_done(): number;
+
+        /**
+         * @returns Amount of boot tries left
+         */
+        get_tries_left(): number;
 
         /**
          * @param path 
@@ -997,8 +1805,9 @@ export namespace OSTree {
         parse_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param key 
-         * @param value 
+         * Set the `key`/`value` pair to the boot configuration dictionary.
+         * @param key the key
+         * @param value the key
          */
         set(key: string, value: string): void;
 
@@ -1007,6 +1816,13 @@ export namespace OSTree {
          */
     // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
+        /**
+         * These are rendered as additional `initrd` keys in the final bootloader configs. The
+         * base initrd is part of the primary keys.
+         * @param initrds Array of overlay    initrds or `null` to unset.
+         */
+        set_overlay_initrds(initrds: string[] | null): void;
 
         /**
          * @param output 
@@ -1023,31 +1839,19 @@ export namespace OSTree {
     }
 
 
-    namespace ChecksumInputStream {
+    namespace ContentWriter {
         // Signal signatures
-        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
-            "notify::checksum": (pspec: GObject.ParamSpec) => void;
-            "notify::base-stream": (pspec: GObject.ParamSpec) => void;
-            "notify::close-base-stream": (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.FilterInputStream.ConstructorProps {
-            checksum: never;
-        }
+        interface ConstructorProps extends Gio.OutputStream.ConstructorProps {}
     }
 
     /**
      * @gir-type Class
      */
-    class ChecksumInputStream extends Gio.FilterInputStream {
-        static $gtype: GObject.GType<ChecksumInputStream>;
-
-        // Properties
-        /**
-         * @construct-only
-         */
-        get checksum(): null;
+    class ContentWriter extends Gio.OutputStream {
+        static $gtype: GObject.GType<ContentWriter>;
 
         /**
          * Compile-time signal type information.
@@ -1056,27 +1860,33 @@ export namespace OSTree {
          * It is not defined at runtime and should not be accessed in JS code.
          * @internal
          */
-        $signals: ChecksumInputStream.SignalSignatures;
+        $signals: ContentWriter.SignalSignatures;
 
         // Constructors
-        constructor(properties?: Partial<ChecksumInputStream.ConstructorProps>, ...args: any[]);
+        constructor(properties?: Partial<ContentWriter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ["new"](stream: Gio.InputStream, checksum: GLib.Checksum): ChecksumInputStream;
-
         // Signals
         /** @signal */
-        connect<K extends keyof ChecksumInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChecksumInputStream.SignalSignatures[K]>): number;
+        connect<K extends keyof ContentWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentWriter.SignalSignatures[K]>): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof ChecksumInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChecksumInputStream.SignalSignatures[K]>): number;
+        connect_after<K extends keyof ContentWriter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentWriter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        emit<K extends keyof ChecksumInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChecksumInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit<K extends keyof ContentWriter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Complete the object write and return the checksum.
+         * @param cancellable Cancellable
+         * @returns Checksum, or `null` on error
+         */
+        finish(cancellable: Gio.Cancellable | null): string;
     }
 
 
@@ -1108,7 +1918,7 @@ export namespace OSTree {
 
         _init(...args: any[]): void;
 
-        static ["new"](index: number, osname: string, csum: string, deployserial: number, bootcsum: string, bootserial: number): Deployment;
+        static ["new"](index: number, osname: string, csum: string, deployserial: number, bootcsum: string | null, bootserial: number): Deployment;
 
         // Signals
         /** @signal */
@@ -1125,9 +1935,23 @@ export namespace OSTree {
 
         // Static methods
         /**
-         * @param v 
+         * The intention of an origin file is primarily describe the "inputs" that
+         * resulted in a deployment, and it's commonly used to derive the new state. For
+         * example, a key value (in pure libostree mode) is the "refspec". However,
+         * libostree (or other applications) may want to store "transient" state that
+         * should not be carried across upgrades.
+         * 
+         * This function just removes all members of the `libostree-transient` group.
+         * The name of that group is available to all libostree users; best practice
+         * would be to prefix values underneath there with a short identifier for your
+         * software.
+         * 
+         * Additionally, this function will remove the `origin/unlocked` and
+         * `origin/override-commit` members; these should be considered transient state
+         * that should have been under an explicit group.
+         * @param origin An origin
          */
-        static hash(v: null): number;
+        static origin_remove_transient_state(origin: GLib.KeyFile): void;
 
         /**
          * @param state 
@@ -1149,7 +1973,7 @@ export namespace OSTree {
         /**
          * @returns Boot configuration
          */
-        get_bootconfig(): BootconfigParser;
+        get_bootconfig(): BootconfigParser | null;
 
         get_bootcsum(): string;
 
@@ -1159,12 +1983,15 @@ export namespace OSTree {
 
         get_deployserial(): number;
 
+        /**
+         * @returns The global index into the bootloader ordering
+         */
         get_index(): number;
 
         /**
          * @returns Origin
          */
-        get_origin(): GLib.KeyFile;
+        get_origin(): GLib.KeyFile | null;
 
         /**
          * Note this function only returns a *relative* path - if you want to
@@ -1179,24 +2006,55 @@ export namespace OSTree {
         get_unlocked(): DeploymentUnlockedState;
 
         /**
-         * @param bootconfig 
+         * @returns An integer suitable for use in a {@link GLib.HashTable}
          */
-        set_bootconfig(bootconfig: BootconfigParser): void;
+        hash(): number;
 
         /**
-         * @param index 
+         * @returns `TRUE` if deployment is queued to be "finalized" at shutdown time, but requires additional action.
+         */
+        is_finalization_locked(): boolean;
+
+        /**
+         * See `ostree_sysroot_deployment_set_pinned()`.
+         * @returns `TRUE` if deployment will not be subject to GC
+         */
+        is_pinned(): boolean;
+
+        /**
+         * @returns `TRUE` if deployment is set for a soft reboot.
+         */
+        is_soft_reboot_target(): boolean;
+
+        /**
+         * @returns `TRUE` if deployment should be "finalized" at shutdown time
+         */
+        is_staged(): boolean;
+
+        /**
+         * Set or clear the bootloader configuration.
+         * @param bootconfig Bootloader configuration object
+         */
+        set_bootconfig(bootconfig: BootconfigParser | null): void;
+
+        /**
+         * Should never have been made public API; don't use this.
+         * @param index Don't use this
          */
         set_bootserial(index: number): void;
 
         /**
-         * @param index 
+         * Sets the global index into the bootloader ordering.
+         * @param index Index into bootloader ordering
          */
         set_index(index: number): void;
 
         /**
-         * @param origin 
+         * Replace the "origin", which is a description of the source
+         * of the deployment and how to update to the next version.
+         * @param origin Set the origin for this deployment
          */
-        set_origin(origin: GLib.KeyFile): void;
+        set_origin(origin: GLib.KeyFile | null): void;
     }
 
 
@@ -1472,6 +2330,10 @@ export namespace OSTree {
 
         static ["new"](): MutableTree;
 
+        static new_from_checksum(repo: Repo, contents_checksum: string, metadata_checksum: string): MutableTree;
+
+        static new_from_commit(repo: Repo, rev: string): MutableTree;
+
         // Signals
         /** @signal */
         connect<K extends keyof MutableTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MutableTree.SignalSignatures[K]>): number;
@@ -1487,10 +2349,20 @@ export namespace OSTree {
 
         // Methods
         /**
-         * @param name 
-         * @param out_subdir 
+         * In some cases, a tree may be in a "lazy" state that loads
+         * data in the background; if an error occurred during a non-throwing
+         * API call, it will have been cached.  This function checks for a
+         * cached error.  The tree remains in error state.
+         * @returns `TRUE` on success
          */
-        ensure_dir(name: string, out_subdir: MutableTree): boolean;
+        check_error(): boolean;
+
+        /**
+         * Returns the subdirectory of self with filename `name`, creating an empty one
+         * it if it doesn't exist.
+         * @param name Name of subdirectory of self to retrieve/creates
+         */
+        ensure_dir(name: string): [boolean, MutableTree | null];
 
         /**
          * Create all parent trees necessary for the given `split_path` to
@@ -1498,7 +2370,20 @@ export namespace OSTree {
          * @param split_path File path components
          * @param metadata_checksum SHA256 checksum for metadata
          */
-        ensure_parent_dirs(split_path: string[], metadata_checksum: string): [boolean, MutableTree];
+        ensure_parent_dirs(split_path: string[], metadata_checksum: string): [boolean, MutableTree | null];
+
+        /**
+         * Merges `self` with the tree given by `contents_checksum` and
+         * `metadata_checksum`, but only if it's possible without writing new objects to
+         * the `repo`.  We can do this if either `self` is empty, the tree given by
+         * `contents_checksum` is empty or if both trees already have the same
+         * `contents_checksum`.
+         * @param repo 
+         * @param contents_checksum 
+         * @param metadata_checksum 
+         * @returns `TRUE` if merge was successful, `FALSE` if it was not possible. This function enables optimisations when composing trees.  The provided checksums are not loaded or checked when this function is called.  Instead the contents will be loaded only when needed.
+         */
+        fill_empty_from_dirtree(repo: Repo, contents_checksum: string, metadata_checksum: string): boolean;
 
         get_contents_checksum(): string;
 
@@ -1515,11 +2400,19 @@ export namespace OSTree {
         get_subdirs(): { [key: string]: MutableTree };
 
         /**
-         * @param name 
-         * @param out_file_checksum 
-         * @param out_subdir 
+         * Lookup `name` and returns `out_file_checksum` or `out_subdir` depending on its
+         * file type.
+         * @param name name
+         * @returns `true` on success and either `out_file_checksum` or `out_subdir` are filled, `false` otherwise.
          */
-        lookup(name: string, out_file_checksum: string, out_subdir: MutableTree): boolean;
+        lookup(name: string): [boolean, string, MutableTree | null];
+
+        /**
+         * Remove the file or subdirectory named `name` from the mutable tree `self`.
+         * @param name Name of file or subdirectory to remove
+         * @param allow_noent If `FALSE`, an error will be thrown if `name` does not exist in the tree
+         */
+        remove(name: string, allow_noent: boolean): boolean;
 
         /**
          * @param name 
@@ -1585,26 +2478,58 @@ export namespace OSTree {
 
         // Properties
         /**
+         * Path to repository.  Note that if this repository was created
+         * via `ostree_repo_new_at()`, this value will refer to a value in
+         * the Linux kernel's `/proc/self/fd` directory.  Generally, you
+         * should avoid using this property at all; you can gain a reference
+         * to the repository's directory fd via `ostree_repo_get_dfd()` and
+         * use file-descriptor relative operations.
          * @construct-only
          */
         get path(): Gio.File;
 
         /**
+         * Path to directory containing remote definitions.  The default is `NULL`.
+         * If a `sysroot-path` property is defined, this value will default to
+         * `${sysroot_path}/etc/ostree/remotes.d`.
+         * 
+         * This value will only be used for system repositories.
          * @construct-only
+         * @default null
          */
         get remotes_config_dir(): string;
 
         /**
+         * Path to directory containing remote definitions.  The default is `NULL`.
+         * If a `sysroot-path` property is defined, this value will default to
+         * `${sysroot_path}/etc/ostree/remotes.d`.
+         * 
+         * This value will only be used for system repositories.
          * @construct-only
+         * @default null
          */
         get remotesConfigDir(): string;
 
         /**
+         * A system using libostree for the host has a "system" repository; this
+         * property will be set for repositories referenced via
+         * `ostree_sysroot_repo()` for example.
+         * 
+         * You should avoid using this property; if your code is operating
+         * on a system repository, use {@link OSTree.Sysroot} and access the repository
+         * object via `ostree_sysroot_repo()`.
          * @construct-only
          */
         get sysroot_path(): Gio.File;
 
         /**
+         * A system using libostree for the host has a "system" repository; this
+         * property will be set for repositories referenced via
+         * `ostree_sysroot_repo()` for example.
+         * 
+         * You should avoid using this property; if your code is operating
+         * on a system repository, use {@link OSTree.Sysroot} and access the repository
+         * object via `ostree_sysroot_repo()`.
          * @construct-only
          */
         get sysrootPath(): Gio.File;
@@ -1644,10 +2569,40 @@ export namespace OSTree {
 
         // Static methods
         /**
-         * @param mode 
-         * @param out_mode 
+         * This is a file-descriptor relative version of `ostree_repo_create()`.
+         * Create the underlying structure on disk for the repository, and call
+         * `ostree_repo_open_at()` on the result, preparing it for use.
+         * 
+         * If a repository already exists at `dfd` + `path` (defined by an `objects/`
+         * subdirectory existing), then this function will simply call
+         * `ostree_repo_open_at()`.  In other words, this function cannot be used to change
+         * the mode or configuration (`repo/config`) of an existing repo.
+         * 
+         * The `options` dict may contain:
+         * 
+         *   - collection-id: s: Set as collection ID in repo/config (Since 2017.9)
+         * @param dfd Directory fd
+         * @param path Path
+         * @param mode The mode to store the repository in
+         * @param options a{sv}: See below for accepted keys
+         * @param cancellable Cancellable
          */
-        static mode_from_string(mode: string, out_mode: RepoMode): boolean;
+        static create_at(dfd: number, path: string, mode: RepoMode, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): Repo;
+
+        /**
+         * @param mode a repo mode as a string
+         */
+        static mode_from_string(mode: string): [boolean, RepoMode];
+
+        /**
+         * This combines `ostree_repo_new()` (but using fd-relative access) with
+         * `ostree_repo_open()`.  Use this when you know you should be operating on an
+         * already extant repository.  If you want to create one, use `ostree_repo_create_at()`.
+         * @param dfd Directory fd
+         * @param path Path
+         * @param cancellable 
+         */
+        static open_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): Repo;
 
         /**
          * Convenient "changed" callback for use with
@@ -1668,19 +2623,38 @@ export namespace OSTree {
         static pull_default_console_progress_changed(progress: AsyncProgress, user_data: null): void;
 
         /**
+         * This hash table is a mapping from {@link GLib.Variant} which can be accessed
+         * via `ostree_object_name_deserialize()` to a {@link GLib.Variant} containing either
+         * a similar {@link GLib.Variant} or and array of them, listing the parents of the key.
+         */
+        static traverse_new_parents(): never;
+
+        /**
          * This hash table is a set of {@link GLib.Variant} which can be accessed via
          * `ostree_object_name_deserialize()`.
          */
         static traverse_new_reachable(): never;
 
+        /**
+         * Gets all the commits that a certain object belongs to, as recorded
+         * by a parents table gotten from ostree_repo_traverse_commit_union_with_parents.
+         * @param parents 
+         * @param object 
+         */
+        static traverse_parents_get_commits(parents: never, object: GLib.Variant): string[];
+
         // Methods
         /**
-         * @param cancellable 
+         * Abort the active transaction; any staged objects and ref changes will be
+         * discarded. You *must* invoke this if you have chosen not to invoke
+         * `ostree_repo_commit_transaction()`. Calling this function when not in a
+         * transaction will do nothing and return successfully.
+         * @param cancellable Cancellable
          */
         abort_transaction(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * Add a GPG signature to a static delta.
+         * Add a GPG signature to a summary file.
          * @param key_id NULL-terminated array of GPG keys.
          * @param homedir GPG home directory, or `null`
          * @param cancellable A {@link Gio.Cancellable}
@@ -1716,6 +2690,20 @@ export namespace OSTree {
         checkout_at(options: RepoCheckoutAtOptions | null, destination_dfd: number, destination_path: string, commit: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * Create a composefs filesystem metadata blob from an OSTree commit. Supported
+         * options:
+         * 
+         *  - verity: `u`: 0 = disabled, 1 = set if present on file, 2 = enabled; any other value is a fatal
+         * error
+         * @param options If non-NULL, must be a GVariant of type a{sv}. See below.
+         * @param destination_dfd Parent directory fd
+         * @param destination_path Filename
+         * @param checksum OStree commit digest
+         * @param cancellable Cancellable
+         */
+        checkout_composefs(options: GLib.Variant | null, destination_dfd: number, destination_path: string, checksum: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
          * Call this after finishing a succession of checkout operations; it
          * will delete any currently-unused uncompressed objects from the
          * cache.
@@ -1738,9 +2726,28 @@ export namespace OSTree {
         checkout_tree(mode: RepoCheckoutMode, overwrite_mode: RepoCheckoutOverwriteMode, destination: Gio.File, source: RepoFile, source_info: Gio.FileInfo, cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * Compute the composefs digest for a filesystem tree
+         * and insert it into metadata for a commit object.  The composefs
+         * digest covers the entire filesystem tree and can be verified by
+         * the composefs mount tooling.
+         * @param format_version Must be zero
+         * @param dict A GVariant builder of type a{sv}
+         * @param repo_root the target filesystem tree
+         * @param cancellable Cancellable
+         */
+        commit_add_composefs_metadata(format_version: number, dict: GLib.VariantDict, repo_root: RepoFile, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
          * Complete the transaction. Any refs set with
          * `ostree_repo_transaction_set_ref()` or
          * `ostree_repo_transaction_set_refspec()` will be written out.
+         * 
+         * Note that if multiple threads are performing writes, all such threads must
+         * have terminated before this function is invoked.
+         * 
+         * Locking: Releases `shared` lock acquired by `ostree_repo_prepare_transaction()`
+         * Multithreading: This function is *not* MT safe; only one transaction can be
+         * active at a time.
          * @param cancellable Cancellable
          */
         commit_transaction(cancellable: Gio.Cancellable | null): [boolean, RepoTransactionStats | null];
@@ -1759,6 +2766,12 @@ export namespace OSTree {
          * created repository.  However, this function cannot change the mode
          * of an existing repository, and will silently ignore an attempt to
          * do so.
+         * 
+         * Since 2017.9, "existing repository" is defined by the existence of an
+         * `objects` subdirectory.
+         * 
+         * This function predates `ostree_repo_create_at()`. It is an error to call
+         * this function on a repository initialized via `ostree_repo_open_at()`.
          * @param mode The mode to store the repository in
          * @param cancellable Cancellable
          */
@@ -1775,9 +2788,205 @@ export namespace OSTree {
         delete_object(objtype: ObjectType, sha256: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * Check whether two opened repositories are the same on disk: if their root
+         * directories are the same inode. If `a` or `b` are not open yet (due to
+         * `ostree_repo_open()` not being called on them yet), `false` will be returned.
+         * @param b an {@link OSTree.Repo}
+         * @returns `true` if `a` and `b` are the same repository on disk, `false` otherwise
+         */
+        equal(b: Repo): boolean;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given named
+         * `refs`. This will search for configured remotes ({@link OSTree.RepoFinderConfig}),
+         * mounted volumes ({@link OSTree.RepoFinderMount}) and (if enabled at compile time)
+         * local network peers ({@link OSTree.RepoFinderAvahi}). In order to use a custom
+         * configuration of {@link OSTree.RepoFinder} instances, call
+         * `ostree_repo_finder_resolve_all_async()` on them individually.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most of `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a list of the subset of `refs` it claims to provide. It
+         * is possible for a non-empty list of results to be returned, but for some of
+         * `refs` to not be listed in any of the results. Callers must check for this.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given `refs`
+         * from those remotes.
+         * 
+         * The following `options` are currently defined:
+         * 
+         *   * `override-commit-ids` (`as`): Array of specific commit IDs to fetch. The nth
+         *   commit ID applies to the nth ref, so this must be the same length as `refs`, if
+         *   provided.
+         *   * `n-network-retries` (`u`): Number of times to retry each download on
+         *   receiving a transient network error, such as a socket timeout; default is
+         *   5, 0 means return errors without retrying. Since: 2018.6
+         * 
+         * `finders` must be a non-empty `null`-terminated array of the {@link OSTree.RepoFinder}
+         * instances to use, or `null` to use the system default set of finders, which
+         * will typically be all available finders using their default options (but
+         * this is not guaranteed).
+         * 
+         * GPG verification of commits will be used unconditionally.
+         * 
+         * This will use the thread-default {@link GLib.MainContext}, but will not iterate it.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param options a GVariant `a{sv}` with an extensible set of flags
+         * @param finders non-empty array of    {@link OSTree.RepoFinder} instances to use, or `null` to use the system defaults
+         * @param progress an {@link OSTree.AsyncProgress} to update with the operation’s    progress, or `null`
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         */
+        find_remotes_async(refs: CollectionRef[], options: GLib.Variant | null, finders: RepoFinder[], progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): globalThis.Promise<RepoFinderResult[]>;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given named
+         * `refs`. This will search for configured remotes ({@link OSTree.RepoFinderConfig}),
+         * mounted volumes ({@link OSTree.RepoFinderMount}) and (if enabled at compile time)
+         * local network peers ({@link OSTree.RepoFinderAvahi}). In order to use a custom
+         * configuration of {@link OSTree.RepoFinder} instances, call
+         * `ostree_repo_finder_resolve_all_async()` on them individually.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most of `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a list of the subset of `refs` it claims to provide. It
+         * is possible for a non-empty list of results to be returned, but for some of
+         * `refs` to not be listed in any of the results. Callers must check for this.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given `refs`
+         * from those remotes.
+         * 
+         * The following `options` are currently defined:
+         * 
+         *   * `override-commit-ids` (`as`): Array of specific commit IDs to fetch. The nth
+         *   commit ID applies to the nth ref, so this must be the same length as `refs`, if
+         *   provided.
+         *   * `n-network-retries` (`u`): Number of times to retry each download on
+         *   receiving a transient network error, such as a socket timeout; default is
+         *   5, 0 means return errors without retrying. Since: 2018.6
+         * 
+         * `finders` must be a non-empty `null`-terminated array of the {@link OSTree.RepoFinder}
+         * instances to use, or `null` to use the system default set of finders, which
+         * will typically be all available finders using their default options (but
+         * this is not guaranteed).
+         * 
+         * GPG verification of commits will be used unconditionally.
+         * 
+         * This will use the thread-default {@link GLib.MainContext}, but will not iterate it.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param options a GVariant `a{sv}` with an extensible set of flags
+         * @param finders non-empty array of    {@link OSTree.RepoFinder} instances to use, or `null` to use the system defaults
+         * @param progress an {@link OSTree.AsyncProgress} to update with the operation’s    progress, or `null`
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        find_remotes_async(refs: CollectionRef[], options: GLib.Variant | null, finders: RepoFinder[], progress: AsyncProgress | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given named
+         * `refs`. This will search for configured remotes ({@link OSTree.RepoFinderConfig}),
+         * mounted volumes ({@link OSTree.RepoFinderMount}) and (if enabled at compile time)
+         * local network peers ({@link OSTree.RepoFinderAvahi}). In order to use a custom
+         * configuration of {@link OSTree.RepoFinder} instances, call
+         * `ostree_repo_finder_resolve_all_async()` on them individually.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most of `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a list of the subset of `refs` it claims to provide. It
+         * is possible for a non-empty list of results to be returned, but for some of
+         * `refs` to not be listed in any of the results. Callers must check for this.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given `refs`
+         * from those remotes.
+         * 
+         * The following `options` are currently defined:
+         * 
+         *   * `override-commit-ids` (`as`): Array of specific commit IDs to fetch. The nth
+         *   commit ID applies to the nth ref, so this must be the same length as `refs`, if
+         *   provided.
+         *   * `n-network-retries` (`u`): Number of times to retry each download on
+         *   receiving a transient network error, such as a socket timeout; default is
+         *   5, 0 means return errors without retrying. Since: 2018.6
+         * 
+         * `finders` must be a non-empty `null`-terminated array of the {@link OSTree.RepoFinder}
+         * instances to use, or `null` to use the system default set of finders, which
+         * will typically be all available finders using their default options (but
+         * this is not guaranteed).
+         * 
+         * GPG verification of commits will be used unconditionally.
+         * 
+         * This will use the thread-default {@link GLib.MainContext}, but will not iterate it.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param options a GVariant `a{sv}` with an extensible set of flags
+         * @param finders non-empty array of    {@link OSTree.RepoFinder} instances to use, or `null` to use the system defaults
+         * @param progress an {@link OSTree.AsyncProgress} to update with the operation’s    progress, or `null`
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        find_remotes_async(refs: CollectionRef[], options: GLib.Variant | null, finders: RepoFinder[], progress: AsyncProgress | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RepoFinderResult[]> | void;
+
+        /**
+         * Finish an asynchronous pull operation started with
+         * `ostree_repo_find_remotes_async()`.
+         * @param result the asynchronous result
+         * @returns a potentially empty array    of `OstreeRepoFinderResults`, followed by a `null` terminator element; or    `null` on error
+         */
+        find_remotes_finish(result: Gio.AsyncResult): RepoFinderResult[];
+
+        /**
+         * Verify consistency of the object; this performs checks only relevant to the
+         * immediate object itself, such as checksumming. This API call will not itself
+         * traverse metadata objects for example.
+         * @param objtype Object type
+         * @param sha256 Checksum
+         * @param cancellable Cancellable
+         */
+        fsck_object(objtype: ObjectType, sha256: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Get the bootloader configured. See the documentation for the
+         * "sysroot.bootloader" config key.
+         * @returns bootloader configuration for the sysroot
+         */
+        get_bootloader(): string;
+
+        /**
+         * Get the collection ID of this repository. See [collection IDs][collection-ids].
+         * @returns collection ID for the repository
+         */
+        get_collection_id(): string | null;
+
+        /**
          * @returns The repository configuration; do not modify
          */
         get_config(): GLib.KeyFile;
+
+        /**
+         * Get the set of default repo finders configured. See the documentation for
+         * the "core.default-repo-finders" config key.
+         * @returns `null`-terminated array of strings.
+         */
+        get_default_repo_finders(): string[];
 
         /**
          * In some cases it's useful for applications to access the repository
@@ -1794,6 +3003,15 @@ export namespace OSTree {
          */
         get_disable_fsync(): boolean;
 
+        /**
+         * Determine the number of bytes of free disk space that are reserved according
+         * to the repo config and return that number in `out_reserved_bytes`. See the
+         * documentation for the core.min-free-space-size and
+         * core.min-free-space-percent repo config options.
+         * @returns `true` on success, `false` otherwise.
+         */
+        get_min_free_space_bytes(): [boolean, number];
+
         get_mode(): RepoMode;
 
         /**
@@ -1801,9 +3019,12 @@ export namespace OSTree {
          * called.
          * @returns Parent repository, or `null` if none
          */
-        get_parent(): Repo;
+        get_parent(): Repo | null;
 
         /**
+         * Note that since the introduction of `ostree_repo_open_at()`, this function may
+         * return a process-specific path in `/proc` if the repository was created using
+         * that API. In general, you should avoid use of this API.
          * @returns Path to repo
          */
         get_path(): Gio.File;
@@ -1812,7 +3033,8 @@ export namespace OSTree {
          * OSTree remotes are represented by keyfile groups, formatted like:
          * `[remote "remotename"]`. This function returns a value named `option_name`
          * underneath that group, and returns it as a boolean.
-         * If the option is not set, `out_value` will be set to `default_value`.
+         * If the option is not set, `out_value` will be set to `default_value`. If an
+         * error is returned, `out_value` will be set to `false`.
          * @param remote_name Name
          * @param option_name Option
          * @param default_value Value returned if `option_name` is not present
@@ -1823,8 +3045,9 @@ export namespace OSTree {
         /**
          * OSTree remotes are represented by keyfile groups, formatted like:
          * `[remote "remotename"]`. This function returns a value named `option_name`
-         * underneath that group, and returns it as an zero terminated array of strings.
-         * If the option is not set, `out_value` will be set to `null`.
+         * underneath that group, and returns it as a zero terminated array of strings.
+         * If the option is not set, or if an error is returned, `out_value` will be set
+         * to `null`.
          * @param remote_name Name
          * @param option_name Option
          * @returns `true` on success, otherwise `false` with `error` set
@@ -1835,13 +3058,28 @@ export namespace OSTree {
          * OSTree remotes are represented by keyfile groups, formatted like:
          * `[remote "remotename"]`. This function returns a value named `option_name`
          * underneath that group, or `default_value` if the remote exists but not the
-         * option name.
+         * option name.  If an error is returned, `out_value` will be set to `null`.
          * @param remote_name Name
          * @param option_name Option
          * @param default_value Value returned if `option_name` is not present
          * @returns `true` on success, otherwise `false` with `error` set
          */
         get_remote_option(remote_name: string, option_name: string, default_value: string | null): [boolean, string];
+
+        /**
+         * Sign the given `data` with the specified keys in `key_id`. Similar to
+         * `ostree_repo_add_gpg_signature_summary()` but can be used on any
+         * data.
+         * 
+         * You can use `ostree_repo_gpg_verify_data()` to verify the signatures.
+         * @param data Data as a {@link GLib.Bytes}
+         * @param old_signatures Existing signatures to append to (or `null`)
+         * @param key_id NULL-terminated array of GPG keys.
+         * @param homedir GPG home directory, or `null`
+         * @param cancellable A {@link Gio.Cancellable}
+         * @returns `true` if `data` has been signed successfully, `false` in case of error (`error` will contain the reason).
+         */
+        gpg_sign_data(data: GLib.Bytes | Uint8Array, old_signatures: GLib.Bytes | Uint8Array | null, key_id: string[], homedir: string | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Bytes];
 
         /**
          * Verify `signatures` for `data` using GPG keys in the keyring for
@@ -1870,6 +3108,17 @@ export namespace OSTree {
         has_object(objtype: ObjectType, checksum: string, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
         /**
+         * Calculate a hash value for the given open repository, suitable for use when
+         * putting it into a hash table. It is an error to call this on an {@link OSTree.Repo}
+         * which is not yet open, as a persistent hash value cannot be calculated until
+         * the repository is open and the inode of its root directory has been loaded.
+         * 
+         * This function does no I/O.
+         * @returns hash value for the {@link OSTree.Repo}
+         */
+        hash(): number;
+
+        /**
          * Copy object named by `objtype` and `checksum` into `self` from the
          * source repository `source`.  If both repositories are of the same
          * type and on the same filesystem, this will simply be a fast Unix
@@ -1885,9 +3134,9 @@ export namespace OSTree {
 
         /**
          * Copy object named by `objtype` and `checksum` into `self` from the
-         * source repository `source`.  If both repositories are of the same
-         * type and on the same filesystem, this will simply be a fast Unix
-         * hard link operation.
+         * source repository `source`. If `trusted` is `true` and both
+         * repositories are of the same type and on the same filesystem,
+         * this will simply be a fast Unix hard link operation.
          * 
          * Otherwise, a copy will be performed.
          * @param source Source repo
@@ -1911,14 +3160,37 @@ export namespace OSTree {
         is_writable(): boolean;
 
         /**
+         * List all local, mirrored, and remote refs, mapping them to the commit
+         * checksums they currently point to in `out_all_refs`. If `match_collection_id`
+         * is specified, the results will be limited to those with an equal collection
+         * ID.
+         * 
+         * `OstreeCollectionRefs` are guaranteed to be returned with their collection ID
+         * set to a non-`null` value; so no refs from `refs/heads` will be listed if no
+         * collection ID is configured for the repository
+         * (ostree_repo_get_collection_id()).
+         * 
+         * If you want to exclude refs from `refs/remotes`, use
+         * {@link OSTree.RepoListRefsExtFlags.EXCLUDE_REMOTES} in `flags`. Similarly use
+         * {@link OSTree.RepoListRefsExtFlags.EXCLUDE_MIRRORS} to exclude refs from
+         * `refs/mirrors`.
+         * @param match_collection_id If non-`null`, only list refs from this collection
+         * @param flags Options controlling listing behavior
+         * @param cancellable Cancellable
+         * @returns `true` on success, `false` otherwise
+         */
+        list_collection_refs(match_collection_id: string | null, flags: RepoListRefsExtFlags, cancellable: Gio.Cancellable | null): [boolean, never];
+
+        /**
          * This function synchronously enumerates all commit objects starting
          * with `start`, returning data in `out_commits`.
-         * @param start List commits starting with this checksum
-         * @param out_commits Array of GVariants
+         * 
+         * To list all commit objects, provide the empty string `""` for `start`.
+         * @param start List commits starting with this checksum (empty string for all)
          * @param cancellable Cancellable
          * @returns `true` on success, `false` on error, and `error` will be set
          */
-        list_commit_objects_starting_with(start: string, out_commits: never, cancellable: Gio.Cancellable | null): boolean;
+        list_commit_objects_starting_with(start: string, cancellable: Gio.Cancellable | null): [boolean, never];
 
         /**
          * This function synchronously enumerates all objects in the
@@ -1935,6 +3207,10 @@ export namespace OSTree {
          * If `refspec_prefix` is `null`, list all local and remote refspecs,
          * with their current values in `out_all_refs`.  Otherwise, only list
          * refspecs which have `refspec_prefix` as a prefix.
+         * 
+         * `out_all_refs` will be returned as a mapping from refspecs (including the
+         * remote name) to checksums. If `refspec_prefix` is non-`null`, it will be
+         * removed as a prefix from the hash table keys.
          * @param refspec_prefix Only list refs which match this prefix
          * @param cancellable Cancellable
          */
@@ -1943,14 +3219,23 @@ export namespace OSTree {
         /**
          * If `refspec_prefix` is `null`, list all local and remote refspecs,
          * with their current values in `out_all_refs`.  Otherwise, only list
-         * refspecs which have `refspec_prefix` as a prefix.  Differently from
-         * `ostree_repo_list_refs()`, the prefix will not be removed from the ref
-         * name.
+         * refspecs which have `refspec_prefix` as a prefix.
+         * 
+         * `out_all_refs` will be returned as a mapping from refspecs (including the
+         * remote name) to checksums. Differently from `ostree_repo_list_refs()`, the
+         * `refspec_prefix` will not be removed from the refspecs in the hash table.
          * @param refspec_prefix Only list refs which match this prefix
          * @param flags Options controlling listing behavior
          * @param cancellable Cancellable
          */
         list_refs_ext(refspec_prefix: string | null, flags: RepoListRefsExtFlags, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
+
+        /**
+         * This function synchronously enumerates all static delta indexes in the
+         * repository, returning its result in `out_indexes`.
+         * @param cancellable Cancellable
+         */
+        list_static_delta_indexes(cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * This function synchronously enumerates all static deltas in the
@@ -1962,7 +3247,7 @@ export namespace OSTree {
         /**
          * A version of `ostree_repo_load_variant()` specialized to commits,
          * capable of returning extended state information.  Currently
-         * the only extended state is {@link OSTree.RepoCommitState.REPO_COMMIT_STATE_PARTIAL}, which
+         * the only extended state is {@link OSTree.RepoCommitState.PARTIAL}, which
          * means that only a sub-path of the commit is available.
          * @param checksum Commit checksum
          */
@@ -1996,11 +3281,86 @@ export namespace OSTree {
         /**
          * Attempt to load the metadata object `sha256` of type `objtype` if it
          * exists, storing the result in `out_variant`.  If it doesn't exist,
-         * `null` is returned.
+         * `out_variant` will be set to `null` and the function will still
+         * return TRUE.
          * @param objtype Object type
          * @param sha256 ASCII checksum
          */
-        load_variant_if_exists(objtype: ObjectType, sha256: string): [boolean, GLib.Variant];
+        load_variant_if_exists(objtype: ObjectType, sha256: string): [boolean, GLib.Variant | null];
+
+        /**
+         * Release a lock of type `lock_type` from the lock state. If the lock state
+         * becomes empty, the repository is unlocked. Otherwise, the lock state only
+         * changes when transitioning from an exclusive lock back to a shared lock. The
+         * requested `lock_type` must be the same type that was requested in the call to
+         * `ostree_repo_lock_push()`. It is a programmer error if these do not match and
+         * the program may abort if the lock would reach an invalid state.
+         * 
+         * `ostree_repo_lock_pop()` waits for the lock depending on the repository's
+         * lock-timeout-secs configuration. When lock-timeout-secs is -1, a blocking lock is
+         * attempted. Otherwise, the lock is removed non-blocking and
+         * `ostree_repo_lock_pop()` will sleep synchronously up to lock-timeout-secs seconds
+         * attempting to remove the lock. If the lock cannot be removed within the
+         * timeout, a {@link Gio.IOErrorEnum.WOULD_BLOCK} error is returned.
+         * 
+         * If `self` is not writable by the user, then no unlocking is attempted and
+         * `true` is returned.
+         * @param lock_type the type of lock to release
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` on success, otherwise `false` with `error` set
+         */
+        lock_pop(lock_type: RepoLockType, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Takes a lock on the repository and adds it to the lock state. If `lock_type`
+         * is {@link OSTree.RepoLockType.SHARED}, a shared lock is taken. If `lock_type` is
+         * {@link OSTree.RepoLockType.EXCLUSIVE}, an exclusive lock is taken. The actual lock
+         * state is only changed when locking a previously unlocked repository or
+         * upgrading the lock from shared to exclusive. If the requested lock type is
+         * unchanged or would represent a downgrade (exclusive to shared), the lock
+         * state is not changed.
+         * 
+         * `ostree_repo_lock_push()` waits for the lock depending on the repository's
+         * lock-timeout-secs configuration. When lock-timeout-secs is -1, a blocking lock is
+         * attempted. Otherwise, the lock is taken non-blocking and
+         * `ostree_repo_lock_push()` will sleep synchronously up to lock-timeout-secs seconds
+         * attempting to acquire the lock. If the lock cannot be acquired within the
+         * timeout, a {@link Gio.IOErrorEnum.WOULD_BLOCK} error is returned.
+         * 
+         * If `self` is not writable by the user, then no locking is attempted and
+         * `true` is returned.
+         * @param lock_type the type of lock to acquire
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` on success, otherwise `false` with `error` set
+         */
+        lock_push(lock_type: RepoLockType, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Commits in the "partial" state do not have all their child objects
+         * written.  This occurs in various situations, such as during a pull,
+         * but also if a "subpath" pull is used, as well as "commit only"
+         * pulls.
+         * 
+         * This function is used by `ostree_repo_pull_with_options()`; you
+         * should use this if you are implementing a different type of transport.
+         * @param checksum Commit SHA-256
+         * @param is_partial Whether or not this commit is partial
+         */
+        mark_commit_partial(checksum: string, is_partial: boolean): boolean;
+
+        /**
+         * Allows the setting of a reason code for a partial commit. Presently
+         * it only supports setting reason bitmask to
+         * OSTREE_REPO_COMMIT_STATE_FSCK_PARTIAL, or
+         * OSTREE_REPO_COMMIT_STATE_NORMAL.  This will allow successive ostree
+         * fsck operations to exit properly with an error code if the
+         * repository has been truncated as a result of fsck trying to repair
+         * it.
+         * @param checksum Commit SHA-256
+         * @param is_partial Whether or not this commit is partial
+         * @param in_state Reason bitmask for partial commit
+         */
+        mark_commit_partial_reason(checksum: string, is_partial: boolean, in_state: RepoCommitState): boolean;
 
         /**
          * @param cancellable 
@@ -2013,8 +3373,18 @@ export namespace OSTree {
          * `ostree_repo_commit_transaction()`, or abort the transaction with
          * `ostree_repo_abort_transaction()`.
          * 
-         * Currently, transactions are not atomic, and aborting a transaction
-         * will not erase any data you  write during the transaction.
+         * Currently, transactions may result in partial commits or data in the target
+         * repository if interrupted during `ostree_repo_commit_transaction()`, and
+         * further writing refs is also not currently atomic.
+         * 
+         * There can be at most one transaction active on a repo at a time per instance
+         * of {@link OSTree.Repo}; however, it is safe to have multiple threads writing objects
+         * on a single {@link OSTree.Repo} instance as long as their lifetime is bounded by the
+         * transaction.
+         * 
+         * Locking: Acquires a `shared` lock; release via commit or abort
+         * Multithreading: This function is *not* MT safe; only one transaction can be
+         * active at a time.
          * @param cancellable Cancellable
          */
         prepare_transaction(cancellable: Gio.Cancellable | null): [boolean, boolean];
@@ -2033,6 +3403,8 @@ export namespace OSTree {
          * Use the {@link OSTree.RepoPruneFlags.NO_PRUNE} to just determine
          * statistics on objects that would be deleted, without actually
          * deleting them.
+         * 
+         * Locking: exclusive
          * @param flags Options controlling prune process
          * @param depth Stop traversal after this many iterations (-1 for unlimited)
          * @param cancellable Cancellable
@@ -2040,9 +3412,30 @@ export namespace OSTree {
         prune(flags: RepoPruneFlags, depth: number, cancellable: Gio.Cancellable | null): [boolean, number, number, number];
 
         /**
+         * Delete content from the repository.  This function is the "backend"
+         * half of the higher level `ostree_repo_prune()`.  To use this function,
+         * you determine the root set yourself, and this function finds all other
+         * unreferenced objects and deletes them.
+         * 
+         * Use this API when you want to perform more selective pruning - for example,
+         * retain all commits from a production branch, but just GC some history from
+         * your dev branch.
+         * 
+         * The {@link OSTree.RepoPruneFlags.NO_PRUNE} flag may be specified to just determine
+         * statistics on objects that would be deleted, without actually deleting them.
+         * 
+         * Locking: exclusive
+         * @param options Options controlling prune process
+         * @param cancellable Cancellable
+         */
+        prune_from_reachable(options: RepoPruneOptions, cancellable: Gio.Cancellable | null): [boolean, number, number, number];
+
+        /**
          * Prune static deltas, if COMMIT is specified then delete static delta files only
          * targeting that commit; otherwise any static delta of non existing commits are
          * deleted.
+         * 
+         * Locking: exclusive
          * @param commit ASCII SHA256 checksum for commit, or `null` for each non existing commit
          * @param cancellable Cancellable
          */
@@ -2074,6 +3467,166 @@ export namespace OSTree {
         pull(remote_name: string, refs_to_fetch: string[] | null, flags: RepoPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * Pull refs from multiple remotes which have been found using
+         * `ostree_repo_find_remotes_async()`.
+         * 
+         * `results` are expected to be in priority order, with the best remotes to pull
+         * from listed first. `ostree_repo_pull_from_remotes_async()` will generally pull
+         * from the remotes in order, but may parallelise its downloads.
+         * 
+         * If an error is encountered when pulling from a given remote, that remote will
+         * be ignored and another will be tried instead. If any refs have not been
+         * downloaded successfully after all remotes have been tried, {@link Gio.IOErrorEnum.FAILED}
+         * will be returned. The results of any successful downloads will remain cached
+         * in the local repository.
+         * 
+         * If `cancellable` is cancelled, {@link Gio.IOErrorEnum.CANCELLED} will be returned
+         * immediately. The results of any successfully completed downloads at that
+         * point will remain cached in the local repository.
+         * 
+         * GPG verification of commits will be used unconditionally.
+         * 
+         * The following `options` are currently defined:
+         * 
+         *   * `flags` (`i`): {@link OSTree.RepoPullFlags} to apply to the pull operation
+         *   * `inherit-transaction` (`b`): `true` to inherit an ongoing transaction on
+         *     the {@link OSTree.Repo}, rather than encapsulating the pull in a new one
+         *   * `depth` (`i`): How far in the history to traverse; default is 0, -1 means infinite
+         *   * `disable-static-deltas` (`b`): Do not use static deltas
+         *   * `http-headers` (`a(ss)`): Additional headers to add to all HTTP requests
+         *   * `subdirs` (`as`): Pull just these subdirectories
+         *   * `update-frequency` (`u`): Frequency to call the async progress callback in
+         *     milliseconds, if any; only values higher than 0 are valid
+         *   * `append-user-agent` (`s`): Additional string to append to the user agent
+         *   * `n-network-retries` (`u`): Number of times to retry each download on receiving
+         *     a transient network error, such as a socket timeout; default is 5, 0
+         *     means return errors without retrying. Since: 2018.6
+         *   * `ref-keyring-map` (`a(sss)`): Array of (collection ID, ref name, keyring
+         *     remote name) tuples specifying which remote's keyring should be used when
+         *     doing GPG verification of each collection-ref. This is useful to prevent a
+         *     remote from serving malicious updates to refs which did not originate from
+         *     it. This can be a subset or superset of the refs being pulled; any ref
+         *     not being pulled will be ignored and any ref without a keyring remote
+         *     will be verified with the keyring of the remote being pulled from.
+         *     Since: 2019.2
+         * @param results `null`-terminated array of remotes to    pull from, including the refs to pull from each
+         * @param options A GVariant `a{sv}` with an extensible set of flags
+         * @param progress an {@link OSTree.AsyncProgress} to update with the operation’s    progress, or `null`
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         */
+        pull_from_remotes_async(results: RepoFinderResult[], options: GLib.Variant | null, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Pull refs from multiple remotes which have been found using
+         * `ostree_repo_find_remotes_async()`.
+         * 
+         * `results` are expected to be in priority order, with the best remotes to pull
+         * from listed first. `ostree_repo_pull_from_remotes_async()` will generally pull
+         * from the remotes in order, but may parallelise its downloads.
+         * 
+         * If an error is encountered when pulling from a given remote, that remote will
+         * be ignored and another will be tried instead. If any refs have not been
+         * downloaded successfully after all remotes have been tried, {@link Gio.IOErrorEnum.FAILED}
+         * will be returned. The results of any successful downloads will remain cached
+         * in the local repository.
+         * 
+         * If `cancellable` is cancelled, {@link Gio.IOErrorEnum.CANCELLED} will be returned
+         * immediately. The results of any successfully completed downloads at that
+         * point will remain cached in the local repository.
+         * 
+         * GPG verification of commits will be used unconditionally.
+         * 
+         * The following `options` are currently defined:
+         * 
+         *   * `flags` (`i`): {@link OSTree.RepoPullFlags} to apply to the pull operation
+         *   * `inherit-transaction` (`b`): `true` to inherit an ongoing transaction on
+         *     the {@link OSTree.Repo}, rather than encapsulating the pull in a new one
+         *   * `depth` (`i`): How far in the history to traverse; default is 0, -1 means infinite
+         *   * `disable-static-deltas` (`b`): Do not use static deltas
+         *   * `http-headers` (`a(ss)`): Additional headers to add to all HTTP requests
+         *   * `subdirs` (`as`): Pull just these subdirectories
+         *   * `update-frequency` (`u`): Frequency to call the async progress callback in
+         *     milliseconds, if any; only values higher than 0 are valid
+         *   * `append-user-agent` (`s`): Additional string to append to the user agent
+         *   * `n-network-retries` (`u`): Number of times to retry each download on receiving
+         *     a transient network error, such as a socket timeout; default is 5, 0
+         *     means return errors without retrying. Since: 2018.6
+         *   * `ref-keyring-map` (`a(sss)`): Array of (collection ID, ref name, keyring
+         *     remote name) tuples specifying which remote's keyring should be used when
+         *     doing GPG verification of each collection-ref. This is useful to prevent a
+         *     remote from serving malicious updates to refs which did not originate from
+         *     it. This can be a subset or superset of the refs being pulled; any ref
+         *     not being pulled will be ignored and any ref without a keyring remote
+         *     will be verified with the keyring of the remote being pulled from.
+         *     Since: 2019.2
+         * @param results `null`-terminated array of remotes to    pull from, including the refs to pull from each
+         * @param options A GVariant `a{sv}` with an extensible set of flags
+         * @param progress an {@link OSTree.AsyncProgress} to update with the operation’s    progress, or `null`
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        pull_from_remotes_async(results: RepoFinderResult[], options: GLib.Variant | null, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Pull refs from multiple remotes which have been found using
+         * `ostree_repo_find_remotes_async()`.
+         * 
+         * `results` are expected to be in priority order, with the best remotes to pull
+         * from listed first. `ostree_repo_pull_from_remotes_async()` will generally pull
+         * from the remotes in order, but may parallelise its downloads.
+         * 
+         * If an error is encountered when pulling from a given remote, that remote will
+         * be ignored and another will be tried instead. If any refs have not been
+         * downloaded successfully after all remotes have been tried, {@link Gio.IOErrorEnum.FAILED}
+         * will be returned. The results of any successful downloads will remain cached
+         * in the local repository.
+         * 
+         * If `cancellable` is cancelled, {@link Gio.IOErrorEnum.CANCELLED} will be returned
+         * immediately. The results of any successfully completed downloads at that
+         * point will remain cached in the local repository.
+         * 
+         * GPG verification of commits will be used unconditionally.
+         * 
+         * The following `options` are currently defined:
+         * 
+         *   * `flags` (`i`): {@link OSTree.RepoPullFlags} to apply to the pull operation
+         *   * `inherit-transaction` (`b`): `true` to inherit an ongoing transaction on
+         *     the {@link OSTree.Repo}, rather than encapsulating the pull in a new one
+         *   * `depth` (`i`): How far in the history to traverse; default is 0, -1 means infinite
+         *   * `disable-static-deltas` (`b`): Do not use static deltas
+         *   * `http-headers` (`a(ss)`): Additional headers to add to all HTTP requests
+         *   * `subdirs` (`as`): Pull just these subdirectories
+         *   * `update-frequency` (`u`): Frequency to call the async progress callback in
+         *     milliseconds, if any; only values higher than 0 are valid
+         *   * `append-user-agent` (`s`): Additional string to append to the user agent
+         *   * `n-network-retries` (`u`): Number of times to retry each download on receiving
+         *     a transient network error, such as a socket timeout; default is 5, 0
+         *     means return errors without retrying. Since: 2018.6
+         *   * `ref-keyring-map` (`a(sss)`): Array of (collection ID, ref name, keyring
+         *     remote name) tuples specifying which remote's keyring should be used when
+         *     doing GPG verification of each collection-ref. This is useful to prevent a
+         *     remote from serving malicious updates to refs which did not originate from
+         *     it. This can be a subset or superset of the refs being pulled; any ref
+         *     not being pulled will be ignored and any ref without a keyring remote
+         *     will be verified with the keyring of the remote being pulled from.
+         *     Since: 2019.2
+         * @param results `null`-terminated array of remotes to    pull from, including the refs to pull from each
+         * @param options A GVariant `a{sv}` with an extensible set of flags
+         * @param progress an {@link OSTree.AsyncProgress} to update with the operation’s    progress, or `null`
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        pull_from_remotes_async(results: RepoFinderResult[], options: GLib.Variant | null, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Finish an asynchronous pull operation started with
+         * `ostree_repo_pull_from_remotes_async()`.
+         * @param result the asynchronous result
+         * @returns `true` on success, `false` otherwise
+         */
+        pull_from_remotes_finish(result: Gio.AsyncResult): boolean;
+
+        /**
          * This is similar to `ostree_repo_pull()`, but only fetches a single
          * subpath.
          * @param remote_name Name of remote
@@ -2089,18 +3642,67 @@ export namespace OSTree {
          * Like `ostree_repo_pull()`, but supports an extensible set of flags.
          * The following are currently defined:
          * 
-         *   * refs (as): Array of string refs
-         *   * flags (i): An instance of {@link OSTree.RepoPullFlags}
-         *   * subdir (s): Pull just this subdirectory
-         *   * override-remote-name (s): If local, add this remote to refspec
-         *   * gpg-verify (b): GPG verify commits
-         *   * gpg-verify-summary (b): GPG verify summary
-         *   * depth (i): How far in the history to traverse; default is 0, -1 means infinite
-         *   * disable-static-deltas (b): Do not use static deltas
-         *   * require-static-deltas (b): Require static deltas
-         *   * override-commit-ids (as): Array of specific commit IDs to fetch for refs
-         *   * dry-run (b): Only print information on what will be downloaded (requires static deltas)
-         *   * override-url (s): Fetch objects from this URL if remote specifies no metalink in options
+         *   * `refs` (`as`): Array of string refs
+         *   * `collection-refs` (`a(sss)`): Array of (collection ID, ref name, checksum) tuples to pull;
+         *     mutually exclusive with `refs` and `override-commit-ids`. Checksums may be the empty
+         *     string to pull the latest commit for that ref
+         *   * `flags` (`i`): An instance of {@link OSTree.RepoPullFlags}
+         *   * `subdir` (`s`): Pull just this subdirectory
+         *   * `subdirs` (`as`): Pull just these subdirectories
+         *   * `override-remote-name` (`s`): If local, add this remote to refspec
+         *   * `gpg-verify` (`b`): GPG verify commits
+         *   * `gpg-verify-summary` (`b`): GPG verify summary
+         *   * `disable-sign-verify` (`b`): Disable signapi verification of commits
+         *   * `disable-sign-verify-summary` (`b`): Disable signapi verification of the summary
+         *   * `depth` (`i`): How far in the history to traverse; default is 0, -1 means infinite
+         *   * `per-object-fsync` (`b`): Perform disk writes more slowly, avoiding a single large I/O sync
+         *   * `disable-static-deltas` (`b`): Do not use static deltas
+         *   * `require-static-deltas` (`b`): Require static deltas
+         *   * `override-commit-ids` (`as`): Array of specific commit IDs to fetch for refs
+         *   * `timestamp-check` (`b`): Verify commit timestamps are newer than current (when pulling via
+         * ref); Since: 2017.11
+         *   * `timestamp-check-from-rev` (`s`): Verify that all fetched commit timestamps are newer than
+         * timestamp of given rev; Since: 2020.4
+         *   * `max-metadata-size` (`t`): Restrict metadata objects to a maximum number of bytes; 0 to
+         * disable.  Since: 2018.9
+         *   * `dry-run` (`b`): Only print information on what will be downloaded (requires static deltas)
+         *   * `override-url` (`s`): Fetch objects from this URL if remote specifies no metalink in options
+         *   * `inherit-transaction` (`b`): Don't initiate, finish or abort a transaction, useful to do
+         * multiple pulls in one transaction.
+         *   * `http-headers` (`a(ss)`): Additional headers to add to all HTTP requests
+         *   * `update-frequency` (`u`): Frequency to call the async progress callback in milliseconds, if
+         * any; only values higher than 0 are valid
+         *   * `localcache-repos` (`as`): File paths for local repos to use as caches when doing remote
+         * fetches
+         *   * `append-user-agent` (`s`): Additional string to append to the user agent
+         *   * `n-network-retries` (`u`): Number of times to retry each download on receiving
+         *     a transient network error, such as a socket timeout; default is 5, 0
+         *     means return errors without retrying. Since: 2018.6
+         *   * `low-speed-limit-bytes` (`u`): The average transfer speed per second of a transfer
+         *      during the time set via "low-speed-time-seconds" for libcurl to abort.
+         *   * `low-speed-time-seconds` (`u`): The time in number seconds that the transfer
+         *      speed should be below the "low-speed-limit-bytes" setting for libcurl to abort.
+         *   * `retry-all-network-errors` (`b`): Retry when network issues happen, instead of
+         *      failing automatically. Currently only affects libcurl. (Default set to true)
+         *   * `max-outstanding-fetcher-requests` (`u`): The max amount of concurrent connections allowed.
+         *   * `ref-keyring-map` (`a(sss)`): Array of (collection ID, ref name, keyring
+         *     remote name) tuples specifying which remote's keyring should be used when
+         *     doing GPG verification of each collection-ref. This is useful to prevent a
+         *     remote from serving malicious updates to refs which did not originate from
+         *     it. This can be a subset or superset of the refs being pulled; any ref
+         *     not being pulled will be ignored and any ref without a keyring remote
+         *     will be verified with the keyring of the remote being pulled from.
+         *     Since: 2019.2
+         *   * `summary-bytes` (`ay'): Contents of the `summary` file to use. If this is
+         *     specified, `summary-sig-bytes` must also be specified. This is
+         *     useful if doing multiple pull operations in a transaction, using
+         *     `ostree_repo_remote_fetch_summary_with_options()` beforehand to download
+         *     the `summary` and `summary.sig` once for the entire transaction. If not
+         *     specified, the `summary` will be downloaded from the remote. Since: 2020.5
+         *   * `summary-sig-bytes` (`ay`): Contents of the `summary.sig` file. If this
+         *     is specified, `summary-bytes` must also be specified. Since: 2020.5
+         *   * `disable-verify-bindings` (`b`): Disable verification of commit bindings.
+         *     Since: 2020.9
          * @param remote_name_or_baseurl Name of remote or file:// url
          * @param options A GVariant a{sv} with an extensible set of flags.
          * @param progress Progress
@@ -2122,7 +3724,7 @@ export namespace OSTree {
          * @param ref Ref or ASCII checksum
          * @param cancellable Cancellable
          */
-        read_commit(ref: string, cancellable: Gio.Cancellable | null): [boolean, Gio.File, string];
+        read_commit(ref: string, cancellable: Gio.Cancellable | null): [boolean, Gio.File | null, string];
 
         /**
          * OSTree commits can have arbitrary metadata associated; this
@@ -2131,18 +3733,65 @@ export namespace OSTree {
          * @param checksum ASCII SHA256 commit checksum
          * @param cancellable Cancellable
          */
-        read_commit_detached_metadata(checksum: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
+        read_commit_detached_metadata(checksum: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
+
+        /**
+         * Regenerate the OSTree repository metadata used by clients to describe
+         * available branches and other metadata.
+         * 
+         * The repository metadata currently consists of the `summary` file. See
+         * `ostree_repo_regenerate_summary()` and `OSTREE_SUMMARY_GVARIANT_FORMAT` for
+         * additional details on its contents.
+         * 
+         * Additionally, if the `core/collection-id` key is set in the configuration, a
+         * `OSTREE_REPO_METADATA_REF` commit will be created.
+         * 
+         * The following `options` are currently defined:
+         * 
+         *   * `gpg-key-ids` (`as`): Array of GPG key IDs to sign the metadata with.
+         *   * `gpg-homedir` (`s`): GPG home directory.
+         *   * `sign-keys` (`av`): Array of keys to sign the metadata with. The key
+         *   type is specific to the sign engine used.
+         *   * `sign-type` (`s`): Sign engine type to use. If not specified,
+         *   `OSTREE_SIGN_NAME_ED25519` is used.
+         * 
+         * Locking: shared
+         * @param additional_metadata A GVariant `a{sv}`, or `null`
+         * @param options A GVariant `a{sv}` with an extensible set of flags
+         * @param cancellable Cancellable
+         */
+        regenerate_metadata(additional_metadata: GLib.Variant | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * An OSTree repository can contain a high level "summary" file that
          * describes the available branches and other metadata.
          * 
-         * It is regenerated automatically after a commit if
-         * `core/commit-update-summary` is set.
+         * If the timetable for making commits and updating the summary file is fairly
+         * regular, setting the `ostree.summary.expires` key in `additional_metadata`
+         * will aid clients in working out when to check for updates.
+         * 
+         * It is regenerated automatically after any ref is
+         * added, removed, or updated if `core/auto-update-summary` is set.
+         * 
+         * If the `core/collection-id` key is set in the configuration, it will be
+         * included as `OSTREE_SUMMARY_COLLECTION_ID` in the summary file. Refs that
+         * have associated collection IDs will be included in the generated summary
+         * file, listed under the `OSTREE_SUMMARY_COLLECTION_MAP` key. Collection IDs
+         * and refs in `OSTREE_SUMMARY_COLLECTION_MAP` are guaranteed to be in
+         * lexicographic order.
+         * 
+         * Locking: shared (Prior to 2021.7, this was exclusive)
          * @param additional_metadata A GVariant of type a{sv}, or `null`
          * @param cancellable Cancellable
          */
         regenerate_summary(additional_metadata: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * By default, an {@link OSTree.Repo} will cache the remote configuration and its
+         * own repo/config data.  This API can be used to reload it.
+         * @param cancellable cancellable
+         */
+        reload_config(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Create a new remote named `name` pointing to `url`.  If `options` is
@@ -2157,7 +3806,7 @@ export namespace OSTree {
          * @param options GVariant of type a{sv}
          * @param cancellable Cancellable
          */
-        remote_add(name: string, url: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
+        remote_add(name: string, url: string | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * A combined function handling the equivalent of
@@ -2170,7 +3819,7 @@ export namespace OSTree {
          * @param options GVariant of type a{sv}
          * @param cancellable Cancellable
          */
-        remote_change(sysroot: Gio.File | null, changeop: RepoRemoteChange, name: string, url: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
+        remote_change(sysroot: Gio.File | null, changeop: RepoRemoteChange, name: string, url: string | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Delete the remote named `name`.  It is an error if the provided
@@ -2189,29 +3838,47 @@ export namespace OSTree {
          * `NULL`.  Likewise if the summary file is not signed, `out_signatures` is
          * set to `NULL`.  In either case the function still returns `true`.
          * 
+         * This method does not verify the signature of the downloaded summary file.
+         * Use `ostree_repo_verify_summary()` for that.
+         * 
          * Parse the summary data into a {@link GLib.Variant} using `g_variant_new_from_bytes()`
          * with #OSTREE_SUMMARY_GVARIANT_FORMAT as the format string.
          * @param name name of a remote
-         * @param out_summary return location for raw summary data, or `null`
-         * @param out_signatures return location for raw summary signature                                data, or `null`
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
          */
-        remote_fetch_summary(name: string, out_summary: GLib.Bytes | Uint8Array | null, out_signatures: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
+        remote_fetch_summary(name: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Bytes | null, GLib.Bytes | null];
 
         /**
          * Like `ostree_repo_remote_fetch_summary()`, but supports an extensible set of flags.
          * The following are currently defined:
          * 
          * - override-url (s): Fetch summary from this URL if remote specifies no metalink in options
+         * - http-headers (a(ss)): Additional headers to add to all HTTP requests
+         * - append-user-agent (s): Additional string to append to the user agent
+         * - n-network-retries (u): Number of times to retry each download on receiving
+         *   a transient network error, such as a socket timeout; default is 5, 0
+         *   means return errors without retrying
          * @param name name of a remote
          * @param options A GVariant a{sv} with an extensible set of flags
-         * @param out_summary return location for raw summary data, or `null`
-         * @param out_signatures return location for raw summary signature                              data, or `null`
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
          */
-        remote_fetch_summary_with_options(name: string, options: GLib.Variant | null, out_summary: GLib.Bytes | Uint8Array | null, out_signatures: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
+        remote_fetch_summary_with_options(name: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Bytes | null, GLib.Bytes | null];
+
+        /**
+         * Enumerate the trusted GPG keys for the remote `name`. If `name` is
+         * `null`, the global GPG keys will be returned. The keys will be
+         * returned in the `out_keys` {@link GLib.PtrArray}. Each element in the array is a
+         * {@link GLib.Variant} of format `OSTREE_GPG_KEY_GVARIANT_FORMAT`. The `key_ids`
+         * array can be used to limit which keys are included. If `key_ids` is
+         * `null`, then all keys are included.
+         * @param name name of the remote or `null`
+         * @param key_ids a `null`-terminated array of GPG key IDs to include, or `null`
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `true` if the GPG keys could be enumerated, `false` otherwise
+         */
+        remote_get_gpg_keys(name: string | null, key_ids: string[] | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant[] | null];
 
         /**
          * Return whether GPG verification is enabled for the remote named `name`
@@ -2250,11 +3917,10 @@ export namespace OSTree {
          * @param name name of a remote
          * @param source_stream a {@link Gio.InputStream}, or `null`
          * @param key_ids a `null`-terminated array of GPG key IDs, or `null`
-         * @param out_imported return location for the number of imported                              keys, or `null`
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
          */
-        remote_gpg_import(name: string, source_stream: Gio.InputStream | null, key_ids: string[] | null, out_imported: number | null, cancellable: Gio.Cancellable | null): boolean;
+        remote_gpg_import(name: string, source_stream: Gio.InputStream | null, key_ids: string[] | null, cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * List available remote names in an {@link OSTree.Repo}.  Remote names are sorted
@@ -2264,10 +3930,59 @@ export namespace OSTree {
         remote_list(): string[];
 
         /**
+         * List refs advertised by `remote_name`, including refs which are part of
+         * collections. If the repository at `remote_name` has a collection ID set, its
+         * refs will be returned with that collection ID; otherwise, they will be returned
+         * with a `null` collection ID in each {@link OSTree.CollectionRef} key in `out_all_refs`.
+         * Any refs for other collections stored in the repository will also be returned.
+         * No filtering is performed.
+         * @param remote_name Name of the remote.
+         * @param cancellable Cancellable
+         */
+        remote_list_collection_refs(remote_name: string, cancellable: Gio.Cancellable | null): [boolean, never];
+
+        /**
          * @param remote_name Name of the remote.
          * @param cancellable Cancellable
          */
         remote_list_refs(remote_name: string, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
+
+        /**
+         * Look up the checksum for the given collection–ref, returning it in `out_rev`.
+         * This will search through the mirrors and remote refs.
+         * 
+         * If `allow_noent` is `true` and the given `ref` cannot be found, `true` will be
+         * returned and `out_rev` will be set to `null`. If `allow_noent` is `false` and
+         * the given `ref` cannot be found, a {@link Gio.IOErrorEnum.NOT_FOUND} error will be
+         * returned.
+         * 
+         * If you want to check only local refs, not remote or mirrored ones, use the
+         * flag {@link OSTree.RepoResolveRevExtFlags.LOCAL_ONLY}. This is analogous to using
+         * `ostree_repo_resolve_rev_ext()` but for collection-refs.
+         * @param ref a collection–ref to resolve
+         * @param allow_noent `true` to not throw an error if `ref` doesn’t exist
+         * @param flags options controlling behaviour
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `true` on success, `false` on failure
+         */
+        resolve_collection_ref(ref: CollectionRef, allow_noent: boolean, flags: RepoResolveRevExtFlags, cancellable: Gio.Cancellable | null): [boolean, string];
+
+        /**
+         * Find the GPG keyring for the given `collection_id`, using the local
+         * configuration from the given {@link OSTree.Repo}. This will search the configured
+         * remotes for ones whose `collection-id` key matches `collection_id`, and will
+         * return the first matching remote.
+         * 
+         * If multiple remotes match and have different keyrings, a debug message will
+         * be emitted, and the first result will be returned. It is expected that the
+         * keyrings should match.
+         * 
+         * If no match can be found, a {@link Gio.IOErrorEnum.NOT_FOUND} error will be returned.
+         * @param collection_id the collection ID to look up a keyring for
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns {@link OSTree.Remote} containing the GPG keyring for    `collection_id`
+         */
+        resolve_keyring_for_collection(collection_id: string, cancellable: Gio.Cancellable | null): Remote;
 
         /**
          * Look up the given refspec, returning the checksum it references in
@@ -2283,6 +3998,9 @@ export namespace OSTree {
          * the parameter `out_rev`. Differently from `ostree_repo_resolve_rev()`,
          * this will not fall back to searching through remote repos if a
          * local ref is specified but not found.
+         * 
+         * The flag {@link OSTree.RepoResolveRevExtFlags.LOCAL_ONLY} is implied so
+         * using it has no effect.
          * @param refspec A refspec
          * @param allow_noent Do not throw an error if refspec does not exist
          * @param flags Options controlling behavior
@@ -2290,19 +4008,35 @@ export namespace OSTree {
         resolve_rev_ext(refspec: string, allow_noent: boolean, flags: RepoResolveRevExtFlags): [boolean, string];
 
         /**
-         * When ostree builds a mutable tree from directory like in
-         * `ostree_repo_write_directory_to_mtree()`, it has to scan all files that you
-         * pass in and compute their checksums. If your commit contains hardlinks from
-         * ostree's existing repo, ostree can build a mapping of device numbers and
-         * inodes to their checksum.
+         * This function is deprecated in favor of using `ostree_repo_devino_cache_new()`,
+         * which allows a precise mapping to be built up between hardlink checkout files
+         * and their checksums between `ostree_repo_checkout_at()` and
+         * `ostree_repo_write_directory_to_mtree()`.
+         * 
+         * When invoking `ostree_repo_write_directory_to_mtree()`, it has to compute the
+         * checksum of all files. If your commit contains hardlinks from a checkout,
+         * this functions builds a mapping of device numbers and inodes to their
+         * checksum.
          * 
          * There is an upfront cost to creating this mapping, as this will scan the
          * entire objects directory. If your commit is composed of mostly hardlinks to
          * existing ostree objects, then this will speed up considerably, so call it
-         * before you call `ostree_write_directory_to_mtree()` or similar.
+         * before you call `ostree_repo_write_directory_to_mtree()` or similar.  However,
+         * `ostree_repo_devino_cache_new()` is better as it avoids scanning all objects.
+         * 
+         * Multithreading: This function is *not* MT safe.
          * @param cancellable Cancellable
          */
         scan_hardlinks(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Like `ostree_repo_set_ref_immediate()`, but creates an alias.
+         * @param remote A remote for the ref
+         * @param ref The ref to write
+         * @param target The ref target to point it to, or `null` to unset
+         * @param cancellable GCancellable
+         */
+        set_alias_ref_immediate(remote: string | null, ref: string, target: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Set a custom location for the cache directory used for e.g.
@@ -2314,6 +4048,26 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          */
         set_cache_dir(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Set or clear the collection ID of this repository. See [collection IDs][collection-ids].
+         * The update will be made in memory, but must be written out to the repository
+         * configuration on disk using `ostree_repo_write_config()`.
+         * @param collection_id new collection ID, or `null` to unset it
+         * @returns `true` on success, `false` otherwise
+         */
+        set_collection_id(collection_id: string | null): boolean;
+
+        /**
+         * This is like `ostree_repo_transaction_set_collection_ref()`, except it may be
+         * invoked outside of a transaction.  This is presently safe for the
+         * case where we're creating or overwriting an existing ref.
+         * @param ref The collection–ref to write
+         * @param checksum The checksum to point it to, or `null` to unset
+         * @param cancellable GCancellable
+         * @returns `true` on success, `false` otherwise
+         */
+        set_collection_ref_immediate(ref: CollectionRef, checksum: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Disable requests to `fsync()` to stable storage during commits.  This
@@ -2328,6 +4082,8 @@ export namespace OSTree {
          * This is like `ostree_repo_transaction_set_ref()`, except it may be
          * invoked outside of a transaction.  This is presently safe for the
          * case where we're creating or overwriting an existing ref.
+         * 
+         * Multithreading: This function is MT safe.
          * @param remote A remote for the ref
          * @param ref The ref to write
          * @param checksum The checksum to point it to, or `null` to unset
@@ -2347,13 +4103,24 @@ export namespace OSTree {
         /**
          * This function is deprecated, sign the summary file instead.
          * Add a GPG signature to a static delta.
-         * @param from_commit 
-         * @param to_commit 
-         * @param key_id 
-         * @param homedir 
-         * @param cancellable 
+         * @param from_commit From commit
+         * @param to_commit To commit
+         * @param key_id key id
+         * @param homedir homedir
+         * @param cancellable cancellable
          */
         sign_delta(from_commit: string, to_commit: string, key_id: string, homedir: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Validate the commit data using the commit metadata which must
+         * contain at least one valid signature.  If GPG and signapi are
+         * both enabled, then both must find at least one valid signature.
+         * @param remote_name Name of remote
+         * @param commit_data Commit object data (GVariant)
+         * @param commit_metadata Commit metadata (GVariant `a{sv}`), must contain at least one valid signature
+         * @param flags Optionally disable GPG or signapi
+         */
+        signature_verify_commit_data(remote_name: string, commit_data: GLib.Bytes | Uint8Array, commit_metadata: GLib.Bytes | Uint8Array, flags: RepoVerifyFlags): [boolean, string];
 
         /**
          * Given a directory representing an already-downloaded static delta
@@ -2367,6 +4134,22 @@ export namespace OSTree {
         static_delta_execute_offline(dir_or_file: Gio.File, skip_validation: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * Given a directory representing an already-downloaded static delta
+         * on disk, apply it, generating a new commit.
+         * If sign is passed, the static delta signature is verified.
+         * If sign-verify-deltas configuration option is set and static delta is signed,
+         * signature verification will be mandatory before apply the static delta.
+         * The directory must be named with the form "FROM-TO", where both are
+         * checksums, and it must contain a file named "superblock", along with at least
+         * one part.
+         * @param dir_or_file Path to a directory containing static delta data, or directly to the superblock
+         * @param sign Signature engine used to check superblock
+         * @param skip_validation If `true`, assume data integrity
+         * @param cancellable Cancellable
+         */
+        static_delta_execute_offline_with_signature(dir_or_file: Gio.File, sign: Sign, skip_validation: boolean, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
          * Generate a lookaside "static delta" from `from` (`null` means
          * from-empty) which can generate the objects in `to`.  This delta is
          * an optimization over fetching individual objects, and can be
@@ -2374,7 +4157,8 @@ export namespace OSTree {
          * 
          * The `params` argument should be an a{sv}.  The following attributes
          * are known:
-         *   - min-fallback-size: u: Minimum uncompressed size in megabytes to use fallback, 0 to disable fallbacks
+         *   - min-fallback-size: u: Minimum uncompressed size in megabytes to use fallback, 0 to disable
+         * fallbacks
          *   - max-chunk-size: u: Maximum size in megabytes of a delta part
          *   - max-bsdiff-size: u: Maximum size in megabytes to consider bsdiff compression
          *   for input files
@@ -2382,8 +4166,12 @@ export namespace OSTree {
          *   - bsdiff-enabled: b: Enable bsdiff compression.  Default TRUE.
          *   - inline-parts: b: Put part data in header, to get a single file delta.  Default FALSE.
          *   - verbose: b: Print diagnostic messages.  Default FALSE.
-         *   - endianness: b: Deltas use host byte order by default; this option allows choosing (G_BIG_ENDIAN or G_LITTLE_ENDIAN)
-         *   - filename: ay: Save delta superblock to this filename, and parts in the same directory.  Default saves to repository.
+         *   - endianness: b: Deltas use host byte order by default; this option allows choosing
+         * (G_BIG_ENDIAN or G_LITTLE_ENDIAN)
+         *   - filename: ^ay: Save delta superblock to this filename (bytestring), and parts in the same
+         * directory.  Default saves to repository.
+         *   - sign-name: ^ay: Signature type to use (bytestring).
+         *   - sign-key-ids: ^as: NULL-terminated array of keys used to sign delta superblock.
          * @param opt High level optimization choice
          * @param from ASCII SHA256 checksum of origin, or `null`
          * @param to ASCII SHA256 checksum of target
@@ -2391,7 +4179,49 @@ export namespace OSTree {
          * @param params Parameters, see below
          * @param cancellable Cancellable
          */
-        static_delta_generate(opt: StaticDeltaGenerateOpt, from: string, to: string, metadata: GLib.Variant | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
+        static_delta_generate(opt: StaticDeltaGenerateOpt, from: string | null, to: string, metadata: GLib.Variant | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * The delta index for a particular commit lists all the existing deltas that can be used
+         * when downloading that commit. This operation regenerates these indexes, either for
+         * a particular commit (if `opt_to_commit` is non-`null`), or for all commits that
+         * are reachable by an existing delta (if `opt_to_commit` is `null`).
+         * 
+         * This is normally called automatically when the summary is updated in
+         * `ostree_repo_regenerate_summary()`.
+         * 
+         * Locking: shared
+         * @param flags Flags affecting the indexing operation
+         * @param opt_to_commit ASCII SHA256 checksum of target commit, or `null` to index all targets
+         * @param cancellable Cancellable
+         */
+        static_delta_reindex(flags: StaticDeltaIndexFlags, opt_to_commit: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Verify static delta file signature.
+         * @param delta_id delta path
+         * @param sign Signature engine used to check superblock
+         * @returns TRUE if the signature of static delta file is valid using the signature engine provided, FALSE otherwise.
+         */
+        static_delta_verify_signature(delta_id: string, sign: Sign): [boolean, string];
+
+        /**
+         * If `checksum` is not `null`, then record it as the target of local ref named
+         * `ref`.
+         * 
+         * Otherwise, if `checksum` is `null`, then record that the ref should
+         * be deleted.
+         * 
+         * The change will not be written out immediately, but when the transaction
+         * is completed with `ostree_repo_commit_transaction()`. If the transaction
+         * is instead aborted with `ostree_repo_abort_transaction()`, no changes will
+         * be made to the repository.
+         * 
+         * Multithreading: Since v2017.15 this function is MT safe.
+         * @param ref The collection–ref to write
+         * @param checksum The checksum to point it to
+         */
+        transaction_set_collection_ref(ref: CollectionRef, checksum: string | null): void;
 
         /**
          * If `checksum` is not `null`, then record it as the target of ref named
@@ -2401,24 +4231,36 @@ export namespace OSTree {
          * Otherwise, if `checksum` is `null`, then record that the ref should
          * be deleted.
          * 
-         * The change will not be written out immediately, but when the transaction
-         * is completed with `ostree_repo_commit_transaction()`. If the transaction
-         * is instead aborted with `ostree_repo_abort_transaction()`, no changes will
-         * be made to the repository.
+         * The change will be written when the transaction is completed with
+         * `ostree_repo_commit_transaction()`; that function takes care of writing all of
+         * the objects (such as the commit referred to by `checksum`) before updating the
+         * refs. If the transaction is instead aborted with
+         * `ostree_repo_abort_transaction()`, no changes to the ref will be made to the
+         * repository.
+         * 
+         * Note however that currently writing *multiple* refs is not truly atomic; if
+         * the process or system is terminated during
+         * `ostree_repo_commit_transaction()`, it is possible that just some of the refs
+         * will have been updated. Your application should take care to handle this
+         * case.
+         * 
+         * Multithreading: Since v2017.15 this function is MT safe.
          * @param remote A remote for the ref
          * @param ref The ref to write
          * @param checksum The checksum to point it to
          */
-        transaction_set_ref(remote: string | null, ref: string, checksum: string): void;
+        transaction_set_ref(remote: string | null, ref: string, checksum: string | null): void;
 
         /**
          * Like `ostree_repo_transaction_set_ref()`, but takes concatenated
          * `refspec` format as input instead of separate remote and name
          * arguments.
+         * 
+         * Multithreading: Since v2017.15 this function is MT safe.
          * @param refspec The refspec to write
          * @param checksum The checksum to point it to
          */
-        transaction_set_refspec(refspec: string, checksum: string): void;
+        transaction_set_refspec(refspec: string, checksum: string | null): void;
 
         /**
          * Create a new set `out_reachable` containing all objects reachable
@@ -2428,6 +4270,16 @@ export namespace OSTree {
          * @param cancellable Cancellable
          */
         traverse_commit(commit_checksum: string, maxdepth: number, cancellable: Gio.Cancellable | null): [boolean, never];
+
+        /**
+         * Add all commit objects directly reachable via a ref to `reachable`.
+         * 
+         * Locking: shared
+         * @param depth Depth of traversal
+         * @param reachable Set of reachable objects (will be modified)
+         * @param cancellable Cancellable
+         */
+        traverse_reachable_refs(depth: number, reachable: never, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Check for a valid GPG signature on commit named by the ASCII
@@ -2452,6 +4304,33 @@ export namespace OSTree {
         verify_commit_ext(commit_checksum: string, keyringdir: Gio.File | null, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): GpgVerifyResult;
 
         /**
+         * Read GPG signature(s) on the commit named by the ASCII checksum
+         * `commit_checksum` and return detailed results, based on the keyring
+         * configured for `remote`.
+         * @param commit_checksum ASCII SHA256 checksum
+         * @param remote_name OSTree remote to use for configuration
+         * @param cancellable Cancellable
+         * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
+         */
+        verify_commit_for_remote(commit_checksum: string, remote_name: string, cancellable: Gio.Cancellable | null): GpgVerifyResult;
+
+        /**
+         * Verify `signatures` for `summary` data using GPG keys in the given keyring (GPG
+         * homedir), and return an {@link OSTree.GpgVerifyResult}.
+         * 
+         * This is intended to be used on a server repository, for verifying the
+         * signatures on the summary file it exports. Use `ostree_repo_verify_summary()`
+         * to verify the summary file from a configured remote in a repository.
+         * @param summary Summary data as a {@link GLib.Bytes}
+         * @param signatures Summary signatures as a {@link GLib.Bytes}
+         * @param keyfiledir 
+         * @param extra_keyring Path to additional keyring file (not a directory)
+         * @param cancellable Cancellable
+         * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
+         */
+        verify_local_summary(summary: GLib.Bytes | Uint8Array, signatures: GLib.Bytes | Uint8Array, keyfiledir: Gio.File, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): GpgVerifyResult;
+
+        /**
          * Verify `signatures` for `summary` data using GPG keys in the keyring for
          * `remote_name`, and return an {@link OSTree.GpgVerifyResult}.
          * @param remote_name Name of remote
@@ -2474,8 +4353,23 @@ export namespace OSTree {
         write_archive_to_mtree(archive: Gio.File, mtree: MutableTree, modifier: RepoCommitModifier | null, autocreate_parents: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * Read an archive from `fd` and import it into the repository, writing
+         * its file structure to `mtree`.
+         * @param fd A file descriptor to read the archive from
+         * @param mtree The {@link OSTree.MutableTree} to write to
+         * @param modifier Optional commit modifier
+         * @param autocreate_parents Autocreate parent directories
+         * @param cancellable Cancellable
+         */
+        write_archive_to_mtree_from_fd(fd: number, mtree: MutableTree, modifier: RepoCommitModifier | null, autocreate_parents: boolean, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
          * Write a commit metadata object, referencing `root_contents_checksum`
          * and `root_metadata_checksum`.
+         * This uses the current time as the commit timestamp, but it can be
+         * overridden with an explicit timestamp via the
+         * [standard](https://reproducible-builds.org/specs/source-date-epoch/)
+         * `SOURCE_DATE_EPOCH` environment flag.
          * @param parent ASCII SHA256 checksum for parent, or `null` for none
          * @param subject Subject
          * @param body Body
@@ -2509,12 +4403,20 @@ export namespace OSTree {
         write_commit_with_time(parent: string | null, subject: string | null, body: string | null, metadata: GLib.Variant | null, root: RepoFile, time: bigint | number, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
-         * Save `new_config` in place of this repository's config file.  Note
-         * that `new_config` should not be modified after - this function
-         * simply adds a reference.
-         * @param new_config Overwrite the config file with this data.  Do not change later!
+         * Save `new_config` in place of this repository's config file.
+         * 
+         * Note: This will not validate many elements of the configuration.
+         * Prefer `ostree_repo_write_config_and_reload`.
+         * @param new_config Overwrite the config file with this data
          */
         write_config(new_config: GLib.KeyFile): boolean;
+
+        /**
+         * Save `new_config` in place of this repository's config file and reload.
+         * The config will be validated.
+         * @param new_config Overwrite the config file with this data, and reload
+         */
+        write_config_and_reload(new_config: GLib.KeyFile): boolean;
 
         /**
          * Store the content object streamed as `object_input`,
@@ -2601,7 +4503,7 @@ export namespace OSTree {
         write_directory_to_mtree(dir: Gio.File, mtree: MutableTree, modifier: RepoCommitModifier | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * Store the metadata object `variant`.  Return the checksum
+         * Store the metadata object `object`.  Return the checksum
          * as `out_csum`.
          * 
          * If `expected_checksum` is not `null`, verify it against the
@@ -2621,7 +4523,7 @@ export namespace OSTree {
          * @param object Metadata
          * @param cancellable Cancellable
          */
-        write_metadata_async(objtype: ObjectType, expected_checksum: string | null, object: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        write_metadata_async(objtype: ObjectType, expected_checksum: string | null, object: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>;
 
         /**
          * Asynchronously store the metadata object `variant`.  If provided,
@@ -2643,13 +4545,13 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @param callback Invoked when metadata is writed
          */
-        write_metadata_async(objtype: ObjectType, expected_checksum: string | null, object: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        write_metadata_async(objtype: ObjectType, expected_checksum: string | null, object: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Uint8Array> | void;
 
         /**
-         * @param result 
-         * @param out_csum 
+         * Complete a call to `ostree_repo_write_metadata_async()`.
+         * @param result Result
          */
-        write_metadata_finish(result: Gio.AsyncResult, out_csum: number): boolean;
+        write_metadata_finish(result: Gio.AsyncResult): [boolean, Uint8Array];
 
         /**
          * Store the metadata object `variant`; the provided `checksum` is
@@ -2680,6 +4582,52 @@ export namespace OSTree {
          * @param cancellable Cancellable
          */
         write_mtree(mtree: MutableTree, cancellable: Gio.Cancellable | null): [boolean, Gio.File];
+
+        /**
+         * Create an {@link OSTree.ContentWriter} that allows streaming output into
+         * the repository.
+         * @param expected_checksum Expected checksum (SHA-256 hex string)
+         * @param uid user id
+         * @param gid group id
+         * @param mode Unix file mode
+         * @param content_len Expected content length
+         * @param xattrs Extended attributes (GVariant type `(ayay)`)
+         * @returns A new writer, or `null` on error
+         */
+        write_regfile(expected_checksum: string | null, uid: number, gid: number, mode: number, content_len: bigint | number, xattrs: GLib.Variant | null): ContentWriter;
+
+        /**
+         * Synchronously create a file object from the provided content.  This API
+         * is intended for small files where it is reasonable to buffer the entire
+         * content in memory.
+         * 
+         * Unlike `ostree_repo_write_content()`, if `expected_checksum` is provided,
+         * this function will not check for the presence of the object beforehand.
+         * @param expected_checksum The expected checksum
+         * @param uid User id
+         * @param gid Group id
+         * @param mode File mode
+         * @param xattrs Extended attributes, GVariant of type (ayay)
+         * @param buf File contents
+         * @param cancellable Cancellable
+         * @returns Checksum (as a hex string) of the committed file
+         */
+        write_regfile_inline(expected_checksum: string | null, uid: number, gid: number, mode: number, xattrs: GLib.Variant | null, buf: Uint8Array | string, cancellable: Gio.Cancellable | null): string;
+
+        /**
+         * Synchronously create a symlink object.
+         * 
+         * Unlike `ostree_repo_write_content()`, if `expected_checksum` is provided,
+         * this function will not check for the presence of the object beforehand.
+         * @param expected_checksum The expected checksum
+         * @param uid User id
+         * @param gid Group id
+         * @param xattrs Extended attributes, GVariant of type (ayay)
+         * @param symlink_target Target of the symbolic link
+         * @param cancellable Cancellable
+         * @returns Checksum (as a hex string) of the committed file
+         */
+        write_symlink(expected_checksum: string | null, uid: number, gid: number, xattrs: GLib.Variant | null, symlink_target: string, cancellable: Gio.Cancellable | null): string;
     }
 
 
@@ -2725,6 +4673,10 @@ export namespace OSTree {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Ensure that the backing metadata is loaded.
+         * @returns `false` if the operation failed, `true` otherwise
+         */
         ensure_resolved(): boolean;
 
         get_checksum(): string;
@@ -2740,36 +4692,50 @@ export namespace OSTree {
         get_root(): RepoFile;
 
         /**
-         * @param out_xattrs 
-         * @param cancellable 
+         * @param cancellable Cancellable
          */
-        get_xattrs(out_xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+        get_xattrs(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
         /**
-         * @param name 
-         * @param is_dir 
-         * @param out_container 
+         * @param name name of the child
          */
-        tree_find_child(name: string, is_dir: boolean, out_container: GLib.Variant): number;
-
-        tree_get_contents(): GLib.Variant;
-
-        tree_get_contents_checksum(): string;
-
-        tree_get_metadata(): GLib.Variant;
-
-        tree_get_metadata_checksum(): string;
+        tree_find_child(name: string): [number, boolean, GLib.Variant];
 
         /**
-         * @param n 
-         * @param attributes 
-         * @param flags 
-         * @param out_info 
-         * @param cancellable 
+         * This API will return `null` if the file is not "resolved" i.e. in a loaded
+         * state.  It will also return `null` if this path is not a directory tree.
+         * @returns The GVariant representing the children of this directory.
          */
-        tree_query_child(n: number, attributes: string, flags: Gio.FileQueryInfoFlags, out_info: Gio.FileInfo, cancellable: Gio.Cancellable | null): boolean;
+        tree_get_contents(): GLib.Variant | null;
 
         /**
+         * @returns The SHA256 digest of the content object, or `null` if this is not a directory.
+         */
+        tree_get_contents_checksum(): string | null;
+
+        /**
+         * This API will return `null` if the file is not "resolved" i.e. in a loaded
+         * state.  It will also return `null` if this path is not a directory tree.
+         * @returns The GVariant representing the metadata for this directory.
+         */
+        tree_get_metadata(): GLib.Variant | null;
+
+        /**
+         * @returns The SHA256 digest of the metadata object, or `null` if this is not a directory.
+         */
+        tree_get_metadata_checksum(): string | null;
+
+        /**
+         * @param n the child number
+         * @param attributes an attribute string to match, see `g_file_attribute_matcher_new()`
+         * @param flags a {@link Gio.FileQueryInfoFlags}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `true` on success and the `out_info` is set, `false` otherwise.
+         */
+        tree_query_child(n: number, attributes: string, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): [boolean, Gio.FileInfo | null];
+
+        /**
+         * Replace the metadata checksum and metadata object.
          * @param checksum 
          * @param metadata 
          */
@@ -3315,23 +5281,23 @@ export namespace OSTree {
 
         /**
          * Gets the requested information about the files in a directory.
-         * The result is a {@link Gio.FileEnumerator} object that will give out
-         * {@link Gio.FileInfo} objects for all the files in the directory.
+         * The result is a {@link FileEnumerator} object that will give out
+         * {@link FileInfo} objects for all the files in the directory.
          * 
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
          * it's not possible to read a particular requested attribute
          * from a file - it just won't be set. `attributes` should
          * be a comma-separated list of attributes or attribute wildcards.
-         * The wildcard "*" means all attributes, and a wildcard like
-         * "standard::*" means all attributes in the standard namespace.
-         * An example attribute query be "standard::*,owner::user".
+         * The wildcard `*` means all attributes, and a wildcard like
+         * `"standard::*"` means all attributes in the standard namespace.
+         * An example attribute query be `"standard::*,owner::user"`.
          * The standard attributes are available as defines, like
-         * `G_FILE_ATTRIBUTE_STANDARD_NAME`. `G_FILE_ATTRIBUTE_STANDARD_NAME` should
-         * always be specified if you plan to call `g_file_enumerator_get_child()` or
-         * `g_file_enumerator_iterate()` on the returned enumerator.
+         * {@link FILE_ATTRIBUTE_STANDARD_NAME}. {@link FILE_ATTRIBUTE_STANDARD_NAME} should
+         * always be specified if you plan to call {@link FileEnumerator.get_child} or
+         * {@link FileEnumerator.iterate} on the returned enumerator.
          * 
-         * If `cancellable` is not `null`, then the operation can be cancelled
+         * If `cancellable` is not `NULL`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
@@ -3342,7 +5308,7 @@ export namespace OSTree {
          * @param attributes an attribute query string
          * @param flags a set of {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @returns A {@link Gio.FileEnumerator} if successful,   `null` on error. Free the returned object with `g_object_unref()`.
+         * @returns A {@link Gio.FileEnumerator} if successful,   `null` on error. Free the returned object with {@link GObject.Object.unref}.
          */
         enumerate_children(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): Gio.FileEnumerator;
 
@@ -3413,9 +5379,17 @@ export namespace OSTree {
         /**
          * Checks if the two given `GFiles` refer to the same file.
          * 
+         * This function can be used with {@link Gio.File.hash} to insert
+         * {@link Gio.File}s efficiently in a hash table.
+         * 
          * Note that two `GFiles` that differ can still refer to the same
          * file on the filesystem due to various forms of filename
-         * aliasing.
+         * aliasing. For local files, this function essentially compares the file paths,
+         * so two {@link Gio.File}s which point to different hard or soft links will not
+         * be considered equal, despite pointing to the same content.
+         * 
+         * For determining whether two files are hardlinked, see
+         * {@link Gio.FILE_ATTRIBUTE_ID_FILE}.
          * 
          * This call does no blocking I/O.
          * @param file2 the second {@link Gio.File}
@@ -4478,7 +6452,7 @@ export namespace OSTree {
          * that should be gathered. It is not an error if it's not possible
          * to read a particular requested attribute from a file - it just
          * won't be set. `attributes` should be a comma-separated list of
-         * attributes or attribute wildcards. The wildcard "*" means all
+         * attributes or attribute wildcards. The wildcard "\*" means all
          * attributes, and a wildcard like "filesystem::*" means all attributes
          * in the filesystem namespace. The standard namespace for filesystem
          * attributes is "filesystem". Common attributes of interest are
@@ -4587,7 +6561,7 @@ export namespace OSTree {
          *  - {@link Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME}
          * 
          * `attributes` should be a comma-separated list of attributes or attribute
-         * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+         * wildcards. The wildcard `"\*"` means all attributes, and a wildcard like
          * `"standard::*"` means all attributes in the standard namespace.
          * An example attribute query might be `"standard::*,owner::user"`.
          * The standard attributes are available as defines, like
@@ -5012,9 +6986,44 @@ export namespace OSTree {
          * @param make_backup `true` if a backup should be created
          * @param flags a set of {@link Gio.FileCreateFlags}
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         */
+        replace_contents_bytes_async(contents: GLib.Bytes | Uint8Array, etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
+
+        /**
+         * Same as `g_file_replace_contents_async()` but takes a {@link GLib.Bytes} input instead.
+         * This function will keep a ref on `contents` until the operation is done.
+         * Unlike `g_file_replace_contents_async()` this allows forgetting about the
+         * content without waiting for the callback.
+         * 
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * `g_file_replace_contents_finish()`.
+         * @param contents a {@link GLib.Bytes}
+         * @param etag a new [entity tag](#entity-tags) for the `file`, or `null`
+         * @param make_backup `true` if a backup should be created
+         * @param flags a set of {@link Gio.FileCreateFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         replace_contents_bytes_async(contents: GLib.Bytes | Uint8Array, etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Same as `g_file_replace_contents_async()` but takes a {@link GLib.Bytes} input instead.
+         * This function will keep a ref on `contents` until the operation is done.
+         * Unlike `g_file_replace_contents_async()` this allows forgetting about the
+         * content without waiting for the callback.
+         * 
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * `g_file_replace_contents_finish()`.
+         * @param contents a {@link GLib.Bytes}
+         * @param etag a new [entity tag](#entity-tags) for the `file`, or `null`
+         * @param make_backup `true` if a backup should be created
+         * @param flags a set of {@link Gio.FileCreateFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        replace_contents_bytes_async(contents: GLib.Bytes | Uint8Array, etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes an asynchronous replace of the given `file`. See
@@ -6044,23 +8053,23 @@ export namespace OSTree {
 
         /**
          * Gets the requested information about the files in a directory.
-         * The result is a {@link Gio.FileEnumerator} object that will give out
-         * {@link Gio.FileInfo} objects for all the files in the directory.
+         * The result is a {@link FileEnumerator} object that will give out
+         * {@link FileInfo} objects for all the files in the directory.
          * 
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
          * it's not possible to read a particular requested attribute
          * from a file - it just won't be set. `attributes` should
          * be a comma-separated list of attributes or attribute wildcards.
-         * The wildcard "*" means all attributes, and a wildcard like
-         * "standard::*" means all attributes in the standard namespace.
-         * An example attribute query be "standard::*,owner::user".
+         * The wildcard `*` means all attributes, and a wildcard like
+         * `"standard::*"` means all attributes in the standard namespace.
+         * An example attribute query be `"standard::*,owner::user"`.
          * The standard attributes are available as defines, like
-         * `G_FILE_ATTRIBUTE_STANDARD_NAME`. `G_FILE_ATTRIBUTE_STANDARD_NAME` should
-         * always be specified if you plan to call `g_file_enumerator_get_child()` or
-         * `g_file_enumerator_iterate()` on the returned enumerator.
+         * {@link FILE_ATTRIBUTE_STANDARD_NAME}. {@link FILE_ATTRIBUTE_STANDARD_NAME} should
+         * always be specified if you plan to call {@link FileEnumerator.get_child} or
+         * {@link FileEnumerator.iterate} on the returned enumerator.
          * 
-         * If `cancellable` is not `null`, then the operation can be cancelled
+         * If `cancellable` is not `NULL`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
@@ -6106,9 +8115,17 @@ export namespace OSTree {
         /**
          * Checks if the two given `GFiles` refer to the same file.
          * 
+         * This function can be used with {@link Gio.File.hash} to insert
+         * {@link Gio.File}s efficiently in a hash table.
+         * 
          * Note that two `GFiles` that differ can still refer to the same
          * file on the filesystem due to various forms of filename
-         * aliasing.
+         * aliasing. For local files, this function essentially compares the file paths,
+         * so two {@link Gio.File}s which point to different hard or soft links will not
+         * be considered equal, despite pointing to the same content.
+         * 
+         * For determining whether two files are hardlinked, see
+         * {@link Gio.FILE_ATTRIBUTE_ID_FILE}.
          * 
          * This call does no blocking I/O.
          * @param file2 the second {@link Gio.File}
@@ -6700,7 +8717,7 @@ export namespace OSTree {
          * that should be gathered. It is not an error if it's not possible
          * to read a particular requested attribute from a file - it just
          * won't be set. `attributes` should be a comma-separated list of
-         * attributes or attribute wildcards. The wildcard "*" means all
+         * attributes or attribute wildcards. The wildcard "\*" means all
          * attributes, and a wildcard like "filesystem::*" means all attributes
          * in the filesystem namespace. The standard namespace for filesystem
          * attributes is "filesystem". Common attributes of interest are
@@ -6773,7 +8790,7 @@ export namespace OSTree {
          *  - {@link Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME}
          * 
          * `attributes` should be a comma-separated list of attributes or attribute
-         * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+         * wildcards. The wildcard `"\*"` means all attributes, and a wildcard like
          * `"standard::*"` means all attributes in the standard namespace.
          * An example attribute query might be `"standard::*,owner::user"`.
          * The standard attributes are available as defines, like
@@ -7298,15 +9315,788 @@ export namespace OSTree {
     }
 
 
+    namespace RepoFinderAvahi {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, RepoFinder.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class RepoFinderAvahi extends GObject.Object implements RepoFinder {
+        static $gtype: GObject.GType<RepoFinderAvahi>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: RepoFinderAvahi.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<RepoFinderAvahi.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](context: GLib.MainContext | null): RepoFinderAvahi;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof RepoFinderAvahi.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderAvahi.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof RepoFinderAvahi.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderAvahi.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof RepoFinderAvahi.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderAvahi.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Start monitoring the local network for peers who are advertising OSTree
+         * repositories, using Avahi. In order for this to work, the {@link GLib.MainContext}
+         * passed to `self` at construction time must be iterated (so it will typically
+         * be the global {@link GLib.MainContext}, or be a separate {@link GLib.MainContext} in a worker
+         * thread).
+         * 
+         * This will return an error ({@link Gio.IOErrorEnum.FAILED}) if initialisation fails, or if
+         * Avahi support is not available ({@link Gio.IOErrorEnum.NOT_SUPPORTED}). In either case,
+         * the {@link OSTree.RepoFinderAvahi} instance is useless afterwards and should be
+         * destroyed.
+         * 
+         * Call `ostree_repo_finder_avahi_stop()` to stop the repo finder.
+         * 
+         * It is an error to call this function multiple times on the same
+         * {@link OSTree.RepoFinderAvahi} instance, or to call it after
+         * `ostree_repo_finder_avahi_stop()`.
+         */
+        start(): void;
+
+        /**
+         * Stop monitoring the local network for peers who are advertising OSTree
+         * repositories. If any resolve tasks (from `ostree_repo_finder_resolve_async()`)
+         * are in progress, they will be cancelled and will return {@link Gio.IOErrorEnum.CANCELLED}.
+         * 
+         * Call `ostree_repo_finder_avahi_start()` to start the repo finder.
+         * 
+         * It is an error to call this function multiple times on the same
+         * {@link OSTree.RepoFinderAvahi} instance, or to call it before
+         * `ostree_repo_finder_avahi_start()`.
+         */
+        stop(): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null): globalThis.Promise<RepoFinderResult[]>;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RepoFinderResult[]> | void;
+
+        /**
+         * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+         * @param result {@link Gio.AsyncResult} from the callback
+         * @returns array of zero    or more results
+         */
+        resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         * @virtual
+         */
+        vfunc_resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+         * @param result {@link Gio.AsyncResult} from the callback
+         * @virtual
+         */
+        vfunc_resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+    }
+
+
+    namespace RepoFinderConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, RepoFinder.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class RepoFinderConfig extends GObject.Object implements RepoFinder {
+        static $gtype: GObject.GType<RepoFinderConfig>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: RepoFinderConfig.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<RepoFinderConfig.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](): RepoFinderConfig;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof RepoFinderConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderConfig.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof RepoFinderConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderConfig.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof RepoFinderConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null): globalThis.Promise<RepoFinderResult[]>;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RepoFinderResult[]> | void;
+
+        /**
+         * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+         * @param result {@link Gio.AsyncResult} from the callback
+         * @returns array of zero    or more results
+         */
+        resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         * @virtual
+         */
+        vfunc_resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+         * @param result {@link Gio.AsyncResult} from the callback
+         * @virtual
+         */
+        vfunc_resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+    }
+
+
+    namespace RepoFinderMount {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::monitor": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, RepoFinder.ConstructorProps {
+            monitor: Gio.VolumeMonitor;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class RepoFinderMount extends GObject.Object implements RepoFinder {
+        static $gtype: GObject.GType<RepoFinderMount>;
+
+        // Properties
+        /**
+         * Volume monitor to use to look up mounted volumes when queried.
+         * @since 2018.6
+         * @construct-only
+         */
+        get monitor(): Gio.VolumeMonitor;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: RepoFinderMount.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<RepoFinderMount.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](monitor: Gio.VolumeMonitor | null): RepoFinderMount;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof RepoFinderMount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderMount.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof RepoFinderMount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderMount.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof RepoFinderMount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderMount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null): globalThis.Promise<RepoFinderResult[]>;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RepoFinderResult[]> | void;
+
+        /**
+         * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+         * @param result {@link Gio.AsyncResult} from the callback
+         * @returns array of zero    or more results
+         */
+        resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         * @virtual
+         */
+        vfunc_resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+         * @param result {@link Gio.AsyncResult} from the callback
+         * @virtual
+         */
+        vfunc_resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+    }
+
+
+    namespace RepoFinderOverride {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, RepoFinder.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class RepoFinderOverride extends GObject.Object implements RepoFinder {
+        static $gtype: GObject.GType<RepoFinderOverride>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: RepoFinderOverride.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<RepoFinderOverride.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](): RepoFinderOverride;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof RepoFinderOverride.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderOverride.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof RepoFinderOverride.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFinderOverride.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof RepoFinderOverride.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFinderOverride.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Add the given `uri` to the set of URIs which the repo finder will search for
+         * matching refs when `ostree_repo_finder_resolve_async()` is called on it.
+         * @param uri URI to add to the repo finder
+         */
+        add_uri(uri: string): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null): globalThis.Promise<RepoFinderResult[]>;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RepoFinderResult[]> | void;
+
+        /**
+         * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+         * @param result {@link Gio.AsyncResult} from the callback
+         * @returns array of zero    or more results
+         */
+        resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         * @virtual
+         */
+        vfunc_resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+         * @param result {@link Gio.AsyncResult} from the callback
+         * @virtual
+         */
+        vfunc_resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+    }
+
+
     namespace SePolicy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::rootfs-dfd": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-            path: Gio.File;
+            path: Gio.File | null;
+            rootfs_dfd: number;
+            rootfsDfd: number;
         }
     }
 
@@ -7320,7 +10110,19 @@ export namespace OSTree {
         /**
          * @construct-only
          */
-        get path(): Gio.File;
+        get path(): Gio.File | null;
+
+        /**
+         * @construct-only
+         * @default -1
+         */
+        get rootfs_dfd(): number;
+
+        /**
+         * @construct-only
+         * @default -1
+         */
+        get rootfsDfd(): number;
 
         /**
          * Compile-time signal type information.
@@ -7338,6 +10140,10 @@ export namespace OSTree {
 
         static ["new"](path: Gio.File, cancellable: Gio.Cancellable | null): SePolicy;
 
+        static new_at(rootfs_dfd: number, cancellable: Gio.Cancellable | null): SePolicy;
+
+        static new_from_commit(repo: Repo, rev: string, cancellable: Gio.Cancellable | null): SePolicy;
+
         // Signals
         /** @signal */
         connect<K extends keyof SePolicy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SePolicy.SignalSignatures[K]>): number;
@@ -7354,15 +10160,20 @@ export namespace OSTree {
         // Static methods
         /**
          * Cleanup function for `ostree_sepolicy_setfscreatecon()`.
-         * @param unused 
+         * @param unused Not used, just in case you didn't infer that from the parameter name
          */
         static fscreatecon_cleanup(unused: null): void;
+
+        /**
+         * Disable SELinux's builtin logging; one rarely wants this enabled.
+         */
+        static set_null_log(): void;
 
         // Methods
         /**
          * @returns Checksum of current policy
          */
-        get_csum(): string;
+        get_csum(): string | null;
 
         /**
          * Store in `out_label` the security context for the given `relpath` and
@@ -7377,12 +10188,15 @@ export namespace OSTree {
         /**
          * @returns Type of current policy
          */
-        get_name(): string;
+        get_name(): string | null;
 
         /**
+         * This API should be considered deprecated, because it's supported for
+         * policy objects to be created from file-descriptor relative paths, which
+         * may not be globally accessible.
          * @returns Path to rootfs
          */
-        get_path(): Gio.File;
+        get_path(): Gio.File | null;
 
         /**
          * Reset the security context of `target` based on the SELinux policy.
@@ -7493,6 +10307,18 @@ export namespace OSTree {
     namespace Sysroot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * libostree will log to the journal various events, such as the /etc merge
+             * status, and transaction completion. Connect to this signal to also
+             * synchronously receive the text for those messages. This is intended to be
+             * used by command line tools which link to libostree as a library.
+             * 
+             * Currently, the structured data is only available via the systemd journal.
+             * @signal
+             * @since 2017.10
+             * @run-last
+             */
+            "journal-msg": (arg0: string) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -7553,6 +10379,14 @@ export namespace OSTree {
 
         // Methods
         /**
+         * Given the target deployment (which must be the staged deployment) this API
+         * will toggle its "finalization locking" state.  If it is currently locked,
+         * it will be unlocked (and hence queued to apply on shutdown).
+         * @param deployment Deployment which must be staged
+         */
+        change_finalization(deployment: Deployment): boolean;
+
+        /**
          * Delete any state that resulted from a partially completed
          * transaction, such as incomplete deployments.
          * @param cancellable Cancellable
@@ -7560,8 +10394,29 @@ export namespace OSTree {
         cleanup(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * Check out deployment tree with revision `revision`, performing a 3
-         * way merge with `provided_merge_deployment` for configuration.
+         * Prune the system repository.  This is a thin wrapper
+         * around `ostree_repo_prune_from_reachable()`; the primary
+         * addition is that this function automatically gathers
+         * all deployed commits into the reachable set.
+         * 
+         * You generally want to at least set the `OSTREE_REPO_PRUNE_FLAGS_REFS_ONLY`
+         * flag in `options`.  A commit traversal depth of `0` is assumed.
+         * 
+         * Locking: exclusive
+         * @param options Flags controlling pruning
+         * @param cancellable Cancellable
+         */
+        cleanup_prune_repo(options: RepoPruneOptions, cancellable: Gio.Cancellable | null): [boolean, number, number, number];
+
+        /**
+         * If there is a soft reboot queued in /run/nextroot, clear it. If one
+         * is not queued, this function successfully does nothing.
+         * @param cancellable Cancellable
+         */
+        clear_soft_reboot(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Older version of `ostree_sysroot_stage_tree_with_options()`.
          * @param osname osname to use for merge deployment
          * @param revision Checksum to add
          * @param origin Origin to use for upgrades
@@ -7570,6 +10425,38 @@ export namespace OSTree {
          * @param cancellable Cancellable
          */
         deploy_tree(osname: string | null, revision: string, origin: GLib.KeyFile | null, provided_merge_deployment: Deployment | null, override_kernel_argv: string[] | null, cancellable: Gio.Cancellable | null): [boolean, Deployment];
+
+        /**
+         * Check out deployment tree with revision `revision`, performing a 3
+         * way merge with `provided_merge_deployment` for configuration.
+         * 
+         * When booted into the sysroot, you should use the
+         * `ostree_sysroot_stage_tree()` API instead.
+         * @param osname osname to use for merge deployment
+         * @param revision Checksum to add
+         * @param origin Origin to use for upgrades
+         * @param provided_merge_deployment Use this deployment for merge path
+         * @param opts Options
+         * @param cancellable Cancellable
+         */
+        deploy_tree_with_options(osname: string | null, revision: string, origin: GLib.KeyFile | null, provided_merge_deployment: Deployment | null, opts: SysrootDeployTreeOpts | null, cancellable: Gio.Cancellable | null): [boolean, Deployment];
+
+        /**
+         * Checks if the given deployment can be soft-rebooted to from the currently
+         * booted deployment. A soft-reboot is generally only possible if both the
+         * currently booted deployment and the target `deployment` use the same kernel
+         * (i.e., have the same boot checksum).
+         * @param deployment The {@link OSTree.Deployment} to check for soft-reboot compatibility.
+         * @returns `true` if a soft-reboot is possible to the target deployment, `false` otherwise.
+         */
+        deployment_can_soft_reboot(deployment: Deployment): boolean;
+
+        /**
+         * Prepare the specified deployment for a kexec.
+         * @param deployment Deployment to prepare a kexec for
+         * @param cancellable Cancellable
+         */
+        deployment_kexec_load(deployment: Deployment, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Entirely replace the kernel arguments of `deployment` with the
@@ -7581,14 +10468,46 @@ export namespace OSTree {
         deployment_set_kargs(deployment: Deployment, new_kargs: string[], cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * Replace the kernel arguments of `deployment` with the values in `kargs_str`.
+         * @param deployment A deployment
+         * @param kargs_str Replace `deployment`'s kernel arguments
+         * @param cancellable Cancellable
+         */
+        deployment_set_kargs_in_place(deployment: Deployment, kargs_str: string | null, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
          * By default, deployment directories are not mutable.  This function
          * will allow making them temporarily mutable, for example to allow
          * layering additional non-OSTree content.
          * @param deployment A deployment
          * @param is_mutable Whether or not deployment's files can be changed
-         * @param cancellable 
+         * @param cancellable Cancellable
          */
         deployment_set_mutable(deployment: Deployment, is_mutable: boolean, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * By default, deployments may be subject to garbage collection. Typical uses of
+         * libostree only retain at most 2 deployments. If `is_pinned` is `TRUE`, a
+         * metadata bit will be set causing libostree to avoid automatic GC of the
+         * deployment. However, this is really an "advisory" note; it's still possible
+         * for e.g. older versions of libostree unaware of pinning to GC the deployment.
+         * 
+         * This function does nothing and returns successfully if the deployment
+         * is already in the desired pinning state.  It is an error to try to pin
+         * the staged deployment (as it's not in the bootloader entries).
+         * @param deployment A deployment
+         * @param is_pinned Whether or not deployment will be automatically GC'd
+         */
+        deployment_set_pinned(deployment: Deployment, is_pinned: boolean): boolean;
+
+        /**
+         * Prepare the specified deployment for a systemd soft-reboot by creating a new
+         * root with it at `/run/nextroot`.
+         * @param deployment Deployment to prepare /run/nextroot
+         * @param allow_kernel_skew Continue even if there is a kernel mismatch
+         * @param cancellable Cancellable
+         */
+        deployment_set_soft_reboot(deployment: Deployment, allow_kernel_skew: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Configure the target deployment `deployment` such that it
@@ -7611,9 +10530,10 @@ export namespace OSTree {
         ensure_initialized(cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * This function may only be called if the sysroot is loaded.
          * @returns The currently booted deployment, or `null` if none
          */
-        get_booted_deployment(): Deployment;
+        get_booted_deployment(): Deployment | null;
 
         get_bootversion(): number;
 
@@ -7638,9 +10558,9 @@ export namespace OSTree {
         get_deployments(): Deployment[];
 
         /**
-         * Access a file descriptor that refers to the root directory of this
-         * sysroot.  `ostree_sysroot_load()` must have been invoked prior to
-         * calling this function.
+         * Access a file descriptor that refers to the root directory of this sysroot.
+         * `ostree_sysroot_initialize()` (or `ostree_sysroot_load()`) must have been invoked
+         * prior to calling this function.
          * @returns A file descriptor valid for the lifetime of `self`
          */
         get_fd(): number;
@@ -7651,7 +10571,7 @@ export namespace OSTree {
          * @param osname Operating system group
          * @returns Configuration merge deployment
          */
-        get_merge_deployment(osname: string | null): Deployment;
+        get_merge_deployment(osname: string | null): Deployment | null;
 
         /**
          * @returns Path to rootfs
@@ -7659,10 +10579,17 @@ export namespace OSTree {
         get_path(): Gio.File;
 
         /**
-         * Retrieve the OSTree repository in sysroot `self`.
+         * Retrieve the OSTree repository in sysroot `self`. The repo is guaranteed to be open
+         * (see `ostree_repo_open()`).
          * @param cancellable Cancellable
+         * @returns `true` on success, `false` otherwise
          */
-        get_repo(cancellable: Gio.Cancellable | null): [boolean, Repo];
+        get_repo(cancellable: Gio.Cancellable | null): [boolean, Repo | null];
+
+        /**
+         * @returns The currently staged deployment, or `null` if none
+         */
+        get_staged_deployment(): Deployment | null;
 
         get_subbootversion(): number;
 
@@ -7676,6 +10603,38 @@ export namespace OSTree {
         init_osname(osname: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * Subset of `ostree_sysroot_load()`; performs basic initialization. Notably, one
+         * can invoke `ostree_sysroot_get_fd()` after calling this function.
+         * 
+         * It is not necessary to call this function if `ostree_sysroot_load()` is
+         * invoked.
+         */
+        initialize(): boolean;
+
+        /**
+         * Prepare the current process for modifying a booted sysroot, if applicable.
+         * This function subsumes the functionality of `ostree_sysroot_initialize`
+         * and may be invoked wherever that function is.
+         * 
+         * If the sysroot does not appear to be booted, or where the current process is not uid 0,
+         * this function returns successfully.
+         * 
+         * Otherwise, if the process is in the same mount namespace as pid 1, create
+         * a new namespace.
+         * 
+         * If you invoke this function, it must be before `ostree_sysroot_load()`; it may
+         * be invoked before or after `ostree_sysroot_initialize()`.
+         * @param cancellable 
+         */
+        initialize_with_mount_namespace(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Can only be invoked after `ostree_sysroot_initialize()`.
+         * @returns `true` iff the sysroot points to a booted deployment
+         */
+        is_booted(): boolean;
+
+        /**
          * Load deployment list, bootversion, and subbootversion from the
          * rootfs `self`.
          * @param cancellable Cancellable
@@ -7683,10 +10642,9 @@ export namespace OSTree {
         load(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @param out_changed 
-         * @param cancellable 
+         * @param cancellable Cancellable
          */
-        load_if_changed(out_changed: boolean, cancellable: Gio.Cancellable | null): boolean;
+        load_if_changed(cancellable: Gio.Cancellable | null): [boolean, boolean];
 
         /**
          * Acquire an exclusive multi-process write lock for `self`.  This call
@@ -7738,6 +10696,46 @@ export namespace OSTree {
         prepare_cleanup(cancellable: Gio.Cancellable | null): boolean;
 
         /**
+         * Find the pending and rollback deployments for `osname`. Pass `null` for `osname`
+         * to use the booted deployment's osname. By default, pending deployment is the
+         * first deployment in the order that matches `osname`, and `rollback` will be the
+         * next one after the booted deployment, or the deployment after the pending if
+         * we're not looking at the booted deployment.
+         * @param osname "stateroot" name
+         */
+        query_deployments_for(osname: string | null): [Deployment | null, Deployment | null];
+
+        /**
+         * This function is a variant of `ostree_sysroot_get_repo()` that cannot fail, and
+         * returns a cached repository. Can only be called after `ostree_sysroot_initialize()`
+         * or `ostree_sysroot_load()` has been invoked successfully.
+         * @returns The OSTree repository in sysroot `self`.
+         */
+        repo(): Repo;
+
+        /**
+         * Find the booted deployment, or return an error if not booted via OSTree.
+         * @returns The currently booted deployment, or an error
+         */
+        require_booted_deployment(): Deployment;
+
+        /**
+         * If this function is invoked, then libostree will assume that
+         * a private Linux mount namespace has been created by the process.
+         * The primary use case for this is to have e.g. /sysroot mounted
+         * read-only by default.
+         * 
+         * If this function has been called, then when a function which requires
+         * writable access is invoked, libostree will automatically remount as writable
+         * any mount points on which it operates.  This currently is just `/sysroot` and
+         * `/boot`.
+         * 
+         * If you invoke this function, it must be before `ostree_sysroot_load()`; it may
+         * be invoked before or after `ostree_sysroot_initialize()`.
+         */
+        set_mount_namespace_in_use(): void;
+
+        /**
          * Prepend `new_deployment` to the list of deployments, commit, and
          * cleanup.  By default, all other deployments for the given `osname`
          * except the merge deployment and the booted deployment will be
@@ -7746,9 +10744,20 @@ export namespace OSTree {
          * If {@link OSTree.SysrootSimpleWriteDeploymentFlags.RETAIN} is
          * specified, then all current deployments will be kept.
          * 
+         * If {@link OSTree.SysrootSimpleWriteDeploymentFlags.RETAIN_PENDING} is
+         * specified, then pending deployments will be kept.
+         * 
+         * If {@link OSTree.SysrootSimpleWriteDeploymentFlags.RETAIN_ROLLBACK} is
+         * specified, then rollback deployments will be kept.
+         * 
          * If {@link OSTree.SysrootSimpleWriteDeploymentFlags.NOT_DEFAULT} is
          * specified, then instead of prepending, the new deployment will be
          * added right after the booted or merge deployment, instead of first.
+         * 
+         * If {@link OSTree.SysrootSimpleWriteDeploymentFlags.NO_CLEAN} is
+         * specified, then no cleanup will be performed after adding the
+         * deployment. Make sure to call `ostree_sysroot_cleanup()` sometime
+         * later, instead.
          * @param osname OS name
          * @param new_deployment Prepend this deployment to the list
          * @param merge_deployment Use this deployment for configuration merge
@@ -7756,6 +10765,38 @@ export namespace OSTree {
          * @param cancellable Cancellable
          */
         simple_write_deployment(osname: string | null, new_deployment: Deployment, merge_deployment: Deployment | null, flags: SysrootSimpleWriteDeploymentFlags, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Stage an overlay initrd to be used in an upcoming deployment. Returns a checksum which
+         * can be passed to `ostree_sysroot_deploy_tree_with_options()` or
+         * `ostree_sysroot_stage_tree_with_options()` via the `overlay_initrds` array option.
+         * @param fd File descriptor to overlay initrd
+         * @param cancellable Cancellable
+         */
+        stage_overlay_initrd(fd: number, cancellable: Gio.Cancellable | null): [boolean, string];
+
+        /**
+         * Older version of `ostree_sysroot_stage_tree_with_options()`.
+         * @param osname osname to use for merge deployment
+         * @param revision Checksum to add
+         * @param origin Origin to use for upgrades
+         * @param merge_deployment Use this deployment for merge path
+         * @param override_kernel_argv Use these as kernel arguments; if `null`, inherit options from provided_merge_deployment
+         * @param cancellable Cancellable
+         */
+        stage_tree(osname: string | null, revision: string, origin: GLib.KeyFile | null, merge_deployment: Deployment | null, override_kernel_argv: string[] | null, cancellable: Gio.Cancellable | null): [boolean, Deployment];
+
+        /**
+         * Like `ostree_sysroot_deploy_tree()`, but "finalization" only occurs at OS
+         * shutdown time.
+         * @param osname osname to use for merge deployment
+         * @param revision Checksum to add
+         * @param origin Origin to use for upgrades
+         * @param merge_deployment Use this deployment for merge path
+         * @param opts Options
+         * @param cancellable Cancellable
+         */
+        stage_tree_with_options(osname: string | null, revision: string, origin: GLib.KeyFile | null, merge_deployment: Deployment | null, opts: SysrootDeployTreeOpts, cancellable: Gio.Cancellable | null): [boolean, Deployment];
 
         /**
          * Try to acquire an exclusive multi-process write lock for `self`.  If
@@ -7786,12 +10827,33 @@ export namespace OSTree {
         unlock(): void;
 
         /**
-         * Assuming `new_deployments` have already been deployed in place on
-         * disk, atomically update bootloader configuration.
+         * Update a sysroot as needed after having copied it into place using file-level
+         * operations. This enables options like fs-verity on the required files that may
+         * have been lost during the copy.
+         * @param cancellable 
+         */
+        update_post_copy(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Older version of `ostree_sysroot_write_deployments_with_options()`. This
+         * version will perform post-deployment cleanup by default.
          * @param new_deployments List of new deployments
          * @param cancellable Cancellable
          */
         write_deployments(new_deployments: Deployment[], cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Assuming `new_deployments` have already been deployed in place on disk via
+         * `ostree_sysroot_deploy_tree()`, atomically update bootloader configuration. By
+         * default, no post-transaction cleanup will be performed. You should invoke
+         * `ostree_sysroot_cleanup()` at some point after the transaction, or specify
+         * `do_postclean` in `opts`.  Skipping the post-transaction cleanup is useful
+         * if for example you want to control pruning of the repository.
+         * @param new_deployments List of new deployments
+         * @param opts Options
+         * @param cancellable Cancellable
+         */
+        write_deployments_with_options(new_deployments: Deployment[], opts: SysrootWriteDeploymentsOpts, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Immediately replace the origin file of the referenced `deployment`
@@ -7830,11 +10892,13 @@ export namespace OSTree {
         // Properties
         /**
          * @construct-only
+         * @default 0
          */
         get flags(): SysrootUpgraderFlags;
 
         /**
          * @construct-only
+         * @default null
          */
         get osname(): string;
 
@@ -7896,19 +10960,19 @@ export namespace OSTree {
         deploy(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * @returns A copy of the origin file, or `null` if unknown
+         * @returns A copy of the origin file, or `null` if unknown.
          */
-        dup_origin(): GLib.KeyFile;
+        dup_origin(): GLib.KeyFile | null;
 
         /**
-         * @returns The origin file, or `null` if unknown
+         * @returns The origin file, or `null` if unknown.
          */
-        get_origin(): GLib.KeyFile;
+        get_origin(): GLib.KeyFile | null;
 
         /**
-         * @returns A one-line descriptive summary of the origin, or `null` if unknown
+         * @returns A one-line descriptive summary of the origin, or `null` if unknown.
          */
-        get_origin_description(): string;
+        get_origin_description(): string | null;
 
         /**
          * Perform a pull from the origin.  First check if the ref has
@@ -7928,14 +10992,13 @@ export namespace OSTree {
          * Like `ostree_sysroot_upgrader_pull()`, but allows retrieving just a
          * subpath of the tree.  This can be used to download metadata files
          * from inside the tree such as package databases.
-         * @param dir_to_pull 
-         * @param flags 
-         * @param upgrader_flags 
-         * @param progress 
-         * @param out_changed 
-         * @param cancellable 
+         * @param dir_to_pull Subdirectory path (should include a leading /)
+         * @param flags Flags controlling pull behavior
+         * @param upgrader_flags Flags controlling upgrader behavior
+         * @param progress Progress
+         * @param cancellable Cancellable
          */
-        pull_one_dir(dir_to_pull: string, flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress: AsyncProgress, out_changed: boolean, cancellable: Gio.Cancellable | null): boolean;
+        pull_one_dir(dir_to_pull: string, flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
         /**
          * Replace the origin with `origin`.
@@ -8040,63 +11103,140 @@ export namespace OSTree {
     type AsyncProgressClass = typeof AsyncProgress;
 
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    abstract class Bootloader {
-        static $gtype: GObject.GType<Bootloader>;
+    type BlobReaderInterface = typeof BlobReader;
+
+    /**
+     * A structure which globally uniquely identifies a ref as the tuple
+     * (`collection_id`, `ref_name`). For backwards compatibility, `collection_id` may be `null`,
+     * indicating a ref name which is not globally unique.
+     * @gir-type Struct
+     * @since 2018.6
+     */
+    class CollectionRef {
+        static $gtype: GObject.GType<CollectionRef>;
+
+        // Fields
+        collection_id: string;
+
+        ref_name: string;
+
+        // Constructors
+
+        constructor(properties?: Partial<{
+            collection_id: string;
+            ref_name: string;
+        }>);
+
+        static ["new"](collection_id: string | null, ref_name: string): CollectionRef;
+
+        // Static methods
+        /**
+         * Copy an array of `OstreeCollectionRefs`, including deep copies of all its
+         * elements. `refs` must be `null`-terminated; it may be empty, but must not be
+         * `null`.
+         * @param refs `null`-terminated array of `OstreeCollectionRefs`
+         */
+        static dupv(refs: CollectionRef[]): CollectionRef[];
+
+        /**
+         * Free the given array of `refs`, including freeing all its elements. `refs`
+         * must be `null`-terminated; it may be empty, but must not be `null`.
+         * @param refs an array of `OstreeCollectionRefs`
+         */
+        static freev(refs: CollectionRef[]): void;
+
+        // Methods
+        /**
+         * Create a copy of the given `ref`.
+         * @returns a newly allocated copy of `ref`
+         */
+        dup(): CollectionRef;
+
+        /**
+         * Compare `ref1` and `ref2` and return `true` if they have the same collection ID and
+         * ref name, and `false` otherwise. Both `ref1` and `ref2` must be non-`null`.
+         * @param ref2 another {@link OSTree.CollectionRef}
+         * @returns `true` if `ref1` and `ref2` are equal, `false` otherwise
+         */
+        equal(ref2: CollectionRef): boolean;
+
+        /**
+         * Free the given `ref`.
+         */
+        free(): void;
+
+        /**
+         * Hash the given `ref`. This function is suitable for use with {@link GLib.HashTable}.
+         * `ref` must be non-`null`.
+         * @returns hash value for `ref`
+         */
+        hash(): number;
     }
 
 
     /**
+     * Structure representing an entry in the "ostree.sizes" commit metadata. Each
+     * entry corresponds to an object in the associated commit.
      * @gir-type Struct
+     * @since 2020.1
      */
-    abstract class BootloaderGrub2 {
-        static $gtype: GObject.GType<BootloaderGrub2>;
-    }
+    class CommitSizesEntry {
+        static $gtype: GObject.GType<CommitSizesEntry>;
 
+        // Fields
+        checksum: string;
 
-    /**
-     * @gir-type Struct
-     */
-    class BootloaderInterface {
-        static $gtype: GObject.GType<BootloaderInterface>;
-    }
+        objtype: ObjectType;
 
+        unpacked: number;
 
-    /**
-     * @gir-type Struct
-     */
-    abstract class BootloaderSyslinux {
-        static $gtype: GObject.GType<BootloaderSyslinux>;
-    }
+        archived: number;
 
+        // Constructors
+        constructor(checksum: string, objtype: ObjectType, unpacked: bigint | number, archived: bigint | number);
 
-    /**
-     * @gir-type Struct
-     */
-    abstract class BootloaderUboot {
-        static $gtype: GObject.GType<BootloaderUboot>;
+        static ["new"](checksum: string, objtype: ObjectType, unpacked: bigint | number, archived: bigint | number): CommitSizesEntry;
+
+        // Methods
+        /**
+         * Create a copy of the given `entry`.
+         * @returns a new copy of `entry`
+         */
+        copy(): CommitSizesEntry | null;
+
+        /**
+         * Free given `entry`.
+         */
+        free(): void;
     }
 
 
     /**
      * @gir-type Alias
      */
-    type ChecksumInputStreamClass = typeof ChecksumInputStream;
+    type ContentWriterClass = typeof ContentWriter;
 
     /**
+     * An extensible options structure controlling diff dirs. Make sure
+     * that owner_uid/gid is set to -1 when not used. This is used by
+     * `ostree_diff_dirs_with_options()`.
      * @gir-type Struct
      */
-    abstract class ChecksumInputStreamPrivate {
-        static $gtype: GObject.GType<ChecksumInputStreamPrivate>;
-    }
+    class DiffDirsOptions {
+        static $gtype: GObject.GType<DiffDirsOptions>;
 
+        // Fields
+        owner_uid: number;
 
-    /**
-     * @gir-type Struct
-     */
-    class CmdPrivateVTable {
-        static $gtype: GObject.GType<CmdPrivateVTable>;
+        owner_gid: number;
+
+        unused_bools: boolean[];
+
+        unused_ints: number[];
+
+        unused_ptrs: null[];
     }
 
 
@@ -8131,65 +11271,188 @@ export namespace OSTree {
     /**
      * @gir-type Struct
      */
-    abstract class GpgVerifier {
-        static $gtype: GObject.GType<GpgVerifier>;
-    }
+    abstract class KernelArgs {
+        static $gtype: GObject.GType<KernelArgs>;
 
+        // Static methods
+        /**
+         * Frees the OstreeKernelArgs structure pointed by *loc
+         * @param loc Address of an OstreeKernelArgs pointer
+         */
+        static cleanup(loc: null): void;
 
-    /**
-     * @gir-type Struct
-     */
-    class LibarchiveInputStream {
-        static $gtype: GObject.GType<LibarchiveInputStream>;
-    }
+        // Methods
+        /**
+         * Appends `arg` which is in the form of key=value pair to the hash table kargs->table
+         * (appends to the value list if key is already in the hash table)
+         * and appends key to kargs->order if it is not in the hash table already.
+         * @param arg key or key/value pair to be added
+         */
+        append(arg: string): void;
 
+        /**
+         * Appends each value in `argv` to the corresponding value array and
+         * appends key to kargs->order if it is not in the hash table already.
+         * @param argv an array of key=value argument pairs
+         */
+        append_argv(argv: string[]): void;
 
-    /**
-     * @gir-type Struct
-     */
-    class LibarchiveInputStreamClass {
-        static $gtype: GObject.GType<LibarchiveInputStreamClass>;
-    }
+        /**
+         * Appends each argument that does not have one of the `prefixes` as prefix to the `kargs`
+         * @param argv an array of key=value argument pairs
+         * @param prefixes an array of prefix strings
+         */
+        append_argv_filtered(argv: string[], prefixes: string[]): void;
 
+        /**
+         * Appends `arg` which is in the form of key=value pair to the hash table kargs->table
+         * (appends to the value list if key is not in the hash table)
+         * and appends key to kargs->order if it is not in the hash table.
+         * @param arg key or key/value pair to be added
+         */
+        append_if_missing(arg: string): void;
 
-    /**
-     * @gir-type Struct
-     */
-    abstract class LibarchiveInputStreamPrivate {
-        static $gtype: GObject.GType<LibarchiveInputStreamPrivate>;
-    }
+        /**
+         * Appends the command line arguments in the file "/proc/cmdline"
+         * that does not have "BOOT_IMAGE=" and "initrd=" as prefixes to the `kargs`
+         * @param cancellable optional GCancellable object, NULL to ignore
+         * @returns `true` on success, `false` on failure
+         */
+        append_proc_cmdline(cancellable: Gio.Cancellable | null): boolean;
 
+        /**
+         * Search for `arg` which is in the form of key=value pair at the hash table kargs->table
+         * and returns true if finds it.
+         * @param arg key or key/value pair to check
+         * @returns `true` if `arg` is contained in `kargs`, `false` otherwise.
+         */
+        contains(arg: string): boolean;
 
-    /**
-     * Zlib decompression
-     * @gir-type Struct
-     */
-    abstract class LzmaCompressor {
-        static $gtype: GObject.GType<LzmaCompressor>;
-    }
+        /**
+         * There are few scenarios being handled for deletion:
+         * 
+         *  1: for input arg with a single key(i.e without = for split),
+         *  the key/value pair will be deleted if there is only
+         *  one value that is associated with the key
+         * 
+         *  2: for input arg wth key/value pair, the specific key
+         *  value pair will be deleted from the pointer array
+         *  if those exist.
+         * 
+         *  3: If the found key has only one value
+         *  associated with it, the key entry in the table will also
+         *  be removed, and the key will be removed from order table
+         * 
+         *  Returns: `true` on success, `false` on failure
+         * 
+         *  Since: 2019.3
+         * @param arg key or key/value pair for deletion
+         */
+        ["delete"](arg: string): boolean;
 
+        /**
+         * Deletes `arg` which is in the form of key=value pair from the hash table kargs->table.
+         * @param arg key or key/value pair to be deleted
+         * @returns `true` on success, `false` on failure
+         */
+        delete_if_present(arg: string): boolean;
 
-    /**
-     * @gir-type Struct
-     */
-    class LzmaCompressorClass {
-        static $gtype: GObject.GType<LzmaCompressorClass>;
-    }
+        /**
+         * This function removes the key entry from the hashtable
+         * as well from the order pointer array inside kargs
+         * 
+         * Note: since both table and order inside kernel args
+         * are with free function, no extra free functions are
+         * being called as they are done automatically by GLib
+         * @param key the key to remove
+         * @returns `true` on success, `false` on failure
+         */
+        delete_key_entry(key: string): boolean;
 
+        /**
+         * Frees the kargs structure
+         */
+        free(): void;
 
-    /**
-     * @gir-type Struct
-     */
-    abstract class LzmaDecompressor {
-        static $gtype: GObject.GType<LzmaDecompressor>;
-    }
+        /**
+         * Finds and returns the last element of value array
+         * corresponding to the `key` in `kargs` hash table. Note that the application
+         * will be terminated if the `key` is found but the value array is empty
+         * @param key a key to look for in `kargs` hash table
+         * @returns `null` if `key` is not found in the `kargs` hash table, otherwise returns last element of value array corresponding to `key`
+         */
+        get_last_value(key: string): string | null;
 
+        /**
+         * This function implements the basic logic behind key/value pair
+         * replacement. Do note that the arg need to be properly formatted
+         * 
+         * When replacing key with exact one value, the arg can be in
+         * the form:
+         * key, key=new_val, or key=old_val=new_val
+         * The first one swaps the old_val with the key to an empty value
+         * The second and third replace the old_val into the new_val
+         * 
+         * When replacing key with multiple values, the arg can only be
+         * in the form of:
+         * key=old_val=new_val. Unless there is a special case where
+         * there is an empty value associated with the key, then
+         * key=new_val will work because old_val is empty. The empty
+         * val will be swapped with the new_val in that case
+         * @param arg a string argument
+         * @returns `true` on success, `false` on failure (and in some other instances such as: 1. key not found in `kargs` 2. old value not found when `arg` is in the form of key=old_val=new_val 3. multiple old values found when `arg` is in the form of key=old_val)
+         */
+        new_replace(arg: string): boolean;
 
-    /**
-     * @gir-type Struct
-     */
-    class LzmaDecompressorClass {
-        static $gtype: GObject.GType<LzmaDecompressorClass>;
+        /**
+         * Parses `options` by separating it by whitespaces and appends each argument to `kargs`
+         * @param options a string representing command line arguments
+         */
+        parse_append(options: string): void;
+
+        /**
+         * Finds and replaces the old key if `arg` is already in the hash table,
+         * otherwise adds `arg` as new key and split_keyeq (arg) as value.
+         * Note that when replacing old key value pair, the old values are freed.
+         * @param arg key or key/value pair for replacement
+         */
+        replace(arg: string): void;
+
+        /**
+         * Finds and replaces each non-null arguments of `argv` in the hash table,
+         * otherwise adds individual arg as new key and split_keyeq (arg) as value.
+         * Note that when replacing old key value pair, the old values are freed.
+         * @param argv an array of key or key/value pairs
+         */
+        replace_argv(argv: string): void;
+
+        /**
+         * Finds and replaces the old key if `arg` is already in the hash table,
+         * otherwise adds `arg` as new key and split_keyeq (arg) as value.
+         * Note that when replacing old key, the old values are freed.
+         * @param arg key or key/value pair for replacement
+         */
+        replace_take(arg: string): void;
+
+        /**
+         * Extracts all key value pairs in `kargs` and appends to a temporary
+         * GString in forms of "key=value" or "key" if value is NULL separated
+         * by a single whitespace, and returns the temporary string with the
+         * GString wrapper freed
+         * 
+         * Note: the application will be terminated if one of the values array
+         * in `kargs` is NULL
+         * @returns a string of "key=value" pairs or "key" if value is NULL, separated by single whitespaces
+         */
+        to_string(): string;
+
+        /**
+         * Extracts all key value pairs in `kargs` and appends to a temporary
+         * array in forms of "key=value" or "key" if value is NULL, and returns
+         * the temporary array with the GPtrArray wrapper freed
+         * @returns an array of "key=value" pairs or "key" if value is NULL
+         */
+        to_strv(): string[];
     }
 
 
@@ -8206,6 +11469,45 @@ export namespace OSTree {
 
         // Fields
         in_files: boolean;
+    }
+
+
+    /**
+     * This represents the configuration for a single remote repository. Currently,
+     * remotes can only be passed around as (reference counted) opaque handles. In
+     * future, more API may be added to create and interrogate them.
+     * @gir-type Struct
+     * @since 2018.6
+     */
+    abstract class Remote {
+        static $gtype: GObject.GType<Remote>;
+
+        // Methods
+        /**
+         * Get the human-readable name of the remote. This is what the user configured,
+         * if the remote was explicitly configured; and will otherwise be a stable,
+         * arbitrary, string.
+         * @returns remote’s name
+         */
+        get_name(): string;
+
+        /**
+         * Get the URL from the remote.
+         * @returns the remote's URL
+         */
+        get_url(): string | null;
+
+        /**
+         * Increase the reference count on the given `remote`.
+         * @returns a copy of `remote`, for convenience
+         */
+        ref(): Remote;
+
+        /**
+         * Decrease the reference count on the given `remote` and free it if the
+         * reference count reaches 0.
+         */
+        unref(): void;
     }
 
 
@@ -8233,6 +11535,14 @@ export namespace OSTree {
 
         no_copy_fallback: boolean;
 
+        force_copy: boolean;
+
+        bareuseronly_dirs: boolean;
+
+        force_copy_zerosized: boolean;
+
+        process_passthrough_whiteouts: boolean;
+
         unused_bools: boolean[];
 
         subpath: string;
@@ -8240,6 +11550,25 @@ export namespace OSTree {
         unused_ints: number[];
 
         unused_ptrs: null[];
+
+        filter: RepoCheckoutFilter;
+
+        filter_user_data: null;
+
+        sepolicy: SePolicy;
+
+        sepolicy_prefix: string;
+
+        // Methods
+        /**
+         * This function simply assigns `cache` to the `devino_to_csum_cache` member of
+         * `opts`; it's only useful for introspection.
+         * 
+         * Note that cache does *not* have its refcount incremented - the lifetime of
+         * `cache` must be equal to or greater than that of `opts`.
+         * @param cache Devino cache
+         */
+        set_devino(cache: RepoDevInoCache | null): void;
     }
 
 
@@ -8285,6 +11614,16 @@ export namespace OSTree {
          * @param sepolicy Policy to use for labeling
          */
         set_sepolicy(sepolicy: SePolicy | null): void;
+
+        /**
+         * In many cases, one wants to create a "derived" commit from base commit.
+         * SELinux policy labels are part of that base commit.  This API allows
+         * one to easily set up SELinux labeling from a base commit.
+         * @param repo OSTree repo containing `rev`
+         * @param rev Find SELinux policy from this base commit
+         * @param cancellable 
+         */
+        set_sepolicy_from_commit(repo: Repo, rev: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * If set, this function should return extended attributes to use for
@@ -8402,18 +11741,122 @@ export namespace OSTree {
     type RepoFileClass = typeof RepoFile;
 
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    abstract class RepoFileEnumerator {
-        static $gtype: GObject.GType<RepoFileEnumerator>;
+    type RepoFinderAvahiClass = typeof RepoFinderAvahi;
+
+    /**
+     * @gir-type Alias
+     */
+    type RepoFinderConfigClass = typeof RepoFinderConfig;
+
+    /**
+     * @gir-type Alias
+     */
+    type RepoFinderInterface = typeof RepoFinder;
+
+    /**
+     * @gir-type Alias
+     */
+    type RepoFinderMountClass = typeof RepoFinderMount;
+
+    /**
+     * @gir-type Alias
+     */
+    type RepoFinderOverrideClass = typeof RepoFinderOverride;
+
+    /**
+     * {@link OSTree.RepoFinderResult} gives a single result from an
+     * `ostree_repo_finder_resolve_async()` or `ostree_repo_finder_resolve_all_async()`
+     * operation. This represents a single remote which provides none, some or all
+     * of the refs being resolved. The structure includes various bits of metadata
+     * which allow `ostree_repo_pull_from_remotes_async()` (for example) to prioritise
+     * how to pull the refs.
+     * 
+     * An {@link OSTree.RepoFinderResult} is immutable after construction.
+     * 
+     * The `priority` is used as one input of many to ordering functions like
+     * `ostree_repo_finder_result_compare()`.
+     * 
+     * `ref_to_checksum` indicates which refs (out of the ones queried for as inputs
+     * to `ostree_repo_finder_resolve_async()`) are provided by this remote. The refs
+     * are present as keys (of type {@link OSTree.CollectionRef}), and the corresponding values
+     * are the checksums of the commits the remote currently has for those refs. (These
+     * might not be the latest commits available out of all results.) A
+     * checksum may be `null` if the remote does not advertise the corresponding ref.
+     * After `ostree_repo_finder_resolve_async()` has been called, the commit metadata
+     * should be available locally, so the details for each checksum can be looked
+     * up using `ostree_repo_load_commit()`.
+     * 
+     * `ref_to_timestamp` provides timestamps for the set of refs in
+     * `ref_to_checksum`. The refs are keys (of type {@link OSTree.CollectionRef}) and the
+     * values are guint64 pointers with the timestamp associated with the checksum
+     * provided in `ref_to_checksum`. `ref_to_timestamp` can be `null`, and when it's
+     * not, the timestamps are zero when any of the following conditions are met:
+     * (1) the override-commit-ids option was used on
+     * ostree_repo_find_remotes_async (2) there was an error in trying to get the
+     * commit metadata (3) the checksum for this ref is `null` in `ref_to_checksum`.
+     * @gir-type Struct
+     * @since 2018.6
+     */
+    class RepoFinderResult {
+        static $gtype: GObject.GType<RepoFinderResult>;
+
+        // Fields
+        finder: RepoFinder;
+
+        priority: number;
+
+        summary_last_modified: number;
+
+        // Constructors
+        constructor(remote: Remote, finder: RepoFinder, priority: number, ref_to_checksum: never, ref_to_timestamp: never | null, summary_last_modified: bigint | number);
+
+        static ["new"](remote: Remote, finder: RepoFinder, priority: number, ref_to_checksum: never, ref_to_timestamp: never | null, summary_last_modified: bigint | number): RepoFinderResult;
+
+        // Static methods
+        /**
+         * Free the given `results` array, freeing each element and the container.
+         * @param results an {@link OSTree.RepoFinderResult}
+         */
+        static freev(results: RepoFinderResult[]): void;
+
+        // Methods
+        /**
+         * Compare two {@link OSTree.RepoFinderResult} instances to work out which one is better
+         * to pull from, and hence needs to be ordered before the other.
+         * @param b an {@link OSTree.RepoFinderResult}
+         * @returns <0 if `a` is ordered before `b`, 0 if they are ordered equally,    >0 if `b` is ordered before `a`
+         */
+        compare(b: RepoFinderResult): number;
+
+        /**
+         * Copy an {@link OSTree.RepoFinderResult}.
+         * @returns a newly allocated copy of `result`
+         */
+        dup(): RepoFinderResult;
+
+        /**
+         * Free the given `result`.
+         */
+        free(): void;
     }
 
 
     /**
      * @gir-type Struct
      */
-    class RepoFileEnumeratorClass {
-        static $gtype: GObject.GType<RepoFileEnumeratorClass>;
+    class RepoPruneOptions {
+        static $gtype: GObject.GType<RepoPruneOptions>;
+
+        // Fields
+        flags: RepoPruneFlags;
+
+        unused_bools: boolean[];
+
+        unused_ints: number[];
+
+        unused_ptrs: null[];
     }
 
 
@@ -8436,6 +11879,8 @@ export namespace OSTree {
 
         content_bytes_written: number;
 
+        devino_cache_hits: number;
+
         padding1: number;
 
         padding2: number;
@@ -8449,37 +11894,643 @@ export namespace OSTree {
     /**
      * @gir-type Struct
      */
-    class RollsumMatches {
-        static $gtype: GObject.GType<RollsumMatches>;
+    abstract class SignEd25519 {
+        static $gtype: GObject.GType<SignEd25519>;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    class SignEd25519Class {
+        static $gtype: GObject.GType<SignEd25519Class>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type SignInterface = typeof Sign;
+
+    /**
+     * @gir-type Struct
+     */
+    class SysrootDeployTreeOpts {
+        static $gtype: GObject.GType<SysrootDeployTreeOpts>;
 
         // Fields
-        crcmatches: number;
+        locked: boolean;
 
-        bufmatches: number;
+        unused_bools: boolean[];
 
-        total: number;
+        unused_ints: number[];
 
-        match_size: number;
+        override_kernel_argv: string;
 
-        matches: null[];
+        overlay_initrds: string;
+
+        unused_ptrs: null[];
+
+        // Constructors
+
+        constructor(properties?: Partial<{
+            locked: boolean;
+            unused_bools: boolean[];
+            unused_ints: number[];
+            override_kernel_argv: string;
+            overlay_initrds: string;
+            unused_ptrs: null[];
+        }>);
     }
 
 
     /**
      * @gir-type Struct
      */
-    abstract class TlsCertInteraction {
-        static $gtype: GObject.GType<TlsCertInteraction>;
+    class SysrootWriteDeploymentsOpts {
+        static $gtype: GObject.GType<SysrootWriteDeploymentsOpts>;
+
+        // Fields
+        do_postclean: boolean;
+
+        disable_auto_early_prune: boolean;
+
+        unused_bools: boolean[];
+
+        unused_ints: number[];
+
+        unused_ptrs: null[];
+
+        // Constructors
+
+        constructor(properties?: Partial<{
+            do_postclean: boolean;
+            disable_auto_early_prune: boolean;
+            unused_bools: boolean[];
+            unused_ints: number[];
+            unused_ptrs: null[];
+        }>);
     }
 
+
+    namespace BlobReader {
+        /**
+         * Interface for implementing BlobReader.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+
+            // Virtual methods
+            /**
+             * Read one blob from the reader, or `null` if there are no more.
+             * On error, `error` is set and `null` is returned.
+             * @param cancellable a {@link Gio.Cancellable}
+             * @virtual
+             */
+            vfunc_read_blob(cancellable: Gio.Cancellable | null): GLib.Bytes | Uint8Array | null;
+        }
+
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface BlobReaderNamespace {
+        $gtype: GObject.GType<BlobReader>;
+        prototype: BlobReader;
+    }
+    /**
+     * @gir-type Interface
+     */
+    interface BlobReader extends GObject.Object, BlobReader.Interface {
+
+        // Methods
+        /**
+         * Read one blob from the reader, or `null` if there are no more.
+         * On error, `error` is set and `null` is returned.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns A {@link GLib.Bytes} blob, or `null` if there are no more
+         */
+        read_blob(cancellable: Gio.Cancellable | null): GLib.Bytes | null;
+    }
+
+
+    export const BlobReader: BlobReaderNamespace & {
+        new (): BlobReader; // This allows `obj instanceof BlobReader`
+    };
+
+    namespace RepoFinder {
+        /**
+         * Interface for implementing RepoFinder.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+
+            // Virtual methods
+            /**
+             * Find reachable remote URIs which claim to provide any of the given `refs`. The
+             * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+             * implementation.
+             * 
+             * Any remote which is found and which claims to support any of the given `refs`
+             * will be returned in the results. It is possible that a remote claims to
+             * support a given ref, but turns out not to — it is not possible to verify this
+             * until `ostree_repo_pull_from_remotes_async()` is called.
+             * 
+             * The returned results will be sorted with the most useful first — this is
+             * typically the remote which claims to provide the most `refs`, at the lowest
+             * latency.
+             * 
+             * Each result contains a mapping of `refs` to the checksums of the commits
+             * which the result provides. If the result provides the latest commit for a ref
+             * across all of the results, the checksum will be set. Otherwise, if the
+             * result provides an outdated commit, or doesn’t provide a given ref at all,
+             * the checksum will not be set. Results which provide none of the requested
+             * `refs` may be listed with an empty refs map.
+             * 
+             * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+             * `refs` from those remotes.
+             * @param refs non-empty array of collection–ref pairs to find remotes for
+             * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+             * @param cancellable a {@link Gio.Cancellable}, or `null`
+             * @param callback asynchronous completion callback
+             * @virtual
+             */
+            vfunc_resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+            /**
+             * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+             * @param result {@link Gio.AsyncResult} from the callback
+             * @virtual
+             */
+            vfunc_resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+        }
+
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface RepoFinderNamespace {
+        $gtype: GObject.GType<RepoFinder>;
+        prototype: RepoFinder;
+        /**
+        * A version of `ostree_repo_finder_resolve_async()` which queries one or more
+        * `finders` in parallel and combines the results.
+        * @param finders non-empty array of `OstreeRepoFinders`
+        * @param refs non-empty array of collection–ref pairs to find remotes for
+        * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+        * @param cancellable a {@link Gio.Cancellable}, or `null`
+        * @param callback asynchronous completion callback
+        */
+        resolve_all_async(finders: RepoFinder[], refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<RepoFinder> | null): void;
+        /**
+        * Get the results from a `ostree_repo_finder_resolve_all_async()` operation.
+        * @param result {@link Gio.AsyncResult} from the callback
+        */
+        resolve_all_finish(result: Gio.AsyncResult): RepoFinderResult[];
+    }
+    /**
+     * @gir-type Interface
+     */
+    interface RepoFinder extends GObject.Object, RepoFinder.Interface {
+
+        // Methods
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null): globalThis.Promise<RepoFinderResult[]>;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Find reachable remote URIs which claim to provide any of the given `refs`. The
+         * specific method for finding the remotes depends on the {@link OSTree.RepoFinder}
+         * implementation.
+         * 
+         * Any remote which is found and which claims to support any of the given `refs`
+         * will be returned in the results. It is possible that a remote claims to
+         * support a given ref, but turns out not to — it is not possible to verify this
+         * until `ostree_repo_pull_from_remotes_async()` is called.
+         * 
+         * The returned results will be sorted with the most useful first — this is
+         * typically the remote which claims to provide the most `refs`, at the lowest
+         * latency.
+         * 
+         * Each result contains a mapping of `refs` to the checksums of the commits
+         * which the result provides. If the result provides the latest commit for a ref
+         * across all of the results, the checksum will be set. Otherwise, if the
+         * result provides an outdated commit, or doesn’t provide a given ref at all,
+         * the checksum will not be set. Results which provide none of the requested
+         * `refs` may be listed with an empty refs map.
+         * 
+         * Pass the results to `ostree_repo_pull_from_remotes_async()` to pull the given
+         * `refs` from those remotes.
+         * @param refs non-empty array of collection–ref pairs to find remotes for
+         * @param parent_repo the local repository which the refs are being resolved for,    which provides configuration information and GPG keys
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback asynchronous completion callback
+         */
+        resolve_async(refs: CollectionRef[], parent_repo: Repo, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RepoFinderResult[]> | void;
+
+        /**
+         * Get the results from a `ostree_repo_finder_resolve_async()` operation.
+         * @param result {@link Gio.AsyncResult} from the callback
+         * @returns array of zero    or more results
+         */
+        resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
+    }
+
+
+    export const RepoFinder: RepoFinderNamespace & {
+        new (): RepoFinder; // This allows `obj instanceof RepoFinder`
+    };
+
+    namespace Sign {
+        /**
+         * Interface for implementing Sign.
+         * Contains only the virtual methods that need to be implemented.
+         */
+        interface Interface {
+
+            // Virtual methods
+            /**
+             * Add the public key for verification. Could be called multiple times for
+             * adding all needed keys to be used for verification.
+             * 
+             * The `public_key` argument depends of the particular engine implementation.
+             * @param public_key single public key to be added
+             * @virtual
+             */
+            vfunc_add_pk(public_key: GLib.Variant): boolean;
+
+            /**
+             * Clear all previously preloaded secret and public keys.
+             * @virtual
+             */
+            vfunc_clear_keys(): boolean;
+
+            /**
+             * Sign the given `data` with pre-loaded secret key.
+             * 
+             * Depending of the signing engine used you will need to load
+             * the secret key with `ostree_sign_set_sk`.
+             * @param data the raw data to be signed with pre-loaded secret key
+             * @param cancellable A {@link Gio.Cancellable}
+             * @virtual
+             */
+            vfunc_data(data: GLib.Bytes, cancellable: Gio.Cancellable | null): [boolean, GLib.Bytes | Uint8Array];
+
+            /**
+             * Verify given data against signatures with pre-loaded public keys.
+             * 
+             * Depending of the signing engine used you will need to load
+             * the public key(s) with `ostree_sign_set_pk`, `ostree_sign_add_pk`
+             * or `ostree_sign_load_pk`.
+             * @param data the raw data to check
+             * @param signatures the signatures to be checked
+             * @virtual
+             */
+            vfunc_data_verify(data: GLib.Bytes, signatures: GLib.Variant): [boolean, string];
+
+            /**
+             * Return the pointer to the name of currently used/selected signing engine.
+             * @virtual
+             */
+            vfunc_get_name(): string;
+
+            /**
+             * Load public keys for verification from anywhere.
+             * It is expected that all keys would be added to already pre-loaded keys.
+             * 
+             * The `options` argument depends of the particular engine implementation.
+             * 
+             * For example, `ed25515` engine could use following string-formatted options:
+             * - `filename` -- single file to use to load keys from
+             * - `basedir` -- directory containing subdirectories
+             *   'trusted.ed25519.d' and 'revoked.ed25519.d' with appropriate
+             *   public keys. Used for testing and re-definition of system-wide
+             *   directories if defaults are not suitable for any reason.
+             * @param options any options
+             * @virtual
+             */
+            vfunc_load_pk(options: GLib.Variant): boolean;
+
+            /**
+             * Return the pointer to the string with format used in (detached) metadata for
+             * current signing engine.
+             * @virtual
+             */
+            vfunc_metadata_format(): string;
+
+            /**
+             * Return the pointer to the name of the key used in (detached) metadata for
+             * current signing engine.
+             * @virtual
+             */
+            vfunc_metadata_key(): string;
+
+            /**
+             * Set the public key for verification. It is expected what all
+             * previously pre-loaded public keys will be dropped.
+             * 
+             * The `public_key` argument depends of the particular engine implementation.
+             * @param public_key single public key to be added
+             * @virtual
+             */
+            vfunc_set_pk(public_key: GLib.Variant): boolean;
+
+            /**
+             * Set the secret key to be used for signing data, commits and summary.
+             * 
+             * The `secret_key` argument depends of the particular engine implementation.
+             * @param secret_key secret key to be added
+             * @virtual
+             */
+            vfunc_set_sk(secret_key: GLib.Variant): boolean;
+        }
+
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    export interface SignNamespace {
+        $gtype: GObject.GType<Sign>;
+        prototype: Sign;
+        /**
+        * Return an array with newly allocated instances of all available
+        * signing engines; they will not be initialized.
+        */
+        get_all(): Sign[];
+        /**
+        * Create a new instance of a signing engine.
+        * @param name the name of desired signature engine
+        */
+        get_by_name(name: string): Sign;
+    }
+    /**
+     * @gir-type Interface
+     */
+    interface Sign extends GObject.Object, Sign.Interface {
+
+        // Methods
+        /**
+         * Add the public key for verification. Could be called multiple times for
+         * adding all needed keys to be used for verification.
+         * 
+         * The `public_key` argument depends of the particular engine implementation.
+         * @param public_key single public key to be added
+         * @returns `TRUE` in case if the key could be added successfully, `FALSE` in case of error (`error` will contain the reason).
+         */
+        add_pk(public_key: GLib.Variant): boolean;
+
+        /**
+         * Clear all previously preloaded secret and public keys.
+         * @returns `TRUE` in case if no errors, `FALSE` in case of error
+         */
+        clear_keys(): boolean;
+
+        /**
+         * Add a signature to a commit.
+         * 
+         * Depending of the signing engine used you will need to load
+         * the secret key with `ostree_sign_set_sk`.
+         * @param repo an `OsreeRepo` object
+         * @param commit_checksum SHA256 of given commit to sign
+         * @param cancellable A {@link Gio.Cancellable}
+         * @returns `TRUE` if commit has been signed successfully, `FALSE` in case of error (`error` will contain the reason).
+         */
+        commit(repo: Repo, commit_checksum: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Verify if commit is signed with known key.
+         * 
+         * Depending of the signing engine used you will need to load
+         * the public key(s) for verification with `ostree_sign_set_pk`,
+         * `ostree_sign_add_pk` and/or `ostree_sign_load_pk`.
+         * @param repo an `OsreeRepo` object
+         * @param commit_checksum SHA256 of given commit to verify
+         * @param cancellable A {@link Gio.Cancellable}
+         * @returns `TRUE` if commit has been verified successfully, `FALSE` in case of error or no valid keys are available (`error` will contain the reason).
+         */
+        commit_verify(repo: Repo, commit_checksum: string, cancellable: Gio.Cancellable | null): [boolean, string];
+
+        /**
+         * Sign the given `data` with pre-loaded secret key.
+         * 
+         * Depending of the signing engine used you will need to load
+         * the secret key with `ostree_sign_set_sk`.
+         * @param data the raw data to be signed with pre-loaded secret key
+         * @param cancellable A {@link Gio.Cancellable}
+         * @returns `TRUE` if `data` has been signed successfully, `FALSE` in case of error (`error` will contain the reason).
+         */
+        data(data: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): [boolean, GLib.Bytes];
+
+        /**
+         * Verify given data against signatures with pre-loaded public keys.
+         * 
+         * Depending of the signing engine used you will need to load
+         * the public key(s) with `ostree_sign_set_pk`, `ostree_sign_add_pk`
+         * or `ostree_sign_load_pk`.
+         * @param data the raw data to check
+         * @param signatures the signatures to be checked
+         * @returns `TRUE` if `data` has been signed at least with any single valid key, `FALSE` in case of error or no valid keys are available (`error` will contain the reason).
+         */
+        data_verify(data: GLib.Bytes | Uint8Array, signatures: GLib.Variant): [boolean, string];
+
+        /**
+         * @param public_key 
+         */
+        ed25519_add_pk(public_key: GLib.Variant): boolean;
+
+        ed25519_clear_keys(): boolean;
+
+        /**
+         * @param data 
+         * @param signature 
+         * @param cancellable 
+         */
+        ed25519_data(data: GLib.Bytes | Uint8Array, signature: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * @param data 
+         * @param signatures 
+         * @param out_success_message 
+         */
+        ed25519_data_verify(data: GLib.Bytes | Uint8Array, signatures: GLib.Variant, out_success_message: string): boolean;
+
+        ed25519_get_name(): string;
+
+        /**
+         * @param options 
+         */
+        ed25519_load_pk(options: GLib.Variant): boolean;
+
+        ed25519_metadata_format(): string;
+
+        ed25519_metadata_key(): string;
+
+        /**
+         * @param public_key 
+         */
+        ed25519_set_pk(public_key: GLib.Variant): boolean;
+
+        /**
+         * @param secret_key 
+         */
+        ed25519_set_sk(secret_key: GLib.Variant): boolean;
+
+        /**
+         * Return the pointer to the name of currently used/selected signing engine.
+         * @returns pointer to the name `NULL` in case of error (unlikely).
+         */
+        get_name(): string;
+
+        /**
+         * Load public keys for verification from anywhere.
+         * It is expected that all keys would be added to already pre-loaded keys.
+         * 
+         * The `options` argument depends of the particular engine implementation.
+         * 
+         * For example, `ed25515` engine could use following string-formatted options:
+         * - `filename` -- single file to use to load keys from
+         * - `basedir` -- directory containing subdirectories
+         *   'trusted.ed25519.d' and 'revoked.ed25519.d' with appropriate
+         *   public keys. Used for testing and re-definition of system-wide
+         *   directories if defaults are not suitable for any reason.
+         * @param options any options
+         * @returns `TRUE` in case if at least one key could be load successfully, `FALSE` in case of error (`error` will contain the reason).
+         */
+        load_pk(options: GLib.Variant): boolean;
+
+        /**
+         * Return the pointer to the string with format used in (detached) metadata for
+         * current signing engine.
+         * @returns pointer to the metadata format, `NULL` in case of error (unlikely).
+         */
+        metadata_format(): string;
+
+        /**
+         * Return the pointer to the name of the key used in (detached) metadata for
+         * current signing engine.
+         * @returns pointer to the metadata key name, `NULL` in case of error (unlikely).
+         */
+        metadata_key(): string;
+
+        /**
+         * Start reading public keys from a stream.
+         * @param stream a {@link Gio.InputStream}
+         * @returns a `OstreamBlobReader` or `null` on error
+         */
+        read_pk(stream: Gio.InputStream): BlobReader;
+
+        /**
+         * Start reading secret keys from a stream.
+         * @param stream a {@link Gio.InputStream}
+         * @returns a `OstreamBlobReader` or `null` on error
+         */
+        read_sk(stream: Gio.InputStream): BlobReader;
+
+        /**
+         * Set the public key for verification. It is expected what all
+         * previously pre-loaded public keys will be dropped.
+         * 
+         * The `public_key` argument depends of the particular engine implementation.
+         * @param public_key single public key to be added
+         * @returns `TRUE` in case if the key could be set successfully, `FALSE` in case of error (`error` will contain the reason).
+         */
+        set_pk(public_key: GLib.Variant): boolean;
+
+        /**
+         * Set the secret key to be used for signing data, commits and summary.
+         * 
+         * The `secret_key` argument depends of the particular engine implementation.
+         * @param secret_key secret key to be added
+         * @returns `TRUE` in case if the key could be set successfully, `FALSE` in case of error (`error` will contain the reason).
+         */
+        set_sk(secret_key: GLib.Variant): boolean;
+
+        /**
+         * Add a signature to a summary file.
+         * Based on ostree_repo_add_gpg_signature_summary implementation.
+         * @param repo ostree repository
+         * @param keys keys -- GVariant containing keys as GVarints specific to signature type.
+         * @param cancellable A {@link Gio.Cancellable}
+         * @returns `TRUE` if summary file has been signed with all provided keys
+         */
+        summary(repo: Repo, keys: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+    }
+
+
+    export const Sign: SignNamespace & {
+        new (): Sign; // This allows `obj instanceof Sign`
+    };
 
     /**
-     * @gir-type Struct
+     * A `null`-terminated array of {@link OSTree.RepoFinderResult} instances, designed to
+     * be used with `g_auto()`:
+     * 
+     * 
+     * ```c
+     * g_auto(OstreeRepoFinderResultv) results = NULL;
+     * ```
+     * 
+     * @gir-type Alias
      */
-    abstract class TlsCertInteractionClass {
-        static $gtype: GObject.GType<TlsCertInteractionClass>;
-    }
-
+    type RepoFinderResultv = RepoFinderResult;
 
     /**
      * Name of the imported GIR library

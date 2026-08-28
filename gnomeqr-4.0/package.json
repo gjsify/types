@@ -1,0 +1,55 @@
+{
+    "name": "@girs/gnomeqr-4.0",
+    "version": "4.3.0",
+    "description": "GJS TypeScript type definitions for GnomeQR-4.0",
+    "type": "module",
+    "module": "gnomeqr-4.0.js",
+    "main": "gnomeqr-4.0.js",
+    "exports": {
+      "./ambient": {
+        "types": "./gnomeqr-4.0-ambient.d.ts",
+        "import": "./gnomeqr-4.0-ambient.js",
+        "default": "./gnomeqr-4.0-ambient.js"
+      },
+      "./import": {
+        "types": "./gnomeqr-4.0-import.d.ts",
+        "import": "./gnomeqr-4.0-import.js",
+        "default": "./gnomeqr-4.0-import.js"
+      },
+      "./gnomeqr-4.0": {
+        "types": "./gnomeqr-4.0.d.ts",
+        "import": "./gnomeqr-4.0.js",
+        "default": "./gnomeqr-4.0.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "scripts": {
+      "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+      "@girs/gjs": "^4.3.0",
+      "@girs/gio-2.0": "^4.3.0",
+      "@girs/gobject-2.0": "^4.3.0",
+      "@girs/glib-2.0": "^4.3.0",
+      "@girs/gmodule-2.0": "^4.3.0"    },
+    "devDependencies": {
+      "typescript": "*"
+    },
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GnomeQR-4.0"],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/gnomeqr-4.0#readme"
+}
+
+

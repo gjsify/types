@@ -83,6 +83,62 @@ export namespace GstApp {
     }
 
 
+    /**
+     * @gir-type Callback
+     */
+    interface AppSinkEosCallback {
+        (appsink: AppSink): void;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface AppSinkNewEventCallback {
+        (appsink: AppSink): boolean;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface AppSinkNewPrerollCallback {
+        (appsink: AppSink): Gst.FlowReturn;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface AppSinkNewSampleCallback {
+        (appsink: AppSink): Gst.FlowReturn;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface AppSinkProposeAllocationCallback {
+        (appsink: AppSink, query: Gst.Query): boolean;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface AppSrcEnoughDataCallback {
+        (appsrc: AppSrc): void;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface AppSrcNeedDataCallback {
+        (appsrc: AppSrc, length: number): void;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface AppSrcSeekDataCallback {
+        (appsrc: AppSrc, offset: number): boolean;
+    }
+
     namespace AppSink {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
@@ -193,7 +249,7 @@ export namespace GstApp {
              * Note that when the application does not pull samples fast enough, the
              * queued samples could consume a lot of memory, especially when dealing with
              * raw video frames. It's possible to control the behaviour of the queue with
-             * the "drop" and "max-buffers" properties.
+             * the "leaky-type" and "max-buffers" / "max-bytes" / "max-time" set of properties.
              * 
              * If an EOS event was received before any buffers, this function returns
              * `null`. Use gst_app_sink_is_eos () to check for the EOS condition.
@@ -214,7 +270,7 @@ export namespace GstApp {
              * Note that when the application does not pull samples fast enough, the
              * queued samples could consume a lot of memory, especially when dealing with
              * raw video frames. It's possible to control the behaviour of the queue with
-             * the "drop" and "max-buffers" properties.
+             * the "leaky-type" and "max-buffers" / "max-bytes" / "max-time" set of properties.
              * 
              * This function will only pull serialized events, excluding
              * the EOS event for which this functions returns
@@ -268,7 +324,7 @@ export namespace GstApp {
              * Note that when the application does not pull samples fast enough, the
              * queued samples could consume a lot of memory, especially when dealing with
              * raw video frames. It's possible to control the behaviour of the queue with
-             * the "drop" and "max-buffers" properties.
+             * the "leaky-type" and "max-buffers" / "max-bytes" / "max-time" set of properties.
              * 
              * If an EOS event was received before any buffers or the timeout expires,
              * this function returns `null`. Use gst_app_sink_is_eos () to check
@@ -281,10 +337,20 @@ export namespace GstApp {
             "try-pull-sample": (arg0: number) => Gst.Sample | null;
             "notify::buffer-list": (pspec: GObject.ParamSpec) => void;
             "notify::caps": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-buffers": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-bytes": (pspec: GObject.ParamSpec) => void;
+            "notify::current-level-time": (pspec: GObject.ParamSpec) => void;
             "notify::drop": (pspec: GObject.ParamSpec) => void;
+            "notify::dropped": (pspec: GObject.ParamSpec) => void;
             "notify::emit-signals": (pspec: GObject.ParamSpec) => void;
             "notify::eos": (pspec: GObject.ParamSpec) => void;
+            "notify::in": (pspec: GObject.ParamSpec) => void;
+            "notify::leaky-type": (pspec: GObject.ParamSpec) => void;
             "notify::max-buffers": (pspec: GObject.ParamSpec) => void;
+            "notify::max-bytes": (pspec: GObject.ParamSpec) => void;
+            "notify::max-time": (pspec: GObject.ParamSpec) => void;
+            "notify::out": (pspec: GObject.ParamSpec) => void;
+            "notify::silent": (pspec: GObject.ParamSpec) => void;
             "notify::wait-on-eos": (pspec: GObject.ParamSpec) => void;
             "notify::async": (pspec: GObject.ParamSpec) => void;
             "notify::blocksize": (pspec: GObject.ParamSpec) => void;
@@ -308,12 +374,28 @@ export namespace GstApp {
             buffer_list: boolean;
             bufferList: boolean;
             caps: Gst.Caps | null;
+            current_level_buffers: bigint | number;
+            currentLevelBuffers: bigint | number;
+            current_level_bytes: bigint | number;
+            currentLevelBytes: bigint | number;
+            current_level_time: bigint | number;
+            currentLevelTime: bigint | number;
             drop: boolean;
+            dropped: bigint | number;
             emit_signals: boolean;
             emitSignals: boolean;
             eos: boolean | any;
+            "in": bigint | number;
+            leaky_type: AppLeakyType;
+            leakyType: AppLeakyType;
             max_buffers: number;
             maxBuffers: number;
+            max_bytes: bigint | number;
+            maxBytes: bigint | number;
+            max_time: bigint | number;
+            maxTime: bigint | number;
+            out: bigint | number;
+            silent: boolean;
             wait_on_eos: boolean;
             waitOnEos: boolean;
         }
@@ -336,8 +418,8 @@ export namespace GstApp {
      * 
      * Appsink will internally use a queue to collect buffers from the streaming
      * thread. If the application is not pulling samples fast enough, this queue
-     * will consume a lot of memory over time. The "max-buffers" property can be
-     * used to limit the queue size. The "drop" property controls whether the
+     * will consume a lot of memory over time. The "max-buffers", "max-time" and "max-bytes"
+     * properties can be used to limit the queue size. The "leaky-type" property controls whether the
      * streaming thread blocks or if older buffers are dropped when the maximum
      * queue size is reached. Note that blocking the streaming thread can negatively
      * affect real-time performance and should be avoided.
@@ -378,10 +460,68 @@ export namespace GstApp {
         set caps(val: Gst.Caps | null);
 
         /**
+         * The number of currently queued buffers inside appsink.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get current_level_buffers(): number;
+
+        /**
+         * The number of currently queued buffers inside appsink.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get currentLevelBuffers(): number;
+
+        /**
+         * The number of currently queued bytes inside appsink.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get current_level_bytes(): number;
+
+        /**
+         * The number of currently queued bytes inside appsink.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get currentLevelBytes(): number;
+
+        /**
+         * The amount of currently queued time inside appsink.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get current_level_time(): number;
+
+        /**
+         * The amount of currently queued time inside appsink.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get currentLevelTime(): number;
+
+        /**
+         * Drop old buffers when the buffer queue is filled.
+         * @deprecated since 1.28: Use "leaky-type" property instead.
          * @default false
          */
         get drop(): boolean;
         set drop(val: boolean);
+
+        /**
+         * Number of buffers that were dropped.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get dropped(): number;
 
         /**
          * @default false
@@ -403,24 +543,114 @@ export namespace GstApp {
          eos: boolean | any;
 
         /**
+         * Number of input buffers that were queued.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get "in"(): number;
+
+        /**
+         * When set to any other value than GST_APP_LEAKY_TYPE_NONE then the appsink
+         * will drop any buffers that are pushed into it once its internal queue is
+         * full. The selected type defines whether to drop the oldest or new
+         * buffers.
+         * @since 1.28
+         * @default GstApp.AppLeakyType.NONE
+         */
+        get leaky_type(): AppLeakyType;
+        set leaky_type(val: AppLeakyType);
+
+        /**
+         * When set to any other value than GST_APP_LEAKY_TYPE_NONE then the appsink
+         * will drop any buffers that are pushed into it once its internal queue is
+         * full. The selected type defines whether to drop the oldest or new
+         * buffers.
+         * @since 1.28
+         * @default GstApp.AppLeakyType.NONE
+         */
+        get leakyType(): AppLeakyType;
+        set leakyType(val: AppLeakyType);
+
+        /**
+         * Maximum amount of buffers in the queue (0 = unlimited).
          * @default 0
          */
         get max_buffers(): number;
         set max_buffers(val: number);
 
         /**
+         * Maximum amount of buffers in the queue (0 = unlimited).
          * @default 0
          */
         get maxBuffers(): number;
         set maxBuffers(val: number);
 
         /**
+         * Maximum amount of bytes in the queue (0 = unlimited)
+         * @since 1.24
+         * @default 0
+         */
+        get max_bytes(): number;
+        set max_bytes(val: bigint | number);
+
+        /**
+         * Maximum amount of bytes in the queue (0 = unlimited)
+         * @since 1.24
+         * @default 0
+         */
+        get maxBytes(): number;
+        set maxBytes(val: bigint | number);
+
+        /**
+         * Maximum total duration of data in the queue (0 = unlimited)
+         * @since 1.24
+         * @default 0
+         */
+        get max_time(): number;
+        set max_time(val: bigint | number);
+
+        /**
+         * Maximum total duration of data in the queue (0 = unlimited)
+         * @since 1.24
+         * @default 0
+         */
+        get maxTime(): number;
+        set maxTime(val: bigint | number);
+
+        /**
+         * Number of output buffers that were dequeued.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get out(): number;
+
+        /**
+         * Don't emit notify for input, output and dropped buffers.
+         * @since 1.28
+         * @default true
+         */
+        get silent(): boolean;
+        set silent(val: boolean);
+
+        /**
+         * Wait for all buffers to be processed after receiving an EOS.
+         * 
+         * In cases where it is uncertain if an `appsink` will have a consumer for its buffers
+         * when it receives an EOS, set to `false` to ensure that the `appsink` will not hang.
+         * @since 1.8
          * @default true
          */
         get wait_on_eos(): boolean;
         set wait_on_eos(val: boolean);
 
         /**
+         * Wait for all buffers to be processed after receiving an EOS.
+         * 
+         * In cases where it is uncertain if an `appsink` will have a consumer for its buffers
+         * when it receives an EOS, set to `false` to ensure that the `appsink` will not hang.
+         * @since 1.8
          * @default true
          */
         get waitOnEos(): boolean;
@@ -512,6 +742,31 @@ export namespace GstApp {
         vfunc_pull_sample(): Gst.Sample | null;
 
         /**
+         * This function blocks until a sample or an event or EOS becomes available or the appsink
+         * element is set to the READY/NULL state or the timeout expires.
+         * 
+         * This function will only return samples when the appsink is in the PLAYING
+         * state. All rendered buffers and events will be put in a queue so that the application
+         * can pull them at its own rate. Note that when the application does not
+         * pull samples fast enough, the queued buffers could consume a lot of memory,
+         * especially when dealing with raw video frames.
+         * Events can be pulled when the appsink is in the READY, PAUSED or PLAYING state.
+         * 
+         * This function will only pull serialized events, excluding
+         * the EOS event for which this functions returns
+         * `null`. Use `gst_app_sink_is_eos()` to check for the EOS condition.
+         * 
+         * This method is a variant of `gst_app_sink_try_pull_sample()` that can be used
+         * to handle incoming events events as well as samples.
+         * 
+         * Note that future releases may extend this API to return other object types
+         * so make sure that your code is checking for the actual type it is handling.
+         * @param timeout the maximum amount of time to wait for a sample
+         * @virtual
+         */
+        vfunc_try_pull_object(timeout: Gst.ClockTime): Gst.MiniObject | null;
+
+        /**
          * Get the last preroll sample in `appsink`. This was the sample that caused the
          * appsink to preroll in the PAUSED state.
          * 
@@ -568,8 +823,26 @@ export namespace GstApp {
         get_caps(): Gst.Caps | null;
 
         /**
+         * Get the number of currently queued buffers inside `appsink`.
+         * @returns The number of currently queued buffers.
+         */
+        get_current_level_buffers(): number;
+
+        /**
+         * Get the number of currently queued bytes inside `appsink`.
+         * @returns The number of currently queued bytes.
+         */
+        get_current_level_bytes(): number;
+
+        /**
+         * Get the amount of currently queued time inside `appsink`.
+         * @returns The amount of currently queued time.
+         */
+        get_current_level_time(): Gst.ClockTime;
+
+        /**
          * Check if `appsink` will drop old buffers when the maximum amount of queued
-         * buffers is reached.
+         * data is reached (meaning max buffers, time or bytes limit, whichever is hit first).
          * @returns `true` if `appsink` is dropping old buffers when the queue is filled.
          */
         get_drop(): boolean;
@@ -581,10 +854,29 @@ export namespace GstApp {
         get_emit_signals(): boolean;
 
         /**
+         * Returns the currently set {@link GstApp.AppLeakyType}. See `gst_app_sink_set_leaky_type()`
+         * for more details.
+         * @returns The currently set {@link GstApp.AppLeakyType}.
+         */
+        get_leaky_type(): AppLeakyType;
+
+        /**
          * Get the maximum amount of buffers that can be queued in `appsink`.
          * @returns The maximum amount of buffers that can be queued.
          */
         get_max_buffers(): number;
+
+        /**
+         * Get the maximum total size, in bytes, that can be queued in `appsink`.
+         * @returns The maximum amount of bytes that can be queued
+         */
+        get_max_bytes(): number;
+
+        /**
+         * Get the maximum total duration that can be queued in `appsink`.
+         * @returns The maximum total duration that can be queued.
+         */
+        get_max_time(): Gst.ClockTime;
 
         /**
          * Check if `appsink` will wait for all buffers to be consumed when an EOS is
@@ -602,6 +894,30 @@ export namespace GstApp {
          * @returns `true` if no more samples can be pulled and the appsink is EOS.
          */
         is_eos(): boolean;
+
+        /**
+         * This function blocks until a sample or an event becomes available or the appsink
+         * element is set to the READY/NULL state.
+         * 
+         * This function will only return samples when the appsink is in the PLAYING
+         * state. All rendered buffers and events will be put in a queue so that the application
+         * can pull them at its own rate. Note that when the application does not
+         * pull samples fast enough, the queued buffers could consume a lot of memory,
+         * especially when dealing with raw video frames.
+         * Events can be pulled when the appsink is in the READY, PAUSED or PLAYING state.
+         * 
+         * This function will only pull serialized events, excluding
+         * the EOS event for which this functions returns
+         * `null`. Use `gst_app_sink_is_eos()` to check for the EOS condition.
+         * 
+         * This method is a variant of `gst_app_sink_pull_sample()` that can be used
+         * to handle incoming events events as well as samples.
+         * 
+         * Note that future releases may extend this API to return other object types
+         * so make sure that your code is checking for the actual type it is handling.
+         * @returns a {@link Gst.Sample}, or a {@link Gst.Event} or NULL when the appsink is stopped or EOS.          Call `gst_mini_object_unref()` after usage.
+         */
+        pull_object(): Gst.MiniObject | null;
 
         /**
          * Get the last preroll sample in `appsink`. This was the sample that caused the
@@ -662,7 +978,7 @@ export namespace GstApp {
 
         /**
          * Instruct `appsink` to drop old buffers when the maximum amount of queued
-         * buffers is reached.
+         * data is reached, that is, when any configured limit is hit (max-buffers, max-time or max-bytes).
          * @param drop the new state
          */
         set_drop(drop: boolean): void;
@@ -676,18 +992,89 @@ export namespace GstApp {
         set_emit_signals(emit: boolean): void;
 
         /**
+         * When set to any other value than GST_APP_LEAKY_TYPE_NONE then the appsink
+         * will drop any buffers that are pushed into it once its internal queue is
+         * full. The selected type defines whether to drop the oldest or new
+         * buffers.
+         * @param leaky the {@link GstApp.AppLeakyType}
+         */
+        set_leaky_type(leaky: AppLeakyType): void;
+
+        /**
          * Set the maximum amount of buffers that can be queued in `appsink`. After this
          * amount of buffers are queued in appsink, any more buffers will block upstream
-         * elements until a sample is pulled from `appsink`.
+         * elements until a sample is pulled from `appsink`, unless 'drop' is set, in which
+         * case new buffers will be discarded.
          * @param max the maximum number of buffers to queue
          */
         set_max_buffers(max: number): void;
+
+        /**
+         * Set the maximum total size that can be queued in `appsink`. After this
+         * amount of buffers are queued in appsink, any more buffers will block upstream
+         * elements until a sample is pulled from `appsink`, unless 'drop' is set, in which
+         * case new buffers will be discarded.
+         * @param max the maximum total size of buffers to queue, in bytes
+         */
+        set_max_bytes(max: bigint | number): void;
+
+        /**
+         * Set the maximum total duration that can be queued in `appsink`. After this
+         * amount of buffers are queued in appsink, any more buffers will block upstream
+         * elements until a sample is pulled from `appsink`, unless 'drop' is set, in which
+         * case new buffers will be discarded.
+         * @param max the maximum total duration to queue
+         */
+        set_max_time(max: Gst.ClockTime): void;
+
+        /**
+         * Set callbacks which will be executed for each new preroll, new sample and eos.
+         * This is an alternative to using the signals, it has lower overhead and is thus
+         * less expensive, but also less flexible.
+         * 
+         * If callbacks are installed, no signals will be emitted for performance
+         * reasons.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSink} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * 
+         * Note that `gst_app_sink_set_callbacks()` and
+         * `gst_app_sink_set_simple_callbacks()` are mutually exclusive and setting one
+         * will unset the other.
+         * @param cb the callbacks
+         */
+        set_simple_callbacks(cb: AppSinkSimpleCallbacks | null): void;
 
         /**
          * Instruct `appsink` to wait for all buffers to be consumed when an EOS is received.
          * @param wait the new state
          */
         set_wait_on_eos(wait: boolean): void;
+
+        /**
+         * This function blocks until a sample or an event or EOS becomes available or the appsink
+         * element is set to the READY/NULL state or the timeout expires.
+         * 
+         * This function will only return samples when the appsink is in the PLAYING
+         * state. All rendered buffers and events will be put in a queue so that the application
+         * can pull them at its own rate. Note that when the application does not
+         * pull samples fast enough, the queued buffers could consume a lot of memory,
+         * especially when dealing with raw video frames.
+         * Events can be pulled when the appsink is in the READY, PAUSED or PLAYING state.
+         * 
+         * This function will only pull serialized events, excluding
+         * the EOS event for which this functions returns
+         * `null`. Use `gst_app_sink_is_eos()` to check for the EOS condition.
+         * 
+         * This method is a variant of `gst_app_sink_try_pull_sample()` that can be used
+         * to handle incoming events events as well as samples.
+         * 
+         * Note that future releases may extend this API to return other object types
+         * so make sure that your code is checking for the actual type it is handling.
+         * @param timeout the maximum amount of time to wait for a sample
+         * @returns a {@link Gst.Sample}, or {@link Gst.Event} or NULL when the appsink is stopped or EOS or the timeout expires. Call `gst_mini_object_unref()` after usage.
+         */
+        try_pull_object(timeout: Gst.ClockTime): Gst.MiniObject | null;
 
         /**
          * Get the last preroll sample in `appsink`. This was the sample that caused the
@@ -896,10 +1283,12 @@ export namespace GstApp {
             "notify::current-level-buffers": (pspec: GObject.ParamSpec) => void;
             "notify::current-level-bytes": (pspec: GObject.ParamSpec) => void;
             "notify::current-level-time": (pspec: GObject.ParamSpec) => void;
+            "notify::dropped": (pspec: GObject.ParamSpec) => void;
             "notify::duration": (pspec: GObject.ParamSpec) => void;
             "notify::emit-signals": (pspec: GObject.ParamSpec) => void;
             "notify::format": (pspec: GObject.ParamSpec) => void;
             "notify::handle-segment-change": (pspec: GObject.ParamSpec) => void;
+            "notify::in": (pspec: GObject.ParamSpec) => void;
             "notify::is-live": (pspec: GObject.ParamSpec) => void;
             "notify::leaky-type": (pspec: GObject.ParamSpec) => void;
             "notify::max-buffers": (pspec: GObject.ParamSpec) => void;
@@ -908,6 +1297,8 @@ export namespace GstApp {
             "notify::max-time": (pspec: GObject.ParamSpec) => void;
             "notify::min-latency": (pspec: GObject.ParamSpec) => void;
             "notify::min-percent": (pspec: GObject.ParamSpec) => void;
+            "notify::out": (pspec: GObject.ParamSpec) => void;
+            "notify::silent": (pspec: GObject.ParamSpec) => void;
             "notify::size": (pspec: GObject.ParamSpec) => void;
             "notify::stream-type": (pspec: GObject.ParamSpec) => void;
             "notify::automatic-eos": (pspec: GObject.ParamSpec) => void;
@@ -929,12 +1320,14 @@ export namespace GstApp {
             currentLevelBytes: bigint | number;
             current_level_time: bigint | number;
             currentLevelTime: bigint | number;
+            dropped: bigint | number;
             duration: bigint | number;
             emit_signals: boolean;
             emitSignals: boolean;
             format: Gst.Format;
             handle_segment_change: boolean;
             handleSegmentChange: boolean;
+            "in": bigint | number;
             is_live: boolean | any;
             isLive: boolean;
             leaky_type: AppLeakyType;
@@ -951,6 +1344,8 @@ export namespace GstApp {
             minLatency: bigint | number;
             min_percent: number;
             minPercent: number;
+            out: bigint | number;
+            silent: boolean;
             size: bigint | number;
             stream_type: AppStreamType;
             streamType: AppStreamType;
@@ -1094,6 +1489,14 @@ export namespace GstApp {
         get currentLevelTime(): number;
 
         /**
+         * Number of buffers that were dropped.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get dropped(): number;
+
+        /**
          * The total duration in nanoseconds of the data stream. If the total duration is known, it
          * is recommended to configure it with this property.
          * @since 1.10
@@ -1157,6 +1560,14 @@ export namespace GstApp {
          */
         get handleSegmentChange(): boolean;
         set handleSegmentChange(val: boolean);
+
+        /**
+         * Number of input buffers that were queued.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get "in"(): number;
 
         /**
          * Instruct the source to behave like a live source. This includes that it
@@ -1297,6 +1708,22 @@ export namespace GstApp {
          */
         get minPercent(): number;
         set minPercent(val: number);
+
+        /**
+         * Number of output buffers that were dequeued.
+         * @since 1.28
+         * @read-only
+         * @default 0
+         */
+        get out(): number;
+
+        /**
+         * Don't emit notify for input, output and dropped buffers.
+         * @since 1.28
+         * @default true
+         */
+        get silent(): boolean;
+        set silent(val: boolean);
 
         /**
          * The total size in bytes of the data stream. If the total size is known, it
@@ -1616,6 +2043,25 @@ export namespace GstApp {
         set_max_time(max: Gst.ClockTime): void;
 
         /**
+         * Set callbacks which will be executed when data is needed, enough data has
+         * been collected or when a seek should be performed.
+         * This is an alternative to using the signals, it has lower overhead and is thus
+         * less expensive, but also less flexible.
+         * 
+         * If callbacks are installed, no signals will be emitted for performance
+         * reasons.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSrc} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * 
+         * Note that `gst_app_src_set_callbacks()` and
+         * `gst_app_src_set_simple_callbacks()` are mutually exclusive and setting one
+         * will unset the other.
+         * @param cb the callbacks
+         */
+        set_simple_callbacks(cb: AppSrcSimpleCallbacks | null): void;
+
+        /**
          * Set the size of the stream in bytes. A value of -1 means that the size is
          * not known.
          * @param size the size to set
@@ -1714,6 +2160,82 @@ export namespace GstApp {
 
 
     /**
+     * A set of callbacks that can be installed on the appsink with
+     * `gst_app_sink_set_simple_callbacks()`.
+     * 
+     * Unlike GstAppSinkCallbacks this can also be used from bindings.
+     * @gir-type Struct
+     * @since 1.28
+     */
+    class AppSinkSimpleCallbacks {
+        static $gtype: GObject.GType<AppSinkSimpleCallbacks>;
+
+        // Constructors
+        constructor(properties?: Partial<{}>);
+
+        static ["new"](): AppSinkSimpleCallbacks;
+
+        // Methods
+        /**
+         * Increases the reference count of `cb`.
+         * @returns the callbacks
+         */
+        ref(): AppSinkSimpleCallbacks;
+
+        /**
+         * Sets the EOS callback on `cb`.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSink} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * @param eos_cb EOS callback
+         */
+        set_eos(eos_cb: AppSinkEosCallback): void;
+
+        /**
+         * Sets the new event callback on `cb`.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSink} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * @param new_event_cb new event callback
+         */
+        set_new_event(new_event_cb: AppSinkNewEventCallback): void;
+
+        /**
+         * Sets the new preroll callback on `cb`.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSink} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * @param new_preroll_cb new preroll callback
+         */
+        set_new_preroll(new_preroll_cb: AppSinkNewPrerollCallback): void;
+
+        /**
+         * Sets the new sample callback on `cb`.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSink} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * @param new_sample_cb new sample callback
+         */
+        set_new_sample(new_sample_cb: AppSinkNewSampleCallback): void;
+
+        /**
+         * Sets the new event callback on `cb`.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSink} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * @param propose_allocation_cb propose allocation callback
+         */
+        set_propose_allocation(propose_allocation_cb: AppSinkProposeAllocationCallback): void;
+
+        /**
+         * Decreases the reference count of `cb` and frees it after the
+         * last reference is dropped.
+         */
+        unref(): void;
+    }
+
+
+    /**
      * @gir-type Alias
      */
     type AppSrcClass = typeof AppSrc;
@@ -1723,6 +2245,64 @@ export namespace GstApp {
      */
     abstract class AppSrcPrivate {
         static $gtype: GObject.GType<AppSrcPrivate>;
+    }
+
+
+    /**
+     * A set of callbacks that can be installed on the appsink with
+     * `gst_app_sink_set_simple_callbacks()`.
+     * 
+     * Unlike GstAppSrcCallbacks this can also be used from bindings.
+     * @gir-type Struct
+     * @since 1.28
+     */
+    class AppSrcSimpleCallbacks {
+        static $gtype: GObject.GType<AppSrcSimpleCallbacks>;
+
+        // Constructors
+        constructor(properties?: Partial<{}>);
+
+        static ["new"](): AppSrcSimpleCallbacks;
+
+        // Methods
+        /**
+         * Increases the reference count of `cb`.
+         * @returns the callbacks
+         */
+        ref(): AppSrcSimpleCallbacks;
+
+        /**
+         * Sets the enough data callback on `cb`.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSrc} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * @param enough_data_cb EOS callback
+         */
+        set_enough_data(enough_data_cb: AppSrcEnoughDataCallback): void;
+
+        /**
+         * Sets the need data callback on `cb`.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSrc} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * @param need_data_cb EOS callback
+         */
+        set_need_data(need_data_cb: AppSrcNeedDataCallback): void;
+
+        /**
+         * Sets the seek data callback on `cb`.
+         * 
+         * Once `cb` is set on an {@link GstApp.AppSrc} it is not possible anymore to change any of
+         * the callbacks inside it.
+         * @param seek_data_cb EOS callback
+         */
+        set_seek_data(seek_data_cb: AppSrcSeekDataCallback): void;
+
+        /**
+         * Decreases the reference count of `cb` and frees it after the
+         * last reference is dropped.
+         */
+        unref(): void;
     }
 
 

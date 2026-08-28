@@ -501,8 +501,6 @@ export namespace Dazzle {
      */
     function shortcut_chord_hash(data: null): number;
 
-    function shortcut_chord_table_get_type(): GObject.GType;
-
     /**
      * @gir-type Callback
      */
@@ -26105,8 +26103,11 @@ export namespace Dazzle {
     /**
      * @gir-type Struct
      */
-    abstract class ShortcutChordTable {
+    class ShortcutChordTable {
         static $gtype: GObject.GType<ShortcutChordTable>;
+
+        // Constructors
+        constructor(properties?: Partial<{}>);
 
         // Methods
         /**

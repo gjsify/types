@@ -52,18 +52,29 @@ export type PhoshLockscreenPageNick = 'info' | 'extra' | 'unlock';
 
 /** A #GtkWindow rendered as a LayerSurface by the compositor #PhoshLayerSurface allows to use a Wayland surface backed by the layer-shell protocol as #GtkWindow. */
 export interface PhoshLayerSurfaceProps extends GtkWindowProps, GtkBuildableProps {
+    /** The edges to anchor the surface to */
     anchor?: number;
+    /** The area that is not occluded with other surfaces */
     'exclusive-zone'?: number;
     height?: number;
+    /** Whether the surface interacts with the keyboard */
     'kbd-interactivity'?: boolean;
+    /** The layer the surface should be attached to */
     layer?: number;
+    /** The layer shell wayland global */
     'layer-shell'?: never;
+    /** Distance away from the bottom anchor point */
     'margin-bottom'?: number;
+    /** "Distance away from the left anchor point */
     'margin-left'?: number;
+    /** Distance away from the right anchor point */
     'margin-right'?: number;
+    /** Distance away from the top anchor point */
     'margin-top'?: number;
+    /** Namespace of the layer surface */
     namespace?: string;
     width?: number;
+    /** The wl_output associated with this surface */
     'wl-output'?: never;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
@@ -109,6 +120,8 @@ export interface PhoshStatusIconProps extends GtkBinProps, GtkBuildableProps {
     info?: string;
     /** The size of the icon to display in the widget */
     'pixel-size'?: number;
+    /** The priority of icon. */
+    priority?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type PhoshStatusIconConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;

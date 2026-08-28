@@ -513,7 +513,10 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      */
     function widgets_storage_bar_item_description_get_name(description: WidgetsStorageBarItemDescription): string;
 
-    function text_style_get_stylesheet(): [string, string];
+    /**
+     * @param self 
+     */
+    function text_style_get_stylesheet(self: TextStyle): [string, string];
 
     /**
      * @param accel 

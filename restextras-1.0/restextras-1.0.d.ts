@@ -54,7 +54,7 @@ export namespace RestExtras {
             apiKey: string;
             shared_secret: string;
             sharedSecret: string;
-            token: string;
+            token: string | null;
         }
     }
 
@@ -92,8 +92,8 @@ export namespace RestExtras {
         /**
          * @default null
          */
-        get token(): string;
-        set token(val: string);
+        get token(): string | null;
+        set token(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -158,9 +158,9 @@ export namespace RestExtras {
 
         /**
          * Get the current token.
-         * @returns the token, or `null` if there is no token yet.  This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
+         * @returns the token, or `null` if there is no token yet. This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
          */
-        get_token(): string;
+        get_token(): string | null;
 
         /**
          * Create a new {@link Rest.ProxyCall} that can be used for uploading.
@@ -192,9 +192,11 @@ export namespace RestExtras {
         set_token(token: string): void;
 
         /**
-         * @param params 
+         * Get the md5 checksum of the request.
+         * @param params the request parameters
+         * @returns The md5 checksum of the request
          */
-        sign(params: never): string;
+        sign(params: { [key: string]: string }): string;
     }
 
 
@@ -277,8 +279,8 @@ export namespace RestExtras {
             api_key: string;
             apiKey: string;
             secret: string;
-            session_key: string;
-            sessionKey: string;
+            session_key: string | null;
+            sessionKey: string | null;
         }
     }
 
@@ -310,14 +312,14 @@ export namespace RestExtras {
         /**
          * @default null
          */
-        get session_key(): string;
-        set session_key(val: string);
+        get session_key(): string | null;
+        set session_key(val: string | null);
 
         /**
          * @default null
          */
-        get sessionKey(): string;
-        set sessionKey(val: string);
+        get sessionKey(): string | null;
+        set sessionKey(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -381,9 +383,9 @@ export namespace RestExtras {
 
         /**
          * Get the current session key.
-         * @returns the session key, or `null` if there is no session key yet.  This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
+         * @returns the session key, or `null` if there is no session key yet. This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
          */
-        get_session_key(): string;
+        get_session_key(): string | null;
 
         /**
          * Set the session key.
@@ -392,9 +394,11 @@ export namespace RestExtras {
         set_session_key(session_key: string): void;
 
         /**
-         * @param params 
+         * Get the md5 checksum of the request.
+         * @param params the request parameters
+         * @returns The md5 checksum of the request
          */
-        sign(params: never): string;
+        sign(params: { [key: string]: string }): string;
     }
 
 
@@ -545,7 +549,7 @@ export namespace RestExtras {
          * @param weak_object an object instance used to tie the life cycle of the proxy to
          * @returns `true`, or `false` if the file could not be opened
          */
-        upload_async(filename: string, fields: never, incomplete: boolean, callback: YoutubeProxyUploadCallback, weak_object: GObject.Object): boolean;
+        upload_async(filename: string, fields: { [key: string]: string }, incomplete: boolean, callback: YoutubeProxyUploadCallback, weak_object: GObject.Object | null): boolean;
     }
 
 

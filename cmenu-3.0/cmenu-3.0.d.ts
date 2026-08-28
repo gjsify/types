@@ -377,7 +377,7 @@ export namespace CMenu {
          * the application.
          * @returns a list of content types.
          */
-        get_supported_types(): string[];
+        get_supported_types(): string[] | null;
 
         /**
          * Launches the application. Passes `files` to the launched application
@@ -641,7 +641,7 @@ export namespace CMenu {
          * the application.
          * @virtual
          */
-        vfunc_get_supported_types(): string[];
+        vfunc_get_supported_types(): string[] | null;
 
         /**
          * Launches the application. Passes `files` to the launched application

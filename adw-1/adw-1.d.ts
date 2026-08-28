@@ -1055,6 +1055,69 @@ export namespace Adw {
     function accent_color_to_standalone_rgba(self: AccentColor, dark: boolean): Gdk.RGBA;
 
     /**
+     * Creates a binding between a property on `source` and a CSS class on `target`.
+     * 
+     * Whenever `source_property` is changed the `target_css_class` is toggled either
+     * on or off on `target` using the boolean value of `source_property`.
+     * 
+     * For instance:
+     * 
+     * ```c
+     * adw_bind_property_to_css_class (action, "active", widget, "active-widget", 0);
+     * ```
+     * 
+     * will result in the `active-widget` CSS class on the widget instance being
+     * applied when `active` is `TRUE`, and `active-widget` being removed when
+     * `active` is `FALSE`.
+     * 
+     * The binding will automatically be removed when either the `source` or `target`
+     * instances are finalized. To remove the binding without affecting the `source`
+     * or `target`, call {@link GObject.Object.unref} on the returned binding. It is
+     * recommended to only call {@link GObject.Object.unref} when it is clear that
+     * both `source` and `target` will outlive the binding.
+     * 
+     * This function is not thread safe. A source can have multiple bindings.
+     * 
+     * See also: {@link Adw.bind_property_to_css_class_full}.
+     * @param source the source object
+     * @param source_property the property on `source` to bind
+     * @param target the target widget
+     * @param target_css_class the CSS class on `target` to bind
+     * @param flags flags to pass to `self`
+     * @returns the new binding
+     * @since 1.10
+     */
+    function bind_property_to_css_class(source: GObject.Object, source_property: string, target: Gtk.Widget, target_css_class: string, flags: GObject.BindingFlags): CssClassBinding;
+
+    /**
+     * Creates a binding between a property on `source` and a CSS class on `target`
+     * with a custom mapping using closures.
+     * 
+     * This function is the language bindings friendly version of
+     * {@link Adw.bind_property_to_css_class_full}.
+     * 
+     * The binding will automatically be removed when either the `source` or `target`
+     * instances are finalized. To remove the binding without affecting the `source`
+     * or `target`, call {@link GObject.Object.unref} on the returned binding. It is
+     * recommended to only call {@link GObject.Object.unref} when it is clear that
+     * both `source` and `target` will outlive the binding.
+     * 
+     * This function is not thread safe. A source can have multiple bindings.
+     * 
+     * See also: {@link Adw.bind_property_to_css_class}.
+     * @param source the source object
+     * @param source_property the property on `source` to bind
+     * @param target the target widget
+     * @param target_css_class the CSS class on `target` to bind
+     * @param flags flags to pass to `self`
+     * @param map_to_class a closure wrapping the `source_property` to   boolean value map, or `NULL` to use the default
+     * @param map_to_property a closure wrapping the `target_css_class` to   {@link GObject.Value} map, or `NULL` to use the default
+     * @returns the new binding
+     * @since 1.10
+     */
+    function bind_property_to_css_class_full(source: GObject.Object, source_property: string, target: Gtk.Widget, target_css_class: string, flags: GObject.BindingFlags, map_to_class: GObject.Closure | null, map_to_property: GObject.Closure | null): CssClassBinding;
+
+    /**
      * Parses a condition from a string.
      * 
      * Length conditions are specified as `<type>: <value>[<unit>]`, where:
@@ -1247,6 +1310,20 @@ export namespace Adw {
     /**
      * @gir-type Callback
      */
+    interface CssClassBindingMapToClassFunc {
+        (self: CssClassBinding, property_value: unknown): boolean;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface CssClassBindingMapToPropertyFunc {
+        (self: CssClassBinding, class_applied: boolean, property_value: unknown): void;
+    }
+
+    /**
+     * @gir-type Callback
+     */
     interface SidebarSectionCreateItemFunc<A = GObject.Object> {
         (item: A): SidebarItem;
     }
@@ -1362,6 +1439,7 @@ export namespace Adw {
             "notify::issue-url": (pspec: GObject.ParamSpec) => void;
             "notify::license": (pspec: GObject.ParamSpec) => void;
             "notify::license-type": (pspec: GObject.ParamSpec) => void;
+            "notify::other-apps-title": (pspec: GObject.ParamSpec) => void;
             "notify::release-notes": (pspec: GObject.ParamSpec) => void;
             "notify::release-notes-version": (pspec: GObject.ParamSpec) => void;
             "notify::support-url": (pspec: GObject.ParamSpec) => void;
@@ -1440,6 +1518,8 @@ export namespace Adw {
             license: string;
             license_type: Gtk.License;
             licenseType: Gtk.License;
+            other_apps_title: string;
+            otherAppsTitle: string;
             release_notes: string;
             releaseNotes: string;
             release_notes_version: string;
@@ -1585,6 +1665,10 @@ export namespace Adw {
      * 
      * {@link Adw.AboutDialog} can show links to your other apps at the end of the main
      * page. To add them, use {@link AboutDialog.add_other_app}.
+     * 
+     * By default the other apps section will have "Other Apps by
+     * {@link AboutDialog.developer_name}" as its title. Use
+     * {@link AboutDialog.other_apps_title} to override it.
      * 
      * ## Constructing
      * 
@@ -1987,6 +2071,28 @@ export namespace Adw {
          */
         get licenseType(): Gtk.License;
         set licenseType(val: Gtk.License);
+
+        /**
+         * The "Other apps" section title.
+         * 
+         * If not set, the section will say "Other Apps by (developer name)".
+         * 
+         * See {@link AboutDialog.add_other_app}.
+         * @since 1.10
+         */
+        get other_apps_title(): string;
+        set other_apps_title(val: string);
+
+        /**
+         * The "Other apps" section title.
+         * 
+         * If not set, the section will say "Other Apps by (developer name)".
+         * 
+         * See {@link AboutDialog.add_other_app}.
+         * @since 1.10
+         */
+        get otherAppsTitle(): string;
+        set otherAppsTitle(val: string);
 
         /**
          * The release notes of the application.
@@ -2426,6 +2532,12 @@ export namespace Adw {
         get_license_type(): Gtk.License;
 
         /**
+         * Gets The other apps section title for `self`.
+         * @returns the section title
+         */
+        get_other_apps_title(): string;
+
+        /**
          * Gets the release notes for `self`.
          * @returns the release notes
          */
@@ -2672,6 +2784,16 @@ export namespace Adw {
          * @param license_type the license type
          */
         set_license_type(license_type: Gtk.License): void;
+
+        /**
+         * Sets the "Other apps" section title for `self`.
+         * 
+         * If not set, the section will say "Other Apps by (developer name)".
+         * 
+         * See {@link AboutDialog.add_other_app}.
+         * @param title the new title
+         */
+        set_other_apps_title(title: string): void;
 
         /**
          * Sets the release notes for `self`.
@@ -6502,11 +6624,9 @@ export namespace Adw {
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
             "notify::style-manager": (pspec: GObject.ParamSpec) => void;
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
-            "notify::autosave-interval": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
             "notify::register-session": (pspec: GObject.ParamSpec) => void;
             "notify::screensaver-active": (pspec: GObject.ParamSpec) => void;
-            "notify::support-save": (pspec: GObject.ParamSpec) => void;
             "notify::action-group": (pspec: GObject.ParamSpec) => void;
             "notify::application-id": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -6744,7 +6864,7 @@ export namespace Adw {
      *         <object class="AdwHeaderBar"/>
      *       </child>
      *       <property name="content">
-     *         <!-- ... -->
+     *         <!-- put your content here -->
      *       </property>
      *     </object>
      *   </property>
@@ -8098,7 +8218,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -8715,7 +8835,7 @@ export namespace Adw {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -8731,14 +8851,14 @@ export namespace Adw {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -8778,7 +8898,7 @@ export namespace Adw {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -8795,14 +8915,14 @@ export namespace Adw {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -8902,7 +9022,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -9364,7 +9484,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -10447,7 +10567,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -10737,7 +10857,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -11335,7 +11455,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -11949,7 +12069,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -13083,7 +13203,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -13098,7 +13218,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -13572,7 +13692,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -13587,7 +13707,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -14060,7 +14180,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -14075,7 +14195,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -14687,7 +14807,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -14702,7 +14822,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -14926,7 +15046,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -15574,7 +15694,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -15589,7 +15709,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -16157,6 +16277,219 @@ export namespace Adw {
          */
         // Conflicted with Adw.ActionRow.activate
         activate(...args: never[]): any;
+    }
+
+
+    namespace CssClassBinding {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::source-property": (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
+            "notify::target-css-class": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            flags: GObject.BindingFlags;
+            source: GObject.Object | null;
+            source_property: string;
+            sourceProperty: string;
+            target: Gtk.Widget | null;
+            target_css_class: string;
+            targetCssClass: string;
+        }
+    }
+
+    /**
+     * A binding between a {@link GObject.Object} property and a CSS class on a
+     * {@link Gtk.Widget}.
+     * 
+     * To create a binding, use {@link Adw.bind_property_to_css_class}.
+     * 
+     * Whenever the source property changes, a CSS class is toggled on the target
+     * object; for instance, given the following binding:
+     * 
+     * ```c
+     * adw_bind_property_to_css_class (source, "property",
+     *                                 target, "css-class",
+     *                                 G_BINDING_DEFAULT);
+     * ```
+     * 
+     * when `property` is a boolean property, `css-class` will be set every time the
+     * value of `property` is changed to `TRUE`, and vice versa.
+     * 
+     * Using {@link Adw.bind_property_to_css_class_full}, it's possible to define a
+     * custom mapping between a property and the boolean enable state, that is,
+     * defining a mapping between any arbitrary property type and a boolean type.
+     * This allows for any property, not just boolean properties, to be bound to a
+     * CSS class; for instance, the following binding
+     * 
+     * ```c
+     * adw_bind_property_to_css_class_full (source, "property",
+     *                                      target, "css-class",
+     *                                      G_BINDING_DEFAULT,
+     *                                      int_to_bool,
+     *                                      bool_to_int,
+     *                                      NULL, NULL);
+     * ```
+     * 
+     * will map an integer-typed `property` to a boolean value, and use the value of
+     * that boolean to toggle the CSS class.
+     * 
+     * It is possible to invert the type of a boolean without using a custom map
+     * function by using the {@link GObject.BindingFlags.INVERT_BOOLEAN} flag.
+     * 
+     * A binding will be removed, and any allocated resources freed, whenever either
+     * one of the source or target instances are finalized, or when the binding
+     * instances loses its last reference.
+     * 
+     * Languages with garbage collection, or developers wanting to fully control the
+     * lifecycle of a binding may use {@link CssClassBinding.unbind} to expliticly
+     * release a binding, instead of relying on the last reference on the binding,
+     * source, and target instances to drop.
+     * @gir-type Class
+     * @since 1.10
+     */
+    class CssClassBinding extends GObject.Object {
+        static $gtype: GObject.GType<CssClassBinding>;
+
+        // Properties
+        /**
+         * Flags to be used to control the binding.
+         * @since 1.10
+         * @construct-only
+         * @default GObject.BindingFlags.DEFAULT
+         */
+        get flags(): GObject.BindingFlags;
+
+        /**
+         * The object to use as the source of the CSS class binding.
+         * @since 1.10
+         * @construct-only
+         */
+        get source(): GObject.Object | null;
+
+        /**
+         * The name of the property that shoudl be used as the source of the binding.
+         * @since 1.10
+         * @construct-only
+         * @default null
+         */
+        get source_property(): string;
+
+        /**
+         * The name of the property that shoudl be used as the source of the binding.
+         * @since 1.10
+         * @construct-only
+         * @default null
+         */
+        get sourceProperty(): string;
+
+        /**
+         * The widget to use as the target of the CSS class binding.
+         * @since 1.10
+         * @construct-only
+         */
+        get target(): Gtk.Widget | null;
+
+        /**
+         * The name of the CSS class that should be toggled on the target object.
+         * @since 1.10
+         * @construct-only
+         * @default null
+         */
+        get target_css_class(): string;
+
+        /**
+         * The name of the CSS class that should be toggled on the target object.
+         * @since 1.10
+         * @construct-only
+         * @default null
+         */
+        get targetCssClass(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CssClassBinding.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<CssClassBinding.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof CssClassBinding.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CssClassBinding.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof CssClassBinding.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CssClassBinding.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof CssClassBinding.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CssClassBinding.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Gets the flags passed when constructing the binding.
+         * @returns the binding flags
+         */
+        get_flags(): GObject.BindingFlags;
+
+        /**
+         * Gets the object instance passed as the source of the binding.
+         * 
+         * While a binding can outlive the source as the binding doesn't hold a strong
+         * reference to the source, the binding will try to finalize itself when it does
+         * not have a valid source. If the source, however, is destroyed before the
+         * binding is fully finalized then this function will return `NULL`.
+         * @returns the source, or `NULL` if it doesn't   exist anymore
+         */
+        get_source<T = GObject.Object>(): T;
+
+        /**
+         * Gets the name of the property bound from {@link CssClassBinding.source}.
+         * @returns the name of the source property
+         */
+        get_source_property(): string;
+
+        /**
+         * Gets the widget instance passed as the target of the binding.
+         * 
+         * While a binding can outlive the target as the binding doesn't hold a strong
+         * reference to the target, the binding will try to finalize itself when it does
+         * not have a valid target. If the target, however, is destroyed before the
+         * binding is fully finalized then this function will return `NULL`.
+         * @returns the target, or `NULL` if it doesn't   exist anymore
+         */
+        get_target(): Gtk.Widget | null;
+
+        /**
+         * Gets the CSS class to toggle on {@link CssClassBinding.target}.
+         * @returns the name of the target CSS class
+         */
+        get_target_css_class(): string;
+
+        /**
+         * Explicitly releases the binding between the source and the target.
+         * 
+         * This function will release the reference that is being held on `self` if the
+         * binding is still bound; if you want to hold on to the binding instance after
+         * calling this method, you will need to manually hold a reference to it.
+         * 
+         * Note that this function does not take ownership of `self`, it only unrefs the
+         * instance that was initially created by {@link Adw.bind_property_to_css_class}
+         * and is owned by the binding.
+         */
+        unbind(): void;
     }
 
 
@@ -17082,7 +17415,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -17175,9 +17508,11 @@ export namespace Adw {
             "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
             "notify::visible": (pspec: GObject.ParamSpec) => void;
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -17567,6 +17902,24 @@ export namespace Adw {
         set_show_apply_button(show_apply_button: boolean): void;
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -17605,6 +17958,22 @@ export namespace Adw {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Gtk.Widget | null;
+        set input_interceptor(val: Gtk.Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Gtk.Widget | null;
+        set inputInterceptor(val: Gtk.Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -17712,7 +18081,7 @@ export namespace Adw {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -17760,6 +18129,13 @@ export namespace Adw {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -17779,6 +18155,13 @@ export namespace Adw {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Gtk.Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -17887,6 +18270,21 @@ export namespace Adw {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Gtk.Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -17973,6 +18371,13 @@ export namespace Adw {
         vfunc_do_insert_text(text: string, length: number, position: number): number;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -18051,6 +18456,7 @@ export namespace Adw {
     /**
      * {@link Adw.EnumListItem} is the type of items in a {@link EnumListModel}.
      * @gir-type Class
+     * @deprecated since 1.10: Use {@link Gtk.EnumListItem}.
      */
     class EnumListItem extends GObject.Object {
         static $gtype: GObject.GType<EnumListItem>;
@@ -18058,6 +18464,7 @@ export namespace Adw {
         // Properties
         /**
          * The enum value name.
+         * @deprecated since 1.10: Use {@link Gtk.EnumListItem}.
          * @read-only
          * @default null
          */
@@ -18065,6 +18472,7 @@ export namespace Adw {
 
         /**
          * The enum value nick.
+         * @deprecated since 1.10: Use {@link Gtk.EnumListItem}.
          * @read-only
          * @default null
          */
@@ -18072,6 +18480,7 @@ export namespace Adw {
 
         /**
          * The enum value.
+         * @deprecated since 1.10: Use {@link Gtk.EnumListItem}.
          * @read-only
          * @default 0
          */
@@ -18149,6 +18558,7 @@ export namespace Adw {
      * 
      * {@link Adw.EnumListModel} contains objects of type {@link EnumListItem}.
      * @gir-type Class
+     * @deprecated since 1.10: Use {@link Gtk.EnumList}.
      */
     class EnumListModel<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<EnumListModel>;
@@ -18156,12 +18566,14 @@ export namespace Adw {
         // Properties
         /**
          * The type of the enum represented by the model.
+         * @deprecated since 1.10: Use {@link Gtk.EnumList}.
          * @construct-only
          */
         get enum_type(): GObject.GType;
 
         /**
          * The type of the enum represented by the model.
+         * @deprecated since 1.10: Use {@link Gtk.EnumList}.
          * @construct-only
          */
         get enumType(): GObject.GType;
@@ -18169,6 +18581,7 @@ export namespace Adw {
         /**
          * The type of the items. See {@link Gio.ListModel.get_item_type}.
          * @since 1.9
+         * @deprecated since 1.10: Use {@link Gtk.EnumList}.
          * @read-only
          */
         get item_type(): GObject.GType;
@@ -18176,6 +18589,7 @@ export namespace Adw {
         /**
          * The type of the items. See {@link Gio.ListModel.get_item_type}.
          * @since 1.9
+         * @deprecated since 1.10: Use {@link Gtk.EnumList}.
          * @read-only
          */
         get itemType(): GObject.GType;
@@ -18183,6 +18597,7 @@ export namespace Adw {
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
          * @since 1.9
+         * @deprecated since 1.10: Use {@link Gtk.EnumList}.
          * @read-only
          * @default 0
          */
@@ -18191,6 +18606,7 @@ export namespace Adw {
         /**
          * The number of items. See {@link Gio.ListModel.get_n_items}.
          * @since 1.9
+         * @deprecated since 1.10: Use {@link Gtk.EnumList}.
          * @read-only
          * @default 0
          */
@@ -19852,7 +20268,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -19867,7 +20283,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -20741,7 +21157,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -21361,7 +21777,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -21376,7 +21792,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -21559,7 +21975,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -22014,7 +22430,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -23201,7 +23617,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -23216,7 +23632,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -25317,10 +25733,10 @@ export namespace Adw {
      *     </object>
      *   </child>
      *   <child type="primary">
-     *     <!-- ... -->
+     *     <!-- put your primary child here -->
      *   </child>
      *   <child type="secondary">
-     *     <!-- ... -->
+     *     <!-- put your secondary child here -->
      *   </child>
      * </object>
      * ```
@@ -25793,7 +26209,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -26471,7 +26887,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -26591,7 +27007,15 @@ export namespace Adw {
      *         <object class="AdwNavigationPage">
      *           <property name="title" translatable="yes">Sidebar</property>
      *           <property name="child">
-     *             <!-- ... -->
+     *             <object class="AdwToolbarView">
+     *               <child type="top">
+     *                 <object class="AdwHeaderBar"/>
+     *               </child>
+     *               <property name="content">
+     *                 <!-- put your sidebar here, e.g.
+     *                      AdwSidebar or AdwViewSwitcherSidebar -->
+     *               </property>
+     *             <object>
      *           </property>
      *         </object>
      *       </property>
@@ -26599,7 +27023,14 @@ export namespace Adw {
      *         <object class="AdwNavigationPage">
      *           <property name="title" translatable="yes">Content</property>
      *           <property name="child">
-     *             <!-- ... -->
+     *             <object class="AdwToolbarView">
+     *               <child type="top">
+     *                 <object class="AdwHeaderBar"/>
+     *               </child>
+     *               <property name="content">
+     *                 <!-- put your content here -->
+     *               </property>
+     *             <object>
      *           </property>
      *         </object>
      *       </property>
@@ -27400,7 +27831,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -27659,7 +28090,7 @@ export namespace Adw {
      *             <object class="AdwHeaderBar"/>
      *           </child>
      *           <property name="content">
-     *             <!-- ... -->
+     *             <!-- put your content here -->
      *           </property>
      *         </object>
      *       </property>
@@ -28513,7 +28944,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -28700,10 +29131,10 @@ export namespace Adw {
      *   <property name="content">
      *     <object class="AdwOverlaySplitView" id="split_view">
      *       <property name="sidebar">
-     *         <!-- ... -->
+     *         <!-- put your sidebar here -->
      *       </property>
      *       <property name="content">
-     *         <!-- ... -->
+     *         <!-- put your content here -->
      *       </property>
      *     </object>
      *   </property>
@@ -28766,12 +29197,12 @@ export namespace Adw {
      *     ╰── [content child]
      * ```
      * 
-     * When collapsed, the one containing the sidebar child has the `.background`
+     * When collapsed, the one containing the sidebar child has the `.overlay-pane`
      * style class and the other one has no style classes.
      * 
      * ```
      * overlay-split-view
-     * ├── widget.background
+     * ├── widget.overlay-pane
      * │   ╰── [sidebar child]
      * ╰── widget
      *     ╰── [content child]
@@ -29657,7 +30088,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -29719,9 +30150,11 @@ export namespace Adw {
             "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
             "notify::visible": (pspec: GObject.ParamSpec) => void;
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -29789,6 +30222,24 @@ export namespace Adw {
         emit(signal: string, ...args: any[]): void;
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -29827,6 +30278,22 @@ export namespace Adw {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Gtk.Widget | null;
+        set input_interceptor(val: Gtk.Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Gtk.Widget | null;
+        set inputInterceptor(val: Gtk.Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -29934,7 +30401,7 @@ export namespace Adw {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -29982,6 +30449,13 @@ export namespace Adw {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -30001,6 +30475,13 @@ export namespace Adw {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Gtk.Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -30109,6 +30590,21 @@ export namespace Adw {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Gtk.Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -30193,6 +30689,13 @@ export namespace Adw {
          * @virtual
          */
         vfunc_do_insert_text(text: string, length: number, position: number): number;
+
+        /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
 
         /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
@@ -31128,7 +31631,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -31796,7 +32299,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -32088,7 +32591,7 @@ export namespace Adw {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -32104,14 +32607,14 @@ export namespace Adw {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -32151,7 +32654,7 @@ export namespace Adw {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -32168,14 +32671,14 @@ export namespace Adw {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -33163,7 +33666,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -33881,7 +34384,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -33955,9 +34458,11 @@ export namespace Adw {
             "notify::menu-model": (pspec: GObject.ParamSpec) => void;
             "notify::mode": (pspec: GObject.ParamSpec) => void;
             "notify::placeholder": (pspec: GObject.ParamSpec) => void;
+            "notify::prefix": (pspec: GObject.ParamSpec) => void;
             "notify::sections": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
             "notify::selected-item": (pspec: GObject.ParamSpec) => void;
+            "notify::suffix": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
             "notify::can-target": (pspec: GObject.ParamSpec) => void;
             "notify::css-classes": (pspec: GObject.ParamSpec) => void;
@@ -34006,10 +34511,12 @@ export namespace Adw {
             menuModel: Gio.MenuModel | null;
             mode: SidebarMode;
             placeholder: Gtk.Widget | null;
+            prefix: Gtk.Widget | null;
             sections: Gio.ListModel;
             selected: number;
             selected_item: SidebarItem | null;
             selectedItem: SidebarItem | null;
+            suffix: Gtk.Widget | null;
         }
     }
 
@@ -34083,7 +34590,7 @@ export namespace Adw {
      *     <object class="AdwNavigationSplitView" id="split_view">
      *       <property name="sidebar">
      *         <object class="AdwNavigationPage">
-     *           <property name="title" translatable="yes">Sidebar</property>
+     *           <property name="title" translatable="yes">Items</property>
      *           <property name="child">
      *             <object class="AdwToolbarView">
      *               <child type="top">
@@ -34093,7 +34600,7 @@ export namespace Adw {
      *                 <object class="AdwSidebar" id="sidebar">
      *                   <!-- Calls adw_navigation_split_view_set_show_content (split_view, TRUE); -->
      *                   <signal name="activated" handler="sidebar_activated_cb"/>
-     *                   <!-- ... -->
+     *                   <!-- put your items here -->
      *                 </object>
      *               </property>
      *             </object>
@@ -34102,9 +34609,9 @@ export namespace Adw {
      *       </property>
      *       <property name="content">
      *         <object class="AdwNavigationPage">
-     *           <property name="title" translatable="yes">Content</property>
+     *           <property name="title" translatable="yes">Details</property>
      *           <property name="child">
-     *             <!-- ... -->
+     *             <!-- put your details view here -->
      *           </property>
      *         </object>
      *       </property>
@@ -34158,6 +34665,12 @@ export namespace Adw {
      * Regardless of whether a drop target was set up, dragging content over sidebar
      * items activates them after a timeout. To disable this behavior for specific
      * items, set {@link SidebarItem.drag_motion_activate} to `FALSE` on them.
+     * 
+     * ## Prefix and Suffix
+     * 
+     * {@link Adw.Sidebar} can display additional widgets before and after the sidebar
+     * items. Use the {@link Sidebar.prefix} and {@link Sidebar.suffix}
+     * properties to add them.
      * 
      * ## {@link Adw.Sidebar} as {@link Gtk.Buildable}
      * 
@@ -34348,6 +34861,13 @@ export namespace Adw {
         set placeholder(val: Gtk.Widget | null);
 
         /**
+         * A widget to be displayed before the sidebar items.
+         * @since 1.10
+         */
+        get prefix(): Gtk.Widget | null;
+        set prefix(val: Gtk.Widget | null);
+
+        /**
          * A list model with the sidebar's sections.
          * 
          * This can be used to keep an up-to-date view.
@@ -34399,6 +34919,13 @@ export namespace Adw {
          * @read-only
          */
         get selectedItem(): SidebarItem | null;
+
+        /**
+         * A widget to be displayed after the sidebar items.
+         * @since 1.10
+         */
+        get suffix(): Gtk.Widget | null;
+        set suffix(val: Gtk.Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -34495,6 +35022,12 @@ export namespace Adw {
         get_placeholder(): Gtk.Widget | null;
 
         /**
+         * Gets the widget displayed before the sidebar items.
+         * @returns the prefix widget
+         */
+        get_prefix(): Gtk.Widget | null;
+
+        /**
          * Gets the section at `index` within `self`.
          * 
          * Can return `NULL` if `index` is larger or equal to the number of sections.
@@ -34531,6 +35064,12 @@ export namespace Adw {
          * @returns the selected item
          */
         get_selected_item(): SidebarItem | null;
+
+        /**
+         * Gets the widget displayed after sidebar items.
+         * @returns the suffix widget
+         */
+        get_suffix(): Gtk.Widget | null;
 
         /**
          * Inserts `section` at `position` to `self`.
@@ -34623,6 +35162,12 @@ export namespace Adw {
         set_placeholder(placeholder: Gtk.Widget | null): void;
 
         /**
+         * Sets the widget to be displayed before the sidebar items.
+         * @param prefix the prefix widget
+         */
+        set_prefix(prefix: Gtk.Widget | null): void;
+
+        /**
          * Selects the item at `selected`.
          * 
          * If set to {@link Gtk.INVALID_LIST_POSITION}, no item is selected.
@@ -34635,6 +35180,12 @@ export namespace Adw {
          * @param selected index of the newly selected item
          */
         set_selected(selected: number): void;
+
+        /**
+         * Sets the widget to be displayed after the sidebar items.
+         * @param suffix the suffix widget
+         */
+        set_suffix(suffix: Gtk.Widget | null): void;
 
         /**
          * Sets up a drop target on the items.
@@ -34985,7 +35536,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -35001,6 +35552,7 @@ export namespace Adw {
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::icon-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::prefix": (pspec: GObject.ParamSpec) => void;
             "notify::section": (pspec: GObject.ParamSpec) => void;
             "notify::subtitle": (pspec: GObject.ParamSpec) => void;
             "notify::suffix": (pspec: GObject.ParamSpec) => void;
@@ -35019,6 +35571,7 @@ export namespace Adw {
             iconName: string | null;
             icon_paintable: Gdk.Paintable | null;
             iconPaintable: Gdk.Paintable | null;
+            prefix: Gtk.Widget | null;
             section: SidebarSection | null;
             subtitle: string | null;
             suffix: Gtk.Widget | null;
@@ -35045,9 +35598,10 @@ export namespace Adw {
      * To add a tooltip, use {@link SidebarItem.tooltip}. Tooltips always use
      * Pango markup.
      * 
-     * Items can have an arbitrary suffix widget, set with the
-     * {@link SidebarItem.suffix} properties. It will be displayed at the end of
-     * its row, or before the arrow in the {@link Adw.SidebarMode.PAGE} mode.
+     * Items can have an arbitrary prefix and suffix widgets, set with the
+     * {@link SidebarItem.prefix} and {@link SidebarItem.suffix} properties.
+     * They will be displayed at the start (before icon) and end of its row, and
+     * before the arrow in the {@link Adw.SidebarMode.PAGE} mode.
      * 
      * To hide or disable the item, use the {@link SidebarItem.visible} and
      * {@link SidebarItem.enabled} properties respectively.
@@ -35141,6 +35695,15 @@ export namespace Adw {
          */
         get iconPaintable(): Gdk.Paintable | null;
         set iconPaintable(val: Gdk.Paintable | null);
+
+        /**
+         * The prefix widget for this item.
+         * 
+         * Prefix will be shown at the start of the item's row, before the icon.
+         * @since 1.10
+         */
+        get prefix(): Gtk.Widget | null;
+        set prefix(val: Gtk.Widget | null);
 
         /**
          * The section the item is in.
@@ -35279,6 +35842,12 @@ export namespace Adw {
         get_index(): number;
 
         /**
+         * Gets the prefix widget for `self`.
+         * @returns the prefix widget
+         */
+        get_prefix(): Gtk.Widget | null;
+
+        /**
          * Gets the section `self` is in.
          * @returns the section of `self`
          */
@@ -35366,6 +35935,14 @@ export namespace Adw {
         set_icon_paintable(paintable: Gdk.Paintable | null): void;
 
         /**
+         * Sets the prefix widget for `self`.
+         * 
+         * Prefix will be shown at the start of the item's row, before the icon.
+         * @param prefix the prefix widget
+         */
+        set_prefix(prefix: Gtk.Widget | null): void;
+
+        /**
          * Sets the subtitle of `self`.
          * @param subtitle the subtitle
          */
@@ -35416,6 +35993,7 @@ export namespace Adw {
             "notify::items": (pspec: GObject.ParamSpec) => void;
             "notify::menu-model": (pspec: GObject.ParamSpec) => void;
             "notify::sidebar": (pspec: GObject.ParamSpec) => void;
+            "notify::suffix": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -35425,6 +36003,7 @@ export namespace Adw {
             menu_model: Gio.MenuModel | null;
             menuModel: Gio.MenuModel | null;
             sidebar: Sidebar | null;
+            suffix: Gtk.Widget | null;
             title: string | null;
         }
     }
@@ -35438,6 +36017,10 @@ export namespace Adw {
      * {@link SidebarSection.title} property. If a title is not set, the section
      * will have a separator in front of it, or just spacing in the
      * {@link Adw.SidebarMode.PAGE} mode.
+     * 
+     * Sections can also have an arbitrary suffix widget, set with the
+     * {@link SidebarSection.suffix} properties. It will be displayed at the end
+     * of its header.
      * 
      * To add items, use {@link SidebarSection.append},
      * {@link SidebarSection.prepend} or {@link SidebarSection.insert}.
@@ -35546,6 +36129,15 @@ export namespace Adw {
         get sidebar(): Sidebar | null;
 
         /**
+         * The suffix widget for this section.
+         * 
+         * Suffix will be displayed at the end of the header.
+         * @since 1.10
+         */
+        get suffix(): Gtk.Widget | null;
+        set suffix(val: Gtk.Widget | null);
+
+        /**
          * Title of the section.
          * 
          * If set, it will be displayed instead of the separator before the section.
@@ -35647,6 +36239,12 @@ export namespace Adw {
         get_sidebar(): Sidebar | null;
 
         /**
+         * Gets the suffix widget for `self`.
+         * @returns the suffix widget
+         */
+        get_suffix(): Gtk.Widget | null;
+
+        /**
          * Gets the title of `self`.
          * @returns the title
          */
@@ -35698,6 +36296,14 @@ export namespace Adw {
          * @param menu_model a menu model
          */
         set_menu_model(menu_model: Gio.MenuModel | null): void;
+
+        /**
+         * Sets the suffix widget for `self`.
+         * 
+         * Suffix will be shown at the end of the header.
+         * @param suffix the suffix widget
+         */
+        set_suffix(suffix: Gtk.Widget | null): void;
 
         /**
          * Sets the title of `self`.
@@ -35798,7 +36404,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -35898,9 +36504,11 @@ export namespace Adw {
             "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
             "notify::visible": (pspec: GObject.ParamSpec) => void;
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -36218,6 +36826,24 @@ export namespace Adw {
         update(): void;
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -36256,6 +36882,22 @@ export namespace Adw {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Gtk.Widget | null;
+        set input_interceptor(val: Gtk.Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Gtk.Widget | null;
+        set inputInterceptor(val: Gtk.Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -36363,7 +37005,7 @@ export namespace Adw {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -36411,6 +37053,13 @@ export namespace Adw {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -36430,6 +37079,13 @@ export namespace Adw {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Gtk.Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -36538,6 +37194,21 @@ export namespace Adw {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Gtk.Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -36622,6 +37293,13 @@ export namespace Adw {
          * @virtual
          */
         vfunc_do_insert_text(text: string, length: number, position: number): number;
+
+        /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
 
         /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
@@ -37163,7 +37841,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -38337,7 +39015,7 @@ export namespace Adw {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -38353,14 +39031,14 @@ export namespace Adw {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -38400,7 +39078,7 @@ export namespace Adw {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -38417,14 +39095,14 @@ export namespace Adw {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -38524,7 +39202,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -39761,7 +40439,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -39776,7 +40454,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -40461,7 +41139,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -41322,7 +42000,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -42324,7 +43002,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -42786,7 +43464,7 @@ export namespace Adw {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -42802,14 +43480,14 @@ export namespace Adw {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -42849,7 +43527,7 @@ export namespace Adw {
          * Usually this function is used when the widget is located (or will be
          * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          * 
-         * Names are of the form &#x201C;win.save&#x201D; or &#x201C;app.quit&#x201D; for actions on the
+         * Names are of the form “win.save” or “app.quit” for actions on the
          * containing {@link ApplicationWindow} or its associated {@link Application},
          * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
@@ -42866,14 +43544,14 @@ export namespace Adw {
          * The target value has two purposes. First, it is used as the parameter
          * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
-         * &#x201C;active&#x201D; &#x2014; the widget is active if the state is equal to the given target.
+         * “active” — the widget is active if the state is equal to the given target.
          * 
          * Consider the example of associating a set of buttons with a {@link Gio.Action}
-         * with string state in a typical &#x201C;radio button&#x201D; situation. Each button
+         * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
          * the action with the target of that button, which will typically cause
-         * the action&#x2019;s state to change to that value. Since the action&#x2019;s state
+         * the action’s state to change to that value. Since the action’s state
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
@@ -42973,7 +43651,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -43947,7 +44625,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -45994,7 +46672,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -47311,7 +47989,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -48388,7 +49066,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -48403,7 +49081,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -49452,7 +50130,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -50281,7 +50959,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -51936,7 +52614,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -52469,7 +53147,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -52491,7 +53169,9 @@ export namespace Adw {
             "notify::filter": (pspec: GObject.ParamSpec) => void;
             "notify::mode": (pspec: GObject.ParamSpec) => void;
             "notify::placeholder": (pspec: GObject.ParamSpec) => void;
+            "notify::prefix": (pspec: GObject.ParamSpec) => void;
             "notify::stack": (pspec: GObject.ParamSpec) => void;
+            "notify::suffix": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
             "notify::can-target": (pspec: GObject.ParamSpec) => void;
             "notify::css-classes": (pspec: GObject.ParamSpec) => void;
@@ -52535,7 +53215,9 @@ export namespace Adw {
             filter: Gtk.Filter | null;
             mode: SidebarMode;
             placeholder: Gtk.Widget | null;
+            prefix: Gtk.Widget | null;
             stack: ViewStack | null;
+            suffix: Gtk.Widget | null;
         }
     }
 
@@ -52575,6 +53257,10 @@ export namespace Adw {
      * Use {@link ViewSwitcherSidebar.placeholder} to provide an empty state
      * widget. It will be shown when all items have been filtered out, or the
      * sidebar has no items otherwise.
+     * 
+     * Like {@link Adw.Sidebar}, {@link Adw.ViewSwitcherSidebar} supports prefix and suffix
+     * widgets via the {@link Sidebar.prefix} and {@link Sidebar.suffix}
+     * properties.
      * 
      * ## CSS nodes
      * 
@@ -52642,11 +53328,29 @@ export namespace Adw {
         set placeholder(val: Gtk.Widget | null);
 
         /**
+         * A widget to be displayed before the sidebar items.
+         * 
+         * See {@link Sidebar.prefix}.
+         * @since 1.10
+         */
+        get prefix(): Gtk.Widget | null;
+        set prefix(val: Gtk.Widget | null);
+
+        /**
          * The stack the sidebar controls.
          * @since 1.9
          */
         get stack(): ViewStack | null;
         set stack(val: ViewStack | null);
+
+        /**
+         * A widget to be displayed after the sidebar items.
+         * 
+         * See {@link Sidebar.suffix}.
+         * @since 1.10
+         */
+        get suffix(): Gtk.Widget | null;
+        set suffix(val: Gtk.Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -52699,10 +53403,22 @@ export namespace Adw {
         get_placeholder(): Gtk.Widget | null;
 
         /**
+         * Gets the widget displayed before the sidebar items.
+         * @returns the prefix widget
+         */
+        get_prefix(): Gtk.Widget | null;
+
+        /**
          * Gets the stack `self` controls.
          * @returns The stack of `self`
          */
         get_stack(): ViewStack | null;
+
+        /**
+         * Gets the widget displayed after sidebar items.
+         * @returns the suffix widget
+         */
+        get_suffix(): Gtk.Widget | null;
 
         /**
          * Sets the item filter for `self`.
@@ -52754,10 +53470,26 @@ export namespace Adw {
         set_placeholder(placeholder: Gtk.Widget | null): void;
 
         /**
+         * Sets the widget to be displayed before the sidebar items.
+         * 
+         * See {@link Sidebar.set_prefix}.
+         * @param prefix the prefix widget
+         */
+        set_prefix(prefix: Gtk.Widget | null): void;
+
+        /**
          * Sets the stack to control.
          * @param stack a stack
          */
         set_stack(stack: ViewStack | null): void;
+
+        /**
+         * Sets the widget to be displayed after the sidebar items.
+         * 
+         * See {@link Sidebar.set_suffix}.
+         * @param suffix the suffix widget
+         */
+        set_suffix(suffix: Gtk.Widget | null): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -53097,7 +53829,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -53746,7 +54478,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -53859,7 +54591,7 @@ export namespace Adw {
      *         <object class="AdwHeaderBar"/>
      *       </child>
      *       <property name="content">
-     *         <!-- ... -->
+     *         <!-- put your content here -->
      *       </property>
      *     </object>
      *   </property>
@@ -53890,7 +54622,7 @@ export namespace Adw {
      *         <object class="AdwHeaderBar"/>
      *       </child>
      *       <property name="content">
-     *         <!-- ... -->
+     *         <!-- put your content here -->
      *       </property>
      *       <child type="bottom">
      *         <object class="GtkActionBar" id="bottom_bar">
@@ -54657,7 +55389,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -55738,7 +56470,7 @@ export namespace Adw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -55753,7 +56485,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -56414,7 +57146,7 @@ export namespace Adw {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -56641,6 +57373,11 @@ export namespace Adw {
      * @gir-type Alias
      */
     type ComboRowClass = typeof ComboRow;
+
+    /**
+     * @gir-type Alias
+     */
+    type CssClassBindingClass = typeof CssClassBinding;
 
     /**
      * @gir-type Alias

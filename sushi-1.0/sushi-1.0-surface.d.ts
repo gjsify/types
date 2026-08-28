@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Sushi-1.0.
  *
- * GENERATED — do not edit. Provenance: Sushi-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ * GENERATED — do not edit. Provenance: Sushi-1.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
  *
- * 2 concrete widgets, 2 declarations, 0 enum nick unions, 0 slot candidates.
+ * 1 concrete widgets, 1 declarations, 0 enum nick unions, 0 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -25,7 +25,7 @@
  */
 
 import type Sushi from './sushi-1.0.js';
-import type { GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkContainerConstructOnly, GtkContainerProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-3.0/surface';
+import type { GtkAccessibleConstructOnly, GtkAccessibleProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkConstraintTargetConstructOnly, GtkConstraintTargetProps, GtkDrawingAreaConstructOnly, GtkDrawingAreaProps, GtkWidgetConstructOnly, GtkWidgetProps } from '@girs/gtk-4.0/surface';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -49,25 +49,12 @@ import type { GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBu
 // GIR keeps them once, on the interface.
 // ---------------------------------------------------------------------------
 
-export interface SushiFontWidgetProps extends GtkDrawingAreaProps, GtkBuildableProps {
+export interface SushiFontWidgetProps extends GtkDrawingAreaProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps {
     'face-index'?: number;
     uri?: string;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type SushiFontWidgetConstructOnly = GtkDrawingAreaConstructOnly | GtkBuildableConstructOnly;
-
-export interface SushiMediaBinProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
-    'audio-mode'?: boolean;
-    'autohide-timeout'?: number;
-    description?: string;
-    fullscreen?: boolean;
-    'show-stream-info'?: boolean;
-    title?: string;
-    uri?: string;
-    volume?: number;
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type SushiMediaBinConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly | 'audio-mode';
+export type SushiFontWidgetConstructOnly = GtkDrawingAreaConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
 // ---------------------------------------------------------------------------
 // The GType-keyed widget map.
@@ -90,13 +77,6 @@ export interface Widgets {
         props: SushiFontWidgetProps;
         signals: Sushi.FontWidget.SignalSignatures;
         constructOnly: SushiFontWidgetConstructOnly;
-        slotCandidates: {};
-    };
-    SushiMediaBin: {
-        class: Sushi.MediaBin;
-        props: SushiMediaBinProps;
-        signals: Sushi.MediaBin.SignalSignatures;
-        constructOnly: SushiMediaBinConstructOnly;
         slotCandidates: {};
     };
 }

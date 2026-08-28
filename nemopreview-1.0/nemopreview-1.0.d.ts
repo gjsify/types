@@ -67,9 +67,9 @@ export namespace NemoPreview {
 
     /**
      * @param xid 
-     * @returns a {@link Gdk.Window}
+     * @returns a {@link Gdk.Window}, or `null` if `xid` can't be looked up. Nemo sends 0 when it has no X11 window to parent us to.
      */
-    function create_foreign_window(xid: number): Gdk.Window;
+    function create_foreign_window(xid: number): Gdk.Window | null;
 
     /**
      * @returns a {@link Clutter.Actor}

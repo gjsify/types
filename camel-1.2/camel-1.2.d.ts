@@ -129,6 +129,31 @@ export namespace Camel {
     /**
      * @gir-type Enum
      */
+    enum CmpBodyKind {
+        TEXT,
+        REGEX,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    enum CmpHeaderKind {
+        CONTAINS,
+        MATCHES,
+        STARTS_WITH,
+        ENDS_WITH,
+        EXISTS,
+        SOUNDEX,
+        REGEX,
+        FULL_REGEX,
+        HAS_WORDS,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
     export namespace CompareType {
         export const $gtype: GObject.GType<CompareType>;
     }
@@ -159,167 +184,6 @@ export namespace Camel {
          * database is corrupt
          */
         DB_ERROR_CORRUPT,
-    }
-
-
-    /**
-     * An enum of all the known columns, which can be used for a quick column lookups.
-     * @gir-type Enum
-     * @since 3.4
-     */
-    enum DBKnownColumnNames {
-        /**
-         * unknown column name
-         */
-        UNKNOWN,
-        /**
-         * attachment
-         */
-        ATTACHMENT,
-        /**
-         * bdata
-         */
-        BDATA,
-        /**
-         * cinfo
-         */
-        CINFO,
-        /**
-         * deleted
-         */
-        DELETED,
-        /**
-         * deleted_count
-         */
-        DELETED_COUNT,
-        /**
-         * dreceived
-         */
-        DRECEIVED,
-        /**
-         * dsent
-         */
-        DSENT,
-        /**
-         * flags
-         */
-        FLAGS,
-        /**
-         * folder_name
-         */
-        FOLDER_NAME,
-        /**
-         * followup_completed_on
-         */
-        FOLLOWUP_COMPLETED_ON,
-        /**
-         * followup_due_by
-         */
-        FOLLOWUP_DUE_BY,
-        /**
-         * followup_flag
-         */
-        FOLLOWUP_FLAG,
-        /**
-         * important
-         */
-        IMPORTANT,
-        /**
-         * jnd_count
-         */
-        JND_COUNT,
-        /**
-         * junk
-         */
-        JUNK,
-        /**
-         * junk_count
-         */
-        JUNK_COUNT,
-        /**
-         * labels
-         */
-        LABELS,
-        /**
-         * mail_cc
-         */
-        MAIL_CC,
-        /**
-         * mail_from
-         */
-        MAIL_FROM,
-        /**
-         * mail_to
-         */
-        MAIL_TO,
-        /**
-         * mlist
-         */
-        MLIST,
-        /**
-         * nextuid
-         */
-        NEXTUID,
-        /**
-         * part
-         */
-        PART,
-        /**
-         * preview
-         */
-        PREVIEW,
-        /**
-         * read
-         */
-        READ,
-        /**
-         * replied
-         */
-        REPLIED,
-        /**
-         * saved_count
-         */
-        SAVED_COUNT,
-        /**
-         * size
-         */
-        SIZE,
-        /**
-         * subject
-         */
-        SUBJECT,
-        /**
-         * time
-         */
-        TIME,
-        /**
-         * uid
-         */
-        UID,
-        /**
-         * unread_count
-         */
-        UNREAD_COUNT,
-        /**
-         * userheaders
-         */
-        USERHEADERS,
-        /**
-         * usertags
-         */
-        USERTAGS,
-        /**
-         * version
-         */
-        VERSION,
-        /**
-         * visible_count
-         */
-        VISIBLE_COUNT,
-        /**
-         * vuid
-         */
-        VUID,
     }
 
 
@@ -554,6 +418,46 @@ export namespace Camel {
     enum LockType {
         READ,
         WRITE,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace MatchThreadsKind {
+        export const $gtype: GObject.GType<MatchThreadsKind>;
+    }
+
+    /**
+     * Kinds for "match-threads" search option.
+     * @gir-type Enum
+     * @since 3.58
+     */
+    enum MatchThreadsKind {
+        /**
+         * do not match on threads
+         */
+        NONE,
+        /**
+         * include all related messages in the thread
+         */
+        ALL,
+        /**
+         * include replies of the message
+         */
+        REPLIES,
+        /**
+         * include replies and parents
+         */
+        REPLIES_AND_PARENTS,
+        /**
+         * include messages not being in any thread
+         */
+        SINGLE,
+        /**
+         * include messages not part of the {@link Camel.MatchThreadsKind.ALL} (Since: 3.60)
+         */
+        NOT_ALL,
     }
 
 
@@ -983,6 +887,51 @@ export namespace Camel {
 
 
     /**
+     * @gir-type Enum
+     */
+    export namespace StoreDBCountKind {
+        export const $gtype: GObject.GType<StoreDBCountKind>;
+    }
+
+    /**
+     * Represents a kind of the count the `camel_store_db_count_messages()`
+     * is asked to calculate.
+     * @gir-type Enum
+     * @since 3.58
+     */
+    enum StoreDBCountKind {
+        /**
+         * all messages
+         */
+        TOTAL,
+        /**
+         * only unread and not deleted messages
+         */
+        UNREAD,
+        /**
+         * only junk messages
+         */
+        JUNK,
+        /**
+         * only deleted messages
+         */
+        DELETED,
+        /**
+         * all except of junk and deleted messages
+         */
+        NOT_JUNK_NOT_DELETED,
+        /**
+         * all unread, except of junk and deleted messages
+         */
+        NOT_JUNK_NOT_DELETED_UNREAD,
+        /**
+         * only junk messages, which are not deleted
+         */
+        JUNK_NOT_DELETED,
+    }
+
+
+    /**
      * @gir-type Struct
      */
     class StoreError extends GLib.Error {
@@ -1122,6 +1071,8 @@ export namespace Camel {
         STARTS,
         ENDS,
         SOUNDEX,
+        REGEX_SINGLELINE,
+        REGEX_MULTILINE,
     }
 
 
@@ -1171,36 +1122,6 @@ export namespace Camel {
      * @since 3.28
      */
     const CIPHER_CERT_INFO_PROPERTY_SIGNERS_ALT_EMAILS: string;
-
-    /**
-     * @since 2.24
-     */
-    const DB_FILE: string;
-
-    /**
-     * @since 2.24
-     */
-    const DB_FREE_CACHE_SIZE: number;
-
-    /**
-     * @since 2.26
-     */
-    const DB_IN_MEMORY_DB: string;
-
-    /**
-     * @since 2.26
-     */
-    const DB_IN_MEMORY_TABLE: string;
-
-    /**
-     * @since 2.26
-     */
-    const DB_IN_MEMORY_TABLE_LIMIT: number;
-
-    /**
-     * @since 2.24
-     */
-    const DB_SLEEP_INTERVAL: number;
 
     const DEBUG_IMAP: string;
 
@@ -1266,6 +1187,12 @@ export namespace Camel {
 
     const LOCK_RETRY: number;
 
+    /**
+     * Maximum length, in characters, of a mime part preview.
+     * @since 3.52
+     */
+    const MAX_PREVIEW_LENGTH: number;
+
     const MESSAGE_DATE_CURRENT: number;
 
     const MESSAGE_SYSTEM_MASK: number;
@@ -1327,6 +1254,12 @@ export namespace Camel {
     const SESSION_BOOK_UID_COMPLETION: string;
 
     /**
+     * File name used by the {@link Camel.Store} for the {@link Camel.StoreDB}.
+     * @since 3.58
+     */
+    const STORE_DB_FILE: string;
+
+    /**
      * The folder store info type bitshift value.
      */
     const STORE_INFO_FOLDER_TYPE_BIT: number;
@@ -1345,8 +1278,6 @@ export namespace Camel {
     const STORE_SETUP_SENT_FOLDER: string;
 
     const STORE_SETUP_TEMPLATES_FOLDER: string;
-
-    const UNMATCHED_NAME: string;
 
     const URL_HIDE_ALL: number;
 
@@ -1461,7 +1392,9 @@ export namespace Camel {
     function content_disposition_decode(_in: string): ContentDisposition;
 
     /**
-     * @param _in 
+     * Decode the contents of a content-encoding header
+     * @param _in input string
+     * @returns The decoded header
      */
     function content_transfer_encoding_decode(_in: string): string;
 
@@ -1637,7 +1570,7 @@ export namespace Camel {
      * @param dest pointer to a variable to put the value in
      * @returns 0 on success, -1 on failure.
      */
-    function file_util_decode_off_t(_in: null, dest: bigint | number): number;
+    function file_util_decode_off_t(_in: null, dest: never): number;
 
     /**
      * Decode a normal string from the input file.
@@ -1706,7 +1639,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_off_t(out: null, value: bigint | number): number;
+    function file_util_encode_off_t(out: null, value: never): number;
 
     /**
      * Encode a normal string and save it in the output file.
@@ -2017,6 +1950,17 @@ export namespace Camel {
     function host_idna_to_ascii(host: string | null): string | null;
 
     /**
+     * Check whether the hostname `host` is equal to or a subdomain of `domain`.
+     * Both `host` and `domain` are UTF-8 strings and can be IDNs (which will be
+     * punycode-encoded for comparison).
+     * @param host The hostname to check.
+     * @param domain The domain name.
+     * @returns `true` if `host` is a subdomain of `domain` (or the same domain).          `false` if not, or if either argument is null or in some way          invalid as a domain/hostname.
+     * @since 3.54
+     */
+    function hostname_utils_host_is_in_domain(host: string | null, domain: string | null): boolean;
+
+    /**
      * Check whether the `hostname` requires conversion to ASCII. That can
      * be when a character in it can look like an ASCII character, even
      * it being a Unicode letter. This can be used to display host names
@@ -2257,8 +2201,8 @@ export namespace Camel {
 
     /**
      * Returns the canonicalized copy of `string` without increasing its
-     * reference count in the string pool.  If necessary, `string` is first
-     * added to the string pool.
+     * reference count in the string pool. The `string` is not added to
+     * the string pool when it's not part of it and `null` is returned.
      * 
      * The `null` and empty strings are special cased to constant values.
      * @param string string to fetch from the string pool
@@ -2326,12 +2270,6 @@ export namespace Camel {
     function read(fd: number, buf: string, n: bigint | number, cancellable: Gio.Cancellable | null): number;
 
     /**
-     * @param header 
-     * @param match 
-     */
-    function search_camel_header_soundex(header: string, match: string): boolean;
-
-    /**
      * @param message a `CamelMessage`
      * @returns All headers of the `message`, decoded where needed.    Free the returned pointer with `g_free()` when done with it.
      * @since 3.22
@@ -2389,6 +2327,54 @@ export namespace Camel {
     function search_header_match(value: string, match: string, how: _search_match_t, type: _search_t, default_charset: string): boolean;
 
     /**
+     * Increases time `t` by the given number of months (or decreases, if
+     * `months` is negative).
+     * @param t Initial time
+     * @param months number of months to add or subtract
+     * @returns a new `time_t` value
+     * @since 3.58
+     */
+    function search_util_add_months(t: bigint | number, months: number): number;
+
+    /**
+     * Compares date portion of the two date-time values, first converted
+     * into the local time zone. The returned value is like with `strcmp()`.
+     * @param datetime1 a time_t-like value of the first date-time
+     * @param datetime2 a time_t-like value of the second date-time
+     * @returns 0 when the dates are equal, < 0 when first is before second and    > 0 when the first is after the second date
+     * @since 3.58
+     */
+    function search_util_compare_date(datetime1: bigint | number, datetime2: bigint | number): number;
+
+    /**
+     * Calculates a hash of the Message-ID header value `message_id`.
+     * @param message_id a raw Message-ID header value
+     * @param needs_decode whether the `message_id` requires `camel_header_msgid_decode()` first
+     * @returns hash of the `message_id`, or 0 on any error.
+     * @since 3.58
+     */
+    function search_util_hash_message_id(message_id: string, needs_decode: boolean): number;
+
+    /**
+     * Implementation of 'make-time' function, which expects one argument,
+     * a string or an integer, to be converted into time_t.
+     * @param argc number of arguments in `argv`
+     * @param argv array or arguments
+     * @returns time_t equivalent of the passed in argument, or (time_t) -1 on error.
+     * @since 3.58
+     */
+    function search_util_make_time(argc: number, argv: SExpResult): number;
+
+    /**
+     * Converts a string representation to a time_t (as gint64).
+     * When `str` is `null`, returns -1.
+     * @param str string to convert to time, or `null`
+     * @returns a time_t representation of the `str`, -1 on error
+     * @since 3.58
+     */
+    function search_util_str_to_time(str: string | null): number;
+
+    /**
      * @param words 
      */
     function search_words_free(words: null): void;
@@ -2411,34 +2397,6 @@ export namespace Camel {
     function shutdown(): void;
 
     function store_error_quark(): GLib.Quark;
-
-    /**
-     * Returns the last segment of the path string from `info`.
-     * @param summary a {@link Camel.StoreSummary}
-     * @param info a {@link Camel.StoreInfo}
-     * @returns the last segment of the path string from `info`
-     * @deprecated since 3.46: Use `camel_store_info_get_name()` instead.
-     */
-    function store_info_name(summary: StoreSummary, info: StoreInfo): string;
-
-    /**
-     * Returns the path string from `info`.
-     * @param summary a {@link Camel.StoreSummary}
-     * @param info a {@link Camel.StoreInfo}
-     * @returns the path string from `info`
-     * @deprecated since 3.46: Use `camel_store_info_get_path()` instead.
-     */
-    function store_info_path(summary: StoreSummary, info: StoreInfo): string;
-
-    /**
-     * Set a specific string on the `info`.
-     * @param summary a {@link Camel.StoreSummary} object
-     * @param info a {@link Camel.StoreInfo}
-     * @param type specific string being set
-     * @param value string value to set
-     * @deprecated since 3.46: Use `camel_store_info_set_value()` instead.
-     */
-    function store_info_set_string(summary: StoreSummary, info: StoreInfo, type: number, value: string): void;
 
     /**
      * @param a 
@@ -2521,12 +2479,6 @@ export namespace Camel {
      * @returns The converted string. Free it with `g_free()`,    when no longer needed.
      */
     function ucs2_utf8(ptr: string): string;
-
-    /**
-     * Frees the array of UIDs.
-     * @param uids an array returned from `camel_uid_cache_get_new_uids()`
-     */
-    function uid_cache_free_uids(uids: string[]): void;
 
     /**
      * Attempt to unlock a .lock lock.
@@ -2815,6 +2767,16 @@ export namespace Camel {
     function util_get_directory_variants(main_path: string, replace_prefix: string, with_modules_dir: boolean): string[];
 
     /**
+     * Checks whether `error` represents a network or connection error
+     * (host unreachable, connection refused, DNS failure, timeout, TLS failure,
+     * etc.) as opposed to a protocol-level or application-level error.
+     * @param error a {@link GLib.Error}, or `null`
+     * @returns `true` if `error` is a network/connection error, `false` otherwise    (including when `error` is `null`)
+     * @since 3.62
+     */
+    function util_is_network_error(error: GLib.Error | null): boolean;
+
+    /**
      * Checks whether the domain in the `email_address` requires
      * conversion to ASCII and if it does it also converts it.
      * When the `do_format` is `true`, the output string is formatted
@@ -2963,7 +2925,7 @@ export namespace Camel {
      * @gir-type Callback
      */
     interface DBSelectCB {
-        (user_data: null, colvalues: string[], colnames: string[]): number;
+        (user_data: null, colvalues: string[], colnames: string[]): boolean;
     }
 
     /**
@@ -3004,8 +2966,29 @@ export namespace Camel {
     /**
      * @gir-type Callback
      */
-    interface ForeachInfoData {
-        (mi_data: VeeMessageInfoData, subfolder: Folder): void;
+    interface FolderThreadInt64Func {
+        (item: null): bigint | number;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface FolderThreadStrFunc {
+        (item: null): string;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface FolderThreadUint64Func {
+        (item: null): bigint | number;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface FolderThreadVoidFunc {
+        (item: null): void;
     }
 
     /**
@@ -3013,6 +2996,13 @@ export namespace Camel {
      */
     interface ForeachPartFunc {
         (message: MimeMessage, part: MimePart, parent_part: MimePart | null): boolean;
+    }
+
+    /**
+     * @gir-type Callback
+     */
+    interface GeneratePreviewFunc {
+        (part: null): string | null;
     }
 
     /**
@@ -3032,15 +3022,15 @@ export namespace Camel {
     /**
      * @gir-type Callback
      */
-    interface ProviderAutoDetectFunc {
-        (url: URL): number;
+    interface SessionCallback {
+        (session: Session, cancellable: Gio.Cancellable | null): void;
     }
 
     /**
      * @gir-type Callback
      */
-    interface SessionCallback {
-        (session: Session, cancellable: Gio.Cancellable | null): void;
+    interface StoreDBReadMessagesFunc {
+        (storedb: StoreDB, record: StoreDBMessageRecord): boolean;
     }
 
     /**
@@ -3093,6 +3083,30 @@ export namespace Camel {
     enum BlockFlags {
         DIRTY,
         DETACHED,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace DBSqlizeFlags {
+        export const $gtype: GObject.GType<DBSqlizeFlags>;
+    }
+
+    /**
+     * Influences how the `camel_db_sqlize_to_statement()` behaves.
+     * @gir-type Flags
+     * @since 3.58
+     */
+    enum DBSqlizeFlags {
+        /**
+         * escape the text and enclose it into apostrophes
+         */
+        FULL,
+        /**
+         * only escape the text, without adding surrounding apostrophes
+         */
+        ESCAPE_ONLY,
     }
 
 
@@ -3248,6 +3262,28 @@ export namespace Camel {
     /**
      * @gir-type Flags
      */
+    export namespace FolderParamFlags {
+        export const $gtype: GObject.GType<FolderParamFlags>;
+    }
+
+    /**
+     * These flags extend {@link GObject.ParamSpecFlags}.  Most of the time you will use them
+     * in conjunction with `g_object_class_install_property()`.
+     * @gir-type Flags
+     * @since 3.58
+     */
+    enum FolderParamFlags {
+        /**
+         * The parameter is persistent, which means its value is saved to
+         *     the disk between sessions.
+         */
+        PERSISTENT,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
     enum FolderSummaryFlags {
         /**
          * There are changes in summary, which should be saved.
@@ -3258,6 +3294,35 @@ export namespace Camel {
          *    it is always created on the fly.
          */
         IN_MEMORY_ONLY,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace FolderThreadFlags {
+        export const $gtype: GObject.GType<FolderThreadFlags>;
+    }
+
+    /**
+     * Flags influencing what the resulting tree for `camel_folder_thread_new()`
+     * will look like.
+     * @gir-type Flags
+     * @since 3.58
+     */
+    enum FolderThreadFlags {
+        /**
+         * no flag set
+         */
+        NONE,
+        /**
+         * thread by subject
+         */
+        SUBJECT,
+        /**
+         * sort threads by sent/received date
+         */
+        SORT,
     }
 
 
@@ -3395,22 +3460,6 @@ export namespace Camel {
 
 
     /**
-     * These flags extend {@link GObject.ParamSpecFlags}.  Most of the time you will use them
-     * in conjunction with `g_object_class_install_property()`.
-     * @gir-type Flags
-     * @since 2.32
-     */
-    enum ParamFlags {
-        /**
-         * The parameter is persistent, which means its value is saved to
-         *     {@link Camel.Object.state_filename} during `camel_object_state_write()`,
-         *     and restored during `camel_object_state_read()`.
-         */
-        PARAM_PERSISTENT,
-    }
-
-
-    /**
      * @gir-type Flags
      */
     export namespace ProviderFlags {
@@ -3503,8 +3552,6 @@ export namespace Camel {
         HIDDEN_HOST,
         HIDDEN_PORT,
         HIDDEN_PATH,
-        FRAGMENT_IS_PATH,
-        PATH_IS_ABSOLUTE,
     }
 
 
@@ -3566,6 +3613,7 @@ export namespace Camel {
         CAN_DELETE_FOLDERS_AT_ONCE,
         SUPPORTS_INITIAL_SETUP,
         IS_BUILTIN,
+        USE_TEMP_DIR,
     }
 
 
@@ -3589,10 +3637,6 @@ export namespace Camel {
          * create the folder
          */
         CREATE,
-        /**
-         * deprecated, not honored
-         */
-        EXCL,
         /**
          * save the body index
          */
@@ -3724,6 +3768,38 @@ export namespace Camel {
     /**
      * @gir-type Flags
      */
+    export namespace VeeFolderOpFlags {
+        export const $gtype: GObject.GType<VeeFolderOpFlags>;
+    }
+
+    /**
+     * Flags influencing behavior of some functions of a {@link Camel.VeeFolder},
+     * like the `camel_vee_folder_set_expression_sync()`,
+     * camel_vee_folder_add_folder_sync (),
+     * camel_vee_folder_remove_folder_sync () and
+     * `camel_vee_folder_set_folders_sync()`.
+     * @gir-type Flags
+     * @since 3.58
+     */
+    enum VeeFolderOpFlags {
+        /**
+         * no flag set
+         */
+        NONE,
+        /**
+         * skip rebuild of the search folder
+         */
+        SKIP_REBUILD,
+        /**
+         * skip emit of internal "vee-setup-changed" signal
+         */
+        SKIP_EMIT,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
     enum _search_flags_t {
         START,
         END,
@@ -3742,6 +3818,26 @@ export namespace Camel {
     }
 
     /**
+     * Base class for RFC-defined address types.
+     * 
+     * {@link Camel.Address} is a base abstract class for address types used in mail
+     * headers. It provides structured access to an indexed list of addresses.
+     * 
+     * Addresses can be represented in two ways:
+     * 
+     * - The **formatted** form is a UTF-8 string representation suitable for
+     *   display to the user. The formatting is not guaranteed to be reversible,
+     *   but `camel_address_unformat()` will try to reconstruct the address list
+     *   from such a string.
+     * 
+     * - The **encoded** form is the raw transmission version of the address
+     *   (e.g. RFC 2047-encoded for internet addresses). The encoding process
+     *   is fully bi-directional via `camel_address_encode()` and
+     *   `camel_address_decode()`.
+     * 
+     * An existing address can be cloned with `camel_address_new_clone()`, and
+     * addresses can be concatenated or copied between instances with
+     * `camel_address_cat()` and `camel_address_copy()`.
      * @gir-type Class
      */
     class Address extends GObject.Object {
@@ -4166,6 +4262,23 @@ export namespace Camel {
     }
 
     /**
+     * Encryption and digital signature interface.
+     * 
+     * {@link Camel.CipherContext} is an abstract base class that provides a unified
+     * interface for encrypting, signing, decrypting, and verifying {@link Camel.MimePart}
+     * message parts.
+     * 
+     * Concrete implementations include {@link Camel.GpgContext} for OpenPGP/GnuPG and
+     * {@link Camel.SMIMEContext} for S/MIME.
+     * 
+     * Each implementation sets protocol strings (sign_protocol,
+     * encrypt_protocol, key_protocol) that are used to populate the appropriate
+     * MIME header fields in signed and encrypted parts.
+     * 
+     * Because a single message part may have multiple layers of signing or
+     * encryption using different algorithms, the validity result is represented
+     * as a tree of {@link Camel.CipherValidity} structures, each describing the
+     * signature or encryption status of one layer.
      * @gir-type Class
      */
     class CipherContext extends GObject.Object {
@@ -4173,6 +4286,7 @@ export namespace Camel {
 
         // Properties
         /**
+         * The corresponding {@link Camel.Session}
          * @construct-only
          */
         get session(): Session | null;
@@ -4584,37 +4698,13 @@ export namespace Camel {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-        /**
-         * Frees the `record` and all of its associated data.
-         * @param record a {@link Camel.MIRecord}
-         */
-        static camel_mir_free(record: MIRecord | null): void;
-
         static error_quark(): GLib.Quark;
 
         /**
-         * Frees a string previosuly returned by `camel_db_sqlize_string()`.
+         * Frees a string previously returned by `camel_db_sqlize_string()`.
          * @param string a string to free
          */
         static free_sqlized_string(string: string | null): void;
-
-        /**
-         * Traverses column name from index `index` into an enum
-         * {@link Camel.DBKnownColumnNames} value.  The `col_names` contains `ncols` columns.
-         * First time this is called is created the `hash` from col_names indexes into
-         * the enum, and this is reused for every other call.  The function expects
-         * that column names are returned always in the same order.  When all rows
-         * are read the `hash` table can be freed with `g_hash_table_destroy()`.
-         * @param hash a {@link GLib.HashTable}
-         * @param index an index to start with, between 0 and `ncols`
-         * @param col_names column names to traverse
-         */
-        static get_column_ident(hash: never, index: number, col_names: string[]): [DBKnownColumnNames, never];
-
-        /**
-         * @param raw_name raw name to find the column name for
-         */
-        static get_column_name(raw_name: string): string | null;
 
         /**
          * Instructs sqlite to release its memory, if possible. This can be avoided
@@ -4628,141 +4718,49 @@ export namespace Camel {
          */
         static sqlize_string(string: string): string;
 
+        /**
+         * Encodes the `str` to be safe to use as a string
+         * in an SQL statement and appends it to the `stmt`.
+         * When `str` is `null`, a NULL word is appended.
+         * @param stmt a {@link GLib.String} with an SQL statement
+         * @param str a string to sqlize
+         * @param flags bit-or of {@link Camel.DBSqlizeFlags}
+         */
+        static sqlize_to_statement(stmt: GLib.String, str: string | null, flags: DBSqlizeFlags): void;
+
         // Methods
         /**
          * Ends an ongoing transaction by ignoring the changes.
-         * @returns 0 on success, -1 on error
+         * @returns whether succeeded
          */
-        abort_transaction(): number;
-
-        /**
-         * Adds a statement to an ongoing transaction.
-         * @param query an SQL (SQLite) statement
-         * @returns 0 on success, -1 on error
-         */
-        add_to_transaction(query: string): number;
+        abort_transaction(): boolean;
 
         /**
          * Begins transaction. End it with `camel_db_end_transaction()` or `camel_db_abort_transaction()`.
-         * @returns 0 on success, -1 on error
+         * @returns whether succeeded
          */
-        begin_transaction(): number;
-
-        /**
-         * Deletes the given folder from the 'folders' table and empties
-         * its message info table.
-         * @param folder_name full name of the folder
-         * @returns 0 on success, -1 on error
-         */
-        clear_folder_summary(folder_name: string): number;
-
-        /**
-         * Executes an SQLite command.
-         * @param stmt an SQL (SQLite) statement to execute
-         * @returns 0 on success, -1 on error
-         */
-        command(stmt: string): number;
-
-        /**
-         * Counts how many deleted messages is stored in the given table.
-         * @param table_name name of the table
-         * @returns 0 on success, -1 on error
-         */
-        count_deleted_message_info(table_name: string): [number, number];
-
-        /**
-         * Counts how many junk messages is stored in the given table.
-         * @param table_name name of the table
-         * @returns 0 on success, -1 on error
-         */
-        count_junk_message_info(table_name: string): [number, number];
-
-        /**
-         * @param table_name 
-         * @param count 
-         */
-        count_junk_not_deleted_message_info(table_name: string, count: number): number;
-
-        /**
-         * Executes a COUNT() query (like "SELECT COUNT(*) FROM table") and provides
-         * the result of it as an unsigned 32-bit integer.
-         * @param query a COUNT() query
-         * @returns 0 on success, -1 on error
-         */
-        count_message_info(query: string): [number, number];
-
-        /**
-         * Counts how many messages is stored in the given table.
-         * @param table_name name of the table
-         * @returns 0 on success, -1 on error
-         */
-        count_total_message_info(table_name: string): [number, number];
-
-        /**
-         * Counts how many unread messages is stored in the given table.
-         * @param table_name name of the table
-         * @returns 0 on success, -1 on error
-         */
-        count_unread_message_info(table_name: string): [number, number];
-
-        /**
-         * Counts how many visible (not deleted and not junk) messages is stored in the given table.
-         * @param table_name name of the table
-         * @returns 0 on success, -1 on error
-         */
-        count_visible_message_info(table_name: string): [number, number];
-
-        /**
-         * Counts how many visible (not deleted and not junk) and unread messages is stored in the given table.
-         * @param table_name name of the table
-         * @returns 0 on success, -1 on error
-         */
-        count_visible_unread_message_info(table_name: string): [number, number];
-
-        /**
-         * Creates a 'folders' table, if it doesn't exist yet.
-         * @returns 0 on success, -1 on error
-         */
-        create_folders_table(): number;
-
-        /**
-         * Deletes the given folder from the 'folders' table and also drops
-         * its message info table.
-         * @param folder_name full name of the folder
-         * @returns 0 on success, -1 on error
-         */
-        delete_folder(folder_name: string): number;
-
-        /**
-         * Deletes single mesage info in the given folder with
-         * the given UID.
-         * @param folder_name full name of the folder
-         * @param uid a message info UID to delete
-         * @returns 0 on success, -1 on error
-         */
-        delete_uid(folder_name: string, uid: string): number;
-
-        /**
-         * Deletes a list of message UIDs as one transaction.
-         * @param folder_name full name of the folder
-         * @param uids A {@link GLib.List} of uids
-         * @returns 0 on success, -1 on error
-         */
-        delete_uids(folder_name: string, uids: string[]): number;
+        begin_transaction(): boolean;
 
         /**
          * Ends an ongoing transaction by committing the changes.
-         * @returns 0 on success, -1 on error
+         * @returns whether succeeded
          */
-        end_transaction(): number;
+        end_transaction(): boolean;
 
         /**
-         * A pair function for `camel_db_start_in_memory_transactions()`,
-         * to commit the changes to `folder_name` and free the in-memory table.
-         * @param folder_name full name of the folder
-         * @returns 0 on success, -1 on error
+         * Executes a SELECT statement and calls the `callback` for each selected row.
+         * @param stmt a SELECT statement to execute
+         * @param callback a callback to call for each row
+         * @returns whether succeeded
          */
-        flush_in_memory_transactions(folder_name: string): number;
+        exec_select(stmt: string, callback: DBSelectCB): boolean;
+
+        /**
+         * Executes an SQLite statement.
+         * @param stmt an SQL (SQLite) statement to execute
+         * @returns whether succeeded
+         */
+        exec_statement(stmt: string): boolean;
 
         /**
          * @returns A filename associated with `cdb`.
@@ -4770,27 +4768,20 @@ export namespace Camel {
         get_filename(): string;
 
         /**
-         * @param folder_name full name of the folder
-         * @returns An array   of the UID-s of the deleted messages in the given folder. Use   `camel_pstring_free()` to free the elements.
+         * Checks whether the `table_name` exists in the `cdb`.
+         * @param table_name a table name
+         * @returns `true`, when the `table_name` exists, `false` when not    or when any other error occurred
          */
-        get_folder_deleted_uids(folder_name: string): string[] | null;
+        has_table(table_name: string): boolean;
 
         /**
-         * @param folder_name full name of the folder
-         * @returns An array   of the UID-s of the junk messages in the given folder. Use   `camel_pstring_free()` to free the elements.
+         * Checks whether the `table_name` exists in the `cdb` and contains
+         * column named `column_name`.
+         * @param table_name a table name
+         * @param column_name a table name
+         * @returns `true`, when the `table_name` exists and contains `column_name` column,    `false` when not or when any other error occurred
          */
-        get_folder_junk_uids(folder_name: string): string[] | null;
-
-        /**
-         * Fills hash with uid->GUINT_TO_POINTER (flag). Use `camel_pstring_free()`
-         * to free the keys of the `hash`.
-         * @param folder_name full name of the folder
-         * @param sort_by optional ORDER BY clause (without the "ORDER BY" prefix)
-         * @param collate optional collate function name to use
-         * @param hash a hash table to fill
-         * @returns 0 on success, -1 on error
-         */
-        get_folder_uids(folder_name: string, sort_by: string | null, collate: string | null, hash: { [key: string]: number }): number;
+        has_table_with_column(table_name: string, column_name: string): boolean;
 
         /**
          * Runs a `cdb` maintenance, which includes vacuum, if necessary.
@@ -4799,60 +4790,26 @@ export namespace Camel {
         maybe_run_maintenance(): boolean;
 
         /**
-         * Prepares message info table for the given folder.
-         * @param folder_name full name of the folder
-         * @returns 0 on success, -1 on error
+         * Opens the database stored as `filename`. The function can be called
+         * only once, all following calls will result into failures.
+         * @param filename A file name with the database to open/create
+         * @returns whether succeeded
          */
-        prepare_message_info_table(folder_name: string): number;
+        open(filename: string): boolean;
 
         /**
-         * reads folder information for the given folder and stores it into the `record`.
-         * @param folder_name full name of the folder
-         * @returns 0 on success, -1 on error
+         * Acquires a reader lock on the `cdb`. It can be called multiple times.
+         * Call pair function `camel_db_reader_unlock()` to release it. it's okay
+         * to call this function when a writer lock is already acquired by the
+         * calling thread.
          */
-        read_folder_info_record(folder_name: string): [number, FIRecord];
+        reader_lock(): void;
 
         /**
-         * Selects single message info for the given `uid` in folder `folder_name` and calls
-         * the `callback` for it.
-         * @param folder_name full name of the folder
-         * @param uid a message info UID to read the record for
-         * @param callback callback to call for the found row
-         * @returns 0 on success, -1 on error
+         * Releases a reader lock on the `cdb` previously acquired by
+         * calling `camel_db_reader_lock()`.
          */
-        read_message_info_record_with_uid(folder_name: string, uid: string, callback: DBSelectCB): number;
-
-        /**
-         * Reads all mesasge info records for the given folder and calls `callback` for them.
-         * @param folder_name full name of the folder
-         * @param callback callback to call for each found row
-         * @returns 0 on success, -1 on error
-         */
-        read_message_info_records(folder_name: string, callback: DBSelectCB): number;
-
-        /**
-         * Renames tables for the `old_folder_name` to be used with `new_folder_name`.
-         * @param old_folder_name full name of the existing folder
-         * @param new_folder_name full name of the folder to rename it to
-         * @returns 0 on success, -1 on error
-         */
-        rename_folder(old_folder_name: string, new_folder_name: string): number;
-
-        /**
-         * Sets a version number for the given folder.
-         * @param folder_name full name of the folder
-         * @param reset_version version number to set
-         * @returns 0 on success, -1 on error
-         */
-        reset_folder_version(folder_name: string, reset_version: number): number;
-
-        /**
-         * Executes a SELECT staement and calls the `callback` for each selected row.
-         * @param stmt a SELECT statment to execute
-         * @param callback a callback to call for each row
-         * @returns 0 on success, -1 on error
-         */
-        select(stmt: string, callback: DBSelectCB): number;
+        reader_unlock(): void;
 
         /**
          * Defines a collation `collate`, which can be used in SQL (SQLite)
@@ -4861,37 +4818,24 @@ export namespace Camel {
          * @param col a column name; currently unused
          * @param collate collation name
          * @param func a {@link Camel.DBCollate} collation function
+         * @returns whether succeeded
          */
-        set_collate(col: string, collate: string, func: DBCollate): number;
+        set_collate(col: string, collate: string, func: DBCollate): boolean;
 
         /**
-         * Creates an in-memory table for a batch transactions. Use `camel_db_flush_in_memory_transactions()`
-         * to commit the changes and free the in-memory table.
-         * @returns 0 on success, -1 on error
+         * Acquires a writer lock on the `cdb`. It can be called multiple times.
+         * Call pair function `camel_db_writer_unlock()` to release it.
+         * 
+         * Note: This adds a transaction on the DB. Not all statements can be executed
+         *   in the transaction.
          */
-        start_in_memory_transactions(): number;
+        writer_lock(): void;
 
         /**
-         * Runs the list of commands as a single transaction.
-         * @param qry_list A {@link GLib.List} of querries
-         * @returns 0 on success, -1 on error
+         * Releases a write lock on the `cdb` previously acquired
+         * by calling `camel_db_writer_lock()`.
          */
-        transaction_command(qry_list: string[]): number;
-
-        /**
-         * Write the `record` to the 'folders' table.
-         * @param record a {@link Camel.FIRecord}
-         * @returns 0 on success, -1 on error
-         */
-        write_folder_info_record(record: FIRecord): number;
-
-        /**
-         * Write the `record` to the message info table of the given folder.
-         * @param folder_name full name of the folder
-         * @param record a {@link Camel.MIRecord}
-         * @returns 0 on success, -1 on error
-         */
-        write_message_info_record(folder_name: string, record: MIRecord): number;
+        writer_unlock(): void;
     }
 
 
@@ -4911,6 +4855,41 @@ export namespace Camel {
     }
 
     /**
+     * A file-based cache for arbitrary keyed data, typically used by mail
+     * providers to store downloaded message bodies.
+     * 
+     * Each item is identified by a (`path`, `key`) pair.  The `path` selects a
+     * logical sub-cache (e.g. `"cur"` for downloaded messages, `"new"` for
+     * outgoing spool), and `key` is a per-item identifier such as a message UID.
+     * 
+     * To write a new item safely — so that a crash or cancellation never leaves
+     * a truncated file in the cache — use the atomic write API:
+     * 
+     * 
+     * ```c
+     *     GIOStream *stream;
+     *     gboolean success;
+     * 
+     *     stream = camel_data_cache_add_atomic (cache, "cur", uid, error);
+     *     if (!stream)
+     *         goto fail;
+     * 
+     *     success = write_message_to_stream (G_OUTPUT_STREAM (
+     *         g_io_stream_get_output_stream (stream)), message, error);
+     * 
+     *     if (success) {
+     *         stream = camel_data_cache_commit_atomic (cache, g_steal_pointer (&stream), error);
+     *         /<!-- -->* stream is now open on the committed file, or NULL on error *<!-- -->/
+     *     } else {
+     *         camel_data_cache_discard_atomic (cache, g_steal_pointer (&stream));
+     *     }
+     * ```
+     * 
+     * 
+     * `camel_data_cache_add_atomic()` writes to a temporary file in the same
+     * directory as the target, so `camel_data_cache_commit_atomic()` can rename
+     * it into place atomically.  Any concurrent `camel_data_cache_get()` call for
+     * the same item blocks until the write is either committed or discarded.
      * @gir-type Class
      */
     class DataCache extends GObject.Object {
@@ -4918,18 +4897,21 @@ export namespace Camel {
 
         // Properties
         /**
+         * Expire Enabled
          * @default true
          */
         get expire_enabled(): boolean;
         set expire_enabled(val: boolean);
 
         /**
+         * Expire Enabled
          * @default true
          */
         get expireEnabled(): boolean;
         set expireEnabled(val: boolean);
 
         /**
+         * Path
          * @default null
          */
         get path(): string;
@@ -4966,26 +4948,53 @@ export namespace Camel {
 
         // Methods
         /**
-         * Add a new item to the cache, returning a {@link Gio.IOStream} to the new item.
+         * Open a temporary file for writing a new cache item identified by `path`
+         * and `key`.  The temporary file lives in the same directory as the final
+         * target so that `camel_data_cache_commit_atomic()` can rename it into place
+         * atomically (same-filesystem rename).
          * 
-         * The key and the path combine to form a unique key used to store the item.
+         * Any concurrent call to `camel_data_cache_get()` for the same `path`/`key` will
+         * block until the caller either commits or discards the stream.
          * 
-         * Potentially, expiry processing will be performed while this call is
-         * executing.
-         * 
-         * The returned {@link Gio.IOStream} is referenced for thread-safety and must be
-         * unreferenced with `g_object_unref()` when finished with it.
+         * On success, pass the returned stream to `camel_data_cache_commit_atomic()`
+         * or `camel_data_cache_discard_atomic()`; the stream is consumed
+         * (transfer full) by both functions.  Do not call `g_object_unref()` on it
+         * directly.
          * @param path Relative path of item to add.
          * @param key Key of item to add.
-         * @returns a {@link Gio.IOStream} for the new cache item, or `null` on error
+         * @returns a {@link Gio.IOStream} for writing, or `null` on error
          */
-        add(path: string, key: string): Gio.IOStream;
+        add_atomic(path: string, key: string): Gio.IOStream;
 
         /**
          * Clear cache's content in `path`.
          * @param path Path to the (sub) cache the item exists in.
          */
         clear(path: string): void;
+
+        /**
+         * Finalise an atomic cache write.  `stream` is closed and unreffed, the
+         * temporary file is renamed to its final location, and a new {@link Gio.IOStream}
+         * opened on the committed file is returned (equivalent to calling
+         * `camel_data_cache_get()` after a successful write).
+         * 
+         * On failure the temporary file is removed and the bag reservation is
+         * released, so the caller does not need to call
+         * `camel_data_cache_discard_atomic()`.
+         * @param stream the {@link Gio.IOStream} returned by `camel_data_cache_add_atomic()`
+         * @returns a {@link Gio.IOStream} for the committed file, or `null` on error
+         */
+        commit_atomic(stream: Gio.IOStream): Gio.IOStream;
+
+        /**
+         * Discard an atomic cache write.  `stream` is closed and unreffed, the
+         * temporary file is removed, and the bag reservation is released so that
+         * other threads can retry the operation.
+         * 
+         * Call this on any error path before `camel_data_cache_commit_atomic()`.
+         * @param stream the {@link Gio.IOStream} returned by `camel_data_cache_add_atomic()`
+         */
+        discard_atomic(stream: Gio.IOStream): void;
 
         /**
          * Traverses the `cdc` sub-cache identified by `path` and calls `func` for each found file.
@@ -5097,6 +5106,35 @@ export namespace Camel {
     }
 
     /**
+     * Base class for structured MIME data access.
+     * 
+     * {@link Camel.DataWrapper} is the base class used to implement structured MIME data
+     * access. It serves as the programmatic interface for creating and reading
+     * MIME-encoded data, primarily RFC 822 messages.
+     * 
+     * The class hierarchy rooted at {@link Camel.DataWrapper} closely parallels the
+     * structure of a MIME message:
+     * 
+     * - {@link Camel.DataWrapper} itself holds unstructured leaf data (e.g. an attachment
+     *   body) together with its content-type and transfer encoding.
+     * 
+     * - {@link Camel.Medium} extends it with named headers and a separate content object.
+     * 
+     * - {@link Camel.MimePart} adds structured accessors for all standard Content-*
+     *   headers (Content-Type, Content-Disposition, Content-Transfer-Encoding,
+     *   etc.) and can be constructed from a {@link Camel.MimeParser}.
+     * 
+     * - {@link Camel.MimeMessage} is a fully-fledged RFC 822 message with From/To/Subject
+     *   and other message-level headers, built on top of {@link Camel.MimePart}.
+     * 
+     * - {@link Camel.Multipart} and its subclasses ({@link Camel.MultipartSigned},
+     *   {@link Camel.MultipartEncrypted}) handle multipart MIME containers.
+     * 
+     * The i/o interface is stream-based: `camel_data_wrapper_write_to_stream()`
+     * serialises the object into encoded MIME form, while
+     * `camel_data_wrapper_decode_to_stream()` writes the decoded content (stripping
+     * the content-transfer-encoding). `camel_data_wrapper_construct_from_stream()`
+     * is the main entry point for parsing raw MIME data into an object hierarchy.
      * @gir-type Class
      */
     class DataWrapper extends GObject.Object {
@@ -5739,6 +5777,27 @@ export namespace Camel {
     }
 
     /**
+     * Rule-based message filtering engine.
+     * 
+     * {@link Camel.FilterDriver} manages the filtering process. Given a set of filter
+     * rules — each consisting of a matching s-expression and an action
+     * s-expression — and a set of messages, it evaluates each rule against each
+     * message in turn.
+     * 
+     * Filter rules use two s-expressions evaluated by {@link Camel.SExp}:
+     * 
+     * - The **match expression** returns a boolean indicating whether the message
+     *   matches. See `CamelFolderSearch` for the supported matching functions.
+     * 
+     * - The **action expression** is typically a `(begin ...)` block listing the
+     *   actions to perform. Available actions include:
+     *   - `(delete)` — mark for deletion
+     *   - `(copy-to uri …)` / `(move-to uri …)` — copy or move to a folder
+     *   - `(set-system-flag flag)` / `(unset-system-flag flag)` — set/clear flags
+     *   - `(stop)` — halt further rule processing
+     *   - `(pipe-message cmd)` — pipe the message through an external command
+     *   - `(shell cmd …)` — run a shell command
+     *   - `(beep)` / `(play-sound file)` — notify the user
      * @gir-type Class
      */
     class FilterDriver extends GObject.Object {
@@ -5889,6 +5948,13 @@ export namespace Camel {
     }
 
     /**
+     * Filtered input stream.
+     * 
+     * {@link Camel.FilterInputStream} is similar to {@link Gio.ConverterInputStream}, except it
+     * operates on a {@link Camel.MimeFilter} instead of a {@link Gio.Converter}.
+     * 
+     * This class is meant to be a temporary solution until all of Camel's MIME
+     * filters are ported to the {@link Gio.Converter} interface.
      * @gir-type Class
      */
     class FilterInputStream extends Gio.FilterInputStream {
@@ -5896,6 +5962,7 @@ export namespace Camel {
 
         // Properties
         /**
+         * The MIME filter object
          * @construct-only
          */
         get filter(): MimeFilter;
@@ -5953,6 +6020,13 @@ export namespace Camel {
     }
 
     /**
+     * Filtered output stream.
+     * 
+     * {@link Camel.FilterOutputStream} is similar to {@link Gio.ConverterOutputStream}, except it
+     * operates on a {@link Camel.MimeFilter} instead of a {@link Gio.Converter}.
+     * 
+     * This class is meant to be a temporary solution until all of Camel's MIME
+     * filters are ported to the {@link Gio.Converter} interface.
      * @gir-type Class
      */
     class FilterOutputStream extends Gio.FilterOutputStream {
@@ -5960,6 +6034,7 @@ export namespace Camel {
 
         // Properties
         /**
+         * The MIME filter object
          * @construct-only
          */
         get filter(): MimeFilter;
@@ -6004,7 +6079,7 @@ export namespace Camel {
 
     namespace Folder {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
              * @run-first
@@ -6022,18 +6097,19 @@ export namespace Camel {
             renamed: (arg0: string) => void;
             "notify::description": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::full-name": (pspec: GObject.ParamSpec) => void;
             "notify::mark-seen": (pspec: GObject.ParamSpec) => void;
             "notify::mark-seen-timeout": (pspec: GObject.ParamSpec) => void;
             "notify::parent-store": (pspec: GObject.ParamSpec) => void;
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
             description: string;
             display_name: string;
             displayName: string;
+            flags: number;
             full_name: string;
             fullName: string;
             mark_seen: ThreeState;
@@ -6046,9 +6122,30 @@ export namespace Camel {
     }
 
     /**
+     * Abstract interface for a mail message store.
+     * 
+     * {@link Camel.Folder} is the object used to abstract a mail folder that stores
+     * messages. Folders are obtained from {@link Camel.Store} instances and provide
+     * the primary interface for working with mail:
+     * 
+     * - Retrieving information about messages in the folder (via
+     *   {@link Camel.FolderSummary} and {@link Camel.MessageInfo}).
+     * - Searching for messages with `camel_folder_search_sync()`.
+     * - Retrieving message content with `camel_folder_get_message()`.
+     * - Copying, moving, and appending messages.
+     * - Modifying message flags and user-defined tags.
+     * - Expunging deleted messages.
+     * 
+     * The abstraction maps closely to IMAP folders, Berkeley mbox, and Maildir:
+     * messages are ordered by arrival time, identified by a persistent UID
+     * string, and deleted by first flagging them then expunging the folder.
+     * 
+     * {@link Camel.Folder} itself handles the client-facing interface. Implementations
+     * use {@link Camel.FolderSummary} to manage the message list and cached metadata,
+     * and may use `CamelFolderSearch` to drive the search interface.
      * @gir-type Class
      */
-    abstract class Folder extends Object {
+    abstract class Folder extends GObject.Object {
         static $gtype: GObject.GType<Folder>;
 
         // Properties
@@ -6072,6 +6169,14 @@ export namespace Camel {
          */
         get displayName(): string;
         set displayName(val: string);
+
+        /**
+         * Folder flags (bit-or of {@link Camel.FolderFlags}).
+         * @since 3.62
+         * @default 0
+         */
+        get flags(): number;
+        set flags(val: number);
 
         /**
          * The folder's fully qualified name.
@@ -6164,9 +6269,10 @@ export namespace Camel {
 
         // Static methods
         /**
-         * @param c 
+         * @param prop_name the static property name
+         * @param tag the legacy property tag
          */
-        static threaded_messages_dump(c: FolderThreadNode): number;
+        static map_legacy_property(prop_name: string, tag: number): void;
 
         // Virtual methods
         /**
@@ -6199,14 +6305,6 @@ export namespace Camel {
         vfunc_cmp_uids(uid1: string, uid2: string): number;
 
         /**
-         * Searches the folder for count of messages matching the given search expression.
-         * @param expression a search expression
-         * @param cancellable a {@link Gio.Cancellable}
-         * @virtual
-         */
-        vfunc_count_by_expression(expression: string, cancellable: Gio.Cancellable | null): number;
-
-        /**
          * @virtual
          */
         vfunc_delete_(): void;
@@ -6217,25 +6315,45 @@ export namespace Camel {
         vfunc_deleted(): void;
 
         /**
+         * Reads headers of a message with the `uid` and returns it
+         * in the `out_headers`. Free the headers with `camel_name_value_array_free()`,
+         * when no longer needed.
+         * 
+         * This is an optional method, which is meant to be used by the providers
+         * which can read the headers from the server when not available locally.
+         * The default implementation tries to read the headers from a loaded
+         * message info and a locally cached message when its file name is known.
+         * It returns a G_IO_ERROR_NOT_FOUND error when failed.
+         * @param uid a message UID
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @virtual
+         */
+        vfunc_dup_headers_sync(uid: string, cancellable: Gio.Cancellable | null): [boolean, NameValueArray];
+
+        /**
+         * Duplicates a list of UIDs available in the `folder`. Free the array
+         * with `g_ptr_array_unref()`, when no longer needed.
+         * @virtual
+         */
+        vfunc_dup_uids(): string[];
+
+        /**
+         * Returns the known-uncached uids from a list of uids. It may return uids
+         * which are locally cached but should never filter out a uid which is not
+         * locally cached.
+         * 
+         * Free the result with `g_ptr_array_unref()`, when no longer needed.
+         * @param uids the array of uids to filter down to uncached ones.
+         * @virtual
+         */
+        vfunc_dup_uncached_uids(uids: string[]): string[];
+
+        /**
          * Deletes messages which have been marked as "DELETED".
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
         vfunc_expunge_sync(cancellable: Gio.Cancellable | null): boolean;
-
-        /**
-         * Frees the summary array returned by `camel_folder_get_summary()`.
-         * @param array the summary array to free
-         * @virtual
-         */
-        vfunc_free_summary(array: MessageInfo[]): void;
-
-        /**
-         * Frees the array of UIDs returned by `camel_folder_get_uids()`.
-         * @param array the array of uids to free
-         * @virtual
-         */
-        vfunc_free_uids(array: string[]): void;
 
         /**
          * Freezes the folder so that a series of operation can be performed
@@ -6300,20 +6418,6 @@ export namespace Camel {
         vfunc_get_message_sync(message_uid: string, cancellable: Gio.Cancellable | null): MimeMessage;
 
         /**
-         * @param uid the UID of a message in `folder`
-         * @param name the name of a user flag
-         * @virtual
-         */
-        vfunc_get_message_user_flag(uid: string, name: string): boolean;
-
-        /**
-         * @param uid the UID of a message in `folder`
-         * @param name the name of a user tag
-         * @virtual
-         */
-        vfunc_get_message_user_tag(uid: string, name: string): string;
-
-        /**
          * @virtual
          */
         vfunc_get_permanent_flags(): number;
@@ -6328,33 +6432,6 @@ export namespace Camel {
          * @virtual
          */
         vfunc_get_quota_info_sync(cancellable: Gio.Cancellable | null): FolderQuotaInfo;
-
-        /**
-         * This returns the summary information for the folder. This array
-         * should not be modified, and must be freed with
-         * `camel_folder_free_summary()`.
-         * @virtual
-         */
-        vfunc_get_summary(): string[];
-
-        /**
-         * Get the list of UIDs available in a folder. This routine is useful
-         * for finding what messages are available when the folder does not
-         * support summaries. The returned array should not be modified, and
-         * must be freed by passing it to `camel_folder_free_uids()`.
-         * @virtual
-         */
-        vfunc_get_uids(): string[];
-
-        /**
-         * Returns the known-uncached uids from a list of uids. It may return uids
-         * which are locally cached but should never filter out a uid which is not
-         * locally cached. Free the result by called `camel_folder_free_uids()`.
-         * Frees the array of UIDs returned by `camel_folder_get_uids()`.
-         * @param uids the array of uids to filter down to uncached ones.
-         * @virtual
-         */
-        vfunc_get_uncached_uids(uids: string[]): string[];
 
         /**
          * @virtual
@@ -6410,29 +6487,46 @@ export namespace Camel {
         vfunc_renamed(old_name: string): void;
 
         /**
+         * Search the folder for messages with body containing `words`.
+         * The list of satisfying message UIDs is returned in the `out_uids`.
+         * The result list can be empty, meaning no such message exists.
+         * 
+         * Free the returned `out_uids` with `g_ptr_array_unref()`, when no longer needed.
+         * 
+         * This is an optional helper method, meant to search server-side. The default
+         * implementation returns a G_IO_ERROR_NOT_SUPPORTED error.
+         * @param words a list of words to search for, or `null` to check an existence of the header instead
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @virtual
+         */
+        vfunc_search_body_sync(words: string[], cancellable: Gio.Cancellable | null): [boolean, string[]];
+
+        /**
+         * Search the folder for messages with header `header_name`, which either contains
+         * the `words` or, when the `words` is empty or `null`, the header exists in the message.
+         * The list of satisfying message UIDs is returned in the `out_uids`.
+         * The result list can be empty, meaning no such message exists.
+         * 
+         * Free the returned `out_uids` with `g_ptr_array_unref()`, when no longer needed.
+         * 
+         * This is an optional helper method, meant to search server-side. The default
+         * implementation returns a G_IO_ERROR_NOT_SUPPORTED error.
+         * @param header_name a header name to search
+         * @param words a list of words to search for, or `null` to check an existence of the header instead
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @virtual
+         */
+        vfunc_search_header_sync(header_name: string, words: string[] | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
+
+        /**
          * Searches the folder for messages matching the given search expression.
+         * 
+         * Free the array with `g_ptr_array_unref()`, when no longer needed.
          * @param expression a search expression
          * @param cancellable a {@link Gio.Cancellable}
          * @virtual
          */
-        vfunc_search_by_expression(expression: string, cancellable: Gio.Cancellable | null): string[];
-
-        /**
-         * Search a subset of uid's for an expression match.
-         * @param expression search expression
-         * @param uids array of uid's to match against.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @virtual
-         */
-        vfunc_search_by_uids(expression: string, uids: string[], cancellable: Gio.Cancellable | null): string[];
-
-        /**
-         * Free the result of a search as gotten by `camel_folder_search_by_expression()`
-         * or `camel_folder_search_by_uids()`.
-         * @param result search results to free
-         * @virtual
-         */
-        vfunc_search_free(result: string[]): void;
+        vfunc_search_sync(expression: string, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
         /**
          * Sets those flags specified by `mask` to the values specified by `set`
@@ -6443,26 +6537,10 @@ export namespace Camel {
          * camel_folder_set_message_flags (folder, uid, CAMEL_MESSAGE_DELETED|CAMEL_MESSAGE_DRAFT, CAMEL_MESSAGE_DELETED);
          * @param uid the UID of a message in `folder`
          * @param mask a mask of {@link Camel.MessageFlags} bit-or values to use
-         * @param set the flags to ser, also bit-or of {@link Camel.MessageFlags}
+         * @param set the flags to set, also bit-or of {@link Camel.MessageFlags}
          * @virtual
          */
         vfunc_set_message_flags(uid: string, mask: number, set: number): boolean;
-
-        /**
-         * @param uid the UID of a message in `folder`
-         * @param name the name of the user flag to set
-         * @param value the value to set it to
-         * @virtual
-         */
-        vfunc_set_message_user_flag(uid: string, name: string, value: boolean): void;
-
-        /**
-         * @param uid the UID of a message in `folder`
-         * @param name the name of the user tag to set
-         * @param value the value to set it to
-         * @virtual
-         */
-        vfunc_set_message_user_tag(uid: string, name: string, value: string): void;
 
         /**
          * Sorts the array of UIDs.
@@ -6589,14 +6667,6 @@ export namespace Camel {
         cmp_uids(uid1: string, uid2: string): number;
 
         /**
-         * Searches the folder for count of messages matching the given search expression.
-         * @param expression a search expression
-         * @param cancellable a {@link Gio.Cancellable}
-         * @returns an interger
-         */
-        count_by_expression(expression: string, cancellable: Gio.Cancellable | null): number;
-
-        /**
          * Marks `folder` as deleted and performs any required cleanup.
          * 
          * This also emits the {@link Camel.Folder.SignalSignatures.deleted | Camel.Folder::deleted} signal from an idle source on
@@ -6630,6 +6700,40 @@ export namespace Camel {
          * @returns a newly-allocated copy of {@link Camel.Folder.full_name}
          */
         dup_full_name(): string;
+
+        /**
+         * Reads headers of a message with the `uid` and returns it
+         * in the `out_headers`. Free the headers with `camel_name_value_array_free()`,
+         * when no longer needed.
+         * 
+         * This is an optional method, which is meant to be used by the providers
+         * which can read the headers from the server when not available locally.
+         * The default implementation tries to read the headers from a loaded
+         * message info and a locally cached message when its file name is known.
+         * It returns a G_IO_ERROR_NOT_FOUND error when failed.
+         * @param uid a message UID
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @returns whether the headers had been found and the `out_headers` populated
+         */
+        dup_headers_sync(uid: string, cancellable: Gio.Cancellable | null): [boolean, NameValueArray];
+
+        /**
+         * Duplicates a list of UIDs available in the `folder`. Free the array
+         * with `g_ptr_array_unref()`, when no longer needed.
+         * @returns a new {@link GLib.PtrArray}    of UIDs corresponding to the messages available in the `folder`
+         */
+        dup_uids(): string[];
+
+        /**
+         * Returns the known-uncached uids from a list of uids. It may return uids
+         * which are locally cached but should never filter out a uid which is not
+         * locally cached.
+         * 
+         * Free the result with `g_ptr_array_unref()`, when no longer needed.
+         * @param uids the array of uids to filter down to uncached ones.
+         * @returns a new {@link GLib.PtrArray} with UID-s,    which are not cached locally
+         */
+        dup_uncached_uids(uids: string[]): string[];
 
         /**
          * Asynchronously deletes messages which have been marked as "DELETED".
@@ -6678,46 +6782,12 @@ export namespace Camel {
         expunge_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * Frees the provided array and its contents. Used by {@link Camel.Folder}
-         * subclasses as an implementation for free_uids when the provided
-         * information was created explicitly by the corresponding get_ call.
-         * @param array an array of uids
-         */
-        free_deep(array: string[]): void;
-
-        /**
-         * Frees the provided array but not its contents. Used by {@link Camel.Folder}
-         * subclasses as an implementation for free_uids or free_summary when
-         * the returned array needs to be freed but its contents come from
-         * "static" information.
-         * @param array an array of uids or {@link Camel.MessageInfo}
-         */
-        free_shallow(array: string[]): void;
-
-        /**
-         * Frees the summary array returned by `camel_folder_get_summary()`.
-         * @param array the summary array to free
-         */
-        free_summary(array: MessageInfo[]): void;
-
-        /**
-         * Frees the array of UIDs returned by `camel_folder_get_uids()`.
-         * @param array the array of uids to free
-         */
-        free_uids(array: string[]): void;
-
-        /**
          * Freezes the folder so that a series of operation can be performed
          * without "folder_changed" signals being emitted.  When the folder is
          * later thawed with `camel_folder_thaw()`, the suppressed signals will
          * be emitted.
          */
         freeze(): void;
-
-        /**
-         * @returns the number of deleted messages in the folder, or -1 if unknown
-         */
-        get_deleted_message_count(): number;
 
         /**
          * Returns a description of the folder suitable for displaying to the user.
@@ -6744,9 +6814,11 @@ export namespace Camel {
         get_flags(): number;
 
         /**
+         * Get the {@link Camel.FolderSummary} if the backend actually supports it.
+         * The `camel_folder_has_summary_capability()` conveniently checks its availability.
          * @returns a {@link Camel.FolderSummary} of the folder
          */
-        get_folder_summary(): FolderSummary;
+        get_folder_summary(): FolderSummary | null;
 
         get_frozen_count(): number;
 
@@ -6856,20 +6928,6 @@ export namespace Camel {
         get_message_sync(message_uid: string, cancellable: Gio.Cancellable | null): MimeMessage;
 
         /**
-         * @param uid the UID of a message in `folder`
-         * @param name the name of a user flag
-         * @returns `true` if the given user flag is set on the message or `false` otherwise
-         */
-        get_message_user_flag(uid: string, name: string): boolean;
-
-        /**
-         * @param uid the UID of a message in `folder`
-         * @param name the name of a user tag
-         * @returns the value of the user tag
-         */
-        get_message_user_tag(uid: string, name: string): string;
-
-        /**
          * @returns the parent {@link Camel.Store} of the folder
          */
         get_parent_store(): null;
@@ -6938,35 +6996,10 @@ export namespace Camel {
         get_quota_info_sync(cancellable: Gio.Cancellable | null): FolderQuotaInfo;
 
         /**
-         * This returns the summary information for the folder. This array
-         * should not be modified, and must be freed with
-         * `camel_folder_free_summary()`.
-         * @returns an array of UID-s of {@link Camel.MessageInfo}
+         * Get the current state filename.
+         * @returns the state filename.
          */
-        get_summary(): string[];
-
-        /**
-         * Get the list of UIDs available in a folder. This routine is useful
-         * for finding what messages are available when the folder does not
-         * support summaries. The returned array should not be modified, and
-         * must be freed by passing it to `camel_folder_free_uids()`.
-         * @returns a GPtrArray of UIDs corresponding to the messages available in the folder
-         */
-        get_uids(): string[];
-
-        /**
-         * Returns the known-uncached uids from a list of uids. It may return uids
-         * which are locally cached but should never filter out a uid which is not
-         * locally cached. Free the result by called `camel_folder_free_uids()`.
-         * Frees the array of UIDs returned by `camel_folder_get_uids()`.
-         * @param uids the array of uids to filter down to uncached ones.
-         */
-        get_uncached_uids(uids: string[]): string[];
-
-        /**
-         * @returns the number of unread messages in the folder, or -1 if unknown
-         */
-        get_unread_message_count(): number;
+        get_state_filename(): string | null;
 
         /**
          * Get whether or not the folder has a summary.
@@ -6978,6 +7011,16 @@ export namespace Camel {
          * @returns whether or not the folder is frozen
          */
         is_frozen(): boolean;
+
+        /**
+         * Loads properties with #CAMEL_FOLDER_PARAM_PERMANENT from a state file previously
+         * set by `camel_folder_take_state_filename()`. The function does nothing when no
+         * state file is set.
+         * 
+         * Any errors are reported on the terminal, because they are meant non-fatal and
+         * rather informative.
+         */
+        load_state(): void;
 
         /**
          * Locks `folder`. Unlock it with `camel_folder_unlock()`.
@@ -7107,28 +7150,56 @@ export namespace Camel {
         rename(new_name: string): void;
 
         /**
+         * Saves properties with #CAMEL_FOLDER_PARAM_PERMANENT into a state file previously
+         * set by `camel_folder_take_state_filename()`. The function does nothing when no
+         * state file is set.
+         * 
+         * Any errors are reported on the terminal, because they are meant non-fatal and
+         * rather informative.
+         */
+        save_state(): void;
+
+        /**
+         * Search the folder for messages with body containing `words`.
+         * The list of satisfying message UIDs is returned in the `out_uids`.
+         * The result list can be empty, meaning no such message exists.
+         * 
+         * Free the returned `out_uids` with `g_ptr_array_unref()`, when no longer needed.
+         * 
+         * This is an optional helper method, meant to search server-side. The default
+         * implementation returns a G_IO_ERROR_NOT_SUPPORTED error.
+         * @param words a list of words to search for, or `null` to check an existence of the header instead
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @returns whether could search and set the `out_uids`.
+         */
+        search_body_sync(words: string[], cancellable: Gio.Cancellable | null): [boolean, string[]];
+
+        /**
+         * Search the folder for messages with header `header_name`, which either contains
+         * the `words` or, when the `words` is empty or `null`, the header exists in the message.
+         * The list of satisfying message UIDs is returned in the `out_uids`.
+         * The result list can be empty, meaning no such message exists.
+         * 
+         * Free the returned `out_uids` with `g_ptr_array_unref()`, when no longer needed.
+         * 
+         * This is an optional helper method, meant to search server-side. The default
+         * implementation returns a G_IO_ERROR_NOT_SUPPORTED error.
+         * @param header_name a header name to search
+         * @param words a list of words to search for, or `null` to check an existence of the header instead
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @returns whether could search and set the `out_uids`.
+         */
+        search_header_sync(header_name: string, words: string[] | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
+
+        /**
          * Searches the folder for messages matching the given search expression.
+         * 
+         * Free the array with `g_ptr_array_unref()`, when no longer needed.
          * @param expression a search expression
          * @param cancellable a {@link Gio.Cancellable}
-         * @returns a {@link GLib.PtrArray} of uids of matching messages. The caller must free the list and each of the elements when it is done.
+         * @returns whether succeeded
          */
-        search_by_expression(expression: string, cancellable: Gio.Cancellable | null): string[];
-
-        /**
-         * Search a subset of uid's for an expression match.
-         * @param expression search expression
-         * @param uids array of uid's to match against.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @returns a {@link GLib.PtrArray} of uids of matching messages. The caller must free the list and each of the elements when it is done.
-         */
-        search_by_uids(expression: string, uids: string[], cancellable: Gio.Cancellable | null): string[];
-
-        /**
-         * Free the result of a search as gotten by `camel_folder_search_by_expression()`
-         * or `camel_folder_search_by_uids()`.
-         * @param result search results to free
-         */
-        search_free(result: string[]): void;
+        search_sync(expression: string, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
         /**
          * Sets a description of the folder suitable for displaying to the user.
@@ -7187,24 +7258,10 @@ export namespace Camel {
          * camel_folder_set_message_flags (folder, uid, CAMEL_MESSAGE_DELETED|CAMEL_MESSAGE_DRAFT, CAMEL_MESSAGE_DELETED);
          * @param uid the UID of a message in `folder`
          * @param mask a mask of {@link Camel.MessageFlags} bit-or values to use
-         * @param set the flags to ser, also bit-or of {@link Camel.MessageFlags}
+         * @param set the flags to set, also bit-or of {@link Camel.MessageFlags}
          * @returns `true` if the flags were changed or `false` otherwise
          */
         set_message_flags(uid: string, mask: number, set: number): boolean;
-
-        /**
-         * @param uid the UID of a message in `folder`
-         * @param name the name of the user flag to set
-         * @param value the value to set it to
-         */
-        set_message_user_flag(uid: string, name: string, value: boolean): void;
-
-        /**
-         * @param uid the UID of a message in `folder`
-         * @param name the name of the user tag to set
-         * @param value the value to set it to
-         */
-        set_message_user_tag(uid: string, name: string, value: string): void;
 
         /**
          * Sorts the array of UIDs.
@@ -7332,10 +7389,16 @@ export namespace Camel {
          * 
          * This is supposed to be called only by the descendants of
          * the {@link Camel.Folder} and only at the construction time. Calling
-         * this function twice yeilds to an error.
+         * this function twice yields to an error.
          * @param summary a {@link Camel.FolderSummary}
          */
         take_folder_summary(summary: FolderSummary): void;
+
+        /**
+         * Set the current state filename.
+         * @param filename the state filename
+         */
+        take_state_filename(filename: string): void;
 
         /**
          * Thaws the folder and emits any pending folder_changed
@@ -7419,195 +7482,17 @@ export namespace Camel {
     }
 
 
-    namespace FolderSearch {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class FolderSearch extends GObject.Object {
-        static $gtype: GObject.GType<FolderSearch>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: FolderSearch.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<FolderSearch.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ["new"](): FolderSearch;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof FolderSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FolderSearch.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof FolderSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FolderSearch.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof FolderSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FolderSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Static methods
-        /**
-         * Increases time `t` by the given number of months (or decreases, if
-         * `months` is negative).
-         * @param t Initial time
-         * @param months number of months to add or subtract
-         */
-        static util_add_months(t: bigint | number, months: number): number;
-
-        /**
-         * Compares date portion of the two date-time values, first converted
-         * into the local time zone. The returned value is like with `strcmp()`.
-         * @param datetime1 a time_t-like value of the first date-time
-         * @param datetime2 a time_t-like value of the second date-time
-         */
-        static util_compare_date(datetime1: bigint | number, datetime2: bigint | number): number;
-
-        /**
-         * Calculates a hash of the Message-ID header value `message_id`.
-         * @param message_id a raw Message-ID header value
-         * @param needs_decode whether the `message_id` requires `camel_header_msgid_decode()` first
-         */
-        static util_hash_message_id(message_id: string, needs_decode: boolean): number;
-
-        /**
-         * Implementation of 'make-time' function, which expects one argument,
-         * a string or an integer, to be converted into time_t.
-         * @param argc number of arguments in `argv`
-         * @param argv array or arguments
-         */
-        static util_make_time(argc: number, argv: SExpResult): number;
-
-        // Methods
-        /**
-         * Run a search.  Search must have had Folder already set on it, and
-         * it must implement summaries.
-         * @param expr a search expression to run
-         * @param cancellable a {@link Gio.Cancellable}
-         * @returns Number of messages that match the query.
-         */
-        count(expr: string, cancellable: Gio.Cancellable | null): number;
-
-        /**
-         * Frees result of `camel_folder_search_search()` call.
-         * @param result a result to free
-         */
-        free_result(result: string[] | null): void;
-
-        /**
-         * @returns the currently processing {@link Camel.MessageInfo}
-         */
-        get_current_message_info(): MessageInfo | null;
-
-        /**
-         * @returns the current summary, and array   of message info UID-s to use.
-         */
-        get_current_summary(): string[];
-
-        /**
-         * @returns a {@link Camel.Folder} for which the `search` is currently running.
-         */
-        get_folder(): Folder;
-
-        /**
-         * @returns Whether only cached messages can be searched. See    `camel_folder_search_set_only_cached_messages()` for more    information what it means.
-         */
-        get_only_cached_messages(): boolean;
-
-        /**
-         * @returns A summary of UID-s of {@link Camel.MessageInfo}   previously set by `camel_folder_search_set_summary()`.
-         */
-        get_summary(): string[];
-
-        /**
-         * @returns Whether the summary (as returned by `camel_folder_search_get_summary()`) is empty.   It returns `false` when the summary is set and contains at least one item.
-         */
-        get_summary_empty(): boolean;
-
-        /**
-         * Run a search.  Search must have had Folder already set on it, and
-         * it must implement summaries.
-         * @param expr a search expression to run
-         * @param uids to search against, NULL for all uid's.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @returns a {@link GLib.PtrArray} with matching UIDs,    or `null` on error. Use `camel_folder_search_free_result()` to free it when    no longer needed.
-         */
-        search(expr: string, uids: string[], cancellable: Gio.Cancellable | null): string[];
-
-        /**
-         * Set the index representing the contents of all messages
-         * in this folder.  If this is not set, then the folder implementation
-         * should sub-class the CamelFolderSearch and provide its own
-         * body-contains function.
-         * @param body_index a {@link Camel.Index}
-         */
-        set_body_index(body_index: Index | null): void;
-
-        /**
-         * Sets, or unsets, the `info` as the currently processing {@link Camel.MessageInfo}.
-         * The function adds its own reference to `info`, if not `null`.
-         * @param info a {@link Camel.MessageInfo}
-         */
-        set_current_message_info(info: MessageInfo | null): void;
-
-        /**
-         * Set the folder attribute of the search. This can be used to perform a slow-search
-         * when indexes and so forth are not available. Or for use by subclasses.
-         * @param folder a {@link Camel.Folder}
-         */
-        set_folder(folder: Folder): void;
-
-        /**
-         * Sets whether only locally cached messages can be searched. The default
-         * value is `false`, which means that when a message is required and it is
-         * not available locally, then it is downloaded from the server, if possible.
-         * @param only_cached_messages a value to set
-         */
-        set_only_cached_messages(only_cached_messages: boolean): void;
-
-        /**
-         * Set the array of summary objects representing the span of the search.
-         * 
-         * If this is not set, then a subclass must provide the functions
-         * for searching headers and for the match-all operator.
-         * @param summary An array of UID-s of {@link Camel.MessageInfo}.
-         */
-        set_summary(summary: string[]): void;
-
-        /**
-         * Sets, or unsets, the `info` as the currently processing {@link Camel.MessageInfo}.
-         * Unlike `camel_folder_search_set_current_message_info()`, this function
-         * assumes ownership of the `info`, if not `null`.
-         * @param info a {@link Camel.MessageInfo}
-         */
-        take_current_message_info(info: MessageInfo | null): void;
-    }
-
-
     namespace FolderSummary {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
+             * Emitted on call to `camel_folder_summary_replace_flags()`, when
+             * the flags changed.
              * @signal
+             * @since 3.58
              * @run-first
              */
-            changed: () => void;
+            "info-flags-changed": (arg0: string, arg1: number) => void;
             "notify::deleted-count": (pspec: GObject.ParamSpec) => void;
             "notify::folder": (pspec: GObject.ParamSpec) => void;
             "notify::junk-count": (pspec: GObject.ParamSpec) => void;
@@ -7636,6 +7521,25 @@ export namespace Camel {
     }
 
     /**
+     * Manages cached message metadata for a folder.
+     * 
+     * {@link Camel.FolderSummary} manages lists of lightweight {@link Camel.MessageInfo}
+     * structures that cache metadata about each message in a folder (flags, UID,
+     * subject, from, date, size, etc.). This avoids the need to re-parse messages
+     * from storage every time a folder is opened or displayed.
+     * 
+     * The summary is designed to be persisted to disk so that expensive metadata
+     * computation only needs to happen once. It uses a versioned binary file
+     * format that supports subclassing: backend-specific implementations can add
+     * their own fields to each record.
+     * 
+     * The base class provides almost all required functionality. Backends
+     * typically only need to subclass it to store additional per-message
+     * information specific to their storage format.
+     * 
+     * If a {@link Camel.Index} is set via `camel_folder_summary_set_index()`, the
+     * summariser will also generate full-text index entries (for text/... parts)
+     * when building the summary from message content.
      * @gir-type Class
      */
     class FolderSummary extends GObject.Object {
@@ -7761,13 +7665,6 @@ export namespace Camel {
         emit<K extends keyof FolderSummary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FolderSummary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        // Static methods
-        /**
-         * Free's array and its elements returned from `camel_folder_summary_get_array()`.
-         * @param array a {@link GLib.PtrArray} returned from `camel_folder_summary_get_array()`
-         */
-        static free_array(array: string[]): void;
-
         // Virtual methods
         /**
          * Retrieve a summary item by uid.
@@ -7818,20 +7715,25 @@ export namespace Camel {
         vfunc_next_uid_string(): string;
 
         /**
+         * Loads all infos into memory, if they are not yet and ensures
+         * they will not be freed in next couple minutes. Call this function
+         * before any mass operation or when all message infos will be needed,
+         * for better performance.
          * @virtual
          */
-        vfunc_prepare_fetch_all(): void;
+        vfunc_prepare_fetch_all(): boolean;
 
         /**
-         * @param fir 
+         * @param record 
          * @virtual
          */
-        vfunc_summary_header_load(fir: null): boolean;
+        vfunc_summary_header_load(record: StoreDBFolderRecord): boolean;
 
         /**
+         * @param inout_record 
          * @virtual
          */
-        vfunc_summary_header_save(): null;
+        vfunc_summary_header_save(inout_record: StoreDBFolderRecord): boolean;
 
         // Methods
         /**
@@ -7867,6 +7769,23 @@ export namespace Camel {
         count(): number;
 
         /**
+         * Returns an array of changed UID-s. A UID is considered changed
+         * when its corresponding CamelMesageInfo is 'dirty' or when it has
+         * set the #CAMEL_MESSAGE_FOLDER_FLAGGED flag.
+         * @returns a {@link GLib.PtrArray} with changed UID-s.    Free it with `g_ptr_array_unref()` when no longer needed.
+         */
+        dup_changed(): string[];
+
+        /**
+         * Obtain a copy of the stored messag einfor in the `summary` as a {@link GLib.PtrArray} with
+         * the mesag einfo UID-s.
+         * 
+         * Free the returned array with `g_ptr_array_unref()`, when no longer needed.
+         * @returns a new {@link GLib.PtrArray} of UID-s
+         */
+        dup_uids(): string[];
+
+        /**
          * Retrieve a summary item by uid.
          * 
          * A referenced to the summary item is returned, which may be
@@ -7875,23 +7794,6 @@ export namespace Camel {
          * @returns the summary item, or `null` if the uid `uid` is not available See `camel_folder_summary_get_info_flags()`.
          */
         get(uid: string): MessageInfo | null;
-
-        /**
-         * Obtain a copy of the summary array.  This is done atomically,
-         * so cannot contain empty entries.
-         * 
-         * Free with `camel_folder_summary_free_array()`
-         * @returns a {@link GLib.PtrArray} of uids
-         */
-        get_array(): string[];
-
-        /**
-         * Returns an array of changed UID-s. A UID is considered changed
-         * when its corresponding CamelMesageInfo is 'dirty' or when it has
-         * set the #CAMEL_MESSAGE_FOLDER_FLAGGED flag.
-         * @returns a {@link GLib.PtrArray} with changed UID-s.    Free it with `camel_folder_summary_free_array()` when no longer needed.
-         */
-        get_changed(): string[];
 
         /**
          * @returns Count of deleted infos.
@@ -8055,8 +7957,9 @@ export namespace Camel {
          * they will not be freed in next couple minutes. Call this function
          * before any mass operation or when all message infos will be needed,
          * for better performance.
+         * @returns `true` on success
          */
-        prepare_fetch_all(): void;
+        prepare_fetch_all(): boolean;
 
         /**
          * Remove a specific `info` record from the summary.
@@ -8074,17 +7977,18 @@ export namespace Camel {
 
         /**
          * Remove a specific info record from the summary, by `uid`.
-         * @param uids a GList of uids
+         * @param uids a {@link GLib.PtrArray} of uids
          * @returns Whether the `uid` was found and removed from the `summary`.
          */
         remove_uids(uids: string[]): boolean;
 
         /**
-         * Updates internal counts based on the flags in `info`.
-         * @param info a {@link Camel.MessageInfo}
+         * Updates internal counts based on the `new_flags` for the message info `uid`.
+         * @param uid a message info UID
+         * @param new_flags new flags to use
          * @returns Whether any count changed
          */
-        replace_flags(info: MessageInfo): boolean;
+        replace_flags(uid: string, new_flags: number): boolean;
 
         /**
          * Saves the content of the `summary` to disk. It does nothing,
@@ -8140,6 +8044,78 @@ export namespace Camel {
     }
 
 
+    namespace FolderThread {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * Message threading / conversation grouping.
+     * 
+     * {@link Camel.FolderThread} computes conversation threads from a list of messages
+     * in a folder, based on the In-Reply-To and References headers as described
+     * by Jamie Zawinski's threading algorithm (used by Netscape 3 Mail).
+     * 
+     * Because threading operates on pre-computed hashes from {@link Camel.MessageInfo}
+     * rather than parsing raw message content, it is very fast.
+     * 
+     * The result is a tree of {@link Camel.FolderThreadNode} structures accessible via
+     * the `tree` field of the {@link Camel.FolderThread} object. Each node carries a
+     * pointer to its {@link Camel.MessageInfo} and links to its parent, next sibling,
+     * and first child, making it straightforward to build a tree-view model.
+     * 
+     * An optional subject-based fallback algorithm can be enabled (by passing
+     * `thread_subject = TRUE` to `camel_folder_thread_new()`) to find conversation
+     * parts when In-Reply-To / References headers are absent, by matching
+     * "Re: " prefixes on subject lines.
+     * @gir-type Class
+     */
+    class FolderThread extends GObject.Object {
+        static $gtype: GObject.GType<FolderThread>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: FolderThread.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<FolderThread.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](folder: Folder, uids: string[] | null, flags: FolderThreadFlags): FolderThread;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof FolderThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FolderThread.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof FolderThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FolderThread.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof FolderThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FolderThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        dump(): number;
+
+        /**
+         * Gets the root node of the threaded tree of the items.
+         * @returns the root node of the threaded tree
+         */
+        get_tree(): FolderThreadNode;
+    }
+
+
     namespace GpgContext {
         // Signal signatures
         interface SignalSignatures extends CipherContext.SignalSignatures {
@@ -8168,36 +8144,42 @@ export namespace Camel {
 
         // Properties
         /**
+         * Always Trust
          * @default false
          */
         get always_trust(): boolean;
         set always_trust(val: boolean);
 
         /**
+         * Always Trust
          * @default false
          */
         get alwaysTrust(): boolean;
         set alwaysTrust(val: boolean);
 
         /**
+         * Locate Keys
          * @default true
          */
         get locate_keys(): boolean;
         set locate_keys(val: boolean);
 
         /**
+         * Locate Keys
          * @default true
          */
         get locateKeys(): boolean;
         set locateKeys(val: boolean);
 
         /**
+         * Prefer Inline
          * @default false
          */
         get prefer_inline(): boolean;
         set prefer_inline(val: boolean);
 
         /**
+         * Prefer Inline
          * @default false
          */
         get preferInline(): boolean;
@@ -8443,6 +8425,20 @@ export namespace Camel {
     }
 
     /**
+     * Abstract interface for content indexing.
+     * 
+     * {@link Camel.Index} is an abstract base class that provides a content-indexing
+     * interface for Camel. It is used to build and query full-text indexes of
+     * message content, enabling fast body-text searches without re-scanning
+     * message files.
+     * 
+     * The concrete implementation is {@link Camel.TextIndex}, which stores the index
+     * on disk using a partition-table and block-file based format.
+     * 
+     * When a {@link Camel.Index} is attached to a {@link Camel.FolderSummary} (via
+     * `camel_folder_summary_set_index()`), summary generation will automatically
+     * add index entries for each message's text/... content. The index can then
+     * be queried by `CamelFolderSearch` to accelerate `body-contains` searches.
      * @gir-type Class
      */
     class Index extends GObject.Object {
@@ -8756,6 +8752,18 @@ export namespace Camel {
     }
 
     /**
+     * RFC 822 internet address handling.
+     * 
+     * {@link Camel.InternetAddress} is a {@link Camel.Address} subclass for handling RFC 822
+     * internet mail addresses. Each address consists of an optional human-readable
+     * name part and a required addr-spec part.
+     * 
+     * Addresses are stored in a decoded, split format internally, and can be
+     * converted to and from their encoded (RFC 2047) wire representation via
+     * `camel_address_encode()` and `camel_address_decode()` respectively.
+     * 
+     * Address groups as defined by RFC 822 are not supported; they are flattened
+     * into the base address list during decoding.
      * @gir-type Class
      */
     class InternetAddress extends Address {
@@ -9041,8 +9049,6 @@ export namespace Camel {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.4
      */
@@ -9051,42 +9057,49 @@ export namespace Camel {
 
         // Properties
         /**
+         * Whether to apply filters in all folders
          * @default false
          */
         get filter_all(): boolean;
         set filter_all(val: boolean);
 
         /**
+         * Whether to apply filters in all folders
          * @default false
          */
         get filterAll(): boolean;
         set filterAll(val: boolean);
 
         /**
+         * Whether to check new messages for junk
          * @default true
          */
         get filter_junk(): boolean;
         set filter_junk(val: boolean);
 
         /**
+         * Whether to check new messages for junk
          * @default true
          */
         get filterJunk(): boolean;
         set filterJunk(val: boolean);
 
         /**
+         * Whether to use alternative flag separator in Maildir file name
          * @default false
          */
         get maildir_alt_flag_sep(): boolean;
         set maildir_alt_flag_sep(val: boolean);
 
         /**
+         * Whether to use alternative flag separator in Maildir file name
          * @default false
          */
         get maildirAltFlagSep(): boolean;
         set maildirAltFlagSep(val: boolean);
 
         /**
+         * File path to the local store
          * @default null
          */
         get path(): string;
@@ -9203,12 +9216,29 @@ export namespace Camel {
     }
 
     /**
+     * Abstract class for data with headers and content.
+     * 
+     * {@link Camel.Medium} extends {@link Camel.DataWrapper} with support for named message
+     * headers and a separate content object. It is the common ancestor of
+     * {@link Camel.MimePart} and ultimately {@link Camel.MimeMessage}.
+     * 
+     * The header interface operates on raw (wire-format) header values; any
+     * RFC 2047 or other encoding must be applied by the caller. Multiple
+     * headers with the same name are supported; `camel_medium_remove_header()`
+     * removes all occurrences.
+     * 
+     * The content object is a {@link Camel.DataWrapper} instance accessible via
+     * `camel_medium_get_content()` and `camel_medium_set_content()`. For MIME
+     * messages this is the parsed body of the part.
      * @gir-type Class
      */
     abstract class Medium extends DataWrapper {
         static $gtype: GObject.GType<Medium>;
 
         // Properties
+        /**
+         * Content
+         */
         get content(): DataWrapper | null;
         set content(val: DataWrapper | null);
 
@@ -9734,6 +9764,8 @@ export namespace Camel {
 
         static new_from_headers(summary: FolderSummary | null, headers: NameValueArray): MessageInfo;
 
+        static new_from_message(summary: FolderSummary | null, message: MimeMessage): MessageInfo;
+
         // Signals
         /** @signal */
         connect<K extends keyof MessageInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageInfo.SignalSignatures[K]>): number;
@@ -9877,21 +9909,21 @@ export namespace Camel {
          * to read data from it and also move forward the *bdata_ptr.
          * 
          * After successful load of the `mi`, the 'dirty' flag is unset.
-         * @param record a {@link Camel.MIRecord} to load the `mi` from
+         * @param record a {@link Camel.StoreDBMessageRecord} to load the `mi` from
          * @param bdata_ptr a backend specific data (bdata) pointer
          * @virtual
          */
-        vfunc_load(record: MIRecord | null, bdata_ptr: string): boolean;
+        vfunc_load(record: StoreDBMessageRecord, bdata_ptr: string): boolean;
 
         /**
          * Save the `mi` content to the message info record `record`. It can populate all
          * but the record->bdata value, which is set fro mthe `bdata_str`. Use helper functions
          * `camel_util_bdata_put_number()` and `camel_util_bdata_put_string()` to put data into the `bdata_str`.
-         * @param record a {@link Camel.MIRecord} to populate
+         * @param record a {@link Camel.StoreDBMessageRecord} to populate
          * @param bdata_str a {@link GLib.String} with a string to save as backend specific data (bdata)
          * @virtual
          */
-        vfunc_save(record: MIRecord | null, bdata_str: GLib.String): boolean;
+        vfunc_save(record: StoreDBMessageRecord, bdata_str: GLib.String): boolean;
 
         /**
          * Sets CC from the associated message.
@@ -10239,6 +10271,20 @@ export namespace Camel {
         dup_user_tags(): NameValueArray | null;
 
         /**
+         * Encodes the user flags into a string. Free the returned
+         * string with `g_free()`, when no longer needed.
+         * @returns a newly allocated string with the user flags
+         */
+        encode_user_flags(): string;
+
+        /**
+         * Encodes the user tags into a string. Free the returned
+         * string with `g_free()`, when no longer needed.
+         * @returns a newly allocated string with the user tags
+         */
+        encode_user_tags(): string;
+
+        /**
          * Freezes all the notifications until the `camel_message_info_thaw_notifications()` is called.
          * This function can be called multiple times, where the last thaw will do the notifications.
          */
@@ -10396,11 +10442,11 @@ export namespace Camel {
          * to read data from it and also move forward the *bdata_ptr.
          * 
          * After successful load of the `mi`, the 'dirty' flag is unset.
-         * @param record a {@link Camel.MIRecord} to load the `mi` from
+         * @param record a {@link Camel.StoreDBMessageRecord} to load the `mi` from
          * @param bdata_ptr a backend specific data (bdata) pointer
          * @returns Whether the load was successful.
          */
-        load(record: MIRecord, bdata_ptr: string): boolean;
+        load(record: StoreDBMessageRecord, bdata_ptr: string): boolean;
 
         /**
          * Get the UID of the #mi, duplicated on the Camel's string pool.
@@ -10437,11 +10483,11 @@ export namespace Camel {
          * Save the `mi` content to the message info record `record`. It can populate all
          * but the record->bdata value, which is set fro mthe `bdata_str`. Use helper functions
          * `camel_util_bdata_put_number()` and `camel_util_bdata_put_string()` to put data into the `bdata_str`.
-         * @param record a {@link Camel.MIRecord} to populate
+         * @param record a {@link Camel.StoreDBMessageRecord} to populate
          * @param bdata_str a {@link GLib.String} with a string to save as backend specific data (bdata)
          * @returns Whether the save succeeded.
          */
-        save(record: MIRecord, bdata_str: GLib.String): boolean;
+        save(record: StoreDBMessageRecord, bdata_str: GLib.String): boolean;
 
         /**
          * Marks the `mi` to abort any notifications, which means that it
@@ -10847,6 +10893,31 @@ export namespace Camel {
     }
 
     /**
+     * Stream-processing filter modules for MIME data.
+     * 
+     * {@link Camel.MimeFilter} is an abstract base class for stream-processing modules
+     * that transform blocks of data. Filters can be used in three ways:
+     * 
+     * - **Individually** — call `camel_mime_filter_filter()` and
+     *   `camel_mime_filter_complete()` directly to process data buffers.
+     * 
+     * - **Attached to a stream** — add to a {@link Camel.StreamFilter} so that data
+     *   read from or written to the stream is automatically transformed.
+     * 
+     * - **Attached to a parser** — register with {@link Camel.MimeParser} for pipelined
+     *   decoding while a message is being parsed.
+     * 
+     * Each concrete filter subclass implements three virtual methods:
+     * `filter()`, `complete()`, and `reset()`. The base class handles all memory
+     * management for the pre-space / look-back buffer mechanism, which allows
+     * efficient multi-stage pipelined processing.
+     * 
+     * Available filter implementations include character-set conversion
+     * ({@link Camel.MimeFilterCharset}), base64 and quoted-printable encoding
+     * ({@link Camel.MimeFilterBasic}), line-ending canonicalisation
+     * ({@link Camel.MimeFilterCRLF}), gzip compression ({@link Camel.MimeFilterGZip}), HTML
+     * conversion (`CamelMimeFilterToHtml`), From-line escaping
+     * ({@link Camel.MimeFilterFrom}), and many others.
      * @gir-type Class
      */
     abstract class MimeFilter extends GObject.Object {
@@ -10956,9 +11027,23 @@ export namespace Camel {
         filter(_in: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
 
         /**
+         * Returns whether the `filter` requested stop further processing
+         * with `camel_mime_filter_set_request_stop()`.
+         * @returns `true`, when the `filter` request stop further processing,    `false` otherwise
+         */
+        get_request_stop(): boolean;
+
+        /**
          * Resets the state on `filter` so that it may be used again.
          */
         reset(): void;
+
+        /**
+         * Sets whether the `filter` requests, or not, stop further processing.
+         * This can be used to stop before all the data is filtered.
+         * @param request_stop value to set
+         */
+        set_request_stop(request_stop: boolean): void;
 
         /**
          * Ensure that `filter` has enough storage space to store `size` bytes
@@ -11585,6 +11670,75 @@ export namespace Camel {
     }
 
 
+    namespace MimeFilterPreview {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class MimeFilterPreview extends MimeFilter {
+        static $gtype: GObject.GType<MimeFilterPreview>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: MimeFilterPreview.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<MimeFilterPreview.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](limit: number): MimeFilterPreview;
+
+        // Conflicted with Camel.MimeFilter.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof MimeFilterPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterPreview.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof MimeFilterPreview.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MimeFilterPreview.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof MimeFilterPreview.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MimeFilterPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Returns set limit for the text length, in characters.
+         * Zero means unlimited length.
+         * @returns limit for the text length, in characters
+         */
+        get_limit(): number;
+
+        /**
+         * Returns read text until now.
+         * @returns read text until now or `null`, when nothing was read
+         */
+        get_text(): string | null;
+
+        /**
+         * Sets limit for the text length, in characters. Zero
+         * means unlimited length.
+         * @param limit a limit to set
+         */
+        set_limit(limit: number): void;
+    }
+
+
     namespace MimeFilterProgress {
         // Signal signatures
         interface SignalSignatures extends MimeFilter.SignalSignatures {}
@@ -11825,6 +11979,7 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends MimePart.SignalSignatures {
             "notify::content-id": (pspec: GObject.ParamSpec) => void;
+            "notify::content-location": (pspec: GObject.ParamSpec) => void;
             "notify::content-md5": (pspec: GObject.ParamSpec) => void;
             "notify::description": (pspec: GObject.ParamSpec) => void;
             "notify::disposition": (pspec: GObject.ParamSpec) => void;
@@ -11836,6 +11991,20 @@ export namespace Camel {
     }
 
     /**
+     * A complete RFC 822 MIME message.
+     * 
+     * {@link Camel.MimeMessage} is a {@link Camel.MimePart} subclass that represents a complete
+     * RFC 822 mail message. It adds structured accessors for message-level headers
+     * such as From, Reply-To, To, Cc, Bcc, Subject, Message-ID, and the message
+     * date.
+     * 
+     * Recipient lists (To, Cc, Bcc) are exposed as {@link Camel.InternetAddress} objects
+     * accessed via `camel_mime_message_get_recipients()`. The From and Reply-To
+     * headers are similarly accessible as {@link Camel.InternetAddress} objects.
+     * 
+     * Because {@link Camel.MimeMessage} is a full {@link Camel.MimePart}, it can also hold a
+     * multipart body, making it suitable for creating and reading both simple
+     * single-part and complex multipart messages.
      * @gir-type Class
      */
     class MimeMessage extends MimePart {
@@ -11896,7 +12065,7 @@ export namespace Camel {
          * returns `false`.
          * @param callback a {@link Camel.ForeachPartFunc} callback to call for each part
          */
-        foreach_part(callback: ForeachPartFunc | null): void;
+        foreach_part(callback: ForeachPartFunc): void;
 
         /**
          * Get the date and UTC offset of a message.
@@ -12042,6 +12211,28 @@ export namespace Camel {
     }
 
     /**
+     * Core MIME message parser.
+     * 
+     * {@link Camel.MimeParser} is the core mail parsing object in Camel. It parses
+     * either a raw RFC 822 message or a Berkeley mbox file from a stream or a
+     * Unix file descriptor. It is a robust, fast, stack-based state machine that
+     * handles all failure cases gracefully — truncated parts, missing multipart
+     * boundaries, I/O errors — always producing a valid state sequence.
+     * 
+     * The parser exposes a simple state machine via `camel_mime_parser_step()`.
+     * States follow a well-defined sequence for each message structure element:
+     * every "start" state has a matching "end" state, and you can efficiently
+     * skip sections you are not interested in.
+     * 
+     * In addition to parsing, the parser can be used to:
+     * - Automatically reformat data as it is parsed.
+     * - Efficiently skip sections without reading their content.
+     * - Drive {@link Camel.MimeFilter} instances in a pipelined fashion for zero-copy
+     *   decoding.
+     * 
+     * Because {@link Camel.MimeParser} does its own I/O buffering, initialising it from
+     * a file descriptor (camel_mime_parser_init_with_fd()) is more efficient than
+     * from a stream.
      * @gir-type Class
      */
     class MimeParser extends GObject.Object {
@@ -12272,11 +12463,6 @@ export namespace Camel {
         seek(offset: bigint | number, whence: number): number;
 
         /**
-         * @param matchstr 
-         */
-        set_header_regex(matchstr: string): number;
-
-        /**
          * Get the current parser state.
          * @returns The current parser state.
          */
@@ -12365,6 +12551,7 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends Medium.SignalSignatures {
             "notify::content-id": (pspec: GObject.ParamSpec) => void;
+            "notify::content-location": (pspec: GObject.ParamSpec) => void;
             "notify::content-md5": (pspec: GObject.ParamSpec) => void;
             "notify::description": (pspec: GObject.ParamSpec) => void;
             "notify::disposition": (pspec: GObject.ParamSpec) => void;
@@ -12375,6 +12562,8 @@ export namespace Camel {
         interface ConstructorProps extends Medium.ConstructorProps {
             content_id: string | null;
             contentId: string | null;
+            content_location: string | null;
+            contentLocation: string | null;
             content_md5: string | null;
             contentMd5: string | null;
             description: string | null;
@@ -12383,6 +12572,28 @@ export namespace Camel {
     }
 
     /**
+     * A single part in a MIME message.
+     * 
+     * {@link Camel.MimePart} is a {@link Camel.Medium} subclass that represents one part of a
+     * MIME message. It can be a top-level message body or one part in a
+     * multipart container.
+     * 
+     * It adds structured, UTF-8 accessors for the standard Content-* MIME headers:
+     * 
+     * - Content-Disposition (including the filename parameter)
+     * - Content-Description
+     * - Content-ID
+     * - Content-MD5
+     * - Content-Location
+     * - Content-Languages
+     * - Content-Transfer-Encoding
+     * 
+     * All string accessors transparently perform RFC 2047 decoding/encoding as
+     * needed. The filename is also mirrored on the Content-Type name parameter for
+     * interoperability.
+     * 
+     * A {@link Camel.MimePart} can be constructed directly from a {@link Camel.MimeParser} via
+     * `camel_mime_part_construct_from_parser()`.
      * @gir-type Class
      */
     class MimePart extends Medium {
@@ -12400,6 +12611,18 @@ export namespace Camel {
          */
         get contentId(): string | null;
         set contentId(val: string | null);
+
+        /**
+         * @default null
+         */
+        get content_location(): string | null;
+        set content_location(val: string | null);
+
+        /**
+         * @default null
+         */
+        get contentLocation(): string | null;
+        set contentLocation(val: string | null);
 
         /**
          * @default null
@@ -12463,6 +12686,17 @@ export namespace Camel {
          */
         vfunc_construct_from_parser_sync(parser: MimeParser, cancellable: Gio.Cancellable | null): boolean;
 
+        /**
+         * Generates preview of the `mime_part`, to be used in the interface,
+         * read by the users.
+         * 
+         * The optional `func` can be used to override default preview generation
+         * function. If provided, it's always called as the first try on the parts.
+         * @param func an optional {@link Camel.GeneratePreviewFunc} function, or `null`
+         * @virtual
+         */
+        vfunc_generate_preview(func: GeneratePreviewFunc | null): string | null;
+
         // Methods
         /**
          * Constructs the contnet of `mime_part` from the given mime parser.
@@ -12524,6 +12758,17 @@ export namespace Camel {
          * @returns `true` on success, `false` on error
          */
         construct_from_parser_sync(parser: MimeParser, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Generates preview of the `mime_part`, to be used in the interface,
+         * read by the users.
+         * 
+         * The optional `func` can be used to override default preview generation
+         * function. If provided, it's always called as the first try on the parts.
+         * @param func an optional {@link Camel.GeneratePreviewFunc} function, or `null`
+         * @returns part's preview as a new string,    or `null`, when cannot be generated. Free with `g_free()`, when no    longer needed.
+         */
+        generate_preview(func: GeneratePreviewFunc | null): string | null;
 
         /**
          * Get the disposition of the MIME part as a structure.
@@ -12667,6 +12912,20 @@ export namespace Camel {
     }
 
     /**
+     * A container for multiple MIME parts.
+     * 
+     * {@link Camel.Multipart} is a {@link Camel.DataWrapper} subclass that represents a
+     * multipart/... MIME container. It holds an ordered list of {@link Camel.MimePart}
+     * children separated by a boundary string.
+     * 
+     * Subclasses include {@link Camel.MultipartSigned} for multipart/signed (signed
+     * messages) and {@link Camel.MultipartEncrypted} for multipart/encrypted (encrypted
+     * messages).
+     * 
+     * Parts can be added with `camel_multipart_add_part()` and accessed by index
+     * with `camel_multipart_get_part()`. The boundary string used to delimit parts
+     * in the encoded representation is managed via `camel_multipart_set_boundary()`
+     * and `camel_multipart_get_boundary()`.
      * @gir-type Class
      */
     class Multipart extends DataWrapper {
@@ -12717,6 +12976,17 @@ export namespace Camel {
         vfunc_construct_from_parser(parser: MimeParser): number;
 
         /**
+         * Generates preview of the `multipart`, to be used in the interface,
+         * read by the users.
+         * 
+         * The optional `func` can be used to override default preview generation
+         * function. If provided, it's always called as the first try on the parts.
+         * @param func an optional {@link Camel.GeneratePreviewFunc} function, or `null`
+         * @virtual
+         */
+        vfunc_generate_preview(func: GeneratePreviewFunc | null): string | null;
+
+        /**
          * @virtual
          */
         vfunc_get_boundary(): string;
@@ -12755,6 +13025,17 @@ export namespace Camel {
          * @returns 0 on success or -1 on fail
          */
         construct_from_parser(parser: MimeParser): number;
+
+        /**
+         * Generates preview of the `multipart`, to be used in the interface,
+         * read by the users.
+         * 
+         * The optional `func` can be used to override default preview generation
+         * function. If provided, it's always called as the first try on the parts.
+         * @param func an optional {@link Camel.GeneratePreviewFunc} function, or `null`
+         * @returns part's preview as a new string,    or `null`, when cannot be generated. Free with `g_free()`, when no    longer needed.
+         */
+        generate_preview(func: GeneratePreviewFunc | null): string | null;
 
         /**
          * @returns the boundary
@@ -12822,6 +13103,12 @@ export namespace Camel {
     }
 
     /**
+     * A multipart/encrypted MIME container.
+     * 
+     * {@link Camel.MultipartEncrypted} is a {@link Camel.Multipart} subclass for handling
+     * multipart/encrypted MIME parts as defined in RFC 1847. It holds the
+     * encryption protocol part and the encrypted body together, and integrates
+     * with {@link Camel.CipherContext} to decrypt or encrypt message content.
      * @gir-type Class
      */
     class MultipartEncrypted extends Multipart {
@@ -12867,6 +13154,16 @@ export namespace Camel {
     }
 
     /**
+     * A multipart/signed MIME container.
+     * 
+     * {@link Camel.MultipartSigned} is a {@link Camel.Multipart} subclass for handling
+     * multipart/signed MIME parts as defined in RFC 1847. It holds the signed
+     * content part and the signature part together, and integrates with
+     * {@link Camel.CipherContext} to verify or create signatures.
+     * 
+     * The signed content is accessible via the standard {@link Camel.Multipart} part
+     * accessors, and the signature validity result (a {@link Camel.CipherValidity}) can
+     * be retrieved after verification.
      * @gir-type Class
      */
     class MultipartSigned extends Multipart {
@@ -12933,6 +13230,11 @@ export namespace Camel {
     }
 
     /**
+     * NNTP newsgroup address handling.
+     * 
+     * {@link Camel.NNTPAddress} is a {@link Camel.Address} subclass for handling lists of NNTP
+     * newsgroup names. Newsgroup names are ASCII-based, so no character encoding
+     * is required.
      * @gir-type Class
      */
     class NNTPAddress extends Address {
@@ -12994,6 +13296,12 @@ export namespace Camel {
     }
 
     /**
+     * Null output stream.
+     * 
+     * {@link Camel.NullOutputStream} is analogous to writing to /dev/null, except it
+     * counts the total number of bytes written to it.  This is primarily useful
+     * for determining the final size of some outgoing data, especially if using
+     * filters on the output stream.
      * @gir-type Class
      */
     class NullOutputStream extends Gio.OutputStream {
@@ -13042,124 +13350,17 @@ export namespace Camel {
     }
 
 
-    namespace Object {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            state_filename: string;
-            stateFilename: string;
-        }
-    }
-
-    /**
-     * @gir-type Class
-     */
-    abstract class Object extends GObject.Object {
-        static $gtype: GObject.GType<Object>;
-
-        // Properties
-        /**
-         * The file in which to store persistent property values for this
-         * instance.
-         * @default null
-         */
-        get state_filename(): string;
-        set state_filename(val: string);
-
-        /**
-         * The file in which to store persistent property values for this
-         * instance.
-         * @default null
-         */
-        get stateFilename(): string;
-        set stateFilename(val: string);
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: Object.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Virtual methods
-        /**
-         * @param fp 
-         * @virtual
-         */
-        vfunc_state_read(fp: null): number;
-
-        /**
-         * @param fp 
-         * @virtual
-         */
-        vfunc_state_write(fp: null): number;
-
-        // Methods
-        /**
-         * Returns the name of the file in which persistent property values for
-         * `object` are stored.  The file is used by `camel_object_state_write()`
-         * and `camel_object_state_read()` to save and restore object state.
-         * @returns the name of the persistent property file
-         */
-        get_state_filename(): string;
-
-        /**
-         * Sets the name of the file in which persistent property values for
-         * `object` are stored.  The file is used by `camel_object_state_write()`
-         * and `camel_object_state_read()` to save and restore object state.
-         * @param state_filename path to a local file
-         */
-        set_state_filename(state_filename: string): void;
-
-        /**
-         * Read persistent object state from {@link Camel.Object.state_filename}.
-         * @returns -1 on error.
-         */
-        state_read(): number;
-
-        /**
-         * Write persistent object state {@link Camel.Object.state_filename}.
-         * @returns -1 on error.
-         */
-        state_write(): number;
-    }
-
-
     namespace OfflineFolder {
         // Signal signatures
         interface SignalSignatures extends Folder.SignalSignatures {
             "notify::offline-sync": (pspec: GObject.ParamSpec) => void;
             "notify::description": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::full-name": (pspec: GObject.ParamSpec) => void;
             "notify::mark-seen": (pspec: GObject.ParamSpec) => void;
             "notify::mark-seen-timeout": (pspec: GObject.ParamSpec) => void;
             "notify::parent-store": (pspec: GObject.ParamSpec) => void;
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13170,6 +13371,20 @@ export namespace Camel {
     }
 
     /**
+     * A folder that supports offline message caching.
+     * 
+     * {@link Camel.OfflineFolder} is a {@link Camel.Folder} subclass that should be used by any
+     * folder in an offline-capable ({@link Camel.OfflineStore}) backend.
+     * 
+     * It adds two capabilities:
+     * 
+     * - A `sync-offline` persistent property that, when `true`, causes the backend
+     *   to automatically keep the folder's messages synchronised for offline
+     *   access.
+     * 
+     * - `camel_offline_folder_downsync()` — a method that synchronises messages
+     *   matching a given search expression to local storage so they are available
+     *   when the network is not.
      * @gir-type Class
      */
     class OfflineFolder extends Folder {
@@ -13177,12 +13392,14 @@ export namespace Camel {
 
         // Properties
         /**
+         * Copy folder content locally for offline operation
          * @default Camel.ThreeState.INCONSISTENT
          */
         get offline_sync(): ThreeState;
         set offline_sync(val: ThreeState);
 
         /**
+         * Copy folder content locally for offline operation
          * @default Camel.ThreeState.INCONSISTENT
          */
         get offlineSync(): ThreeState;
@@ -13326,8 +13543,6 @@ export namespace Camel {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.2
      */
@@ -13336,48 +13551,58 @@ export namespace Camel {
 
         // Properties
         /**
+         * Whether to limit what will be synchronized by message date
          * @default false
          */
         get limit_by_age(): boolean;
         set limit_by_age(val: boolean);
 
         /**
+         * Whether to limit what will be synchronized by message date
          * @default false
          */
         get limitByAge(): boolean;
         set limitByAge(val: boolean);
 
         /**
+         * A unit for the limit-value
          * @default Camel.TimeUnit.YEARS
          */
         get limit_unit(): TimeUnit;
         set limit_unit(val: TimeUnit);
 
         /**
+         * A unit for the limit-value
          * @default Camel.TimeUnit.YEARS
          */
         get limitUnit(): TimeUnit;
         set limitUnit(val: TimeUnit);
 
         /**
+         * How many days/weeks/months/years to download into the local cache,
+         * if limit-by-age is set to `true`
          * @default 1
          */
         get limit_value(): number;
         set limit_value(val: number);
 
         /**
+         * How many days/weeks/months/years to download into the local cache,
+         * if limit-by-age is set to `true`
          * @default 1
          */
         get limitValue(): number;
         set limitValue(val: number);
 
         /**
+         * Stay synchronized with the remote server
          * @default false
          */
         get stay_synchronized(): boolean;
         set stay_synchronized(val: boolean);
 
         /**
+         * Stay synchronized with the remote server
          * @default false
          */
         get staySynchronized(): boolean;
@@ -13435,14 +13660,6 @@ export namespace Camel {
         get_stay_synchronized(): boolean;
 
         /**
-         * Returns the interval, in seconds, for the changes in the folder being
-         * saved automatically. 0 means immediately, while -1 means turning off
-         * automatic folder change saving.
-         * @returns the interval for automatic store of folder changes
-         */
-        get_store_changes_interval(): number;
-
-        /**
          * Set whether the messages to download for offline should be limited
          * by age. If set to `true`, then messages older than 'limit-value'
          * will not be downloaded automatically.
@@ -13469,14 +13686,6 @@ export namespace Camel {
          * @param stay_synchronized whether to stay synchronized with the remote server
          */
         set_stay_synchronized(stay_synchronized: boolean): void;
-
-        /**
-         * Sets the interval, in seconds, for the changes in the folder being
-         * saved automatically. 0 means immediately, while -1 means turning off
-         * automatic folder change saving.
-         * @param interval the interval, in seconds
-         */
-        set_store_changes_interval(interval: number): void;
     }
 
 
@@ -13492,7 +13701,7 @@ export namespace Camel {
             "notify::session": (pspec: GObject.ParamSpec) => void;
             "notify::settings": (pspec: GObject.ParamSpec) => void;
             "notify::uid": (pspec: GObject.ParamSpec) => void;
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
+            "notify::with-proxy-resolver": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13502,6 +13711,20 @@ export namespace Camel {
     }
 
     /**
+     * Base class for offline-capable mail stores.
+     * 
+     * {@link Camel.OfflineStore} is a {@link Camel.Store} subclass that any remote backend
+     * supporting offline operation should extend instead of {@link Camel.Store} directly.
+     * 
+     * It adds a network availability state (online / offline) that client code
+     * can query and change via `camel_offline_store_get_online()` and
+     * `camel_offline_store_set_online()`. When going offline, the base class
+     * implementation synchronises all {@link Camel.OfflineFolder} instances that are
+     * currently active.
+     * 
+     * Backends using {@link Camel.OfflineStore} should also provide
+     * {@link Camel.OfflineFolder}-based folders for any folders representing remote data,
+     * so that the per-folder offline sync behaviour can be controlled.
      * @gir-type Class
      */
     class OfflineStore extends Store implements Gio.Initable {
@@ -13509,6 +13732,7 @@ export namespace Camel {
 
         // Properties
         /**
+         * Whether the store is online
          * @read-only
          * @default false
          */
@@ -13679,6 +13903,28 @@ export namespace Camel {
     }
 
     /**
+     * Progress reporting and cancellation for long-running tasks.
+     * 
+     * {@link Camel.Operation} is a bi-directional rendezvous mechanism used to communicate
+     * status information from long-running Camel tasks back to the calling
+     * application, and to allow the application to cancel those tasks.
+     * 
+     * The typical usage pattern is:
+     * 
+     * 1. Create a {@link Camel.Operation} with a status callback.
+     * 2. Push it onto the current thread with `camel_operation_push_message()` /
+     *    or use it as a {@link Gio.Cancellable} passed to async operations.
+     * 3. Long-running Camel functions report progress via
+     *    `camel_operation_progress()` and check for cancellation via the
+     *    {@link Gio.Cancellable} interface.
+     * 4. The client can cancel the operation by calling `g_cancellable_cancel()`
+     *    on the {@link Camel.Operation} (which is a {@link Gio.Cancellable} subclass).
+     * 
+     * Status messages follow a push/pop model: `camel_operation_push_message()`
+     * starts a new operation description (emitting the "status" signal), and
+     * `camel_operation_pop_message()` ends it, restoring the previous description.
+     * `camel_operation_progress()` reports percentage-based progress within the
+     * current message.
      * @gir-type Class
      */
     class Operation extends Gio.Cancellable {
@@ -13716,6 +13962,19 @@ export namespace Camel {
          * Cancel all outstanding operations.
          */
         static cancel_all(): void;
+
+        /**
+         * Duplicates current operation message, or returns `null`, if no such is available.
+         * The message as the last text set by `camel_operation_push_message()`.
+         * 
+         * Free the returned text with `g_free()`, when no longer needed.
+         * 
+         * This function only works if `cancellable` is a {@link Camel.Operation} cast as a
+         * {@link Gio.Cancellable}.  If `cancellable` is a plain {@link Gio.Cancellable} or `null`, the
+         * function does nothing and returns silently.
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         */
+        static dup_message(cancellable: Gio.Cancellable | null): string | null;
 
         /**
          * Pops the most recently pushed message.
@@ -13809,6 +14068,14 @@ export namespace Camel {
          */
         remove(key: string): boolean;
 
+        /**
+         * Sets the {@link Camel.KeyTable} to use for resolving hash collisions.
+         * When set, lookup and remove operations verify the actual key
+         * string stored in the key table, not just the hash value.
+         * @param key_table a {@link Camel.KeyTable}, or `null`
+         */
+        set_key_table(key_table: KeyTable | null): void;
+
         sync(): number;
     }
 
@@ -13822,6 +14089,83 @@ export namespace Camel {
     }
 
     /**
+     * S-expression matching functions for message filtering.
+     * 
+     * {@link Camel.SExp} implements the s-expression matching functions used by
+     * {@link Camel.FilterDriver} to evaluate filter rules against messages.
+     * 
+     * Match expressions operate on a single message and return a boolean.
+     * Available matching functions include:
+     * 
+     * - `(body-contains string …)` — matches if the message body contains any
+     *   of the given strings (searches text/… parts with tag-stripping for HTML).
+     * - `(header-contains header string …)` / `(header-matches …)` /
+     *   `(header-starts-with …)` / `(header-ends-with …)` — header matching.
+     * - `(header-exists header)` — tests whether a header is present.
+     * - `(match-all expression)` — evaluates a boolean against all messages.
+     * - `(user-flag flag)` / `(user-tag tag value)` — user metadata matching.
+     * - `(system-flag flag)` — system flag matching (seen, deleted, flagged, etc.).
+     * - `(pipe-message cmd)` — runs the message through an external program whose
+     *   exit code determines the match result.
+     * 
+     * # The following built-in s-exp's are supported:
+     * 
+     *   list = (and list*)
+     *      perform an intersection of a number of lists, and return that.
+     * 
+     *   bool = (and bool*)
+     *      perform a boolean AND of boolean values.
+     * 
+     *   list = (or list*)
+     *      perform a union of a number of lists, returning the new list.
+     * 
+     *   bool = (or bool*)
+     *      perform a boolean OR of boolean values.
+     * 
+     *   gint = (+ int*)
+     *      Add integers.
+     * 
+     *   string = (+ string*)
+     *      Concat strings.
+     * 
+     *   time_t = (+ time_t*)
+     *      Add time_t values.
+     * 
+     *   gint = (- gint int*)
+     *      Subtract integers from the first.
+     * 
+     *   time_t = (- time_t*)
+     *      Subtract time_t values from the first.
+     * 
+     *   gint = (cast-int string|int|bool)
+     *         Cast to an integer value.
+     * 
+     *   string = (cast-string string|int|bool)
+     *         Cast to a string value.
+     * 
+     * ## Comparison operators:
+     * 
+     *   bool = (< gint gint)
+     *   bool = (> gint gint)
+     *   bool = (= gint gint)
+     * 
+     *   bool = (< string string)
+     *   bool = (> string string)
+     *   bool = (= string string)
+     * 
+     *   bool = (< time_t time_t)
+     *   bool = (> time_t time_t)
+     *   bool = (= time_t time_t)
+     *      Perform a comparison of 2 integers, 2 string values, or 2 time values.
+     * 
+     * ## Function flow:
+     * 
+     *   type = (if bool function)
+     *   type = (if bool function function)
+     *      Choose a flow path based on a boolean value
+     * 
+     *   type = (begin  func func func)
+     *         Execute a sequence.  The last function return is the return type.
      * @gir-type Class
      * @since 3.4
      */
@@ -13874,13 +14218,6 @@ export namespace Camel {
          * @param v_string String expression.
          */
         static encode_string(string: GLib.String, v_string: string): void;
-
-        /**
-         * Converts a search expression to an SQL 'WHERE' part statement,
-         * without the 'WHERE' keyword.
-         * @param sexp a search expression to convert
-         */
-        static to_sql_sexp(sexp: string): string | null;
 
         // Methods
         /**
@@ -13994,6 +14331,17 @@ export namespace Camel {
         emit<K extends keyof SMIMEContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SMIMEContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
+        // Static methods
+        /**
+         * Utility function to get a localized text description for an error code
+         * returned by PORT_GetError().
+         * 
+         * Note: the function returns always NULL when the library was not compiled
+         *   with S/MIME support.
+         * @param nss_error_code an error code, as returned by PORT_GetError()
+         */
+        static util_nss_error_to_string(nss_error_code: number): string | null;
+
         // Methods
         /**
          * @param part 
@@ -14033,6 +14381,26 @@ export namespace Camel {
     }
 
     /**
+     * SASL (Secure Authentication and Security Layer) support.
+     * 
+     * {@link Camel.Sasl} is an abstract base class for pluggable authentication
+     * mechanisms used by connection-based mail services. It implements the
+     * Secure Authentication part of SASL, providing a challenge-response
+     * interface that can be invoked multiple times until authentication
+     * completes.
+     * 
+     * Non-SASL authentication mechanisms that fit the same challenge-response
+     * design (such as LOGIN and NTLM) are also wrapped in {@link Camel.Sasl} subclasses
+     * to simplify their use.
+     * 
+     * Instances are created via the `camel_sasl_new()` factory function, which
+     * looks up the named mechanism. The main API is `camel_sasl_challenge()`, which
+     * takes a server challenge token and returns the client's response token.
+     * A base64 convenience wrapper, `camel_sasl_challenge_base64()`, is provided
+     * for protocols that exchange base64-encoded tokens.
+     * 
+     * Available built-in mechanisms include: ANONYMOUS, CRAM-MD5, DIGEST-MD5,
+     * GSSAPI (Kerberos), LOGIN, NTLM, PLAIN, POPB4SMTP, and XOAUTH2 variants.
      * @gir-type Class
      */
     abstract class Sasl extends GObject.Object {
@@ -14040,29 +14408,34 @@ export namespace Camel {
 
         // Properties
         /**
+         * Authenticated
          * @default false
          */
         get authenticated(): boolean;
         set authenticated(val: boolean);
 
         /**
+         * Mechanism
          * @construct-only
          * @default null
          */
         get mechanism(): string;
 
         /**
+         * Service
          * @construct-only
          */
         get service(): Service;
 
         /**
+         * Service Name
          * @construct-only
          * @default null
          */
         get service_name(): string;
 
         /**
+         * Service Name
          * @construct-only
          * @default null
          */
@@ -14924,7 +15297,7 @@ export namespace Camel {
 
     namespace Service {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             "notify::connection-status": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
             "notify::password": (pspec: GObject.ParamSpec) => void;
@@ -14933,11 +15306,11 @@ export namespace Camel {
             "notify::session": (pspec: GObject.ParamSpec) => void;
             "notify::settings": (pspec: GObject.ParamSpec) => void;
             "notify::uid": (pspec: GObject.ParamSpec) => void;
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
+            "notify::with-proxy-resolver": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Gio.Initable.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             connection_status: ServiceConnectionStatus;
             connectionStatus: ServiceConnectionStatus;
             display_name: string | null;
@@ -14949,70 +15322,126 @@ export namespace Camel {
             session: Session;
             settings: Settings;
             uid: string;
+            with_proxy_resolver: boolean;
+            withProxyResolver: boolean;
         }
     }
 
     /**
+     * Base class for mail access and sending services.
+     * 
+     * {@link Camel.Service} is an abstract base class that is the common parent of
+     * {@link Camel.Store} (mail storage and retrieval) and {@link Camel.Transport} (mail
+     * sending). It defines the common operations associated with a configured
+     * mail service.
+     * 
+     * Service instances are always created and managed by {@link Camel.Session} via
+     * `camel_session_get_service()`. The session uses the GType stored in the
+     * {@link Camel.Provider} descriptor to instantiate the correct subclass.
+     * 
+     * {@link Camel.Service} manages the connection lifecycle:
+     * - `camel_service_connect()` establishes a connection to the remote resource.
+     * - `camel_service_disconnect()` tears it down.
+     * - Connection and authentication settings are conveyed via a {@link Camel.URL}
+     *   (the URI passed when the service was first requested).
+     * 
+     * Authentication is handled asynchronously through the session's
+     * `camel_session_authenticate()` mechanism, which can prompt the user for
+     * credentials as needed.
+     * 
+     * The connection state is exposed as a {@link Camel.ServiceConnectionStatus} and
+     * signals are emitted when it changes.
      * @gir-type Class
      */
-    abstract class Service extends Object implements Gio.Initable {
+    abstract class Service extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Service>;
 
         // Properties
         /**
+         * The connection status for the service
          * @read-only
          * @default Camel.ServiceConnectionStatus.DISCONNECTED
          */
         get connection_status(): ServiceConnectionStatus;
 
         /**
+         * The connection status for the service
          * @read-only
          * @default Camel.ServiceConnectionStatus.DISCONNECTED
          */
         get connectionStatus(): ServiceConnectionStatus;
 
         /**
+         * The display name for the service
          * @default null
          */
         get display_name(): string | null;
         set display_name(val: string | null);
 
         /**
+         * The display name for the service
          * @default null
          */
         get displayName(): string | null;
         set displayName(val: string | null);
 
         /**
+         * The password for the service
          * @default null
          */
         get password(): string;
         set password(val: string);
 
         /**
+         * The {@link Camel.Provider} for the service
          * @construct-only
          */
         get provider(): Provider;
 
+        /**
+         * The proxy resolver for the service
+         */
         get proxy_resolver(): Gio.ProxyResolver;
         set proxy_resolver(val: Gio.ProxyResolver);
 
+        /**
+         * The proxy resolver for the service
+         */
         get proxyResolver(): Gio.ProxyResolver;
         set proxyResolver(val: Gio.ProxyResolver);
 
         /**
+         * A {@link Camel.Session} instance
          * @construct-only
          */
         get session(): Session;
 
+        /**
+         * A {@link Camel.Settings} instance
+         */
         get settings(): Settings;
         set settings(val: Settings);
 
         /**
+         * The unique identity of the service
          * @construct-only
          * @default null
          */
         get uid(): string;
+
+        /**
+         * Private property, to not create {@link Gio.ProxyResolver} in the tests
+         * @construct-only
+         * @default true
+         */
+        set with_proxy_resolver(val: boolean);
+
+        /**
+         * Private property, to not create {@link Gio.ProxyResolver} in the tests
+         * @construct-only
+         * @default true
+         */
+        set withProxyResolver(val: boolean);
 
         /**
          * Compile-time signal type information.
@@ -15443,20 +15872,6 @@ export namespace Camel {
         get_user_data_dir(): string;
 
         /**
-         * Performs any necessary file migrations for `service`.  This should be
-         * called after installing or configuring the `service`'s {@link Camel.Settings},
-         * since it requires building a URL string for `service`.
-         */
-        migrate_files(): void;
-
-        /**
-         * Returns a new {@link Camel.URL} representing `service`.
-         * Free the returned {@link Camel.URL} with `camel_url_free()`.
-         * @returns a new {@link Camel.URL}
-         */
-        new_camel_url(): URL;
-
-        /**
          * Asynchronously obtains a list of authentication types supported by
          * `service`.
          * 
@@ -15726,59 +16141,108 @@ export namespace Camel {
     }
 
     /**
+     * Application context for a Camel mail session.
+     * 
+     * {@link Camel.Session} is a partially abstract class that provides the application
+     * context for a Camel mail session. Client applications must subclass it and
+     * override various virtual methods before any {@link Camel.Provider} backends can
+     * function.
+     * 
+     * A session provides:
+     * 
+     * - **Service resolution** — `camel_session_ref_service()` looks up an
+     *   already-registered {@link Camel.Service} by UID, while `camel_session_add_service()`
+     *   registers a new service (instantiating the correct {@link Camel.Store} or
+     *   {@link Camel.Transport} subclass based on the {@link Camel.Provider}).
+     * 
+     * - **Online/offline state** — `camel_session_get_online()` and
+     *   `camel_session_set_online()` control whether backends should access remote
+     *   resources. Backends observe this and go offline accordingly.
+     * 
+     * - **User interaction** — virtual methods for password prompts
+     *   (camel_session_get_password()) and alerts, which the client application
+     *   must implement to interact with the user.
+     * 
+     * - **Filter driver access** — `camel_session_get_filter_driver()` returns a
+     *   configured {@link Camel.FilterDriver} for automatic message filtering.
+     * 
+     * - **Thread management** — helpers for submitting jobs to a thread pool and
+     *   for running async operations.
+     * 
+     * An application typically creates a single session instance and reuses it
+     * for the lifetime of the application.
      * @gir-type Class
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
         // Properties
+        /**
+         * Classifies messages as junk or not junk
+         */
         get junk_filter(): JunkFilter | null;
         set junk_filter(val: JunkFilter | null);
 
+        /**
+         * Classifies messages as junk or not junk
+         */
         get junkFilter(): JunkFilter | null;
         set junkFilter(val: JunkFilter | null);
 
         /**
+         * The main loop context on which to attach event sources
          * @read-only
          */
         get main_context(): GLib.MainContext;
 
         /**
+         * The main loop context on which to attach event sources
          * @read-only
          */
         get mainContext(): GLib.MainContext;
 
+        /**
+         * The {@link Gio.NetworkMonitor}
+         */
         get network_monitor(): Gio.NetworkMonitor;
         set network_monitor(val: Gio.NetworkMonitor);
 
+        /**
+         * The {@link Gio.NetworkMonitor}
+         */
         get networkMonitor(): Gio.NetworkMonitor;
         set networkMonitor(val: Gio.NetworkMonitor);
 
         /**
+         * Whether the shell is online
          * @default true
          */
         get online(): boolean;
         set online(val: boolean);
 
         /**
+         * User-specific base directory for mail cache
          * @default null
          */
         get user_cache_dir(): string;
         set user_cache_dir(val: string);
 
         /**
+         * User-specific base directory for mail cache
          * @default null
          */
         get userCacheDir(): string;
         set userCacheDir(val: string);
 
         /**
+         * User-specific base directory for mail data
          * @default null
          */
         get user_data_dir(): string;
         set user_data_dir(val: string);
 
         /**
+         * User-specific base directory for mail data
          * @default null
          */
         get userDataDir(): string;
@@ -16403,22 +16867,6 @@ export namespace Camel {
         ref_service(uid: string): Service | null;
 
         /**
-         * Looks up a {@link Camel.Service} by trying to match its {@link Camel.URL} against the
-         * given `url` and then checking that the object is of the desired `type`.
-         * The service must have been previously added using
-         * `camel_session_add_service()`.
-         * 
-         * The returned {@link Camel.Service} is referenced for thread-safety and must be
-         * unreferenced with `g_object_unref()` when finished with it.
-         * 
-         * Note this function is significantly slower than `camel_session_ref_service()`.
-         * @param url a {@link Camel.URL}
-         * @param type a {@link Camel.ProviderType}
-         * @returns a {@link Camel.Service} instance, or `null`
-         */
-        ref_service_by_url(url: URL, type: ProviderType): Service | null;
-
-        /**
          * Removes a {@link Camel.Service} previously added by `camel_session_add_service()`.
          * @param service the {@link Camel.Service} to remove
          */
@@ -16526,8 +16974,6 @@ export namespace Camel {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.2
      */
@@ -16664,7 +17110,7 @@ export namespace Camel {
             "notify::session": (pspec: GObject.ParamSpec) => void;
             "notify::settings": (pspec: GObject.ParamSpec) => void;
             "notify::uid": (pspec: GObject.ParamSpec) => void;
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
+            "notify::with-proxy-resolver": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -16672,6 +17118,29 @@ export namespace Camel {
     }
 
     /**
+     * Base class for mail storage backends.
+     * 
+     * {@link Camel.Store} is the base class for backends that support storage and
+     * retrieval of mail messages. It is a {@link Camel.Service} subclass that manages
+     * a connection and a collection of {@link Camel.Folder} objects.
+     * 
+     * {@link Camel.Store} provides:
+     * - **Folder retrieval** — `camel_store_get_folder()` opens a named folder;
+     *   `camel_store_get_inbox_folder()` and `camel_store_get_trash_folder()` are
+     *   convenience wrappers for common system folders.
+     * - **Folder management** — creating, renaming, and deleting folders.
+     * - **Folder listing** — `camel_store_get_folder_info()` returns a tree of
+     *   {@link Camel.FolderInfo} describing the available folders.
+     * - **Subscriptions** — optional folder subscription management for backends
+     *   like IMAP that support it (via `CAMEL_STORE_SUBSCRIPTIONS` flag and
+     *   the {@link Camel.Subscribable} interface).
+     * 
+     * By default, stores set the {@link Camel.StoreFlags.VTRASH} and {@link Camel.StoreFlags.VJUNK}
+     * flags, which cause the base class to implement the trash and junk folders
+     * as virtual ({@link Camel.VeeFolder}) folders.
+     * 
+     * The store emits signals when folders are opened, created, deleted, renamed,
+     * subscribed, or unsubscribed.
      * @gir-type Class
      */
     abstract class Store extends Service implements Gio.Initable {
@@ -16878,6 +17347,17 @@ export namespace Camel {
          * @virtual
          */
         vfunc_rename_folder_sync(old_name: string, new_name: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Runs search across multiple mailboxes in a single operation.
+         * Returns {@link Gio.IOErrorEnum.NOT_SUPPORTED} when the store does not support this operation.
+         * @param folders array of folders to search
+         * @param search_key search key (e.g. BODY)
+         * @param words words/phrases to search
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @virtual
+         */
+        vfunc_search_multimailbox_sync(folders: Folder[], search_key: string, words: string[], cancellable: Gio.Cancellable | null): [boolean, { [key: string]: any }];
 
         /**
          * Synchronizes any changes that have been made to `store` and its folders
@@ -17095,9 +17575,9 @@ export namespace Camel {
         get_can_auto_save_changes(): boolean;
 
         /**
-         * @returns A {@link Camel.DB} instance associated with this `store`.
+         * @returns A {@link Camel.StoreDB} instance associated with this `store`.
          */
-        get_db(): DB;
+        get_db(): StoreDB;
 
         /**
          * @returns bit-or of {@link Camel.StoreFlags} set for the `store`
@@ -17473,7 +17953,7 @@ export namespace Camel {
         initial_setup_sync(cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
         /**
-         * Checks the state of the current CamelDB used for the `store` and eventually
+         * Checks the state of the current {@link Camel.StoreDB} used for the `store` and eventually
          * runs maintenance routines on it.
          * @returns Whether succeeded.
          */
@@ -17532,6 +18012,17 @@ export namespace Camel {
          * @returns `true` on success, `false` on error
          */
         rename_folder_sync(old_name: string, new_name: string, cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Runs search across multiple mailboxes in a single operation.
+         * Returns {@link Gio.IOErrorEnum.NOT_SUPPORTED} when the store does not support this operation.
+         * @param folders array of folders to search
+         * @param search_key search key (e.g. BODY)
+         * @param words words/phrases to search
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns whether search succeeded
+         */
+        search_multimailbox_sync(folders: Folder[], search_key: string, words: string[], cancellable: Gio.Cancellable | null): [boolean, { [key: string]: any }];
 
         /**
          * Sets flags for the `store`, a bit-or of {@link Camel.StoreFlags}.
@@ -17701,6 +18192,500 @@ export namespace Camel {
     }
 
 
+    namespace StoreDB {
+        // Signal signatures
+        interface SignalSignatures extends DB.SignalSignatures {}
+
+        // Constructor properties interface
+        interface ConstructorProps extends DB.ConstructorProps {}
+    }
+
+    /**
+     * A {@link Camel.Store} database.
+     * 
+     * The {@link Camel.StoreDB} is a descendant of the {@link Camel.DB}, which takes care
+     * of the save of the message information in an internal database.
+     * @gir-type Class
+     * @since 3.58
+     */
+    class StoreDB extends DB {
+        static $gtype: GObject.GType<StoreDB>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: StoreDB.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<StoreDB.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](filename: string, cancellable: Gio.Cancellable | null): StoreDB;
+
+        // Conflicted with Camel.DB.new
+        static ["new"](...args: never[]): any;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof StoreDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreDB.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof StoreDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreDB.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof StoreDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+        /**
+         * Gets a corresponding messages table column name for the `header_name`.
+         * @param header_name name of a header to get a column for
+         */
+        static util_get_column_for_header_name(header_name: string): string | null;
+
+        // Methods
+        /**
+         * Clears content of the `folder_name`. It does nothing
+         * when the folder does not exist.
+         * @param folder_name a folder name
+         * @returns whether succeeded
+         */
+        clear_folder(folder_name: string): boolean;
+
+        /**
+         * Counts `kind` messages in folder `folder_name`.
+         * @param folder_name a folder name
+         * @param kind a {@link Camel.StoreDBCountKind}
+         * @returns whether succeeded
+         */
+        count_messages(folder_name: string, kind: StoreDBCountKind): [boolean, number];
+
+        /**
+         * Deletes all information about the `folder_name`. It does nothing
+         * when the folder does not exist.
+         * @param folder_name a folder name
+         * @returns whether succeeded
+         */
+        delete_folder(folder_name: string): boolean;
+
+        /**
+         * Deletes single message with UID `uid` from folder `folder_name`.
+         * It's okay when such `uid` does not exist, but the folder is
+         * required to exist.
+         * 
+         * See also `camel_store_db_delete_messages()`.
+         * @param folder_name a folder name
+         * @param uid message UID
+         * @returns whether succeeded
+         */
+        delete_message(folder_name: string, uid: string): boolean;
+
+        /**
+         * Deletes multiple messages with UID `uids` from folder `folder_name`.
+         * It's okay when such `uids` do not exist, but the folder is
+         * required to exist.
+         * 
+         * See also `camel_store_db_delete_message()`.
+         * @param folder_name a folder name
+         * @param uids a {@link GLib.PtrArray} of strings with message UID-s
+         * @returns whether succeeded
+         */
+        delete_messages(folder_name: string, uids: string[]): boolean;
+
+        /**
+         * Gets deleted message UID-s in folder `folder_name`. Free the returned array
+         * with `g_ptr_array_unref()`, when no longer needed.
+         * @param folder_name a folder name
+         * @returns a {@link GLib.PtrArray} of message UID-s    in folder `folder_name`, which are marked as deleted, or `null` on error
+         */
+        dup_deleted_uids(folder_name: string): string[];
+
+        /**
+         * Gets junk message UID-s in folder `folder_name`. Free the returned array
+         * with `g_ptr_array_unref()`, when no longer needed.
+         * @param folder_name a folder name
+         * @returns a {@link GLib.PtrArray} of message UID-s    in folder `folder_name`, which are marked as junk, or `null` on error
+         */
+        dup_junk_uids(folder_name: string): string[];
+
+        /**
+         * Reads a string value for the `key`. If such does not exists, the `null`
+         * is returned.
+         * @param key a user key to read
+         * @returns a string value of the `key`,   or `null` when does not exist or any other error occurred See also `camel_store_db_set_string_key()`, `camel_store_db_get_int_key()`
+         */
+        dup_string_key(key: string): string | null;
+
+        /**
+         * Reads message UID-s with their flags in folder `folder_name` and
+         * returns it as a hash table with UID-s as a key and the flags
+         * as a value.
+         * 
+         * Free the returned {@link GLib.HashTable} with `g_hash_table_unref()`, when
+         * no longer needed.
+         * @param folder_name a folder name
+         * @returns a {@link GLib.HashTable} of    the message UID-s and their flags, or `null` on error
+         */
+        dup_uids_with_flags(folder_name: string): { [key: string]: number };
+
+        /**
+         * Gets ID of a folder named `folder_name`.
+         * @param folder_name a folder name
+         * @returns ID of a folder named `folder_name`, 0 when not found
+         */
+        get_folder_id(folder_name: string): number;
+
+        /**
+         * Reads an integer value for the `key`. If such does not exists, the `def_value`
+         * is returned.
+         * @param key a user key to read
+         * @param def_value a default value to return, when the key not stored yet
+         * @returns an integer value of the `key`, or `def_value` when does not exist   or any other error occurred See also `camel_store_db_set_int_key()`, `camel_store_db_dup_string_key()`
+         */
+        get_int_key(key: string, def_value: number): number;
+
+        /**
+         * Reads information about a folder named `folder_name`, previously stored by
+         * the `camel_store_db_write_folder()`. The data in the `out_record` should be
+         * cleared by the `camel_store_db_folder_record_clear()`, when no longer needed.
+         * The function returns success also when the folder information was not saved
+         * yet. It can be checked by the folder_id value, which is never zero for those
+         * existing tables.
+         * @param folder_name name of the folder to read the record for
+         * @returns whether succeeded with the read, but check the non-zero-ness of    the folder_id member of the `out_record` to recognize whether it was    found
+         */
+        read_folder(folder_name: string): [boolean, StoreDBFolderRecord];
+
+        /**
+         * Reads information about a single message stored in the `self`. The message
+         * in the `out_record` is identified by the folder ID and the UID members
+         * of the structure.
+         * 
+         * Call `camel_store_db_message_record_clear()` on the `out_record`
+         * structure to clear dynamically allocated memory in it.
+         * 
+         * See also `camel_store_db_read_messages()`.
+         * @param folder_name a folder name
+         * @param uid message UID
+         * @returns whether succeeded
+         */
+        read_message(folder_name: string, uid: string): [boolean, StoreDBMessageRecord];
+
+        /**
+         * Reads information about all messages for the folder `folder_name`
+         * and calls the `func` with its `user_data` for each such message information.
+         * 
+         * See also `camel_store_db_read_message()`.
+         * @param folder_name a folder name to read the data from
+         * @param func a {@link Camel.StoreDBReadMessagesFunc} to be called
+         * @returns whether succeeded
+         */
+        read_messages(folder_name: string, func: StoreDBReadMessagesFunc): boolean;
+
+        /**
+         * Renames folder `old_folder_name` to `new_folder_name`. Returns
+         * failure and sets {@link Gio.IOErrorEnum.NOT_FOUND} error when the `old_folder_name`
+         * does not exist, and {@link Gio.IOErrorEnum.EXISTS}, when the `new_folder_name`
+         * already exists.
+         * @param old_folder_name an existing folder name
+         * @param new_folder_name a folder name to rename to
+         * @returns whether succeeded
+         */
+        rename_folder(old_folder_name: string, new_folder_name: string): boolean;
+
+        /**
+         * Sets an integer value for the `key` to `value`.
+         * @param key a user key to set
+         * @param value a value to set
+         * @returns whether succeeded See also `camel_store_db_get_int_key()`, `camel_store_db_set_string_key()`
+         */
+        set_int_key(key: string, value: number): boolean;
+
+        /**
+         * Sets a string value for the `key` to `value`.
+         * @param key a user key to set
+         * @param value a value to set
+         * @returns whether succeeded See also `camel_store_db_dup_string_key()`, `camel_store_db_set_int_key()`
+         */
+        set_string_key(key: string, value: string): boolean;
+
+        /**
+         * Writes information about a folder as set in the `record`.
+         * The "folder_id" member of the `record` is ignored, the same
+         * as the "folder_name" member, the folder is identified by
+         * the `folder_name` argument.
+         * @param folder_name name of the folder to write the record to
+         * @param record an {@link Camel.StoreDBFolderRecord}
+         * @returns whether succeeded
+         */
+        write_folder(folder_name: string, record: StoreDBFolderRecord): boolean;
+
+        /**
+         * Writes information about a single message into the `self`. The message
+         * in the `record` is identified by the `folder_name` argument and the "uid" member
+         * of the structure. The "folder_id" member of the `record` is ignored.
+         * @param folder_name a folder name
+         * @param record a {@link Camel.StoreDBMessageRecord}
+         * @returns whether succeeded
+         */
+        write_message(folder_name: string, record: StoreDBMessageRecord): boolean;
+    }
+
+
+    namespace StoreSearch {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::store": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            store: Store;
+        }
+    }
+
+    /**
+     * Search between multiple folders of one {@link Camel.Store}.
+     * 
+     * The {@link Camel.StoreSearch} allows to search between multiple folders
+     * of a single {@link Camel.Store}. It's primarily meant to be used by
+     * the search folders ({@link Camel.VeeFolder}), but it can be used without
+     * it too.
+     * 
+     * It can run only one search at a time, using `camel_store_search_rebuild_sync()`.
+     * 
+     * The {@link Camel.StoreSearch} is not thread safe, it's meant to be created, used and
+     * freed from within the same thread only.
+     * @gir-type Class
+     * @since 3.58
+     */
+    class StoreSearch extends GObject.Object {
+        static $gtype: GObject.GType<StoreSearch>;
+
+        // Properties
+        /**
+         * A {@link Camel.Store} this search works with.
+         * @since 3.58
+         * @construct-only
+         */
+        get store(): Store;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: StoreSearch.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<StoreSearch.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](store: Store): StoreSearch;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof StoreSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreSearch.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof StoreSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StoreSearch.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof StoreSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StoreSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Adds the `folder` to the list of the folders to be searched in
+         * by the `self`. The function does nothing when the `folder` is
+         * already part of the `folder`.
+         * 
+         * The content is not updated automatically, call `camel_store_search_rebuild_sync()`
+         * to rebuild the content.
+         * 
+         * It's an error to try to add a `folder` which is not owned by
+         * the {@link Camel.Store} the `self` was created with.
+         * @param folder a {@link Camel.Folder}
+         */
+        add_folder(folder: Folder): void;
+
+        /**
+         * Adds a match index `index` into the `self`. It can be referenced
+         * in the search expression with 'in-match-index "index_key"'
+         * statement, where the index_key is "%p" of the `index`.
+         * 
+         * The `self` adds its own reference on the `index`.
+         * @param index a {@link Camel.StoreSearchIndex} to add
+         */
+        add_match_index(index: StoreSearchIndex): void;
+
+        /**
+         * Adds {@link Camel.StoreSearchThreadItem} items into the location pointed
+         * to by the `inout_items` array. When it points to the `null`, the array
+         * is created if needed. Free the array with `g_ptr_array_unref()`, when
+         * no longer needed.
+         * 
+         * See `camel_store_search_get_match_threads_kind()`.
+         * @param inout_items a {@link GLib.PtrArray} to add the items to
+         * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @returns whether succeeded; note the `inout_items` can be still set,    even when the call failed
+         */
+        add_match_threads_items_sync(inout_items: StoreSearchThreadItem[], cancellable: Gio.Cancellable | null): [boolean, StoreSearchThreadItem[]];
+
+        /**
+         * Gets a new {@link GLib.PtrArray} with additional columns names previously
+         * set by the `camel_store_search_set_additional_columns()`, or `null`,
+         * when none had been set.
+         * 
+         * Free the returned array with `g_ptr_array_unref()`, when no longer needed.
+         * @returns previously set additional    column names to read, or `null`, when none had been set
+         */
+        dup_additional_columns(): string[] | null;
+
+        /**
+         * Gets search expression previously set by the `camel_store_search_set_expression()`.
+         * @returns current search expression for the `self`,    or `null`, when none is set.
+         */
+        get_expression(): string | null;
+
+        /**
+         * Reads all the items from all the set folders satisfying the set expression.
+         * 
+         * Free the `out_items` array with `g_ptr_array_unref()`, when no longer needed.
+         * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @returns whether succeeded
+         */
+        get_items_sync(cancellable: Gio.Cancellable | null): [boolean, StoreSearchItem[]];
+
+        /**
+         * Gets the kind of the 'match-threads' search statement of the expression
+         * as recognized by the last `camel_store_search_rebuild_sync()` call, as one
+         * of the {@link Camel.MatchThreadsKind} values.
+         * 
+         * When it's other than {@link Camel.MatchThreadsKind.NONE}, the caller should gather
+         * thread-related data with `camel_store_search_add_match_threads_items_sync()`,
+         * after which the caller filters the output to a {@link Camel.StoreSearchIndex}, which
+         * can be set back with the `camel_store_search_set_result_index()`.
+         * @returns one of the {@link Camel.MatchThreadsKind} constants, referencing the requested match-threads search
+         */
+        get_match_threads_kind(): [MatchThreadsKind, FolderThreadFlags];
+
+        /**
+         * Gets a {@link Camel.Store} the `self` was constructed for.
+         * @returns a {@link Camel.Store} the `self` was constructed for.
+         */
+        get_store(): Store;
+
+        /**
+         * Reads all the message UID-s from the folder `folder_name` satisfying
+         * the set expression. Sets the `out_uids` to `null` and returns `true`
+         * when the `folder_name` is not part of the `self`.
+         * 
+         * Free the `out_uids` array with `g_ptr_array_unref()`, when no longer needed.
+         * @param folder_name name of the folder to read UID-s from
+         * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @returns whether succeeded
+         */
+        get_uids_sync(folder_name: string, cancellable: Gio.Cancellable | null): [boolean, string[]];
+
+        /**
+         * Lists the {@link Camel.Folder}-s the `self` searches in.
+         * 
+         * Free the returned {@link GLib.PtrArray} with `g_ptr_array_unref()`, when
+         * no longer needed.
+         * @returns a newly    created {@link GLib.PtrArray} with the {@link Camel.Folder} instances the `self`    searches in
+         */
+        list_folders(): Folder[];
+
+        /**
+         * Lists all the match indexes added in the `self`.
+         * @returns all    the match indexes added in the `self`
+         */
+        list_match_indexes(): StoreSearchIndex[];
+
+        /**
+         * Rebuilds content of the `self` with the current search expression.
+         * The function does nothing when no search expression is set. It can
+         * be called with no folder set, then it parses the expression and
+         * sets the values for the `camel_store_search_get_match_threads_kind()`.
+         * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @returns whether succeeded
+         */
+        rebuild_sync(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * Gets a {@link Camel.StoreSearchIndex} being used as a search result index,
+         * previously set by `camel_store_search_set_result_index()`, or `null`,
+         * when none is set.
+         * 
+         * Free the returned index with `camel_store_search_index_unref()`, when
+         * no longer needed.
+         * @returns a referenced {@link Camel.StoreSearchIndex}    used as a result index, or `null`, when none is set
+         */
+        ref_result_index(): StoreSearchIndex | null;
+
+        /**
+         * Removes the `folder` from the list of the folders the `self`
+         * should search in. It does nothing when the `folder` is not part
+         * of the `self`.
+         * 
+         * The content is not updated automatically, call `camel_store_search_rebuild_sync()`
+         * to rebuild the content.
+         * @param folder a {@link Camel.Folder}
+         */
+        remove_folder(folder: Folder): void;
+
+        /**
+         * Removes the `index` from from list of the match indexes. The function
+         * does nothing when the `index` is not part of the match indexes.
+         * @param index a {@link Camel.StoreSearchIndex} to remove
+         */
+        remove_match_index(index: StoreSearchIndex): void;
+
+        /**
+         * Sets what additional column names should be pre-read and provided
+         * in the `camel_store_search_get_items_sync()` result. An empty array is
+         * the same as passing `null` for the `colnames`.
+         * 
+         * Make sure to call `camel_store_search_rebuild_sync()` to have the values
+         * read.
+         * @param colnames column names, or `null` to unset
+         */
+        set_additional_columns(colnames: string[] | null): void;
+
+        /**
+         * Sets the search `expression` to be used to search the messages
+         * in the selected folders with.
+         * 
+         * The expression can be `null`, to not search the folders.
+         * 
+         * The content is not updated automatically, call `camel_store_search_rebuild_sync()`
+         * to rebuild the content.
+         * @param expression a search expression, or `null`
+         */
+        set_expression(expression: string | null): void;
+
+        /**
+         * Sets, or unsets, a {@link Camel.StoreSearchIndex} to be used for the search.
+         * The index contains all the items satisfying the expression.
+         * @param index a {@link Camel.StoreSearchIndex}, or `null`
+         */
+        set_result_index(index: StoreSearchIndex | null): void;
+    }
+
+
     namespace StoreSettings {
         // Signal signatures
         interface SignalSignatures extends Settings.SignalSignatures {
@@ -17718,8 +18703,6 @@ export namespace Camel {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.2
      */
@@ -17728,24 +18711,28 @@ export namespace Camel {
 
         // Properties
         /**
+         * Whether to filter new messages in Inbox
          * @default true
          */
         get filter_inbox(): boolean;
         set filter_inbox(val: boolean);
 
         /**
+         * Whether to filter new messages in Inbox
          * @default true
          */
         get filterInbox(): boolean;
         set filterInbox(val: boolean);
 
         /**
+         * Interval, in seconds, to store folder changes
          * @default 3
          */
         get store_changes_interval(): number;
         set store_changes_interval(val: number);
 
         /**
+         * Interval, in seconds, to store folder changes
          * @default 3
          */
         get storeChangesInterval(): number;
@@ -17820,6 +18807,21 @@ export namespace Camel {
     }
 
     /**
+     * Cached folder listing for a mail store.
+     * 
+     * {@link Camel.StoreSummary} is a helper class used by {@link Camel.Store} implementations
+     * to cache the list of known folders and their metadata (name, flags, unread
+     * count, etc.). Like {@link Camel.FolderSummary} for messages, it avoids the need to
+     * query the remote server for the folder list on every session start.
+     * 
+     * The summary is stored on disk in a versioned binary format that supports
+     * subclassing, so backend-specific implementations can add their own
+     * per-folder fields.
+     * 
+     * Backends subclass {@link Camel.StoreSummary} to store additional information
+     * relevant to their storage format, and typically call
+     * `camel_store_summary_load()` at startup and `camel_store_summary_save()`
+     * when the folder list changes.
      * @gir-type Class
      */
     class StoreSummary extends GObject.Object {
@@ -17926,12 +18928,6 @@ export namespace Camel {
         array(): StoreInfo[];
 
         /**
-         * Free the folder summary array.
-         * @param array the summary array as gotten from `camel_store_summary_array()`
-         */
-        array_free(array: StoreInfo[]): void;
-
-        /**
          * Connects listeners for count changes on `folder_summary` to keep
          * CamelStoreInfo.total and CamelStoreInfo.unread in sync transparently.
          * The `folder_summary` is stored in `summary` as `path`. Use
@@ -17963,12 +18959,6 @@ export namespace Camel {
          * @returns the newly allocated {@link Camel.StoreInfo}
          */
         info_new(): StoreInfo;
-
-        /**
-         * Unref and potentially free `info`, and all associated memory.
-         * @param info a {@link Camel.StoreInfo}
-         */
-        info_unref(info: StoreInfo): void;
 
         /**
          * Load the summary off disk.
@@ -18029,15 +19019,47 @@ export namespace Camel {
     }
 
     /**
+     * Abstract base class for I/O streams.
+     * 
+     * {@link Camel.Stream} is an abstract base class that implements a simple read/write
+     * stream interface. It is used throughout Camel for I/O abstraction, allowing
+     * the same message handling code to work with files, sockets, memory buffers,
+     * and more.
+     * 
+     * The stream hierarchy includes:
+     * 
+     * - **{@link Camel.StreamBuffer}** — provides line-buffering on top of another stream,
+     *   including a convenient `camel_stream_buffer_read_line()` function.
+     * 
+     * - **{@link Camel.StreamFilter}** — a sophisticated stream that runs data through a
+     *   chain of {@link Camel.MimeFilter} instances for efficient pipelined processing.
+     * 
+     * - **{@link Camel.StreamFs}** — a file-descriptor-backed stream.
+     * 
+     * - **{@link Camel.StreamMem}** — a memory-backed stream backed by a {@link GLib.ByteArray}.
+     * 
+     * - **{@link Camel.StreamNull}** — a null stream that discards all output; useful for
+     *   measuring encoded output size.
+     * 
+     * - **{@link Camel.StreamProcess}** — a stream backed by a child process.
+     * 
+     * Utility functions such as `camel_stream_write_string()` and
+     * `camel_stream_write_to_stream()` are provided for common operations.
      * @gir-type Class
      */
     class Stream extends GObject.Object implements Gio.Seekable {
         static $gtype: GObject.GType<Stream>;
 
         // Properties
+        /**
+         * The base {@link Gio.IOStream}
+         */
         get base_stream(): Gio.IOStream;
         set base_stream(val: Gio.IOStream);
 
+        /**
+         * The base {@link Gio.IOStream}
+         */
         get baseStream(): Gio.IOStream;
         set baseStream(val: Gio.IOStream);
 
@@ -18309,6 +19331,15 @@ export namespace Camel {
     }
 
     /**
+     * A buffering wrapper around a Camel stream.
+     * 
+     * {@link Camel.StreamBuffer} wraps another {@link Camel.Stream} and provides buffering.
+     * All read and write operations are automatically buffered through virtual
+     * method overrides.
+     * 
+     * The additional `camel_stream_buffer_read_line()` method returns a complete
+     * line (up to the next newline) as a newly-allocated string, automatically
+     * converting \\r\\n sequences to \\n and stripping them.
      * @gir-type Class
      */
     class StreamBuffer extends Stream implements Gio.Seekable {
@@ -18518,6 +19549,17 @@ export namespace Camel {
     }
 
     /**
+     * A stream that pipelines data through MIME filters.
+     * 
+     * {@link Camel.StreamFilter} wraps another {@link Camel.Stream} and passes all data read
+     * from or written to it through an ordered chain of {@link Camel.MimeFilter}
+     * instances. This enables efficient, multi-stage, pipelined processing of
+     * stream data in a single pass.
+     * 
+     * Filters are added with `camel_stream_filter_add()` and removed with
+     * `camel_stream_filter_remove()`. Each filter is applied in the order it was
+     * added. Data flows through all filters before being returned to the caller
+     * (for read) or written to the underlying stream (for write).
      * @gir-type Class
      */
     class StreamFilter extends Stream implements Gio.Seekable {
@@ -19604,7 +20646,7 @@ export namespace Camel {
             "notify::session": (pspec: GObject.ParamSpec) => void;
             "notify::settings": (pspec: GObject.ParamSpec) => void;
             "notify::uid": (pspec: GObject.ParamSpec) => void;
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
+            "notify::with-proxy-resolver": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19612,6 +20654,24 @@ export namespace Camel {
     }
 
     /**
+     * Base class for mail sending backends.
+     * 
+     * {@link Camel.Transport} is the base class for backends that support sending mail
+     * messages. It is a {@link Camel.Service} subclass and adds a single core virtual
+     * method: `camel_transport_send_to()`.
+     * 
+     * The recipient address list passed to `camel_transport_send_to()` is the
+     * envelope recipient list, which need not match the To/Cc headers in the
+     * message itself — this is how Bcc recipients are handled. Similarly, the
+     * from address is the envelope sender.
+     * 
+     * Implementations are free to modify certain headers (e.g. remove headers
+     * they do not wish to transmit, adjust Content-Transfer-Encoding) before
+     * sending, but must restore them afterwards. The actual message content is
+     * not changed.
+     * 
+     * Available implementations include SMTP (camel-smtp-provider) and sendmail
+     * (camel-sendmail-provider).
      * @gir-type Class
      */
     abstract class Transport extends Service implements Gio.Initable {
@@ -19842,11 +20902,11 @@ export namespace Camel {
             "notify::auto-update": (pspec: GObject.ParamSpec) => void;
             "notify::description": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::full-name": (pspec: GObject.ParamSpec) => void;
             "notify::mark-seen": (pspec: GObject.ParamSpec) => void;
             "notify::mark-seen-timeout": (pspec: GObject.ParamSpec) => void;
             "notify::parent-store": (pspec: GObject.ParamSpec) => void;
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -19899,131 +20959,23 @@ export namespace Camel {
     }
 
 
-    namespace VeeDataCache {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
-     * @gir-type Class
-     * @since 3.6
-     */
-    class VeeDataCache extends GObject.Object {
-        static $gtype: GObject.GType<VeeDataCache>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: VeeDataCache.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<VeeDataCache.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ["new"](): VeeDataCache;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof VeeDataCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeDataCache.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof VeeDataCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeDataCache.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof VeeDataCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeDataCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-        /**
-         * Adds the `subfolder` to the `data_cache` to be tracked by it. The `subfolder`
-         * is referenced for later use. The function does nothing when the `subfolder`
-         * is already in the `data_cache`. The subfolders can be removed with
-         * `camel_vee_data_cache_remove_subfolder()`.
-         * @param subfolder a {@link Camel.Folder}
-         */
-        add_subfolder(subfolder: Folder): void;
-
-        /**
-         * Returns whether data_cache contains given `orig_message_uid` for the given `folder`.
-         * Unlike `camel_vee_data_cache_get_message_info_data()`, this only
-         * returns `false` if not, while `camel_vee_data_cache_get_message_info_data()`
-         * auto-adds it to data_cache.
-         * @param folder a {@link Camel.Folder} to which the `orig_message_uid` belongs
-         * @param orig_message_uid a message UID from the `folder` to check
-         */
-        contains_message_info_data(folder: Folder, orig_message_uid: string): boolean;
-
-        /**
-         * Calls the `func` for each message info data from the given `fromfolder`
-         * @param fromfolder a {@link Camel.Folder}
-         * @param func a {@link Camel.ForeachInfoData} function to call
-         */
-        foreach_message_info_data(fromfolder: Folder, func: ForeachInfoData): void;
-
-        /**
-         * Returns a referenced {@link Camel.VeeMessageInfoData} referencing the given `folder`
-         * and `orig_message_uid`. If it's not part of the `data_cache`, then it is
-         * created and auto-added. Use `camel_vee_data_cache_contains_message_info_data()`
-         * when you only want to check the existence, without adding it to the `data_cache`.
-         * @param folder a {@link Camel.Folder} to which the `orig_message_uid` belongs
-         * @param orig_message_uid a message UID from the `folder` to return
-         * @returns a referenced {@link Camel.VeeMessageInfoData}; unref it    with `g_object_unref()`, when no longer needed.
-         */
-        get_message_info_data(folder: Folder, orig_message_uid: string): VeeMessageInfoData;
-
-        /**
-         * @param vee_message_uid a message UID in the virtual folder
-         * @returns a referenced {@link Camel.VeeMessageInfoData},    which corresponds to the given `vee_message_uid`, or `null`, when no such    message info with that virtual UID exists. Unref it with `g_object_unref()`,    when no longer needed.
-         */
-        get_message_info_data_by_vuid(vee_message_uid: string): VeeMessageInfoData | null;
-
-        /**
-         * Returns a {@link Camel.VeeSubfolderData} for the given `folder`.
-         * @param folder a {@link Camel.Folder} for which to return subfolder data
-         * @returns a referenced {@link Camel.VeeSubfolderData}; unref it    with `g_object_unref()`, when no longer needed.
-         */
-        get_subfolder_data(folder: Folder): VeeSubfolderData;
-
-        /**
-         * Removes given `mi_data` from the `data_cache`.
-         * @param mi_data a {@link Camel.VeeMessageInfoData} to remove
-         */
-        remove_message_info_data(mi_data: VeeMessageInfoData): void;
-
-        /**
-         * Removes given `subfolder` from the `data_cache`, which had been
-         * previously added with `camel_vee_data_cache_add_subfolder()`.
-         * The function does nothing, when the `subfolder` is not part
-         * of the `data_cache`.
-         * @param subfolder a {@link Camel.Folder} to remove
-         */
-        remove_subfolder(subfolder: Folder): void;
-    }
-
-
     namespace VeeFolder {
         // Signal signatures
         interface SignalSignatures extends Folder.SignalSignatures {
+            /**
+             * @signal
+             * @action
+             * @run-first
+             */
+            "vee-setup-changed": () => void;
             "notify::auto-update": (pspec: GObject.ParamSpec) => void;
             "notify::description": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::full-name": (pspec: GObject.ParamSpec) => void;
             "notify::mark-seen": (pspec: GObject.ParamSpec) => void;
             "notify::mark-seen-timeout": (pspec: GObject.ParamSpec) => void;
             "notify::parent-store": (pspec: GObject.ParamSpec) => void;
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -20034,6 +20986,25 @@ export namespace Camel {
     }
 
     /**
+     * A virtual folder representing a saved search.
+     * 
+     * {@link Camel.VeeFolder} is a {@link Camel.Folder} subclass that implements virtual folders.
+     * A virtual folder is like a persistent search over one or more real folders:
+     * it automatically stays up to date as messages arrive or change, and
+     * otherwise behaves like a normal folder to client code.
+     * 
+     * The set of source folders is managed with `camel_vee_folder_add_folder_sync()`,
+     * `camel_vee_folder_remove_folder_sync()`, and `camel_vee_folder_set_folders_sync()`.
+     * The search expression (a `CamelFolderSearch` s-expression) is set with
+     * `camel_vee_folder_set_expression_sync()`.
+     * 
+     * Virtual folder UIDs are composed of an 8-character hash of the physical
+     * folder plus the original UID, making them stable across renames and
+     * allowing efficient reverse-lookup via `camel_vee_folder_get_location()`.
+     * 
+     * Virtual folders are normally parented to a {@link Camel.VeeStore}. The special
+     * UNMATCHED folder represents all messages in the tracked folders that are
+     * not matched by any other virtual folder.
      * @gir-type Class
      */
     class VeeFolder extends Folder {
@@ -20041,12 +21012,14 @@ export namespace Camel {
 
         // Properties
         /**
+         * Automatically update on change in source folders
          * @default true
          */
         get auto_update(): boolean;
         set auto_update(val: boolean);
 
         /**
+         * Automatically update on change in source folders
          * @default true
          */
         get autoUpdate(): boolean;
@@ -20081,62 +21054,15 @@ export namespace Camel {
         emit<K extends keyof VeeFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        // Virtual methods
-        /**
-         * Adds `subfolder` as a source folder to `vfolder`.
-         * @param subfolder source CamelFolder to add to `vfolder`
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @virtual
-         */
-        vfunc_add_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
-
-        /**
-         * @param subfolder 
-         * @param changes 
-         * @virtual
-         */
-        vfunc_folder_changed(subfolder: Folder, changes: FolderChangeInfo): void;
-
-        /**
-         * Rebuild the folder `subfolder`, if it should be.
-         * @param subfolder source CamelFolder to add to `vfolder`
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @virtual
-         */
-        vfunc_rebuild_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
-
-        /**
-         * Removed the source folder, `subfolder`, from the virtual folder, `vfolder`.
-         * @param subfolder source CamelFolder to remove from `vfolder`
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @virtual
-         */
-        vfunc_remove_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
-
-        /**
-         * Sets an SExp expression to be used for this `vfolder`
-         * @param expression an SExp expression to set
-         * @virtual
-         */
-        vfunc_set_expression(expression: string): void;
-
         // Methods
         /**
          * Adds `subfolder` as a source folder to `vfolder`.
          * @param subfolder source CamelFolder to add to `vfolder`
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param op_flags bit-or of {@link Camel.VeeFolderOpFlags}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns whether succeeded
          */
-        add_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
-
-        /**
-         * Adds the `mi_data` to the `vfolder`. The `changes` can be
-         * updated with the made change and later used to notify others
-         * with `camel_folder_changed()` on the `vfolder`. This can be used
-         * only for the Unmatched folder.
-         * @param mi_data a {@link Camel.VeeMessageInfoData} to add
-         * @param changes an optional {@link Camel.FolderChangeInfo} to update with the made change, or `null`
-         */
-        add_vuid(mi_data: null, changes: FolderChangeInfo | null): void;
+        add_folder_sync(subfolder: Folder, op_flags: VeeFolderOpFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes internal structures of the `vf`. This is meant to be
@@ -20144,6 +21070,21 @@ export namespace Camel {
          * @param flags flags for the `vf`
          */
         construct(flags: number): void;
+
+        /**
+         * Returns a {@link GLib.PtrArray} of all folders of this `vfolder`, which
+         * are used to populate it. These are in no particular order.
+         * 
+         * Free the returned array with `g_ptr_array_unref()`, when no longer needed.
+         * @returns a {@link GLib.PtrArray}    of all the folders of this `vfolder`.
+         */
+        dup_folders(): Folder[];
+
+        /**
+         * @param vee_message_uid a virtual message info UID
+         * @returns a {@link Camel.Folder} to which the `vee_message_uid`    belongs, or `null`, when it could not be found.
+         */
+        dup_vee_uid_folder(vee_message_uid: string): Folder | null;
 
         /**
          * @returns whether the `vfolder` can automatically update when any    of its subfolders changes.
@@ -20170,72 +21111,13 @@ export namespace Camel {
         get_location(vinfo: VeeMessageInfo): [Folder, string];
 
         /**
-         * @param vee_message_uid a virtual message info UID
-         * @returns a {@link Camel.Folder} to which the `vee_message_uid`    belongs, or `null`, when it could not be found.
-         */
-        get_vee_uid_folder(vee_message_uid: string): Folder | null;
-
-        /**
-         * The next `subfolder`-'s 'changed' event will be silently ignored. This
-         * is usually used in virtual folders when the change was done in them,
-         * but it is neither vTrash nor vJunk folder. Doing this avoids unnecessary
-         * removals of messages which don't satisfy search criteria anymore,
-         * which could be done on asynchronous delivery of folder's 'changed' signal.
-         * These ignored changes are accumulated and used on folder refresh.
-         * @param subfolder a {@link Camel.Folder} folder
-         */
-        ignore_next_changed_event(subfolder: Folder): void;
-
-        /**
-         * Propagate any skipped changes into the `vf`. The skipped changes are used to not
-         * hide the messages from the search folder unexpectedly. The function does nothing
-         * when there are no changes to be propagated.
-         */
-        propagate_skipped_changes(): void;
-
-        /**
-         * Rebuild the folder `subfolder`, if it should be.
-         * @param subfolder source CamelFolder to add to `vfolder`
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         */
-        rebuild_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
-
-        /**
-         * Returns a {@link GLib.List} of all folders of this `vfolder`, which
-         * are used to populate it. These are in no particular order.
-         * 
-         * Free the returned {@link GLib.List} with
-         * g_list_free_full (folders, g_object_unref);
-         * when no longer needed.
-         * @returns a {@link GLib.List} of all    folders of this `vfolder`.
-         */
-        ref_folders(): Folder[];
-
-        /**
          * Removed the source folder, `subfolder`, from the virtual folder, `vfolder`.
          * @param subfolder source CamelFolder to remove from `vfolder`
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param op_flags bit-or of {@link Camel.VeeFolderOpFlags}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns whether succeeded
          */
-        remove_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
-
-        /**
-         * Make sure the next `subfolder`-'s 'changed' event will not be silently ignored.
-         * This is a counter-part function of `camel_vee_folder_ignore_next_changed_event()`,
-         * when there was expected a change, which did not happen, to take back the previous
-         * ignore event request.
-         * @param subfolder a {@link Camel.Folder} folder
-         */
-        remove_from_ignore_changed_event(subfolder: Folder): void;
-
-        /**
-         * Removes given `mi_data` from the `vfolder`. The `changes` can be
-         * updated with the made change and later used to notify others
-         * with `camel_folder_changed()` on the `vfolder`. This can be used
-         * only for the Unmatched folder.
-         * @param mi_data a {@link Camel.VeeMessageInfoData} to remove
-         * @param changes an optional {@link Camel.FolderChangeInfo} to update with the made change, or `null`
-         */
-        remove_vuid(mi_data: null, changes: FolderChangeInfo | null): void;
+        remove_folder_sync(subfolder: Folder, op_flags: VeeFolderOpFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets whether the `vfolder` can automatically update when of its
@@ -20246,16 +21128,23 @@ export namespace Camel {
 
         /**
          * Sets an SExp expression to be used for this `vfolder`
+         * and updates its content. The expression is not changed
+         * when the call fails.
          * @param expression an SExp expression to set
+         * @param op_flags bit-or of {@link Camel.VeeFolderOpFlags}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns whether succeeded
          */
-        set_expression(expression: string): void;
+        set_expression_sync(expression: string, op_flags: VeeFolderOpFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
-         * Set the whole list of folder sources on a vee folder.
-         * @param folders a {@link GLib.List} of {@link Camel.Folder} to add
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * Set the whole list of folder sources on a search folder.
+         * @param folders a {@link GLib.PtrArray} of {@link Camel.Folder} to add
+         * @param op_flags bit-or of {@link Camel.VeeFolderOpFlags}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns whether succeeded
          */
-        set_folders(folders: Folder[], cancellable: Gio.Cancellable | null): void;
+        set_folders_sync(folders: Folder[], op_flags: VeeFolderOpFlags, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -20341,74 +21230,9 @@ export namespace Camel {
     }
 
 
-    namespace VeeMessageInfoData {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
-     * @gir-type Class
-     * @since 3.6
-     */
-    class VeeMessageInfoData extends GObject.Object {
-        static $gtype: GObject.GType<VeeMessageInfoData>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: VeeMessageInfoData.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<VeeMessageInfoData.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ["new"](subfolder_data: VeeSubfolderData, orig_message_uid: string): VeeMessageInfoData;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof VeeMessageInfoData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeMessageInfoData.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof VeeMessageInfoData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeMessageInfoData.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof VeeMessageInfoData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeMessageInfoData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-        /**
-         * @returns The original message info's UID, for which    the `data` had been created.
-         */
-        get_orig_message_uid(): string;
-
-        /**
-         * @returns A {@link Camel.VeeSubfolderData} for which    the `data` had been created.
-         */
-        get_subfolder_data(): VeeSubfolderData;
-
-        /**
-         * @returns Message UID corresponding to this virtual    message info `data`.
-         */
-        get_vee_message_uid(): string;
-    }
-
-
     namespace VeeStore {
         // Signal signatures
         interface SignalSignatures extends Store.SignalSignatures {
-            "notify::unmatched-enabled": (pspec: GObject.ParamSpec) => void;
             "notify::connection-status": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
             "notify::password": (pspec: GObject.ParamSpec) => void;
@@ -20417,34 +21241,30 @@ export namespace Camel {
             "notify::session": (pspec: GObject.ParamSpec) => void;
             "notify::settings": (pspec: GObject.ParamSpec) => void;
             "notify::uid": (pspec: GObject.ParamSpec) => void;
-            "notify::state-filename": (pspec: GObject.ParamSpec) => void;
+            "notify::with-proxy-resolver": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Store.ConstructorProps, Gio.Initable.ConstructorProps {
-            unmatched_enabled: boolean;
-            unmatchedEnabled: boolean;
-        }
+        interface ConstructorProps extends Store.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
+     * A store that manages a collection of virtual folders.
+     * 
+     * {@link Camel.VeeStore} is a {@link Camel.Store} subclass that manages a list of virtual
+     * ({@link Camel.VeeFolder}) folders. It handles the store-level operations such as
+     * folder creation, renaming, and deletion for virtual folders.
+     * 
+     * {@link Camel.VeeStore} manages the virtual folder list entirely at run-time; the
+     * driving application is responsible for creating and initialising the virtual
+     * folders within the store on each session start.
+     * 
+     * {@link Camel.VeeStore} also automatically maintains an UNMATCHED virtual folder
+     * in the folder listings.
      * @gir-type Class
      */
     class VeeStore extends Store implements Gio.Initable {
         static $gtype: GObject.GType<VeeStore>;
-
-        // Properties
-        /**
-         * @default true
-         */
-        get unmatched_enabled(): boolean;
-        set unmatched_enabled(val: boolean);
-
-        /**
-         * @default true
-         */
-        get unmatchedEnabled(): boolean;
-        set unmatchedEnabled(val: boolean);
 
         /**
          * Compile-time signal type information.
@@ -20460,8 +21280,6 @@ export namespace Camel {
 
         _init(...args: any[]): void;
 
-        static ["new"](): VeeStore;
-
         // Signals
         /** @signal */
         connect_after<K extends keyof VeeStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeStore.SignalSignatures[K]>): number;
@@ -20470,71 +21288,6 @@ export namespace Camel {
         /** @signal */
         emit<K extends keyof VeeStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Methods
-        /**
-         * @returns whether Unmatched folder processing is enabled
-         */
-        get_unmatched_enabled(): boolean;
-
-        /**
-         * @returns the Unmatched folder instance,    or `null`, when it's disabled.
-         */
-        get_unmatched_folder(): null;
-
-        /**
-         * @returns the associated {@link Camel.VeeDataCache}
-         */
-        get_vee_data_cache(): VeeFolder;
-
-        /**
-         * This is a counter part of `camel_vee_store_note_subfolder_used()`. Once
-         * the `subfolder` is claimed to be not used by all folders its message infos
-         * are removed from the Unmatched folder.
-         * @param subfolder a {@link Camel.Folder}
-         * @param unused_by a {@link Camel.VeeFolder}
-         */
-        note_subfolder_unused(subfolder: Folder, unused_by: VeeFolder): void;
-
-        /**
-         * Notes that the `subfolder` is used by `used_by` folder, which
-         * is used to determine what folders will be included in
-         * the Unmatched folders.
-         * @param subfolder a {@link Camel.Folder}
-         * @param used_by a {@link Camel.VeeFolder}
-         */
-        note_subfolder_used(subfolder: Folder, used_by: VeeFolder): void;
-
-        /**
-         * A counter part of `camel_vee_store_note_vuid_used()`. Once the `unused_by`
-         * claims the `mi_data` is not used by it anymore, and neither any other
-         * virtual folder is using it, then the Unmatched folder will have it added.
-         * @param mi_data a {@link Camel.VeeMessageInfoData}
-         * @param unused_by a {@link Camel.VeeFolder}
-         */
-        note_vuid_unused(mi_data: VeeMessageInfoData, unused_by: VeeFolder): void;
-
-        /**
-         * Notes the `mi_data` is used by the `used_by` virtual folder, which
-         * removes it from the Unmatched folder, if not used anywhere else.
-         * @param mi_data a {@link Camel.VeeMessageInfoData}
-         * @param used_by a {@link Camel.VeeFolder}
-         */
-        note_vuid_used(mi_data: VeeMessageInfoData, used_by: VeeFolder): void;
-
-        /**
-         * Let's the `vstore` know to rebuild the Unmatched folder. This is done
-         * as a separate job, when the `cancellable` is `null`, otherwise it's run
-         * synchronously.
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         */
-        rebuild_unmatched_folder(cancellable: Gio.Cancellable | null): void;
-
-        /**
-         * Sets whether the Unmatched folder processing is enabled.
-         * @param is_enabled value to set
-         */
-        set_unmatched_enabled(is_enabled: boolean): void;
 
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
@@ -20547,65 +21300,6 @@ export namespace Camel {
          */
         // Conflicted with Camel.Service.disconnect
         disconnect(...args: never[]): any;
-    }
-
-
-    namespace VeeSubfolderData {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-        // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
-     * @gir-type Class
-     * @since 3.6
-     */
-    class VeeSubfolderData extends GObject.Object {
-        static $gtype: GObject.GType<VeeSubfolderData>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: VeeSubfolderData.SignalSignatures;
-
-        // Constructors
-        constructor(properties?: Partial<VeeSubfolderData.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ["new"](folder: Folder): VeeSubfolderData;
-
-        // Signals
-        /** @signal */
-        connect<K extends keyof VeeSubfolderData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeSubfolderData.SignalSignatures[K]>): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        connect_after<K extends keyof VeeSubfolderData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VeeSubfolderData.SignalSignatures[K]>): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-
-        /** @signal */
-        emit<K extends keyof VeeSubfolderData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeSubfolderData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-        /**
-         * @returns a {@link Camel.Folder} to which this `data` was created
-         */
-        get_folder(): Folder;
-
-        /**
-         * @returns a folder ID for this subfolder `data`
-         */
-        get_folder_id(): string;
     }
 
 
@@ -20659,56 +21353,6 @@ export namespace Camel {
         /** @signal */
         emit<K extends keyof VeeSummary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VeeSummary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Methods
-        /**
-         * Unref returned pointer with `g_object_unref()`
-         * @param mi_data the {@link Camel.VeeMessageInfoData} to add
-         * @returns A new {@link Camel.VeeMessageInfo} object.
-         */
-        add(mi_data: VeeMessageInfoData): VeeMessageInfo;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Camel.FolderSummary.add
-        add(...args: never[]): any;
-
-        /**
-         * Returns a hash table of all virtual message info UID-s known to the `summary`.
-         * The key of the hash table is the virtual message info UID, the value is
-         * only the number 1.
-         * @param subfolder a {@link Camel.Folder}
-         * @returns a {@link GLib.HashTable} with    all the virtual mesasge info UID-s knwn to the `summary`.
-         */
-        get_uids_for_subfolder(subfolder: Folder): { [key: string]: number };
-
-        /**
-         * Removes the given `vuid` of the `subfolder` from the `summary`.
-         * @param vuid a virtual message info UID to remove
-         * @param subfolder a {@link Camel.Folder} to which `vuid` belongs
-         */
-        remove(vuid: string, subfolder: Folder): void;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Camel.FolderSummary.remove
-        remove(...args: never[]): any;
-
-        /**
-         * Makes sure `summary` flags on `uid` corresponds to those
-         * in the subfolder of vee-folder, and updates internal counts
-         * on `summary` as well.
-         * @param uid a message UID to update flags for
-         */
-        replace_flags(uid: string): void;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Camel.FolderSummary.replace_flags
-        replace_flags(...args: never[]): any;
     }
 
 
@@ -20726,8 +21370,26 @@ export namespace Camel {
 
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
+     * Run asynchronous functions synchronously.
+     * 
+     * {@link Camel.AsyncClosure} provides a simple way to run an asynchronous function
+     * synchronously without blocking the current thread.
+     * 
+     * 1) Create a {@link Camel.AsyncClosure} with `camel_async_closure_new()`.
+     * 
+     * 2) Call the asynchronous function passing `camel_async_closure_callback()`
+     *    as the {@link Gio.AsyncReadyCallback} argument and the {@link Camel.AsyncClosure} as the
+     *    data argument.
+     * 
+     * 3) Call `camel_async_closure_wait()` and collect the {@link Gio.AsyncResult}.
+     * 
+     * 4) Call the corresponding asynchronous "finish" function, passing the
+     *    {@link Gio.AsyncResult} returned by `camel_async_closure_wait()`.
+     * 
+     * 5) If needed, repeat steps 2-4 for additional asynchronous functions
+     *    using the same {@link Camel.AsyncClosure}.
+     * 
+     * 6) Finally, free the {@link Camel.AsyncClosure} with `camel_async_closure_free()`.
      * @gir-type Struct
      * @since 3.12
      */
@@ -21217,41 +21879,6 @@ export namespace Camel {
 
 
     /**
-     * Values to store/load for single folder's {@link Camel.FolderSummary} structure.
-     * @gir-type Struct
-     * @since 2.24
-     */
-    class FIRecord {
-        static $gtype: GObject.GType<FIRecord>;
-
-        // Fields
-        folder_name: string;
-
-        version: number;
-
-        flags: number;
-
-        nextuid: number;
-
-        timestamp: number;
-
-        saved_count: number;
-
-        unread_count: number;
-
-        deleted_count: number;
-
-        junk_count: number;
-
-        visible_count: number;
-
-        jnd_count: number;
-
-        bdata: string;
-    }
-
-
-    /**
      * @gir-type Alias
      */
     type FilterDriverClass = typeof FilterDriver;
@@ -21557,19 +22184,6 @@ export namespace Camel {
     /**
      * @gir-type Alias
      */
-    type FolderSearchClass = typeof FolderSearch;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class FolderSearchPrivate {
-        static $gtype: GObject.GType<FolderSearchPrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
     type FolderSummaryClass = typeof FolderSummary;
 
     /**
@@ -21581,65 +22195,43 @@ export namespace Camel {
 
 
     /**
-     * @gir-type Struct
+     * @gir-type Alias
      */
-    class FolderThread {
-        static $gtype: GObject.GType<FolderThread>;
-
-        // Fields
-        refcount: number;
-
-        subject: number;
-
-        tree: null;
-
-        folder: Folder;
-
-        summary: null[];
-
-        // Constructors
-        constructor(folder: Folder, uids: string[], thread_subject: boolean);
-
-        static ["new"](folder: Folder, uids: string[], thread_subject: boolean): FolderThread;
-
-        // Methods
-        /**
-         * Adds new `uids` into the threaded tree.
-         * @param uids a {@link GLib.PtrArray} array of UID-s
-         */
-        apply(uids: string[]): void;
-
-        /**
-         * Increase the reference of `thread`
-         * @returns the referenced `thread`
-         */
-        ref(): FolderThread;
-
-        /**
-         * Free all memory associated with the thread descriptor `thread`.
-         */
-        unref(): void;
-    }
-
+    type FolderThreadClass = typeof FolderThread;
 
     /**
      * @gir-type Struct
      */
-    class FolderThreadNode {
+    abstract class FolderThreadNode {
         static $gtype: GObject.GType<FolderThreadNode>;
 
-        // Fields
-        next: null;
+        // Methods
+        /**
+         * Gets the first child node in the tree structure from the `self`.
+         * @returns the first child node in the tree structure from the `self`, or `null`
+         */
+        get_child(): FolderThreadNode | null;
 
-        child: null;
+        /**
+         * Gets associated data with the `self`. The actual type of the item depends
+         * on the way the `self` was created. For the `camel_folder_thread_new()` it's
+         * a {@link Camel.MessageInfo}, for the `camel_folder_thread_new_items()` it's the member
+         * of the used items array.
+         * @returns associated data with the `self`
+         */
+        get_item(): null;
 
-        message: MessageInfo;
+        /**
+         * Gets the next node in the tree structure from the `self`.
+         * @returns the next node in the tree structure from the `self`, or `null`
+         */
+        get_next(): FolderThreadNode | null;
 
-        root_subject: string;
-
-        order: number;
-
-        re: number;
+        /**
+         * Gets the parent node in the tree structure from the `self`.
+         * @returns the parent node in the tree structure from the `self`, or `null`
+         */
+        get_parent(): FolderThreadNode | null;
     }
 
 
@@ -21657,7 +22249,7 @@ export namespace Camel {
 
 
     /**
-     * An opaque structure holding information about a user key.
+     * Information about a user GPG key.
      * @gir-type Struct
      * @since 3.50
      */
@@ -22011,73 +22603,6 @@ export namespace Camel {
 
 
     /**
-     * The extensive DB format, supporting basic searching and sorting.
-     * @gir-type Struct
-     * @since 2.24
-     */
-    class MIRecord {
-        static $gtype: GObject.GType<MIRecord>;
-
-        // Fields
-        uid: string;
-
-        flags: number;
-
-        msg_type: number;
-
-        dirty: number;
-
-        read: boolean;
-
-        deleted: boolean;
-
-        replied: boolean;
-
-        important: boolean;
-
-        junk: boolean;
-
-        attachment: boolean;
-
-        size: number;
-
-        dsent: number;
-
-        dreceived: number;
-
-        subject: string;
-
-        from: string;
-
-        to: string;
-
-        cc: string;
-
-        mlist: string;
-
-        followup_flag: string;
-
-        followup_completed_on: string;
-
-        followup_due_by: string;
-
-        part: string;
-
-        labels: string;
-
-        usertags: string;
-
-        cinfo: string;
-
-        bdata: string;
-
-        userheaders: string;
-
-        preview: string;
-    }
-
-
-    /**
      * @gir-type Alias
      */
     type MediumClass = typeof Medium;
@@ -22354,6 +22879,19 @@ export namespace Camel {
      */
     abstract class MimeFilterPgpPrivate {
         static $gtype: GObject.GType<MimeFilterPgpPrivate>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type MimeFilterPreviewClass = typeof MimeFilterPreview;
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class MimeFilterPreviewPrivate {
+        static $gtype: GObject.GType<MimeFilterPreviewPrivate>;
     }
 
 
@@ -22869,19 +23407,6 @@ export namespace Camel {
     /**
      * @gir-type Alias
      */
-    type ObjectClass = typeof Object;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class ObjectPrivate {
-        static $gtype: GObject.GType<ObjectPrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
     type OfflineFolderClass = typeof OfflineFolder;
 
     /**
@@ -23028,6 +23553,32 @@ export namespace Camel {
 
 
     /**
+     * Plugin interface for mail storage and transport backends.
+     * 
+     * {@link Camel.Provider} is the plugin descriptor structure that describes a mail
+     * storage or transport backend (or both). It is the first piece of information
+     * loaded from an external backend shared library and serves as the entry point
+     * for the plugin mechanism.
+     * 
+     * From the client's perspective, a provider descriptor gives enough
+     * information to present the user with the configuration questions required
+     * to set up the service, including the list of supported authentication
+     * mechanisms.
+     * 
+     * Key fields in the {@link Camel.Provider} structure:
+     * - `protocol`: The unique, lower-case URI scheme (e.g. `"imap"`).
+     * - `name`: A short human-readable name (e.g. `"IMAP"`).
+     * - `description`: A longer description of what the backend does.
+     * - `object_types`: The {@link Camel.Store} and/or {@link Camel.Transport} GTypes to
+     *   instantiate for this backend.
+     * - `authtypes`: The list of supported authentication mechanisms.
+     * - `url_flags`: Flags describing which URI fields are required or optional.
+     * 
+     * Providers are loaded from shared libraries via `camel_provider_load()` and
+     * registered with the session using `camel_session_add_service()`. Once
+     * registered, {@link Camel.Session} uses the provider's `object_types` to instantiate
+     * the appropriate {@link Camel.Service} subclass when `camel_session_get_service()` is
+     * called with a matching URI.
      * @gir-type Struct
      */
     class Provider {
@@ -23051,10 +23602,6 @@ export namespace Camel {
         object_types: GObject.GType[];
 
         authtypes: null[];
-
-        url_hash: GLib.HashFunc;
-
-        url_equal: GLib.EqualFunc;
 
         translation_domain: string;
 
@@ -23107,23 +23654,6 @@ export namespace Camel {
 
         // Methods
         /**
-         * After filling in the standard Username/Hostname/Port/Path settings
-         * (which must be set in `url`), if the provider supports it, you
-         * may wish to have the provider auto-detect further settings based on
-         * the aformentioned settings.
-         * 
-         * If the provider does not support auto-detection, `auto_detected`
-         * will be set to `null`. Otherwise the provider will attempt to
-         * auto-detect whatever it can and file them into `auto_detected`. If
-         * for some reason it cannot auto-detect anything (not enough
-         * information provided in `url`?) then `auto_detected` will be
-         * set to `null` and an exception may be set to explain why it failed.
-         * @param url a {@link Camel.URL}
-         * @returns 0 on success or -1 on fail.
-         */
-        auto_detect(url: URL): [number, { [key: string]: string } | null];
-
-        /**
          * Registers a provider.
          */
         register(): void;
@@ -23131,6 +23661,11 @@ export namespace Camel {
 
 
     /**
+     * Described a configuration entry shown to the user in an application.
+     * Some types do not use all the members.
+     * 
+     * The default values are taken from corresponding GObject properties
+     * of the provider's {@link Camel.Settings} descendant.
      * @gir-type Struct
      */
     class ProviderConfEntry {
@@ -23226,6 +23761,10 @@ export namespace Camel {
         occuring_start: number;
 
         occuring_end: number;
+
+        user_data: null;
+
+        free_user_data: GLib.DestroyNotify;
     }
 
 
@@ -23533,6 +24072,123 @@ export namespace Camel {
     type StoreClass = typeof Store;
 
     /**
+     * @gir-type Alias
+     */
+    type StoreDBClass = typeof StoreDB;
+
+    /**
+     * A folder record, with values stored in a {@link Camel.StoreDB}.
+     * @gir-type Struct
+     * @since 3.58
+     */
+    class StoreDBFolderRecord {
+        static $gtype: GObject.GType<StoreDBFolderRecord>;
+
+        // Fields
+        folder_name: string;
+
+        version: number;
+
+        flags: number;
+
+        nextuid: number;
+
+        timestamp: number;
+
+        saved_count: number;
+
+        unread_count: number;
+
+        deleted_count: number;
+
+        junk_count: number;
+
+        visible_count: number;
+
+        jnd_count: number;
+
+        bdata: string;
+
+        folder_id: number;
+
+        // Methods
+        /**
+         * Frees dynamically allocated data in the `self`, but not the `self` itself,
+         * and sets all members to zeros or equivalent. Does nothing when `self` is `null`.
+         * It can be called on the structure passed to the `camel_store_db_read_folder()`.
+         */
+        clear(): void;
+    }
+
+
+    /**
+     * A message record, with values stored in a {@link Camel.StoreDB}.
+     * @gir-type Struct
+     * @since 3.58
+     */
+    class StoreDBMessageRecord {
+        static $gtype: GObject.GType<StoreDBMessageRecord>;
+
+        // Fields
+        folder_id: number;
+
+        uid: string;
+
+        flags: number;
+
+        msg_type: number;
+
+        dirty: number;
+
+        size: number;
+
+        dsent: number;
+
+        dreceived: number;
+
+        subject: string;
+
+        from: string;
+
+        to: string;
+
+        cc: string;
+
+        mlist: string;
+
+        part: string;
+
+        labels: string;
+
+        usertags: string;
+
+        cinfo: string;
+
+        bdata: string;
+
+        userheaders: string;
+
+        preview: string;
+
+        // Methods
+        /**
+         * Frees dynamically allocated data in the `self`, but not the `self` itself,
+         * and sets all members to zeros or equivalent. Does nothing when `self` is `null`.
+         * It can be called on the structure passed to the `camel_store_db_read_message()`.
+         */
+        clear(): void;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class StoreDBPrivate {
+        static $gtype: GObject.GType<StoreDBPrivate>;
+    }
+
+
+    /**
      * @gir-type Struct
      */
     class StoreInfo {
@@ -23550,30 +24206,6 @@ export namespace Camel {
         unread: number;
 
         total: number;
-
-        // Static methods
-        /**
-         * Returns the last segment of the path string from `info`.
-         * @param summary a {@link Camel.StoreSummary}
-         * @param info a {@link Camel.StoreInfo}
-         */
-        static name(summary: StoreSummary, info: StoreInfo): string;
-
-        /**
-         * Returns the path string from `info`.
-         * @param summary a {@link Camel.StoreSummary}
-         * @param info a {@link Camel.StoreInfo}
-         */
-        static path(summary: StoreSummary, info: StoreInfo): string;
-
-        /**
-         * Set a specific string on the `info`.
-         * @param summary a {@link Camel.StoreSummary} object
-         * @param info a {@link Camel.StoreInfo}
-         * @param type specific string being set
-         * @param value string value to set
-         */
-        static set_string(summary: StoreSummary, info: StoreInfo, type: number, value: string): void;
 
         // Methods
         /**
@@ -23613,6 +24245,203 @@ export namespace Camel {
      */
     abstract class StorePrivate {
         static $gtype: GObject.GType<StorePrivate>;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type StoreSearchClass = typeof StoreSearch;
+
+    /**
+     * A structure with search result indexes, holding references to matching records
+     * using the {@link Camel.Store}, folder ID and message UID triple. Items can be added
+     * to the index with `camel_store_search_index_add()` and checked its existence
+     * with `camel_store_search_index_contains()`.
+     * @gir-type Struct
+     * @since 3.58
+     */
+    class StoreSearchIndex {
+        static $gtype: GObject.GType<StoreSearchIndex>;
+
+        // Constructors
+        constructor(properties?: Partial<{}>);
+
+        static ["new"](): StoreSearchIndex;
+
+        // Methods
+        /**
+         * Adds a message identified by the `store`, `folder_id` and `uid` into the index `self`.
+         * It can be asked whether the `self` contains the message with `camel_store_search_index_contains()`.
+         * Note the `store` is not referenced, it's compared pointer-wise.
+         * See `camel_store_search_index_contains()` for more information.
+         * @param store a {@link Camel.Store}
+         * @param folder_id a folder ID, other than zero
+         * @param uid a message UID
+         */
+        add(store: Store, folder_id: number, uid: string): void;
+
+        /**
+         * Constructs the `inout_threads` from the `items` according to the `flags` and then
+         * changes the content of the `self` to contain only references to messages which
+         * satisfy the `kind`. When there are no `items` or the `kind` is {@link Camel.MatchThreadsKind.NONE},
+         * the function does nothing.
+         * @param items all items used for thread creation
+         * @param kind one of {@link Camel.MatchThreadsKind}
+         * @param flags a bit-or of {@link Camel.FolderThreadFlags}
+         * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         */
+        apply_match_threads(items: StoreSearchThreadItem[], kind: MatchThreadsKind, flags: FolderThreadFlags, cancellable: Gio.Cancellable | null): void;
+
+        /**
+         * Checks whether a message identified by the `store`, `folder_id` and `uid` is
+         * included in the index `self`.
+         * 
+         * Note the `store` is not referenced, it's compared pointer-wise, thus when
+         * a different instance of the same service as the one used in
+         * the `camel_store_search_index_add()` is used here, the message reference will
+         * not be found.
+         * @param store a {@link Camel.Store}
+         * @param folder_id a folder ID, other than zero
+         * @param uid a message UID
+         * @returns `true` when the message reference is included in the index `self`
+         */
+        contains(store: Store, folder_id: number, uid: string): boolean;
+
+        /**
+         * Moves all items from the `src` index into the `self`. The `self` and
+         * the `src` can be the same, in which case the function does nothing.
+         * At the end of the function the `src` will contain no items, but it
+         * is not freed.
+         * @param src a {@link Camel.StoreSearchIndex}, to move items from
+         */
+        move_from_existing(src: StoreSearchIndex): void;
+
+        /**
+         * Adds a reference on the `self`. Call a pair `camel_store_search_index_unref()`
+         * to remove the added reference.
+         * @returns the `self` with added reference
+         */
+        ref(): StoreSearchIndex;
+
+        /**
+         * Removes a message identified by the `store`, `folder_id` and `uid` from the index `self`.
+         * Note the `store` is not referenced, it's compared pointer-wise.
+         * See `camel_store_search_index_add()` for more information.
+         * @param store a {@link Camel.Store}
+         * @param folder_id a folder ID, other than zero
+         * @param uid a message UID
+         * @returns whether the message existed and had been removed
+         */
+        remove(store: Store, folder_id: number, uid: string): boolean;
+
+        /**
+         * Removes one reference on the `self`. When the reference count
+         * drops to zero, the `self` is freed.
+         */
+        unref(): void;
+    }
+
+
+    /**
+     * A search item object, as returned by the `camel_store_search_get_items_sync()`.
+     * It can contain additional values, as requested by the `camel_store_search_set_additional_columns()`,
+     * which can be obtained by `camel_store_search_item_get_n_additional_values()`
+     * and `camel_store_search_item_get_additional_value()`.
+     * @gir-type Struct
+     * @since 3.58
+     */
+    class StoreSearchItem {
+        static $gtype: GObject.GType<StoreSearchItem>;
+
+        // Fields
+        folder_id: number;
+
+        uid: string;
+
+        // Methods
+        /**
+         * Gets value of an additional column of an index `index`, which
+         * should be less than `camel_store_search_item_get_n_additional_values()`.
+         * The order corresponds to the `camel_store_search_get_additional_columns()`.
+         * Asking for an index which out of bounds returns `null`.
+         * Note the actual read value can be also `null`.
+         * @param index an index of the item to get, counting from zero
+         * @returns additional read value at index `index`, or `null`
+         */
+        get_additional_value(index: number): string | null;
+
+        /**
+         * Gets how many additional column values had been read. These are
+         * related to the `camel_store_search_set_additional_columns()`.
+         * @returns how many additional column values had been read
+         */
+        get_n_additional_values(): number;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class StoreSearchItemPrivate {
+        static $gtype: GObject.GType<StoreSearchItemPrivate>;
+    }
+
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class StoreSearchPrivate {
+        static $gtype: GObject.GType<StoreSearchPrivate>;
+    }
+
+
+    /**
+     * A structure holding data necessary to construct message threads
+     * using {@link Camel.FolderThread}. It's gathered by `camel_store_search_add_match_threads_items_sync()`.
+     * @gir-type Struct
+     * @since 3.58
+     */
+    abstract class StoreSearchThreadItem {
+        static $gtype: GObject.GType<StoreSearchThreadItem>;
+
+        // Methods
+        /**
+         * Gets the folder ID for the `self`.
+         * @returns the folder ID for the `self`
+         */
+        get_folder_id(): number;
+
+        /**
+         * Gets a hashed value of the Message-ID header for the `self`.
+         * @returns a hashed value of the Message-ID header for the `self`
+         */
+        get_message_id(): number;
+
+        /**
+         * Gets the message In-Reply-To and References values for the `self`,
+         * hashed the same way the `camel_store_search_thread_item_get_message_id()` is.
+         * @returns the message In-Reply-To    and References values for the `self`, or `null`, when none is set
+         */
+        get_references(): number[] | null;
+
+        /**
+         * Gets the {@link Camel.Store} for the `self`.
+         * @returns the {@link Camel.Store} for the `self`
+         */
+        get_store(): Store;
+
+        /**
+         * Gets the message subject for the `self`.
+         * @returns the message subject for the `self`
+         */
+        get_subject(): string;
+
+        /**
+         * Gets the message UID for the `self`.
+         * @returns the message UID for the `self`
+         */
+        get_uid(): string;
     }
 
 
@@ -23844,13 +24673,6 @@ export namespace Camel {
 
         fd: number;
 
-        // Static methods
-        /**
-         * Frees the array of UIDs.
-         * @param uids an array returned from `camel_uid_cache_get_new_uids()`
-         */
-        static free_uids(uids: string[]): void;
-
         // Methods
         /**
          * Destroys `cache` and frees its data.
@@ -23861,9 +24683,9 @@ export namespace Camel {
          * Returns an array of UIDs from `uids` that are not in `cache`, and
          * removes UIDs from `cache` that aren't in `uids`.
          * @param uids an array of UIDs
-         * @returns an array of new UIDs, which must be freed with `camel_uid_cache_free_uids()`.
+         * @returns an array of new UIDs,    free with `g_ptr_array_unref()`, when no longer needed.
          */
-        get_new_uids(uids: string[]): string[];
+        dup_new_uids(uids: string[]): string[];
 
         /**
          * Attempts to save `cache` back to disk.
@@ -23880,6 +24702,28 @@ export namespace Camel {
 
 
     /**
+     * URI parsing, encoding, and manipulation.
+     * 
+     * {@link Camel.URL} provides a URI parser, encoder, and logic for merging relative
+     * URIs with base URIs. When a URI string is parsed, it is split into its
+     * constituent parts and stored in a decoded form:
+     * protocol, user, authentication mechanism, password, host, port, path,
+     * query parameters, query string, and fragment.
+     * 
+     * Field values are read directly from the struct members, but should only
+     * be written via the camel_url_set_*() accessor functions, which manage
+     * memory correctly.
+     * 
+     * `camel_url_to_string()` serialises a {@link Camel.URL} back to a string,
+     * with optional flags to hide sensitive fields such as URI parameters
+     * (e.g. {@link Camel.URLFlags.PARAMS}) or authentication details
+     * (e.g. {@link Camel.URLFlags.AUTH}).
+     * 
+     * `camel_url_new_with_base()` creates a new URI by resolving a relative URI
+     * string against a base {@link Camel.URL}, following all relevant RFC rules.
+     * 
+     * `camel_url_encode()` and `camel_url_decode()` handle percent-encoding
+     * (%`XX` escaping) of URI components.
      * @gir-type Struct
      */
     class URL {
@@ -24142,19 +24986,6 @@ export namespace Camel {
     /**
      * @gir-type Alias
      */
-    type VeeDataCacheClass = typeof VeeDataCache;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class VeeDataCachePrivate {
-        static $gtype: GObject.GType<VeeDataCachePrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
     type VeeFolderClass = typeof VeeFolder;
 
     /**
@@ -24169,19 +25000,6 @@ export namespace Camel {
      * @gir-type Alias
      */
     type VeeMessageInfoClass = typeof VeeMessageInfo;
-
-    /**
-     * @gir-type Alias
-     */
-    type VeeMessageInfoDataClass = typeof VeeMessageInfoData;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class VeeMessageInfoDataPrivate {
-        static $gtype: GObject.GType<VeeMessageInfoDataPrivate>;
-    }
-
 
     /**
      * @gir-type Struct
@@ -24201,19 +25019,6 @@ export namespace Camel {
      */
     abstract class VeeStorePrivate {
         static $gtype: GObject.GType<VeeStorePrivate>;
-    }
-
-
-    /**
-     * @gir-type Alias
-     */
-    type VeeSubfolderDataClass = typeof VeeSubfolderData;
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class VeeSubfolderDataPrivate {
-        static $gtype: GObject.GType<VeeSubfolderDataPrivate>;
     }
 
 
@@ -24564,16 +25369,21 @@ export namespace Camel {
     interface NetworkService extends Service {
 
         // Properties
+        /**
+         * Socket endpoint of a network service
+         */
         get connectable(): Gio.SocketConnectable;
         set connectable(val: Gio.SocketConnectable);
 
         /**
+         * Whether the host is reachable
          * @read-only
          * @default false
          */
         get host_reachable(): boolean;
 
         /**
+         * Whether the host is reachable
          * @read-only
          * @default false
          */
@@ -24825,39 +25635,48 @@ export namespace Camel {
 
         // Properties
         /**
+         * Authentication mechanism name
          * @default null
          */
         get auth_mechanism(): string | null;
         set auth_mechanism(val: string | null);
 
         /**
+         * Authentication mechanism name
          * @default null
          */
         get authMechanism(): string | null;
         set authMechanism(val: string | null);
 
+        /**
+         * Host name for the network service
+         */
         get host(): string;
         set host(val: string);
 
         /**
+         * Port number for the network service
          * @default 0
          */
         get port(): number;
         set port(val: number);
 
         /**
+         * Method used to establish a network connection
          * @default Camel.NetworkSecurityMethod.STARTTLS_ON_STANDARD_PORT
          */
         get security_method(): NetworkSecurityMethod;
         set security_method(val: NetworkSecurityMethod);
 
         /**
+         * Method used to establish a network connection
          * @default Camel.NetworkSecurityMethod.STARTTLS_ON_STANDARD_PORT
          */
         get securityMethod(): NetworkSecurityMethod;
         set securityMethod(val: NetworkSecurityMethod);
 
         /**
+         * User name for the network account
          * @default null
          */
         get user(): string;

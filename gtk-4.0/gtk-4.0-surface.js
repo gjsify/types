@@ -1,12 +1,12 @@
 // The widget vocabulary of Gtk-4.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gtk-4.0 — library 4.23.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
+// GENERATED — do not edit. Provenance: Gtk-4.0 — library 4.23.3 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
 // name here is real needs values, not declarations.
 
-export const SURFACE_PROVENANCE = 'Gtk-4.0 — library 4.23.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap';
+export const SURFACE_PROVENANCE = 'Gtk-4.0 — library 4.23.3 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap';
 
 export const OWN_PROPS = {
     GtkAboutDialog: ['artists', 'authors', 'comments', 'copyright', 'documenters', 'license', 'license-type', 'logo', 'logo-icon-name', 'program-name', 'system-information', 'translator-credits', 'version', 'website', 'website-label', 'wrap-license'],
@@ -38,7 +38,7 @@ export const OWN_PROPS = {
     GtkDragIcon: ['child'],
     GtkDrawingArea: ['content-height', 'content-width'],
     GtkDropDown: ['enable-search', 'expression', 'factory', 'header-factory', 'list-factory', 'model', 'search-match-mode', 'selected', 'show-arrow'],
-    GtkEditable: ['editable', 'enable-undo', 'max-width-chars', 'text', 'width-chars', 'xalign'],
+    GtkEditable: ['editable', 'enable-undo', 'input-interceptor', 'max-width-chars', 'text', 'width-chars', 'xalign'],
     GtkEditableLabel: ['editing'],
     GtkEntry: ['activates-default', 'attributes', 'buffer', 'completion', 'enable-emoji-completion', 'extra-menu', 'has-frame', 'im-module', 'input-hints', 'input-purpose', 'invisible-char', 'invisible-char-set', 'max-length', 'menu-entry-icon-primary-text', 'menu-entry-icon-secondary-text', 'overwrite-mode', 'placeholder-text', 'primary-icon-activatable', 'primary-icon-gicon', 'primary-icon-name', 'primary-icon-paintable', 'primary-icon-sensitive', 'primary-icon-tooltip-markup', 'primary-icon-tooltip-text', 'progress-fraction', 'progress-pulse-step', 'secondary-icon-activatable', 'secondary-icon-gicon', 'secondary-icon-name', 'secondary-icon-paintable', 'secondary-icon-sensitive', 'secondary-icon-tooltip-markup', 'secondary-icon-tooltip-text', 'show-emoji-icon', 'tabs', 'truncate-multiline', 'visibility'],
     GtkExpander: ['child', 'expanded', 'label', 'label-widget', 'resize-toplevel', 'use-markup', 'use-underline'],
@@ -101,6 +101,7 @@ export const OWN_PROPS = {
     GtkStack: ['hhomogeneous', 'interpolate-size', 'transition-duration', 'transition-type', 'vhomogeneous', 'visible-child', 'visible-child-name'],
     GtkStackSidebar: ['stack'],
     GtkStackSwitcher: ['stack'],
+    GtkSvgWidget: ['resource', 'state', 'stylesheet'],
     GtkSwitch: ['active', 'state'],
     GtkText: ['activates-default', 'attributes', 'buffer', 'enable-emoji-completion', 'extra-menu', 'im-module', 'input-hints', 'input-purpose', 'invisible-char', 'invisible-char-set', 'max-length', 'overwrite-mode', 'placeholder-text', 'propagate-text-width', 'tabs', 'truncate-multiline', 'visibility'],
     GtkTextView: ['accepts-tab', 'bottom-margin', 'buffer', 'cursor-visible', 'editable', 'extra-menu', 'im-module', 'indent', 'input-hints', 'input-purpose', 'justification', 'left-margin', 'monospace', 'overwrite', 'pixels-above-lines', 'pixels-below-lines', 'pixels-inside-wrap', 'right-margin', 'tabs', 'top-margin', 'wrap-mode'],
@@ -120,7 +121,6 @@ export const OWN_SIGNALS = {
     GtkAboutDialog: ['activate-link'],
     GtkAppChooserButton: ['activate', 'changed', 'custom-item-activated'],
     GtkAppChooserWidget: ['application-activated', 'application-selected'],
-    GtkApplicationWindow: ['save-state'],
     GtkAssistant: ['apply', 'cancel', 'close', 'escape', 'prepare'],
     GtkButton: ['activate', 'clicked'],
     GtkCalendar: ['day-selected', 'next-month', 'next-year', 'prev-month', 'prev-year'],
@@ -164,12 +164,13 @@ export const OWN_SIGNALS = {
     GtkShortcutsWindow: ['close', 'search'],
     GtkSpinButton: ['activate', 'change-value', 'input', 'output', 'value-changed', 'wrapped'],
     GtkStatusbar: ['text-popped', 'text-pushed'],
+    GtkSvgWidget: ['activate', 'error'],
     GtkSwitch: ['activate', 'state-set'],
     GtkText: ['activate', 'backspace', 'copy-clipboard', 'cut-clipboard', 'delete-from-cursor', 'insert-at-cursor', 'insert-emoji', 'move-cursor', 'paste-clipboard', 'preedit-changed', 'toggle-overwrite'],
     GtkTextView: ['backspace', 'copy-clipboard', 'cut-clipboard', 'delete-from-cursor', 'extend-selection', 'insert-at-cursor', 'insert-emoji', 'move-cursor', 'move-viewport', 'paste-clipboard', 'preedit-changed', 'select-all', 'set-anchor', 'toggle-cursor-visible', 'toggle-overwrite'],
     GtkToggleButton: ['toggled'],
     GtkTreeView: ['columns-changed', 'cursor-changed', 'expand-collapse-cursor-row', 'move-cursor', 'row-activated', 'row-collapsed', 'row-expanded', 'select-all', 'select-cursor-parent', 'select-cursor-row', 'start-interactive-search', 'test-collapse-row', 'test-expand-row', 'toggle-cursor-row', 'unselect-all'],
-    GtkWindow: ['activate-default', 'activate-focus', 'close-request', 'enable-debugging', 'keys-changed'],
+    GtkWindow: ['activate-default', 'activate-focus', 'close-request', 'enable-debugging', 'force-close', 'keys-changed'],
 };
 
 export const DECLS = {
@@ -263,6 +264,7 @@ export const DECLS = {
     GtkStackSidebar: ['GtkStackSidebar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GtkStackSwitcher: ['GtkStackSwitcher', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
     GtkStatusbar: ['GtkStatusbar', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtkSvgWidget: ['GtkSvgWidget', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GtkSwitch: ['GtkSwitch', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
     GtkText: ['GtkText', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkEditable'],
     GtkTextView: ['GtkTextView', 'GtkWidget', 'GtkAccessible', 'GtkAccessibleText', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
@@ -306,7 +308,7 @@ export const ENUM_NICKS = {
     GtkCornerType: ['top-left', 'bottom-left', 'top-right', 'bottom-right'],
     GtkDeleteType: ['chars', 'word-ends', 'words', 'display-lines', 'display-line-ends', 'paragraph-ends', 'paragraphs', 'whitespace'],
     GtkDirectionType: ['tab-forward', 'tab-backward', 'up', 'down', 'left', 'right'],
-    GtkEditableProperties: ['prop-text', 'prop-cursor-position', 'prop-selection-bound', 'prop-editable', 'prop-width-chars', 'prop-max-width-chars', 'prop-xalign', 'prop-enable-undo', 'num-properties'],
+    GtkEditableProperties: ['prop-text', 'prop-cursor-position', 'prop-selection-bound', 'prop-editable', 'prop-width-chars', 'prop-max-width-chars', 'prop-xalign', 'prop-enable-undo', 'prop-complete-text', 'prop-input-interceptor', 'num-properties'],
     GtkEntryIconPosition: ['primary', 'secondary'],
     GtkEventSequenceState: ['none', 'claimed', 'denied'],
     GtkFileChooserAction: ['open', 'save', 'select-folder'],
@@ -351,7 +353,6 @@ export const ENUM_NICKS = {
     GtkPropagationPhase: ['none', 'capture', 'bubble', 'target'],
     GtkReducedMotion: ['no-preference', 'reduce'],
     GtkResponseType: ['none', 'reject', 'accept', 'delete-event', 'ok', 'cancel', 'close', 'yes', 'no', 'apply', 'help'],
-    GtkRestoreReason: ['pristine', 'launch', 'recover', 'restore'],
     GtkRevealerTransitionType: ['none', 'crossfade', 'slide-right', 'slide-left', 'slide-up', 'slide-down', 'swing-right', 'swing-left', 'swing-up', 'swing-down', 'fade-slide-right', 'fade-slide-left', 'fade-slide-up', 'fade-slide-down'],
     GtkScrollStep: ['steps', 'pages', 'ends', 'horizontal-steps', 'horizontal-pages', 'horizontal-ends'],
     GtkScrollType: ['none', 'jump', 'step-backward', 'step-forward', 'page-backward', 'page-forward', 'step-up', 'step-down', 'page-up', 'page-down', 'step-left', 'step-right', 'page-left', 'page-right', 'start', 'end'],
@@ -542,6 +543,7 @@ export const SINCE = {
     'GtkDropDown.header-factory': '4.12',
     'GtkDropDown.search-match-mode': '4.12',
     'GtkDropDown.show-arrow': '4.6',
+    'GtkEditable.input-interceptor': '4.24',
     'GtkEntry.menu-entry-icon-primary-text': '4.20',
     'GtkEntry.menu-entry-icon-secondary-text': '4.20',
     'GtkFontDialogButton.dialog': '4.10',
@@ -588,6 +590,9 @@ export const SINCE = {
     'GtkSearchEntry.key-capture-widget': '4.22',
     'GtkSearchEntry.search-delay': '4.8',
     'GtkSpinButton.activates-default': '4.14',
+    'GtkSvgWidget.resource': '4.24',
+    'GtkSvgWidget.state': '4.24',
+    'GtkSvgWidget.stylesheet': '4.24',
     'GtkTreeExpander.hide-expander': '4.10',
     'GtkTreeExpander.indent-for-depth': '4.10',
     'GtkTreeExpander.indent-for-icon': '4.6',

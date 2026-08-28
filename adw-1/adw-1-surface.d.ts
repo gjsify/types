@@ -3,7 +3,7 @@
  *
  * GENERATED — do not edit. Provenance: Adw-1 — library 1.10.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
  *
- * 62 concrete widgets, 63 declarations, 25 enum nick unions, 62 slot candidates.
+ * 62 concrete widgets, 63 declarations, 25 enum nick unions, 66 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -154,6 +154,11 @@ export interface AdwAboutDialogProps extends AdwDialogProps, GtkAccessibleProps,
      * @since 1.5
      */
     'license-type'?: GtkLicenseNick | Gtk.License;
+    /**
+     * The "Other apps" section title.
+     * @since 1.10
+     */
+    'other-apps-title'?: string;
     /**
      * The release notes of the application.
      * @since 1.5
@@ -1264,10 +1269,20 @@ export interface AdwSidebarProps extends GtkWidgetProps, GtkAccessibleProps, Gtk
      */
     placeholder?: Gtk.Widget | null;
     /**
+     * A widget to be displayed before the sidebar items.
+     * @since 1.10
+     */
+    prefix?: Gtk.Widget | null;
+    /**
      * The index of the currently selected item.
      * @since 1.9
      */
     selected?: number;
+    /**
+     * A widget to be displayed after the sidebar items.
+     * @since 1.10
+     */
+    suffix?: Gtk.Widget | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AdwSidebarConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
@@ -1653,10 +1668,20 @@ export interface AdwViewSwitcherSidebarProps extends GtkWidgetProps, GtkAccessib
      */
     placeholder?: Gtk.Widget | null;
     /**
+     * A widget to be displayed before the sidebar items.
+     * @since 1.10
+     */
+    prefix?: Gtk.Widget | null;
+    /**
      * The stack the sidebar controls.
      * @since 1.9
      */
     stack?: Adw.ViewStack | null;
+    /**
+     * A widget to be displayed after the sidebar items.
+     * @since 1.10
+     */
+    suffix?: Gtk.Widget | null;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AdwViewSwitcherSidebarConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
@@ -2138,6 +2163,8 @@ export interface Widgets {
         constructOnly: AdwSidebarConstructOnly;
         slotCandidates: {
         'placeholder': 'set_placeholder';
+        'prefix': 'set_prefix';
+        'suffix': 'set_suffix';
         };
     };
     AdwSpinRow: {
@@ -2285,7 +2312,9 @@ export interface Widgets {
         constructOnly: AdwViewSwitcherSidebarConstructOnly;
         slotCandidates: {
         'placeholder': 'set_placeholder';
+        'prefix': 'set_prefix';
         'stack': 'set_stack';
+        'suffix': 'set_suffix';
         };
     };
     AdwViewSwitcherTitle: {

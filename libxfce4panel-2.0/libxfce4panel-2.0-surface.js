@@ -22,7 +22,7 @@ export const OWN_SIGNALS = {
 export const DECLS = {
     XfceArrowButton: ['XfceArrowButton', 'GtkToggleButton', 'GtkButton', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkActivatable', 'GtkBuildable'],
     XfcePanelImage: ['XfcePanelImage', 'GtkWidget', 'GtkBuildable'],
-    XfcePanelPlugin: ['XfcePanelPlugin', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'XfcePanelPluginProvider'],
+    XfcePanelPlugin: ['XfcePanelPlugin', 'GtkEventBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
 };
 
 export const ENUM_NICKS = {

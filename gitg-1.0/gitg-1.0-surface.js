@@ -20,6 +20,7 @@ export const OWN_PROPS = {
 
 export const OWN_SIGNALS = {
     GitgDiffView: ['options-changed'],
+    GitgEntryHistory: ['activated-with-text'],
     GitgRepositoryListBox: ['repository-activated', 'show-error'],
     GitgRepositoryListBoxRow: ['request-delete-source', 'request-remove', 'secondary-clicked'],
     GitgSidebar: ['deselected', 'populate-popup'],
@@ -31,6 +32,7 @@ export const DECLS = {
     GitgDiffStat: ['GitgDiffStat', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable'],
     GitgDiffView: ['GitgDiffView', 'GtkGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
     GitgDiffViewOptions: ['GitgDiffViewOptions', 'GtkToolbar', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable', 'GtkToolShell'],
+    GitgEntryHistory: ['GitgEntryHistory', 'GtkEntry', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkEditable'],
     GitgProgressBin: ['GitgProgressBin', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     GitgRepositoryListBox: ['GitgRepositoryListBox', 'GtkListBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
     GitgRepositoryListBoxRow: ['GitgRepositoryListBoxRow', 'GtkListBoxRow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkActionable', 'GtkBuildable'],

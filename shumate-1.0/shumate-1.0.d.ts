@@ -382,11 +382,6 @@ export namespace Shumate {
     const MAX_LONGITUDE: number;
 
     /**
-     * The micro version of libshumate (3, if `SHUMATE_VERSION` is 1.2.3)
-     */
-    const MICRO_VERSION: number;
-
-    /**
      * The minor version of libshumate (2, if `SHUMATE_VERSION` is 1.2.3)
      */
     const MINOR_VERSION: number;
@@ -894,7 +889,7 @@ export namespace Shumate {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -2163,7 +2158,7 @@ export namespace Shumate {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -2664,7 +2659,7 @@ export namespace Shumate {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -3749,7 +3744,7 @@ export namespace Shumate {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -3844,14 +3839,16 @@ export namespace Shumate {
 
         // Properties
         /**
-         * @construct-only
+         * The source of the tiles this map layer displays.
          */
         get map_source(): MapSource;
+        set map_source(val: MapSource);
 
         /**
-         * @construct-only
+         * The source of the tiles this map layer displays.
          */
         get mapSource(): MapSource;
+        set mapSource(val: MapSource);
 
         /**
          * Compile-time signal type information.
@@ -3881,12 +3878,50 @@ export namespace Shumate {
         /** @signal */
         emit<K extends keyof MapLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Gets the {@link MapSource} providing tiles for this map layer.
+         * @returns the {@link MapSource}
+         */
+        get_map_source(): MapSource;
+
+        /**
+         * Refreshes all tiles from the current map source.
+         */
+        refresh(): void;
+
+        /**
+         * Attempts to reload any tiles in an error state.
+         * 
+         * This can be used to recover from temporary errors. For example, you could use {@link Gio.NetworkMonitor} to listen
+         * for changes in network connectivity, and call this function when the network becomes available again.
+         */
+        retry_failed(): void;
+
+        /**
+         * Sets the {@link MapSource} that provides tiles for this map layer to display.
+         * 
+         * Setting a new map source will refresh all tiles from the new source.
+         * @param map_source a {@link MapSource}
+         */
+        set_map_source(map_source: MapSource): void;
     }
 
 
     namespace MapSource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the source is modified in such a way that tiles previously filled by it should be refreshed.
+             * 
+             * It is the {@link MapSource} implementation's responsibility to emit this signal when appropriate, such as when a
+             * data source or rendering parameter changes.
+             * @signal
+             * @since 1.7
+             * @run-last
+             */
+            modified: () => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::license": (pspec: GObject.ParamSpec) => void;
             "notify::license-uri": (pspec: GObject.ParamSpec) => void;
@@ -5024,7 +5059,7 @@ export namespace Shumate {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -6359,7 +6394,7 @@ export namespace Shumate {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -6975,7 +7010,7 @@ export namespace Shumate {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -9111,10 +9146,12 @@ export namespace Shumate {
 
         /**
          * Compares two {@link VectorValue}s for equality.
+         * 
+         * Either argument may be `NULL`, which is treated as equal to a {@link VectorValue} of type {@link Shumate.VectorValueType.NULL}.
          * @param b a {@link VectorValue}
          * @returns `true` if `a` and `b` are equal, `false` otherwise
          */
-        equal(b: VectorValue): boolean;
+        equal(b: VectorValue | null): boolean;
 
         /**
          * Frees a {@link VectorValue}.

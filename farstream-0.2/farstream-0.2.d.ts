@@ -996,6 +996,17 @@ export namespace Farstream {
         static list_available(type_suffix: string): string[];
 
         /**
+         * Register a staticly linked transmitter. This function should strictly be
+         * used by plugins own register function. To register a static plugin:
+         *   extern fs_plugin_<name>_<type>_register_pluing (void);
+         *   fs_plugin_<name>_<type>_register_pluing ();
+         * @param name The name of the plugin to register
+         * @param type_suffix The type of plugin to register (normally "transmitter")
+         * @param type 
+         */
+        static register_static(name: string, type_suffix: string, type: GObject.GType): void;
+
+        /**
          * Calls the `complete_interface_info` function from the
          * {@link GObject.TypePluginClass} of `plugin`. There should be no need to use this
          * function outside of the GObject type system itself.
@@ -1265,6 +1276,7 @@ export namespace Farstream {
          * The ID of the session, the first number of the pads linked to this session
          * will be this id
          * @construct-only
+         * @default 0
          */
         get id(): number;
 
@@ -1272,6 +1284,7 @@ export namespace Farstream {
          * The media-type of the session. This is either Audio, Video or both.
          * This is a constructor parameter that cannot be changed.
          * @construct-only
+         * @default Farstream.MediaType.AUDIO
          */
         get media_type(): MediaType;
 
@@ -1279,6 +1292,7 @@ export namespace Farstream {
          * The media-type of the session. This is either Audio, Video or both.
          * This is a constructor parameter that cannot be changed.
          * @construct-only
+         * @default Farstream.MediaType.AUDIO
          */
         get mediaType(): MediaType;
 
@@ -1298,6 +1312,7 @@ export namespace Farstream {
 
         /**
          * Sets the IP ToS field (and if possible the IPv6 TCLASS field
+         * @default 0
          */
         get tos(): number;
         set tos(val: number);
@@ -1644,6 +1659,7 @@ export namespace Farstream {
             "notify::negotiated-codecs": (pspec: GObject.ParamSpec) => void;
             "notify::participant": (pspec: GObject.ParamSpec) => void;
             "notify::remote-codecs": (pspec: GObject.ParamSpec) => void;
+            "notify::require-encryption": (pspec: GObject.ParamSpec) => void;
             "notify::session": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1659,6 +1675,8 @@ export namespace Farstream {
             participant: Participant;
             remote_codecs: Codec[];
             remoteCodecs: Codec[];
+            require_encryption: boolean;
+            requireEncryption: boolean;
             session: Session;
         }
     }
@@ -1713,6 +1731,7 @@ export namespace Farstream {
          * The direction of the stream. This property is set initially as a parameter
          * to the `fs_session_new_stream()` function. It can be changed later if
          * required by setting this property.
+         * @default Farstream.StreamDirection.NONE
          */
         get direction(): StreamDirection;
         set direction(val: StreamDirection);
@@ -1759,6 +1778,22 @@ export namespace Farstream {
          * @read-only
          */
         get remoteCodecs(): Codec[];
+
+        /**
+         * If set to TRUE, only encrypted content will be accepted on this
+         * stream.
+         * @default false
+         */
+        get require_encryption(): boolean;
+        set require_encryption(val: boolean);
+
+        /**
+         * If set to TRUE, only encrypted content will be accepted on this
+         * stream.
+         * @default false
+         */
+        get requireEncryption(): boolean;
+        set requireEncryption(val: boolean);
 
         /**
          * The {@link Farstream.Session} for this stream. This property is a construct param and
@@ -2097,6 +2132,7 @@ export namespace Farstream {
          * This tells the stream transmitter to associate incoming data with this
          * based on the source without looking at the content if possible.
          * @construct-only
+         * @default true
          */
         get associate_on_source(): boolean;
 
@@ -2104,6 +2140,7 @@ export namespace Farstream {
          * This tells the stream transmitter to associate incoming data with this
          * based on the source without looking at the content if possible.
          * @construct-only
+         * @default true
          */
         get associateOnSource(): boolean;
 
@@ -2119,6 +2156,7 @@ export namespace Farstream {
 
         /**
          * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
+         * @default true
          */
         get sending(): boolean;
         set sending(val: boolean);
@@ -2263,12 +2301,14 @@ export namespace Farstream {
         /**
          * The number of components to create
          * @construct-only
+         * @default 1
          */
         get components(): number;
 
         /**
          * Apply current stream time to buffers or provide buffers without
          * timestamps. Must be set before creating a stream transmitter.
+         * @default true
          */
         get do_timestamp(): boolean;
         set do_timestamp(val: boolean);
@@ -2276,6 +2316,7 @@ export namespace Farstream {
         /**
          * Apply current stream time to buffers or provide buffers without
          * timestamps. Must be set before creating a stream transmitter.
+         * @default true
          */
         get doTimestamp(): boolean;
         set doTimestamp(val: boolean);
@@ -2324,6 +2365,7 @@ export namespace Farstream {
 
         /**
          * Sets the IP ToS field (and if possible the IPv6 TCLASS field
+         * @default 0
          */
         get tos(): number;
         set tos(val: number);

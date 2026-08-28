@@ -4896,7 +4896,7 @@ export namespace GtkSource {
          * @param category a string specifying the mark category, or `null`.
          * @returns the previous {@link GtkSource.Mark}, or `null`.
          */
-        prev(category: string | null): Mark | null;
+        prev(category: string): Mark | null;
     }
 
 

@@ -1,7 +1,7 @@
 /**
  * The GIR-derived widget VOCABULARY for Vte-3.91.
  *
- * GENERATED — do not edit. Provenance: Vte-3.91 — library 0.84.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
+ * GENERATED — do not edit. Provenance: Vte-3.91 — library 0.84.1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object
  *
  * 1 concrete widgets, 1 declarations, 10 enum nick unions, 1 slot candidates.
  *

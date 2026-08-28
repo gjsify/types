@@ -52,7 +52,7 @@ import type { GtkBinConstructOnly, GtkBinProps, GtkBuildableConstructOnly, GtkBu
 /** A #GtkWidget containing the default Clutter stage. */
 export interface GtkClutterEmbedProps extends GtkContainerProps, GtkBuildableProps {
     /**
-     * Whether to use the reported size of the LayoutManager on the stage as the widget size.
+     * The #GtkWidget to be embedded into the #GtkClutterActor
      * @since 1.4
      */
     'use-layout-size'?: boolean;

@@ -998,6 +998,13 @@ export namespace GtkSource {
         emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
+        // Static methods
+        /**
+         * Removes one trailing newline of `buffer` if it contains at least one.
+         * @param buffer a {@link Gtk.TextBuffer}.
+         */
+        static remove_trailing_newline(buffer: Gtk.TextBuffer): void;
+
         // Virtual methods
         /**
          * @param iter 
@@ -2020,10 +2027,9 @@ export namespace GtkSource {
 
         // Methods
         /**
-         * Moves the {@link GtkSource.CompletionInfo} to `iter`. If `iter` is `null` `info` is
-         * moved to the cursor position. Moving will respect the {@link Gdk.Gravity} setting
-         * of the info window and will ensure the line at `iter` is not occluded by
-         * the window.
+         * Moves the {@link GtkSource.CompletionInfo} to `iter`. If `iter` is `null` `info` is moved
+         * to the cursor position. Moving will respect the {@link Gdk.Gravity} setting of the
+         * info window and will ensure the line at `iter` is not occluded by the window.
          * @param view a {@link Gtk.TextView} on which the info window should be positioned.
          * @param iter a {@link Gtk.TextIter}.
          */

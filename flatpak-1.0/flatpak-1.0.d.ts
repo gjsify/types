@@ -159,7 +159,7 @@ export namespace Flatpak {
 
         /**
          * An operation tried to access a ref, or information about it that it
-         *                                was not authorized. For example, when succesfully authenticating with a
+         *                                was not authorized. For example, when successfully authenticating with a
          *                                server but the user doesn't have permissions for a private ref. (Since: 1.7.3)
          */
         static NOT_AUTHORIZED: number;
@@ -533,7 +533,7 @@ export namespace Flatpak {
         /**
          * The operation failure was not fatal
          */
-        FATAL,
+        NON_FATAL,
     }
 
 
@@ -552,7 +552,7 @@ export namespace Flatpak {
         /**
          * The update caused no changes
          */
-        CHANGE,
+        NO_CHANGE,
     }
 
 
@@ -1008,6 +1008,15 @@ export namespace Flatpak {
         get_storage_type(): StorageType;
 
         /**
+         * Gets the modification time of the installation, based on the file monitored by
+         * `flatpak_installation_create_monitor()`. This can be used to detect when
+         * applications or runtimes have been installed, uninstalled, or updated, or when
+         * remotes have been added, removed, or modified, to aid cache invalidation.
+         * @returns the modification time (seconds since the Unix epoch) of the   installation configuration, or `G_MAXUINT64` if unavailable
+         */
+        get_timestamp(): number;
+
+        /**
          * This is an old deprecated function, you should use
          * {@link Flatpak.Transaction} and `flatpak_transaction_add_install()`
          * instead. It has a lot more interesting features.
@@ -1273,7 +1282,7 @@ export namespace Flatpak {
          * Lists only the remotes whose type is included in the `types` argument.
          * 
          * Since flatpak 1.7 this will never return any types except FLATPAK_REMOTE_TYPE_STATIC.
-         * Equivalent functionallity to FLATPAK_REMOTE_TYPE_USB can be had by listing remote refs
+         * Equivalent functionality to FLATPAK_REMOTE_TYPE_USB can be had by listing remote refs
          * with FLATPAK_QUERY_FLAGS_ONLY_SIDELOADED.
          * @param types an array of {@link Flatpak.RemoteType}
          * @param cancellable a {@link Gio.Cancellable}
@@ -1339,8 +1348,10 @@ export namespace Flatpak {
 
         /**
          * Remove the OSTree ref given by `remote_name`:`ref` from the local flatpak
-         * repository. The next time the underlying OSTree repo is pruned, objects
-         * which were attached to that ref will be removed. This is useful if you
+         * repository. The ref must not be currently deployed; attempting to remove
+         * a deployed ref will return an error. Use `flatpak_installation_uninstall_full()`
+         * to remove deployed refs. The next time the underlying OSTree repo is pruned,
+         * objects which were attached to that ref will be removed. This is useful if you
          * pulled a flatpak ref using `flatpak_installation_install_full()` and
          * specified {@link Flatpak.InstallFlags.NO_DEPLOY} but then decided not to
          * deploy the ref later on and want to remove the local ref to prevent it
@@ -3144,7 +3155,7 @@ export namespace Flatpak {
          * `true`, and {@link Flatpak.Transaction.SignalSignatures.webflow_done | Flatpak.Transaction::webflow-done} is emitted. It will
          * cancel the ongoing authentication operation.
          * 
-         * This is useful for example if you're showing an authenticaion
+         * This is useful for example if you're showing an authentication
          * window with a browser, but the user closed it before it was finished.
          * @param id The webflow id, as passed into the webflow-start signal
          */
@@ -3486,7 +3497,7 @@ export namespace Flatpak {
          * transaction for each runtime it considers unused. This is used by the
          * "update" CLI command to garbage collect runtimes and free disk space.
          * 
-         * No guarantees are made about the exact hueristic used; e.g. only end-of-life
+         * No guarantees are made about the exact heuristic used; e.g. only end-of-life
          * unused runtimes may be uninstalled with this set. To see the full list of
          * unused runtimes in an installation, use
          * `flatpak_installation_list_unused_refs()`.
@@ -3527,7 +3538,7 @@ export namespace Flatpak {
          * same as used by xdg-desktop-portal.
          * 
          * On X11 it should be of the form x11:$xid where $xid is the hex
-         * version of the xwindows id.
+         * version of the X11 window ID.
          * 
          * On wayland is should be wayland:$handle where handle is gotten by
          * using the export call of the xdg-foreign-unstable wayland extension.
@@ -3870,6 +3881,13 @@ export namespace Flatpak {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Gets the current transfer speed in bytes per second. Returns 0 during
+         * the first second of a transfer while the rate is being established.
+         * @returns the current transfer rate in bytes per second
+         */
+        get_bytes_per_second(): number;
+
         /**
          * Gets the number of bytes that have been transferred.
          * @returns the number of bytes transferred

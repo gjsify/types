@@ -894,7 +894,7 @@ export namespace GdkWayland {
         /**
          * Begins an interactive resize operation.
          * 
-         * You might use this function to implement a &#x201C;window resize grip.&#x201D;
+         * You might use this function to implement a “window resize grip.”
          * @param edge the edge or corner from which the drag is started
          * @param device the device used for the operation
          * @param button the button being used to drag, or 0 for a keyboard-initiated drag
@@ -1082,7 +1082,7 @@ export namespace GdkWayland {
          * on `parent` and keep `surface` above `parent`.
          * 
          * See [gtk_window_set_transient_for()](../gtk4/method.Window.set_transient_for.html)
-         * if you&#x2019;re using [GtkWindow](../gtk4/class.Window.html).
+         * if you’re using [GtkWindow](../gtk4/class.Window.html).
          * @param parent another toplevel {@link Gdk.Surface}
          */
         set_transient_for(parent: Gdk.Surface): void;

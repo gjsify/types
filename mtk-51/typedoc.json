@@ -1,0 +1,9 @@
+{
+    "entryPoints": ["./mtk-51.d.ts"],
+    "readme": "./README.md",
+    "name": "Mtk-51",
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
+}
+

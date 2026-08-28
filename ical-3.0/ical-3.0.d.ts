@@ -2310,10 +2310,17 @@ export namespace ICal {
      */
     function icalparser_free(parser: parser): void;
 
+    function icalparser_get_ctrl(): null;
+
     /**
      * @param parser 
      */
     function icalparser_get_state(parser: parser): parser_state;
+
+    /**
+     * @param ctrl 
+     */
+    function icalparser_set_ctrl(ctrl: null): void;
 
     /**
      * @param parser 

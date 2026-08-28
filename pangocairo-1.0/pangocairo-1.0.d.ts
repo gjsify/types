@@ -230,6 +230,19 @@ export namespace PangoCairo {
     function layout_path(cr: cairo.Context, layout: Pango.Layout): void;
 
     /**
+     * Adds components of a {@link Pango.Layout} to the current path
+     * in the specified cairo context.
+     * 
+     * The top-left corner of the {@link Pango.Layout} will be at the
+     * current point of the cairo context.
+     * @param cr a Cairo context
+     * @param layout a Pango layout
+     * @param components the components to include
+     * @since 1.58
+     */
+    function layout_path_for_components(cr: cairo.Context, layout: Pango.Layout, components: Pango.RenderComponent): void;
+
+    /**
      * Draw a squiggly line in the specified cairo context that approximately
      * covers the given rectangle in the style of an underline used to indicate a
      * spelling error.

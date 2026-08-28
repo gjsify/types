@@ -363,6 +363,7 @@ export namespace PolkitAgent {
         /**
          * The cookie obtained from the PolicyKit daemon
          * @construct-only
+         * @default null
          */
         get cookie(): string;
 
@@ -430,10 +431,25 @@ export namespace PolkitAgent {
 
     namespace TextListener {
         // Signal signatures
-        interface SignalSignatures extends Listener.SignalSignatures {}
+        interface SignalSignatures extends Listener.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "tty-attrs-changed": (arg0: boolean) => void;
+            "notify::delay": (pspec: GObject.ParamSpec) => void;
+            "notify::use-alternate-buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::use-color": (pspec: GObject.ParamSpec) => void;
+        }
 
         // Constructor properties interface
-        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {}
+        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {
+            delay: number;
+            use_alternate_buffer: boolean;
+            useAlternateBuffer: boolean;
+            use_color: boolean;
+            useColor: boolean;
+        }
     }
 
     /**
@@ -443,6 +459,37 @@ export namespace PolkitAgent {
      */
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
+
+        // Properties
+        /**
+         * @construct-only
+         * @default 1
+         */
+        get delay(): number;
+
+        /**
+         * @construct-only
+         * @default false
+         */
+        get use_alternate_buffer(): boolean;
+
+        /**
+         * @construct-only
+         * @default false
+         */
+        get useAlternateBuffer(): boolean;
+
+        /**
+         * @construct-only
+         * @default true
+         */
+        get use_color(): boolean;
+
+        /**
+         * @construct-only
+         * @default true
+         */
+        get useColor(): boolean;
 
         /**
          * Compile-time signal type information.

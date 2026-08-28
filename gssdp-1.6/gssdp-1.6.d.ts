@@ -100,6 +100,7 @@ export namespace GSSDP {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::address": (pspec: GObject.ParamSpec) => void;
             "notify::address-family": (pspec: GObject.ParamSpec) => void;
+            "notify::allocate-tcp-socket": (pspec: GObject.ParamSpec) => void;
             "notify::boot-id": (pspec: GObject.ParamSpec) => void;
             "notify::config-id": (pspec: GObject.ParamSpec) => void;
             "notify::host-ip": (pspec: GObject.ParamSpec) => void;
@@ -110,6 +111,7 @@ export namespace GSSDP {
             "notify::port": (pspec: GObject.ParamSpec) => void;
             "notify::server-id": (pspec: GObject.ParamSpec) => void;
             "notify::socket-ttl": (pspec: GObject.ParamSpec) => void;
+            "notify::tcp-socket": (pspec: GObject.ParamSpec) => void;
             "notify::uda-version": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -119,6 +121,8 @@ export namespace GSSDP {
             address: Gio.InetAddress;
             address_family: Gio.SocketFamily;
             addressFamily: Gio.SocketFamily;
+            allocate_tcp_socket: boolean;
+            allocateTcpSocket: boolean;
             boot_id: number;
             bootId: number;
             config_id: number;
@@ -136,6 +140,8 @@ export namespace GSSDP {
             serverId: string;
             socket_ttl: number;
             socketTtl: number;
+            tcp_socket: Gio.Socket;
+            tcpSocket: Gio.Socket;
             uda_version: UDAVersion;
             udaVersion: UDAVersion;
         }
@@ -200,6 +206,26 @@ export namespace GSSDP {
         get addressFamily(): Gio.SocketFamily;
 
         /**
+         * The whether to allocate a TCP socket. Mainly used by GUPnPContext
+         * to signalize that it can handle a pre-allocated socket. Will become
+         * non-configurable default-on in a future release.
+         * @since 1.6.5
+         * @default false
+         */
+        get allocate_tcp_socket(): boolean;
+        set allocate_tcp_socket(val: boolean);
+
+        /**
+         * The whether to allocate a TCP socket. Mainly used by GUPnPContext
+         * to signalize that it can handle a pre-allocated socket. Will become
+         * non-configurable default-on in a future release.
+         * @since 1.6.5
+         * @default false
+         */
+        get allocateTcpSocket(): boolean;
+        set allocateTcpSocket(val: boolean);
+
+        /**
          * The value of the BOOTID.UPNP.ORG header
          * 
          * Since 1.2.0
@@ -237,7 +263,7 @@ export namespace GSSDP {
 
         /**
          * The IP address of the assoicated network interface.
-         * @deprecated since 1.6.: Use {@link GSSDP.Client.address} instead.
+         * @deprecated since 1.6.0: Use {@link GSSDP.Client.address} instead.
          * @construct-only
          * @default null
          */
@@ -245,7 +271,7 @@ export namespace GSSDP {
 
         /**
          * The IP address of the assoicated network interface.
-         * @deprecated since 1.6.: Use {@link GSSDP.Client.address} instead.
+         * @deprecated since 1.6.0: Use {@link GSSDP.Client.address} instead.
          * @construct-only
          * @default null
          */
@@ -344,6 +370,20 @@ export namespace GSSDP {
          * @default 0
          */
         get socketTtl(): number;
+
+        /**
+         * The allocated TCP socket bound to the same port as {@link GSSDP.Client.port}
+         * @since 1.6.5
+         * @read-only
+         */
+        get tcp_socket(): Gio.Socket;
+
+        /**
+         * The allocated TCP socket bound to the same port as {@link GSSDP.Client.port}
+         * @since 1.6.5
+         * @read-only
+         */
+        get tcpSocket(): Gio.Socket;
 
         /**
          * The UPnP version the client adheres to.
@@ -484,6 +524,12 @@ export namespace GSSDP {
          * @returns The server ID.
          */
         get_server_id(): string;
+
+        /**
+         * Get the associated TCP socket.
+         * @returns A bound TCP socket
+         */
+        get_tcp_socket(): Gio.Socket;
 
         /**
          * @returns the UDA protocol version this client adheres to

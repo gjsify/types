@@ -73,7 +73,6 @@ export interface BluetoothChooserButtonProps extends GtkButtonProps, GtkActionab
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type BluetoothChooserButtonConstructOnly = GtkButtonConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
 
-/** The <structname>BluetoothChooserCombo</structname> struct contains only private fields and should not be directly accessed. */
 export interface BluetoothChooserComboProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
     /** The Bluetooth address of the selected device or %NULL */
     device?: string;

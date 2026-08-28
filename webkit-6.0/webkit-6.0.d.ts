@@ -660,6 +660,10 @@ export namespace WebKit {
          * Editable element expects a password
          */
         PASSWORD,
+        /**
+         * Edited field contents will be used for searching data.
+         */
+        SEARCH,
     }
 
 
@@ -4059,6 +4063,7 @@ export namespace WebKit {
              * {@link WebKit.WebView} it's easier to use the {@link WebKit.WebView.favicon}
              * property. See `webkit_web_view_get_favicon()` for more details.
              * @signal
+             * @deprecated since 2.54
              * @run-last
              */
             "favicon-changed": (arg0: string, arg1: string) => void;
@@ -4128,6 +4133,9 @@ export namespace WebKit {
          * This is an asynchronous method. When the operation is finished, callback will
          * be invoked. You can then call `webkit_favicon_database_get_favicon_finish()`
          * to get the result of the operation.
+         * 
+         * New applications should use {@link FaviconDatabase.get_page_icons} and
+         * {@link FaviconDatabase.get_page_icons_finish} instead.
          * @param page_uri URI of the page for which we want to retrieve the favicon
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
@@ -4143,6 +4151,9 @@ export namespace WebKit {
          * This is an asynchronous method. When the operation is finished, callback will
          * be invoked. You can then call `webkit_favicon_database_get_favicon_finish()`
          * to get the result of the operation.
+         * 
+         * New applications should use {@link FaviconDatabase.get_page_icons} and
+         * {@link FaviconDatabase.get_page_icons_finish} instead.
          * @param page_uri URI of the page for which we want to retrieve the favicon
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is            satisfied or `null` if you don't care about the result.
@@ -4159,6 +4170,9 @@ export namespace WebKit {
          * This is an asynchronous method. When the operation is finished, callback will
          * be invoked. You can then call `webkit_favicon_database_get_favicon_finish()`
          * to get the result of the operation.
+         * 
+         * New applications should use {@link FaviconDatabase.get_page_icons} and
+         * {@link FaviconDatabase.get_page_icons_finish} instead.
          * @param page_uri URI of the page for which we want to retrieve the favicon
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is            satisfied or `null` if you don't care about the result.
@@ -4167,6 +4181,9 @@ export namespace WebKit {
 
         /**
          * Finishes an operation started with `webkit_favicon_database_get_favicon()`.
+         * 
+         * New applications should use {@link FaviconDatabase.get_page_icons} and
+         * {@link FaviconDatabase.get_page_icons_finish} instead.
          * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `webkit_favicon_database_get_favicon()`
          * @returns a new favicon image, or `null` in case of error.
          */
@@ -4178,6 +4195,51 @@ export namespace WebKit {
          * @returns a newly allocated URI for the favicon, or `null` if the database doesn't have a favicon for `page_uri`.
          */
         get_favicon_uri(page_uri: string): string;
+
+        /**
+         * Obtains the set of icons for a page.
+         * 
+         * Starts an asynchronous operation to obtain the set of icons cached in the database for a given
+         * page URI. Available icons will be read from the database and provided as a {@link ImageList}
+         * that can be retrieved using `webkit_favicon_database_get_page_icons_finish` in the completion
+         * `callback`.
+         * @param page_uri URI of the page to get icons for
+         * @param cancellable A {@link Gio.Cancellable} ior `null`
+         */
+        get_page_icons(page_uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<ImageList>;
+
+        /**
+         * Obtains the set of icons for a page.
+         * 
+         * Starts an asynchronous operation to obtain the set of icons cached in the database for a given
+         * page URI. Available icons will be read from the database and provided as a {@link ImageList}
+         * that can be retrieved using `webkit_favicon_database_get_page_icons_finish` in the completion
+         * `callback`.
+         * @param page_uri URI of the page to get icons for
+         * @param cancellable A {@link Gio.Cancellable} ior `null`
+         * @param callback A {@link Gio.AsyncReadyCallback} to invoke when the request    is satisfied or `null` to discard the result.
+         */
+        get_page_icons(page_uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Obtains the set of icons for a page.
+         * 
+         * Starts an asynchronous operation to obtain the set of icons cached in the database for a given
+         * page URI. Available icons will be read from the database and provided as a {@link ImageList}
+         * that can be retrieved using `webkit_favicon_database_get_page_icons_finish` in the completion
+         * `callback`.
+         * @param page_uri URI of the page to get icons for
+         * @param cancellable A {@link Gio.Cancellable} ior `null`
+         * @param callback A {@link Gio.AsyncReadyCallback} to invoke when the request    is satisfied or `null` to discard the result.
+         */
+        get_page_icons(page_uri: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ImageList> | void;
+
+        /**
+         * Finishes an operation started with `webkit_favicon_database_get_page_icons`.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `webkit_favicon_database_get_page_icons`.
+         * @returns the set of icons for the page, or `null` in case of error.
+         */
+        get_page_icons_finish(result: Gio.AsyncResult): ImageList;
     }
 
 
@@ -5160,6 +5222,260 @@ export namespace WebKit {
          * @returns the URI of the media element in the coordinates of the Hit Test,    or `null` if there isn't a media element in `hit_test_result` context
          */
         get_media_uri(): string;
+    }
+
+
+    namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::stride": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Icon.ConstructorProps, Gio.LoadableIcon.ConstructorProps {
+            height: number;
+            stride: number;
+            width: number;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class Image extends GObject.Object implements Gio.Icon, Gio.LoadableIcon {
+        static $gtype: GObject.GType<Image>;
+
+        // Properties
+        /**
+         * The image height in pixels.
+         * @since 2.52
+         * @construct-only
+         * @default 1
+         */
+        get height(): number;
+
+        /**
+         * The image stride, in bytes. This value indicates the amount of
+         * memory occupied by each row of pixels in the image. Note that
+         * the stride may be larger than the image width multiplied by the
+         * amount of bytes used to represent each pixel.
+         * @since 2.52
+         * @construct-only
+         * @default 4
+         */
+        get stride(): number;
+
+        /**
+         * The image width in pixels.
+         * @since 2.52
+         * @construct-only
+         * @default 1
+         */
+        get width(): number;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Image.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * Get the `image` pixel data as an array of bytes.
+         * 
+         * The pixel format for the returned byte buffer is 32-bit per pixel
+         * with 8-bit premultiplied alpha, in the preferred byte order for
+         * the architecture.
+         * @returns a {@link GLib.Bytes}
+         */
+        as_bytes(): GLib.Bytes;
+
+        /**
+         * Get the `image` height in pixels.
+         * @returns the image height
+         */
+        get_height(): number;
+
+        /**
+         * Get the `image` stride.
+         * @returns the image stride
+         */
+        get_stride(): number;
+
+        /**
+         * Get the `image` width in pixels.
+         * @returns the image width
+         */
+        get_width(): number;
+
+        /**
+         * Checks if two icons are equal.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
+         */
+        equal(icon2: Gio.Icon | null): boolean;
+
+        /**
+         * Gets a hash for an icon.
+         * @returns a `guint` containing a hash for the `icon`, suitable for   use in a {@link GLib.HashTable} or similar data structure.
+         */
+        hash(): number;
+
+        /**
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
+         * As serialization will avoid using raw icon data when possible, it only
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
+         * (as opposed to over the network), and within the same file system namespace.
+         * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
+         */
+        serialize(): GLib.Variant | null;
+
+        /**
+         * Generates a textual representation of `icon` that can be used for
+         * serialization such as when passing `icon` to a different process or
+         * saving it to persistent storage. Use `g_icon_new_for_string()` to
+         * get `icon` back from the returned string.
+         * 
+         * The encoding of the returned string is proprietary to {@link Gio.Icon} except
+         * in the following two cases
+         * 
+         * - If `icon` is a {@link Gio.FileIcon}, the returned string is a native path
+         *   (such as `/path/to/my icon.png`) without escaping
+         *   if the {@link Gio.File} for `icon` is a native file.  If the file is not
+         *   native, the returned string is the result of `g_file_get_uri()`
+         *   (such as `sftp://path/to/my%20icon.png`).
+         * 
+         * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
+         *   the encoding is simply the name (such as `network-server`).
+         * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
+         */
+        to_string(): string | null;
+
+        /**
+         * Checks if two icons are equal.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @virtual
+         */
+        vfunc_equal(icon2: Gio.Icon | null): boolean;
+
+        /**
+         * Gets a hash for an icon.
+         * @virtual
+         */
+        vfunc_hash(): number;
+
+        /**
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
+         * As serialization will avoid using raw icon data when possible, it only
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
+         * (as opposed to over the network), and within the same file system namespace.
+         * @virtual
+         */
+        vfunc_serialize(): GLib.Variant | null;
+
+        /**
+         * Serializes the `icon` into string tokens.
+         * This is can be invoked when `g_icon_new_for_string()` is called.
+         * @virtual
+         */
+        vfunc_to_tokens(): [boolean, string[], number];
+
+        /**
+         * Loads a loadable icon. For the asynchronous version of this function,
+         * see `g_loadable_icon_load_async()`.
+         * @param size an integer.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns a {@link Gio.InputStream} to read the icon from.
+         */
+        load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
+
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
+         * @param size an integer.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         */
+        load_async(size: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
+
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
+         * @param size an integer.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        load_async(size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
+         * @param size an integer.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        load_async(size: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gio.InputStream, string]> | void;
+
+        /**
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns a {@link Gio.InputStream} to read the icon from.
+         */
+        load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
+
+        /**
+         * Loads a loadable icon. For the asynchronous version of this function,
+         * see `g_loadable_icon_load_async()`.
+         * @param size an integer.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
+         */
+        vfunc_load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
+
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
+         * @param size an integer.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         * @virtual
+         */
+        vfunc_load_async(size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
+         */
+        vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
     }
 
 
@@ -11336,7 +11652,7 @@ export namespace WebKit {
          * Get the parsed manifest version, or `0` if there is no
          * version specified in the manifest.
          * 
-         * A {@link WebKit.WebExtensionError.UNSUPPORTED_MANIFEST_VERSION} error will be
+         * A {@link WebExtensionError.UNSUPPORTED_MANIFEST_VERSION} error will be
          * reported if the manifest version isn't specified.
          * @returns the parsed manifest version.
          */
@@ -12452,8 +12768,10 @@ export namespace WebKit {
             "notify::is-muted": (pspec: GObject.ParamSpec) => void;
             "notify::is-playing-audio": (pspec: GObject.ParamSpec) => void;
             "notify::is-web-process-responsive": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification": (pspec: GObject.ParamSpec) => void;
             "notify::microphone-capture-state": (pspec: GObject.ParamSpec) => void;
             "notify::network-session": (pspec: GObject.ParamSpec) => void;
+            "notify::page-icons": (pspec: GObject.ParamSpec) => void;
             "notify::page-id": (pspec: GObject.ParamSpec) => void;
             "notify::related-view": (pspec: GObject.ParamSpec) => void;
             "notify::settings": (pspec: GObject.ParamSpec) => void;
@@ -12528,10 +12846,13 @@ export namespace WebKit {
             isPlayingAudio: boolean;
             is_web_process_responsive: boolean;
             isWebProcessResponsive: boolean;
+            magnification: number;
             microphone_capture_state: MediaCaptureState;
             microphoneCaptureState: MediaCaptureState;
             network_session: NetworkSession;
             networkSession: NetworkSession;
+            page_icons: ImageList | null;
+            pageIcons: ImageList | null;
             page_id: bigint | number;
             pageId: bigint | number;
             related_view: WebView;
@@ -12737,6 +13058,9 @@ export namespace WebKit {
         /**
          * The favicon currently associated to the {@link WebKit.WebView}.
          * See `webkit_web_view_get_favicon()` for more details.
+         * 
+         * New applications should use {@link WebView.page_icons} instead.
+         * @deprecated since 2.54
          * @read-only
          */
         get favicon(): Gdk.Texture;
@@ -12872,6 +13196,19 @@ export namespace WebKit {
         get isWebProcessResponsive(): boolean;
 
         /**
+         * The magnification factor of the {@link WebKit.WebView} content.
+         * 
+         * The magnification factor represents the visual scaling of the page (similar
+         * to pinch-to-zoom). This is independent of the layout zoom level. Setting
+         * the magnification factor scales the rendered page visually without affecting
+         * page layout or text wrapping.
+         * @since 2.54
+         * @default 1
+         */
+        get magnification(): number;
+        set magnification(val: number);
+
+        /**
          * Capture state of the microphone device. Whenever the user grants a media-request sent by the web
          * page, requesting audio capture capabilities (`navigator.mediaDevices.getUserMedia({audio:
          * true})`) this property will be set to {@link WebKit.MediaCaptureState.ACTIVE}.
@@ -12920,6 +13257,20 @@ export namespace WebKit {
          * @construct-only
          */
         get networkSession(): NetworkSession;
+
+        /**
+         * The page icons (favicons) associated to the currently loaded content, if any.
+         * @since 2.54
+         * @read-only
+         */
+        get page_icons(): ImageList | null;
+
+        /**
+         * The page icons (favicons) associated to the currently loaded content, if any.
+         * @since 2.54
+         * @read-only
+         */
+        get pageIcons(): ImageList | null;
 
         /**
          * The identifier of the `WebKitWebPage` corresponding to the {@link WebKit.WebView}.
@@ -13841,6 +14192,8 @@ export namespace WebKit {
          * Returns favicon currently associated to `web_view`, if any. You can
          * connect to notify::favicon signal of `web_view` to be notified when
          * the favicon is available.
+         * 
+         * New applications should use {@link WebView.get_page_icons} instead.
          * @returns the favicon image or `null` if there's no    icon associated with `web_view`.
          */
         get_favicon(): Gdk.Texture;
@@ -13881,6 +14234,16 @@ export namespace WebKit {
         get_is_web_process_responsive(): boolean;
 
         /**
+         * Get the magnification factor of `web_view`.
+         * 
+         * The magnification factor represents the visual scaling of the page (similar
+         * to pinch-to-zoom). This is independent of the layout zoom level (which is
+         * obtained with `webkit_web_view_get_zoom_level()`).
+         * @returns the current magnification factor of `web_view`
+         */
+        get_magnification(): number;
+
+        /**
          * Return the main resource of `web_view`.
          * @returns the main {@link WebKit.WebResource} of the view    or `null` if nothing has been loaded.
          */
@@ -13897,6 +14260,16 @@ export namespace WebKit {
          * @returns a {@link WebKit.NetworkSession}
          */
         get_network_session(): NetworkSession;
+
+        /**
+         * Returns the page icons for the content loaded in the web view.
+         * 
+         * Gets the page icons associated with the content currently loaded in the
+         * `web_view`, if any, as a {@link ImageList}. Changes to the page icons
+         * can be observed by connecting to the `notify::page-icons` signal.
+         * @returns a list of icons, or `null` if there    are no icons for the content loaded in `web_view`.
+         */
+        get_page_icons(): ImageList | null;
 
         /**
          * Get the identifier of the `WebKitWebPage` corresponding to
@@ -14511,6 +14884,18 @@ export namespace WebKit {
         set_is_muted(muted: boolean): void;
 
         /**
+         * Set the magnification factor of `web_view`.
+         * 
+         * The magnification factor represents the visual scaling of the page (similar
+         * to pinch-to-zoom). This is independent of the layout zoom level (which is
+         * set with `webkit_web_view_set_zoom_level()`). Setting the magnification factor
+         * scales the rendered page visually around the center of the view without
+         * affecting page layout or text wrapping.
+         * @param magnification the magnification factor
+         */
+        set_magnification(magnification: number): void;
+
+        /**
          * Set the microphone capture state of a {@link WebKit.WebView}.
          * 
          * If {@link WebKit.Settings.enable_mediastream} is `false`, this method will have no visible effect. Once the
@@ -14988,7 +15373,7 @@ export namespace WebKit {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -15491,11 +15876,14 @@ export namespace WebKit {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             "notify::autoplay": (pspec: GObject.ParamSpec) => void;
+            "notify::custom-user-agent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             autoplay: AutoplayPolicy;
+            custom_user_agent: string | null;
+            customUserAgent: string | null;
         }
     }
 
@@ -15503,7 +15891,7 @@ export namespace WebKit {
      * View specific website policies.
      * 
      * WebKitWebsitePolicies allows you to configure per-page policies,
-     * currently only autoplay policies are supported.
+     * currently only autoplay and custom user agent policies are supported.
      * @gir-type Class
      * @since 2.30
      */
@@ -15518,6 +15906,24 @@ export namespace WebKit {
          * @default WebKit.AutoplayPolicy.ALLOW_WITHOUT_SOUND
          */
         get autoplay(): AutoplayPolicy;
+
+        /**
+         * The custom user agent string to send for navigations governed by these
+         * {@link WebKit.WebsitePolicies}, or `null` to use the default user agent.
+         * @since 2.54
+         * @construct-only
+         * @default null
+         */
+        get custom_user_agent(): string | null;
+
+        /**
+         * The custom user agent string to send for navigations governed by these
+         * {@link WebKit.WebsitePolicies}, or `null` to use the default user agent.
+         * @since 2.54
+         * @construct-only
+         * @default null
+         */
+        get customUserAgent(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -15554,6 +15960,12 @@ export namespace WebKit {
          * @returns {@link WebKit.AutoplayPolicy}
          */
         get_autoplay_policy(): AutoplayPolicy;
+
+        /**
+         * Get the {@link WebKit.WebsitePolicies.custom_user_agent} property.
+         * @returns the custom user agent string, or `null` if the default    user agent is used
+         */
+        get_custom_user_agent(): string | null;
     }
 
 
@@ -16300,6 +16712,13 @@ export namespace WebKit {
 
         // Methods
         /**
+         * Finds a feature given its identifier.
+         * @param identifier a {@link WebKit.Feature} identifier
+         * @returns The feature with the given     `identifier`, or `NULL` if it cannot be found.
+         */
+        find(identifier: string): Feature | null;
+
+        /**
          * Gets a feature given its index.
          * @param index index of the feature
          * @returns The feature at `index`.
@@ -16513,6 +16932,65 @@ export namespace WebKit {
          * If the reference count drops to 0, all memory allocated by
          * {@link WebKit.ITPThirdParty} is released. This function is MT-safe and may be
          * called from any thread.
+         */
+        unref(): void;
+    }
+
+
+    /**
+     * @gir-type Alias
+     */
+    type ImageClass = typeof Image;
+
+    /**
+     * Represents a set of related images.
+     * 
+     * The list supports iterating over each {@link Image}:
+     * 
+     * ```c
+     * g_autoptr(WebKitImageList) list = webkit_favicon_database_get_page_icons_finish(database, result, NULL);
+     * for (gsize i = 0; i < webkit_image_list_get_length(list); i++) {
+     *     WebKitImage *image = webkit_image_list_get(list, i);
+     *     // Do something with "image".
+     * }
+     * ```
+     * 
+     * Image lists can be obtained as the result of `webkit_favicon_database_get_page_icons`.
+     * @gir-type Struct
+     * @since 2.54
+     */
+    abstract class ImageList {
+        static $gtype: GObject.GType<ImageList>;
+
+        // Methods
+        /**
+         * Gets an image given its index.
+         * @param index index of the image
+         * @returns The image at `index`.
+         */
+        get(index: bigint | number): Image;
+
+        /**
+         * Gets the number of elements in the image list.
+         * @returns number of elements.
+         */
+        get_length(): number;
+
+        /**
+         * Atomically acquires a reference on the given `image_list`.
+         * 
+         * This function is MT-safe and may be called from any thread.
+         * @returns The same `image_list` with an additional reference.
+         */
+        ref(): ImageList;
+
+        /**
+         * Atomically releases a reference on the given `image_list`.
+         * 
+         * If the reference was the last, the resources associated with
+         * the `image_list` are freed.
+         * 
+         * This function is MT-safe and may be called from any thread.
          */
         unref(): void;
     }
@@ -17601,8 +18079,9 @@ export namespace WebKit {
         /**
          * Gets the size of the data of types `types` in a {@link WebKit.WebsiteData}.
          * 
-         * Note that currently the data size is only known for {@link WebKit.WebsiteDataTypes.DISK_CACHE} data type
-         * so for all other types 0 will be returned.
+         * Note that currently the data size is only known for the {@link WebKit.WebsiteDataTypes.DISK_CACHE},
+         * {@link WebKit.WebsiteDataTypes.LOCAL_STORAGE}, {@link WebKit.WebsiteDataTypes.INDEXEDDB_DATABASES} and
+         * {@link WebKit.WebsiteDataTypes.DOM_CACHE} data types, so for all other types 0 will be returned.
          * @param types a bitmask  of {@link WebKit.WebsiteDataTypes}
          * @returns the size of `website_data` for the given `types`.
          */

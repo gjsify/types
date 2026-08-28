@@ -760,6 +760,34 @@ export namespace NM {
     /**
      * @gir-type Enum
      */
+    export namespace DeviceManaged {
+        export const $gtype: GObject.GType<DeviceManaged>;
+    }
+
+    /**
+     * Values for the SetManaged() D-Bus call of a device and `nm_device_set_managed_async()`.
+     * @gir-type Enum
+     * @since 1.58
+     */
+    enum DeviceManaged {
+        /**
+         * the device is not managed.
+         */
+        NO,
+        /**
+         * the device is managed.
+         */
+        YES,
+        /**
+         * reset the device managed state to the default value.
+         */
+        RESET,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceState {
         export const $gtype: GObject.GType<DeviceState>;
     }
@@ -1350,6 +1378,10 @@ export namespace NM {
          * A IPVLAN device. Since: 1.52.
          */
         IPVLAN,
+        /**
+         * A GENEVE device. Since: 1.58.
+         */
+        GENEVE,
     }
 
 
@@ -2112,6 +2144,35 @@ export namespace NM {
     /**
      * @gir-type Enum
      */
+    export namespace SettingGeneveDf {
+        export const $gtype: GObject.GType<SettingGeneveDf>;
+    }
+
+    /**
+     * {@link NM.SettingGeneveDf} values indicate how the Don't Fragment (DF) flag should be handled
+     * in the outer IP header of GENEVE tunnel packets.
+     * @gir-type Enum
+     * @since 1.58
+     */
+    enum SettingGeneveDf {
+        /**
+         * Don't set the DF flag, packets may be fragmented.
+         */
+        UNSET,
+        /**
+         * Always set the DF flag, packets will not be fragmented.
+         */
+        SET,
+        /**
+         * Inherit the DF flag from the inner IP header.
+         */
+        INHERIT,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingHsrProtocolVersion {
         export const $gtype: GObject.GType<SettingHsrProtocolVersion>;
     }
@@ -2163,6 +2224,11 @@ export namespace NM {
          * the option is enabled
          */
         YES,
+        /**
+         * the option is enabled when
+         *    the IPv6 method is "auto" and CLAT is enabled. Since: 1.58
+         */
+        AUTO,
     }
 
 
@@ -2341,6 +2407,43 @@ export namespace NM {
          * do add DNS routes
          */
         YES,
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace SettingIp4ConfigClat {
+        export const $gtype: GObject.GType<SettingIp4ConfigClat>;
+    }
+
+    /**
+     * `NMSettingIP4ConfigClat` values specify if CLAT (Customer-side translator)
+     * is enabled or not. CLAT is used to implement the client part of 464XLAT
+     * (RFC 6877), an architecture that provides IPv4 connectivity to hosts on
+     * IPv6-only networks.
+     * @gir-type Enum
+     * @since 1.58
+     */
+    enum SettingIp4ConfigClat {
+        /**
+         * use the global default value
+         */
+        DEFAULT,
+        /**
+         * disable CLAT
+         */
+        NO,
+        /**
+         * enable CLAT only when the IPv4 method
+         *   is 'auto' and the device doesn't have a native IPv4 gateway.
+         */
+        AUTO,
+        /**
+         * enable CLAT even with IPv4 methods
+         *   other than 'auto' and even if the device has a native IPv4 gateway.
+         */
+        FORCE,
     }
 
 
@@ -3543,6 +3646,38 @@ export namespace NM {
     /**
      * @gir-type Enum
      */
+    export namespace WifiBand {
+        export const $gtype: GObject.GType<WifiBand>;
+    }
+
+    /**
+     * Describes a Wi-Fi radio frequency band.
+     * @gir-type Enum
+     * @since 1.58
+     */
+    enum WifiBand {
+        /**
+         * the band is unknown
+         */
+        UNKNOWN,
+        /**
+         * the 2.4 GHz band
+         */
+        "2_4_GHZ",
+        /**
+         * the 5 GHz band
+         */
+        "5_GHZ",
+        /**
+         * the 6 GHz band
+         */
+        "6_GHZ",
+    }
+
+
+    /**
+     * @gir-type Enum
+     */
     export namespace WimaxNspNetworkType {
         export const $gtype: GObject.GType<WimaxNspNetworkType>;
     }
@@ -3868,6 +4003,18 @@ export namespace NM {
     const DEVICE_GENERIC_HW_ADDRESS: string;
 
     const DEVICE_GENERIC_TYPE_DESCRIPTION: string;
+
+    const DEVICE_GENEVE_DF: string;
+
+    const DEVICE_GENEVE_DST_PORT: string;
+
+    const DEVICE_GENEVE_ID: string;
+
+    const DEVICE_GENEVE_REMOTE: string;
+
+    const DEVICE_GENEVE_TOS: string;
+
+    const DEVICE_GENEVE_TTL: string;
 
     const DEVICE_HSR_MULTICAST_SPEC: string;
 
@@ -4328,6 +4475,10 @@ export namespace NM {
     const IP_ADDRESS_ATTRIBUTE_LABEL: string;
 
     const IP_CONFIG_ADDRESSES: string;
+
+    const IP_CONFIG_CLAT_ADDRESS: string;
+
+    const IP_CONFIG_CLAT_PREF64: string;
 
     const IP_CONFIG_DOMAINS: string;
 
@@ -4967,6 +5118,20 @@ export namespace NM {
 
     const SETTING_GENERIC_SETTING_NAME: string;
 
+    const SETTING_GENEVE_DESTINATION_PORT: string;
+
+    const SETTING_GENEVE_DF: string;
+
+    const SETTING_GENEVE_ID: string;
+
+    const SETTING_GENEVE_REMOTE: string;
+
+    const SETTING_GENEVE_SETTING_NAME: string;
+
+    const SETTING_GENEVE_TOS: string;
+
+    const SETTING_GENEVE_TTL: string;
+
     const SETTING_GSM_APN: string;
 
     const SETTING_GSM_AUTO_CONFIG: string;
@@ -5056,6 +5221,8 @@ export namespace NM {
     const SETTING_INFINIBAND_SETTING_NAME: string;
 
     const SETTING_INFINIBAND_TRANSPORT_MODE: string;
+
+    const SETTING_IP4_CONFIG_CLAT: string;
 
     const SETTING_IP4_CONFIG_DHCP_CLIENT_ID: string;
 
@@ -6995,9 +7162,16 @@ export namespace NM {
     function utils_wifi_5ghz_freqs(): number;
 
     /**
+     * Utility function to return 6 GHz Wi-Fi frequencies (802.11ax/be, Wi-Fi 6E).
+     * @returns zero-terminated array of frequencies numbers (in MHz)
+     * @since 1.58
+     */
+    function utils_wifi_6ghz_freqs(): number;
+
+    /**
      * Utility function to translate a Wi-Fi channel to its corresponding frequency.
      * @param channel channel
-     * @param band frequency band for wireless ("a" or "bg")
+     * @param band frequency band for wireless ("a", "bg", "6GHz")
      * @returns the frequency represented by the channel of the band,          or -1 when the freq is invalid, or 0 when the band          is invalid
      */
     function utils_wifi_channel_to_freq(channel: number, band: string): number;
@@ -7006,10 +7180,18 @@ export namespace NM {
      * Utility function to find out next/previous Wi-Fi channel for a channel.
      * @param channel current channel
      * @param direction whether going downward (0 or less) or upward (1 or more)
-     * @param band frequency band for wireless ("a" or "bg")
+     * @param band frequency band for wireless ("a", "bg", "6GHz")
      * @returns the next channel in the specified direction or 0
      */
     function utils_wifi_find_next_channel(channel: number, direction: number, band: string): number;
+
+    /**
+     * Translates a Wi-Fi frequency to its corresponding band.
+     * @param freq frequency
+     * @returns the band containing the frequency or {@link NM.WifiBand.UNKNOWN} if the frequency does not belong to a known band.
+     * @since 1.58
+     */
+    function utils_wifi_freq_to_band(freq: number): WifiBand;
 
     /**
      * Utility function to translate a Wi-Fi frequency to its corresponding channel.
@@ -7021,7 +7203,7 @@ export namespace NM {
     /**
      * Utility function to verify Wi-Fi channel validity.
      * @param channel channel
-     * @param band frequency band for wireless ("a" or "bg")
+     * @param band frequency band for wireless ("a", "bg", "6GHz")
      * @returns `true` or `false`
      */
     function utils_wifi_is_channel_valid(channel: number, band: string): boolean;
@@ -7607,6 +7789,57 @@ export namespace NM {
          *   LLDP status. Since: 1.32.
          */
         LLDP_CLIENT_ENABLED,
+    }
+
+
+    /**
+     * @gir-type Flags
+     */
+    export namespace DeviceManagedFlags {
+        export const $gtype: GObject.GType<DeviceManagedFlags>;
+    }
+
+    /**
+     * Flags for the SetManaged() D-Bus call of a device and `nm_device_set_managed_async()`.
+     * 
+     * {@link NM.DeviceManagedFlags.PERMANENT_BY_NAME} and {@link NM.DeviceManagedFlags.PERMANENT_BY_MAC}
+     * are mutually exclusive, and they only make sense together with {@link NM.DeviceManagedFlags.PERMANENT}.
+     * If none is set, the matching criteria is selected automatically.
+     * @gir-type Flags
+     * @since 1.58
+     */
+    enum DeviceManagedFlags {
+        /**
+         * no flag set.
+         */
+        NONE,
+        /**
+         * to set the device managed state to the runtime value.
+         */
+        RUNTIME,
+        /**
+         * to set the device managed state to the permanent (on disk) value.
+         */
+        PERMANENT,
+        /**
+         * to match the device by name, not by MAC address.
+         */
+        PERMANENT_BY_NAME,
+        /**
+         * to match the device by MAC address, not by name.
+         */
+        PERMANENT_BY_MAC,
+        /**
+         * to set the administrative state of the
+         *   device to up if the managed state is {@link NM.DeviceManaged.YES}, and down if the managed state
+         *   is {@link NM.DeviceManaged.NO}. If the flag is not set, the administrative state is not changed.
+         *   The flag is ignored for {@link NM.DeviceManaged.RESET}.
+         */
+        SET_ADMIN_STATE,
+        /**
+         * all flags.
+         */
+        ALL,
     }
 
 
@@ -9338,7 +9571,7 @@ export namespace NM {
          * deprecated `nm_active_connection_get_master()` method.
          * @returns the controller {@link NM.Device} of the {@link NM.ActiveConnection}.
          */
-        get_controller(): null;
+        get_controller(): Device;
 
         /**
          * Whether the active connection is the default IPv4 one (that is, is used for
@@ -9396,7 +9629,7 @@ export namespace NM {
          * Gets the controller {@link NM.Device} of the connection.
          * @returns the controller {@link NM.Device} of the {@link NM.ActiveConnection}.
          */
-        get_master(): null;
+        get_master(): Device;
 
         /**
          * Gets the path of the "specific object" used at activation.
@@ -12866,6 +13099,45 @@ export namespace NM {
          * @param managed `true` to make the device managed by NetworkManager.
          */
         set_managed(managed: boolean): void;
+
+        /**
+         * Asynchronously begins setting the managed state of the device. With the flags
+         * argument different behaviors can be achieved, such as persisting the state to
+         * disk or matching the device by MAC address.
+         * @param managed the managed state
+         * @param flags the flags argument. See {@link NM.DeviceManagedFlags}.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         */
+        set_managed_async(managed: DeviceManaged, flags: DeviceManagedFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+
+        /**
+         * Asynchronously begins setting the managed state of the device. With the flags
+         * argument different behaviors can be achieved, such as persisting the state to
+         * disk or matching the device by MAC address.
+         * @param managed the managed state
+         * @param flags the flags argument. See {@link NM.DeviceManagedFlags}.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the set_managed operation completes
+         */
+        set_managed_async(managed: DeviceManaged, flags: DeviceManagedFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously begins setting the managed state of the device. With the flags
+         * argument different behaviors can be achieved, such as persisting the state to
+         * disk or matching the device by MAC address.
+         * @param managed the managed state
+         * @param flags the flags argument. See {@link NM.DeviceManagedFlags}.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the set_managed operation completes
+         */
+        set_managed_async(managed: DeviceManaged, flags: DeviceManagedFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * Gets the result of a call to `nm_device_set_managed_async()`.
+         * @param result the result passed to the {@link Gio.AsyncReadyCallback}
+         * @returns `true` on success, `false` on error, in which case `error` will be set.
+         */
+        set_managed_finish(result: Gio.AsyncResult): boolean;
     }
 
 
@@ -13740,6 +14012,189 @@ export namespace NM {
         /** @signal */
         emit<K extends keyof DeviceGeneric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+    }
+
+
+    namespace DeviceGeneve {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {
+            "notify::df": (pspec: GObject.ParamSpec) => void;
+            "notify::dst-port": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::remote": (pspec: GObject.ParamSpec) => void;
+            "notify::tos": (pspec: GObject.ParamSpec) => void;
+            "notify::ttl": (pspec: GObject.ParamSpec) => void;
+            "notify::active-connection": (pspec: GObject.ParamSpec) => void;
+            "notify::autoconnect": (pspec: GObject.ParamSpec) => void;
+            "notify::available-connections": (pspec: GObject.ParamSpec) => void;
+            "notify::capabilities": (pspec: GObject.ParamSpec) => void;
+            "notify::device-type": (pspec: GObject.ParamSpec) => void;
+            "notify::dhcp4-config": (pspec: GObject.ParamSpec) => void;
+            "notify::dhcp6-config": (pspec: GObject.ParamSpec) => void;
+            "notify::driver": (pspec: GObject.ParamSpec) => void;
+            "notify::driver-version": (pspec: GObject.ParamSpec) => void;
+            "notify::firmware-missing": (pspec: GObject.ParamSpec) => void;
+            "notify::firmware-version": (pspec: GObject.ParamSpec) => void;
+            "notify::hw-address": (pspec: GObject.ParamSpec) => void;
+            "notify::interface": (pspec: GObject.ParamSpec) => void;
+            "notify::interface-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::ip-interface": (pspec: GObject.ParamSpec) => void;
+            "notify::ip4-config": (pspec: GObject.ParamSpec) => void;
+            "notify::ip4-connectivity": (pspec: GObject.ParamSpec) => void;
+            "notify::ip6-config": (pspec: GObject.ParamSpec) => void;
+            "notify::ip6-connectivity": (pspec: GObject.ParamSpec) => void;
+            "notify::lldp-neighbors": (pspec: GObject.ParamSpec) => void;
+            "notify::managed": (pspec: GObject.ParamSpec) => void;
+            "notify::metered": (pspec: GObject.ParamSpec) => void;
+            "notify::mtu": (pspec: GObject.ParamSpec) => void;
+            "notify::nm-plugin-missing": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::physical-port-id": (pspec: GObject.ParamSpec) => void;
+            "notify::ports": (pspec: GObject.ParamSpec) => void;
+            "notify::product": (pspec: GObject.ParamSpec) => void;
+            "notify::real": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::state-reason": (pspec: GObject.ParamSpec) => void;
+            "notify::udi": (pspec: GObject.ParamSpec) => void;
+            "notify::vendor": (pspec: GObject.ParamSpec) => void;
+            "notify::client": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Device.ConstructorProps {
+            df: number;
+            dst_port: number;
+            dstPort: number;
+            id: number;
+            remote: string;
+            tos: number;
+            ttl: number;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     * @since 1.58
+     */
+    class DeviceGeneve extends Device {
+        static $gtype: GObject.GType<DeviceGeneve>;
+
+        // Properties
+        /**
+         * The Don't Fragment (DF) bit to set in outgoing packets.
+         * @since 1.58
+         * @read-only
+         * @default 0
+         */
+        get df(): number;
+
+        /**
+         * The UDP destination port used to communicate with the remote GENEVE tunnel
+         * endpoint.
+         * @since 1.58
+         * @read-only
+         * @default 0
+         */
+        get dst_port(): number;
+
+        /**
+         * The UDP destination port used to communicate with the remote GENEVE tunnel
+         * endpoint.
+         * @since 1.58
+         * @read-only
+         * @default 0
+         */
+        get dstPort(): number;
+
+        /**
+         * The device's GENEVE ID.
+         * @since 1.58
+         * @read-only
+         * @default 0
+         */
+        get id(): number;
+
+        /**
+         * The IP address of the remote tunnel endpoint.
+         * @since 1.58
+         * @read-only
+         * @default null
+         */
+        get remote(): string;
+
+        /**
+         * The TOS value to use in outgoing packets.
+         * @since 1.58
+         * @read-only
+         * @default 0
+         */
+        get tos(): number;
+
+        /**
+         * The time-to-live value to use in outgoing packets.
+         * @since 1.58
+         * @read-only
+         * @default 0
+         */
+        get ttl(): number;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: DeviceGeneve.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<DeviceGeneve.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof DeviceGeneve.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceGeneve.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof DeviceGeneve.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceGeneve.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof DeviceGeneve.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceGeneve.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the Don't Fragment (DF) bit to set in outgoing packets
+         */
+        get_df(): number;
+
+        /**
+         * @returns the UDP destination port
+         */
+        get_dst_port(): number;
+
+        /**
+         * @returns the device's GENEVE ID.
+         */
+        get_id(): number;
+
+        /**
+         * @returns the IP address of the remote tunnel endpoint
+         */
+        get_remote(): string;
+
+        /**
+         * @returns the TOS value to use in outgoing packets
+         */
+        get_tos(): number;
+
+        /**
+         * @returns the time-to-live value to use in outgoing packets
+         */
+        get_ttl(): number;
     }
 
 
@@ -17903,6 +18358,8 @@ export namespace NM {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             "notify::addresses": (pspec: GObject.ParamSpec) => void;
+            "notify::clat-address": (pspec: GObject.ParamSpec) => void;
+            "notify::clat-pref64": (pspec: GObject.ParamSpec) => void;
             "notify::domains": (pspec: GObject.ParamSpec) => void;
             "notify::family": (pspec: GObject.ParamSpec) => void;
             "notify::gateway": (pspec: GObject.ParamSpec) => void;
@@ -17917,6 +18374,10 @@ export namespace NM {
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
             addresses: never[];
+            clat_address: string;
+            clatAddress: string;
+            clat_pref64: string;
+            clatPref64: string;
             domains: string[];
             family: number;
             gateway: string;
@@ -17940,6 +18401,38 @@ export namespace NM {
          * @read-only
          */
         get addresses(): null[];
+
+        /**
+         * The IP address used by CLAT.
+         * @since 1.58
+         * @read-only
+         * @default null
+         */
+        get clat_address(): string;
+
+        /**
+         * The IP address used by CLAT.
+         * @since 1.58
+         * @read-only
+         * @default null
+         */
+        get clatAddress(): string;
+
+        /**
+         * The NAT64 prefix used by CLAT.
+         * @since 1.58
+         * @read-only
+         * @default null
+         */
+        get clat_pref64(): string;
+
+        /**
+         * The NAT64 prefix used by CLAT.
+         * @since 1.58
+         * @read-only
+         * @default null
+         */
+        get clatPref64(): string;
 
         /**
          * The array containing domain strings of the configuration.
@@ -18027,6 +18520,18 @@ export namespace NM {
          * @returns the {@link GLib.PtrArray} containing {@link NM.IPAddress}<!-- -->es.  This is the internal copy used by the configuration and must not be modified. The library never modifies the returned array and thus it is safe for callers to reference and keep using it.
          */
         get_addresses(): IPAddress[];
+
+        /**
+         * Gets the CLAT IP address.
+         * @returns the CLAT IP address.
+         */
+        get_clat_address(): string;
+
+        /**
+         * Gets the NAT64 prefix used by CLAT.
+         * @returns the NAT64 prefix.
+         */
+        get_clat_pref64(): string;
 
         /**
          * Gets the domain names.
@@ -18151,7 +18656,7 @@ export namespace NM {
          * object is still alive.
          * @returns the {@link NM.Client} cache in which the object can be found, or `null` if the object is no longer cached.
          */
-        get_client(): null;
+        get_client(): Client;
 
         /**
          * Gets the DBus path of the {@link NM.Object}.
@@ -18666,6 +19171,12 @@ export namespace NM {
          * @returns an {@link NM.SettingGeneric} if the connection contains one, otherwise NULL
          */
         get_setting_generic(): SettingGeneric;
+
+        /**
+         * A shortcut to return any {@link NM.SettingGeneve} the connection might contain.
+         * @returns an {@link NM.SettingGeneve} if the connection contains one, otherwise NULL
+         */
+        get_setting_geneve(): SettingGeneve;
 
         /**
          * A shortcut to return any {@link NM.SettingGsm} the connection might contain.
@@ -23688,9 +24199,8 @@ export namespace NM {
         /**
          * The number of retries for the authentication. Zero means to try indefinitely; -1 means
          * to use a global default. If the global default is not set, the authentication
-         * retries for 3 times before failing the connection.
-         * 
-         * Currently, this only applies to 802-1x authentication.
+         * retries for 3 times before failing the connection. Connections using a pre-shared key
+         * to authenticate will only prompt for a new key during the last authentication attempt.
          * @since 1.10
          * @default -1
          */
@@ -23700,9 +24210,8 @@ export namespace NM {
         /**
          * The number of retries for the authentication. Zero means to try indefinitely; -1 means
          * to use a global default. If the global default is not set, the authentication
-         * retries for 3 times before failing the connection.
-         * 
-         * Currently, this only applies to 802-1x authentication.
+         * retries for 3 times before failing the connection. Connections using a pre-shared key
+         * to authenticate will only prompt for a new key during the last authentication attempt.
          * @since 1.10
          * @default -1
          */
@@ -25628,6 +26137,167 @@ export namespace NM {
     }
 
 
+    namespace SettingGeneve {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {
+            "notify::destination-port": (pspec: GObject.ParamSpec) => void;
+            "notify::df": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::remote": (pspec: GObject.ParamSpec) => void;
+            "notify::tos": (pspec: GObject.ParamSpec) => void;
+            "notify::ttl": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+        interface ConstructorProps extends Setting.ConstructorProps {
+            destination_port: number;
+            destinationPort: number;
+            df: number;
+            id: number;
+            remote: string;
+            tos: number;
+            ttl: number;
+        }
+    }
+
+    /**
+     * GENEVE Settings
+     * @gir-type Class
+     */
+    class SettingGeneve extends Setting {
+        static $gtype: GObject.GType<SettingGeneve>;
+
+        // Properties
+        /**
+         * Specifies the UDP destination port to communicate to the remote GENEVE
+         * tunnel endpoint.
+         * @since 1.58
+         * @default 6081
+         */
+        get destination_port(): number;
+        set destination_port(val: number);
+
+        /**
+         * Specifies the UDP destination port to communicate to the remote GENEVE
+         * tunnel endpoint.
+         * @since 1.58
+         * @default 6081
+         */
+        get destinationPort(): number;
+        set destinationPort(val: number);
+
+        /**
+         * Specifies how the Don't Fragment (DF) flag should be handled in the outer IP
+         * header of GENEVE tunnel packets.
+         * 
+         * {@link NM.SettingGeneveDf.UNSET} (0): Don't set the DF flag, packets may be fragmented.
+         * {@link NM.SettingGeneveDf.SET} (1): Always set the DF flag, packets will not be fragmented.
+         * {@link NM.SettingGeneveDf.INHERIT} (2): Inherit the DF flag from the inner IP header.
+         * @since 1.58
+         * @default 0
+         */
+        get df(): number;
+        set df(val: number);
+
+        /**
+         * Specifies the GENEVE Network Identifier (or GENEVE Segment Identifier) to
+         * use.
+         * @since 1.58
+         * @default 0
+         */
+        get id(): number;
+        set id(val: number);
+
+        /**
+         * Specifies the unicast destination IP address to use in outgoing packets
+         * when communicating with the remote GENEVE tunnel endpoint.
+         * @since 1.58
+         * @default null
+         */
+        get remote(): string;
+        set remote(val: string);
+
+        /**
+         * Specifies the TOS value to use in outgoing packets.
+         * The special value "inherit" (1) means inherit from outer packet.
+         * @since 1.58
+         * @default 0
+         */
+        get tos(): number;
+        set tos(val: number);
+
+        /**
+         * Specifies the time-to-live value to use in outgoing packets.
+         * The special value "inherit" (-1) means inherit from outer packet, 0 means auto, 1-255 are fixed values.
+         * @since 1.58
+         * @default 0
+         */
+        get ttl(): number;
+        set ttl(val: number);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: SettingGeneve.SignalSignatures;
+
+        // Constructors
+        constructor(properties?: Partial<SettingGeneve.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ["new"](): SettingGeneve;
+
+        // Signals
+        /** @signal */
+        connect<K extends keyof SettingGeneve.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingGeneve.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        connect_after<K extends keyof SettingGeneve.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingGeneve.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+
+        /** @signal */
+        emit<K extends keyof SettingGeneve.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingGeneve.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+        /**
+         * @returns the {@link NM.SettingGeneve.destination_port} property of the setting
+         */
+        get_destination_port(): number;
+
+        /**
+         * @returns the {@link NM.SettingGeneve.df} property of the setting
+         */
+        get_df(): SettingGeneveDf;
+
+        /**
+         * @returns the {@link NM.SettingGeneve.id} property of the setting
+         */
+        get_id(): number;
+
+        /**
+         * @returns the {@link NM.SettingGeneve.remote} property of the setting
+         */
+        get_remote(): string;
+
+        /**
+         * @returns the {@link NM.SettingGeneve.tos} property of the setting
+         */
+        get_tos(): number;
+
+        /**
+         * @returns the {@link NM.SettingGeneve.ttl} property of the setting
+         */
+        get_ttl(): number;
+    }
+
+
     namespace SettingGsm {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
@@ -26695,6 +27365,7 @@ export namespace NM {
     namespace SettingIP4Config {
         // Signal signatures
         interface SignalSignatures extends SettingIPConfig.SignalSignatures {
+            "notify::clat": (pspec: GObject.ParamSpec) => void;
             "notify::dhcp-client-id": (pspec: GObject.ParamSpec) => void;
             "notify::dhcp-fqdn": (pspec: GObject.ParamSpec) => void;
             "notify::dhcp-ipv6-only-preferred": (pspec: GObject.ParamSpec) => void;
@@ -26736,6 +27407,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends SettingIPConfig.ConstructorProps {
+            clat: number;
             dhcp_client_id: string;
             dhcpClientId: string;
             dhcp_fqdn: string;
@@ -26757,6 +27429,29 @@ export namespace NM {
         static $gtype: GObject.GType<SettingIP4Config>;
 
         // Properties
+        /**
+         * Controls the CLAT (Customer-side translator) functionality. CLAT is used to implement the
+         * client part of 464XLAT (RFC 6877), an architecture that provides IPv4 connectivity to hosts
+         * on IPv6-only networks.
+         * 
+         * When CLAT is enabled, NetworkManager discovers the NAT64 prefix from IPv6 Router Advertisements;
+         * if a NAT64 prefix is announced, NetworkManager installs a BPF program to perform the stateless
+         * translation of packets between IPv4 and IPv6.
+         * 
+         * Setting {@link NM.SettingIp4ConfigClat.NO} completely disables CLAT. {@link NM.SettingIp4ConfigClat.AUTO}
+         * enables CLAT only when the IPv4 method is 'auto' and the device doesn't have a native IPv4 gateway.
+         * {@link NM.SettingIp4ConfigClat.FORCE} enables CLAT even if the IPv4 method is not 'auto' and even if
+         * the device has a native IPv4 gateway.
+         * 
+         * When set to {@link NM.SettingIp4ConfigClat.DEFAULT}, the actual value is looked up in the global
+         * configuration; if not specified it defaults to {@link NM.SettingIp4ConfigClat.NO}. In the future the
+         * default fall back value will change to {@link NM.SettingIp4ConfigClat.AUTO}.
+         * @since 1.58
+         * @default -1
+         */
+        get clat(): number;
+        set clat(val: number);
+
         /**
          * A string sent to the DHCP server to identify the local machine which the
          * DHCP server may use to customize the DHCP lease and options.
@@ -26789,10 +27484,7 @@ export namespace NM {
          * this is normally not recommended.
          * 
          * If unset, a globally configured default from NetworkManager.conf is
-         * used. If still unset, the default depends on the DHCP plugin. The
-         * internal dhcp client will default to "mac" and the dhclient plugin will
-         * try to use one from its config file if present, or won't sent any
-         * client-id otherwise.
+         * used. If still unset, internal dhcp client will default to "mac".
          * @default null
          */
         get dhcp_client_id(): string;
@@ -26830,10 +27522,7 @@ export namespace NM {
          * this is normally not recommended.
          * 
          * If unset, a globally configured default from NetworkManager.conf is
-         * used. If still unset, the default depends on the DHCP plugin. The
-         * internal dhcp client will default to "mac" and the dhclient plugin will
-         * try to use one from its config file if present, or won't sent any
-         * client-id otherwise.
+         * used. If still unset, internal dhcp client will default to "mac".
          * @default null
          */
         get dhcpClientId(): string;
@@ -26862,18 +27551,25 @@ export namespace NM {
         set dhcpFqdn(val: string);
 
         /**
-         * Controls the "IPv6-Only Preferred" DHCPv4 option (RFC 8925).
+         * Controls the "IPv6-Only Preferred" DHCPv4 option (option 108 - RFC 8925).
          * 
          * When set to {@link NM.SettingIP4DhcpIpv6OnlyPreferred.YES}, the host adds the
          * option to the parameter request list; if the DHCP server sends the option back,
          * the host stops the DHCP client for the time interval specified in the option.
          * 
          * Enable this feature if the host supports an IPv6-only mode, i.e. either all
-         * applications are IPv6-only capable or there is a form of 464XLAT deployed.
+         * applications are IPv6-only capable or there is a form of CLAT (464XLAT)
+         * deployed.
+         * 
+         * If set to {@link NM.SettingIP4DhcpIpv6OnlyPreferred.AUTO}, the option is
+         * automatically turned on when the IPv6 method is "auto" and the connection
+         * profile has ipv4.clat set to "yes" or "auto". If these two conditions are
+         * met, the host can operate in IPv6-only mode and therefore it is safe to
+         * disable DHCPv4 when the network also supports it.
          * 
          * When set to {@link NM.SettingIP4DhcpIpv6OnlyPreferred.DEFAULT}, the actual value
          * is looked up in the global configuration; if not specified, it defaults to
-         * {@link NM.SettingIP4DhcpIpv6OnlyPreferred.NO}.
+         * {@link NM.SettingIP4DhcpIpv6OnlyPreferred.AUTO}.
          * 
          * If the connection has IPv6 method set to "disabled", this property does not
          * have effect and the "IPv6-Only Preferred" option is always disabled.
@@ -26884,18 +27580,25 @@ export namespace NM {
         set dhcp_ipv6_only_preferred(val: number);
 
         /**
-         * Controls the "IPv6-Only Preferred" DHCPv4 option (RFC 8925).
+         * Controls the "IPv6-Only Preferred" DHCPv4 option (option 108 - RFC 8925).
          * 
          * When set to {@link NM.SettingIP4DhcpIpv6OnlyPreferred.YES}, the host adds the
          * option to the parameter request list; if the DHCP server sends the option back,
          * the host stops the DHCP client for the time interval specified in the option.
          * 
          * Enable this feature if the host supports an IPv6-only mode, i.e. either all
-         * applications are IPv6-only capable or there is a form of 464XLAT deployed.
+         * applications are IPv6-only capable or there is a form of CLAT (464XLAT)
+         * deployed.
+         * 
+         * If set to {@link NM.SettingIP4DhcpIpv6OnlyPreferred.AUTO}, the option is
+         * automatically turned on when the IPv6 method is "auto" and the connection
+         * profile has ipv4.clat set to "yes" or "auto". If these two conditions are
+         * met, the host can operate in IPv6-only mode and therefore it is safe to
+         * disable DHCPv4 when the network also supports it.
          * 
          * When set to {@link NM.SettingIP4DhcpIpv6OnlyPreferred.DEFAULT}, the actual value
          * is looked up in the global configuration; if not specified, it defaults to
-         * {@link NM.SettingIP4DhcpIpv6OnlyPreferred.NO}.
+         * {@link NM.SettingIP4DhcpIpv6OnlyPreferred.AUTO}.
          * 
          * If the connection has IPv6 method set to "disabled", this property does not
          * have effect and the "IPv6-Only Preferred" option is always disabled.
@@ -26997,6 +27700,12 @@ export namespace NM {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Returns the value in the {@link NM.SettingIP4Config.clat} property.
+         * @returns the CLAT property value
+         */
+        get_clat(): SettingIp4ConfigClat;
+
         /**
          * Returns the value contained in the {@link NM.SettingIP4Config.dhcp_client_id}
          * property.
@@ -27211,11 +27920,9 @@ export namespace NM {
          * DUID and filled as an opaque value in the Client Identifier option.
          * 
          * The special value "lease" will retrieve the DUID previously used from the
-         * lease file belonging to the connection. If no DUID is found and "dhclient"
-         * is the configured dhcp client, the DUID is searched in the system-wide
-         * dhclient lease file. If still no DUID is found, or another dhcp client is
-         * used, a global and permanent DUID-UUID (RFC 6355) will be generated based
-         * on the machine-id.
+         * lease file belonging to the connection. If no DUID is found, a global
+         * and permanent DUID-UUID (RFC 6355) will be generated based on the
+         * machine-id.
          * 
          * The special values "llt" and "ll" will generate a DUID of type LLT or LL
          * (see RFC 3315) based on the current MAC address of the device. In order to
@@ -27247,11 +27954,9 @@ export namespace NM {
          * DUID and filled as an opaque value in the Client Identifier option.
          * 
          * The special value "lease" will retrieve the DUID previously used from the
-         * lease file belonging to the connection. If no DUID is found and "dhclient"
-         * is the configured dhcp client, the DUID is searched in the system-wide
-         * dhclient lease file. If still no DUID is found, or another dhcp client is
-         * used, a global and permanent DUID-UUID (RFC 6355) will be generated based
-         * on the machine-id.
+         * lease file belonging to the connection. If no DUID is found, a global
+         * and permanent DUID-UUID (RFC 6355) will be generated based on the
+         * machine-id.
          * 
          * The special values "llt" and "ll" will generate a DUID of type LLT or LL
          * (see RFC 3315) based on the current MAC address of the device. In order to
@@ -27673,7 +28378,7 @@ export namespace NM {
          * activation will fail. The property is currently implemented only for IPv4.
          * 
          * A zero value means that no duplicate address detection is performed, -1 means
-         * the default value (either the value configured globally in NetworkManger.conf
+         * the default value (either the value configured globally in NetworkManager.conf
          * or 200ms).  A value greater than zero is a timeout in milliseconds.  Note that
          * the time intervals are subject to randomization as per RFC 5227 and so the
          * actual duration can be between half and the full time specified in this
@@ -27690,7 +28395,7 @@ export namespace NM {
          * activation will fail. The property is currently implemented only for IPv4.
          * 
          * A zero value means that no duplicate address detection is performed, -1 means
-         * the default value (either the value configured globally in NetworkManger.conf
+         * the default value (either the value configured globally in NetworkManager.conf
          * or 200ms).  A value greater than zero is a timeout in milliseconds.  Note that
          * the time intervals are subject to randomization as per RFC 5227 and so the
          * actual duration can be between half and the full time specified in this
@@ -27817,8 +28522,7 @@ export namespace NM {
          * values "duid" and "ipv6-duid" to generate the client-id.
          * 
          * For DHCPv6, note that at the moment this property is
-         * only supported by the "internal" DHCPv6 plugin. The "dhclient" DHCPv6
-         * plugin always derives the IAID from the MAC address.
+         * only supported by the "internal" DHCPv6 plugin.
          * 
          * The actually used DHCPv6 IAID for a currently activated interface is
          * exposed in the lease information of the device.
@@ -27846,8 +28550,7 @@ export namespace NM {
          * values "duid" and "ipv6-duid" to generate the client-id.
          * 
          * For DHCPv6, note that at the moment this property is
-         * only supported by the "internal" DHCPv6 plugin. The "dhclient" DHCPv6
-         * plugin always derives the IAID from the MAC address.
+         * only supported by the "internal" DHCPv6 plugin.
          * 
          * The actually used DHCPv6 IAID for a currently activated interface is
          * exposed in the lease information of the device.
@@ -28382,7 +29085,7 @@ export namespace NM {
          * This property is useful for example if both IPv4 and IPv6 are enabled and
          * are allowed to fail. Normally the connection succeeds as soon as one of
          * the two address families completes; by setting a required timeout for
-         * e.g. IPv4, one can ensure that even if IP6 succeeds earlier than IPv4,
+         * e.g. IPv4, one can ensure that even if IPv6 succeeds earlier than IPv4,
          * NetworkManager waits some time for IPv4 before the connection becomes
          * active.
          * 
@@ -28406,7 +29109,7 @@ export namespace NM {
          * This property is useful for example if both IPv4 and IPv6 are enabled and
          * are allowed to fail. Normally the connection succeeds as soon as one of
          * the two address families completes; by setting a required timeout for
-         * e.g. IPv4, one can ensure that even if IP6 succeeds earlier than IPv4,
+         * e.g. IPv4, one can ensure that even if IPv6 succeeds earlier than IPv4,
          * NetworkManager waits some time for IPv4 before the connection becomes
          * active.
          * 
@@ -36527,12 +37230,13 @@ export namespace NM {
         set apIsolation(val: Ternary);
 
         /**
-         * 802.11 frequency band of the network.  One of "a" for 5GHz 802.11a or
-         * "bg" for 2.4GHz 802.11.  This will lock associations to the Wi-Fi network
-         * to the specific band, i.e. if "a" is specified, the device will not
-         * associate with the same network in the 2.4GHz band even if the network's
-         * settings are compatible.  This setting depends on specific driver
-         * capability and may not work with all drivers.
+         * 802.11 frequency band of the network.  One of "a" for 5GHz,
+         * "bg" for 2.4GHz or "6GHz".  This will lock associations to the
+         * Wi-Fi network to the specific band, i.e. if "a" is specified,
+         * the device will not associate with the same network in the
+         * 2.4GHz (bg) or 6GHz bands even if the network's settings are
+         * compatible.  This setting depends on specific driver capability
+         * and may not work with all drivers.
          * @default null
          */
         get band(): string;
@@ -38200,6 +38904,12 @@ export namespace NM {
          * @returns an {@link NM.SettingGeneric} if the connection contains one, otherwise NULL
          */
         get_setting_generic(): SettingGeneric;
+
+        /**
+         * A shortcut to return any {@link NM.SettingGeneve} the connection might contain.
+         * @returns an {@link NM.SettingGeneve} if the connection contains one, otherwise NULL
+         */
+        get_setting_geneve(): SettingGeneve;
 
         /**
          * A shortcut to return any {@link NM.SettingGsm} the connection might contain.
@@ -40234,6 +40944,11 @@ export namespace NM {
     /**
      * @gir-type Alias
      */
+    type DeviceGeneveClass = typeof DeviceGeneve;
+
+    /**
+     * @gir-type Alias
+     */
     type DeviceHsrClass = typeof DeviceHsr;
 
     /**
@@ -41237,6 +41952,11 @@ export namespace NM {
      * @gir-type Alias
      */
     type SettingGenericClass = typeof SettingGeneric;
+
+    /**
+     * @gir-type Alias
+     */
+    type SettingGeneveClass = typeof SettingGeneve;
 
     /**
      * @gir-type Alias
@@ -42343,6 +43063,12 @@ export namespace NM {
          * @returns an {@link NM.SettingGeneric} if the connection contains one, otherwise NULL
          */
         get_setting_generic(): SettingGeneric;
+
+        /**
+         * A shortcut to return any {@link NM.SettingGeneve} the connection might contain.
+         * @returns an {@link NM.SettingGeneve} if the connection contains one, otherwise NULL
+         */
+        get_setting_geneve(): SettingGeneve;
 
         /**
          * A shortcut to return any {@link NM.SettingGsm} the connection might contain.

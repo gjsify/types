@@ -1829,12 +1829,6 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * @param response_id 
          */
         add_button(button_text: string, response_id: number): Gtk.Widget;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Gtk.Dialog.add_button
-        add_button(...args: never[]): any;
     }
 
 

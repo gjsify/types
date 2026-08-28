@@ -9,7 +9,7 @@
 export const SURFACE_PROVENANCE = 'Adw-1 — library 1.10.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap';
 
 export const OWN_PROPS = {
-    AdwAboutDialog: ['appdata-resource-path', 'application-icon', 'application-name', 'artists', 'comments', 'copyright', 'debug-info', 'debug-info-filename', 'designers', 'developer-name', 'developers', 'documenters', 'issue-url', 'license', 'license-type', 'release-notes', 'release-notes-version', 'support-url', 'translator-credits', 'version', 'website'],
+    AdwAboutDialog: ['appdata-resource-path', 'application-icon', 'application-name', 'artists', 'comments', 'copyright', 'debug-info', 'debug-info-filename', 'designers', 'developer-name', 'developers', 'documenters', 'issue-url', 'license', 'license-type', 'other-apps-title', 'release-notes', 'release-notes-version', 'support-url', 'translator-credits', 'version', 'website'],
     AdwAboutWindow: ['application-icon', 'application-name', 'artists', 'comments', 'copyright', 'debug-info', 'debug-info-filename', 'designers', 'developer-name', 'developers', 'documenters', 'issue-url', 'license', 'license-type', 'release-notes', 'release-notes-version', 'support-url', 'translator-credits', 'version', 'website'],
     AdwActionRow: ['activatable-widget', 'icon-name', 'subtitle', 'subtitle-lines', 'subtitle-selectable', 'title-lines'],
     AdwAlertDialog: ['body', 'body-use-markup', 'close-response', 'default-response', 'extra-child', 'heading', 'heading-use-markup', 'prefer-wide-layout'],
@@ -47,7 +47,7 @@ export const OWN_PROPS = {
     AdwPreferencesRow: ['title', 'title-selectable', 'use-markup', 'use-underline'],
     AdwPreferencesWindow: ['can-navigate-back', 'search-enabled', 'visible-page', 'visible-page-name'],
     AdwShortcutLabel: ['accelerator', 'disabled-text'],
-    AdwSidebar: ['drop-preload', 'filter', 'menu-model', 'mode', 'placeholder', 'selected'],
+    AdwSidebar: ['drop-preload', 'filter', 'menu-model', 'mode', 'placeholder', 'prefix', 'selected', 'suffix'],
     AdwSpinRow: ['adjustment', 'climb-rate', 'digits', 'numeric', 'snap-to-ticks', 'update-policy', 'value', 'wrap'],
     AdwSplitButton: ['can-shrink', 'child', 'direction', 'dropdown-tooltip', 'icon-name', 'label', 'menu-model', 'popover', 'use-underline'],
     AdwSqueezer: ['allow-none', 'homogeneous', 'interpolate-size', 'switch-threshold-policy', 'transition-duration', 'transition-type', 'xalign', 'yalign'],
@@ -63,7 +63,7 @@ export const OWN_PROPS = {
     AdwViewStack: ['enable-transitions', 'hhomogeneous', 'transition-duration', 'vhomogeneous', 'visible-child', 'visible-child-name'],
     AdwViewSwitcher: ['policy', 'stack'],
     AdwViewSwitcherBar: ['reveal', 'stack'],
-    AdwViewSwitcherSidebar: ['filter', 'mode', 'placeholder', 'stack'],
+    AdwViewSwitcherSidebar: ['filter', 'mode', 'placeholder', 'prefix', 'stack', 'suffix'],
     AdwViewSwitcherTitle: ['stack', 'subtitle', 'title', 'view-switcher-enabled'],
     AdwWindow: ['adaptive-preview', 'content'],
     AdwWindowTitle: ['subtitle', 'title'],
@@ -281,6 +281,8 @@ export const SLOT_CANDIDATES = {
     },
     AdwSidebar: {
         'placeholder': 'set_placeholder',
+        'prefix': 'set_prefix',
+        'suffix': 'set_suffix',
     },
     AdwSplitButton: {
         'child': 'set_child',
@@ -320,7 +322,9 @@ export const SLOT_CANDIDATES = {
     },
     AdwViewSwitcherSidebar: {
         'placeholder': 'set_placeholder',
+        'prefix': 'set_prefix',
         'stack': 'set_stack',
+        'suffix': 'set_suffix',
     },
     AdwViewSwitcherTitle: {
         'stack': 'set_stack',
@@ -346,6 +350,7 @@ export const SINCE = {
     'AdwAboutDialog.issue-url': '1.5',
     'AdwAboutDialog.license': '1.5',
     'AdwAboutDialog.license-type': '1.5',
+    'AdwAboutDialog.other-apps-title': '1.10',
     'AdwAboutDialog.release-notes': '1.5',
     'AdwAboutDialog.release-notes-version': '1.5',
     'AdwAboutDialog.support-url': '1.5',
@@ -487,7 +492,9 @@ export const SINCE = {
     'AdwSidebar.menu-model': '1.9',
     'AdwSidebar.mode': '1.9',
     'AdwSidebar.placeholder': '1.9',
+    'AdwSidebar.prefix': '1.10',
     'AdwSidebar.selected': '1.9',
+    'AdwSidebar.suffix': '1.10',
     'AdwSpinRow.adjustment': '1.4',
     'AdwSpinRow.climb-rate': '1.4',
     'AdwSpinRow.digits': '1.4',
@@ -528,7 +535,9 @@ export const SINCE = {
     'AdwViewSwitcherSidebar.filter': '1.9',
     'AdwViewSwitcherSidebar.mode': '1.9',
     'AdwViewSwitcherSidebar.placeholder': '1.9',
+    'AdwViewSwitcherSidebar.prefix': '1.10',
     'AdwViewSwitcherSidebar.stack': '1.9',
+    'AdwViewSwitcherSidebar.suffix': '1.10',
     'AdwWindow.adaptive-preview': '1.7',
     'AdwWrapBox.align': '1.7',
     'AdwWrapBox.child-spacing': '1.7',

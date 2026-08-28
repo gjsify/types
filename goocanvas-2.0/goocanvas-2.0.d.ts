@@ -769,22 +769,33 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<Canvas>;
 
         // Properties
+        /**
+         * @default GooCanvas.CanvasAnchorType.NORTH_WEST
+         */
         get anchor(): CanvasAnchorType;
         set anchor(val: CanvasAnchorType);
 
+        /**
+         * @default false
+         */
         get automatic_bounds(): boolean;
         set automatic_bounds(val: boolean);
 
+        /**
+         * @default false
+         */
         get automaticBounds(): boolean;
         set automaticBounds(val: boolean);
 
         /**
          * @write-only
+         * @default null
          */
         set background_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set backgroundColor(val: string);
 
@@ -804,83 +815,157 @@ export namespace GooCanvas {
 
         /**
          * @write-only
+         * @default 0
          */
         set background_color_rgb(val: number);
 
         /**
          * @write-only
+         * @default 0
          */
         set backgroundColorRgb(val: number);
 
+        /**
+         * @default true
+         */
         get bounds_from_origin(): boolean;
         set bounds_from_origin(val: boolean);
 
+        /**
+         * @default true
+         */
         get boundsFromOrigin(): boolean;
         set boundsFromOrigin(val: boolean);
 
+        /**
+         * @default 0
+         */
         get bounds_padding(): number;
         set bounds_padding(val: number);
 
+        /**
+         * @default 0
+         */
         get boundsPadding(): number;
         set boundsPadding(val: number);
 
+        /**
+         * @default true
+         */
         get clear_background(): boolean;
         set clear_background(val: boolean);
 
+        /**
+         * @default true
+         */
         get clearBackground(): boolean;
         set clearBackground(val: boolean);
 
+        /**
+         * @default false
+         */
         get integer_layout(): boolean;
         set integer_layout(val: boolean);
 
+        /**
+         * @default false
+         */
         get integerLayout(): boolean;
         set integerLayout(val: boolean);
 
+        /**
+         * @default false
+         */
         get redraw_when_scrolled(): boolean;
         set redraw_when_scrolled(val: boolean);
 
+        /**
+         * @default false
+         */
         get redrawWhenScrolled(): boolean;
         set redrawWhenScrolled(val: boolean);
 
+        /**
+         * @default 96
+         */
         get resolution_x(): number;
         set resolution_x(val: number);
 
+        /**
+         * @default 96
+         */
         get resolutionX(): number;
         set resolutionX(val: number);
 
+        /**
+         * @default 96
+         */
         get resolution_y(): number;
         set resolution_y(val: number);
 
+        /**
+         * @default 96
+         */
         get resolutionY(): number;
         set resolutionY(val: number);
 
+        /**
+         * @default 1
+         */
         get scale(): number;
         set scale(val: number);
 
+        /**
+         * @default 1
+         */
         get scale_x(): number;
         set scale_x(val: number);
 
+        /**
+         * @default 1
+         */
         get scaleX(): number;
         set scaleX(val: number);
 
+        /**
+         * @default 1
+         */
         get scale_y(): number;
         set scale_y(val: number);
 
+        /**
+         * @default 1
+         */
         get scaleY(): number;
         set scaleY(val: number);
 
+        /**
+         * @default Gtk.Unit.NONE
+         */
         get units(): Gtk.Unit;
         set units(val: Gtk.Unit);
 
+        /**
+         * @default 0
+         */
         get x1(): number;
         set x1(val: number);
 
+        /**
+         * @default 1000
+         */
         get x2(): number;
         set x2(val: number);
 
+        /**
+         * @default 0
+         */
         get y1(): number;
         set y1(val: number);
 
+        /**
+         * @default 1000
+         */
         get y2(): number;
         set y2(val: number);
 
@@ -1050,6 +1135,8 @@ export namespace GooCanvas {
         vfunc_create_item(model: CanvasItemModel): CanvasItem;
 
         /**
+         * signal emitted when a new canvas item has been created.
+         *  Applications can connect to this to setup signal handlers for the new item.
          * @param item 
          * @param model 
          * @virtual
@@ -1305,7 +1392,7 @@ export namespace GooCanvas {
          * @param time the time of the event that lead to the pointer grab. This should  come from the relevant {@link Gdk.Event}.
          * @returns {@link Gdk.GrabStatus.SUCCESS} if the grab succeeded.
          */
-        pointer_grab(item: CanvasItem, event_mask: Gdk.EventMask, cursor: Gdk.Cursor | null, time: number): Gdk.GrabStatus;
+        pointer_grab(item: CanvasItem, event_mask: Gdk.EventMask, cursor: Gdk.Cursor, time: number): Gdk.GrabStatus;
 
         /**
          * Ungrabs the pointer, if the given item has the pointer grab.
@@ -1711,39 +1798,75 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasEllipse>;
 
         // Properties
+        /**
+         * @default 0
+         */
         get center_x(): number;
         set center_x(val: number);
 
+        /**
+         * @default 0
+         */
         get centerX(): number;
         set centerX(val: number);
 
+        /**
+         * @default 0
+         */
         get center_y(): number;
         set center_y(val: number);
 
+        /**
+         * @default 0
+         */
         get centerY(): number;
         set centerY(val: number);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default 0
+         */
         get radius_x(): number;
         set radius_x(val: number);
 
+        /**
+         * @default 0
+         */
         get radiusX(): number;
         set radiusX(val: number);
 
+        /**
+         * @default 0
+         */
         get radius_y(): number;
         set radius_y(val: number);
 
+        /**
+         * @default 0
+         */
         get radiusY(): number;
         set radiusY(val: number);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -1779,15 +1902,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasEllipse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasEllipse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -1795,15 +1927,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -1813,6 +1954,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -1822,15 +1964,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -2263,12 +2414,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -2276,6 +2430,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -2283,12 +2438,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -2296,6 +2453,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -2303,6 +2461,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -2332,6 +2491,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -2441,6 +2602,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -2460,6 +2622,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -2467,6 +2630,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -2474,6 +2638,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -2481,6 +2646,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -2511,6 +2677,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -2537,6 +2704,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -2554,6 +2723,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -2714,39 +2884,75 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasEllipseModel>;
 
         // Properties
+        /**
+         * @default 0
+         */
         get center_x(): number;
         set center_x(val: number);
 
+        /**
+         * @default 0
+         */
         get centerX(): number;
         set centerX(val: number);
 
+        /**
+         * @default 0
+         */
         get center_y(): number;
         set center_y(val: number);
 
+        /**
+         * @default 0
+         */
         get centerY(): number;
         set centerY(val: number);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default 0
+         */
         get radius_x(): number;
         set radius_x(val: number);
 
+        /**
+         * @default 0
+         */
         get radiusX(): number;
         set radiusX(val: number);
 
+        /**
+         * @default 0
+         */
         get radius_y(): number;
         set radius_y(val: number);
 
+        /**
+         * @default 0
+         */
         get radiusY(): number;
         set radiusY(val: number);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -2782,15 +2988,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasEllipseModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasEllipseModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get description(): string;
         set description(val: string);
 
@@ -2798,19 +3013,31 @@ export namespace GooCanvas {
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get title(): string;
         set title(val: string);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
@@ -2818,15 +3045,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -3051,24 +3287,28 @@ export namespace GooCanvas {
         vfunc_add_child(child: CanvasItemModel, position: number): void;
 
         /**
+         * signal emitted when the model's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when the model has changed.
          * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
 
         /**
+         * signal emitted when a child is added.
          * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
 
         /**
+         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num 
          * @param new_child_num 
          * @virtual
@@ -3076,12 +3316,14 @@ export namespace GooCanvas {
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
         /**
+         * signal emitted when a child property has changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when a child is removed.
          * @param child_num 
          * @virtual
          */
@@ -3095,6 +3337,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItemModel;
 
         /**
+         * gets a child property of a given child model,
+         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -3145,6 +3389,7 @@ export namespace GooCanvas {
         vfunc_remove_child(child_num: number): void;
 
         /**
+         * sets a child property for a given child model.
          * @param child 
          * @param property_id 
          * @param value 
@@ -3355,11 +3600,13 @@ export namespace GooCanvas {
         // Properties
         /**
          * @write-only
+         * @default null
          */
         set border_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set borderColor(val: string);
 
@@ -3377,9 +3624,15 @@ export namespace GooCanvas {
         get borderColorGdkRgba(): Gdk.RGBA;
         set borderColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get border_color_rgba(): number;
         set border_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get borderColorRgba(): number;
         set borderColorRgba(val: number);
 
@@ -3399,22 +3652,33 @@ export namespace GooCanvas {
          */
         set borderPixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default -1
+         */
         get border_width(): number;
         set border_width(val: number);
 
+        /**
+         * @default -1
+         */
         get borderWidth(): number;
         set borderWidth(val: number);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
         /**
          * @write-only
+         * @default null
          */
         set horz_grid_line_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set horzGridLineColor(val: string);
 
@@ -3432,9 +3696,15 @@ export namespace GooCanvas {
         get horzGridLineColorGdkRgba(): Gdk.RGBA;
         set horzGridLineColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get horz_grid_line_color_rgba(): number;
         set horz_grid_line_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get horzGridLineColorRgba(): number;
         set horzGridLineColorRgba(val: number);
 
@@ -3454,31 +3724,51 @@ export namespace GooCanvas {
          */
         set horzGridLinePixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default -1
+         */
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
 
+        /**
+         * @default -1
+         */
         get horzGridLineWidth(): number;
         set horzGridLineWidth(val: number);
 
+        /**
+         * @default true
+         */
         get show_horz_grid_lines(): boolean;
         set show_horz_grid_lines(val: boolean);
 
+        /**
+         * @default true
+         */
         get showHorzGridLines(): boolean;
         set showHorzGridLines(val: boolean);
 
+        /**
+         * @default true
+         */
         get show_vert_grid_lines(): boolean;
         set show_vert_grid_lines(val: boolean);
 
+        /**
+         * @default true
+         */
         get showVertGridLines(): boolean;
         set showVertGridLines(val: boolean);
 
         /**
          * @write-only
+         * @default null
          */
         set vert_grid_line_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set vertGridLineColor(val: string);
 
@@ -3496,9 +3786,15 @@ export namespace GooCanvas {
         get vertGridLineColorGdkRgba(): Gdk.RGBA;
         set vertGridLineColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get vert_grid_line_color_rgba(): number;
         set vert_grid_line_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get vertGridLineColorRgba(): number;
         set vertGridLineColorRgba(val: number);
 
@@ -3518,48 +3814,93 @@ export namespace GooCanvas {
          */
         set vertGridLinePixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default -1
+         */
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
 
+        /**
+         * @default -1
+         */
         get vertGridLineWidth(): number;
         set vertGridLineWidth(val: number);
 
+        /**
+         * @default false
+         */
         get vert_grid_lines_on_top(): boolean;
         set vert_grid_lines_on_top(val: boolean);
 
+        /**
+         * @default false
+         */
         get vertGridLinesOnTop(): boolean;
         set vertGridLinesOnTop(val: boolean);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get x_offset(): number;
         set x_offset(val: number);
 
+        /**
+         * @default 0
+         */
         get xOffset(): number;
         set xOffset(val: number);
 
+        /**
+         * @default 10
+         */
         get x_step(): number;
         set x_step(val: number);
 
+        /**
+         * @default 10
+         */
         get xStep(): number;
         set xStep(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
+        /**
+         * @default 0
+         */
         get y_offset(): number;
         set y_offset(val: number);
 
+        /**
+         * @default 0
+         */
         get yOffset(): number;
         set yOffset(val: number);
 
+        /**
+         * @default 10
+         */
         get y_step(): number;
         set y_step(val: number);
 
+        /**
+         * @default 10
+         */
         get yStep(): number;
         set yStep(val: number);
 
@@ -3593,15 +3934,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasGrid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGrid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -3609,15 +3959,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -3627,6 +3986,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -3636,15 +3996,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -4077,12 +4446,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -4090,6 +4462,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -4097,12 +4470,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -4110,6 +4485,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -4117,6 +4493,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -4146,6 +4523,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -4255,6 +4634,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -4274,6 +4654,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -4281,6 +4662,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -4288,6 +4670,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -4295,6 +4678,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -4325,6 +4709,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -4351,6 +4736,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -4368,6 +4755,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -4615,11 +5003,13 @@ export namespace GooCanvas {
         // Properties
         /**
          * @write-only
+         * @default null
          */
         set border_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set borderColor(val: string);
 
@@ -4629,9 +5019,15 @@ export namespace GooCanvas {
         get borderColorGdkRgba(): Gdk.RGBA;
         set borderColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get border_color_rgba(): number;
         set border_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get borderColorRgba(): number;
         set borderColorRgba(val: number);
 
@@ -4651,22 +5047,33 @@ export namespace GooCanvas {
          */
         set borderPixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default -1
+         */
         get border_width(): number;
         set border_width(val: number);
 
+        /**
+         * @default -1
+         */
         get borderWidth(): number;
         set borderWidth(val: number);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
         /**
          * @write-only
+         * @default null
          */
         set horz_grid_line_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set horzGridLineColor(val: string);
 
@@ -4676,9 +5083,15 @@ export namespace GooCanvas {
         get horzGridLineColorGdkRgba(): Gdk.RGBA;
         set horzGridLineColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get horz_grid_line_color_rgba(): number;
         set horz_grid_line_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get horzGridLineColorRgba(): number;
         set horzGridLineColorRgba(val: number);
 
@@ -4698,31 +5111,51 @@ export namespace GooCanvas {
          */
         set horzGridLinePixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default -1
+         */
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
 
+        /**
+         * @default -1
+         */
         get horzGridLineWidth(): number;
         set horzGridLineWidth(val: number);
 
+        /**
+         * @default true
+         */
         get show_horz_grid_lines(): boolean;
         set show_horz_grid_lines(val: boolean);
 
+        /**
+         * @default true
+         */
         get showHorzGridLines(): boolean;
         set showHorzGridLines(val: boolean);
 
+        /**
+         * @default true
+         */
         get show_vert_grid_lines(): boolean;
         set show_vert_grid_lines(val: boolean);
 
+        /**
+         * @default true
+         */
         get showVertGridLines(): boolean;
         set showVertGridLines(val: boolean);
 
         /**
          * @write-only
+         * @default null
          */
         set vert_grid_line_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set vertGridLineColor(val: string);
 
@@ -4732,9 +5165,15 @@ export namespace GooCanvas {
         get vertGridLineColorGdkRgba(): Gdk.RGBA;
         set vertGridLineColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get vert_grid_line_color_rgba(): number;
         set vert_grid_line_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get vertGridLineColorRgba(): number;
         set vertGridLineColorRgba(val: number);
 
@@ -4754,48 +5193,93 @@ export namespace GooCanvas {
          */
         set vertGridLinePixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default -1
+         */
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
 
+        /**
+         * @default -1
+         */
         get vertGridLineWidth(): number;
         set vertGridLineWidth(val: number);
 
+        /**
+         * @default false
+         */
         get vert_grid_lines_on_top(): boolean;
         set vert_grid_lines_on_top(val: boolean);
 
+        /**
+         * @default false
+         */
         get vertGridLinesOnTop(): boolean;
         set vertGridLinesOnTop(val: boolean);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get x_offset(): number;
         set x_offset(val: number);
 
+        /**
+         * @default 0
+         */
         get xOffset(): number;
         set xOffset(val: number);
 
+        /**
+         * @default 10
+         */
         get x_step(): number;
         set x_step(val: number);
 
+        /**
+         * @default 10
+         */
         get xStep(): number;
         set xStep(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
+        /**
+         * @default 0
+         */
         get y_offset(): number;
         set y_offset(val: number);
 
+        /**
+         * @default 0
+         */
         get yOffset(): number;
         set yOffset(val: number);
 
+        /**
+         * @default 10
+         */
         get y_step(): number;
         set y_step(val: number);
 
+        /**
+         * @default 10
+         */
         get yStep(): number;
         set yStep(val: number);
 
@@ -4829,15 +5313,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasGridModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGridModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get description(): string;
         set description(val: string);
 
@@ -4845,19 +5338,31 @@ export namespace GooCanvas {
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get title(): string;
         set title(val: string);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
@@ -4865,15 +5370,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -5098,24 +5612,28 @@ export namespace GooCanvas {
         vfunc_add_child(child: CanvasItemModel, position: number): void;
 
         /**
+         * signal emitted when the model's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when the model has changed.
          * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
 
         /**
+         * signal emitted when a child is added.
          * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
 
         /**
+         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num 
          * @param new_child_num 
          * @virtual
@@ -5123,12 +5641,14 @@ export namespace GooCanvas {
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
         /**
+         * signal emitted when a child property has changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when a child is removed.
          * @param child_num 
          * @virtual
          */
@@ -5142,6 +5662,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItemModel;
 
         /**
+         * gets a child property of a given child model,
+         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -5192,6 +5714,7 @@ export namespace GooCanvas {
         vfunc_remove_child(child_num: number): void;
 
         /**
+         * sets a child property for a given child model.
          * @param child 
          * @param property_id 
          * @param value 
@@ -5310,15 +5833,27 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasGroup>;
 
         // Properties
+        /**
+         * @default -1
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default -1
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -5354,15 +5889,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -5370,15 +5914,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -5388,6 +5941,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -5397,15 +5951,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -5838,12 +6401,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -5851,6 +6417,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -5858,12 +6425,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -5871,6 +6440,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -5878,6 +6448,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -5907,6 +6478,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -6016,6 +6589,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -6035,6 +6609,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -6042,6 +6617,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -6049,6 +6625,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -6056,6 +6633,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -6086,6 +6664,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -6112,6 +6691,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -6129,6 +6710,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -6279,15 +6861,27 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasGroupModel>;
 
         // Properties
+        /**
+         * @default -1
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default -1
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -6323,15 +6917,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasGroupModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGroupModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get description(): string;
         set description(val: string);
 
@@ -6339,19 +6942,31 @@ export namespace GooCanvas {
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get title(): string;
         set title(val: string);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
@@ -6359,15 +6974,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -6592,24 +7216,28 @@ export namespace GooCanvas {
         vfunc_add_child(child: CanvasItemModel, position: number): void;
 
         /**
+         * signal emitted when the model's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when the model has changed.
          * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
 
         /**
+         * signal emitted when a child is added.
          * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
 
         /**
+         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num 
          * @param new_child_num 
          * @virtual
@@ -6617,12 +7245,14 @@ export namespace GooCanvas {
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
         /**
+         * signal emitted when a child property has changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when a child is removed.
          * @param child_num 
          * @virtual
          */
@@ -6636,6 +7266,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItemModel;
 
         /**
+         * gets a child property of a given child model,
+         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -6686,6 +7318,7 @@ export namespace GooCanvas {
         vfunc_remove_child(child_num: number): void;
 
         /**
+         * sets a child property for a given child model.
          * @param child 
          * @param property_id 
          * @param value 
@@ -6809,9 +7442,15 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasImage>;
 
         // Properties
+        /**
+         * @default 1
+         */
         get alpha(): number;
         set alpha(val: number);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
@@ -6823,18 +7462,33 @@ export namespace GooCanvas {
          */
         set pixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default false
+         */
         get scale_to_fit(): boolean;
         set scale_to_fit(val: boolean);
 
+        /**
+         * @default false
+         */
         get scaleToFit(): boolean;
         set scaleToFit(val: boolean);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -6868,15 +7522,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -6884,15 +7547,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -6902,6 +7574,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -6911,15 +7584,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -7352,12 +8034,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -7365,6 +8050,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -7372,12 +8058,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -7385,6 +8073,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -7392,6 +8081,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -7421,6 +8111,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -7530,6 +8222,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -7549,6 +8242,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -7556,6 +8250,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -7563,6 +8258,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -7570,6 +8266,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -7600,6 +8297,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -7626,6 +8324,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -7643,6 +8343,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -7803,9 +8504,15 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasImageModel>;
 
         // Properties
+        /**
+         * @default 1
+         */
         get alpha(): number;
         set alpha(val: number);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
@@ -7817,18 +8524,33 @@ export namespace GooCanvas {
          */
         set pixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default false
+         */
         get scale_to_fit(): boolean;
         set scale_to_fit(val: boolean);
 
+        /**
+         * @default false
+         */
         get scaleToFit(): boolean;
         set scaleToFit(val: boolean);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -7862,15 +8584,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasImageModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasImageModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get description(): string;
         set description(val: string);
 
@@ -7878,19 +8609,31 @@ export namespace GooCanvas {
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get title(): string;
         set title(val: string);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
@@ -7898,15 +8641,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -8131,24 +8883,28 @@ export namespace GooCanvas {
         vfunc_add_child(child: CanvasItemModel, position: number): void;
 
         /**
+         * signal emitted when the model's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when the model has changed.
          * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
 
         /**
+         * signal emitted when a child is added.
          * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
 
         /**
+         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num 
          * @param new_child_num 
          * @virtual
@@ -8156,12 +8912,14 @@ export namespace GooCanvas {
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
         /**
+         * signal emitted when a child property has changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when a child is removed.
          * @param child_num 
          * @virtual
          */
@@ -8175,6 +8933,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItemModel;
 
         /**
+         * gets a child property of a given child model,
+         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -8225,6 +8985,7 @@ export namespace GooCanvas {
         vfunc_remove_child(child_num: number): void;
 
         /**
+         * sets a child property for a given child model.
          * @param child 
          * @param property_id 
          * @param value 
@@ -8414,12 +9175,21 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasItemModelSimple>;
 
         // Properties
+        /**
+         * @default GooCanvas.CairoAntialias.GRAY
+         */
         get antialias(): CairoAntialias;
         set antialias(val: CairoAntialias);
 
+        /**
+         * @default GooCanvas.CairoFillRule.WINDING
+         */
         get clip_fill_rule(): CairoFillRule;
         set clip_fill_rule(val: CairoFillRule);
 
+        /**
+         * @default GooCanvas.CairoFillRule.WINDING
+         */
         get clipFillRule(): CairoFillRule;
         set clipFillRule(val: CairoFillRule);
 
@@ -8429,6 +9199,7 @@ export namespace GooCanvas {
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
          * @write-only
+         * @default null
          */
         set clip_path(val: string);
 
@@ -8438,16 +9209,19 @@ export namespace GooCanvas {
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
          * @write-only
+         * @default null
          */
         set clipPath(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set fill_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set fillColor(val: string);
 
@@ -8457,9 +9231,15 @@ export namespace GooCanvas {
         get fillColorGdkRgba(): Gdk.RGBA;
         set fillColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get fill_color_rgba(): number;
         set fill_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get fillColorRgba(): number;
         set fillColorRgba(val: number);
 
@@ -8479,12 +9259,21 @@ export namespace GooCanvas {
          */
         set fillPixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default GooCanvas.CairoFillRule.WINDING
+         */
         get fill_rule(): CairoFillRule;
         set fill_rule(val: CairoFillRule);
 
+        /**
+         * @default GooCanvas.CairoFillRule.WINDING
+         */
         get fillRule(): CairoFillRule;
         set fillRule(val: CairoFillRule);
 
+        /**
+         * @default null
+         */
         get font(): string;
         set font(val: string);
 
@@ -8494,15 +9283,27 @@ export namespace GooCanvas {
         get fontDesc(): Pango.FontDescription;
         set fontDesc(val: Pango.FontDescription);
 
+        /**
+         * @default GooCanvas.CairoHintMetrics.OFF
+         */
         get hint_metrics(): CairoHintMetrics;
         set hint_metrics(val: CairoHintMetrics);
 
+        /**
+         * @default GooCanvas.CairoHintMetrics.OFF
+         */
         get hintMetrics(): CairoHintMetrics;
         set hintMetrics(val: CairoHintMetrics);
 
+        /**
+         * @default GooCanvas.CairoLineCap.BUTT
+         */
         get line_cap(): CairoLineCap;
         set line_cap(val: CairoLineCap);
 
+        /**
+         * @default GooCanvas.CairoLineCap.BUTT
+         */
         get lineCap(): CairoLineCap;
         set lineCap(val: CairoLineCap);
 
@@ -8512,34 +9313,57 @@ export namespace GooCanvas {
         get lineDash(): CanvasLineDash;
         set lineDash(val: CanvasLineDash);
 
+        /**
+         * @default GooCanvas.CairoLineJoin.MITER
+         */
         get line_join(): CairoLineJoin;
         set line_join(val: CairoLineJoin);
 
+        /**
+         * @default GooCanvas.CairoLineJoin.MITER
+         */
         get lineJoin(): CairoLineJoin;
         set lineJoin(val: CairoLineJoin);
 
+        /**
+         * @default 10
+         */
         get line_join_miter_limit(): number;
         set line_join_miter_limit(val: number);
 
+        /**
+         * @default 10
+         */
         get lineJoinMiterLimit(): number;
         set lineJoinMiterLimit(val: number);
 
+        /**
+         * @default 2
+         */
         get line_width(): number;
         set line_width(val: number);
 
+        /**
+         * @default 2
+         */
         get lineWidth(): number;
         set lineWidth(val: number);
 
+        /**
+         * @default GooCanvas.CairoOperator.OVER
+         */
         get operator(): CairoOperator;
         set operator(val: CairoOperator);
 
         /**
          * @write-only
+         * @default null
          */
         set stroke_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set strokeColor(val: string);
 
@@ -8549,9 +9373,15 @@ export namespace GooCanvas {
         get strokeColorGdkRgba(): Gdk.RGBA;
         set strokeColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get stroke_color_rgba(): number;
         set stroke_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get strokeColorRgba(): number;
         set strokeColorRgba(val: number);
 
@@ -8601,15 +9431,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasItemModelSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemModelSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get description(): string;
         set description(val: string);
 
@@ -8617,19 +9456,31 @@ export namespace GooCanvas {
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get title(): string;
         set title(val: string);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
@@ -8637,15 +9488,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -8870,24 +9730,28 @@ export namespace GooCanvas {
         vfunc_add_child(child: CanvasItemModel, position: number): void;
 
         /**
+         * signal emitted when the model's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when the model has changed.
          * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
 
         /**
+         * signal emitted when a child is added.
          * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
 
         /**
+         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num 
          * @param new_child_num 
          * @virtual
@@ -8895,12 +9759,14 @@ export namespace GooCanvas {
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
         /**
+         * signal emitted when a child property has changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when a child is removed.
          * @param child_num 
          * @virtual
          */
@@ -8914,6 +9780,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItemModel;
 
         /**
+         * gets a child property of a given child model,
+         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -8964,6 +9832,7 @@ export namespace GooCanvas {
         vfunc_remove_child(child_num: number): void;
 
         /**
+         * sets a child property for a given child model.
          * @param child 
          * @param property_id 
          * @param value 
@@ -9111,12 +9980,21 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasItemSimple>;
 
         // Properties
+        /**
+         * @default GooCanvas.CairoAntialias.GRAY
+         */
         get antialias(): CairoAntialias;
         set antialias(val: CairoAntialias);
 
+        /**
+         * @default GooCanvas.CairoFillRule.WINDING
+         */
         get clip_fill_rule(): CairoFillRule;
         set clip_fill_rule(val: CairoFillRule);
 
+        /**
+         * @default GooCanvas.CairoFillRule.WINDING
+         */
         get clipFillRule(): CairoFillRule;
         set clipFillRule(val: CairoFillRule);
 
@@ -9126,6 +10004,7 @@ export namespace GooCanvas {
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
          * @write-only
+         * @default null
          */
         set clip_path(val: string);
 
@@ -9135,16 +10014,19 @@ export namespace GooCanvas {
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
          * @write-only
+         * @default null
          */
         set clipPath(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set fill_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set fillColor(val: string);
 
@@ -9162,9 +10044,15 @@ export namespace GooCanvas {
         get fillColorGdkRgba(): Gdk.RGBA;
         set fillColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get fill_color_rgba(): number;
         set fill_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get fillColorRgba(): number;
         set fillColorRgba(val: number);
 
@@ -9184,12 +10072,21 @@ export namespace GooCanvas {
          */
         set fillPixbuf(val: GdkPixbuf.Pixbuf);
 
+        /**
+         * @default GooCanvas.CairoFillRule.WINDING
+         */
         get fill_rule(): CairoFillRule;
         set fill_rule(val: CairoFillRule);
 
+        /**
+         * @default GooCanvas.CairoFillRule.WINDING
+         */
         get fillRule(): CairoFillRule;
         set fillRule(val: CairoFillRule);
 
+        /**
+         * @default null
+         */
         get font(): string;
         set font(val: string);
 
@@ -9199,15 +10096,27 @@ export namespace GooCanvas {
         get fontDesc(): Pango.FontDescription;
         set fontDesc(val: Pango.FontDescription);
 
+        /**
+         * @default GooCanvas.CairoHintMetrics.OFF
+         */
         get hint_metrics(): CairoHintMetrics;
         set hint_metrics(val: CairoHintMetrics);
 
+        /**
+         * @default GooCanvas.CairoHintMetrics.OFF
+         */
         get hintMetrics(): CairoHintMetrics;
         set hintMetrics(val: CairoHintMetrics);
 
+        /**
+         * @default GooCanvas.CairoLineCap.BUTT
+         */
         get line_cap(): CairoLineCap;
         set line_cap(val: CairoLineCap);
 
+        /**
+         * @default GooCanvas.CairoLineCap.BUTT
+         */
         get lineCap(): CairoLineCap;
         set lineCap(val: CairoLineCap);
 
@@ -9217,34 +10126,57 @@ export namespace GooCanvas {
         get lineDash(): CanvasLineDash;
         set lineDash(val: CanvasLineDash);
 
+        /**
+         * @default GooCanvas.CairoLineJoin.MITER
+         */
         get line_join(): CairoLineJoin;
         set line_join(val: CairoLineJoin);
 
+        /**
+         * @default GooCanvas.CairoLineJoin.MITER
+         */
         get lineJoin(): CairoLineJoin;
         set lineJoin(val: CairoLineJoin);
 
+        /**
+         * @default 10
+         */
         get line_join_miter_limit(): number;
         set line_join_miter_limit(val: number);
 
+        /**
+         * @default 10
+         */
         get lineJoinMiterLimit(): number;
         set lineJoinMiterLimit(val: number);
 
+        /**
+         * @default 2
+         */
         get line_width(): number;
         set line_width(val: number);
 
+        /**
+         * @default 2
+         */
         get lineWidth(): number;
         set lineWidth(val: number);
 
+        /**
+         * @default GooCanvas.CairoOperator.OVER
+         */
         get operator(): CairoOperator;
         set operator(val: CairoOperator);
 
         /**
          * @write-only
+         * @default null
          */
         set stroke_color(val: string);
 
         /**
          * @write-only
+         * @default null
          */
         set strokeColor(val: string);
 
@@ -9262,9 +10194,15 @@ export namespace GooCanvas {
         get strokeColorGdkRgba(): Gdk.RGBA;
         set strokeColorGdkRgba(val: Gdk.RGBA);
 
+        /**
+         * @default 0
+         */
         get stroke_color_rgba(): number;
         set stroke_color_rgba(val: number);
 
+        /**
+         * @default 0
+         */
         get strokeColorRgba(): number;
         set strokeColorRgba(val: number);
 
@@ -9324,12 +10262,20 @@ export namespace GooCanvas {
 
         // Virtual methods
         /**
+         * simple subclasses that draw basic shapes and paths only
+         *  need to override this one method. It creates the path for the item.
+         *  All updating, painting and hit-testing is provided automatically by the
+         *  {@link GooCanvas.CanvasItemSimple} class. (This method is used by the builtin
+         *  {@link GooCanvas.CanvasEllipse}, {@link GooCanvas.CanvasRect} and {@link GooCanvas.CanvasPath} items.)
+         *  More complicated subclasses must override `simple_update`, `simple_paint` and
+         *  `simple_is_item_at` instead.
          * @param cr 
          * @virtual
          */
         vfunc_simple_create_path(cr: cairo.Context): void;
 
         /**
+         * subclasses should override this to do hit-testing.
          * @param x 
          * @param y 
          * @param cr 
@@ -9339,6 +10285,7 @@ export namespace GooCanvas {
         vfunc_simple_is_item_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean): boolean;
 
         /**
+         * subclasses should override this to paint their item.
          * @param cr 
          * @param bounds 
          * @virtual
@@ -9346,6 +10293,8 @@ export namespace GooCanvas {
         vfunc_simple_paint(cr: cairo.Context, bounds: CanvasBounds): void;
 
         /**
+         * subclasses should override this to calculate their new
+         *  bounds, in user space.
          * @param cr 
          * @virtual
          */
@@ -9444,15 +10393,24 @@ export namespace GooCanvas {
          */
         user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void;
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -9460,15 +10418,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -9478,6 +10445,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -9487,15 +10455,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -9922,12 +10899,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -9935,6 +10915,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -9942,12 +10923,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -9955,6 +10938,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -9962,6 +10946,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -9991,6 +10976,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -10100,6 +11087,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -10119,6 +11107,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -10126,6 +11115,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -10133,6 +11123,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -10140,6 +11131,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -10170,6 +11162,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -10196,6 +11189,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -10213,6 +11208,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -10365,18 +11361,31 @@ export namespace GooCanvas {
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
          * Graphics (SVG)</ulink> path element.
          * @write-only
+         * @default null
          */
         set data(val: string);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -10410,15 +11419,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasPath.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPath.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -10426,15 +11444,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -10444,6 +11471,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -10453,15 +11481,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -10894,12 +11931,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -10907,6 +11947,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -10914,12 +11955,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -10927,6 +11970,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -10934,6 +11978,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -10963,6 +12008,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -11072,6 +12119,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -11091,6 +12139,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -11098,6 +12147,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -11105,6 +12155,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -11112,6 +12163,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -11142,6 +12194,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -11168,6 +12221,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -11185,6 +12240,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -11338,18 +12394,31 @@ export namespace GooCanvas {
         // Properties
         /**
          * @write-only
+         * @default null
          */
         set data(val: string);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -11385,15 +12454,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasPathModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPathModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get description(): string;
         set description(val: string);
 
@@ -11401,19 +12479,31 @@ export namespace GooCanvas {
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get title(): string;
         set title(val: string);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
@@ -11421,15 +12511,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -11654,24 +12753,28 @@ export namespace GooCanvas {
         vfunc_add_child(child: CanvasItemModel, position: number): void;
 
         /**
+         * signal emitted when the model's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when the model has changed.
          * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
 
         /**
+         * signal emitted when a child is added.
          * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
 
         /**
+         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num 
          * @param new_child_num 
          * @virtual
@@ -11679,12 +12782,14 @@ export namespace GooCanvas {
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
         /**
+         * signal emitted when a child property has changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when a child is removed.
          * @param child_num 
          * @virtual
          */
@@ -11698,6 +12803,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItemModel;
 
         /**
+         * gets a child property of a given child model,
+         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -11748,6 +12855,7 @@ export namespace GooCanvas {
         vfunc_remove_child(child_num: number): void;
 
         /**
+         * sets a child property for a given child model.
          * @param child 
          * @param property_id 
          * @param value 
@@ -11879,54 +12987,102 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPolyline>;
 
         // Properties
+        /**
+         * @default 5
+         */
         get arrow_length(): number;
         set arrow_length(val: number);
 
+        /**
+         * @default 5
+         */
         get arrowLength(): number;
         set arrowLength(val: number);
 
+        /**
+         * @default 4
+         */
         get arrow_tip_length(): number;
         set arrow_tip_length(val: number);
 
+        /**
+         * @default 4
+         */
         get arrowTipLength(): number;
         set arrowTipLength(val: number);
 
+        /**
+         * @default 4
+         */
         get arrow_width(): number;
         set arrow_width(val: number);
 
+        /**
+         * @default 4
+         */
         get arrowWidth(): number;
         set arrowWidth(val: number);
 
+        /**
+         * @default false
+         */
         get close_path(): boolean;
         set close_path(val: boolean);
 
+        /**
+         * @default false
+         */
         get closePath(): boolean;
         set closePath(val: boolean);
 
+        /**
+         * @default false
+         */
         get end_arrow(): boolean;
         set end_arrow(val: boolean);
 
+        /**
+         * @default false
+         */
         get endArrow(): boolean;
         set endArrow(val: boolean);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
         get points(): CanvasPoints;
         set points(val: CanvasPoints);
 
+        /**
+         * @default false
+         */
         get start_arrow(): boolean;
         set start_arrow(val: boolean);
 
+        /**
+         * @default false
+         */
         get startArrow(): boolean;
         set startArrow(val: boolean);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -11960,15 +13116,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasPolyline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPolyline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -11976,15 +13141,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -11994,6 +13168,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -12003,15 +13178,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -12444,12 +13628,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -12457,6 +13644,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -12464,12 +13652,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -12477,6 +13667,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -12484,6 +13675,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -12513,6 +13705,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -12622,6 +13816,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -12641,6 +13836,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -12648,6 +13844,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -12655,6 +13852,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -12662,6 +13860,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -12692,6 +13891,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -12718,6 +13918,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -12735,6 +13937,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -12901,54 +14104,102 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPolylineModel>;
 
         // Properties
+        /**
+         * @default 5
+         */
         get arrow_length(): number;
         set arrow_length(val: number);
 
+        /**
+         * @default 5
+         */
         get arrowLength(): number;
         set arrowLength(val: number);
 
+        /**
+         * @default 4
+         */
         get arrow_tip_length(): number;
         set arrow_tip_length(val: number);
 
+        /**
+         * @default 4
+         */
         get arrowTipLength(): number;
         set arrowTipLength(val: number);
 
+        /**
+         * @default 4
+         */
         get arrow_width(): number;
         set arrow_width(val: number);
 
+        /**
+         * @default 4
+         */
         get arrowWidth(): number;
         set arrowWidth(val: number);
 
+        /**
+         * @default false
+         */
         get close_path(): boolean;
         set close_path(val: boolean);
 
+        /**
+         * @default false
+         */
         get closePath(): boolean;
         set closePath(val: boolean);
 
+        /**
+         * @default false
+         */
         get end_arrow(): boolean;
         set end_arrow(val: boolean);
 
+        /**
+         * @default false
+         */
         get endArrow(): boolean;
         set endArrow(val: boolean);
 
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
         get points(): CanvasPoints;
         set points(val: CanvasPoints);
 
+        /**
+         * @default false
+         */
         get start_arrow(): boolean;
         set start_arrow(val: boolean);
 
+        /**
+         * @default false
+         */
         get startArrow(): boolean;
         set startArrow(val: boolean);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -12984,15 +14235,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasPolylineModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPolylineModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get description(): string;
         set description(val: string);
 
@@ -13000,19 +14260,31 @@ export namespace GooCanvas {
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get title(): string;
         set title(val: string);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
@@ -13020,15 +14292,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -13253,24 +14534,28 @@ export namespace GooCanvas {
         vfunc_add_child(child: CanvasItemModel, position: number): void;
 
         /**
+         * signal emitted when the model's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when the model has changed.
          * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
 
         /**
+         * signal emitted when a child is added.
          * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
 
         /**
+         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num 
          * @param new_child_num 
          * @virtual
@@ -13278,12 +14563,14 @@ export namespace GooCanvas {
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
         /**
+         * signal emitted when a child property has changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when a child is removed.
          * @param child_num 
          * @virtual
          */
@@ -13297,6 +14584,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItemModel;
 
         /**
+         * gets a child property of a given child model,
+         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -13347,6 +14636,7 @@ export namespace GooCanvas {
         vfunc_remove_child(child_num: number): void;
 
         /**
+         * sets a child property for a given child model.
          * @param child 
          * @param property_id 
          * @param value 
@@ -13462,27 +14752,51 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasRect>;
 
         // Properties
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default 0
+         */
         get radius_x(): number;
         set radius_x(val: number);
 
+        /**
+         * @default 0
+         */
         get radiusX(): number;
         set radiusX(val: number);
 
+        /**
+         * @default 0
+         */
         get radius_y(): number;
         set radius_y(val: number);
 
+        /**
+         * @default 0
+         */
         get radiusY(): number;
         set radiusY(val: number);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -13516,15 +14830,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasRect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasRect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -13532,15 +14855,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -13550,6 +14882,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -13559,15 +14892,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -14000,12 +15342,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -14013,6 +15358,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -14020,12 +15366,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -14033,6 +15381,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -14040,6 +15389,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -14069,6 +15419,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -14178,6 +15530,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -14197,6 +15550,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -14204,6 +15558,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -14211,6 +15566,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -14218,6 +15574,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -14248,6 +15605,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -14274,6 +15632,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -14291,6 +15651,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -14441,27 +15802,51 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasRectModel>;
 
         // Properties
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default 0
+         */
         get radius_x(): number;
         set radius_x(val: number);
 
+        /**
+         * @default 0
+         */
         get radiusX(): number;
         set radiusX(val: number);
 
+        /**
+         * @default 0
+         */
         get radius_y(): number;
         set radius_y(val: number);
 
+        /**
+         * @default 0
+         */
         get radiusY(): number;
         set radiusY(val: number);
 
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -14497,15 +15882,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasRectModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasRectModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get description(): string;
         set description(val: string);
 
@@ -14513,19 +15907,31 @@ export namespace GooCanvas {
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get title(): string;
         set title(val: string);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
@@ -14533,15 +15939,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -14766,24 +16181,28 @@ export namespace GooCanvas {
         vfunc_add_child(child: CanvasItemModel, position: number): void;
 
         /**
+         * signal emitted when the model's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when the model has changed.
          * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
 
         /**
+         * signal emitted when a child is added.
          * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
 
         /**
+         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num 
          * @param new_child_num 
          * @virtual
@@ -14791,12 +16210,14 @@ export namespace GooCanvas {
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
         /**
+         * signal emitted when a child property has changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when a child is removed.
          * @param child_num 
          * @virtual
          */
@@ -14810,6 +16231,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItemModel;
 
         /**
+         * gets a child property of a given child model,
+         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -14860,6 +16283,7 @@ export namespace GooCanvas {
         vfunc_remove_child(child_num: number): void;
 
         /**
+         * sets a child property for a given child model.
          * @param child 
          * @param property_id 
          * @param value 
@@ -15124,51 +16548,99 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTable>;
 
         // Properties
+        /**
+         * @default 0
+         */
         get column_spacing(): number;
         set column_spacing(val: number);
 
+        /**
+         * @default 0
+         */
         get columnSpacing(): number;
         set columnSpacing(val: number);
 
+        /**
+         * @default false
+         */
         get homogeneous_columns(): boolean;
         set homogeneous_columns(val: boolean);
 
+        /**
+         * @default false
+         */
         get homogeneousColumns(): boolean;
         set homogeneousColumns(val: boolean);
 
+        /**
+         * @default false
+         */
         get homogeneous_rows(): boolean;
         set homogeneous_rows(val: boolean);
 
+        /**
+         * @default false
+         */
         get homogeneousRows(): boolean;
         set homogeneousRows(val: boolean);
 
+        /**
+         * @default 0
+         */
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
 
+        /**
+         * @default 0
+         */
         get horzGridLineWidth(): number;
         set horzGridLineWidth(val: number);
 
+        /**
+         * @default 0
+         */
         get row_spacing(): number;
         set row_spacing(val: number);
 
+        /**
+         * @default 0
+         */
         get rowSpacing(): number;
         set rowSpacing(val: number);
 
+        /**
+         * @default 0
+         */
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
 
+        /**
+         * @default 0
+         */
         get vertGridLineWidth(): number;
         set vertGridLineWidth(val: number);
 
+        /**
+         * @default 0
+         */
         get x_border_spacing(): number;
         set x_border_spacing(val: number);
 
+        /**
+         * @default 0
+         */
         get xBorderSpacing(): number;
         set xBorderSpacing(val: number);
 
+        /**
+         * @default 0
+         */
         get y_border_spacing(): number;
         set y_border_spacing(val: number);
 
+        /**
+         * @default 0
+         */
         get yBorderSpacing(): number;
         set yBorderSpacing(val: number);
 
@@ -15294,51 +16766,99 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTableModel>;
 
         // Properties
+        /**
+         * @default 0
+         */
         get column_spacing(): number;
         set column_spacing(val: number);
 
+        /**
+         * @default 0
+         */
         get columnSpacing(): number;
         set columnSpacing(val: number);
 
+        /**
+         * @default false
+         */
         get homogeneous_columns(): boolean;
         set homogeneous_columns(val: boolean);
 
+        /**
+         * @default false
+         */
         get homogeneousColumns(): boolean;
         set homogeneousColumns(val: boolean);
 
+        /**
+         * @default false
+         */
         get homogeneous_rows(): boolean;
         set homogeneous_rows(val: boolean);
 
+        /**
+         * @default false
+         */
         get homogeneousRows(): boolean;
         set homogeneousRows(val: boolean);
 
+        /**
+         * @default 0
+         */
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
 
+        /**
+         * @default 0
+         */
         get horzGridLineWidth(): number;
         set horzGridLineWidth(val: number);
 
+        /**
+         * @default 0
+         */
         get row_spacing(): number;
         set row_spacing(val: number);
 
+        /**
+         * @default 0
+         */
         get rowSpacing(): number;
         set rowSpacing(val: number);
 
+        /**
+         * @default 0
+         */
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
 
+        /**
+         * @default 0
+         */
         get vertGridLineWidth(): number;
         set vertGridLineWidth(val: number);
 
+        /**
+         * @default 0
+         */
         get x_border_spacing(): number;
         set x_border_spacing(val: number);
 
+        /**
+         * @default 0
+         */
         get xBorderSpacing(): number;
         set xBorderSpacing(val: number);
 
+        /**
+         * @default 0
+         */
         get y_border_spacing(): number;
         set y_border_spacing(val: number);
 
+        /**
+         * @default 0
+         */
         get yBorderSpacing(): number;
         set yBorderSpacing(val: number);
 
@@ -15461,36 +16981,69 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasText>;
 
         // Properties
+        /**
+         * @default Pango.Alignment.LEFT
+         */
         get alignment(): Pango.Alignment;
         set alignment(val: Pango.Alignment);
 
+        /**
+         * @default GooCanvas.CanvasAnchorType.NORTH_WEST
+         */
         get anchor(): CanvasAnchorType;
         set anchor(val: CanvasAnchorType);
 
+        /**
+         * @default Pango.EllipsizeMode.NONE
+         */
         get ellipsize(): Pango.EllipsizeMode;
         set ellipsize(val: Pango.EllipsizeMode);
 
+        /**
+         * @default -1
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default null
+         */
         get text(): string;
         set text(val: string);
 
+        /**
+         * @default false
+         */
         get use_markup(): boolean;
         set use_markup(val: boolean);
 
+        /**
+         * @default false
+         */
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
 
+        /**
+         * @default -1
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default Pango.WrapMode.WORD
+         */
         get wrap(): Pango.WrapMode;
         set wrap(val: Pango.WrapMode);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -15535,15 +17088,24 @@ export namespace GooCanvas {
          */
         get_natural_extents(): [Pango.Rectangle | null, Pango.Rectangle | null];
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -15551,15 +17113,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -15569,6 +17140,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -15578,15 +17150,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -16019,12 +17600,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -16032,6 +17616,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -16039,12 +17624,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -16052,6 +17639,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -16059,6 +17647,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -16088,6 +17677,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -16197,6 +17788,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -16216,6 +17808,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -16223,6 +17816,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -16230,6 +17824,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -16237,6 +17832,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -16267,6 +17863,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -16293,6 +17890,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -16310,6 +17909,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -16467,36 +18067,69 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTextModel>;
 
         // Properties
+        /**
+         * @default Pango.Alignment.LEFT
+         */
         get alignment(): Pango.Alignment;
         set alignment(val: Pango.Alignment);
 
+        /**
+         * @default GooCanvas.CanvasAnchorType.NORTH_WEST
+         */
         get anchor(): CanvasAnchorType;
         set anchor(val: CanvasAnchorType);
 
+        /**
+         * @default Pango.EllipsizeMode.NONE
+         */
         get ellipsize(): Pango.EllipsizeMode;
         set ellipsize(val: Pango.EllipsizeMode);
 
+        /**
+         * @default -1
+         */
         get height(): number;
         set height(val: number);
 
+        /**
+         * @default null
+         */
         get text(): string;
         set text(val: string);
 
+        /**
+         * @default false
+         */
         get use_markup(): boolean;
         set use_markup(val: boolean);
 
+        /**
+         * @default false
+         */
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
 
+        /**
+         * @default -1
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default Pango.WrapMode.WORD
+         */
         get wrap(): Pango.WrapMode;
         set wrap(val: Pango.WrapMode);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -16532,15 +18165,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasTextModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTextModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get description(): string;
         set description(val: string);
 
@@ -16548,19 +18190,31 @@ export namespace GooCanvas {
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get title(): string;
         set title(val: string);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
@@ -16568,15 +18222,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItemModel */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItemModel
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -16801,24 +18464,28 @@ export namespace GooCanvas {
         vfunc_add_child(child: CanvasItemModel, position: number): void;
 
         /**
+         * signal emitted when the model's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when the model has changed.
          * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
 
         /**
+         * signal emitted when a child is added.
          * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
 
         /**
+         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num 
          * @param new_child_num 
          * @virtual
@@ -16826,12 +18493,14 @@ export namespace GooCanvas {
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
         /**
+         * signal emitted when a child property has changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when a child is removed.
          * @param child_num 
          * @virtual
          */
@@ -16845,6 +18514,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItemModel;
 
         /**
+         * gets a child property of a given child model,
+         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -16895,6 +18566,7 @@ export namespace GooCanvas {
         vfunc_remove_child(child_num: number): void;
 
         /**
+         * sets a child property for a given child model.
          * @param child 
          * @param property_id 
          * @param value 
@@ -17018,21 +18690,36 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasWidget>;
 
         // Properties
+        /**
+         * @default GooCanvas.CanvasAnchorType.NORTH_WEST
+         */
         get anchor(): CanvasAnchorType;
         set anchor(val: CanvasAnchorType);
 
+        /**
+         * @default -1
+         */
         get height(): number;
         set height(val: number);
 
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
 
+        /**
+         * @default -1
+         */
         get width(): number;
         set width(val: number);
 
+        /**
+         * @default 0
+         */
         get x(): number;
         set x(val: number);
 
+        /**
+         * @default 0
+         */
         get y(): number;
         set y(val: number);
 
@@ -17066,15 +18753,24 @@ export namespace GooCanvas {
         emit<K extends keyof CanvasWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default false
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get description(): string;
         set description(val: string);
 
@@ -17082,15 +18778,24 @@ export namespace GooCanvas {
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default null
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get title(): string;
         set title(val: string);
 
@@ -17100,6 +18805,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
           * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
@@ -17109,15 +18815,24 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
-        /** @category Inherited from GooCanvas.CanvasItem */
+        /**
+         * @default 0
+          * @category Inherited from GooCanvas.CanvasItem
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -17550,12 +19265,15 @@ export namespace GooCanvas {
         vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
         /**
+         * signal emitted when the item's animation has finished.
          * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
 
         /**
+         * signal emitted when a mouse button is pressed within
+         *  the item.
          * @param target 
          * @param event 
          * @virtual
@@ -17563,6 +19281,7 @@ export namespace GooCanvas {
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a mouse button is released.
          * @param target 
          * @param event 
          * @virtual
@@ -17570,12 +19289,14 @@ export namespace GooCanvas {
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
         /**
+         * signal emitted when a child property is changed.
          * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
         /**
+         * signal emitted when the mouse enters the item.
          * @param target 
          * @param event 
          * @virtual
@@ -17583,6 +19304,7 @@ export namespace GooCanvas {
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the item receices the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -17590,6 +19312,7 @@ export namespace GooCanvas {
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
         /**
+         * signal emitted when the item loses the keyboard focus.
          * @param target 
          * @param event 
          * @virtual
@@ -17619,6 +19342,8 @@ export namespace GooCanvas {
         vfunc_get_child(child_num: number): CanvasItem;
 
         /**
+         * gets a child property of a given child item,
+         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child 
          * @param property_id 
          * @param value 
@@ -17728,6 +19453,7 @@ export namespace GooCanvas {
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
         /**
+         * signal emitted when a grab that the item has is lost.
          * @param target 
          * @param event 
          * @virtual
@@ -17747,6 +19473,7 @@ export namespace GooCanvas {
         vfunc_is_visible(): boolean;
 
         /**
+         * signal emitted when a key is pressed.
          * @param target 
          * @param event 
          * @virtual
@@ -17754,6 +19481,7 @@ export namespace GooCanvas {
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when a key is released.
          * @param target 
          * @param event 
          * @virtual
@@ -17761,6 +19489,7 @@ export namespace GooCanvas {
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
         /**
+         * signal emitted when the mouse leaves the item.
          * @param target 
          * @param event 
          * @virtual
@@ -17768,6 +19497,7 @@ export namespace GooCanvas {
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
         /**
+         * signal emitted when the mouse moves within the item.
          * @param target 
          * @param event 
          * @virtual
@@ -17798,6 +19528,7 @@ export namespace GooCanvas {
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
         /**
+         * signal emitted to query the tooltip of an item.
          * @param x 
          * @param y 
          * @param keyboard_tooltip 
@@ -17824,6 +19555,8 @@ export namespace GooCanvas {
         vfunc_request_update(): void;
 
         /**
+         * signal emitted when the mouse wheel is activated within
+         * the item.
          * @param target 
          * @param event 
          * @virtual
@@ -17841,6 +19574,7 @@ export namespace GooCanvas {
         vfunc_set_canvas(canvas: Canvas): void;
 
         /**
+         * sets a child property for a given child item.
          * @param child 
          * @param property_id 
          * @param value 
@@ -18593,12 +20327,15 @@ export namespace GooCanvas {
             vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
 
             /**
+             * signal emitted when the item's animation has finished.
              * @param stopped 
              * @virtual
              */
             vfunc_animation_finished(stopped: boolean): void;
 
             /**
+             * signal emitted when a mouse button is pressed within
+             *  the item.
              * @param target 
              * @param event 
              * @virtual
@@ -18606,6 +20343,7 @@ export namespace GooCanvas {
             vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
             /**
+             * signal emitted when a mouse button is released.
              * @param target 
              * @param event 
              * @virtual
@@ -18613,12 +20351,14 @@ export namespace GooCanvas {
             vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
 
             /**
+             * signal emitted when a child property is changed.
              * @param pspec 
              * @virtual
              */
             vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
             /**
+             * signal emitted when the mouse enters the item.
              * @param target 
              * @param event 
              * @virtual
@@ -18626,6 +20366,7 @@ export namespace GooCanvas {
             vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
             /**
+             * signal emitted when the item receices the keyboard focus.
              * @param target 
              * @param event 
              * @virtual
@@ -18633,6 +20374,7 @@ export namespace GooCanvas {
             vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
 
             /**
+             * signal emitted when the item loses the keyboard focus.
              * @param target 
              * @param event 
              * @virtual
@@ -18662,6 +20404,8 @@ export namespace GooCanvas {
             vfunc_get_child(child_num: number): CanvasItem;
 
             /**
+             * gets a child property of a given child item,
+             *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
              * @param child 
              * @param property_id 
              * @param value 
@@ -18771,6 +20515,7 @@ export namespace GooCanvas {
             vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
 
             /**
+             * signal emitted when a grab that the item has is lost.
              * @param target 
              * @param event 
              * @virtual
@@ -18790,6 +20535,7 @@ export namespace GooCanvas {
             vfunc_is_visible(): boolean;
 
             /**
+             * signal emitted when a key is pressed.
              * @param target 
              * @param event 
              * @virtual
@@ -18797,6 +20543,7 @@ export namespace GooCanvas {
             vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
             /**
+             * signal emitted when a key is released.
              * @param target 
              * @param event 
              * @virtual
@@ -18804,6 +20551,7 @@ export namespace GooCanvas {
             vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
 
             /**
+             * signal emitted when the mouse leaves the item.
              * @param target 
              * @param event 
              * @virtual
@@ -18811,6 +20559,7 @@ export namespace GooCanvas {
             vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
 
             /**
+             * signal emitted when the mouse moves within the item.
              * @param target 
              * @param event 
              * @virtual
@@ -18841,6 +20590,7 @@ export namespace GooCanvas {
             vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
 
             /**
+             * signal emitted to query the tooltip of an item.
              * @param x 
              * @param y 
              * @param keyboard_tooltip 
@@ -18867,6 +20617,8 @@ export namespace GooCanvas {
             vfunc_request_update(): void;
 
             /**
+             * signal emitted when the mouse wheel is activated within
+             * the item.
              * @param target 
              * @param event 
              * @virtual
@@ -18884,6 +20636,7 @@ export namespace GooCanvas {
             vfunc_set_canvas(canvas: Canvas): void;
 
             /**
+             * sets a child property for a given child item.
              * @param child 
              * @param property_id 
              * @param value 
@@ -19010,24 +20763,42 @@ export namespace GooCanvas {
     interface CanvasItem extends GObject.Object, CanvasItem.Interface {
 
         // Properties
+        /**
+         * @default false
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
+        /**
+         * @default false
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
+        /**
+         * @default null
+         */
         get description(): string;
         set description(val: string);
 
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
 
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
+        /**
+         * @default null
+         */
         get title(): string;
         set title(val: string);
 
@@ -19037,6 +20808,7 @@ export namespace GooCanvas {
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
+         * @default null
          */
         get tooltip(): string;
         set tooltip(val: string);
@@ -19044,12 +20816,21 @@ export namespace GooCanvas {
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
+        /**
+         * @default 0
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
+        /**
+         * @default 0
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
@@ -19475,24 +21256,28 @@ export namespace GooCanvas {
             vfunc_add_child(child: CanvasItemModel, position: number): void;
 
             /**
+             * signal emitted when the model's animation has finished.
              * @param stopped 
              * @virtual
              */
             vfunc_animation_finished(stopped: boolean): void;
 
             /**
+             * signal emitted when the model has changed.
              * @param recompute_bounds 
              * @virtual
              */
             vfunc_changed(recompute_bounds: boolean): void;
 
             /**
+             * signal emitted when a child is added.
              * @param child_num 
              * @virtual
              */
             vfunc_child_added(child_num: number): void;
 
             /**
+             * signal emitted when a child is moved in the stacking order.
              * @param old_child_num 
              * @param new_child_num 
              * @virtual
@@ -19500,12 +21285,14 @@ export namespace GooCanvas {
             vfunc_child_moved(old_child_num: number, new_child_num: number): void;
 
             /**
+             * signal emitted when a child property has changed.
              * @param pspec 
              * @virtual
              */
             vfunc_child_notify(pspec: GObject.ParamSpec): void;
 
             /**
+             * signal emitted when a child is removed.
              * @param child_num 
              * @virtual
              */
@@ -19519,6 +21306,8 @@ export namespace GooCanvas {
             vfunc_get_child(child_num: number): CanvasItemModel;
 
             /**
+             * gets a child property of a given child model,
+             *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
              * @param child 
              * @param property_id 
              * @param value 
@@ -19569,6 +21358,7 @@ export namespace GooCanvas {
             vfunc_remove_child(child_num: number): void;
 
             /**
+             * sets a child property for a given child model.
              * @param child 
              * @param property_id 
              * @param value 
@@ -19672,39 +21462,69 @@ export namespace GooCanvas {
     interface CanvasItemModel extends GObject.Object, CanvasItemModel.Interface {
 
         // Properties
+        /**
+         * @default false
+         */
         get can_focus(): boolean;
         set can_focus(val: boolean);
 
+        /**
+         * @default false
+         */
         get canFocus(): boolean;
         set canFocus(val: boolean);
 
+        /**
+         * @default null
+         */
         get description(): string;
         set description(val: string);
 
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
 
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+         */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
 
+        /**
+         * @default GooCanvas.CanvasPointerEvents.VISIBLE_MASK | GooCanvas.CanvasPointerEvents.PAINTED_MASK | GooCanvas.CanvasPointerEvents.FILL_MASK | GooCanvas.CanvasPointerEvents.STROKE_MASK
+         */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
 
+        /**
+         * @default null
+         */
         get title(): string;
         set title(val: string);
 
+        /**
+         * @default null
+         */
         get tooltip(): string;
         set tooltip(val: string);
 
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
 
+        /**
+         * @default GooCanvas.CanvasItemVisibility.VISIBLE
+         */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
 
+        /**
+         * @default 0
+         */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
 
+        /**
+         * @default 0
+         */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 

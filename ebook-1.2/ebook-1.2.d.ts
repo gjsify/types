@@ -108,8 +108,6 @@ export namespace EBook {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.2
      */
@@ -1352,7 +1350,6 @@ export namespace EBook {
     }
 
     /**
-     * Contains only private data.
      * @gir-type Class
      * @since 3.12
      */
@@ -1986,8 +1983,6 @@ export namespace EBook {
     }
 
     /**
-     * Contains only private data the should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.2
      */
@@ -2204,8 +2199,6 @@ export namespace EBook {
          * @returns the object path
          */
         get_object_path(): string;
-
-        is_running(): boolean;
 
         /**
          * Returns the {@link EBook.BookClientView.client} associated with `client_view`.

@@ -316,6 +316,7 @@ export namespace ColordGtk {
         // Properties
         /**
          * @read-only
+         * @default null
          */
         get Profile(): string;
 

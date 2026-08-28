@@ -459,8 +459,6 @@ export namespace EDataBook {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      */
     class BookBackend extends EBackend.Backend {
@@ -1739,8 +1737,6 @@ export namespace EDataBook {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      */
     abstract class BookBackendFactory extends EBackend.BackendFactory {
@@ -1881,8 +1877,6 @@ export namespace EDataBook {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      */
     class BookBackendSync extends BookBackend {
@@ -2142,8 +2136,6 @@ export namespace EDataBook {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using
-     * the functions below.
      * @gir-type Class
      * @since 3.26
      */
@@ -2658,8 +2650,6 @@ export namespace EDataBook {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using
-     * the functions below.
      * @gir-type Class
      * @since 3.26
      */
@@ -3328,8 +3318,6 @@ export namespace EDataBook {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      * @since 3.12
      */
@@ -5457,8 +5445,6 @@ export namespace EDataBook {
     }
 
     /**
-     * Contains only private data that should be read and manipulated using the
-     * functions below.
      * @gir-type Class
      */
     class SystemLocaleWatcher extends GObject.Object {

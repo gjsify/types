@@ -2019,15 +2019,18 @@ export function registerClass<
      * Ensures that the indicated `type` has been registered with the
      * type system, and its _class_init() method has been run.
      * 
-     * In theory, simply calling the type's _get_type() method (or using
-     * the corresponding macro) is supposed take care of this. However,
-     * _get_type() methods are often marked `G_GNUC_CONST` for performance
-     * reasons, even though this is technically incorrect (since
-     * `G_GNUC_CONST` requires that the function not have side effects,
-     * which _get_type() methods do on the first call). As a result, if
-     * you write a bare call to a _get_type() macro, it may get optimized
-     * out by the compiler. Using `g_type_ensure()` guarantees that the
-     * type's _get_type() method is called.
+     * Typically, calling the type’s `_get_type()` method (or using the
+     * corresponding macro) will take care of this. In situations where a
+     * type is looked up dynamically, however, you may need to explicitly call
+     * `g_type_ensure()` to ensure expected types are registered before the
+     * first lookup. This can happen when using custom widgets from a GTK
+     * `.ui` file, for example.
+     * 
+     * Historically, `_get_type()` methods have sometimes been marked as
+     * [`G_GNUC_CONST`](https://docs.gtk.org/gobject/macros.html#compiler). This is incorrect, as the
+     * first call to a `_get_type()` method has side-effects. These
+     * annotations should be removed, as they can cause code to be optimized
+     * out in unexpected ways by the compiler.
      * @param type a {@link GObject.GType}
      * @since 2.34
      */
@@ -2808,7 +2811,7 @@ export function registerClass<
      */
     enum ConnectFlags {
         /**
-         * Default behaviour (no special flags). Since: 2.74
+         * Default behaviour (no special flags).
          */
         DEFAULT,
         /**
@@ -2928,15 +2931,15 @@ export function registerClass<
      */
     enum SignalFlags {
         /**
-         * Invoke the object method handler in the first emission stage.
+         * Invoke the default signal handler in the first emission stage
          */
         RUN_FIRST,
         /**
-         * Invoke the object method handler in the third emission stage.
+         * Invoke the default signal handler in the third emission stage
          */
         RUN_LAST,
         /**
-         * Invoke the object method handler in the last emission stage.
+         * Invoke the default signal handler in the last emission stage
          */
         RUN_CLEANUP,
         /**
@@ -2946,13 +2949,13 @@ export function registerClass<
          */
         NO_RECURSE,
         /**
-         * This signal supports "::detail" appendices to the signal name
+         * This signal supports `::detail` appendices to the signal name
          *  upon handler connections and emissions.
          */
         DETAILED,
         /**
          * Action signals are signals that may freely be emitted on alive
-         *  objects from user code via `g_signal_emit()` and friends, without
+         *  objects from user code via {@link GObject.signal_emit} and friends, without
          *  the need of being embedded into extra code that performs pre or
          *  post emission adjustments on the object. They can also be thought
          *  of as object methods which can be called generically by
@@ -3059,7 +3062,7 @@ export function registerClass<
      */
     enum TypeFlags {
         /**
-         * No special flags. Since: 2.74
+         * No special flags.
          */
         NONE,
         /**
@@ -3236,7 +3239,7 @@ export function registerClass<
          * The name of the property of {@link GObject.Binding.source} that should be used
          * as the source of the binding.
          * 
-         * This should be in [canonical form][canonical-parameter-names] to get the
+         * This should be in [canonical form][class@GObject.ParamSpec#parameter-names] to get the
          * best performance.
          * @since 2.26
          * @construct-only
@@ -3248,7 +3251,7 @@ export function registerClass<
          * The name of the property of {@link GObject.Binding.source} that should be used
          * as the source of the binding.
          * 
-         * This should be in [canonical form][canonical-parameter-names] to get the
+         * This should be in [canonical form][class@GObject.ParamSpec#parameter-names] to get the
          * best performance.
          * @since 2.26
          * @construct-only
@@ -3267,7 +3270,7 @@ export function registerClass<
          * The name of the property of {@link GObject.Binding.target} that should be used
          * as the target of the binding.
          * 
-         * This should be in [canonical form][canonical-parameter-names] to get the
+         * This should be in [canonical form][class@GObject.ParamSpec#parameter-names] to get the
          * best performance.
          * @since 2.26
          * @construct-only
@@ -3279,7 +3282,7 @@ export function registerClass<
          * The name of the property of {@link GObject.Binding.target} that should be used
          * as the target of the binding.
          * 
-         * This should be in [canonical form][canonical-parameter-names] to get the
+         * This should be in [canonical form][class@GObject.ParamSpec#parameter-names] to get the
          * best performance.
          * @since 2.26
          * @construct-only
@@ -3614,7 +3617,7 @@ export function registerClass<
      * methods for all object types in GTK, Pango and other libraries
      * based on GObject. The {@link GObject.Object} class provides methods for object
      * construction and destruction, property access methods, and signal
-     * support. Signals are described in detail [here][gobject-Signals].
+     * support. Signals are described in detail [here](https://docs.gtk.org/gobject/signals.html).
      * 
      * For a tutorial on implementing a new {@link GObject.Object} class, see [How to define and
      * implement a new GObject](https://docs.gtk.org/gobject/tutorial.html#how-to-define-and-implement-a-new-gobject).
@@ -3885,7 +3888,7 @@ export function registerClass<
 
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
+         * a [floating](https://docs.gtk.org/gobject/floating-refs.html) object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3946,7 +3949,7 @@ export function registerClass<
         getv(names: string[], values: (Value | any)[]): void;
 
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
+         * Checks whether `object` has a [floating](https://docs.gtk.org/gobject/floating-refs.html) reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4025,7 +4028,7 @@ export function registerClass<
 
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * [floating](https://docs.gtk.org/gobject/floating-refs.html) reference, if `object` has a floating reference.
          * 
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5322,7 +5325,7 @@ export function registerClass<
 
         n_values: number;
 
-        values: EnumValue;
+        values: EnumValue[];
     }
 
 
@@ -5364,7 +5367,7 @@ export function registerClass<
 
         n_values: number;
 
-        values: FlagsValue;
+        values: FlagsValue[];
     }
 
 
@@ -6154,7 +6157,7 @@ export function registerClass<
 
         /**
          * Initializes `value` to store values of the given `type`, and sets its value
-         * to the default for `type`.
+         * to the initial value for `type`.
          * 
          * This must be called before any other methods on a {@link GObject.Value}, so
          * the value knows what type it’s meant to store.
@@ -6197,7 +6200,7 @@ export function registerClass<
         peek_pointer(): null;
 
         /**
-         * Clears the current value in `value` and resets it to the default value
+         * Clears the current value in `value` and resets it to the initial value
          * (as if the value had just been initialized using
          * {@link GObject.Value.init}).
          * @returns the {@link GObject.Value} structure that has been passed in

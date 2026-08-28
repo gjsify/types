@@ -36,17 +36,23 @@
       "@girs/gmodule-2.0": [
             "../gmodule-2.0/index.d.ts"
       ],
-      "@girs/gtk-3.0": [
-            "../gtk-3.0/index.d.ts"
+      "@girs/gtk-4.0": [
+            "../gtk-4.0/index.d.ts"
       ],
-      "@girs/xlib-2.0": [
-            "../xlib-2.0/index.d.ts"
+      "@girs/gsk-4.0": [
+            "../gsk-4.0/index.d.ts"
       ],
-      "@girs/gdk-3.0": [
-            "../gdk-3.0/index.d.ts"
+      "@girs/graphene-1.0": [
+            "../graphene-1.0/index.d.ts"
+      ],
+      "@girs/gdk-4.0": [
+            "../gdk-4.0/index.d.ts"
       ],
       "@girs/cairo-1.0": [
             "../cairo-1.0/index.d.ts"
+      ],
+      "@girs/pangocairo-1.0": [
+            "../pangocairo-1.0/index.d.ts"
       ],
       "@girs/pango-1.0": [
             "../pango-1.0/index.d.ts"
@@ -59,9 +65,6 @@
       ],
       "@girs/gdkpixbuf-2.0": [
             "../gdkpixbuf-2.0/index.d.ts"
-      ],
-      "@girs/atk-1.0": [
-            "../atk-1.0/index.d.ts"
       ],
       "@girs/gjs": [
             "../gjs/index.d.ts"

@@ -32,12 +32,12 @@ export namespace UnityExtras {
      * @param uri 
      * @param _callback_ 
      */
-    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): void;
+    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string> | null): void;
     /**
      * @param uri 
      * @param _callback_ 
      */
-    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): globalThis.Promise<void> | void;
+    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string> | null): globalThis.Promise<void> | void;
 
     /**
      * @param _res_ 
@@ -53,7 +53,7 @@ export namespace UnityExtras {
      * @param name 
      * @param scope_creation_cb 
      */
-    function dbus_own_name(name: string, scope_creation_cb: CreateScopeCallback): Gio.Application;
+    function dbus_own_name(name: string, scope_creation_cb: CreateScopeCallback): Gio.Application | null;
 
     /**
      * @gir-type Callback
@@ -68,7 +68,7 @@ export namespace UnityExtras {
             /**
              * @signal
              */
-            progress: (arg0: string, arg1: Unity.MusicPreviewTrackState, arg2: number) => void;
+            progress: (arg0: string, arg1: never, arg2: number) => void;
         }
 
         // Constructor properties interface
@@ -120,13 +120,13 @@ export namespace UnityExtras {
          * @param uri 
          * @param _callback_ 
          */
-        play(uri: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        play(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param uri 
          * @param _callback_ 
          */
-        play(uri: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        play(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -138,12 +138,12 @@ export namespace UnityExtras {
         /**
          * @param _callback_ 
          */
-        pause(_callback_: Gio.AsyncReadyCallback<this>): void;
+        pause(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        pause(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        pause(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -155,12 +155,12 @@ export namespace UnityExtras {
         /**
          * @param _callback_ 
          */
-        pause_resume(_callback_: Gio.AsyncReadyCallback<this>): void;
+        pause_resume(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        pause_resume(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        pause_resume(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -172,12 +172,12 @@ export namespace UnityExtras {
         /**
          * @param _callback_ 
          */
-        resume(_callback_: Gio.AsyncReadyCallback<this>): void;
+        resume(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        resume(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        resume(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -189,12 +189,12 @@ export namespace UnityExtras {
         /**
          * @param _callback_ 
          */
-        stop(_callback_: Gio.AsyncReadyCallback<this>): void;
+        stop(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        stop(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        stop(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -206,12 +206,12 @@ export namespace UnityExtras {
         /**
          * @param _callback_ 
          */
-        close(_callback_: Gio.AsyncReadyCallback<this>): void;
+        close(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        close(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        close(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -227,13 +227,13 @@ export namespace UnityExtras {
          * @param uri 
          * @param _callback_ 
          */
-        video_properties(uri: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        video_properties(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param uri 
          * @param _callback_ 
          */
-        video_properties(uri: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<{ [key: string]: GLib.Variant }> | void;
+        video_properties(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: GLib.Variant }> | void;
 
         /**
          * @param _res_ 

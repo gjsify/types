@@ -1,6 +1,6 @@
 {
     "name": "@girs/mypaint-1.6",
-    "version": "4.2.0",
+    "version": "4.3.0",
     "description": "GJS TypeScript type definitions for MyPaint-1.6",
     "type": "module",
     "module": "mypaint-1.6.js",
@@ -31,9 +31,9 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.2.0",
-      "@girs/gobject-2.0": "^4.2.0",
-      "@girs/glib-2.0": "^4.2.0"    },
+      "@girs/gjs": "^4.3.0",
+      "@girs/gobject-2.0": "^4.3.0",
+      "@girs/glib-2.0": "^4.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

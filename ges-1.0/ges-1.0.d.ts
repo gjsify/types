@@ -8951,6 +8951,7 @@ export namespace GES {
         vfunc_handle_events(handle_events: boolean): void;
 
         /**
+         * virtual method to set the render rectangle
          * @param x 
          * @param y 
          * @param width 

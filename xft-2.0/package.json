@@ -1,6 +1,6 @@
 {
     "name": "@girs/xft-2.0",
-    "version": "4.2.0",
+    "version": "4.3.0",
     "description": "GJS TypeScript type definitions for xft-2.0",
     "type": "module",
     "module": "xft-2.0.js",
@@ -31,9 +31,9 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.2.0",
-      "@girs/xlib-2.0": "^4.2.0",
-      "@girs/gobject-2.0": "^4.2.0"    },
+      "@girs/gjs": "^4.3.0",
+      "@girs/xlib-2.0": "^4.3.0",
+      "@girs/gobject-2.0": "^4.3.0"    },
     "devDependencies": {
       "typescript": "*"
     },

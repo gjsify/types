@@ -2682,6 +2682,7 @@ export namespace Cogl {
          *     depth buffer to a texture.
          */
         DEPTH_TEXTURE,
+        SHADER_TEXTURE_LOD,
     }
 
 
@@ -4175,6 +4176,16 @@ export namespace Cogl {
          * @returns `true` if the texture was successfully allocated,               otherwise `false` and `error` will be updated if it               wasn't `null`.
          */
         allocate(): Bool;
+
+        /**
+         * @param xoffset 
+         * @param yoffset 
+         * @param x 
+         * @param y 
+         * @param width 
+         * @param height 
+         */
+        copy_sub_image(xoffset: number, yoffset: number, x: number, y: number, width: bigint | number, height: bigint | number): Bool;
 
         /**
          * Queries what components the given `texture` stores internally as set

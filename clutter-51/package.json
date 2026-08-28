@@ -1,0 +1,64 @@
+{
+    "name": "@girs/clutter-51",
+    "version": "4.3.0",
+    "description": "GJS TypeScript type definitions for Clutter-51",
+    "type": "module",
+    "module": "clutter-51.js",
+    "main": "clutter-51.js",
+    "exports": {
+      "./ambient": {
+        "types": "./clutter-51-ambient.d.ts",
+        "import": "./clutter-51-ambient.js",
+        "default": "./clutter-51-ambient.js"
+      },
+      "./import": {
+        "types": "./clutter-51-import.d.ts",
+        "import": "./clutter-51-import.js",
+        "default": "./clutter-51-import.js"
+      },
+      "./clutter-51": {
+        "types": "./clutter-51.d.ts",
+        "import": "./clutter-51.js",
+        "default": "./clutter-51.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "scripts": {
+      "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+      "@girs/gjs": "^4.3.0",
+      "@girs/pango-1.0": "^4.3.0",
+      "@girs/cairo-1.0": "^4.3.0",
+      "@girs/gobject-2.0": "^4.3.0",
+      "@girs/glib-2.0": "^4.3.0",
+      "@girs/harfbuzz-0.0": "^4.3.0",
+      "@girs/freetype2-2.0": "^4.3.0",
+      "@girs/gio-2.0": "^4.3.0",
+      "@girs/gmodule-2.0": "^4.3.0",
+      "@girs/mtk-51": "^4.3.0",
+      "@girs/graphene-1.0": "^4.3.0",
+      "@girs/gl-1.0": "^4.3.0",
+      "@girs/cogl-51": "^4.3.0",
+      "@girs/atk-1.0": "^4.3.0"    },
+    "devDependencies": {
+      "typescript": "*"
+    },
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Clutter-51"],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/clutter-51#readme"
+}
+
+

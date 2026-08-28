@@ -31,6 +31,7 @@ import type Json from '@girs/json-1.0';
 import type GtkSource from '@girs/gtksource-5';
 import type Foundry from '@girs/foundry-1';
 import type Dex from '@girs/dex-1';
+import type GioUnix from '@girs/giounix-2.0';
 import type Adw from '@girs/adw-1';
 
 export namespace FoundryAdw {
@@ -227,9 +228,11 @@ export namespace FoundryAdw {
             "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
             "notify::visible": (pspec: GObject.ParamSpec) => void;
             "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::complete-text": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::enable-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::input-interceptor": (pspec: GObject.ParamSpec) => void;
             "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
             "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -324,6 +327,24 @@ export namespace FoundryAdw {
         set_file_type(file_type: Gio.FileType): void;
 
         /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get complete_text(): string;
+
+        /**
+         * The contents of the entry, including uncommited content such as the
+         * preedit.
+         * @since 4.24
+         * @read-only
+          * @category Inherited from Gtk.Editable
+         */
+        get completeText(): string;
+
+        /**
          * The current position of the insertion cursor in chars.
          * @read-only
          * @default 0
@@ -362,6 +383,22 @@ export namespace FoundryAdw {
          */
         get enableUndo(): boolean;
         set enableUndo(val: boolean);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get input_interceptor(): Gtk.Widget | null;
+        set input_interceptor(val: Gtk.Widget | null);
+
+        /**
+         * The widget used to intercept input for this editable
+         * @since 4.24
+          * @category Inherited from Gtk.Editable
+         */
+        get inputInterceptor(): Gtk.Widget | null;
+        set inputInterceptor(val: Gtk.Widget | null);
 
         /**
          * The desired maximum width of the entry, in characters.
@@ -469,7 +506,7 @@ export namespace FoundryAdw {
         /**
          * Deletes the currently selected text of the editable.
          * 
-         * This call doesn&#x2019;t do anything if there is no selected text.
+         * This call doesn’t do anything if there is no selected text.
          */
         delete_selection(): void;
 
@@ -517,6 +554,13 @@ export namespace FoundryAdw {
         get_chars(start_pos: number, end_pos: number): string;
 
         /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @returns the complete contents of the editable
+         */
+        get_complete_text(): string;
+
+        /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
          * implementation to.
          * 
@@ -536,6 +580,13 @@ export namespace FoundryAdw {
          * @returns `true` if undo is enabled
          */
         get_enable_undo(): boolean;
+
+        /**
+         * Retrieves the widget that was previously set up as input interceptor
+         * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
+         * @returns The editable widget
+         */
+        get_input_interceptor(): Gtk.Widget | null;
 
         /**
          * Retrieves the desired maximum width of `editable`, in characters.
@@ -644,6 +695,21 @@ export namespace FoundryAdw {
         set_enable_undo(enable_undo: boolean): void;
 
         /**
+         * Sets `interceptor` as the widget that `editable` will intercept key events from.
+         * 
+         * A typical usecase for this is implementing auto-showing search entries, so
+         * that textual input may be intercepted from another widget and handled first
+         * hand by the given editable. The events will be handled in the bubble phase
+         * of `interceptor`, which means that editable child widgets of `interceptor` will
+         * receive the text input before it can be captured.
+         * 
+         * Only those events that would be handled by an input method will be handled,
+         * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
+         * @param interceptor the input interceptor widget
+         */
+        set_input_interceptor(interceptor: Gtk.Widget | null): void;
+
+        /**
          * Sets the desired maximum width in characters of `editable`.
          * @param n_chars the new desired maximum width, in characters
          */
@@ -728,6 +794,13 @@ export namespace FoundryAdw {
          * @virtual
          */
         vfunc_do_insert_text(text: string, length: number, position: number): number;
+
+        /**
+         * Retrieves the contents of `editable`, including *pseudo-content*
+         * such as the preedit buffer.
+         * @virtual
+         */
+        vfunc_get_complete_text(): string;
 
         /**
          * Gets the {@link Gtk.Editable} that `editable` is delegating its
@@ -1421,7 +1494,7 @@ export namespace FoundryAdw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -1975,7 +2048,7 @@ export namespace FoundryAdw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -2461,7 +2534,7 @@ export namespace FoundryAdw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -2923,7 +2996,7 @@ export namespace FoundryAdw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -4005,7 +4078,7 @@ export namespace FoundryAdw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -4725,7 +4798,7 @@ export namespace FoundryAdw {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual

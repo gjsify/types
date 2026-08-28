@@ -108,6 +108,7 @@ export namespace GdkX11 {
      * Find the {@link Gdk.Display} corresponding to `xdisplay`, if any exists.
      * @param xdisplay a pointer to an X Display
      * @returns the {@link Gdk.Display}, if found, otherwise `null`.
+     * @deprecated since 4.18
      */
     function x11_lookup_xdisplay(xdisplay: xlib.Display): X11Display;
 
@@ -119,6 +120,7 @@ export namespace GdkX11 {
      * See the X Session Management Library documentation for more information on
      * session management and the Inter-Client Communication Conventions Manual
      * @param sm_client_id the client id assigned by the session manager    when the connection was opened, or `null` to remove the property.
+     * @deprecated since 4.18
      */
     function x11_set_sm_client_id(sm_client_id: string | null): void;
 
@@ -855,7 +857,7 @@ export namespace GdkX11 {
          * Returns the current workspace for `screen` when running under a
          * window manager that supports multiple workspaces, as described
          * in the
-         * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec) specification.
+         * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/) specification.
          * @returns the current workspace, or 0 if workspaces are not supported
          */
         get_current_desktop(): number;
@@ -873,7 +875,7 @@ export namespace GdkX11 {
          * Returns the number of workspaces for `screen` when running under a
          * window manager that supports multiple workspaces, as described
          * in the
-         * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec) specification.
+         * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/) specification.
          * @returns the number of workspaces, or 0 if workspaces are not supported
          */
         get_number_of_desktops(): number;
@@ -899,7 +901,7 @@ export namespace GdkX11 {
         /**
          * This function is specific to the X11 backend of GDK, and indicates
          * whether the window manager supports a certain hint from the
-         * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec) specification.
+         * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/) specification.
          * 
          * When using this function, keep in mind that the window manager
          * can change over time; so you shouldn’t use this function in
@@ -996,7 +998,7 @@ export namespace GdkX11 {
         /**
          * Moves the surface to the correct workspace when running under a
          * window manager that supports multiple workspaces, as described
-         * in the [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec) specification.
+         * in the [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/) specification.
          * Will not do anything if the surface is already on all workspaces.
          */
         move_to_current_desktop(): void;
@@ -1004,7 +1006,7 @@ export namespace GdkX11 {
         /**
          * Moves the surface to the given workspace when running unde a
          * window manager that supports multiple workspaces, as described
-         * in the [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec) specification.
+         * in the [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/) specification.
          * @param desktop the number of the workspace to move the surface to
          */
         move_to_desktop(desktop: number): void;

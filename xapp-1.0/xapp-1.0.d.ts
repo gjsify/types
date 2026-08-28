@@ -1263,13 +1263,7 @@ export namespace XApp {
 
     namespace IconChooserDialog {
         // Signal signatures
-        interface SignalSignatures extends GtkWindow.SignalSignatures {
-            /**
-             * @signal
-             * @action
-             * @run-last
-             */
-            close: () => void;
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
             /**
              * @signal
              * @action
@@ -1279,6 +1273,7 @@ export namespace XApp {
             "notify::allow-paths": (pspec: GObject.ParamSpec) => void;
             "notify::default-icon": (pspec: GObject.ParamSpec) => void;
             "notify::icon-size": (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::attached-to": (pspec: GObject.ParamSpec) => void;
@@ -1357,7 +1352,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             allow_paths: boolean;
             allowPaths: boolean;
             default_icon: string;
@@ -1370,7 +1365,7 @@ export namespace XApp {
     /**
      * @gir-type Class
      */
-    class IconChooserDialog extends GtkWindow implements Atk.ImplementorIface, Gtk.Buildable {
+    class IconChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<IconChooserDialog>;
 
         // Properties
@@ -1451,13 +1446,19 @@ export namespace XApp {
 
         // Methods
         /**
-         * Allows a button to be added to the {@link Gtk.ActionBar} of the dialog with a custom
+         * Allows a button to be added to the action area of the dialog with a custom
          * response id.
          * @param button a {@link Gtk.Button} to add
-         * @param packing the {@link Gtk.PackType} to specify start or end packing to the action bar
+         * @param packing the {@link Gtk.PackType} to specify start or end packing to the action area
          * @param response_id the dialog response id to return when this button is clicked.
          */
         add_button(button: Gtk.Widget, packing: Gtk.PackType, response_id: Gtk.ResponseType): void;
+
+        /**
+         * @param args 
+         */
+    // Conflicted with Gtk.Dialog.add_button
+        add_button(...args: never[]): any;
 
         /**
          * Adds a custom category to the dialog.
@@ -3603,9 +3604,14 @@ export namespace XApp {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -3624,9 +3630,14 @@ export namespace XApp {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -4185,9 +4196,20 @@ export namespace XApp {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -4206,9 +4228,21 @@ export namespace XApp {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -5009,9 +5043,14 @@ export namespace XApp {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -5030,9 +5069,14 @@ export namespace XApp {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -5240,9 +5284,20 @@ export namespace XApp {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -5261,9 +5316,21 @@ export namespace XApp {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.

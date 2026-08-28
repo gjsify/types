@@ -78,6 +78,9 @@ export namespace Rest {
         constructor(options: { message: string; code: number });
 
         // Static methods
+        /**
+         * Registers an error quark for {@link Rest.ProxyCall} errors.
+         */
         static quark(): GLib.Quark;
     }
 
@@ -294,18 +297,29 @@ export namespace Rest {
         constructor(options: { message: string; code: number });
 
         // Static methods
+        /**
+         * Registers an error quark for {@link Rest.Proxy} errors.
+         */
         static quark(): GLib.Quark;
     }
 
 
     function oauth2_error_quark(): GLib.Quark;
 
+    /**
+     * Registers an error quark for {@link Rest.ProxyCall} errors.
+     * @returns the error quark
+     */
     function proxy_call_error_quark(): GLib.Quark;
 
+    /**
+     * Registers an error quark for {@link Rest.Proxy} errors.
+     * @returns the error quark
+     */
     function proxy_error_quark(): GLib.Quark;
 
     /**
-     * Creates a random string from a given alphabeth with length `length`
+     * Creates a random string from a given alphabet with length `length`.
      * @param length the length of the random string
      * @returns a random string
      */
@@ -801,6 +815,7 @@ export namespace Rest {
 
         // Virtual methods
         /**
+         * class handler for the {@link Rest.Proxy.SignalSignatures.authenticate | Rest.Proxy::authenticate} signal
          * @param auth 
          * @param retrying 
          * @virtual
@@ -970,6 +985,8 @@ export namespace Rest {
 
         // Virtual methods
         /**
+         * Virtual function called before making the request, This allows the
+         * call to be modified, for example to add a signature.
          * @virtual
          */
         vfunc_prepare(): boolean;

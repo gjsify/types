@@ -57,6 +57,7 @@ export namespace OsmGpsMap {
         OPENAERIALMAP,
         MAPS_FOR_FREE,
         OPENCYCLEMAP,
+        OPENTOPOMAP,
         OSM_PUBLIC_TRANSPORT,
         GOOGLE_STREET,
         GOOGLE_SATELLITE,
@@ -825,7 +826,7 @@ export namespace OsmGpsMap {
 
         /**
          * Cancels all tiles currently being downloaded. Typically used if you wish to
-         * cacel a large number of tiles queued using `osm_gps_map_download_maps()`
+         * cancel a large number of tiles queued using `osm_gps_map_download_maps()`
          */
         download_cancel_all(): void;
 
@@ -1716,15 +1717,13 @@ export namespace OsmGpsMap {
         emit<K extends keyof MapTrack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
-        // Static methods
+        // Methods
         /**
          * Add a point to track
-         * @param track a {@link OsmGpsMap.MapTrack}
          * @param point a {@link OsmGpsMap.MapPoint} point to add
          */
-        static add_point(track: MapTrack, point: MapPoint): MapTrack;
+        add_point(point: MapPoint): void;
 
-        // Methods
         /**
          * Get track color
          */

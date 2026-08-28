@@ -644,6 +644,7 @@ export namespace Gck {
          * This may be set to NULL if this object was created from an already
          * initialized module via the `gck_module_new()` function.
          * @construct-only
+         * @default null
          */
         get path(): string;
 
@@ -790,6 +791,7 @@ export namespace Gck {
         /**
          * The raw PKCS11 handle for this object.
          * @construct-only
+         * @default 0
          */
         get handle(): number;
 
@@ -1445,6 +1447,7 @@ export namespace Gck {
         /**
          * The raw CK_SESSION_HANDLE handle of this session.
          * @construct-only
+         * @default 0
          */
         get handle(): number;
 
@@ -1465,18 +1468,21 @@ export namespace Gck {
         /**
          * Raw PKCS#11 flags used to open the PKCS#11 session.
          * @construct-only
+         * @default 0
          */
         set opening_flags(val: bigint | number);
 
         /**
          * Raw PKCS#11 flags used to open the PKCS#11 session.
          * @construct-only
+         * @default 0
          */
         set openingFlags(val: bigint | number);
 
         /**
          * The options this session was opened with.
          * @construct-only
+         * @default Gck.SessionOptions.READ_ONLY
          */
         get options(): SessionOptions;
 
@@ -2847,6 +2853,7 @@ export namespace Gck {
         /**
          * The raw CK_SLOT_ID handle of this slot.
          * @construct-only
+         * @default 0
          */
         get handle(): number;
 

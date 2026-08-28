@@ -379,6 +379,14 @@ export namespace Libmsi {
          * @returns `true` on success
          */
         merge(merge: Database, table: string | null): boolean;
+
+        /**
+         * Set the string table codepage of the database. This controls
+         * how all table strings are encoded in the MSI file.
+         * @param codepage the codepage to set for the string table
+         * @returns `true` on success
+         */
+        set_codepage(codepage: number): boolean;
     }
 
 

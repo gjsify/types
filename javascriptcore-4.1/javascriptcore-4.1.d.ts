@@ -1367,7 +1367,7 @@ export namespace JavaScriptCore {
          *     g_error ("Only arrays of uint32_t are supported");
          * 
          * gsize count = 0;
-         * uint32_t *elements = jsc_value_typed_array_get_contents (value, &count);
+         * uint32_t *elements = jsc_value_typed_array_get_data (value, &count);
          * for (gsize i = 0; i < count; i++)
          *      g_print ("index %zu, value %" PRIu32 "\n", i, elements[i]);
          * ```

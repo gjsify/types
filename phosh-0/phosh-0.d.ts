@@ -409,9 +409,14 @@ export namespace Phosh {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -430,9 +435,14 @@ export namespace Phosh {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -1062,9 +1072,20 @@ export namespace Phosh {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.get_info
+        get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -1083,9 +1104,21 @@ export namespace Phosh {
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * 
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
          * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
+
+        /**
+         * @param args 
+         * @virtual
+         */
+        // Conflicted with Gio.DBusInterfaceSkeleton.vfunc_get_info
+        vfunc_get_info(...args: never[]): any;
 
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
@@ -1713,42 +1746,49 @@ export namespace Phosh {
 
         // Properties
         /**
+         * The edges to anchor the surface to
          * @default 0
          */
         get anchor(): number;
         set anchor(val: number);
 
         /**
+         * The height of the layer surface set by the compositor
          * @read-only
          * @default 0
          */
         get configured_height(): number;
 
         /**
+         * The height of the layer surface set by the compositor
          * @read-only
          * @default 0
          */
         get configuredHeight(): number;
 
         /**
+         * The width of the layer surface set by the compositor
          * @read-only
          * @default 0
          */
         get configured_width(): number;
 
         /**
+         * The width of the layer surface set by the compositor
          * @read-only
          * @default 0
          */
         get configuredWidth(): number;
 
         /**
+         * The area that is not occluded with other surfaces
          * @default 0
          */
         get exclusive_zone(): number;
         set exclusive_zone(val: number);
 
         /**
+         * The area that is not occluded with other surfaces
          * @default 0
          */
         get exclusiveZone(): number;
@@ -1761,77 +1801,97 @@ export namespace Phosh {
         set height(val: number);
 
         /**
+         * Whether the surface interacts with the keyboard
          * @default false
          */
         get kbd_interactivity(): boolean;
         set kbd_interactivity(val: boolean);
 
         /**
+         * Whether the surface interacts with the keyboard
          * @default false
          */
         get kbdInteractivity(): boolean;
         set kbdInteractivity(val: boolean);
 
         /**
+         * The layer the surface should be attached to
          * @default 0
          */
         get layer(): number;
         set layer(val: number);
 
+        /**
+         * The layer shell wayland global
+         */
         get layer_shell(): null;
         set layer_shell(val: never);
 
+        /**
+         * The layer shell wayland global
+         */
         get layerShell(): null;
         set layerShell(val: never);
 
         /**
+         * Distance away from the bottom anchor point
          * @default 0
          */
         get margin_bottom(): number;
         set margin_bottom(val: number);
 
         /**
+         * Distance away from the bottom anchor point
          * @default 0
          */
         get marginBottom(): number;
         set marginBottom(val: number);
 
         /**
+         * "Distance away from the left anchor point
          * @default 0
          */
         get margin_left(): number;
         set margin_left(val: number);
 
         /**
+         * "Distance away from the left anchor point
          * @default 0
          */
         get marginLeft(): number;
         set marginLeft(val: number);
 
         /**
+         * Distance away from the right anchor point
          * @default 0
          */
         get margin_right(): number;
         set margin_right(val: number);
 
         /**
+         * Distance away from the right anchor point
          * @default 0
          */
         get marginRight(): number;
         set marginRight(val: number);
 
         /**
+         * Distance away from the top anchor point
          * @default 0
          */
         get margin_top(): number;
         set margin_top(val: number);
 
         /**
+         * Distance away from the top anchor point
          * @default 0
          */
         get marginTop(): number;
         set marginTop(val: number);
 
+        /**
+         * Namespace of the layer surface
+         */
         get namespace(): string;
         set namespace(val: string);
 
@@ -1841,9 +1901,15 @@ export namespace Phosh {
         get width(): number;
         set width(val: number);
 
+        /**
+         * The wl_output associated with this surface
+         */
         get wl_output(): null;
         set wl_output(val: never);
 
+        /**
+         * The wl_output associated with this surface
+         */
         get wlOutput(): null;
         set wlOutput(val: never);
 
@@ -3822,6 +3888,7 @@ export namespace Phosh {
             "notify::icon-size": (pspec: GObject.ParamSpec) => void;
             "notify::info": (pspec: GObject.ParamSpec) => void;
             "notify::pixel-size": (pspec: GObject.ParamSpec) => void;
+            "notify::priority": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
@@ -3877,6 +3944,7 @@ export namespace Phosh {
             info: string;
             pixel_size: number;
             pixelSize: number;
+            priority: number;
         }
     }
 
@@ -3961,6 +4029,14 @@ export namespace Phosh {
         set pixelSize(val: number);
 
         /**
+         * The priority of icon. Higher priority icons are more likely to be shown when displayed in
+         * space-constrained places.
+         * @default 10
+         */
+        get priority(): number;
+        set priority(val: number);
+
+        /**
          * Compile-time signal type information.
          *
          * This instance property is generated only for TypeScript type checking.
@@ -4015,6 +4091,8 @@ export namespace Phosh {
 
         get_pixel_size(): number;
 
+        get_priority(): number;
+
         /**
          * @param widget 
          */
@@ -4040,6 +4118,11 @@ export namespace Phosh {
          * @param size 
          */
         set_pixel_size(size: number): void;
+
+        /**
+         * @param priority 
+         */
+        set_priority(priority: number): void;
     }
 
 

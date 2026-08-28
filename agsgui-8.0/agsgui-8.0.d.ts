@@ -3007,7 +3007,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -3075,7 +3075,7 @@ export namespace AgsGui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.AccessibleRange.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             adjustment: GObject.Object;
             button_height: number;
             buttonHeight: number;
@@ -3100,7 +3100,7 @@ export namespace AgsGui {
     /**
      * @gir-type Class
      */
-    class Dial extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
+    class Dial extends Gtk.Widget implements Gtk.Accessible, Gtk.AccessibleRange, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Dial>;
 
         // Properties
@@ -3276,6 +3276,8 @@ export namespace AgsGui {
         current_x: number;
 
         current_y: number;
+
+        box: Gtk.Box;
 
         // Constructors
         constructor(properties?: Partial<Dial.ConstructorProps>, ...args: any[]);
@@ -3709,6 +3711,16 @@ export namespace AgsGui {
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
         /**
+         * Sets the current value of the accessible range.
+         * 
+         * This operation should behave similarly as if the user performed the
+         * action.
+         * @param value the value to set
+         * @virtual
+         */
+        vfunc_set_current_value(value: number): boolean;
+
+        /**
          * Gets the ID of the `buildable` object.
          * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
@@ -3799,7 +3811,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -3943,7 +3955,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -4083,7 +4095,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -4584,7 +4596,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -5192,7 +5204,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -5440,7 +5452,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -5493,7 +5505,7 @@ export namespace AgsGui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.AccessibleRange.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {
             adjustment: GObject.Object;
             segment_count: number;
             segmentCount: number;
@@ -5509,7 +5521,7 @@ export namespace AgsGui {
     /**
      * @gir-type Class
      */
-    class Indicator extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
+    class Indicator extends Gtk.Widget implements Gtk.Accessible, Gtk.AccessibleRange, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Indicator>;
 
         // Properties
@@ -5929,6 +5941,16 @@ export namespace AgsGui {
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
         /**
+         * Sets the current value of the accessible range.
+         * 
+         * This operation should behave similarly as if the user performed the
+         * action.
+         * @param value the value to set
+         * @virtual
+         */
+        vfunc_set_current_value(value: number): boolean;
+
+        /**
          * Gets the ID of the `buildable` object.
          * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
@@ -6019,7 +6041,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -6034,7 +6056,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -6825,7 +6847,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -7049,7 +7071,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -7634,7 +7656,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -7649,7 +7671,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -7824,7 +7846,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -8018,7 +8040,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -8712,7 +8734,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -8727,7 +8749,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -9370,7 +9392,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -9385,7 +9407,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -9962,7 +9984,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -9977,7 +9999,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -10152,7 +10174,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -10279,7 +10301,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -10406,7 +10428,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -10527,7 +10549,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -11102,7 +11124,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
+         *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id 
          * @virtual
@@ -11117,7 +11139,7 @@ export namespace AgsGui {
 
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable&#x2019;s new orientation
+         * @param orientation the orientable’s new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }

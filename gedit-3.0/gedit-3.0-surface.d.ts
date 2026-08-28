@@ -3,7 +3,7 @@
  *
  * GENERATED — do not edit. Provenance: Gedit-3.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface Gio.ActionGroup Gio.ActionMap
  *
- * 5 concrete widgets, 5 declarations, 1 enum nick unions, 2 slot candidates.
+ * 4 concrete widgets, 4 declarations, 1 enum nick unions, 2 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -25,8 +25,9 @@
  */
 
 import type Gedit from './gedit-3.0.js';
-import type { GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkComboBoxConstructOnly, GtkComboBoxProps, GtkContainerConstructOnly, GtkContainerProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkStatusbarConstructOnly, GtkStatusbarProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/surface';
-import type { GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtksource-4/surface';
+import type { GtkApplicationWindowConstructOnly, GtkApplicationWindowProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkComboBoxConstructOnly, GtkComboBoxProps, GtkContainerConstructOnly, GtkContainerProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkTextViewConstructOnly, GtkTextViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/surface';
+import type { GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtksource-300/surface';
+import type { TeplViewConstructOnly, TeplViewProps } from '@girs/tepl-6/surface';
 
 // ---------------------------------------------------------------------------
 // Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
@@ -38,7 +39,7 @@ import type { GtkSourceViewConstructOnly, GtkSourceViewProps } from '@girs/gtkso
 // Re-measure with `scripts/check-nick-derivation.mjs` in ts-for-gir.
 // ---------------------------------------------------------------------------
 
-export type GeditTabStateNick = 'state-normal' | 'state-loading' | 'state-reverting' | 'state-saving' | 'state-printing' | 'state-showing-print-preview' | 'state-loading-error' | 'state-reverting-error' | 'state-saving-error' | 'state-generic-error' | 'state-closing' | 'state-externally-modified-notification' | 'num-of-states';
+export type GeditTabStateNick = 'normal' | 'loading' | 'reverting' | 'saving' | 'printing' | 'showing-print-preview' | 'loading-error' | 'reverting-error' | 'saving-error' | 'generic-error' | 'closing' | 'externally-modified-notification';
 
 // ---------------------------------------------------------------------------
 // Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
@@ -57,22 +58,19 @@ export interface GeditEncodingsComboBoxProps extends GtkComboBoxProps, GtkBuilda
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GeditEncodingsComboBoxConstructOnly = GtkComboBoxConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkCellLayoutConstructOnly;
 
-export interface GeditStatusbarProps extends GtkStatusbarProps, GtkBuildableProps, GtkOrientableProps {
-}
-/** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GeditStatusbarConstructOnly = GtkStatusbarConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
-
 export interface GeditTabProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
+    /** Whether the autosave feature is enabled. */
     autosave?: boolean;
+    /** Time in minutes between two autosaves. */
     'autosave-interval'?: number;
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GeditTabConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
 
-export interface GeditViewProps extends GtkSourceViewProps, GtkBuildableProps, GtkScrollableProps {
+export interface GeditViewProps extends TeplViewProps, GtkBuildableProps, GtkScrollableProps {
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
-export type GeditViewConstructOnly = GtkSourceViewConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly;
+export type GeditViewConstructOnly = TeplViewConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly;
 
 export interface GeditWindowProps extends GtkApplicationWindowProps, GtkBuildableProps {
 }
@@ -100,13 +98,6 @@ export interface Widgets {
         props: GeditEncodingsComboBoxProps;
         signals: Gedit.EncodingsComboBox.SignalSignatures;
         constructOnly: GeditEncodingsComboBoxConstructOnly;
-        slotCandidates: {};
-    };
-    GeditStatusbar: {
-        class: Gedit.Statusbar;
-        props: GeditStatusbarProps;
-        signals: Gedit.Statusbar.SignalSignatures;
-        constructOnly: GeditStatusbarConstructOnly;
         slotCandidates: {};
     };
     GeditTab: {

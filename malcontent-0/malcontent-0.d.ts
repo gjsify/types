@@ -1806,7 +1806,7 @@ export namespace Malcontent {
          * @param active_session_time_today_secs total time the user has spent in an active   session so far today, in seconds
          * @returns true if the user this `limits` corresponds to is allowed to be in   an active session at the given time; false otherwise
          */
-        check_time_remaining(now_dt: GLib.DateTime, active_session_time_today_secs: bigint | number): [boolean, number, boolean];
+        check_time_remaining(now_dt: GLib.DateTime, active_session_time_today_secs: bigint | number): [boolean, number, boolean, boolean];
 
         /**
          * Check whether session limits configurations `a` and `b` are equal.
@@ -1814,6 +1814,25 @@ export namespace Malcontent {
          * @returns true if `a` and `b` are equal, false otherwise
          */
         equal(b: SessionLimits): boolean;
+
+        /**
+         * Check whether there is an active screen time limit extension, and get its
+         * bounds.
+         * 
+         * If a screen time limit extension has been set on `limits` using
+         * {@link Malcontent.SessionLimitsBuilder.set_active_extension}, and `limits`
+         * has at least one limit enabled (see
+         * {@link Malcontent.SessionLimits.is_enabled}), and the bounds of the
+         * extension contain `now_dt` (i.e. the extension isn’t entirely in the past or
+         * the future), then the out arguments will be set to its bounds and true will
+         * be returned.
+         * 
+         * Otherwise, there is no screen time limit extension active, so false will be
+         * returned and the out arguments will be set to zero.
+         * @param now_dt current time in the user’s timezone, typically queried using   `g_date_time_new_now_local()`
+         * @returns true if `limits` has a screen time limit extension active; false   otherwise
+         */
+        get_active_extension(now_dt: GLib.DateTime): [boolean, number, number];
 
         /**
          * Get the daily limit, if set.
@@ -1957,6 +1976,22 @@ export namespace Malcontent {
         init(): void;
 
         /**
+         * Set the screen time extension in `builder` to the given period.
+         * 
+         * This is used for recording a screen time extension request which has been
+         * granted.
+         * 
+         * If both `start_time_secs` and `duration_secs` are zero, the screen time
+         * extension will be cleared. `duration_secs` must otherwise be non-zero.
+         * 
+         * This will act on top of any session limits. If no session limits are set, any
+         * extension will be ignored.
+         * @param start_time_secs start time of the extension, in seconds since the Unix   epoch
+         * @param duration_secs duration of the extension, in seconds; or zero if there is no   active extension
+         */
+        set_active_extension(start_time_secs: bigint | number, duration_secs: number): void;
+
+        /**
          * Set the session limits in `builder` to be a daily limit, where the total
          * active session time for the user has a given limit each day.
          * 
@@ -1982,6 +2017,15 @@ export namespace Malcontent {
          * @param end_time_secs number of seconds since midnight when the user’s session can   last end
          */
         set_daily_schedule(enforced: boolean, start_time_secs: number, end_time_secs: number): void;
+
+        /**
+         * Set all the options in `builder` to copies of the options in `limits`.
+         * 
+         * Use this to set up a `builder` as a clone of `limits`, ready to have its
+         * options modified further.
+         * @param limits a {@link Malcontent.SessionLimits} to copy into the builder
+         */
+        set_from_instance(limits: SessionLimits): void;
 
         /**
          * Unset any session limits currently set in the `builder`.

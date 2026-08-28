@@ -439,7 +439,7 @@ export namespace Folks {
         /**
          * @virtual
          */
-        vfunc_get_value(): never;
+        vfunc_get_value(): null;
 
         /**
          * @param value 
@@ -519,7 +519,7 @@ export namespace Folks {
         /**
          * @param value 
          */
-        set_value(value: never): void;
+        set_value(value: null): void;
 
         get_value_type(): GObject.GType;
 
@@ -3690,7 +3690,7 @@ export namespace Folks {
          * @param object_version 
          * @virtual
          */
-        vfunc_deserialise_object(variant: GLib.Variant, object_version: number): never;
+        vfunc_deserialise_object(variant: GLib.Variant, object_version: number): null;
 
         // Methods
         /**
@@ -3703,7 +3703,7 @@ export namespace Folks {
         /**
          * @param object 
          */
-        serialise_object(object: never): GLib.Variant;
+        serialise_object(object: null): GLib.Variant;
 
         /**
          * @param variant 
