@@ -67,6 +67,16 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
+      # The publisher is TypeScript executed with type STRIPPING, which does no
+      # checking whatsoever — so a type error in the script that publishes 703
+      # packages would first surface at release time, halfway through a sweep.
+      # The package has had a `check` script all along; nothing ran it.
+      - name: Type-check the release script
+        working-directory: .github/release-script
+        run: |
+          npm ci
+          npm run check
+
       - name: Publish
         run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts --continue-on-error
         env:
