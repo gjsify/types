@@ -194,6 +194,19 @@ const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean;
 	},
 ];
 
+const NPM_VERSION_VECTORS: { version: string; below: boolean }[] = [
+	{ version: "11.5.1", below: false },
+	{ version: "11.5.0", below: true },
+	{ version: "11.4.9", below: true },
+	{ version: "11.6.0", below: false },
+	{ version: "12.0.0", below: false },
+	{ version: "10.9.9", below: true },
+	// A prerelease or an unreadable string must not BLOCK — refusing to publish
+	// over a version we could not parse is worse than the risk it guards.
+	{ version: "not-a-version", below: false },
+	{ version: "11.5.1-beta.1", below: false },
+];
+
 function selfTestClassifier(): void {
 	const failures: string[] = [];
 	for (const v of CLASSIFIER_VECTORS) {
@@ -204,10 +217,17 @@ function selfTestClassifier(): void {
 			failures.push(`${v.name}: expected terminal=${v.terminal}`);
 		}
 	}
-	if (failures.length > 0) {
-		throw new Error(`retry-classifier self-test FAILED:\n  ${failures.join("\n  ")}`);
+	for (const v of NPM_VERSION_VECTORS) {
+		if (isBelowMinNpm(v.version) !== v.below) {
+			failures.push(`npm ${v.version}: expected below=${v.below}`);
+		}
 	}
-	console.log(`🧪 retry-classifier self-test green — ${CLASSIFIER_VECTORS.length} vector(s)`);
+	if (failures.length > 0) {
+		throw new Error(`self-test FAILED:\n  ${failures.join("\n  ")}`);
+	}
+	console.log(
+		`🧪 self-test green — ${CLASSIFIER_VECTORS.length} classifier + ${NPM_VERSION_VECTORS.length} npm-version vector(s)`,
+	);
 }
 
 function isRetryableHttpStatus(status: number): boolean {
@@ -595,6 +615,42 @@ async function collectPackages(): Promise<Package[]> {
  * Each mode is verified on its own terms, because `whoami` is the wrong question
  * in OIDC mode (there is deliberately no token to identify).
  */
+/** The first npm release that can exchange a GitHub OIDC token. */
+const MIN_NPM_FOR_OIDC = [11, 5, 1] as const;
+
+function isBelowMinNpm(version: string): boolean {
+	const parts = version.trim().split(".").map((p) => Number.parseInt(p, 10));
+	if (parts.length < 3 || parts.some((n) => !Number.isFinite(n))) return false; // unparseable — do not block on a guess
+	for (let i = 0; i < 3; i++) {
+		if (parts[i] < MIN_NPM_FOR_OIDC[i]) return true;
+		if (parts[i] > MIN_NPM_FOR_OIDC[i]) return false;
+	}
+	return false; // exactly the minimum
+}
+
+async function assertNpmSupportsOidc(): Promise<void> {
+	const version = await new Promise<string>((resolve) => {
+		const proc = spawn("npm", ["--version"], { shell: true, stdio: "pipe" });
+		let out = "";
+		proc.stdout.on("data", (d) => {
+			out += d.toString();
+		});
+		proc.on("exit", () => resolve(out.trim()));
+		proc.on("error", () => resolve(""));
+	});
+	if (!version) {
+		console.warn("⚠️  could not read the npm version — proceeding");
+		return;
+	}
+	if (isBelowMinNpm(version)) {
+		throw new Error(
+			`npm ${version} cannot use Trusted Publishing: OIDC needs npm >= ${MIN_NPM_FOR_OIDC.join(".")}. ` +
+				"Use Node.js 24 or newer, or set NODE_AUTH_TOKEN to publish with a token instead.",
+		);
+	}
+	console.log(`✅ npm ${version} supports OIDC (>= ${MIN_NPM_FOR_OIDC.join(".")})`);
+}
+
 async function assertCanAuthenticate(config: Config): Promise<void> {
 	if (config.dryRun) return;
 
@@ -607,6 +663,12 @@ async function assertCanAuthenticate(config: Config): Promise<void> {
 			);
 		}
 		console.log("✅ OIDC token endpoint available");
+		// npm ≥ 11.5.1 is a HARD requirement for Trusted Publishing, and below it
+		// "publishing will fail even if OIDC permissions are correctly configured"
+		// (actions/setup-node docs). That failure arrives as an auth error, so it
+		// reads as a broken Trusted Publisher rather than as a stale toolchain —
+		// name it here instead.
+		await assertNpmSupportsOidc();
 		// Each package must ALSO have a Trusted Publisher configured for this
 		// workflow; npm answers a missing one with a 404 on the OIDC exchange.
 		// `gjsify onboard --packages "*"` configures them in one idempotent sweep.

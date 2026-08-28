@@ -38,34 +38,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      # setup-node@v7, and the version matters. v6 exported a DUMMY
+      # `NODE_AUTH_TOKEN` whenever `registry-url` was set without one, which npm
+      # reads as token auth and which therefore silently disables the OIDC
+      # exchange. v7's headline change is removing that export
+      # (actions/setup-node#1558), so `registry-url` with no token is now the
+      # documented Trusted-Publishing shape rather than a trap.
+      #
+      # `package-manager-cache: false` per the same docs: setup-node enables npm
+      # caching automatically, and a poisoned cache can expose credentials —
+      # including the OIDC token — to attacker-controlled code.
       - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.node-version }}
-
-      # Both auth paths are supported, and the token decides which one runs.
-      #
-      # With a token: the simple path, and the ONLY one that can create a
-      # package that does not exist yet — npm Trusted Publishing requires the
-      # package to already exist, so the first publish of a new `@girs/*`
-      # namespace needs this or a prior `gjsify onboard` sweep.
-      #
-      # Without one: npm Trusted Publishing (OIDC), via `id-token: write` above.
-      # Nothing to expire, nothing to leak. Preferred once every package has a
-      # Trusted Publisher configured for this workflow.
-      #
-      # Writing an EMPTY token line is worse than writing none: npm reads
-      # configured-but-empty as token auth and never attempts the OIDC exchange.
-      - name: Configure npm authentication
-        run: |
-          if [ -n "$NODE_AUTH_TOKEN" ]; then
-            echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
-            echo "npm auth: token"
-          else
-            echo "npm auth: OIDC (no NODE_AUTH_TOKEN configured)"
-          fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
 
       # The publisher is TypeScript executed with type STRIPPING, which does no
       # checking whatsoever — so a type error in the script that publishes 703
@@ -77,6 +65,16 @@ jobs:
           npm ci
           npm run check
 
+      # Both auth paths stay supported, and the token decides which one runs.
+      #
+      # With a token: the simple path, and the ONLY one that can create a package
+      # that does not exist yet — npm Trusted Publishing requires the package to
+      # already be there, so the first publish of a new `@girs/*` namespace needs
+      # this or a prior `gjsify onboard` sweep.
+      #
+      # Without one: OIDC, via `id-token: write` above and the `registry-url`
+      # npmrc setup-node wrote. An unset secret makes this an EMPTY string, which
+      # both npm and the script read as no token at all.
       - name: Publish
         run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts --continue-on-error
         env:
