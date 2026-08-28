@@ -38,16 +38,47 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      # `package-manager-cache: false`: setup-node caches npm automatically, and
+      # a poisoned cache can expose credentials — the OIDC token included — to
+      # attacker-controlled code.
       - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
 
-      - name: Configure npm authentication
-        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      # npm >= 11.5.1 is a hard requirement for Trusted Publishing; below it a
+      # publish fails even when the OIDC permissions are right, and it fails as
+      # an auth error — so it reads as a broken Trusted Publisher rather than as
+      # a stale toolchain. PINNED rather than asserted at runtime: which npm a
+      # `24.x` runner carries is a moving target (24.0 shipped 11.3), and this
+      # workflow controls its own environment.
+      - name: Pin an npm that can use Trusted Publishing
+        run: |
+          npm install -g npm@^11.5.1
+          npm --version
 
+      # The publisher is TypeScript executed with type STRIPPING, which does no
+      # checking whatsoever — so a type error in the script that publishes 703
+      # packages would first surface at release time, halfway through a sweep.
+      # The package has had a `check` script all along; nothing ran it.
+      - name: Type-check the release script
+        working-directory: .github/release-script
+        run: |
+          npm ci
+          npm run check
+
+      # Both auth paths stay supported, and the token decides which one runs.
+      #
+      # With a token: the simple path, and the ONLY one that can create a package
+      # that does not exist yet — npm Trusted Publishing requires the package to
+      # already be there, so the first publish of a new `@girs/*` namespace needs
+      # this or a prior `gjsify onboard` sweep.
+      #
+      # Without one: OIDC, via `id-token: write` above and the `registry-url`
+      # npmrc setup-node wrote. An unset secret makes this an EMPTY string, which
+      # both npm and the script read as no token at all.
       - name: Publish
         run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts --continue-on-error
         env:

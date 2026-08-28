@@ -1,11 +1,10 @@
 {
   "name": "release-script",
   "version": "1.0.1",
-  "main": "build/index.js",
   "type": "module",
   "private": true,
   "scripts": {
-    "check": "tsc",
+    "check": "tsc --noEmit",
     "start": "node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./src/index.ts"
   },
   "author": "",

@@ -4,7 +4,6 @@
 		"module": "NodeNext",
 		"strict": true,
 		"rootDir": "src",
-		"outDir": "build",
 		"verbatimModuleSyntax": true,
 		"noEmit": true
 	},
