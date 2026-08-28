@@ -127,6 +127,11 @@ function isRateLimitedError(message: string): boolean {
 /** Codes that are settled: no amount of retrying changes the answer. */
 const TERMINAL_NPM_CODES = new Set(["E401", "E402", "E403", "E404", "EPUBLISHCONFLICT", "EOTP"]);
 
+function isTerminalNpmError(message: string): boolean {
+	const code = npmErrorCode(message);
+	return code !== null && TERMINAL_NPM_CODES.has(code);
+}
+
 /**
  * Codes that are the registry asking to be asked again.
  *
@@ -141,22 +146,45 @@ const TERMINAL_NPM_CODES = new Set(["E401", "E402", "E403", "E404", "EPUBLISHCON
  * — a transient write conflict, retried ZERO times, because tightening this
  * classifier made it right about what is terminal and left everything it did
  * not name unretryable. Being precise about one half of a partition is not the
- * same as covering it.
+ * same as covering it, and the half that was named was the half we had already
+ * been bitten by — which is exactly how the other half stays invisible.
+ *
+ * So the retryable side is named too, not just the one code from the incident:
+ * the 5xx family and the coded transport errors belong here for the same
+ * reason. One package left unpublished costs a human a red X on a two-hour job
+ * and a 703-name diff against the registry.
  *
  * Publishing over an existing version is a DIFFERENT answer and stays terminal:
  * npm spells that `EPUBLISHCONFLICT`, and `publishPackageOnce` resolves it as
- * already-published before this is ever consulted.
+ * already-published before this is ever consulted. The two 409-shaped
+ * conditions must never collapse into one rule.
  */
 const RETRYABLE_NPM_CODES = new Set(["E409", "E500", "E502", "E503", "E504", "ETIMEDOUT", "ECONNRESET"]);
-
-function isTerminalNpmError(message: string): boolean {
-	const code = npmErrorCode(message);
-	return code !== null && TERMINAL_NPM_CODES.has(code);
-}
 
 function isRetryableNpmError(message: string): boolean {
 	const code = npmErrorCode(message);
 	return code !== null && RETRYABLE_NPM_CODES.has(code);
+}
+
+/**
+ * THE decision that gates a publish retry — the composed predicate, not one of
+ * its parts. It lives here, beside the classifiers it calls, so the self-test
+ * below can run the real thing: the helpers were covered all along, while the
+ * `shouldRetry` closure that actually decides was not, which is how a code that
+ * is neither terminal nor rate-limited came to mean "give up".
+ */
+function isRetryablePublishError(message: string): boolean {
+	// A settled answer wins over every other signal, so a message that happens
+	// to contain a transport word cannot resurrect it.
+	if (isTerminalNpmError(message)) return false;
+	const lower = message.toLowerCase();
+	return (
+		isRateLimitedError(message) ||
+		isRetryableNpmError(message) ||
+		lower.includes("econnreset") ||
+		lower.includes("etimedout") ||
+		lower.includes("socket hang up")
+	);
 }
 
 /**
@@ -171,19 +199,13 @@ function isRetryableNpmError(message: string): boolean {
  * Vector 2 is the incident, verbatim in shape: npm prints the tarball shasum on
  * every attempt, and `838bf765429e…` carries "429" at offset 8.
  */
-const CLASSIFIER_VECTORS: {
-	name: string;
-	message: string;
-	rateLimited: boolean;
-	terminal: boolean;
-	/** Omitted means "not retryable" — the default for anything unnamed. */
-	retryable?: boolean;
-}[] = [
+const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean; terminal: boolean; retryable: boolean }[] = [
 	{
 		name: "E429 is a rate limit",
 		message: "npm error code E429\nnpm error 429 Too Many Requests",
 		rateLimited: true,
 		terminal: false,
+		retryable: true,
 	},
 	{
 		name: "E404 whose shasum contains 429 is NOT a rate limit",
@@ -193,18 +215,21 @@ const CLASSIFIER_VECTORS: {
 			"npm error 404 Not Found - PUT https://registry.npmjs.org/@girs%2fkeybinder-3.0",
 		rateLimited: false,
 		terminal: true,
+		retryable: false,
 	},
 	{
 		name: "E403 is terminal",
 		message: "npm error code E403\nnpm error 403 Forbidden - PUT https://registry.npmjs.org/@girs%2fgtk-4.0",
 		rateLimited: false,
 		terminal: true,
+		retryable: false,
 	},
 	{
 		name: "the legacy ERR! spelling still reads",
 		message: "npm ERR! code E429",
 		rateLimited: true,
 		terminal: false,
+		retryable: true,
 	},
 	{
 		name: "a coded transport error is not a rate limit, and not terminal",
@@ -214,23 +239,33 @@ const CLASSIFIER_VECTORS: {
 		retryable: true,
 	},
 	{
-		// The 4.2.0 release: 702 of 703 published, this one retried zero times.
-		name: "E409 save-packument conflict is transient, so RETRYABLE",
-		message:
-			"npm error code E409\n" +
-			"npm error 409 Conflict - PUT https://registry.npmjs.org/@girs%2funity-7.0 - " +
-			"Failed to save packument. A common cause is if you try to publish a new package " +
-			"before the previous package has been fully published.",
-		rateLimited: false,
+		name: "an uncoded rate limit is still read, by phrase",
+		message: "Registry responded: too many requests, slow down",
+		rateLimited: true,
 		terminal: false,
 		retryable: true,
 	},
 	{
-		name: "publishing over an existing version is NOT the same conflict",
-		message: "npm error code EPUBLISHCONFLICT\nnpm error Cannot publish over existing version",
+		// npm prints `unpacked size` on every publish too. Any number in the
+		// output is a coin flip against a bare-substring test.
+		name: "an unpacked size of 429 kB is not a rate limit",
+		message: "npm notice unpacked size: 429.1 kB\nnpm error code E403\nnpm error 403 Forbidden",
 		rateLimited: false,
 		terminal: true,
 		retryable: false,
+	},
+	{
+		// The 4.2.0 incident, verbatim in shape. `E409` is transient and must be
+		// retried; `EPUBLISHCONFLICT` is the settled "already published" answer
+		// and must not be — the two must never collapse into one rule.
+		name: "E409 packument save conflict is transient",
+		message:
+			"npm error code E409\n" +
+			"npm error 409 Conflict - PUT https://registry.npmjs.org/@girs%2funity-7.0 - Failed to save packument. " +
+			"A common cause is if you try to publish a new package before the previous package has been fully processed.",
+		rateLimited: false,
+		terminal: false,
+		retryable: true,
 	},
 	{
 		name: "a 503 from the registry is retryable",
@@ -240,18 +275,11 @@ const CLASSIFIER_VECTORS: {
 		retryable: true,
 	},
 	{
-		name: "an uncoded rate limit is still read, by phrase",
-		message: "Registry responded: too many requests, slow down",
-		rateLimited: true,
-		terminal: false,
-	},
-	{
-		// npm prints `unpacked size` on every publish too. Any number in the
-		// output is a coin flip against a bare-substring test.
-		name: "an unpacked size of 429 kB is not a rate limit",
-		message: "npm notice unpacked size: 429.1 kB\nnpm error code E403\nnpm error 403 Forbidden",
+		name: "EPUBLISHCONFLICT stays terminal",
+		message: "npm error code EPUBLISHCONFLICT\nnpm error Cannot publish over previously published version",
 		rateLimited: false,
 		terminal: true,
+		retryable: false,
 	},
 ];
 
@@ -264,8 +292,8 @@ function selfTestClassifier(): void {
 		if (isTerminalNpmError(v.message) !== v.terminal) {
 			failures.push(`${v.name}: expected terminal=${v.terminal}`);
 		}
-		if (isRetryableNpmError(v.message) !== (v.retryable ?? false)) {
-			failures.push(`${v.name}: expected retryable=${v.retryable ?? false}`);
+		if (isRetryablePublishError(v.message) !== v.retryable) {
+			failures.push(`${v.name}: expected retryable=${v.retryable}`);
 		}
 	}
 	if (failures.length > 0) {
@@ -608,20 +636,7 @@ async function publishPackageWithRetry(pkg: Package, config: Config): Promise<vo
 			maxRetries: MAX_RETRIES_PUBLISH,
 			baseDelayMs: RETRY_BASE_MS,
 			maxDelayMs: RETRY_MAX_MS,
-			shouldRetry: (err) => {
-				const msg = err instanceof Error ? err.message : String(err);
-				// A settled answer wins over every other signal, so a message that
-				// happens to contain a transport word cannot resurrect it.
-				if (isTerminalNpmError(msg)) return false;
-				const lower = msg.toLowerCase();
-				return (
-					isRateLimitedError(msg) ||
-					isRetryableNpmError(msg) ||
-					lower.includes("econnreset") ||
-					lower.includes("etimedout") ||
-					lower.includes("socket hang up")
-				);
-			},
+			shouldRetry: (err) => isRetryablePublishError(err instanceof Error ? err.message : String(err)),
 			onRetry: (attempt, wait, err) => {
 				const message = err instanceof Error ? err.message : String(err);
 				console.log(`⏳ ${pkg.name}@${pkg.version} retry ${attempt}/${MAX_RETRIES_PUBLISH} in ${wait}ms: ${message}`);
